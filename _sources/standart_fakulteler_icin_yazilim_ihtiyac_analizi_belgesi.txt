@@ -6,7 +6,7 @@ Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi
 **Tanımlar**
 ============
 
-----------
+-----------
 **Fakülte**
 -----------
 
@@ -61,7 +61,7 @@ Fakültenin idari amiri.
 
 *Ders işlemeri*
     Ders kaydı:Birinci sınıfa gelenler
-	
+    
 *Ders ekleme çıkarma*
     Öğrenci durumunu gücelleme (pasif, disiplin cezası, kayıt dondurma)
 
@@ -163,9 +163,9 @@ Bölüm Kurulu kararıyla, Dersler şubelere bölünebilir. Öğrenciler ders se
 
 * çeşitli şablonlara göre yapılabilir
 
-	- tek numara / çift numara
+    - tek numara / çift numara
 
-	- ilk n sayıda öğrenci, sonraki n sayıda öğrenci vb.
+    - ilk n sayıda öğrenci, sonraki n sayıda öğrenci vb.
 
 * elle seçilebilir.
 
@@ -187,10 +187,10 @@ Bir dersin başarıyla tamamlanabilmesi için, öğrencinin yapması gereken ça
 Krediler anabilim dalı kurulu tarafından belirlenir. Mayıs ayında senatoya gider. Senatodan onay çıktığı takdirde yöke gönderilir.  Ancak AKTS sisteminde (Bologna süreci) iş yükü hesabı ile kredi belirlenir (25 saat = 1 Kredi şeklinde [Bu eşitlik bazı üniversitelerde farklı olabiliyor]).
 
 Bir dersin
-	Teorik = Teorik Kredisi
-	Pratik = Pratik Kredisi
-	Klasik Ders Kredisi = Teorik + Pratik / 2
-	ECTS = Sabit (Bologna hesabı)
+    Teorik = Teorik Kredisi
+    Pratik = Pratik Kredisi
+    Klasik Ders Kredisi = Teorik + Pratik / 2
+    ECTS = Sabit (Bologna hesabı)
 
 ----------------------
 **Zorunlu Ortak Ders**
@@ -262,35 +262,35 @@ Harc ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibariyle belirlenir.
 
 **Ara Sınav**
 
-	- Her yarı yılda en az bir adet yapılır.
-	- Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir.
+    - Her yarı yılda en az bir adet yapılır.
+    - Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir.
 
 **Genel Sınav**
 
-	- Dersin tamamlandığı yarı yıl veya yıl sonunda yapılır.(Devam zorunluluğu sağlanmalı)
-	- Sonuçları sınavların ardından en geç 5 gün içinde açıklanmalıdır.(Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.)
+    - Dersin tamamlandığı yarı yıl veya yıl sonunda yapılır.(Devam zorunluluğu sağlanmalı)
+    - Sonuçları sınavların ardından en geç 5 gün içinde açıklanmalıdır.(Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.)
 
 **Bütünleme**
 
-	- Genel sınava girme hakkı olup giremeyen veya ara sınav ve genel sınav sonucu başarısız olanlar.
+    - Genel sınava girme hakkı olup giremeyen veya ara sınav ve genel sınav sonucu başarısız olanlar.
 
 **Tek ders**
 
- 	- Mezuniyetleri için tek ders kalan öğrenciler.(Devam zorunluluğu sağlanmalı)
- 	- Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.(Ders önceki yıllarda alınmış olmalı)
+     - Mezuniyetleri için tek ders kalan öğrenciler.(Devam zorunluluğu sağlanmalı)
+     - Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.(Ders önceki yıllarda alınmış olmalı)
 
 **Muafiyet**
 
-	- Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarı yıl başında açılır. 70 ile geçer. ortalamaya dahil edilmez.
-	- Hazırlık sınıfı olmayan, zorunlu ingilizce dersi için öğretim yılı başında yapılır. CC ile geçer. Ortalamaya dahil edilir.
+    - Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarı yıl başında açılır. 70 ile geçer. ortalamaya dahil edilmez.
+    - Hazırlık sınıfı olmayan, zorunlu ingilizce dersi için öğretim yılı başında yapılır. CC ile geçer. Ortalamaya dahil edilir.
 
 **Mazeret**
 
-	- Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.(Ara sınav dönemi için geçerli mazeret bildirilmelidir.)
+    - Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.(Ara sınav dönemi için geçerli mazeret bildirilmelidir.)
 
 **Ek Sınav**
 
-	- Uygulamalı derslerin ek sınavları olabilir. Ek sınavlarda alınan ara sınav şartı aranmaksızın en az CC ise öğrenci başarılı sayılır.
+    - Uygulamalı derslerin ek sınavları olabilir. Ek sınavlarda alınan ara sınav şartı aranmaksızın en az CC ise öğrenci başarılı sayılır.
 
 
 =================
@@ -335,7 +335,7 @@ Azami öğretim süresi sonunda
 
 * Tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş ise, ara sınavlara girmek kaydıyla bu derslerde devam şartı aranmaz
 
-	- Tekrarlanan derslerde, uygulama sınavı yapılan veya sınıf geçme sistemi uygulanan fakülte ve yüksekokullar için devam şartı aranır.
+    - Tekrarlanan derslerde, uygulama sınavı yapılan veya sınıf geçme sistemi uygulanan fakülte ve yüksekokullar için devam şartı aranır.
 
 ---------------------------
 **Sınava Katılma Şartları**
@@ -347,7 +347,7 @@ Azami öğretim süresi sonunda
 
 * Mazeretli öğrenciler sınava girmezler. Sınava girerlerse, sınavları geçersiz sayılır.
 
-	- Mazeret işlenirken saat dikkate alınmalı. Ogrenci saat konusunda bilgilendirilmeli.
+    - Mazeret işlenirken saat dikkate alınmalı. Ogrenci saat konusunda bilgilendirilmeli.
 
 * Devamlılık kurallarına uymayan öğrenciler o dersin genel sınavına giremezler.
 
@@ -365,27 +365,27 @@ Hocalar değiştirmediği sürece, sınav sonuçları şu şekillerde ifade edil
 
 
 +---------------+-----------+---------------+
-|100 lük Sistem |   Harf	| 4 lük Sistem 	|
+|100 lük Sistem |   Harf    | 4 lük Sistem  |
 +---------------+-----------+---------------+
-|90-100		    |    AA		|    4.00		|
+|90-100         |    AA     |    4.00       |
 +---------------+-----------+---------------+
-|85-89		    |    BA		|    3.50		|
+|85-89          |    BA     |    3.50       |
 +---------------+-----------+---------------+
-|75-84		    | 	 BB     |    3.00		|
+|75-84          |    BB     |    3.00       |
 +---------------+-----------+---------------+
-|70-74		    | 	 CB     |    2.50		|
+|70-74          |    CB     |    2.50       |
 +---------------+-----------+---------------+
-|60-69		    | 	 CC     |    2.00		|
+|60-69          |    CC     |    2.00       |
 +---------------+-----------+---------------+
-|55-59		    | 	 DC     |    1.50		|
+|55-59          |    DC     |    1.50       |
 +---------------+-----------+---------------+
-|50-54          | 	 DD     |    1.00		|
+|50-54          |    DD     |    1.00       |
 +---------------+-----------+---------------+
-|40-49		    | 	 FD     |    0.50		|
+|40-49          |    FD     |    0.50       |
 +---------------+-----------+---------------+
-|0-39		    | 	 FF	    |    0.00		|
+|0-39           |    FF     |    0.00       |
 +---------------+-----------+---------------+
-|----		    | 	 F    	|    0.00		|
+|--             |    F      |    0.00       |
 +---------------+-----------+---------------+
 
 
@@ -395,19 +395,19 @@ Hocalar değiştirmediği sürece, sınav sonuçları şu şekillerde ifade edil
 
 
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		AA,BA,BB,CB,CC			| 	Başarılı																									|
+|        AA,BA,BB,CB,CC         |    Başarılı                                                                                                   |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		DC						|	Şartlı Başarılı																								|
+|        DC                     |    Şartlı Başarılı                                                                                            |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		DD,FD,FF				|	Başarısız																									|
+|        DD,FD,FF               |    Başarısız                                                                                                  |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		F						|	Devamsızlık veya uygulamadan başarsız, genel sınava girme hakkı bulunmayan öğrenciyi						|
+|        F                      |    Devamsızlık veya uygulamadan başarsız, genel sınava girme hakkı bulunmayan öğrenciyi                       |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		G						|	Geçer notu, kredisiz derslerde başarılı olan öğrenci														|
+|        G                      |    Geçer notu, kredisiz derslerde başarılı olan öğrenci                                                       |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		K						|	Geçmez not, kredisiz derslerde başarısız öğrenci															|
+|        K                      |    Geçmez not, kredisiz derslerde başarısız öğrenci                                                           |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
-|		M						|	Dikey/yatay geçişle kabul olunan başarılı sayıldıkları dersleri												|
+|        M                      |    Dikey/yatay geçişle kabul olunan başarılı sayıldıkları dersleri                                            |
 +-------------------------------+---------------------------------------------------------------------------------------------------------------+
 
 
@@ -489,14 +489,14 @@ Dönem hesabı yapılırken o dönem alınan -bırakılanlar dahil- hesaplamaya 
 ------------------
 
 +---------------------------------------+-------------------------------------------+
-|	Normal Öğretim Süresi				|	0										|
+|    Normal Öğretim Süresi c            |    0                                      |
 +---------------------------------------+-------------------------------------------+
-|	Normal Öğretim Süresini Aşanlar		|	HARC + (((HARC / DKT) * KDKT) * 3/2)	|
+|    Normal Öğretim Süresini Aşanlar    |    HARC + (((HARC / DKT) * KDKT) * 3/2)   |
 +---------------------------------------+-------------------------------------------+
-|	Örnek Hesaplama						|	300 + ((300 / 30) * 6 * 3/2)			|
-|	Harc 300 TL							|	300 + 90								|
-|	Kalan Ders Kredisi 6				|	390 TL									|
-|	Dönem Toplam Ders Kredisi 30		|											|
+|    Örnek Hesaplama                    |    300 + ((300 / 30) * 6 * 3/2)           |
+|    Harc 300 TL                        |    300 + 90                               |
+|    Kalan Ders Kredisi 6               |    390 TL                                 |
+|    Dönem Toplam Ders Kredisi 30       |                                           |
 +---------------------------------------+-------------------------------------------+
 
 ------------------
@@ -504,14 +504,14 @@ Dönem hesabı yapılırken o dönem alınan -bırakılanlar dahil- hesaplamaya 
 ------------------
 
 +---------------------------------------+-------------------------------------------+
-|	Normal Öğretim Süresi				|	0										|
+|    Normal Öğretim Süresi              |    0                                      |
 +---------------------------------------+-------------------------------------------+
-|	Normal Öğretim Süresini Aşanlar		|	HARC + (((HARC / DKT) * KDKT) * 3/2)	|
+|    Normal Öğretim Süresini Aşanlar    |    HARC + (((HARC / DKT) * KDKT) * 3/2)   |
 +---------------------------------------+-------------------------------------------+
-|	Örnek Hesaplama						|	300 + ((300 / 30) * 6 * 3/2)			|
-|	Harc 300 TL							|	300 + 90								|
-|	Kalan Ders Kredisi 6				|	390 TL									|
-|	Dönem Toplam Ders Kredisi 30		|											|
+|    Örnek Hesaplama                    |    300 + ((300 / 30) * 6 * 3/2)           |
+|    Harc 300 TL                        |    300 + 90                               |
+|    Kalan Ders Kredisi 6               |    390 TL                                 |
+|    Dönem Toplam Ders Kredisi 30       |                                           |
 +---------------------------------------+-------------------------------------------+
 
 Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
@@ -536,9 +536,9 @@ Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da ka
 
 * 2. Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
 
-	- harcını ödememiş olanların kayıt işlemleri yapılamaz.
+    - harcını ödememiş olanların kayıt işlemleri yapılamaz.
 
-	- askerlik sıkıntı olanların durumu bankaya uygun şekilde bildirilir.
+    - askerlik sıkıntı olanların durumu bankaya uygun şekilde bildirilir.
 
 * Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenemli, ön kayıt formu askerlik engeli olanara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
 
@@ -659,17 +659,17 @@ Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere
 
 * Üst yarı yıl derslerinin seçilebilmesi  için
 
-	- Öğrencinin kayıt dondurma, uzaklastirma cezasi veya kayıt yenilemeyip donem kaybetmemiş olmaması gerekir.
+    - Öğrencinin kayıt dondurma, uzaklastirma cezasi veya kayıt yenilemeyip donem kaybetmemiş olmaması gerekir.
 
-	- Tüm alt yarı yıl derslerinden başarılı olmak zorunludur.
+    - Tüm alt yarı yıl derslerinden başarılı olmak zorunludur.
 
-	- Üst yarı yıl dersleri ile birlikte toplam 45 kredi aşılamaz.
+    - Üst yarı yıl dersleri ile birlikte toplam 45 kredi aşılamaz.
 
-	- Üst yarı yıl dersleri 45 kredinin %20 sini aşamaz.
+    - Üst yarı yıl dersleri 45 kredinin %20 sini aşamaz.
 
- 	- Genel Not ortalaması >= 3.00 olmalıdır.
+     - Genel Not ortalaması >= 3.00 olmalıdır.
 
-	- Danışmanın olumlu görüşü şarttır.
+    - Danışmanın olumlu görüşü şarttır.
 
 * Daha önce başarılı olunan dersler not yükseltme amacıyla seçilebilir. Devam zorunluluğu olmadan alınan en son not geçerli olur.  Ortalama hesaplarına ne olursa olsun en son alınan not dahil edilir.
 
@@ -885,7 +885,7 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 
 * Diploma (Sadece mezun durumundaki öğrencilere verilebilir)
 
-	- Diploma metni her bölüme göre değişebilir. Diploma metnin içine parametre geçirilmelidir.
+    - Diploma metni her bölüme göre değişebilir. Diploma metnin içine parametre geçirilmelidir.
 
 * Diploma Eki (Sadece mezun durumundaki öğrencilere verilebilir)
 
@@ -973,7 +973,7 @@ Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar. Onu
 
 * Bölümlerden öğrenci işlerine giden tum evraklardan örnek isteyelim.
 
-	- Diploma eki nasıl verilir?
+    - Diploma eki nasıl verilir?
 
 * Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
 

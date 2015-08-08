@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Git İş-Akışı &mdash; Ulakbus Documents 0.0.1 belgelendirme çalışması</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Ulakbus Documents 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Yazılım Tasarım Analizi Belgesi" href="yazilim_tasarim_analizi_belgesi.html" />
+    <link rel="prev" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="git-is-akisi">
+<h1>Git İş-Akışı<a class="headerlink" href="#git-is-akisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p><strong>HIÇ BIR ZAMAN MASTER&#8217;A PUSH ETMEYINIZ, SUREKLI BRACHLER KULLANINIZ.</strong></p>
+<ul class="simple">
+<li>Lütfen TÜM dökümanı okuyunuz.</li>
+<li>Bağımlılıklarınızı sürekli iki kere kontrol ediniz.</li>
+<li>PATH değişkenlerini sürekli iki kere kontrol ediniz.</li>
+<li>Asla repoya büyük commitlerde bulunmayınız. Commitler için sürekli küçük iterasyonlarda bulununuz. Yoksa KAFAYI YERSİNİZ:</li>
+<li>requirements.txt dosyasına yeni kütüphaneleri eklemeyi unutmayınız.</li>
+<li>Asla MASTER brach&#8217;i rebase etmeyi unutmayınız.</li>
+<li>Gelişim raporları düzenli olarak her gün Redmine&#8217;e yüklenmeli.</li>
+</ul>
+<div class="section" id="git-kurulumu">
+<h2><strong>Git kurulumu</strong><a class="headerlink" href="#git-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<ul class="simple">
+<li>Linux -&gt;      sudo apt-get install git-core</li>
+<li>Mac OS X -&gt;    bakınız <a class="reference external" href="http://help.github.com/mac-git-installation/">http://help.github.com/mac-git-installation/</a></li>
+<li>Windows -&gt;     bakınız <a class="reference external" href="http://help.github.com/win-git-installation/">http://help.github.com/win-git-installation/</a></li>
+</ul>
+<p>Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresini değiştirmeyi unutmayınız.):</p>
+<div class="highlight-python"><div class="highlight"><pre>git config --global user.name &quot;Emo Coder&quot;
+git config --global user.email &quot;emo@zetaops.io&quot;
+</pre></div>
+</div>
+<p><strong>Git Temelleri</strong></p>
+<p>Git çok güçlü bir sistemdir. Önemsemek gerekmektedir ama hiç bir değişiklik asla kaybolmaz (eğer daima commitliyorsanız) bu yüzden kendinizi özgür hissedebilir özelliklerini rahatlıkla deneyebilirsiniz.Git&#8217;i iyi anlamak için, git&#8217;in arkasında yatan kavramları okumak iyi bir fikirdir GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.</p>
+<p>Genel olarak, git biraz ayrintilidir ve basit islemleri gerceklestirmek icin bir cok komut gereklidir.Korkmayin, git&#8217;i anladiktan sonra, herseyin ne kadar iyi dusunuldugunu ve nedenlerinin oldugunu goruceksiniz.</p>
+<p>Svn hakkında tecrübe kazanmak istiyorsanız, bu bağlantıyı okuyabilirsiniz. <a class="reference external" href="http://git-scm.com/course/svn.html">http://git-scm.com/course/svn.html</a>
+Eğer programcı değilseniz, okuyunuz <a class="reference external" href="http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/">http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/</a></p>
+<p>Boş zamanınızda git in arkasında yatan temel kavramları anlamak için <a class="reference external" href="http://www.eecs.harvard.edu/~cduan/technical/git/">http://www.eecs.harvard.edu/~cduan/technical/git/</a> bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.</p>
+</div>
+<div class="section" id="brancler">
+<h2><strong>Brancler</strong><a class="headerlink" href="#brancler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<ul class="simple">
+<li>Master Branch sadece görüntülenen ve test edilen kodları içermektedir.</li>
+<li>Her özellik ve yazılım yatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.</li>
+<li>Yeni branchler son master branch temel alınarak başlatılmalıdır.</li>
+<li>Her branch master branch&#8217;i ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.</li>
+<li>Her branch&#8217;i master branch&#8217;i ile merge etmeden önce en son master branch temel alınmalıdır.</li>
+<li>Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine issue adı ve kısa açıklaması issue adından gelmelidir.</li>
+</ul>
+<p>Tüm branch&#8217;leri görüntülemek için:</p>
+<div class="highlight-python"><div class="highlight"><pre>git branch -a
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-code">
+<h2><strong>Getting code</strong><a class="headerlink" href="#getting-code" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">~/.ssh/config</span></code> dosyasını oluşturun.</div></blockquote>
+<p><em>host zopstest.zetaops.io</em>
+<em>port 99</em></p>
+<p>Tüm sistemi meta repository kullanarak klonlamak için aşağıdaki komutu kullanınız.</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone gitosis@test.zetaops.io:zops-ubys.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-day-to-day-flow">
+<h2><strong>Basic day-to-day flow</strong><a class="headerlink" href="#basic-day-to-day-flow" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Eğer local ve uzak repoların durumunu anlamakta zorluk çekiyorsanız:</p>
+<div class="highlight-python"><div class="highlight"><pre>git remote update
+gitk --all                      # yes, it’s not a typo - it’s a tool called gitK
+tig                         #you can also use tig from console. apt-get install tig, you can use SourceTree for mac if you are Mac coder
+</pre></div>
+</div>
+<p>yeni branch yaratmak için:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd path/to/project
+git checkout master
+git pull --rebase
+git branch (feature/bug)/some-new-feature/bug
+</pre></div>
+</div>
+<p>Programlamadan önceki hazırlık:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd path/to/project
+
+git checkout master
+git pull --rebase                   # use this if your local code has no local changes, which has not been pushed to server
+git checkout feature/some-feature
+git rebase master
+</pre></div>
+</div>
+</div>
+<div class="section" id="work-on-feature-bug-fix">
+<h2><strong>Work on feature/bug fix</strong><a class="headerlink" href="#work-on-feature-bug-fix" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>git checkout feature/some-feature
+</pre></div>
+</div>
+<p><em>Sourse File&#8217;ınızı düzenleyiniz ve ardından commitleyiniz.</em></p>
+<div class="highlight-python"><div class="highlight"><pre>git add path/to/changed/file1       # you need to mark each file you want to commit
+git add path/to/another-file2       # with this command
+
+git commit                                  # opens editor were you can write commit message, OR
+git commit -m &quot;commit message&quot;      # shortcut for one line commit messages
+</pre></div>
+</div>
+<p>Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlayınız ve servise push ediniz.</p>
+<div class="highlight-python"><div class="highlight"><pre>git pull origin feature/some-feature        # make sure that push will be successful
+                                                            # by ensuring that local changes
+                                        # are applicable on top of the
+                                        # latest code; may result in conflicts
+
+git pull --rebase origin master         # rebase with master
+git push origin feature/some-feature        # pushes local changes to server, push may be
+                                        # rejected if you haven&#39;t done previous step
+</pre></div>
+</div>
+</div>
+<div class="section" id="merging-branch-into-master">
+<h2><strong>Merging branch into master</strong><a class="headerlink" href="#merging-branch-into-master" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>git checkout master                                 # prepare local master by
+git pull --rebase origin master             # ensuring that your local master is up to date
+
+git checkout feature/some-feature
+git rebase master                                   # it ensure that following merge will be                                                                # successful AND that all merge conflicts are
+                                        # handled in feature branch, not master
+git checkout master
+git merge --no-ff feature/some-feature              # use of --no-ff will ensure that merge
+                                            # is visible in history graph as a
+                                            # separate branch
+
+git push origin master                          # push changes to origin master( on the server )
+</pre></div>
+</div>
+<p>EĞER NE YAPTIGINIZIN FARKINDA DEGILSENIZ, BU KODLARDAN UZAK DURMANIZI ONERIRIZ.</p>
+<div class="highlight-python"><div class="highlight"><pre>git branch -d feature/some-feature                  # delete local feature branch
+git branch -r -d feature/some-feature               # delete remote feature branch ( if needed, be aware to do this )
+</pre></div>
+</div>
+</div>
+<div class="section" id="reverting">
+<h2><strong>Reverting</strong><a class="headerlink" href="#reverting" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<dl class="docutils">
+<dt>::  git checkout &#8211; path/to/file            # reverts changes in particular file</dt>
+<dd><blockquote class="first">
+<div># to last version in repo</div></blockquote>
+<dl class="last docutils">
+<dt>git reset &#8211;hard HEAD                       # reverts ALL changes made in your working copy</dt>
+<dd># handy if working copy is a mess
+# (e.g. failed merge, rm -rf <a href="#id1"><span class="problematic" id="id2">*</span></a>, etc)</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="magit">
+<h2><strong>Magit</strong><a class="headerlink" href="#magit" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Eğer emacs kullanıyorsanız, Magit kullanınız.</p>
+<p><a class="reference external" href="http://philjackson.github.com/magit/">http://philjackson.github.com/magit/</a></p>
+<p>Not: Magit sizin ihtiyacınızın olduğu kadar fonksiyoneldir, ama bazen Git&#8217;i komut satırından kullanmak akıllıca! (örn <em>git merge &#8211;no-ff</em> komutunu magitte kullanmak mümkün değildir.)</p>
+<p>okuyunuz:
+<a class="reference external" href="http://philjackson.github.com/magit/magit.html">http://philjackson.github.com/magit/magit.html</a></p>
+<p>Eğer hala öğrenmek istiyorsanuzı
+<a class="reference external" href="http://daemianmack.com/magit-cheatsheet.html">http://daemianmack.com/magit-cheatsheet.html</a></p>
+</div>
+<div class="section" id="code-style">
+<h2><strong>Code style</strong><a class="headerlink" href="#code-style" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Gereksiz boşluklara dikkat ediniz.
+Boşlukları ve tabları karıştırmayınız.
+80 karakterden daha uzun satılar kullanmayınız.
+Python kodları için hrfiyen PEP8 kurallarını takip edin ve uygulayın.</p>
+</div>
+<div class="section" id="writing-commit-messages">
+<h2><strong>Writing Commit Messages</strong><a class="headerlink" href="#writing-commit-messages" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Commitlerinizi böyle yapılandırınız:
+Bir satırın özeti (50 karakterden az)
+Uzun açıklamalar (72 karakterde sınırla)</p>
+</div>
+<div class="section" id="summary">
+<h2><strong>Summary</strong><a class="headerlink" href="#summary" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<ul>
+<li><p class="first">50 karakterden daha az!</p>
+</li>
+<li><p class="first">Neler değişti.</p>
+</li>
+<li><p class="first">Zorunlu Şimdiki zaman (fix, add, change)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Fix bug 123</li>
+<li>Add &#8216;foobar&#8217; komutu</li>
+<li>Change default timeout to 123</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">No period</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Git İş-Akışı</a><ul>
+<li><a class="reference internal" href="#git-kurulumu"><strong>Git kurulumu</strong></a></li>
+<li><a class="reference internal" href="#brancler"><strong>Brancler</strong></a></li>
+<li><a class="reference internal" href="#getting-code"><strong>Getting code</strong></a></li>
+<li><a class="reference internal" href="#basic-day-to-day-flow"><strong>Basic day-to-day flow</strong></a></li>
+<li><a class="reference internal" href="#work-on-feature-bug-fix"><strong>Work on feature/bug fix</strong></a></li>
+<li><a class="reference internal" href="#merging-branch-into-master"><strong>Merging branch into master</strong></a></li>
+<li><a class="reference internal" href="#reverting"><strong>Reverting</strong></a></li>
+<li><a class="reference internal" href="#magit"><strong>Magit</strong></a></li>
+<li><a class="reference internal" href="#code-style"><strong>Code style</strong></a></li>
+<li><a class="reference internal" href="#writing-commit-messages"><strong>Writing Commit Messages</strong></a></li>
+<li><a class="reference internal" href="#summary"><strong>Summary</strong></a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="wiki.html">Documentation overview</a><ul>
+  <li><a href="developers.html">Geliştiriciler</a><ul>
+      <li>Previous: <a href="ulakbus_user_interface.html" title="önceki bölüm">Geliştirme Ortamı Kurulumu(Frontend)</a></li>
+      <li>Next: <a href="yazilim_tasarim_analizi_belgesi.html" title="sonraki bölüm">Yazılım Tasarım Analizi Belgesi</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/git_workflow.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015 Zetaops.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/git_workflow.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
