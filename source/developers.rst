@@ -11,20 +11,4 @@ Geliştiriciler
    yazilim_tasarim_analizi_belgesi
    yazilim_gelistirme_ve_test_dongusu
    standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.rst
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   veri_erisim_secimleri.rst
