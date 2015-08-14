@@ -1,0 +1,60 @@
+.navbar .navbar-inner {
+    padding: 0;
+    background: #004561;
+    height: 120px;
+}
+
+.container {
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar .nav li a {
+    text-align: center;
+    padding: 20px 0 15px 15px;
+    margin: 45px 10px;
+    color: white;
+}
+.navbar h1{
+    color: white;
+    margin-top: 45px;
+}
+
+.jumbotron{
+    margin: 0 25px;
+}
+.jumbotron h1{
+    margin-left: 10%;
+    margin-top: -15px;
+}
+.jumbotron h2{
+     margin-left: 18%;
+    margin-top: -15px;
+}
+.jumbotron p{
+     margin-left: 18%;
+     width: 60%;
+   
+}
+.row{
+    margin-top: 50px;
+}
+.row .col-lg-4 img{
+    text-align: center;
+}
+.row .col-lg-4 i{
+    margin-left: 20px;
+   }
+   .col-md-5 {
+    width: 50%;
+   
+}
+.col-md-7{
+    margin-left: 520px;
+    margin-top: -38px;
+}
+.container img{
+    margin-top: 14px;
+}

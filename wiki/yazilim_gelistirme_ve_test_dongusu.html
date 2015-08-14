@@ -1,0 +1,762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Yazılım Geliştirme ve Test Döngüsü &mdash; Ulakbus Documents 0.0.1 belgelendirme çalışması</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Ulakbus Documents 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi" href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" />
+    <link rel="prev" title="Yazılım Tasarım Analizi Belgesi" href="yazilim_tasarim_analizi_belgesi.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="yazilim-gelistirme-ve-test-dongusu">
+<h1>Yazılım Geliştirme ve Test Döngüsü<a class="headerlink" href="#yazilim-gelistirme-ve-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="yazilim-gelistirme-modeli">
+<h2><strong>Yazılım Geliştirme Modeli</strong><a class="headerlink" href="#yazilim-gelistirme-modeli" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yazılım geliştirme modeli döngüsel artımlı (iterative and incremental) modele bağlı <a class="reference external" href="http://www.extremeprogramming.org">XP</a> olacaktır. Şekil 1’de gösterilmektedir.</p>
+<a class="reference internal image-reference" href="_images/xp_gelistirme_semasi.png"><img alt="_images/xp_gelistirme_semasi.png" class="align-center" src="_images/xp_gelistirme_semasi.png" /></a>
+<p><em>Şekil 1 - XP geliştirme şeması</em></p>
+<div class="section" id="gelistirme-ve-test-dongusu">
+<h3><strong>Geliştirme ve Test Döngüsü</strong><a class="headerlink" href="#gelistirme-ve-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Extreme Programming modeline uygun şekilde 3 haftalık dönemlerde küçük sürüm planı yapılacak ve yazılım geliştirme ve test döngüsü bu sürüm planına bağlı olarak ilerleyecektir.</p>
+<p>Sürüm planına dahil edilen işler (issue) geliştiriciler tarafından uygun bir branchte çözülecektir. Geliştiriciler, geliştirme faaliyetleri boyunca aşağıda detayları belirtilen otomatik ve manuel testleri build aşamasından önce uygulayacaklar, ancak bu testlerden geçen kaynak kod sonraki aşamaya geçebilecektir. Kurulum ve yayınlama aşamasında ise bu aşamanın testleri yapılacak ve sonuçlar geliştiricilere bildirilecektir. Ayrıca geliştirilen özelliğe göre kabul testleri de bu aşamada yapılacaktır. Bu geliştirme döngüsü 3 hafta boyunca artımlı şekilde ilerleyecektir.</p>
+<p>Bu 3 haftanın sonunda ise sürüm adayı (release candidate) çıkartılacak ve bunun üzerinde kabul testleri ve önceden hazırlanmış test senaryoları, kullanılabilirlik, performans, güvenlik gibi testler yapılacaktır. Bu testlerin kabul sınırları içinde geçilmesi halinde sürüm ortaya çıkartılacaktır.</p>
+<p>Bunlara ek olarak her gece, gecelik derlenmiş kod (nightly builds) yayınlanacak, yazılımın tüm bileşenlerine ait tüm otomatik testler bu aşamada gerçekleşecektir.</p>
+</div>
+<div class="section" id="surum-plani">
+<h3><strong>Sürüm Planı</strong><a class="headerlink" href="#surum-plani" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sürüm planı 3 hafta geliştirme + 1 hafta kabul test süreçleri şeklinde planlanır. 7 ay boyunca toplam 7 sürüm çıkarılacaktır. Sürüm planı ihtiyaç analizi isterleri ve YTA belgesi ışığında yeni özelliklerin planlanması, önceki sürümden kalan hataların kapatılması, topluluk geri bildirimlerinden seçilen işlerin (issues) tamamlanması hedefleriyle yapılır.</p>
+</div>
+<div class="section" id="depolar">
+<h3><strong>Depolar</strong><a class="headerlink" href="#depolar" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li>Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:</li>
+<li>SpiffWorkFlow: İş akışı kütüphanesi geliştirme deposudur. Orjinalden fork edilmiştir.</li>
+<li>Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
+<li>Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
+<li>Zaerp (Ulakbus): Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
+<li>Zaerp-UI (Ulakbus-ui): Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
+<li>ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
+</ul>
+<p>Yardımcı kütüphaneler ile fork edilmiş kütüphaneler haricindeki depo isimleri, daha sonra Ulakbim tarafından verilecek isimlerle değiştirilecektir.</p>
+</div>
+<div class="section" id="topluluk">
+<h3><strong>Topluluk</strong><a class="headerlink" href="#topluluk" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+</div>
+<div class="section" id="roller">
+<h3><em>Roller:</em><a class="headerlink" href="#roller" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p><em>Geliştiriciler</em></p>
+<p>Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri ve Git Workflow[**]  Belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.</p>
+<p>[**] Bu belgeye referans verilecek.</p>
+<p><em>Beta Test Edicileri</em></p>
+<p>Patch ve Minor sürümleri test ederek geri bildirimlerde bulunarak geliştirme faaliyetine katkıda bulunurlar.</p>
+<p><em>Analiz Uzmanları</em>
+Yüksek Öğrenim Kanunu, Akademik Birimlerin Yönetmelikleri, akademinin yerleşik teammülerini bilen, projenin kapsamına detaylarıyla hakim topluluk üyeleridir. Topluluğun talep ettiği yeni özellikler, iş akışlarının değiştirilmesi, kanun ve yönetmeliklerdeki değişikliklerin projeyi nasıl etkileyeceği gibi konularda tavsiyelerde bulunurlar.</p>
+<p><em>Topluluk Moderatörleri</em>
+Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlantılandırmak, tartışmaların gidişatını sorularla belirli hedeflere yönlendirmek gibi görevleri olan topluluk üyeleridir.</p>
+</div>
+<div class="section" id="gelistirici-ve-katkici-rehberleri">
+<h3><em>Geliştirici ve Katkıcı Rehberleri:</em><a class="headerlink" href="#gelistirici-ve-katkici-rehberleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li>Geliştirme Ortamı Kurulum Rehberi</li>
+<li>UI Geliştirci Rehberi</li>
+<li>Zaerp Geliştirici Rehberi</li>
+<li>Workflow ve Spiff WF Rehberi</li>
+<li>Zato ve Servis Yazma Rehberi</li>
+<li>Git Workflow</li>
+</ul>
+</div>
+<div class="section" id="test-dongusunun-amaclari">
+<h3><strong>Test Döngüsünün Amaçları</strong><a class="headerlink" href="#test-dongusunun-amaclari" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li>Yazılım geliştirme döngüsünün denetlenebilir, kolay yönetilebilir ve ölçülebilir hale gelmesini sağlamak,</li>
+<li>Problemleri somutlayarak, çok sayıda yazılımcının daha kolay işbirliği yapabilmesine yardımcı olmak,</li>
+<li>Her bir yazılım parçasını çok yönlü şekilde zamanında test ederek, geliştirme döngüsünün sonraki aşamalarına en az hata ile devam etmek,</li>
+<li>Bir bileşende yapılan geliştirmenin diğer bileşenleri nasıl etkilediğini zamanında görebilmek,</li>
+<li>Kod kalitesini arttırmak,</li>
+<li>Kod yazım desenleri açısından bütünlük sağlamak ve okunabilirliği arttırmak,</li>
+<li>Kurulum sırasında yazılım bileşenleri ve birbirlerine olan bağımlılıkları doğrulamak,</li>
+<li>Yazılımın farklı platformlarda ve farklı ortam değişkenleriyle başarılı bir şekilde kurularak, beklenen şekilde çalıştığından emin olmak,</li>
+<li>Yazılımın beklenen şekilde çalışmasının ardından, önceden belirlenmiş çeşitli yük testleri altında aynı şekilde davranmaya devam ettiğinden emin olmak,</li>
+<li>Ortaya çıkan ürünün, ister belgesindeki işlevleri karşılayıp kaşılamadığını doğrulamak,</li>
+<li>Ürünün kullanım kolaylığı, kullanıcı deneyimi, performans açısından tatmin edici ve standartları karşıladığından emin olmaktır.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="surum-planina-bagli-gelistirme-dongusu-testleri">
+<h2><strong>Sürüm Planına Bağlı Geliştirme Döngüsü Testleri</strong><a class="headerlink" href="#surum-planina-bagli-gelistirme-dongusu-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="esli-gozden-gecirme-peer-code-review">
+<h3><strong>Eşli Gözden Geçirme (Peer Code Review)</strong><a class="headerlink" href="#esli-gozden-gecirme-peer-code-review" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge etmeden önce bir diğer geliştirici ile birlikte gözden geçireceklerdir. Bu gözden geçirme sırasında aşağıdaki kontrol listesine uygunluk aranacaktır:</p>
+<ul class="simple">
+<li>Kod Stili: Kod, Statik analiz araçları tarafından yakalanamayan method ve değişken isimlerinin proje standartlarına uygunluğu gibi kriterlere karşı incelenir.</li>
+<li>Belgelendirme: Mümkün olduğunca yorum satırlarına gerek duyulmayan, anlaşılır kod yazılmalıdır. Ancak çeşitli nedenlerle kolayca anlaşılmayan bir kod öbeği varsa, bunun nedeni ve nasıl çalıştığı belgelendirilmelidir.</li>
+<li>Girdilere Karşı Savunma: Kullanıcıdan ya da üçüncü parti servis ve uygulamalardan gelen veriler, temizlenip biçimlendirilmeli, hata denetiminden geçirilmeli ve gerekiyorsa try/except blokları içerisinde işlenmelidir.</li>
+<li>Test Edilebilirlik: Sınıf ve metodlar birim testlerinin kolayca yazılabilmesine olanak verecek şekilde tasarlanmalıdır. Arayüzler (interface) mümkün olduğunca test ortamında taklit edilebilir olmalıdır.</li>
+<li>Testler ve Kapsam: Kodun tamamını kapsayan, doğru tasarlanmış yeterli sayıda birim testi yazılmış olmalıdır. Dış servislere bağımlı işlevlerin testi için gerekli mocking kütüphane ve sunucuları kullanılmalıdır.</li>
+<li>Ayarlanabilirlik: Uygulamanın çalışmasını ve davranışını etkileyen, dosya dizin yolları, açılır menüde gösterilecek seçenek sayısı gibi  değerler ya kullanıcı tarafından ya da uygulamanın konfigurasyon standardına uygun şekilde (çevre değişkenleri) ile ayarlanabilir olmalıdır.</li>
+<li>Çöp Kod: Yorum satırı haline getirilmiş kod olmamalıdır. Silinen herşey sürüm kontrol sisteminden geri getirilebilir.</li>
+<li>Yapılacaklar: Todo olarak bırakılmış eksiklerin, sorun çıkarmayacağından emin olunmalıdır.</li>
+<li>Döngüler: Döngüler uzunluk ve döngüden çıkış kriterlerinin uygunluğuna karşı denetlenmelidir.</li>
+<li>Mevcudiyet Denetimi: Nesneler, kullanılmadan önce, o kapsamda mevcut olup olmadıklarına karşı denetlenmelidir. Bu denetimler, birçok hatanın kaynağında yakalanmasını sağlar.</li>
+<li>Kod Tekrarı: Aynı işi yapan kodların tekrar yazılmasından kaçınılmalıdır. Bu amaçla özellikle projeye sonradan katılan geliştiricilerin, mevcut utility metodlarından haberdar olmaları sağlanmalıdır.</li>
+</ul>
+</div>
+<div class="section" id="arkauc-testleri">
+<h3><strong>Arkauç Testleri</strong><a class="headerlink" href="#arkauc-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+</div>
+<div class="section" id="bilesen-birim-testleri">
+<h3><em>Bileşen (Birim) Testleri:</em><a class="headerlink" href="#bilesen-birim-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sistemin arkaucunu oluşturan bileşenlerin tümü py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">from tests.data.test_data import data</p>
+<p>from tests.data.test_model import Student</p>
+<p>def test_model_to_json_compact():</p>
+<blockquote class="last">
+<div><p>st = Student(**data)</p>
+<p>st.join_date = data[&#8216;join_date&#8217;]</p>
+<p>st.AuthInfo(**data[&#8216;AuthInfo&#8217;])</p>
+<p>for lct_data in data[&#8216;Lectures&#8217;]:</p>
+<blockquote>
+<div><p>lecture = st.Lectures(**lct_data)</p>
+<p>lecture.ModelInListModel(**lct_data[&#8216;ModelInListModel&#8217;])</p>
+<p>for atd in lct_data[&#8216;Attendance&#8217;]:</p>
+<blockquote>
+<div><blockquote>
+<div>lecture.Attendance(**atd)</div></blockquote>
+<p>for exam in lct_data[&#8216;Exams&#8217;]:</p>
+<blockquote>
+<div>lecture.Exams(**exam)</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>clean_value  = st.clean_value()</p>
+<p>assert data == clean_value</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Örnek birim testi 1</strong>
+Py.test, standard “assert” ifadesinin testin başarılı olup olmadığının kontrolü için kullanır. Bu sayede testlerin hazırlanması, yeni geliştiriciler için neredeyse hiçbir ek öğrenme süreci gerektirmez.</p>
+<p>Yukarıdaki test, benchmark eklentisiyle birlikte aşağıdaki gibi bir çıktı verecektir.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">================== test session starts ==================</p>
+<p>rootdir: /home/whogirl/Works/pyoko, inifile:</p>
+<p>plugins: benchmark</p>
+<p>collected 4 items</p>
+<p>tests/test_model_to_json.py</p>
+<p>&#8212; benchmark: 1 tests, min 5 rounds (of min 25.00us), 1.00s max time,</p>
+<p>Name (time in us)            Min         Max      Mean     StdDev  Rounds  Iterations</p>
+<p>test_model_to_json        214.0999  41221.8571  319.0611  1019.8894    1629     1</p>
+<p class="last">================== 1 passed in 1 .37 seconds ==================</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Test frameworkünün, kod kapsam analiziyle birlikte çalıştırılması sonucu aşağıdaki gibi bir çıktı elde edilecektir. Bu örnekte pyoko modülünün test kapsam oranı %58 olarak görünmektedir.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="12%" />
+<col width="10%" />
+<col width="37%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4"><p class="first">py.test &#8211;cov pyoko</p>
+<p>================== test session starts ==================</p>
+<p>platform darwin &#8211; Python 2.7.6 &#8211; py-1.4.27 &#8211; pytest-2.7.0</p>
+<p>rootdir: /home/whogirl/Works/pyoko/pyoko, inifile:</p>
+<p>plugins: cov</p>
+<p>collected 4 items</p>
+<p>pyoko ....</p>
+<p class="last">coverage: platform darwin, python 2.7.6-final-0</p>
+</td>
+</tr>
+<tr class="row-even"><td>Name</td>
+<td>Stmts</td>
+<td>Miss</td>
+<td>Cover</td>
+</tr>
+<tr class="row-odd"><td>pyoko/__init__</td>
+<td>1</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr class="row-even"><td>pyoko/db/base</td>
+<td>165</td>
+<td>118</td>
+<td>28%</td>
+</tr>
+<tr class="row-odd"><td>pyoko/db/connection</td>
+<td>5</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr class="row-even"><td>pyoko/db/schema_update</td>
+<td>20</td>
+<td>10</td>
+<td>50%</td>
+</tr>
+<tr class="row-odd"><td>pyoko/db/solr_schema_fields</td>
+<td>1</td>
+<td>1</td>
+<td>0%</td>
+</tr>
+<tr class="row-even"><td>pyoko/exceptions</td>
+<td>11</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr class="row-odd"><td>pyoko/field</td>
+<td>46</td>
+<td>8</td>
+<td>83%</td>
+</tr>
+<tr class="row-even"><td>pyoko/lib/__init__</td>
+<td>1</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr class="row-odd"><td>pyoko/lib/py2map</td>
+<td>22</td>
+<td>17</td>
+<td>23%</td>
+</tr>
+<tr class="row-even"><td>pyoko/lib/utils</td>
+<td>16</td>
+<td>5</td>
+<td>69%</td>
+</tr>
+<tr class="row-odd"><td>pyoko/model</td>
+<td>106</td>
+<td>7</td>
+<td>93%</td>
+</tr>
+<tr class="row-even"><td>pyoko/settings</td>
+<td>2</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr class="row-odd"><td>TOTAL</td>
+<td>397</td>
+<td>166</td>
+<td>58%</td>
+</tr>
+<tr class="row-even"><td colspan="4">================== 4 passed in 3.14 seconds   ==================</td>
+</tr>
+</tbody>
+</table>
+<p>HİTAP gibi test ortamı sunmayan üçüncü parti servislerle veri alışverişi yapan modüllerin testleri, harici servisin istek / yanıt setlerini mimik eden <a class="reference external" href="http://wiremock.org/">Wiremock</a> gibi bir simulatöre karşı yapılacaktır. Bu amaçla üretim ortamında servise gönderilen ve alınan veri trafiği kaydedilecek ve simulatör bu verilerle “eğitilecektir”.</p>
+<p><em>Pyoko</em></p>
+<p>Veri erişim katmanı (DAL) olarak görev yapacak olan Pyoko kütüphanesi için yazılacak birim testleri, veri doğruluğu ve API işlevlerine ek olarak çalışma hızı ve bellek kullanımı gibi kriterleri de göz önünde bulunduracaktır.</p>
+<p><em>SpiffWorkflow Engine</em></p>
+<p>Üçüncü parti bir kütüphane olarak projeye eklenmiş olan SpiffWorkflow’un geliştirilmesi ve bakımı uygulamanın ihtiyaçları doğrultusunda sürdürülecektir. Buna ek olarak, BPMN iş akışlarının doğruluğunun devamlı olarak sınanabilmesi için entegre bir test kaydetme ve çalıştırma modülü geliştirilecektir.</p>
+</div>
+<div class="section" id="is-akisi-workflow-testleri">
+<h3><em>İş Akışı (Workflow) Testleri:</em><a class="headerlink" href="#is-akisi-workflow-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sistemin tüm işlevlerinin üzerine inşa edileceği BPMN iş akışları, verilen girdilerle beklenen davranışı gösterip göstermediğine karşı test edilecektirler. Böylece iş akışları üzerinde yapılacak güncellemelerin, amaçlanan dışında yan etkilere neden olmadığından emin olunması sağlanacaktır.</p>
+</div>
+<div class="section" id="benchmark-testleri">
+<h3><em>Benchmark Testleri:</em><a class="headerlink" href="#benchmark-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>İş akışı motoru, Pyoko gibi görev kritik modüllerin performansı  pytest-benchmark eklentisi kullanılarak devamlı olarak ölçülüp kaydedilerek bu modüllerin performanslarındaki zamana bağlı değişim takip edilecek ve olası gerilemeler önlenecektir.</p>
+</div>
+<div class="section" id="servis-testleri">
+<h3><em>Servis Testleri:</em><a class="headerlink" href="#servis-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Uygulamanın birçok işlevi Zato ESB üzerinde çalıştırılacak mikro servisler üzerinden sunulacaktır. Bu servislerin işlevselliği ve API uyumluluğu zato-apitest frameworkü ile yazılacak testler ile sınanacaktır.</p>
+</div>
+<div class="section" id="kural-motoru-rule-engine-testleri">
+<h3><em>Kural Motoru (Rule Engine) Testleri:</em><a class="headerlink" href="#kural-motoru-rule-engine-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Uygulamanın iş mantığının önemli bir kısmını oluşturan kural setleri, belirli girdilerle beklenen çıktıları verip vermediklerine karşı denetelenmelidir.. Bu amaçla kural setleri standart birim testleri içerisinde kural motoru ile işletilerek beklenen çıktıyla eşleştirilecektir.</p>
+</div>
+<div class="section" id="kurulum-ve-yayinlama-asamasi-testleri">
+<h3><strong>Kurulum ve Yayınlama Aşaması Testleri</strong><a class="headerlink" href="#kurulum-ve-yayinlama-asamasi-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Kurulum ve Yayınlama (Build Release) aşamasında Buildbot aracılığı ile</p>
+<ul class="simple">
+<li>kurulum ve kütüphane bağımlılık testleri</li>
+<li>Uygulamanın tüm bileşenlerine ait birim testleri</li>
+<li>Entegrasyon testleri uygulanacaktır.</li>
+</ul>
+</div>
+<div class="section" id="test-sunuculari-ve-gelistirme-test-dongusu">
+<h3><em>Test Sunucuları ve Geliştirme Test Döngüsü:</em><a class="headerlink" href="#test-sunuculari-ve-gelistirme-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Her iş (issue) kendi geliştirme branchinde minik commitler ile geliştirilir. Bu branchlere yapılan pushlar buildbot u tetikleyip, kurulum ve yayınlama aşamasını başlatır. Bu branchten elde edilen kod diğer kütüphaneler ile birlikte biraraya getirilip kurulum işlemi yapılır ve gerekli testler çalıştırılır. Testleri geçen kaynak kod ve uygulama, geliştiricinin erişebileceği bir porttan yayınlanır.</p>
+<p>branch issue/58 → push → buildbot run tests → branch deployed at port 9091</p>
+<p>branch issue/59 → push → buildbot run tests → branch deployed at port 9092</p>
+<p>branch issue/60 → push → buildbot run tests → branch deployed at port 9010</p>
+<p>Sonuca kavuşturulan işler (issues) elle master branch ile birleştirilir (merge). Masterdaki bu değişiklik geliştirme aşamasındaki gibi buildbot u tetikler. Kurulum ve yayınlama işlemi bu branche karşı yapılır. Yayınlama sabit bir porttan yapılır (8080).</p>
+<p>Bunun yanısıra gecelik derlenmiş kod (nightly builds) da master branchlerden gerkçekleşir ve aynı portta yayınlanır.</p>
+<p>master → manual merge → buildbot run tests → master deployed at 8080</p>
+<p>master → automatic buildbot nightly build (backend + UI ) → master deployed at 8080</p>
+<p>Master Merge ve Nightly Builds işlemleri sırasında şu bileşenler biraraya getirilir:</p>
+<ol class="arabic simple">
+<li>final git master repo status</li>
+<li>application artefacts (xml files, json files, binary files, zip files, config files, certs)</li>
+<li>db schema migration file</li>
+</ol>
+</div>
+<div class="section" id="yayina-alma-production">
+<h3><em>Yayına Alma (Production):</em><a class="headerlink" href="#yayina-alma-production" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sürüm adayı haline gelen master branchte bulunan kaynak kod, aşağıda detaylı şekilde anlatılan sürüm öncesi kabul testlerinden geçer. Bu testlerin başarılı olması halinde, semantik sürümlendirme <a class="reference external" href="http://semver.org/">sistemine</a> göre etiketlenir (tagging).</p>
+<p>Semantik sürümlendirme sistemine göre kullanılacak desen MAJOR.MINOR.PATCH şeklindedir. Buna göre 3 haftalık küçük sürümler MINOR, gündelik çözülen işler PATCH, önceden belirlenmiş hedefleri kapsayan fazların sonunda ise MAJOR değerleri arttırılır.</p>
+<p>MINOR sürümler çıktıkça, buildbot taglenmiş sürümdeki depoları production ortamında yayına alır. Gerekli dosyaları kopyalar ve veritabanı şemalarını yeni sürümlere göç ettirir.</p>
+</div>
+<div class="section" id="kullanici-arayuzu-testleri">
+<h3><strong>Kullanıcı Arayüzü Testleri</strong><a class="headerlink" href="#kullanici-arayuzu-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Kullanıcı Arayüzü AngularJS ile Model-View-Controller (MVC) yapısı ile programlanacaktır. Modül yapısı aşağıdaki örnekte olduğu gibidir:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">app/</p>
+<blockquote class="last">
+<div><blockquote>
+<div><p>dashboard/</p>
+<blockquote>
+<div><p>dashboard.html (template)</p>
+<p>dashboard.js (Controller ve Model tanımlarının olduğu dosya)</p>
+<p>dashboard.test.js (Testlerin yazıldığı dosya)</p>
+<p>… (diğer modüller)</p>
+<p>app.css (stil dosyası)</p>
+<p>app.js (Uygulamanın tanımlandığı yapılandırıldığı dosya)</p>
+</div></blockquote>
+</div></blockquote>
+<p>karma.conf.js (testlerin çalışma zamanı yapılandırmalarını içeren dosya)</p>
+<p>e2e-tests/</p>
+<blockquote>
+<div>#protractor.conf.js (e2e testlerini çalıştıran protractor yapılandırma dosyası)
+#scenarios.js (e2e test senaryolarının bulunduğu dosya)</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3><em>Bileşen (Birim) Testleri:</em><a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Uygulamada *.test.js dosyaları modüllerin Unit testlerinin barındığı dosyalardır. Unit testler Jasmine test uygulama çatısı kullanılarak yazılır.
+Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki gibidir:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">describe(&#8216;zaerp.login module&#8217;, function () {</p>
+<blockquote class="last">
+<div><blockquote>
+<div><p>beforeEach(module(&#8216;zaerp.login&#8217;));</p>
+<p>describe(&#8216;login controller&#8217;, function () {</p>
+<blockquote>
+<div>it(&#8216;should have a login controller&#8217;, inject(function (){</div></blockquote>
+</div></blockquote>
+<p>expect(&#8216;zaerp.login.LoginCtrl&#8217;).toBeDefined();</p>
+<blockquote>
+<div><blockquote>
+<div>}));</div></blockquote>
+<p>});</p>
+</div></blockquote>
+<p>});</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Bu test örneğinde “login controller”ının tanımlanmış olması gerekliliği test edilmektedir.
+Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile çalıştırılır. Bunun için yukarıda açıkladığımız yapıda da görüleceği gibi “karma.conf.js” ismiyle bir yapılandırma dosyası bulunmaktadır. Karma yapılandırma örneği aşağıdaki gibidir:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">module.exports = function (config) {</p>
+<blockquote>
+<div><p>config.set({</p>
+<blockquote>
+<div><p>basePath: &#8216;./&#8217;,</p>
+<blockquote>
+<div><p>files: [</p>
+<blockquote>
+<div><p>&#8216;app/bower_components/angular/angular.js&#8217;,</p>
+<p>&#8216;app/bower_components/angular-route/angular-route.js&#8217;,</p>
+<p>&#8216;app/bower_components/angular-mocks/angular-mocks.js&#8217;,</p>
+<p>&#8216;app/app.js&#8217;,</p>
+<p>&#8216;app/components/**/*.js&#8217;,</p>
+<p>&#8216;app/login/*.js&#8217;,</p>
+</div></blockquote>
+</div></blockquote>
+<p>],</p>
+<p>autoWatch: true,</p>
+<p>frameworks: [&#8216;jasmine&#8217;],</p>
+<p>browsers: [&#8216;ChromeCanary&#8217;],</p>
+<p>plugins: [</p>
+<blockquote>
+<div><p>&#8216;karma-chrome-launcher&#8217;,</p>
+<p>&#8216;karma-firefox-launcher&#8217;,</p>
+<p>&#8216;karma-jasmine&#8217;,</p>
+<p>&#8216;karma-junit-reporter&#8217;</p>
+</div></blockquote>
+<p>],</p>
+<p>junitReporter: {</p>
+<blockquote>
+<div><p>outputFile: &#8216;test_out/unit.xml&#8217;,</p>
+<p>suite: &#8216;unit&#8217;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>});</p>
+</div></blockquote>
+<p class="last">};</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Bu yapılandırmada test dosyalarının hangileri olduğu ve testlerin çalışması için uygulama bağımlılıkları (dependencies) “files” anahtarında, hangi test uygulama çatısı kullanılacağı “frameworks” anahtarında, hangi tarayıcının kullanılacağı “browsers” anahtarında ve eklentiler “plugins” anahtarında belirtilmektedir.</p>
+<p>Unit testler nodejs kullanılarak uygulama kök dizininde “npm test” komutuyla çalıştırılır. Örnek bir test çıktısı aşağıdaki gibidir:</p>
+<p>INFO [watcher]: Changed file &#8220;zetaops/ng-zaerp/app/login/login_test.js&#8221;.
+Chrome 45.0.2412 (Mac OS X 10.10.3): Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)</p>
+<p>Bu çıktıdan 8 test senaryosunun başarıyla geçtiği görülmektedir (Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)).</p>
+<p>Birim testlerinin kodun ne kadarını kapsadığı yine karma ile incelenecektir. Karma testler çalıştıktan sonra coverage/ dizini altında bir html dosyası oluşturarak kod kapsama oranını yayınlar. Örnek html çıktı sayfası şu şekildedir:</p>
+<a class="reference internal image-reference" href="_images/codecoverage.png"><img alt="_images/codecoverage.png" class="align-center" src="_images/codecoverage.png" /></a>
+</div>
+<div class="section" id="kabul-testleri">
+<h3><em>Kabul Testleri:</em><a class="headerlink" href="#kabul-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Kabul testleri e2e-tests dizini altındaki “scenarios.js” dosyasına yazılır. Testler Jasmine test uygulama çatısı ile yazılacaktır. Örnek bir test senaryosu aşağıdaki gibidir:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">describe(&#8216;dashboard&#8217;, function () {</p>
+<blockquote>
+<div><p>beforeEach(function () {</p>
+<blockquote>
+<div>browser.get(&#8216;index.html#/dashboard&#8217;);</div></blockquote>
+<p>});</p>
+<p>it(&#8216;should redirect to login if not logged in&#8217;, function (){</p>
+<blockquote>
+<div><blockquote>
+<div><p>expect(element.all(by.css(&#8216;[ng-view] h1&#8217;)).first().getText()).</p>
+<blockquote>
+<div>toMatch(/Zaerp Login Form/);</div></blockquote>
+</div></blockquote>
+<p>});</p>
+</div></blockquote>
+</div></blockquote>
+<p class="last">});</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Yukarıdaki örnekte tarayıcı uygulamanın “dashboard” sayfasını çağırmakta eğer giriş yapılmamışsa “login” sayfasına yönlendirmesi beklenmektedir.</p>
+<p>Bu testler Protractor ile çalıştırılır. Protractor, Selenium web-driver’larını angularJS ile kullanmak için özelleştirmeler barındıran bir çözümdür. Örnek yapılandırma dosyası aşağıdaki gibidir:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">exports.config = {</p>
+<blockquote>
+<div><blockquote>
+<div><p>allScriptsTimeout: 11000,</p>
+<p>specs: [</p>
+<blockquote>
+<div>&#8216;*.js&#8217;</div></blockquote>
+<p>],</p>
+<p>capabilities: {</p>
+<blockquote>
+<div>&#8216;browserName&#8217;: &#8216;chrome&#8217;</div></blockquote>
+<p>},</p>
+<p>baseUrl: &#8216;<a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>&#8216;,</p>
+<p>framework: &#8216;jasmine&#8217;,</p>
+<p>jasmineNodeOpts: {</p>
+<p>defaultTimeoutInterval: 30000</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p class="last">};</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Bu yapılandırma dosyasında testlerin çalıştırılacağı tarayıcı (browserName), url (baseUrl), uygulama çatısı (framework) timeout süreleri gibi özellikler yapılandırılır. Kabul testleri kök dizinde “protractor e2e-tests/protractor.conf.js” komutu ile çalıştırılır.</p>
+</div>
+<div class="section" id="manuel-testler">
+<h3><em>Manuel Testler:</em><a class="headerlink" href="#manuel-testler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Tarayıcılara has hatalar, görsel düzenlemeler ve diğer otomatik olarak test edilemeyen arayüz özellikleri ve fonksiyonları manuel olarak test edilecektir.</p>
+</div>
+</div>
+<div class="section" id="surum-oncesi-kabul-testleri">
+<h2><strong>Sürüm Öncesi Kabul Testleri</strong><a class="headerlink" href="#surum-oncesi-kabul-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="test-senaryolari">
+<h3><strong>Test Senaryoları</strong><a class="headerlink" href="#test-senaryolari" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Ihtiyaç analiz belgelerinde belirtilen kullanıcı senaryolarına uygun şekilde test senaryoları yazılacaktır. Test senaryolarının amacı, ihtiyaç analizinde ortaya çıkan gereksinimlerin, geliştirme faaliyeti sonucu ortaya çıkan ürün ile karşılanıp karşılanmadığıdır.</p>
+<p>Sürüm aşamasında önceden yazılmış test senaryoları, kullanıcılar tarafından manuel şekilde uygulanır ve sonuçlar raporlanır. Bazı test senaryoları otomatik olarak da gerçeklenebilirler.</p>
+<p>Bizim uygulamamızda test senaryoları bir veya birden çok iş akışından (workflow) oluşan eylemler dizisi şeklinde olacaktır. Birden çok aktör ve ön koşulu içinde barındıran, problemi yeterli karmaşıklık düzeyine getirecek belirli sayıdaki öğrencinin ders seçimi ve sonuçlarının web sitelerinde yayınlanması veya öğrenciler için ders programının hazırlanması gibi..</p>
+</div>
+<div class="section" id="kullanilabilirlik-testi">
+<h3><strong>Kullanılabilirlik Testi</strong><a class="headerlink" href="#kullanilabilirlik-testi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Uygulama ekranları, uluslararası kabul görmüş kullanılabilirlik ilkeleri (w3c) ve KAMİS (Kamu Internet Siteleri Rehberi)&#8217;nin temel aldığı TS EN ISO 9241-151 (İnsan-Sistem Etkileşiminin Ergonomisi Standartları), WCAG ve ISO/IEC 40500:2012 (Web İçeriği Kullanılabilirlik Standartları ve Kriteri) standartlarında uygunluğu test edilecektir.</p>
+<p>Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:</p>
+<p><strong>Genel Görünüm</strong></p>
+<ul class="simple">
+<li>Klavye kısayollarıyla gezinmek mümkün mü?</li>
+<li>Klavye kısayollarıyla gezinmek kolay mı?</li>
+<li>Sayfalar otomatik olarak yenilenmemeli</li>
+<li>Website iletişim bilgileri, referansları uygun bir alanda mı?</li>
+<li>Servis/hizmet/uygulama bilgilerine kolayca erişiliyor mu?</li>
+<li>Görme engelliler için erişilebilirlik düzenlenmiş mi?</li>
+<li>Grid sistem kullanılmış mı?</li>
+<li>Klavye kullanımı sitedeki tüm işlemleri kapsıyor mu?</li>
+<li>Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman verililyor mu?</li>
+<li>Hukuki ya da mali sonuçları olan işlemlerde kullanıcının hata yapma olasılığı azaltılmalıdır.</li>
+</ul>
+<p><strong>Anasayfa</strong></p>
+<ul class="simple">
+<li>Amacı kolay anlatıyor mu?</li>
+<li>Yapmak istediği işleme kolay ulaşılıyor mu?</li>
+<li>Sayfa görünümü pozitif bir intiba bırakıyor mu?</li>
+<li>Giriş yapan kullanıcı ismi yer alıyor mu?</li>
+<li>Büyük değişiklikler ana sayfadan duyuruluyor mu?</li>
+<li>Konum ve iletişim bilgileri yer alıyor mu?</li>
+<li>Lisans, sözleşme gibi statik sayfalara linkler var mı?</li>
+<li>Sayfadaki imajlar ve/veya videolar amaçla alakalı mı?</li>
+<li>Site hem www alt alanadıyla hem alt alanadı olmadan erişilebilir mi?</li>
+<li>Sitede yapılacak temel işlemler ana sayfada yer alıyor mu?</li>
+</ul>
+<p><strong>Yönetim Paneli</strong></p>
+<ul class="simple">
+<li>İçerikler kullanıcı rolüyle ilgili mi?</li>
+<li>Uyarılar zamanında ve etkili şekilde gösteriliyor mu?</li>
+<li>Uyarılar öncelik ve önem derecelerine göre renklendirilmiş mi?</li>
+<li>Birden fazla role sahip kullanıcılar için roller arası geçişi sağlayan bir buton var mı?</li>
+</ul>
+<p><strong>Erişilebilirlik</strong></p>
+<ul class="simple">
+<li>İmajların “alt” özellikleri kullanılmış mı?</li>
+<li>İçerik stil dosyası (css) olmadan da okunabilir mi?</li>
+<li>Bağlantılar, butonlar ve seçim kutuları kolayca tıklanabilir mi?</li>
+</ul>
+<p>Örnek erişilebilirlik testi: <a class="reference external" href="http://achecker.ca/checker/index.php">http://achecker.ca/checker/index.php</a></p>
+<p><strong>Site İçi Yönlendirme</strong></p>
+<ul class="simple">
+<li>Önemli bağlantılar sayfanın hareketli öğelerinde olmamalı</li>
+<li>Linkler alfabetik olarak sıralanmamalı, gruplanmalı</li>
+<li>Kullanıcı sitede hangi sayfada olduğunu kolayca farkedebilmeli</li>
+<li>Yönlendirme bağlantıları her sayfada görünür mü?</li>
+<li>Bağlantılar açıklayıcı mı?</li>
+<li>Title’da site ve o sayfanın kısa bir açıklaması var mı?</li>
+<li>Site url’si akılda kalıcı mı?</li>
+</ul>
+<p><strong>Arama</strong></p>
+<ul class="simple">
+<li>Bir arama kutusu var mı?</li>
+<li>Arama kutusu her sayfada görünür mü?</li>
+<li>Arama kutusu yeterince geniş mi?</li>
+<li>Arama sonuçları kategorilendiriliyor mu?</li>
+</ul>
+<p><strong>Bağlantılar</strong></p>
+<ul class="simple">
+<li>Önemli komutlar bağlantı yerine buton olarak gösterilmeli, örn: kaydet gibi</li>
+<li>Linkler kolayca farkedilir mi?</li>
+<li>Kırık (erişilemeyen) link olmamalı</li>
+</ul>
+<p><strong>Şablon</strong></p>
+<ul class="simple">
+<li>Önemli içerikler öncelikli olarak gösteriliyor mu?</li>
+<li>Site şablonu farklı ekran boyutlarında ölçekleniyor mu?</li>
+<li>Birbiriyle alakalı bilgiler gruplandırılmış mı?</li>
+<li>Tüm sayfalarda tutarlı mı?</li>
+<li>Sayfalar çok sıkışık olmamalı</li>
+</ul>
+<p><strong>Formlar</strong></p>
+<ul class="simple">
+<li>Formlar kolay doldurulabilir mi?</li>
+<li>Form alanlarının açıklamaları var mı?</li>
+<li>Alanların alması gereken değerler kullanıcıya gösteriliyor mu?</li>
+<li>Çok uzun açılır menüden kaçınılmış mı?</li>
+<li>Form alanlarının isimleri açık ve anlaşılır mı?</li>
+<li>Form onay butonu var mı?</li>
+<li>Hata mesajları ilgili form alanının yanında yer alıyor mu?</li>
+<li>Birden fazla adımdan oluşan formlar için hangi adımda olduğu anlaşılıyor mu?</li>
+</ul>
+<p><strong>İçerik</strong></p>
+<ul class="simple">
+<li>Metin ve arkaplan rengi arasında yeterli derecede kontrast var mı?</li>
+<li>İçerik gözle taranabiliyor mu?</li>
+<li>İçerik temiz bir dille yazılmış mı?</li>
+<li>İletişim bilgileri açık şekilde yazılmış mı?</li>
+<li>İçerik kullanışlı ve güncel mi?</li>
+<li>Dil kurallarına uyuyor mu?</li>
+<li>İçerik sıralaması anlamlı mı?</li>
+<li>İçeriklerin ayırt edilebilmesi ya da doğru anlaşılabilmesi için renk kullanımına dikkat edilmiş mi?</li>
+<li>Hareketli içerikler kullanıcılar tarafından kontrol edilebiliyor mu?</li>
+<li>Tekrarlı içerikler pas geçilebiliyor mu?</li>
+<li>Metin öğeleri yeniden boyutlandırılabilir mi?</li>
+</ul>
+<p>Her ekran kontrol listesi formu ile birlikte açılır. Test kullanıcıları bu formu doldurup kaydederler. Sonuçlar ilgili servise raporlanır.</p>
+</div>
+<div class="section" id="performans-testleri">
+<h3><strong>Performans Testleri</strong><a class="headerlink" href="#performans-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+</div>
+<div class="section" id="load-tests">
+<h3><em>Load Tests:</em><a class="headerlink" href="#load-tests" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Yük testleri, uygulamanın belirli parçalarının yoğun trafik altındaki davranışlarını ölçmek amacıyla yapılır. Yayınlama aşamasında önceden belirlenen yük değerleri ile otomatik şekilde gerçekleştirilecektir. Bu amaçla geçici sanal makineler oluşturulacak, testler bu makineler üzerinde gerçekleştirilecektir. Temel test aracımız <a class="reference external" href="http://tsung.erlang-projects.org/">Tsung</a> olarak seçilmiştir. Tsung birçok farklı protokolde detaylı şekilde özelleştirilebilen requestler hazırlamaya olanak vermektedir.</p>
+</div>
+<div class="section" id="ag-kullanimi-ve-web-sayfa-basarimi">
+<h3><em>Ağ Kullanımı ve Web Sayfa Başarımı:</em><a class="headerlink" href="#ag-kullanimi-ve-web-sayfa-basarimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Ağ Kullanımı uygulama modüllerinin gerektiğinde çağırılacak şekilde düzenlenmesi (lazy load), statik dosyaların (javascript, css, imaj ve diğer dosyalar) optimize ve minimize edilmesi gibi konuları içerir. Bu süre çevrimiçi araçlar ve tarayıcılar kullanılarak test edilir.</p>
+</div>
+<div class="section" id="render-performansi">
+<h3><em>Render Performansı:</em><a class="headerlink" href="#render-performansi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sayfa render süresi kod tekrarı, optimizasyonu, DOM kullanımı gibi bilinen gerekliliklere göre kısalmaktadır. Sayfa bileşenlerinin yüklenme süresinden sonra gereken tüm fonksiyonların çalıştırılması ve stillerin uygulanması süresi render performansıdır. Tarayıcının yeteneklerine bağımlı olsa da belirlenecek minimum değerin altında olmamalıdır. Selenium ile test edilecektir.</p>
+</div>
+<div class="section" id="guvenlik-testleri">
+<h3><strong>Güvenlik Testleri</strong><a class="headerlink" href="#guvenlik-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Uygulamanın güvenlik test ve kontrolleri için Open Web Application Security Project <a class="reference external" href="https://www.owasp.org/">(OWASP)</a> topluluğunun yayınladığı test <a class="reference external" href="https://www.owasp.org/images/5/52/OWASP_Testing_Guide_v4.pdf">rehberinde</a> yer alan testlerin bazıları kullanılacaktır. 11 konu başlığı altında toplanan testlerin uygulamamız için uygun olanları seçilerek her sürüm öncesi kabul testleri aşamasında uygulanacaktır.</p>
+<p>Kontroller Sistem Hakkında Bilgi Toplama, Yapılandırma ve Yayınlama, Kimlik Yönetimi, Kimlik Doğrulama ve Yetkilendirme, Oturum Yönetimi, Girdi Geçerliliği, Hata Ayıklama, Şifreleme, İş Mantığı, İstemci Tarafı Testleri başlıkları altında yapılacaktır.</p>
+<p>Yapılacak testler ayrıca ISO 27002 bilgi güvenliği standartlarında belirlenen kriterlerin tamamlanması için kuruma destek olacaktır.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Yazılım Geliştirme ve Test Döngüsü</a><ul>
+<li><a class="reference internal" href="#yazilim-gelistirme-modeli"><strong>Yazılım Geliştirme Modeli</strong></a><ul>
+<li><a class="reference internal" href="#gelistirme-ve-test-dongusu"><strong>Geliştirme ve Test Döngüsü</strong></a></li>
+<li><a class="reference internal" href="#surum-plani"><strong>Sürüm Planı</strong></a></li>
+<li><a class="reference internal" href="#depolar"><strong>Depolar</strong></a></li>
+<li><a class="reference internal" href="#topluluk"><strong>Topluluk</strong></a></li>
+<li><a class="reference internal" href="#roller"><em>Roller:</em></a></li>
+<li><a class="reference internal" href="#gelistirici-ve-katkici-rehberleri"><em>Geliştirici ve Katkıcı Rehberleri:</em></a></li>
+<li><a class="reference internal" href="#test-dongusunun-amaclari"><strong>Test Döngüsünün Amaçları</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#surum-planina-bagli-gelistirme-dongusu-testleri"><strong>Sürüm Planına Bağlı Geliştirme Döngüsü Testleri</strong></a><ul>
+<li><a class="reference internal" href="#esli-gozden-gecirme-peer-code-review"><strong>Eşli Gözden Geçirme (Peer Code Review)</strong></a></li>
+<li><a class="reference internal" href="#arkauc-testleri"><strong>Arkauç Testleri</strong></a></li>
+<li><a class="reference internal" href="#bilesen-birim-testleri"><em>Bileşen (Birim) Testleri:</em></a></li>
+<li><a class="reference internal" href="#is-akisi-workflow-testleri"><em>İş Akışı (Workflow) Testleri:</em></a></li>
+<li><a class="reference internal" href="#benchmark-testleri"><em>Benchmark Testleri:</em></a></li>
+<li><a class="reference internal" href="#servis-testleri"><em>Servis Testleri:</em></a></li>
+<li><a class="reference internal" href="#kural-motoru-rule-engine-testleri"><em>Kural Motoru (Rule Engine) Testleri:</em></a></li>
+<li><a class="reference internal" href="#kurulum-ve-yayinlama-asamasi-testleri"><strong>Kurulum ve Yayınlama Aşaması Testleri</strong></a></li>
+<li><a class="reference internal" href="#test-sunuculari-ve-gelistirme-test-dongusu"><em>Test Sunucuları ve Geliştirme Test Döngüsü:</em></a></li>
+<li><a class="reference internal" href="#yayina-alma-production"><em>Yayına Alma (Production):</em></a></li>
+<li><a class="reference internal" href="#kullanici-arayuzu-testleri"><strong>Kullanıcı Arayüzü Testleri</strong></a></li>
+<li><a class="reference internal" href="#id1"><em>Bileşen (Birim) Testleri:</em></a></li>
+<li><a class="reference internal" href="#kabul-testleri"><em>Kabul Testleri:</em></a></li>
+<li><a class="reference internal" href="#manuel-testler"><em>Manuel Testler:</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#surum-oncesi-kabul-testleri"><strong>Sürüm Öncesi Kabul Testleri</strong></a><ul>
+<li><a class="reference internal" href="#test-senaryolari"><strong>Test Senaryoları</strong></a></li>
+<li><a class="reference internal" href="#kullanilabilirlik-testi"><strong>Kullanılabilirlik Testi</strong></a></li>
+<li><a class="reference internal" href="#performans-testleri"><strong>Performans Testleri</strong></a></li>
+<li><a class="reference internal" href="#load-tests"><em>Load Tests:</em></a></li>
+<li><a class="reference internal" href="#ag-kullanimi-ve-web-sayfa-basarimi"><em>Ağ Kullanımı ve Web Sayfa Başarımı:</em></a></li>
+<li><a class="reference internal" href="#render-performansi"><em>Render Performansı:</em></a></li>
+<li><a class="reference internal" href="#guvenlik-testleri"><strong>Güvenlik Testleri</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="wiki.html">Documentation overview</a><ul>
+  <li><a href="developers.html">Geliştiriciler</a><ul>
+      <li>Previous: <a href="yazilim_tasarim_analizi_belgesi.html" title="önceki bölüm">Yazılım Tasarım Analizi Belgesi</a></li>
+      <li>Next: <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="sonraki bölüm">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/yazilim_gelistirme_ve_test_dongusu.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015 Zetaops.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/yazilim_gelistirme_ve_test_dongusu.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

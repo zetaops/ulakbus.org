@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Geliştirme Ortamı Kurulumu(Frontend) &mdash; Ulakbus Documents 0.0.1 belgelendirme çalışması</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Ulakbus Documents 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Git İş-Akışı" href="git_workflow.html" />
+    <link rel="prev" title="Geliştirme Ortamı Kurulumu(Backend)" href="development_environment_setup.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gelistirme-ortami-kurulumu-frontend">
+<h1>Geliştirme Ortamı Kurulumu(Frontend)<a class="headerlink" href="#gelistirme-ortami-kurulumu-frontend" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="get-ready-for-development">
+<h2><strong>Get Ready For Development</strong><a class="headerlink" href="#get-ready-for-development" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:zetaops/ulakbus-ui.git</span></code> reposunu indirin.</p>
+<blockquote>
+<div><p><em>git kullanımını bilmiyorsanız, aşağıdaki bağlantılardan yardım alabilirsiniz.</em></p>
+<ul class="simple">
+<li><a class="reference external" href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
+<li><a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Nodejs&#8217;yi indirin ve kurun.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://nodejs.org/download/">https://nodejs.org/download/</a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Bower&#8217;ı kurunuz <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">bower</span></code></p>
+</li>
+<li><p class="first"><em>bower.json</em> içinde listelenen paketleri yüklemek için <code class="docutils literal"><span class="pre">bower</span> <span class="pre">install</span></code> komutunu çalıştırınız.</p>
+</li>
+<li><p class="first"><em>package.json</em> içinde listelenen paketleri yüklemek için <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></code> komutunu çalıştırınız.</p>
+</li>
+<li><p class="first">Tüm paketlerin yüklenmesininin ardından aşağıdaki komut sayesinde <em>http server</em> &#8216;ı çalıştırabilirsiniz.</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">npm</span> <span class="pre">start</span></code></p>
+</div></blockquote>
+</li>
+</ol>
+<p><em>Uygulamayı sunmak için başka http server kullanabilirsiniz</em></p>
+</div>
+<div class="section" id="development-cycle">
+<h2><strong>Development Cycle</strong><a class="headerlink" href="#development-cycle" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Şuan gerekli repo&#8217;ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.</p>
+<p>Extreme programming techniques kullanımları için, <a class="reference external" href="http://www.extremeprogramming.org/introduction.html">http://www.extremeprogramming.org/introduction.html</a> sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
+Using extreme programming techniques, we demand you to follow this cycle of development showing on the first page of xp website: <a class="reference external" href="http://www.extremeprogramming.org/introduction.html">http://www.extremeprogramming.org/introduction.html</a></p>
+<a class="reference internal image-reference" href="_images/planning_feedback_loops.png"><img alt="_images/planning_feedback_loops.png" class="align-center" src="_images/planning_feedback_loops.png" /></a>
+<p>Kodlarken aşağıdaki adımları izleyiniz.</p>
+<ul class="simple">
+<li>Yeni bir tane bracnh oluşturun. Örnek olarak(e.g: search_func)</li>
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;branch&gt;</span></code></li>
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code></li>
+<li>verilen gorev icin bir branch olusturup master branch’i rebase ettikten sonra, kodunuzu yazabilirsiniz.</li>
+<li>Kodunuzu denemek için testler yazınız.</li>
+<li>Testlerinizi çalıştırınız.</li>
+<li>Push yapmadan önce tekrardan master branch&#8217;i rebase edin <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code></li>
+<li>Şimdi push yapabilirsiniz <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">&lt;branch&gt;</span></code></li>
+</ul>
+</div>
+<div class="section" id="deneme">
+<h2><strong>Deneme</strong><a class="headerlink" href="#deneme" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>~/_test.js dosyaları, Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>npm test
+</pre></div>
+</div>
+<p>bu komut testleri bulacak ve sonucu ekrana yazdıracak.</p>
+<p>e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor kullanınız. Aşağıdaki komutu çalıştırabilirsiniz.</p>
+<div class="highlight-python"><div class="highlight"><pre>protractor e2e-tests/protractor.conf.js
+</pre></div>
+</div>
+</div>
+<div class="section" id="prensipler">
+<h2><strong>Prensipler</strong><a class="headerlink" href="#prensipler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="git">
+<h3><strong>Git:</strong><a class="headerlink" href="#git" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li>Her zaman brachler ile çalışır.</li>
+<li><strong>Hiç bir zaman MASTER BRANCH&#8217; e karışmayınız(müdahele etmeyiniz)!!</strong></li>
+<li>Küçük değişiklikleri commitleyiniz.</li>
+</ul>
+</div>
+<div class="section" id="kod">
+<h3><strong>Kod:</strong><a class="headerlink" href="#kod" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li>DRY - don&#8217;t repeat yourself(kendini tekrarlama) Bunu okuyunuz. <a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">https://en.wikipedia.org/wiki/Don%27t_repeat_yourself</a></li>
+<li>Kodunuzu yazarken açıklamalarda bulununuz.</li>
+<li>Kodunuz düzenli ve açık olsun.</li>
+<li>Değişken isimleri nesneleri açıklayıcı şekilde olmalıdır.</li>
+</ul>
+</div>
+<div class="section" id="test">
+<h3><strong>Test:</strong><a class="headerlink" href="#test" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Daha etkili testler yazmak için <a class="reference external" href="http://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/">http://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/</a> sitesinden yardım alabilirsiniz.</p>
+<p>Testler olabildiğince kodunuzu kapsamalı.</p>
+</div>
+<div class="section" id="okunmasi-gerekenler">
+<h3><strong>Okunması Gerekenler:</strong><a class="headerlink" href="#okunmasi-gerekenler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://google-styleguide.googlecode.com/svn/trunk/angularjs-google-style.html">https://google-styleguide.googlecode.com/svn/trunk/angularjs-google-style.html</a></li>
+<li><a class="reference external" href="https://github.com/angular/angular.js/wiki/Best-Practices">https://github.com/angular/angular.js/wiki/Best-Practices</a></li>
+<li><a class="reference external" href="https://angular.github.io/protractor/#/tutorial">https://angular.github.io/protractor/#/tutorial</a></li>
+<li><a class="reference external" href="https://docs.angularjs.org/guide">https://docs.angularjs.org/guide</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Iterative_and_incremental_development">http://en.wikipedia.org/wiki/Iterative_and_incremental_development</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Geliştirme Ortamı Kurulumu(Frontend)</a><ul>
+<li><a class="reference internal" href="#get-ready-for-development"><strong>Get Ready For Development</strong></a></li>
+<li><a class="reference internal" href="#development-cycle"><strong>Development Cycle</strong></a></li>
+<li><a class="reference internal" href="#deneme"><strong>Deneme</strong></a></li>
+<li><a class="reference internal" href="#prensipler"><strong>Prensipler</strong></a><ul>
+<li><a class="reference internal" href="#git"><strong>Git:</strong></a></li>
+<li><a class="reference internal" href="#kod"><strong>Kod:</strong></a></li>
+<li><a class="reference internal" href="#test"><strong>Test:</strong></a></li>
+<li><a class="reference internal" href="#okunmasi-gerekenler"><strong>Okunması Gerekenler:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="wiki.html">Documentation overview</a><ul>
+  <li><a href="developers.html">Geliştiriciler</a><ul>
+      <li>Previous: <a href="development_environment_setup.html" title="önceki bölüm">Geliştirme Ortamı Kurulumu(Backend)</a></li>
+      <li>Next: <a href="git_workflow.html" title="sonraki bölüm">Git İş-Akışı</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ulakbus_user_interface.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015 Zetaops.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/ulakbus_user_interface.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
