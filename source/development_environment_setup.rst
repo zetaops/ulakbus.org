@@ -107,7 +107,7 @@ Riak'ı ve bağımlılıklarını kurun.
     apt-get install redis-server
 
 
-Zato için tüm gerekli kurulumları gerçekleşiriniz.
+Zato için tüm gerekli kurulumları gerçekleştiriniz.
 
 ::
 
@@ -149,7 +149,7 @@ Bu script'i kullanmak için de ``zato from-config ~/ulakbus/pwzato.config`` komu
     password=ulakbus
 
 
-Zato Servislerini başlatmak için tekrardan *root* kullanıcısına geçiniz.
+Zato servislerini başlatmak için tekrardan *root* kullanıcısına geçiniz.
 
 Zato bileşeni için sembolik bağlantı oluşturunuz.
 
@@ -162,7 +162,7 @@ Zato bileşeni için sembolik bağlantı oluşturunuz.
 
 
 
-Ve Zato Servisini başlatınız.
+Ve Zato servisini başlatınız.
 
 ::
 
@@ -176,7 +176,7 @@ Ulakbus uygulaması için python virtual environment hazırlayınız.
     apt-get install virtualenvwrapper
 
 
-*app* adında bir dizin oluşturunuz ve *ulakbus* kullanıcısını *app* klasörü için ekleyin.
+*app* adında bir dizin oluşturunuz ve *ulakbus* kullanıcısını *app* klasörü içine ekleyin.
 
 
 ::
@@ -193,14 +193,14 @@ Ulakbus kullanıcısına *app* klasörü için yetki verin ve ulakbus kullanıc�
     su ulakbus
     cd ~
 
-Virtual Environment yaratınız ve actif ediniz.
+Virtual Environment yaratınız ve aktif ediniz.
 
 ::
 
     virtualenv --no-site-packages env
     source env/bin/activate
 
-pip' yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.
+pip yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.
 
 ::
 
