@@ -15,7 +15,6 @@ Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca ku
     wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
     vagrant up
 
-
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
 Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.
@@ -138,7 +137,7 @@ Zato Cluster oluşturunuz. Aşağıdaki komut, Sertifika, Web-Admin, Load-Balanc
 
 ``~/ulakbus`` klasörünün altına *pwzato.config* adında bir dosya oluşturunuz ve aşağıdaki script'i dosyanın içine yazınız.
 
-Bu script'i kullanmak için de ``zato from-config ~/ulakbus/pwzato.config`` komutunuz çalıştırıyor olmalısınız.
+Bu script'i kullanmak için de ``zato from-config ~/ulakbus/pwzato.config`` komutunu çalıştırıyor olmalısınız.
 
 ::
 
@@ -159,8 +158,6 @@ Zato bileşeni için sembolik bağlantı oluşturunuz.
     ln -s /opt/zato/ulakbus/server1 /etc/zato/components-enabled/ulakbus.server1
     ln -s /opt/zato/ulakbus/server2 /etc/zato/components-enabled/ulakbus.server2
     ln -s /opt/zato/ulakbus/web-admin /etc/zato/components-enabled/ulakbus.web-admin
-
-
 
 Ve Zato servisini başlatınız.
 
@@ -220,7 +217,7 @@ Pyoko'yu https://github.com/zetaops/pyoko.git adresinden çekiniz ve gereksiniml
     pip install git+https://github.com/zetaops/pyoko.git
 
 
-Environmet'e PYOKO_SETTINGS değişkeni ekleyiniz(*root* kullanıcısı iken)
+Environmet'a PYOKO_SETTINGS değişkeni ekleyiniz(*root* kullanıcısı iken)
 
 ::
 
@@ -305,3 +302,4 @@ Server'ı 8000(default) portunda çalıştırınız.
 ::
 
     python runserver.py
+
