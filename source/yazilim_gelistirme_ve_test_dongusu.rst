@@ -72,7 +72,7 @@ Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberler
 Patch ve Minor sürümleri test ederek geri bildirimlerde bulunarak geliştirme faaliyetine katkıda bulunurlar.
 
 *Analiz Uzmanları*
-Yüksek Öğrenim Kanunu, Akademik Birimlerin Yönetmelikleri, akademinin yerleşik teammülerini bilen, projenin kapsamına detaylarıyla hakim topluluk üyeleridir. Topluluğun talep ettiği yeni özellikler, iş akışlarının değiştirilmesi, kanun ve yönetmeliklerdeki değişikliklerin projeyi nasıl etkileyeceği gibi konularda tavsiyelerde bulunurlar.
+Yüksek Öğrenim Kanunu, Akademik Birimlerin Yönetmelikleri, akademinin yerleşik teammülerini bilen ve projenin kapsamına detaylarıyla hakim topluluk üyeleridir. Topluluğun talep ettiği yeni özellikler, iş akışlarının değiştirilmesi, kanun ve yönetmeliklerdeki değişikliklerin projeyi nasıl etkileyeceği gibi konularda tavsiyelerde bulunurlar.
 
 *Topluluk Moderatörleri*
 Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlantılandırmak, tartışmaların gidişatını sorularla belirli hedeflere yönlendirmek gibi görevleri olan topluluk üyeleridir.
@@ -129,7 +129,7 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 
 Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge etmeden önce bir diğer geliştirici ile birlikte gözden geçireceklerdir. Bu gözden geçirme sırasında aşağıdaki kontrol listesine uygunluk aranacaktır:
 
-* Kod Stili: Kod, Statik analiz araçları tarafından yakalanamayan method ve değişken isimlerinin proje standartlarına uygunluğu gibi kriterlere karşı incelenir.
+* Kod Stili: Kod, statik analiz araçları tarafından yakalanamayan method ve değişken isimlerinin proje standartlarına uygunluğu gibi kriterlere karşı incelenir.
 
 * Belgelendirme: Mümkün olduğunca yorum satırlarına gerek duyulmayan, anlaşılır kod yazılmalıdır. Ancak çeşitli nedenlerle kolayca anlaşılmayan bir kod öbeği varsa, bunun nedeni ve nasıl çalıştığı belgelendirilmelidir.
 
@@ -139,7 +139,7 @@ Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge e
 
 * Testler ve Kapsam: Kodun tamamını kapsayan, doğru tasarlanmış yeterli sayıda birim testi yazılmış olmalıdır. Dış servislere bağımlı işlevlerin testi için gerekli mocking kütüphane ve sunucuları kullanılmalıdır.
 
-* Ayarlanabilirlik: Uygulamanın çalışmasını ve davranışını etkileyen, dosya dizin yolları, açılır menüde gösterilecek seçenek sayısı gibi  değerler ya kullanıcı tarafından ya da uygulamanın konfigurasyon standardına uygun şekilde (çevre değişkenleri) ile ayarlanabilir olmalıdır.
+* Ayarlanabilirlik: Uygulamanın çalışmasını ve davranışını etkileyen, dosya dizin yolları, açılır menüde gösterilecek seçenek sayısı gibi  değerler ya kullanıcı tarafından ya da uygulamanın konfigürasyon standardına uygun şekilde (çevre değişkenleri) ile ayarlanabilir olmalıdır.
 
 * Çöp Kod: Yorum satırı haline getirilmiş kod olmamalıdır. Silinen herşey sürüm kontrol sisteminden geri getirilebilir.
 
@@ -147,19 +147,19 @@ Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge e
 
 * Döngüler: Döngüler uzunluk ve döngüden çıkış kriterlerinin uygunluğuna karşı denetlenmelidir.
 
-* Mevcudiyet Denetimi: Nesneler, kullanılmadan önce, o kapsamda mevcut olup olmadıklarına karşı denetlenmelidir. Bu denetimler, birçok hatanın kaynağında yakalanmasını sağlar.
+* Mevcudiyet Denetimi: Nesneler kullanılmadan önce o kapsamda mevcut olup olmadıklarına karşı denetlenmelidir. Bu denetimler, birçok hatanın kaynağında yakalanmasını sağlar.
 
 * Kod Tekrarı: Aynı işi yapan kodların tekrar yazılmasından kaçınılmalıdır. Bu amaçla özellikle projeye sonradan katılan geliştiricilerin, mevcut utility metodlarından haberdar olmaları sağlanmalıdır.
 
 -------------------
-**Arkauç Testleri**
+**Arka Uç Testleri**
 -------------------
 
 ---------------------------
 *Bileşen (Birim) Testleri:*
 ---------------------------
 
-Sistemin arkaucunu oluşturan bileşenlerin tümü py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.
+Sistemin arka ucunu oluşturan bileşenlerin tümü py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.
 
 +--------------------------------------------------------------+
 | from tests.data.test_data import data                        |
@@ -203,7 +203,7 @@ Sistemin arkaucunu oluşturan bileşenlerin tümü py.test test frameworkü kull
 +--------------------------------------------------------------+
 
 **Örnek birim testi 1**
-Py.test, standard “assert” ifadesinin testin başarılı olup olmadığının kontrolü için kullanır. Bu sayede testlerin hazırlanması, yeni geliştiriciler için neredeyse hiçbir ek öğrenme süreci gerektirmez.
+Py.test, standart “assert” ifadesinin testin başarılı olup olmadığının kontrolü için kullanır. Bu sayede testlerin hazırlanması, yeni geliştiriciler için neredeyse hiçbir ek öğrenme süreci gerektirmez.
 
 Yukarıdaki test, benchmark eklentisiyle birlikte aşağıdaki gibi bir çıktı verecektir.
 
@@ -291,7 +291,7 @@ Test frameworkünün, kod kapsam analiziyle birlikte çalıştırılması sonucu
 +-----------------------------------------------------------------------+
 
 
-HİTAP gibi test ortamı sunmayan üçüncü parti servislerle veri alışverişi yapan modüllerin testleri, harici servisin istek / yanıt setlerini mimik eden `Wiremock <http://wiremock.org/>`_ gibi bir simulatöre karşı yapılacaktır. Bu amaçla üretim ortamında servise gönderilen ve alınan veri trafiği kaydedilecek ve simulatör bu verilerle “eğitilecektir”.
+HİTAP gibi test ortamı sunmayan üçüncü parti servislerle veri alışverişi yapan modüllerin testleri, harici servisin istek / yanıt setlerini mimik eden `Wiremock <http://wiremock.org/>`_ gibi bir simülatöre karşı yapılacaktır. Bu amaçla üretim ortamında servise gönderilen ve alınan veri trafiği kaydedilecek ve simülatör bu verilerle “eğitilecektir”.
 
 *Pyoko*
 
@@ -331,7 +331,7 @@ Uygulamanın iş mantığının önemli bir kısmını oluşturan kural setleri,
 
 Kurulum ve Yayınlama (Build Release) aşamasında Buildbot aracılığı ile
 
-* kurulum ve kütüphane bağımlılık testleri
+* Kurulum ve kütüphane bağımlılık testleri
 
 * Uygulamanın tüm bileşenlerine ait birim testleri
 
@@ -351,7 +351,7 @@ branch issue/60 → push → buildbot run tests → branch deployed at port 9010
 
 Sonuca kavuşturulan işler (issues) elle master branch ile birleştirilir (merge). Masterdaki bu değişiklik geliştirme aşamasındaki gibi buildbot u tetikler. Kurulum ve yayınlama işlemi bu branche karşı yapılır. Yayınlama sabit bir porttan yapılır (8080).
 
-Bunun yanısıra gecelik derlenmiş kod (nightly builds) da master branchlerden gerkçekleşir ve aynı portta yayınlanır.
+Bunun yanı sıra gecelik derlenmiş kod (nightly builds) da master branchlerden gerkçekleşir ve aynı portta yayınlanır.
 
 master → manual merge → buildbot run tests → master deployed at 8080
 
@@ -536,7 +536,7 @@ Kabul testleri e2e-tests dizini altındaki “scenarios.js” dosyasına yazıl�
 +------------------------------------------------------------------------------+
 
 
-Yukarıdaki örnekte tarayıcı uygulamanın “dashboard” sayfasını çağırmakta eğer giriş yapılmamışsa “login” sayfasına yönlendirmesi beklenmektedir.
+Yukarıdaki örnekte tarayıcı uygulamanın “dashboard” sayfasını çağırmakta, eğer giriş yapılmamışsa “login” sayfasına yönlendirmesi beklenmektedir.
 
 Bu testler Protractor ile çalıştırılır. Protractor, Selenium web-driver’larını angularJS ile kullanmak için özelleştirmeler barındıran bir çözümdür. Örnek yapılandırma dosyası aşağıdaki gibidir:
 
@@ -609,9 +609,9 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Klavye kısayollarıyla gezinmek kolay mı?
 
-* Sayfalar otomatik olarak yenilenmemeli
+* Sayfalar otomatik olarak yenilenmemeli.
 
-* Website iletişim bilgileri, referansları uygun bir alanda mı?
+* Website iletişim bilgileri ve referansları uygun bir alanda mı?
 
 * Servis/hizmet/uygulama bilgilerine kolayca erişiliyor mu?
 
@@ -621,7 +621,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Klavye kullanımı sitedeki tüm işlemleri kapsıyor mu?
 
-* Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman verililyor mu?
+* Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman verili yor mu?
 
 * Hukuki ya da mali sonuçları olan işlemlerde kullanıcının hata yapma olasılığı azaltılmalıdır.
 
@@ -643,7 +643,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Sayfadaki imajlar ve/veya videolar amaçla alakalı mı?
 
-* Site hem www alt alanadıyla hem alt alanadı olmadan erişilebilir mi?
+* Site hem www alt alan adıyla hem alt alan adı olmadan erişilebilir mi?
 
 * Sitede yapılacak temel işlemler ana sayfada yer alıyor mu?
 
@@ -673,7 +673,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Linkler alfabetik olarak sıralanmamalı, gruplanmalı
 
-* Kullanıcı sitede hangi sayfada olduğunu kolayca farkedebilmeli
+* Kullanıcı sitede hangi sayfada olduğunu kolayca fark edebilmeli
 
 * Yönlendirme bağlantıları her sayfada görünür mü?
 
@@ -711,7 +711,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Tüm sayfalarda tutarlı mı?
 
-* Sayfalar çok sıkışık olmamalı
+* Sayfalar çok sıkışık olmamalı.
 
 **Formlar**
 
@@ -733,7 +733,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 **İçerik**
 
-* Metin ve arkaplan rengi arasında yeterli derecede kontrast var mı?
+* Metin ve arka plan rengi arasında yeterli derecede kontrast var mı?
 
 * İçerik gözle taranabiliyor mu?
 
@@ -778,7 +778,7 @@ Ağ Kullanımı uygulama modüllerinin gerektiğinde çağırılacak şekilde d�
 *Render Performansı:*
 ---------------------
 
-Sayfa render süresi kod tekrarı, optimizasyonu, DOM kullanımı gibi bilinen gerekliliklere göre kısalmaktadır. Sayfa bileşenlerinin yüklenme süresinden sonra gereken tüm fonksiyonların çalıştırılması ve stillerin uygulanması süresi render performansıdır. Tarayıcının yeteneklerine bağımlı olsa da belirlenecek minimum değerin altında olmamalıdır. Selenium ile test edilecektir.
+Sayfa render süresi, kod tekrarı, optimizasyonu, DOM kullanımı gibi bilinen gerekliliklere göre kısalmaktadır. Sayfa bileşenlerinin yüklenme süresinden sonra gereken tüm fonksiyonların çalıştırılması ve stillerin uygulanması süresi render performansıdır. Tarayıcının yeteneklerine bağımlı olsa da belirlenecek minimum değerin altında olmamalıdır. Selenium ile test edilecektir.
 
 ---------------------
 **Güvenlik Testleri**
