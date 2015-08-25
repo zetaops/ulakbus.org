@@ -2,9 +2,9 @@
 Geliştirme Ortamı Kurulumu(Frontend)
 ++++++++++++++++++++++++++++++++++++
 
-=============================
-**Get Ready For Development**
-=============================
+============================
+**Geliştirmeye Hazır Olun!**
+============================
 
 1. ``git clone git@github.com:zetaops/ulakbus-ui.git`` reposunu indirin.
 
@@ -29,17 +29,14 @@ Geliştirme Ortamı Kurulumu(Frontend)
 
 *Uygulamayı sunmak için başka http server kullanabilirsiniz.*
 
-=====================
-**Development Cycle**
-=====================
+======================
+**Geliştirme Döngüsü**
+======================
 
 Şu an gerekli repo'ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.
 
 
-Extreme programming techniques kullanımları için, http://www.extremeprogramming.org/introduction.html sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
-
-Using extreme programming techniques, we demand you to follow this cycle of development showing on the first page of xp website: http://www.extremeprogramming.org/introduction.html
-
+Güçlü programlama teknikleri için, http://www.extremeprogramming.org/introduction.html sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
 
 .. image:: _static/planning_feedback_loops.png
    :scale: 100 %
@@ -68,7 +65,7 @@ Kodlarken aşağıdaki adımları izleyiniz.
 **Deneme**
 ==========
 
-~/_test.js dosyaları, Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:
+~/_test.js dosyaları Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:
 
 ::
 
@@ -114,7 +111,7 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 
 Daha etkili testler yazmak için http://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/ sitesinden yardım alabilirsiniz.
 
-Testler olabildiğince kodunuzu kapsamalı.
+Testler, kodunuzu olabildiğince kapsamalı.
 
 ------------------------
 **Okunması Gerekenler:**

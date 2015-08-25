@@ -2,7 +2,7 @@
 Git İş-Akışı
 ++++++++++++
 
-**HİÇBİR ZAMAN MASTER'A PUSH ETMEYİNİZ, SÜREKLİ BRANCH'LER KULLANINIZ.**
+**HİÇBİR ZAMAN MASTER'A DOĞRUDAN PUSH ETMEYİNİZ, BRANCH YARATARAK BURADA DEĞİŞİKLİK YAPINIZ.**
 
 * Lütfen TÜM dökümanı okuyunuz.
 
