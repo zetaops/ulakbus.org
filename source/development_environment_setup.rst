@@ -2,6 +2,10 @@
 Geliştirme Ortamı Kurulumu(Backend)
 +++++++++++++++++++++++++++++++++++
 
+
+Geliştiriciler, kurulumu yapmak için Ubuntu işletim sistemini kurmalıdır. Biz işletim sistemi olarak Ubuntu 14.04 LTS kullanıyoruz.
+
+
 ===========
 **Vagrant**
 ===========

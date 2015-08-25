@@ -101,7 +101,7 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 
 * Problemleri somutlayarak, çok sayıda yazılımcının daha kolay işbirliği yapabilmesine yardımcı olmak,
 
-* Her bir yazılım parçasını çok yönlü şekilde zamanında test ederek, geliştirme döngüsünün sonraki aşamalarına en az hata ile devam etmek,
+* Her bir yazılım parçasını çok yönlü şekilde ve zamanında test ederek, geliştirme döngüsünün sonraki aşamalarına en az hata ile devam etmek,
 
 * Bir bileşende yapılan geliştirmenin diğer bileşenleri nasıl etkilediğini zamanında görebilmek,
 
@@ -115,7 +115,7 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 
 * Yazılımın beklenen şekilde çalışmasının ardından, önceden belirlenmiş çeşitli yük testleri altında aynı şekilde davranmaya devam ettiğinden emin olmak,
 
-* Ortaya çıkan ürünün, ister belgesindeki işlevleri karşılayıp kaşılamadığını doğrulamak,
+* Ortaya çıkan ürünün, ister belgesindeki işlevleri karşılayıp karşılamadığını doğrulamak,
 
 * Ürünün kullanım kolaylığı, kullanıcı deneyimi, performans açısından tatmin edici ve standartları karşıladığından emin olmaktır.
 
@@ -151,9 +151,9 @@ Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge e
 
 * Kod Tekrarı: Aynı işi yapan kodların tekrar yazılmasından kaçınılmalıdır. Bu amaçla özellikle projeye sonradan katılan geliştiricilerin, mevcut utility metodlarından haberdar olmaları sağlanmalıdır.
 
--------------------
+--------------------
 **Arka Uç Testleri**
--------------------
+--------------------
 
 ---------------------------
 *Bileşen (Birim) Testleri:*
@@ -349,7 +349,7 @@ branch issue/59 → push → buildbot run tests → branch deployed at port 9092
 
 branch issue/60 → push → buildbot run tests → branch deployed at port 9010
 
-Sonuca kavuşturulan işler (issues) elle master branch ile birleştirilir (merge). Masterdaki bu değişiklik geliştirme aşamasındaki gibi buildbot u tetikler. Kurulum ve yayınlama işlemi bu branche karşı yapılır. Yayınlama sabit bir porttan yapılır (8080).
+Sonuca kavuşturulan işler (issues) elle master branch ile birleştirilir (merge). Masterdaki bu değişiklik geliştirme aşamasındaki gibi buildbotu tetikler. Kurulum ve yayınlama işlemi bu branche karşı yapılır. Yayınlama sabit bir porttan yapılır (8080).
 
 Bunun yanı sıra gecelik derlenmiş kod (nightly builds) da master branchlerden gerkçekleşir ve aynı portta yayınlanır.
 
@@ -589,7 +589,7 @@ Tarayıcılara has hatalar, görsel düzenlemeler ve diğer otomatik olarak test
 **Test Senaryoları**
 --------------------
 
-Ihtiyaç analiz belgelerinde belirtilen kullanıcı senaryolarına uygun şekilde test senaryoları yazılacaktır. Test senaryolarının amacı, ihtiyaç analizinde ortaya çıkan gereksinimlerin, geliştirme faaliyeti sonucu ortaya çıkan ürün ile karşılanıp karşılanmadığıdır.
+İhtiyaç analiz belgelerinde belirtilen kullanıcı senaryolarına uygun şekilde test senaryoları yazılacaktır. Test senaryolarının amacı, ihtiyaç analizinde ortaya çıkan gereksinimlerin, geliştirme faaliyeti sonucu ortaya çıkan ürün ile karşılanıp karşılanmadığıdır.
 
 Sürüm aşamasında önceden yazılmış test senaryoları, kullanıcılar tarafından manuel şekilde uygulanır ve sonuçlar raporlanır. Bazı test senaryoları otomatik olarak da gerçeklenebilirler.
 
@@ -621,7 +621,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Klavye kullanımı sitedeki tüm işlemleri kapsıyor mu?
 
-* Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman verili yor mu?
+* Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman veriliyor mu?
 
 * Hukuki ya da mali sonuçları olan işlemlerde kullanıcının hata yapma olasılığı azaltılmalıdır.
 
@@ -669,11 +669,11 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 **Site İçi Yönlendirme**
 
-* Önemli bağlantılar sayfanın hareketli öğelerinde olmamalı
+* Önemli bağlantılar sayfanın hareketli öğelerinde olmamalı.
 
-* Linkler alfabetik olarak sıralanmamalı, gruplanmalı
+* Linkler alfabetik olarak sıralanmamalı, gruplanmalı.
 
-* Kullanıcı sitede hangi sayfada olduğunu kolayca fark edebilmeli
+* Kullanıcı sitede hangi sayfada olduğunu kolayca fark edebilmeli.
 
 * Yönlendirme bağlantıları her sayfada görünür mü?
 
@@ -697,7 +697,7 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 * Önemli komutlar bağlantı yerine buton olarak gösterilmeli, örn: kaydet gibi
 
-* Linkler kolayca farkedilir mi?
+* Linkler kolayca fark edilir mi?
 
 * Kırık (erişilemeyen) link olmamalı
 

@@ -158,7 +158,7 @@ Redis, ayrıca Zato tarafından benzer amaçlar için de kullanılacaktır.
 *Consul:*
 ---------
 
-`Consul, <https://www.consul.io/>`_, servislerin ve üzerlerinde çalıştıkları sistemlerin erişilebilirliği, yeni açılan veya herhangi bir sebeple çalışması kesintiye uğrayan, kapanan servislerden haberdar olmak için bütün host sistemlerde çalışacak servistir.
+`Consul <https://www.consul.io/>`_, servislerin ve üzerlerinde çalıştıkları sistemlerin erişilebilirliği, yeni açılan veya herhangi bir sebeple çalışması kesintiye uğrayan, kapanan servislerden haberdar olmak için bütün host sistemlerde çalışacak servistir.
 
 ----------
 *Systemd:*
@@ -194,7 +194,7 @@ Fleet, konteyner haline getirilen servislerin cluster çapında systemd ye bildi
 *Github:*
 ---------
 
-`Github <https://github.com/>`_, temel proje yönetim ve geliştirme alanımızdır. Birçok geliştiricinin alışık olduğu bu ortam, katkıcıların kolayca dahil olmalarına olanak vermektedir. Açık kaynaklı yazılım projeleri geliştirme teamüllerine uygun bir ortamdır. Git sürüm yönetim sistemini kullanmaktadır. Geliştirici ve kullanıcı topluluğun teknik tartışmaları, geri bildirimleri Github’ın sağladığı ilgii araçlarla yapılacaktır.
+`Github <https://github.com/>`_, temel proje yönetim ve geliştirme alanımızdır. Birçok geliştiricinin alışık olduğu bu ortam, katkıcıların kolayca dahil olmalarına olanak vermektedir. Açık kaynaklı yazılım projeleri geliştirme teamüllerine uygun bir ortamdır. Git sürüm yönetim sistemini kullanmaktadır. Geliştirici ve kullanıcı topluluğun teknik tartışmaları, geri bildirimleri Github’ın sağladığı ilgili araçlarla yapılacaktır.
 
 ------------------------------------------------
 *Continuous Integration  & Continuous Delivery:*
@@ -240,7 +240,7 @@ Uygulamanın üzerinde çalışacağı donanım, işletim sistemi, cluster ve bu
 
 * Sisteme yapılan girişler,
 
-* Açılan kapanan konteynerların durumları hakkındaki loglar,
+* Açılan kapanan konteynerlerin durumları hakkındaki loglar,
 
 * Konteyner haline gelmiş servislerden
 
@@ -373,7 +373,7 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
 
     - sistem yöneticileri
 
-kod, api, kullanici, gelistirici, sistem yoneticisi dokümanları yer alacaktır.
+kod, api, kullanıcı, geliştirici, sistem yöneticisi dökümanları yer alacaktır.
 
 
 Uygulamanın veri ve iş mantığının şu ana kadar planlanan yapısını gösteren class diagramlar aşağıda görülebilir.
@@ -411,7 +411,7 @@ Riak veri şemalarının Python nesneleri olarak modellenmesi, bu modeller aras�
 **ZEngine**
 -----------
 
-ZetaOps tarafından geliştirilmekte olan ZEngine, SpiffWorkflow’u taban alan basit bir web çatısıdır. Bu yapıda önyüze yönelik her iş akışının bir URLsi olmakta ve o anda işletilmekte olan iş akışı adımında referans verilen uygulama nesnesi (view class) request ve response nesneleri ile çağırılmaktadır.
+ZetaOps tarafından geliştirilmekte olan ZEngine, SpiffWorkflow’u taban alan basit bir web çatısıdır. Bu yapıda önyüze yönelik her iş akışının bir URL'si olmakta ve o anda işletilmekte olan iş akışı adımında referans verilen uygulama nesnesi (view class) request ve response nesneleri ile çağırılmaktadır.
 
 ------------------------------
 **Kural Motoru (Rule Engine)**
@@ -450,7 +450,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
     AngularJS, MVC (Model View Controller) deseni sağlayan bir javascript uygulama çatısıdır. Kullanıcı arayüzü işlemlerini gerçekleştirecek tüm fonksiyonlar için kullanılır.  AngularJS standart sunucu taraflı yazılım geliştirme tekniklerini önyüze uygulayan ve önyüz geliştirmeyi hızlandıran bir uygulama çatısıdır. Karmaşık uygulamalarda DOM yönetimini başarıyla gerçekleştirir ve bu sayede uygulamanın kesintisiz ve sorunsuz çalışmasını sağlar.
 
 * **Karma**
-    Karma, Uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.
+    Karma, uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.
 
 * **Selenium**
     Selenium, E2E testlerin çalıştırıldığı test platformudur. Kullanıcının tarayıcıda gerçekleştireceği işlemlerin sunucudan dönecek sonuca kadar test edilmesini sağlar.
@@ -516,9 +516,9 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
 
 * Arayüz kolay kullanımlı ve estetik olmalıdır.
 
-+ Arayüzün kullanımı kolay öğrenilebilmelidir.
+* Arayüzün kullanımı kolay öğrenilebilmelidir.
 
-+ Arayüz kullanıcının minimum eforuyla çalışabilmelidir.
+* Arayüz kullanıcının minimum eforuyla çalışabilmelidir.
 
 ----------------------------------------------------------------
 *Hata mesajları, uyarılar ve gösterilecek diğer bilgi ilkeleri:*
@@ -558,7 +558,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
     Uygulama genel css dosyası
 
 * app.js
-	Uygulama ana javascript dosyası
+   Uygulama ana javascript dosyası
 
 * index.html
 
@@ -568,7 +568,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
         E2E testlerinin yapılandırıldığı dosyadır. E2E testleri için protractor kullanılmaktadır.
 
     - scenarios.js
-	    E2E test senaryolarının yazılı olduğu dosyadır.
+      E2E test senaryolarının yazılı olduğu dosyadır.
 
 * node_modules/
     Uygulamada kullanılan nodejs modüllerinin yer aldığı dizindir.
@@ -640,15 +640,15 @@ Uygulamanın sık kullandığı veriler Redis üzerinde önbelleklenecektir. Bu 
 **Kalıcı Veri**
 ---------------
 
-Verilerin kalıcı olarak saklanacağı Riak, basit anahtar-değer çiftlerinden map, set, counter gibi gelişmiş veri tiplerine, nihayetinde tutarlılıktan (eventually consistent) kesin tutarlılığa (strong consistency) kadar çeşitli veri saklama kiplerini destekleyen gelişmiş bir NoSQL veri tabanıdır.
-JSON biçiminde saklanacak olan veriler, Riak’ın dahili Apache Solr entegrasyonunu sayesinde istenilen incelikte indekslenmekte ve sorgulanabilmektedir.
+Verilerin kalıcı olarak saklanacağı Riak, basit anahtar-değer çiftlerinden map, set, counter gibi gelişmiş veri tiplerine, nihayetinde tutarlılıktan (eventually consistency) kesin tutarlılığa (strong consistency) kadar çeşitli veri saklama kiplerini destekleyen gelişmiş bir NoSQL veri tabanıdır.
+JSON biçiminde saklanacak olan veriler, Riak’ın dahili Apache Solr entegrasyonu sayesinde istenilen incelikte indekslenmekte ve sorgulanabilmektedir.
 
 Kalıcı olarak depolanacak tüm veri sürümlendirilerek saklanacaktır. Bu sayede herhangi bir kaydın son 100 sürümü ya da son 10 yıl içindeki tüm sürümlerine istenildiği an ulaşılabilecektir.
 Sürüm sayısına ya da süreye göre ne kadar geriye dönük saklama yapılacağı her bucket için kendi model tanımı altında yapılacaktır.
 
 Veritabanı seviyesinde herhangi bir şablon kısıtı olmamasına rağmen, veriyi tutarlı biçimde saklayabilmek ve hızlı bir şekilde sorgulayarak erişebilmek için tüm veriler iç içe Python sınıfları şeklinde modellenecek, bu modeller kayıt esnasında JSON şeklinde biçimlendirilerek saklanacak ve yine modelde tanımlandığı şekilde indekslenecektir.
 
-Test ve Prod ortamları için farklı bucketlar kullanılacak, değişen konfigurasyon ve yük testleri için geçici Riak clusterları açılacaktır.
+Test ve Prod ortamları için farklı bucketlar kullanılacak, değişen konfigürasyon ve yük testleri için geçici Riak clusterları açılacaktır.
 
 ----------------------------
 *Veri ve Veri Şablonu Göçü:*
@@ -688,7 +688,7 @@ Birçok üniversitede doğrulama ve yetkilendirme gibi amaçlar için aktif şek
 *KBS:*
 ------
 
-Kamu Harcama ve Muhasebe Bilişim Sistemi (KBS) Maliye Bakanlığı tarafından sağlanan, kamu kurumlarında tahakkuk ve ödeme işlemlerinin otomasyonunu sağlayan bir e-devlet uygulamasıdır. Üniversitelerde de birçok mali işlem KBS aracılığıyla gerçekleştirilmektedir. KBS sisteminin el verdiği ölçüde entegrasyon sağlanacaktır.
+Kamu Harcama ve Muhasebe Bilişim Sistemi (KBS), Maliye Bakanlığı tarafından sağlanan, kamu kurumlarında tahakkuk ve ödeme işlemlerinin otomasyonunu sağlayan bir e-devlet uygulamasıdır. Üniversitelerde de birçok mali işlem KBS aracılığıyla gerçekleştirilmektedir. KBS sisteminin el verdiği ölçüde entegrasyon sağlanacaktır.
 
 --------
 *HİTAP:*

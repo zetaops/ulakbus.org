@@ -2,7 +2,7 @@
 Git İş-Akışı
 ++++++++++++
 
-**HİÇ BİR ZAMAN MASTER'A PUSH ETMEYİNİZ, SÜREKLİ BRANCH'LER KULLANINIZ.**
+**HİÇBİR ZAMAN MASTER'A PUSH ETMEYİNİZ, SÜREKLİ BRANCH'LER KULLANINIZ.**
 
 * Lütfen TÜM dökümanı okuyunuz.
 
@@ -38,7 +38,7 @@ Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresi
 
 **Git Temelleri**
 
-Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiç bir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git'i iyi anlamak için, git'in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.
+Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiçbir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git'i iyi anlamak için, git'in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.
 
 Genel olarak, git biraz ayrıntılıdır ve basit işlemleri gerçekleştirmek için bir çok komut gereklidir.Korkmayın! Git'i anladıktan sonra, herşeyin ne kadar iyi düşünüldüğünü ve nedenlerinin olduğunu göreceksiniz.
 
@@ -53,13 +53,13 @@ http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
 Boş zamanınızda git'in arkasında yatan temel kavramları anlamak için http://www.eecs.harvard.edu/~cduan/technical/git/ bağlantısını okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.
 
 
-------------
+--------------
 **Branch'ler**
-------------
+--------------
 
-* Master Branch sadece görüntülenen ve test edilen kodları içermektedir.
+* Master branch sadece görüntülenen ve test edilen kodları içermektedir.
 
-* Her özellik ve yazılım yatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.
+* Her özellik ve yazılım hatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.
 
 * Yeni branchler son master branch temel alınarak başlatılmalıdır.
 
@@ -151,13 +151,14 @@ Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlay
 ::
 
     git pull origin feature/some-feature	# make sure that push will be successful
-					                        # by ensuring that local changes
+                                            # by ensuring that local changes
                                             # are applicable on top of the
                                             # latest code; may result in conflicts
 
-    git pull --rebase origin master         # rebase with master
-    git push origin feature/some-feature	# pushes local changes to server, push may be
+     git pull --rebase origin master        # rebase with master
+     git push origin feature/some-feature	# pushes local changes to server, push may be
                                             # rejected if you haven't done previous step
+
 ------------------------------
 **Merging branch into master**
 ------------------------------
@@ -221,7 +222,7 @@ Gereksiz boşluklara dikkat ediniz.
 
 Boşlukları ve tabları karıştırmayınız.
 
-80 karakterden daha uzun satıralar kullanmayınız.
+80 karakterden daha uzun satırlar kullanmayınız.
 
 Python kodları için harfiyen PEP8 kurallarını takip edin ve uygulayın.
 

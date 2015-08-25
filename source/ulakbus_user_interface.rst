@@ -96,9 +96,9 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 
 * Küçük değişiklikleri commitleyiniz.
 
----------
+--------
 **Kod:**
----------
+--------
 
 * DRY - don't repeat yourself(kendini tekrarlama)!!! Bunu okuyunuz https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
