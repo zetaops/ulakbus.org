@@ -111,7 +111,7 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 
 Daha etkili testler yazmak için http://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/ sitesinden yardım alabilirsiniz.
 
-Testler olabildiğince kodunuzu kapsamalı.
+Testler, kodunuzu olabildiğince kapsamalı.
 
 ------------------------
 **Okunması Gerekenler:**
