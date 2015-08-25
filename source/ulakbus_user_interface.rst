@@ -65,7 +65,7 @@ Kodlarken aşağıdaki adımları izleyiniz.
 **Deneme**
 ==========
 
-~/_test.js dosyaları, Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:
+~/_test.js dosyaları Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:
 
 ::
 
