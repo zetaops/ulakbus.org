@@ -108,13 +108,13 @@ ve
 
 * Verinin “strong consistent” olarak tutulabilmesi sayesinde “ACID” benzeri bir tutarlılığa sahip olmak,
 
-* Sistem tüm Türkiye çapında kullanılsa bile, değişik veri merkezlerinde “multi homed” olarak çalışabilir olması.
+* Sistem Türkiye çapında kullanılsa bile, değişik veri merkezlerinde “multi homed” olarak çalışabilir olması.
 
 ---------
 *RiakCS:*
 ---------
 
-`RiakCS <http://basho.com/riak-cloud-storage/>`_, Riak veritabanı sisteminin üzerine kurulu nesne depolama (object storage) sistemidir. Sistemde kullanıcı tarafından üretilecek dokumanlar (resimler, doc, pdf vb) RiakCS ile saklanacaktır. RiakCS de dağıtık bir sistemdir. RiakCS ile yüksek erişilebilir, ölçeklenebilirlik dağıtık bir bulut depolama sistemi elde edilmiş olacaktır. RiakCS API (Uygulama Programlama Arayüzü) yaygın kullanılan Amazon S3 ile uyumludur.
+`RiakCS <http://basho.com/riak-cloud-storage/>`_, Riak veritabanı sisteminin üzerine kurulu nesne depolama (object storage) sistemidir. Sistemde kullanıcı tarafından üretilecek dökümanlar (resimler, doc, pdf vb) RiakCS ile saklanacaktır. RiakCS de dağıtık bir sistemdir. RiakCS ile yüksek erişilebilir, ölçeklenebilirlik dağıtık bir bulut depolama sistemi elde edilmiş olacaktır. RiakCS API (Uygulama Programlama Arayüzü) yaygın kullanılan Amazon S3 ile uyumludur.
 
 -------------
 *Postgresql:*
@@ -134,7 +134,7 @@ Redis, ayrıca Zato tarafından benzer amaçlar için de kullanılacaktır.
 *Zato:*
 -------
 
-`Zato <https://zato.io/docs/intro/esb-soa-tr.html>`_, Python ile geliştirilmiş Kurumsal Hizmet Veriyolu (Enterprise Service Bus) yazılımıdır. Zato ile iş akışlarına uygun olarak, uygulamalar arası veri trafiği, mikro servisler haline getirilerek düzenlenecektir. Zato sadece sistem içi operasyonlar için değil aynı zamanda dış kaynaklarla olan iletişimi de üzerine alıp onları sistemin içerden erişebileceği mikro servislere dönüştürecektir. Bu da dış dünya ile uygulamanın tıpkı içerdeki gibi benzer desenler ile konuşabilmesini sağlayarak tutarlılık sağlayacaktır.
+`Zato <https://zato.io/docs/intro/esb-soa-tr.html>`_, Python ile geliştirilmiş Kurumsal Hizmet Veriyolu (Enterprise Service Bus) yazılımıdır. Zato ile iş akışlarına uygun olarak, uygulamalar arası veri trafiği, mikro servisler haline getirilerek düzenlenecektir. Zato sadece sistem içi operasyonlar için değil, aynı zamanda dış kaynaklarla olan iletişimi de üzerine alıp onları sistemin içerden erişebileceği mikro servislere dönüştürecektir. Bu da dış dünya ile uygulamanın tıpkı içerdeki gibi benzer desenler ile konuşabilmesini sağlayarak tutarlılık sağlayacaktır.
 
 ----------
 *HaProxy:*
@@ -152,25 +152,25 @@ Redis, ayrıca Zato tarafından benzer amaçlar için de kullanılacaktır.
 *Docker:*
 ---------
 
-`Docker <https://www.docker.com/>`_, uygulama ve servislerin konteynerlar şeklinde sanallaştırılarak Linux sistemleri üzerinde çalıştırılmasını sağlar. Docker uygulama ve servislerin yönetimini ve ölçeklenmesini kolaylaştrır. Bütün bileşenler kontenyerlar içinde servisler şeklinde çalışacaktır. Uygulama ve diğer tüm bileşenler bu sayede ihtiyaçlar ölçüsünde kolayca ölçeklenebilecektir.
+`Docker <https://www.docker.com/>`_, uygulama ve servislerin konteynerler şeklinde sanallaştırılarak Linux sistemleri üzerinde çalıştırılmasını sağlar. Docker, uygulama ve servislerin yönetimini ve ölçeklenmesini kolaylaştrır. Bütün bileşenler konteynerler içinde servisler şeklinde çalışacaktır. Uygulama ve diğer tüm bileşenler bu sayede ihtiyaçlar ölçüsünde kolayca ölçeklenebilecektir.
 
 ---------
 *Consul:*
 ---------
 
-`Consul, <https://www.consul.io/>`_, Servislerin ve üzerlerinde çalıştıkları sistemlerin erişilebilirliği, yeni açılan veya herhangi bir sebeple çalışması kesintiye uğrayan, kapanan servislerden haberdar olmak için bütün host sistemlerde çalışacak servistir.
+`Consul <https://www.consul.io/>`_, servislerin ve üzerlerinde çalıştıkları sistemlerin erişilebilirliği, yeni açılan veya herhangi bir sebeple çalışması kesintiye uğrayan, kapanan servislerden haberdar olmak için bütün host sistemlerde çalışacak servistir.
 
 ----------
 *Systemd:*
 ----------
 
-Systemd linux sistemler için neredeyse standart hale gelmiş modern servis yonetim aracıdır. Konteynerlar haline gelen uygulama parçacıkları systemd servisleri şeklinde yönetilecektir.
+Systemd linux sistemler için neredeyse standart hale gelmiş modern servis yonetim aracıdır. Konteynerler haline gelen uygulama parçacıkları systemd servisleri şeklinde yönetilecektir.
 
 -------
 *Etcd:*
 -------
 
-Etcd bir sytemd servisi olarak çalışacak ve cluster çapında data alışverişi yapmak için kullanılacaktır. Ortam değişlenleri, değişen ayarlar, Consul ve benzeri servislerin haberleşmesi için kullanılacaktır.
+Etcd bir sytemd servisi olarak çalışacak ve cluster çapında data alışverişi yapmak için kullanılacaktır. Ortam değişkenleri, değişen ayarlar, Consul ve benzeri servislerin haberleşmesi için kullanılacaktır.
 
 --------
 *Confd:*
@@ -182,7 +182,7 @@ Confd başta haproxy gelmek üzere sistem servislerinin yeni durumlarına göre 
 *Flannel:*
 ----------
 
-Flannel cluster içinde çalışan servisler (docker konteynerları) için özel bir ağ katmanı oluşturur.  Bu sayede servisler bu özel ağ üzerinden birbirleri ile konuşabilirler.
+Flannel, cluster içinde çalışan servisler (docker konteynerleri) için özel bir ağ katmanı oluşturur.  Bu sayede servisler bu özel ağ üzerinden birbirleri ile konuşabilirler.
 
 --------
 *Fleet:*
@@ -194,7 +194,7 @@ Fleet, konteyner haline getirilen servislerin cluster çapında systemd ye bildi
 *Github:*
 ---------
 
-`Github <https://github.com/>`_, temel proje yönetim ve geliştirme alanımızdır. Birçok geliştiricinin alışık olduğu bu ortam, katkıcıların kolayca dahil olmalarına olanak vermektedir. Açık kaynaklı yazılım projeleri geliştirme teamüllerine uygun bir ortamdır. Git sürüm yönetim sistemini kullanmaktadır. Geliştirici ve kullanıcı topluluğun teknik tartışmaları, geri bildirimleri Github’ın sağladığı ilgii araçlarla yapılacaktır.
+`Github <https://github.com/>`_, temel proje yönetim ve geliştirme alanımızdır. Birçok geliştiricinin alışık olduğu bu ortam, katkıcıların kolayca dahil olmalarına olanak vermektedir. Açık kaynaklı yazılım projeleri geliştirme teamüllerine uygun bir ortamdır. Git sürüm yönetim sistemini kullanmaktadır. Geliştirici ve kullanıcı topluluğun teknik tartışmaları, geri bildirimleri Github’ın sağladığı ilgili araçlarla yapılacaktır.
 
 ------------------------------------------------
 *Continuous Integration  & Continuous Delivery:*
@@ -214,21 +214,21 @@ Projede, bu amaçla `Buildbot <http://buildbot.net/>`_ kullanılacaktır. Buildb
 
 DEBUG: Geliştici ve sistem yöneticileri için, servis veya uygulamaların çalışmaları hakkında açıklayıcı bilgiler sunar. Bu bilgiler geliştirme evresinde ve sorun çözme aşamalarında kullanılır.
 
-INFO: Servis veya uygulamaların önemli adımlarının sonuçlarına, durum değişikliklerine ilişkin detaylı bilgiler içerir. Kullanıcı giriş yaptı, yeni ders eklendi, servis yeniden başladı vb..
+INFO: Servis veya uygulamaların önemli adımlarının sonuçlarına, durum değişikliklerine ilişkin detaylı bilgiler içerir. Kullanıcı giriş yaptı, yeni ders eklendi, servis yeniden başladı vb.
 
 WARN: Servis veya uygulamaların beklenen dışında davranışlar göstermesi hakkında bilgiler içeren kayıtlardır. Hata olmamakla birlikte bir servise erişememek, diske yazamamak gibi geçici problemlerin sebep olduğu aksaklıkların bildirilmesini kapsar. Uygulama veya servis kesintiye uğramaz fakat nasıl yönlendirildiğine bağlı olarak bir süre sonra yeniden deneyebilir, raporlayabilir, başka bir yöne doğru ilerleyebilir.
 
 ERROR: Uygulamanın bir adımında beklenen işlevi yerine getirememesi sonucu ortaya çıkan kayıtlardır. Servis veya uygulama kesintiye uğramaz fakat ilgili adım muhtemelen elle müdahale gerektirecek bir problemle karşı karşıyadır.
 
-FATAL: Uygulama yada servisin, veri kaybına da neden olabilecek bir hizmet kesintisine uğraması durumunda tutulan kayıtlardır.
+FATAL: Uygulama ya da servisin, veri kaybına da neden olabilecek bir hizmet kesintisine uğraması durumunda tutulan kayıtlardır.
 
 ----------------
 **Log Yönetimi**
 ----------------
 
-Hem uygulama hem de uygulamanın çalışacağı ortam bileşenlerinin her birinden toplanacak loglar, merkezi bir loglama sisteminde toplanacaktır. Sistemin anlık olarak izlenmesi, olağandışı gelişmelere uygun aksiyonlar alınması, uzun vadede geliştirme süreçlerine geribildirim olarak dönmesi amacıyla toplanan kayıtlar analiz edilecektir.
+Hem uygulama hem de uygulamanın çalışacağı ortam bileşenlerinin her birinden toplanacak loglar, merkezi bir loglama sisteminde toplanacaktır. Sistemin anlık olarak izlenmesi, olağandışı gelişmelere uygun aksiyonlar alınması, uzun vadede geliştirme süreçlerine geri bildirim olarak dönmesi amacıyla toplanan kayıtlar analiz edilecektir.
 
-Bu amaçla `Logstash <https://www.elastic.co/products/logstash>`_, `Kibana <https://www.elastic.co/products/kibana>`_, `Elasticsearch <https://www.elastic.co/products/elasticsearch>`_ üçlüsü kullanılacaktır. Logstash ve Elasticsearch logların toplanması, filtrelenmesi, analiz edilmesi, Kibana ise görselleştirilmesi için kullanılacaktır.
+Bu amaçla `Logstash <https://www.elastic.co/products/logstash>`_, `Kibana <https://www.elastic.co/products/kibana>`_, `Elasticsearch <https://www.elastic.co/products/elasticsearch>`_ üçlüsü kullanılacaktır. Logstash ve Elasticsearch logların toplanması, filtrelenmesi, analiz edilmesi; Kibana ise görselleştirilmesi için kullanılacaktır.
 
 ----------------------------
 **Sistem ve Servis Logları**
@@ -240,7 +240,7 @@ Uygulamanın üzerinde çalışacağı donanım, işletim sistemi, cluster ve bu
 
 * Sisteme yapılan girişler,
 
-* Açılan kapanan konteynerların durumları hakkındaki loglar,
+* Açılan kapanan konteynerlerin durumları hakkındaki loglar,
 
 * Konteyner haline gelmiş servislerden
 
@@ -274,7 +274,7 @@ Uygulamanın üzerinde çalışacağı donanım, işletim sistemi, cluster ve bu
 
 Kullanıcı arayüzünde oluşacak çalışma zamanı hataları tarayıcı konsoluna düşmektedir. Bu loglar yakalanarak sunucu tarafındaki log tutucuya gönderilerek kaydedilecektir.
 
-Arayüz fonksiyonları logları belirtilen log seviyelerinde tutulacaktır..
+Arayüz fonksiyonları logları belirtilen log seviyelerinde tutulacaktır.
 Prod başlığında belirtilen maddeler ışığında arayüz logları için stacktrace.js kullanılacaktır.
 
 *incele:*
@@ -282,7 +282,7 @@ http://logstash.net/docs/1.1.1/outputs/riak#setting_bucket
 http://underthehood.meltwater.com/blog/2015/04/14/riak-elasticsearch-and-numad-walk-into-a-red-hat/
 
 *Notlar:*
-CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etmek nasıl?
+CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etmek nasıl olur?
 
 -------------
 *Refleksler:*
@@ -296,13 +296,13 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 
 * Hafif yük altında olan servisleri daraltmak
 
-* Ölçeklenecek serviler için sistem kaynaklarının yetersizliğini tespit edip yeni kaynaklar eklemek veya kaynak ihtiyacını bildirmek. Mümkünse clustera yeni nodelar otomatik eklemek.
+* Ölçeklenecek servisler için sistem kaynaklarının yetersizliğini tespit edip yeni kaynaklar eklemek veya kaynak ihtiyacını bildirmek. Mümkünse clustera yeni nodelar otomatik eklemek.
 
-* Kronik hale gelen problemlerin tespiti ve bilgilendirilmesi. Muhtemel konfigurasyon problemleri demek.
+* Kronik hale gelen problemlerin tespiti ve bilgilendirilmesi. Muhtemel konfigürasyon problemleri demek.
 
-* Application loglarindan gelen uyarilar
+* Application loglarından gelen uyarılar
 
-Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümkün. Node ekleyip çıkarmak için Openstack / GCE API ile konuşmamız gerekir. Notification eposta veya sms ile mümkün. Yukarıdakilere ek başka ne gibi aksiyonlar olabilir?
+Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümkün. Node ekleyip çıkarmak için Openstack / GCE API ile konuşmamız gerekir. Notification e-posta veya sms ile mümkün. Yukarıdakilere ek olarak başka ne gibi aksiyonlar olabilir?
 
 =====================================
 **Tercih Edilen Yazılım Bileşenleri**
@@ -328,7 +328,7 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
 * zaerp
 
     - zdispatch
-        requestleri karsilayip ilgili is akislarina yonlendiren falcon web çatısı dosyalari yer alacaktir.
+        requestleri karşılayıp ilgili iş akışlarına yönlendiren falcon web çatısı dosyaları yer alacaktır.
 
     - bin
         çalıştırılabilir uygulamalar. örn: bpmn packager.
@@ -337,7 +337,7 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
         yardımcı kütüphane ve fonksiyon setleri.
 
     - modules
-        bazıları kendi alt dizinlerine sahip olan uygulama modulleri.
+        bazıları kendi alt dizinlerine sahip olan uygulama modülleri.
 
         + auth
             örnek authentication modülü
@@ -356,10 +356,10 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
         bu dizinde Zato mikro servis dosyaları yer alacaktır.
 
     - workflows
-        bu dizinde iş akışı paketleri bpmn dosyaları yer alacaktır
+        bu dizinde iş akışı paketleri bpmn dosyaları yer alacaktır.
 
 * tests
-    methodlar, uygulama birimleri ve uygulama geneli icin yazilan unit testleri yer alacaktır
+    methodlar, uygulama birimleri ve uygulama geneli icin yazılan unit testleri yer alacaktır.
 
 * docs
 
@@ -373,7 +373,7 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
 
     - sistem yöneticileri
 
-kod, api, kullanici, gelistirici, sistem yoneticisi dokumanlari yer alacaktir.
+kod, api, kullanıcı, geliştirici, sistem yöneticisi dökümanları yer alacaktır.
 
 
 Uygulamanın veri ve iş mantığının şu ana kadar planlanan yapısını gösteren class diagramlar aşağıda görülebilir.
@@ -398,7 +398,7 @@ Uygulamanın veri ve iş mantığının şu ana kadar planlanan yapısını gös
 **SpiffWorkflow Engine**
 ------------------------
 
-BPMN 2.0 notasyonunun önemli bir kısmını destekleyen, Python ile yazılmış bir iş akış motoru (workflow engine) uygulaması olan SpiffWorkflow incelenmiştir. Mevcut haliyle, tüm ihtiyaçlara cevap veremeyeceği tespit edildiğinden, ZetaOps tarafından genişletilerek yazılmaya devam edilmektedir. Genişletilmiş hali ile bu kütüphane tüm uygulamanın hareket zeminini oluşturmaktadır.
+BPMN 2.0 notasyonunun önemli bir kısmını destekleyen, Python ile yazılmış bir iş akış motoru (workflow engine) uygulaması olan SpiffWorkflow incelenmiştir. Mevcut haliyle tüm ihtiyaçlara cevap veremeyeceği tespit edildiğinden, ZetaOps tarafından genişletilerek yazılmaya devam edilmektedir. Genişletilmiş hali ile bu kütüphane tüm uygulamanın hareket zeminini oluşturmaktadır.
 Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları BPMN 2.0 notasyonuna uyumlu XML diagramlarından okunarak işletilecektir. Öğrencilerin sisteme giriş yapmasından arka planda çalışacak zamanlanmış görevlerin işletilmesine kadar tüm iş akışları, bu iş akış motoru tarafından yönetilecektir.
 
 ---------
@@ -411,7 +411,7 @@ Riak veri şemalarının Python nesneleri olarak modellenmesi, bu modeller aras�
 **ZEngine**
 -----------
 
-ZetaOps tarafından geliştirilmekte olan ZEngine, SpiffWorkflow’u taban alan basit bir web çatısıdır. Bu yapıda önyüze yönelik her iş akışının bir URLsi olmakta ve o anda işletilmekte olan iş akışı adımında referans verilen uygulama nesnesi (view class) request ve response nesneleri ile çağırılmaktadır.
+ZetaOps tarafından geliştirilmekte olan ZEngine, SpiffWorkflow’u taban alan basit bir web çatısıdır. Bu yapıda önyüze yönelik her iş akışının bir URL'si olmakta ve o anda işletilmekte olan iş akışı adımında referans verilen uygulama nesnesi (view class) request ve response nesneleri ile çağırılmaktadır.
 
 ------------------------------
 **Kural Motoru (Rule Engine)**
@@ -450,13 +450,13 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
     AngularJS, MVC (Model View Controller) deseni sağlayan bir javascript uygulama çatısıdır. Kullanıcı arayüzü işlemlerini gerçekleştirecek tüm fonksiyonlar için kullanılır.  AngularJS standart sunucu taraflı yazılım geliştirme tekniklerini önyüze uygulayan ve önyüz geliştirmeyi hızlandıran bir uygulama çatısıdır. Karmaşık uygulamalarda DOM yönetimini başarıyla gerçekleştirir ve bu sayede uygulamanın kesintisiz ve sorunsuz çalışmasını sağlar.
 
 * **Karma**
-    Karma, Uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.
+    Karma, uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.
 
 * **Selenium**
     Selenium, E2E testlerin çalıştırıldığı test platformudur. Kullanıcının tarayıcıda gerçekleştireceği işlemlerin sunucudan dönecek sonuca kadar test edilmesini sağlar.
 
 * **Protractor**
-    Protractor Selenium E2E testleri için bir çözüm enteratörü uygulama çatısıdır. Angularjs için Selenium özelleştirmeleriyle daha etkin ve bekleme sürelerini optimize ederek daha kısa sürede test edilmesini sağlar.
+    Protractor, Selenium E2E testleri için bir çözüm enteratörü uygulama çatısıdır. Angularjs için Selenium özelleştirmeleriyle daha etkin ve bekleme sürelerini optimize ederek daha kısa sürede test edilmesini sağlar.
 
 * **Jasmine**
     Jasmine, javascript testleri için kullanılan bir uygulama çatısıdır. Uygulama fonksiyonlarının testlerinde başarılı sentaksı ile geliştirme sürecini hızlandırır.
@@ -465,24 +465,24 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
     Bower, uygulamada kullanılacak paketlerin yönetimi için kullandığımız paket yönetim aracıdır. Uygulamanın gerektirdiği paketlerin kurulum esnasında eksiksiz şekilde ve sürüm uyumlu olarak kurulumunu sağlar.
 
 * **Grunt**
-    Grunt javascript uygulamaları için bir görev yürütücüsüdür. Küçültme, derleme, paketleme, testler gibi tekrarlanan görevleri otomasyon ile yürütmek için kullanılır.
+    Grunt, javascript uygulamaları için bir görev yürütücüsüdür. Küçültme, derleme, paketleme, testler gibi tekrarlanan görevleri otomasyon ile yürütmek için kullanılır.
 
 * **Nodejs**
-    Nodejs javascript uygulamaları için sunucu taraflı çalışma zamanı ortamıdır (runtime environment). Uygulama geliştirilirken bower, jasmine, karma gibi araçların kullanılması için gereklidir.
+    Nodejs, javascript uygulamaları için sunucu taraflı çalışma zamanı ortamıdır (runtime environment). Uygulama geliştirilirken bower, jasmine, karma gibi araçların kullanılması için gereklidir.
 
 * **StackTrace.js**
 
 * **npm**
-    npm nodejs için paket yönetim aracıdır. Uygulamanın geliştirme ortamı için gerekliliklerinin yönetilmesini sağlar.
+    npm, nodejs için paket yönetim aracıdır. Uygulamanın geliştirme ortamı için gerekliliklerinin yönetilmesini sağlar.
 
 * **Bootstrap3**
-    Bootstrap3 grid sistem standardına uygun uyumlu (responsive) arayüz geliştirmek için kullanılan html, css vs javascript uygulama çatısıdır. Uygulamanın değişik ekran boyutlarında ve farklı cihazlarda sorunsuz çalışması için kullanılır.
+    Bootstrap3, grid sistem standardına uygun uyumlu (responsive) arayüz geliştirmek için kullanılan html, css vs javascript uygulama çatısıdır. Uygulamanın değişik ekran boyutlarında ve farklı cihazlarda sorunsuz çalışması için kullanılır.
 
 ------------------------------------------------------------
 *Kullanıcı arayüz tasarımında uyulacak kurallar ve ilkeler:*
 ------------------------------------------------------------
 
-* Tüm tasarım bileşenleri html5 standardına uyacaktır.
+* Tüm tasarım bileşenleri Html5 standardına uyacaktır.
 
 * Tasarım, kullanıcı arayüzü temiz ve tutarlı modeller temel alınarak anlamlı, kullanışlı ve amaca hizmet edecek şekilde organize etmelidir.
 
@@ -516,9 +516,9 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
 
 * Arayüz kolay kullanımlı ve estetik olmalıdır.
 
-+ Arayüzün kullanımı kolay öğrenilebilmelidir.
+* Arayüzün kullanımı kolay öğrenilebilmelidir.
 
-+ Arayüz kullanıcının minimum eforuyla çalışabilmelidir.
+* Arayüz kullanıcının minimum eforuyla çalışabilmelidir.
 
 ----------------------------------------------------------------
 *Hata mesajları, uyarılar ve gösterilecek diğer bilgi ilkeleri:*
@@ -528,7 +528,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
 
 * Uyarılar kullanıcının etkileşimini kesintiye uğratmayacak şekilde gösterilmelidir.
 
-* Tekrar eden durumlarda kullanıcı deneyimini kesintiye uğratmamalı ve tekrarlı hatalar farkedilerek ona göre gösterilmelidir.
+* Tekrar eden durumlarda kullanıcı deneyimini kesintiye uğratmamalı ve tekrarlı hatalar fark edilerek ona göre gösterilmelidir.
 
 * Kullanıcının yapacağı işlemle alakasız bilgiler arayüzde yer almamalıdır.
 
@@ -546,7 +546,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
     Uygulama ortak bileşenlerinin bulunduğu dizindir.
 
 * dashboard/
-    Yönetim paneli teması, controller, view ve testlerinin bulunduğu dizindir. her bir modül için benzer bir dizin buunacaktır.
+    Yönetim paneli teması, controller, view ve testlerinin bulunduğu dizindir. Her bir modül için benzer bir dizin bulunacaktır.
 
     - dashboard.html
 
@@ -558,7 +558,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
     Uygulama genel css dosyası
 
 * app.js
-	Uygulama ana javascript dosyası
+   Uygulama ana javascript dosyası
 
 * index.html
 
@@ -568,7 +568,7 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
         E2E testlerinin yapılandırıldığı dosyadır. E2E testleri için protractor kullanılmaktadır.
 
     - scenarios.js
-	    E2E test senaryolarının yazılı olduğu dosyadır.
+      E2E test senaryolarının yazılı olduğu dosyadır.
 
 * node_modules/
     Uygulamada kullanılan nodejs modüllerinin yer aldığı dizindir.
@@ -640,15 +640,15 @@ Uygulamanın sık kullandığı veriler Redis üzerinde önbelleklenecektir. Bu 
 **Kalıcı Veri**
 ---------------
 
-Verilerin kalıcı olarak saklanacağı Riak, basit anahtar-değer çiftlerinden map, set, counter gibi gelişmiş veri tiplerine, nihayetinde tutarlılıktan (eventually consistent) kesin tutarlılığa (strong consistency) kadar çeşitli veri saklama kiplerini destekleyen gelişmiş bir NoSQL veri tabanıdır.
-JSON biçiminde saklanacak olan veriler, Riak’ın dahili Apache Solr entegrasyonunu sayesinde istenilen incelikte indekslenmekte ver sorgulanabilmektedir.
+Verilerin kalıcı olarak saklanacağı Riak, basit anahtar-değer çiftlerinden map, set, counter gibi gelişmiş veri tiplerine, nihayetinde tutarlılıktan (eventually consistency) kesin tutarlılığa (strong consistency) kadar çeşitli veri saklama kiplerini destekleyen gelişmiş bir NoSQL veri tabanıdır.
+JSON biçiminde saklanacak olan veriler, Riak’ın dahili Apache Solr entegrasyonu sayesinde istenilen incelikte indekslenmekte ve sorgulanabilmektedir.
 
-Kalıcı olarak depolanacak tüm veri sürümlendirilerek saklanacaktır. Bu sayede her hangi bir kaydın son 100 sürümü ya da son 10 yıl içindeki tüm sürümlerine istenildiği an ulaşılabilecektir.
+Kalıcı olarak depolanacak tüm veri sürümlendirilerek saklanacaktır. Bu sayede herhangi bir kaydın son 100 sürümü ya da son 10 yıl içindeki tüm sürümlerine istenildiği an ulaşılabilecektir.
 Sürüm sayısına ya da süreye göre ne kadar geriye dönük saklama yapılacağı her bucket için kendi model tanımı altında yapılacaktır.
 
 Veritabanı seviyesinde herhangi bir şablon kısıtı olmamasına rağmen, veriyi tutarlı biçimde saklayabilmek ve hızlı bir şekilde sorgulayarak erişebilmek için tüm veriler iç içe Python sınıfları şeklinde modellenecek, bu modeller kayıt esnasında JSON şeklinde biçimlendirilerek saklanacak ve yine modelde tanımlandığı şekilde indekslenecektir.
 
-Test ve Prod ortamları için farklı bucketlar kullanılacak, değişen konfigurasyon ve yük testleri için geçici Riak clusterları açılacaktır.
+Test ve Prod ortamları için farklı bucketlar kullanılacak, değişen konfigürasyon ve yük testleri için geçici Riak clusterları açılacaktır.
 
 ----------------------------
 *Veri ve Veri Şablonu Göçü:*
@@ -682,24 +682,24 @@ Sistem birçok veri kaynağı ile konuşabilecek, ihtiyaç duyulan veri alışve
 *LDAP:*
 -------
 
-Birçok üniversitede doğrulama ve yetkilendirme gibi amaçlar için aktif şekilde kullanılan LDAP sistem tarafından desteklenecektir. LDAP’ta yapılan değişiklikler sisteme düzenli şekilde yansıtılacak, sistem gerektiğinde LDAP şemalarında değişiklik yapabilecektir. Özellikle göç aşamaları gibi LDAP kullanımının kaçınılmaz olduğu zaman ve şartlar için öngörüşmüştür.
+Birçok üniversitede doğrulama ve yetkilendirme gibi amaçlar için aktif şekilde kullanılan LDAP sistem tarafından desteklenecektir. LDAP’ta yapılan değişiklikler sisteme düzenli şekilde yansıtılacak, sistem gerektiğinde LDAP şemalarında değişiklik yapabilecektir. Özellikle göç aşamaları gibi LDAP kullanımının kaçınılmaz olduğu zaman ve şartlar için öngörülmüştür.
 
 ------
 *KBS:*
 ------
 
-Kamu Harcama ve Muhasebe Bilişim Sistemi (KBS) Maliye Bakanlığı tarafından sağlanan, kamu kurumlarında tahakkuk ve ödeme işlemlerinin otomasyonunu sağlayan bir edevlet uygulamasıdır. Üniversitelerde de birçok mali işlem KBS aracılığıyla gerçekleştirilmektedir. KBS sisteminin el verdiği ölçüde entegrasyon sağlanacaktır.
+Kamu Harcama ve Muhasebe Bilişim Sistemi (KBS), Maliye Bakanlığı tarafından sağlanan, kamu kurumlarında tahakkuk ve ödeme işlemlerinin otomasyonunu sağlayan bir e-devlet uygulamasıdır. Üniversitelerde de birçok mali işlem KBS aracılığıyla gerçekleştirilmektedir. KBS sisteminin el verdiği ölçüde entegrasyon sağlanacaktır.
 
 --------
 *HİTAP:*
 --------
 
-HİTAP(Hizmet Takip Projesi), devlet memurlarının hizmetlerinin takibi amacıyla Sosyal Güvenlik Kurumu tarafından geliştirilmiş edevlet uygulamasıdır. Personel bilgilerinin iki yönlü güncellenmesi için HİTAP servisi ile düzenli şekilde veri alışverişi yapılacaktır. HİTAP bir SOAP servisidir.
+HİTAP(Hizmet Takip Projesi), devlet memurlarının hizmetlerinin takibi amacıyla Sosyal Güvenlik Kurumu tarafından geliştirilmiş e-devlet uygulamasıdır. Personel bilgilerinin iki yönlü güncellenmesi için HİTAP servisi ile düzenli şekilde veri alışverişi yapılacaktır. HİTAP bir SOAP servisidir.
 
 -------
 *ASAL:*
 -------
-ASAL Servisi, Milli Savunma Bakanlığı tarafından sağlanan yurttaşların askerlik durumlarını sorgulayabildikleri  bir edevlet uygulamasıdır. Bu uygulama ile web servisi şeklinde konuşup, erkek öğrenci ve personin askerlik durumları karşılıklı olarak takip edilecektir.
+ASAL Servisi, Milli Savunma Bakanlığı tarafından sağlanan yurttaşların askerlik durumlarını sorgulayabildikleri  bir e-devlet uygulamasıdır. Bu uygulama ile web servisi şeklinde konuşup, erkek öğrenci ve personelin askerlik durumları karşılıklı olarak takip edilecektir.
 
 -------
 *ÖSYM:*
@@ -717,7 +717,7 @@ YÖKSİS (Yükseköğretim Bilgi Sistemi) YÖK tarafından kurulan yükseköğre
 *AKS:*
 ------
 
-Adres Kayıt Sistemi, Nüfus ve Vatandaşlık İşleri tarafından sağlanan bir edevlet hizmetidir. Sistemimiz bu hizmet ile tam entegrasyon halinde olacak ve sisteme kayıtlı kişilerin adres bilgilerini bu sistemdeki kayıtlar ile güncelleyecektir.
+Adres Kayıt Sistemi, Nüfus ve Vatandaşlık İşleri tarafından sağlanan bir e-devlet hizmetidir. Sistemimiz bu hizmet ile tam entegrasyon halinde olacak ve sisteme kayıtlı kişilerin adres bilgilerini bu sistemdeki kayıtlar ile güncelleyecektir.
 
 ---------
 *MERNİS:*
@@ -729,7 +729,7 @@ AKS gibi merkezi kimlik hizmetidir. Sistemde kayıtlı kişilerin kimlik bilgile
 *BANKALAR:*
 -----------
 
-Öğrenci Harç ve ödeme işlemlerinin takip edilmesi için bankaya açılacak olan servistir. Banka öğrencilerin ödemeleri gereken miktarları bu servis aracılığı ile öğrenir ve ödeme bilgilerini sisteme geri bildirir. Bizim tarafımızda açılacak servis REST türünde olacaktır.
+Öğrenci harç ve ödeme işlemlerinin takip edilmesi için bankaya açılacak olan servistir. Banka öğrencilerin ödemeleri gereken miktarları bu servis aracılığı ile öğrenir ve ödeme bilgilerini sisteme geri bildirir. Bizim tarafımızda açılacak servis REST türünde olacaktır.
 
 ------
 *SMS:*
@@ -741,7 +741,7 @@ AKS gibi merkezi kimlik hizmetidir. Sistemde kayıtlı kişilerin kimlik bilgile
 **Rol ve Yetki Kontrolü (ACL - Access Control List)**
 =====================================================
 
-Rol ve Öznitelik tabanlı hibrid bir yetkilendirme ve veri erişim kontrol modeli kullanılacaktır. Kurgulanacak sistem, Midpoint IDM gibi kimlik yönetimi sistemleri ile dış kimlik kaynaklarıyla (LDAP, veritabanları) REST metoduyla veri alışverişi yapabilecektir.
+Rol ve öznitelik tabanlı hibrid bir yetkilendirme ve veri erişim kontrol modeli kullanılacaktır. Kurgulanacak sistem, Midpoint IDM gibi kimlik yönetimi sistemleri ile dış kimlik kaynaklarıyla (LDAP, veritabanları) REST metoduyla veri alışverişi yapabilecektir.
 
 ---------------------------------------------------------------
 **Rol Tabanlı Yetkilendirme (Rol Based Authorization Control)**
@@ -752,9 +752,13 @@ Rol ve yetkiler, Akademik ve İdari Birimler (Units), Soyut Roller(Abstract Role
 Kullanıcıların bir birimde, tanımlanmış herhangi bir role (bölüm sekreteri, öğretim elemanı, öğrenci vb.) dahil olmaları onları belirli workflowların belirli adımları için yetkili olmalarını sağlayacaktır. Örnek verecek olursak:
 
 Birim: Mühendislik Fakültesi Bilgisayar Mühendisliği Bölümü
+
 Soyut Rol: Bölüm Başkanlığı
+
 Kullanıcı: Ayşe Bilgin, Öğretim Üyesi, Prof.
+
 İş Akışı: Ders, Öğretim Elemanı Paylaşımı. Bu iş akışının 2 aktörü vardır. Paylaşımı yapan bölüm sekreteri, bu paylaşıma onay veren bölüm başkanı.
+
 İş Akışı Adımları: İş akışı, yineleyen düzeltme - gözden geçirme ve nihayetinde onay ve ilgililere bildirim adımlarından oluşmaktadır.
 
 Ayşe Bilgin, bölüm başkanı olarak, sadece kendi bölümü ile ilgili olarak bu iş akışının ilgili adımları için otomatik olarak yetkilendirilmiş olacaktır.
@@ -810,8 +814,7 @@ Kullanıcılar bazı kritik işlemler için ikinci bir parola ile yetkilendirili
 
 Rol veya role ait bazı yetkiler farklı kullanıcılara devredilebilirler. Devredilen yetkiler tek tek iş akışı adımları veya bir rolün sahip olduğu tüm yetkiler şeklinde belirlenebilir. Yetki devri belirli sürelidir. Yetki devredilen kullanıcı için geçici bir rol tanımlanır. Kullanıcı bu geçici rol ile kendi rolü arasında geçiş yaparak ilgili görevleri yerine getirebilir.
 
-Notes:
-İncelenecek diğer konular aşağıdadır.
+Notes: İncelenecek diğer konular aşağıdadır.
 
 http://www.simplecloud.info/
 https://github.com/concordusapps/python-scim
@@ -821,6 +824,7 @@ https://pypi.python.org/pypi/authentic2/2.0.1
 
 
 OAUTH 2 buna nasıl yaklaşacağız?
+
 SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?
 
 ================
@@ -833,7 +837,7 @@ Yazılım geliştirme ve buna bağlı test döngüsü “Yazılım Geliştirme v
 **Yerelleştirme**
 =================
 
-Yazılımın temel dili Türkçedir. Çoklu dil desteği sistemin doğal özelliklerinden birisidir. Gettext kullanılacaktır.
+Yazılımın temel dili Türkçe'dir. Çoklu dil desteği sistemin doğal özelliklerinden birisidir. Gettext kullanılacaktır.
 
 ======================
 **Güvenlik Ölçümleri**
