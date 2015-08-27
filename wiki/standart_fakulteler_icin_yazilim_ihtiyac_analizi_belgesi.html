@@ -1,15 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!doctype html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi &mdash; Ulakbus Documents 0.0.1 belgelendirme çalışması</title>
+
+  <title>ULAKBUS</title>
+  
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,16 +29,235 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="Ulakbus Documents 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Sistem Operatörleri" href="devops.html" />
     <link rel="prev" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head>
-  <body role="document">  
+  <body role="document">
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Ulakbüs</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+ </head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:#004561;">
+            <div class="container" style="background-color:#004561;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+ <a href="index.html"><img src="_static/ulakbus.png" class="logo"></a>
+
+</div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+		<a  href="index.html" style="color:white;">Ana Sayfa</a>
+                    </li>
+                    <li>
+                        <a href="#proje" style="color:white;">Proje Hakkında</a>
+                    </li>
+                    <li>
+                        <a href="http://www.ulakbus.org/wiki/wiki.html" style="color:white;">Belgeler</a>
+                    </li>
+                     <li>
+                        <a href="http://www.ulakbus.org/wiki/developers.html" style="color:white;">Kurulum</a>
+                    </li>
+                     <li>
+                        <a href="topluluk.html" style="color:white;">Topluluk</a>
+                    </li>
+                     <li>
+                        <a href="ne_oluyor.html" style="color:white;">Ne Oluyor ?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <!-- Fork me on github icons -->
+             <a href="https://github.com/zetaops/ulakbus.org/" target="_blank"><img style="position: absolute; top: 130px; right: 0; border: 0; height:100px;  " src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        
+        </nav> 
+    </div> 
+
+<br>
+  
+<br>
+  
+  <br>
+<br>
+<br>
+  
+    </div> 
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="devops.html" title="Sistem Operatörleri"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a><ul>
+<li><a class="reference internal" href="#tanimlar"><strong>Tanımlar</strong></a><ul>
+<li><a class="reference internal" href="#fakulte"><strong>Fakülte</strong></a></li>
+<li><a class="reference internal" href="#dekan"><strong>Dekan</strong></a></li>
+<li><a class="reference internal" href="#dekan-yardimcisi"><strong>Dekan Yardımcısı</strong></a></li>
+<li><a class="reference internal" href="#fakulte-kurulu"><strong>Fakülte Kurulu</strong></a></li>
+<li><a class="reference internal" href="#fakulte-yonetim-kurulu"><strong>Fakülte Yönetim Kurulu</strong></a></li>
+<li><a class="reference internal" href="#fakulte-sekreteri"><strong>Fakülte Sekreteri</strong></a></li>
+<li><a class="reference internal" href="#fakulte-ogrenci-isleri"><strong>Fakülte Öğrenci İşleri</strong></a></li>
+<li><a class="reference internal" href="#bolum"><strong>Bölüm</strong></a></li>
+<li><a class="reference internal" href="#bolum-baskani"><strong>Bölüm Başkanı</strong></a></li>
+<li><a class="reference internal" href="#bolum-kurulu"><strong>Bölüm Kurulu</strong></a></li>
+<li><a class="reference internal" href="#anabilim-dali"><strong>Anabilim Dalı</strong></a></li>
+<li><a class="reference internal" href="#anabilim-dali-baskani"><strong>Anabilim Dalı Başkanı</strong></a></li>
+<li><a class="reference internal" href="#danisman"><strong>Danışman</strong></a></li>
+<li><a class="reference internal" href="#program"><strong>Program</strong></a></li>
+<li><a class="reference internal" href="#ders"><strong>Ders</strong></a></li>
+<li><a class="reference internal" href="#ders-subesi"><strong>Ders Şubesi</strong></a></li>
+<li><a class="reference internal" href="#ogrenci-subesi"><strong>Öğrenci Şubesi</strong></a></li>
+<li><a class="reference internal" href="#ders-kredisi"><strong>Ders Kredisi</strong></a></li>
+<li><a class="reference internal" href="#zorunlu-ortak-ders"><strong>Zorunlu Ortak Ders</strong></a></li>
+<li><a class="reference internal" href="#on-sartli-ders"><strong>Ön Şartlı Ders</strong></a></li>
+<li><a class="reference internal" href="#sectirmeli-ders"><strong>Seçtirmeli Ders</strong></a></li>
+<li><a class="reference internal" href="#ogretim-yili"><strong>Öğretim Yılı</strong></a></li>
+<li><a class="reference internal" href="#normal-ogretim-suresi"><strong>Normal Öğretim Süresi</strong></a></li>
+<li><a class="reference internal" href="#azami-en-fazla-ogretim-suresi"><strong>Azami (En fazla) Öğretim Süresi</strong></a></li>
+<li><a class="reference internal" href="#ucretler"><strong>Ücretler</strong></a></li>
+<li><a class="reference internal" href="#sinavlar"><strong>Sınavlar</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kural-setleri"><strong>Kural Setleri</strong></a><ul>
+<li><a class="reference internal" href="#sureler"><strong>Süreler</strong></a></li>
+<li><a class="reference internal" href="#id1"><em>Normal Öğretim Süresi:</em></a></li>
+<li><a class="reference internal" href="#azami-ogretim-suresi"><em>Azami Öğretim Süresi:</em></a></li>
+<li><a class="reference internal" href="#devamlilik-kurallari"><strong>Devamlılık Kuralları</strong></a></li>
+<li><a class="reference internal" href="#sinava-katilma-sartlari"><strong>Sınava Katılma Şartları</strong></a></li>
+<li><a class="reference internal" href="#puan-sistemi"><strong>Puan Sistemi</strong></a></li>
+<li><a class="reference internal" href="#harf-sistemi"><strong>Harf Sistemi</strong></a></li>
+<li><a class="reference internal" href="#ders-basari-hesaplama"><strong>Ders Başarı Hesaplama</strong></a></li>
+<li><a class="reference internal" href="#basari-hesaplama"><strong>Başarı Hesaplama</strong></a></li>
+<li><a class="reference internal" href="#ucret-hesaplama"><strong>Ücret Hesaplama</strong></a></li>
+<li><a class="reference internal" href="#normal-ogrenim"><strong>Normal Öğrenim</strong></a></li>
+<li><a class="reference internal" href="#ikinci-ogretim"><strong>İkinci Öğretim</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#is-akislari"><strong>İş Akışları</strong></a><ul>
+<li><a class="reference internal" href="#kayit-islemleri"><strong>Kayıt İşlemleri</strong></a></li>
+<li><a class="reference internal" href="#ilk-kayit"><em>İlk Kayıt:</em></a></li>
+<li><a class="reference internal" href="#kesin-kayit-sonrasi"><em>Kesin Kayıt Sonrası:</em></a></li>
+<li><a class="reference internal" href="#kayit-yenileme"><em>Kayıt Yenileme:</em></a></li>
+<li><a class="reference internal" href="#kayit-dondurma"><em>Kayıt Dondurma:</em></a></li>
+<li><a class="reference internal" href="#kayit-silme"><em>Kayıt Silme:</em></a></li>
+<li><a class="reference internal" href="#ders-acma"><strong>Ders Açma</strong></a></li>
+<li><a class="reference internal" href="#secmeli-derslerin-acilmasi"><strong>Seçmeli Derslerin Açılması</strong></a></li>
+<li><a class="reference internal" href="#sinif-acma"><strong>Sınıf Açma</strong></a></li>
+<li><a class="reference internal" href="#ders-alma-bicimleri"><strong>Ders Alma Biçimleri</strong></a></li>
+<li><a class="reference internal" href="#ders-secme"><strong>Ders Seçme</strong></a></li>
+<li><a class="reference internal" href="#ders-ekleme-cikarma-ve-mazeretli-ders-kaydi"><strong>Ders Ekleme Çıkarma ve Mazeretli Ders Kaydı</strong></a></li>
+<li><a class="reference internal" href="#baska-bolumlerden-ders-alma"><strong>Başka Bölümlerden Ders Alma</strong></a></li>
+<li><a class="reference internal" href="#program-degisikligi"><strong>Program Değişikliği</strong></a></li>
+<li><a class="reference internal" href="#ders-muafiyeti"><strong>Ders Muafiyeti</strong></a></li>
+<li><a class="reference internal" href="#not-girisi"><strong>Not Girişi</strong></a></li>
+<li><a class="reference internal" href="#onur-belgeleri"><strong>Onur Belgeleri</strong></a></li>
+<li><a class="reference internal" href="#harf-yeniden-hesaplama"><strong>Harf Yeniden Hesaplama</strong></a></li>
+<li><a class="reference internal" href="#mazeret-yonetimi"><strong>Mazeret Yönetimi</strong></a></li>
+<li><a class="reference internal" href="#devamlilik-takibi"><strong>Devamlılık Takibi</strong></a></li>
+<li><a class="reference internal" href="#mezuniyet"><strong>Mezuniyet</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#roller"><strong>Roller</strong></a></li>
+<li><a class="reference internal" href="#yetkiler"><strong>Yetkiler</strong></a><ul>
+<li><a class="reference internal" href="#yetki-devri"><strong>Yetki Devri</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ekranlar"><strong>Ekranlar</strong></a></li>
+<li><a class="reference internal" href="#sistemden-beklenecek-raporlar"><strong>Sistemden Beklenecek Raporlar</strong></a></li>
+<li><a class="reference internal" href="#sistem-tarafindan-uretilecek-belgeler"><strong>Sistem Tarafından Üretilecek Belgeler</strong></a></li>
+<li><a class="reference internal" href="#ebys-entegrasyonu"><strong>EBYS Entegrasyonu</strong></a><ul>
+<li><a class="reference internal" href="#yoksis-kurum-agaci"><strong>YÖKSİS Kurum Ağacı</strong></a></li>
+<li><a class="reference internal" href="#ders-kopyalama"><strong>Ders Kopyalama</strong></a></li>
+<li><a class="reference internal" href="#ders-tipleri"><strong>Ders Tipleri</strong></a></li>
+<li><a class="reference internal" href="#ders-durumlari"><strong>Ders Durumları</strong></a></li>
+<li><a class="reference internal" href="#ders-alis-tipi"><strong>Ders Alış Tipi</strong></a></li>
+<li><a class="reference internal" href="#ders-dili"><strong>Ders Dili</strong></a></li>
+<li><a class="reference internal" href="#derslerin-dili-kurallari"><strong>Derslerin Dili Kuralları</strong></a></li>
+<li><a class="reference internal" href="#sinav-hakki"><strong>Sınav Hakkı</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#workflow-list"><strong>WorkFlow List</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="yazilim_gelistirme_ve_test_dongusu.html"
+                        title="önceki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="devops.html"
+                        title="sonraki bölüm">Sistem Operatörleri</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
@@ -920,151 +1143,27 @@ Work Flow tamamlanır.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a><ul>
-<li><a class="reference internal" href="#tanimlar"><strong>Tanımlar</strong></a><ul>
-<li><a class="reference internal" href="#fakulte"><strong>Fakülte</strong></a></li>
-<li><a class="reference internal" href="#dekan"><strong>Dekan</strong></a></li>
-<li><a class="reference internal" href="#dekan-yardimcisi"><strong>Dekan Yardımcısı</strong></a></li>
-<li><a class="reference internal" href="#fakulte-kurulu"><strong>Fakülte Kurulu</strong></a></li>
-<li><a class="reference internal" href="#fakulte-yonetim-kurulu"><strong>Fakülte Yönetim Kurulu</strong></a></li>
-<li><a class="reference internal" href="#fakulte-sekreteri"><strong>Fakülte Sekreteri</strong></a></li>
-<li><a class="reference internal" href="#fakulte-ogrenci-isleri"><strong>Fakülte Öğrenci İşleri</strong></a></li>
-<li><a class="reference internal" href="#bolum"><strong>Bölüm</strong></a></li>
-<li><a class="reference internal" href="#bolum-baskani"><strong>Bölüm Başkanı</strong></a></li>
-<li><a class="reference internal" href="#bolum-kurulu"><strong>Bölüm Kurulu</strong></a></li>
-<li><a class="reference internal" href="#anabilim-dali"><strong>Anabilim Dalı</strong></a></li>
-<li><a class="reference internal" href="#anabilim-dali-baskani"><strong>Anabilim Dalı Başkanı</strong></a></li>
-<li><a class="reference internal" href="#danisman"><strong>Danışman</strong></a></li>
-<li><a class="reference internal" href="#program"><strong>Program</strong></a></li>
-<li><a class="reference internal" href="#ders"><strong>Ders</strong></a></li>
-<li><a class="reference internal" href="#ders-subesi"><strong>Ders Şubesi</strong></a></li>
-<li><a class="reference internal" href="#ogrenci-subesi"><strong>Öğrenci Şubesi</strong></a></li>
-<li><a class="reference internal" href="#ders-kredisi"><strong>Ders Kredisi</strong></a></li>
-<li><a class="reference internal" href="#zorunlu-ortak-ders"><strong>Zorunlu Ortak Ders</strong></a></li>
-<li><a class="reference internal" href="#on-sartli-ders"><strong>Ön Şartlı Ders</strong></a></li>
-<li><a class="reference internal" href="#sectirmeli-ders"><strong>Seçtirmeli Ders</strong></a></li>
-<li><a class="reference internal" href="#ogretim-yili"><strong>Öğretim Yılı</strong></a></li>
-<li><a class="reference internal" href="#normal-ogretim-suresi"><strong>Normal Öğretim Süresi</strong></a></li>
-<li><a class="reference internal" href="#azami-en-fazla-ogretim-suresi"><strong>Azami (En fazla) Öğretim Süresi</strong></a></li>
-<li><a class="reference internal" href="#ucretler"><strong>Ücretler</strong></a></li>
-<li><a class="reference internal" href="#sinavlar"><strong>Sınavlar</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#kural-setleri"><strong>Kural Setleri</strong></a><ul>
-<li><a class="reference internal" href="#sureler"><strong>Süreler</strong></a></li>
-<li><a class="reference internal" href="#id1"><em>Normal Öğretim Süresi:</em></a></li>
-<li><a class="reference internal" href="#azami-ogretim-suresi"><em>Azami Öğretim Süresi:</em></a></li>
-<li><a class="reference internal" href="#devamlilik-kurallari"><strong>Devamlılık Kuralları</strong></a></li>
-<li><a class="reference internal" href="#sinava-katilma-sartlari"><strong>Sınava Katılma Şartları</strong></a></li>
-<li><a class="reference internal" href="#puan-sistemi"><strong>Puan Sistemi</strong></a></li>
-<li><a class="reference internal" href="#harf-sistemi"><strong>Harf Sistemi</strong></a></li>
-<li><a class="reference internal" href="#ders-basari-hesaplama"><strong>Ders Başarı Hesaplama</strong></a></li>
-<li><a class="reference internal" href="#basari-hesaplama"><strong>Başarı Hesaplama</strong></a></li>
-<li><a class="reference internal" href="#ucret-hesaplama"><strong>Ücret Hesaplama</strong></a></li>
-<li><a class="reference internal" href="#normal-ogrenim"><strong>Normal Öğrenim</strong></a></li>
-<li><a class="reference internal" href="#ikinci-ogretim"><strong>İkinci Öğretim</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#is-akislari"><strong>İş Akışları</strong></a><ul>
-<li><a class="reference internal" href="#kayit-islemleri"><strong>Kayıt İşlemleri</strong></a></li>
-<li><a class="reference internal" href="#ilk-kayit"><em>İlk Kayıt:</em></a></li>
-<li><a class="reference internal" href="#kesin-kayit-sonrasi"><em>Kesin Kayıt Sonrası:</em></a></li>
-<li><a class="reference internal" href="#kayit-yenileme"><em>Kayıt Yenileme:</em></a></li>
-<li><a class="reference internal" href="#kayit-dondurma"><em>Kayıt Dondurma:</em></a></li>
-<li><a class="reference internal" href="#kayit-silme"><em>Kayıt Silme:</em></a></li>
-<li><a class="reference internal" href="#ders-acma"><strong>Ders Açma</strong></a></li>
-<li><a class="reference internal" href="#secmeli-derslerin-acilmasi"><strong>Seçmeli Derslerin Açılması</strong></a></li>
-<li><a class="reference internal" href="#sinif-acma"><strong>Sınıf Açma</strong></a></li>
-<li><a class="reference internal" href="#ders-alma-bicimleri"><strong>Ders Alma Biçimleri</strong></a></li>
-<li><a class="reference internal" href="#ders-secme"><strong>Ders Seçme</strong></a></li>
-<li><a class="reference internal" href="#ders-ekleme-cikarma-ve-mazeretli-ders-kaydi"><strong>Ders Ekleme Çıkarma ve Mazeretli Ders Kaydı</strong></a></li>
-<li><a class="reference internal" href="#baska-bolumlerden-ders-alma"><strong>Başka Bölümlerden Ders Alma</strong></a></li>
-<li><a class="reference internal" href="#program-degisikligi"><strong>Program Değişikliği</strong></a></li>
-<li><a class="reference internal" href="#ders-muafiyeti"><strong>Ders Muafiyeti</strong></a></li>
-<li><a class="reference internal" href="#not-girisi"><strong>Not Girişi</strong></a></li>
-<li><a class="reference internal" href="#onur-belgeleri"><strong>Onur Belgeleri</strong></a></li>
-<li><a class="reference internal" href="#harf-yeniden-hesaplama"><strong>Harf Yeniden Hesaplama</strong></a></li>
-<li><a class="reference internal" href="#mazeret-yonetimi"><strong>Mazeret Yönetimi</strong></a></li>
-<li><a class="reference internal" href="#devamlilik-takibi"><strong>Devamlılık Takibi</strong></a></li>
-<li><a class="reference internal" href="#mezuniyet"><strong>Mezuniyet</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#roller"><strong>Roller</strong></a></li>
-<li><a class="reference internal" href="#yetkiler"><strong>Yetkiler</strong></a><ul>
-<li><a class="reference internal" href="#yetki-devri"><strong>Yetki Devri</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ekranlar"><strong>Ekranlar</strong></a></li>
-<li><a class="reference internal" href="#sistemden-beklenecek-raporlar"><strong>Sistemden Beklenecek Raporlar</strong></a></li>
-<li><a class="reference internal" href="#sistem-tarafindan-uretilecek-belgeler"><strong>Sistem Tarafından Üretilecek Belgeler</strong></a></li>
-<li><a class="reference internal" href="#ebys-entegrasyonu"><strong>EBYS Entegrasyonu</strong></a><ul>
-<li><a class="reference internal" href="#yoksis-kurum-agaci"><strong>YÖKSİS Kurum Ağacı</strong></a></li>
-<li><a class="reference internal" href="#ders-kopyalama"><strong>Ders Kopyalama</strong></a></li>
-<li><a class="reference internal" href="#ders-tipleri"><strong>Ders Tipleri</strong></a></li>
-<li><a class="reference internal" href="#ders-durumlari"><strong>Ders Durumları</strong></a></li>
-<li><a class="reference internal" href="#ders-alis-tipi"><strong>Ders Alış Tipi</strong></a></li>
-<li><a class="reference internal" href="#ders-dili"><strong>Ders Dili</strong></a></li>
-<li><a class="reference internal" href="#derslerin-dili-kurallari"><strong>Derslerin Dili Kuralları</strong></a></li>
-<li><a class="reference internal" href="#sinav-hakki"><strong>Sınav Hakkı</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#workflow-list"><strong>WorkFlow List</strong></a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="wiki.html">Documentation overview</a><ul>
-  <li><a href="developers.html">Geliştiriciler</a><ul>
-      <li>Previous: <a href="yazilim_gelistirme_ve_test_dongusu.html" title="önceki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></li>
-      <li>Next: <a href="devops.html" title="sonraki bölüm">Sistem Operatörleri</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>Bu Sayfa</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.txt"
-            rel="nofollow">Kaynağı Göster</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Hızlı Arama</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015 Zetaops.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
-      
-      |
-      <a href="_sources/standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="devops.html" title="Sistem Operatörleri"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+      </ul>
     </div>
+<div class="container text-center">
+            <p><b>Copyright © ULAKBUS Bütünleşik Üniversite Sistemi 2015</b></p>
+        </div>
 
-    
-
-    
   </body>
 </html>

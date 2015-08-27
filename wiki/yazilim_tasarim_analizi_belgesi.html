@@ -1,15 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!doctype html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Yazılım Tasarım Analizi Belgesi &mdash; Ulakbus Documents 0.0.1 belgelendirme çalışması</title>
+
+  <title>ULAKBUS</title>
+  
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,16 +29,233 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="Ulakbus Documents 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
     <link rel="prev" title="Git İş-Akışı" href="git_workflow.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head>
-  <body role="document">  
+  <body role="document">
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Ulakbüs</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+ </head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:#004561;">
+            <div class="container" style="background-color:#004561;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+ <a href="index.html"><img src="_static/ulakbus.png" class="logo"></a>
+
+</div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+		<a  href="index.html" style="color:white;">Ana Sayfa</a>
+                    </li>
+                    <li>
+                        <a href="#proje" style="color:white;">Proje Hakkında</a>
+                    </li>
+                    <li>
+                        <a href="http://www.ulakbus.org/wiki/wiki.html" style="color:white;">Belgeler</a>
+                    </li>
+                     <li>
+                        <a href="http://www.ulakbus.org/wiki/developers.html" style="color:white;">Kurulum</a>
+                    </li>
+                     <li>
+                        <a href="topluluk.html" style="color:white;">Topluluk</a>
+                    </li>
+                     <li>
+                        <a href="ne_oluyor.html" style="color:white;">Ne Oluyor ?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <!-- Fork me on github icons -->
+             <a href="https://github.com/zetaops/ulakbus.org/" target="_blank"><img style="position: absolute; top: 130px; right: 0; border: 0; height:100px;  " src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        
+        </nav> 
+    </div> 
+
+<br>
+  
+<br>
+  
+  <br>
+<br>
+<br>
+  
+    </div> 
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="git_workflow.html" title="Git İş-Akışı"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Yazılım Tasarım Analizi Belgesi</a><ul>
+<li><a class="reference internal" href="#sistem-mimarisi"><strong>Sistem Mimarisi</strong></a><ul>
+<li><a class="reference internal" href="#is-akisi-workflow-tabanli-uyguluma"><em>İş Akışı (Workflow) Tabanlı Uyguluma</em></a></li>
+<li><a class="reference internal" href="#kurumsal-veri-yolu-kullanimi"><em>Kurumsal Veri Yolu Kullanımı</em></a></li>
+<li><a class="reference internal" href="#sunucu-ve-servis-yerlesimi"><strong>Sunucu ve Servis Yerleşimi</strong></a></li>
+<li><a class="reference internal" href="#vm-konfigurasyonlari"><em>VM Konfigürasyonları:</em></a></li>
+<li><a class="reference internal" href="#image-ozellikleri"><em>Image özellikleri:</em></a></li>
+<li><a class="reference internal" href="#tercih-edilen-yazilimlar"><strong>Tercih Edilen Yazılımlar</strong></a></li>
+<li><a class="reference internal" href="#riak"><em>Riak:</em></a></li>
+<li><a class="reference internal" href="#riakcs"><em>RiakCS:</em></a></li>
+<li><a class="reference internal" href="#postgresql"><em>Postgresql:</em></a></li>
+<li><a class="reference internal" href="#redis"><em>Redis:</em></a></li>
+<li><a class="reference internal" href="#zato"><em>Zato:</em></a></li>
+<li><a class="reference internal" href="#haproxy"><em>HaProxy:</em></a></li>
+<li><a class="reference internal" href="#bulut-araclari"><strong>Bulut araçları</strong></a></li>
+<li><a class="reference internal" href="#docker"><em>Docker:</em></a></li>
+<li><a class="reference internal" href="#consul"><em>Consul:</em></a></li>
+<li><a class="reference internal" href="#systemd"><em>Systemd:</em></a></li>
+<li><a class="reference internal" href="#etcd"><em>Etcd:</em></a></li>
+<li><a class="reference internal" href="#confd"><em>Confd:</em></a></li>
+<li><a class="reference internal" href="#flannel"><em>Flannel:</em></a></li>
+<li><a class="reference internal" href="#fleet"><em>Fleet:</em></a></li>
+<li><a class="reference internal" href="#github"><em>Github:</em></a></li>
+<li><a class="reference internal" href="#continuous-integration-continuous-delivery"><em>Continuous Integration  &amp; Continuous Delivery:</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logging"><strong>Logging</strong></a><ul>
+<li><a class="reference internal" href="#kayit-turleri"><strong>Kayıt Türleri</strong></a></li>
+<li><a class="reference internal" href="#log-yonetimi"><strong>Log Yönetimi</strong></a></li>
+<li><a class="reference internal" href="#sistem-ve-servis-loglari"><strong>Sistem ve Servis Logları</strong></a></li>
+<li><a class="reference internal" href="#sistem-ve-servis-log-analizi"><strong>Sistem ve Servis Log Analizi</strong></a></li>
+<li><a class="reference internal" href="#kullanici-arayuzu-loglari"><strong>Kullanıcı Arayüzü Logları</strong></a></li>
+<li><a class="reference internal" href="#refleksler"><em>Refleksler:</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tercih-edilen-yazilim-bilesenleri"><strong>Tercih Edilen Yazılım Bileşenleri</strong></a><ul>
+<li><a class="reference internal" href="#arka-ucta-kullanilan-bilesenler"><strong>Arka Uçta Kullanılan Bileşenler</strong></a></li>
+<li><a class="reference internal" href="#genel-sistem-akis-semasi"><em>Genel Sistem Akış Şeması:</em></a></li>
+<li><a class="reference internal" href="#modul-bilesenlerin-genel-gorunumu"><em>Modül / Bileşenlerin Genel Görünümü:</em></a></li>
+<li><a class="reference internal" href="#spiffworkflow-engine"><strong>SpiffWorkflow Engine</strong></a></li>
+<li><a class="reference internal" href="#pyoko"><strong>Pyoko</strong></a></li>
+<li><a class="reference internal" href="#zengine"><strong>ZEngine</strong></a></li>
+<li><a class="reference internal" href="#kural-motoru-rule-engine"><strong>Kural Motoru (Rule Engine)</strong></a></li>
+<li><a class="reference internal" href="#zato-servisleri"><strong>Zato Servisleri</strong></a></li>
+<li><a class="reference internal" href="#falcon-wsgi-framework"><strong>Falcon WSGI Framework</strong></a></li>
+<li><a class="reference internal" href="#gunicorn-wsgi-server"><strong>Gunicorn WSGI Server</strong></a></li>
+<li><a class="reference internal" href="#raporlama-ve-analiz"><strong>Raporlama ve Analiz</strong></a></li>
+<li><a class="reference internal" href="#kullanici-arayuz-bilesenleri"><strong>Kullanıcı Arayüz Bileşenleri</strong></a></li>
+<li><a class="reference internal" href="#kullanici-arayuz-tasariminda-uyulacak-kurallar-ve-ilkeler"><em>Kullanıcı arayüz tasarımında uyulacak kurallar ve ilkeler:</em></a></li>
+<li><a class="reference internal" href="#kullanici-veri-girisi-ilkeleri"><em>Kullanıcı veri girişi ilkeleri:</em></a></li>
+<li><a class="reference internal" href="#arayuz-tasarimi-ilkeleri"><em>Arayüz tasarımı ilkeleri:</em></a></li>
+<li><a class="reference internal" href="#hata-mesajlari-uyarilar-ve-gosterilecek-diger-bilgi-ilkeleri"><em>Hata mesajları, uyarılar ve gösterilecek diğer bilgi ilkeleri:</em></a></li>
+<li><a class="reference internal" href="#modul-yapisi-ve-klasor-hiyerarsisi"><em>Modül Yapısı ve Klasör Hiyerarşisi:</em></a></li>
+<li><a class="reference internal" href="#ekran-listesi"><em>Ekran Listesi:</em></a></li>
+<li><a class="reference internal" href="#navigasyon-diagrami"><em>Navigasyon Diagramı:</em></a></li>
+<li><a class="reference internal" href="#cevrimici-yardim-ve-rehberler"><em>Çevrimiçi Yardım ve Rehberler:</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#veri-tasarimi"><strong>Veri Tasarımı</strong></a><ul>
+<li><a class="reference internal" href="#gecici-veri"><strong>Geçici Veri</strong></a></li>
+<li><a class="reference internal" href="#kalici-veri"><strong>Kalıcı Veri</strong></a></li>
+<li><a class="reference internal" href="#veri-ve-veri-sablonu-gocu"><em>Veri ve Veri Şablonu Göçü:</em></a></li>
+<li><a class="reference internal" href="#varliklar-entities"><strong>Varlıklar (Entities)</strong></a></li>
+<li><a class="reference internal" href="#dis-veri-kaynaklari"><strong>Dış Veri Kaynakları</strong></a></li>
+<li><a class="reference internal" href="#ldap"><em>LDAP:</em></a></li>
+<li><a class="reference internal" href="#kbs"><em>KBS:</em></a></li>
+<li><a class="reference internal" href="#hitap"><em>HİTAP:</em></a></li>
+<li><a class="reference internal" href="#asal"><em>ASAL:</em></a></li>
+<li><a class="reference internal" href="#osym"><em>ÖSYM:</em></a></li>
+<li><a class="reference internal" href="#yoksis"><em>YÖKSİS:</em></a></li>
+<li><a class="reference internal" href="#aks"><em>AKS:</em></a></li>
+<li><a class="reference internal" href="#mernis"><em>MERNİS:</em></a></li>
+<li><a class="reference internal" href="#bankalar"><em>BANKALAR:</em></a></li>
+<li><a class="reference internal" href="#sms"><em>SMS:</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rol-ve-yetki-kontrolu-acl-access-control-list"><strong>Rol ve Yetki Kontrolü (ACL - Access Control List)</strong></a><ul>
+<li><a class="reference internal" href="#rol-tabanli-yetkilendirme-rol-based-authorization-control"><strong>Rol Tabanlı Yetkilendirme (Rol Based Authorization Control)</strong></a></li>
+<li><a class="reference internal" href="#oznitelik-tabanli-yetkilendirme-attribute-based-authorization-control"><strong>Öznitelik Tabanlı Yetkilendirme (Attribute Based Authorization Control)</strong></a></li>
+<li><a class="reference internal" href="#satir-ve-hucre-seviyesinde-erisim-kontrolu"><strong>Satır ve Hücre Seviyesinde Erişim Kontrolü</strong></a></li>
+<li><a class="reference internal" href="#iki-seviye-yetkilendirme"><strong>İki Seviye Yetkilendirme</strong></a></li>
+<li><a class="reference internal" href="#yetki-devri"><strong>Yetki Devri</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-dongusu"><strong>Test Döngüsü</strong></a></li>
+<li><a class="reference internal" href="#yerellestirme"><strong>Yerelleştirme</strong></a></li>
+<li><a class="reference internal" href="#guvenlik-olcumleri"><strong>Güvenlik Ölçümleri</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="git_workflow.html"
+                        title="önceki bölüm">Git İş-Akışı</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="yazilim_gelistirme_ve_test_dongusu.html"
+                        title="sonraki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/yazilim_tasarim_analizi_belgesi.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
@@ -848,149 +1069,27 @@ SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?</
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Yazılım Tasarım Analizi Belgesi</a><ul>
-<li><a class="reference internal" href="#sistem-mimarisi"><strong>Sistem Mimarisi</strong></a><ul>
-<li><a class="reference internal" href="#is-akisi-workflow-tabanli-uyguluma"><em>İş Akışı (Workflow) Tabanlı Uyguluma</em></a></li>
-<li><a class="reference internal" href="#kurumsal-veri-yolu-kullanimi"><em>Kurumsal Veri Yolu Kullanımı</em></a></li>
-<li><a class="reference internal" href="#sunucu-ve-servis-yerlesimi"><strong>Sunucu ve Servis Yerleşimi</strong></a></li>
-<li><a class="reference internal" href="#vm-konfigurasyonlari"><em>VM Konfigürasyonları:</em></a></li>
-<li><a class="reference internal" href="#image-ozellikleri"><em>Image özellikleri:</em></a></li>
-<li><a class="reference internal" href="#tercih-edilen-yazilimlar"><strong>Tercih Edilen Yazılımlar</strong></a></li>
-<li><a class="reference internal" href="#riak"><em>Riak:</em></a></li>
-<li><a class="reference internal" href="#riakcs"><em>RiakCS:</em></a></li>
-<li><a class="reference internal" href="#postgresql"><em>Postgresql:</em></a></li>
-<li><a class="reference internal" href="#redis"><em>Redis:</em></a></li>
-<li><a class="reference internal" href="#zato"><em>Zato:</em></a></li>
-<li><a class="reference internal" href="#haproxy"><em>HaProxy:</em></a></li>
-<li><a class="reference internal" href="#bulut-araclari"><strong>Bulut araçları</strong></a></li>
-<li><a class="reference internal" href="#docker"><em>Docker:</em></a></li>
-<li><a class="reference internal" href="#consul"><em>Consul:</em></a></li>
-<li><a class="reference internal" href="#systemd"><em>Systemd:</em></a></li>
-<li><a class="reference internal" href="#etcd"><em>Etcd:</em></a></li>
-<li><a class="reference internal" href="#confd"><em>Confd:</em></a></li>
-<li><a class="reference internal" href="#flannel"><em>Flannel:</em></a></li>
-<li><a class="reference internal" href="#fleet"><em>Fleet:</em></a></li>
-<li><a class="reference internal" href="#github"><em>Github:</em></a></li>
-<li><a class="reference internal" href="#continuous-integration-continuous-delivery"><em>Continuous Integration  &amp; Continuous Delivery:</em></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#logging"><strong>Logging</strong></a><ul>
-<li><a class="reference internal" href="#kayit-turleri"><strong>Kayıt Türleri</strong></a></li>
-<li><a class="reference internal" href="#log-yonetimi"><strong>Log Yönetimi</strong></a></li>
-<li><a class="reference internal" href="#sistem-ve-servis-loglari"><strong>Sistem ve Servis Logları</strong></a></li>
-<li><a class="reference internal" href="#sistem-ve-servis-log-analizi"><strong>Sistem ve Servis Log Analizi</strong></a></li>
-<li><a class="reference internal" href="#kullanici-arayuzu-loglari"><strong>Kullanıcı Arayüzü Logları</strong></a></li>
-<li><a class="reference internal" href="#refleksler"><em>Refleksler:</em></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tercih-edilen-yazilim-bilesenleri"><strong>Tercih Edilen Yazılım Bileşenleri</strong></a><ul>
-<li><a class="reference internal" href="#arka-ucta-kullanilan-bilesenler"><strong>Arka Uçta Kullanılan Bileşenler</strong></a></li>
-<li><a class="reference internal" href="#genel-sistem-akis-semasi"><em>Genel Sistem Akış Şeması:</em></a></li>
-<li><a class="reference internal" href="#modul-bilesenlerin-genel-gorunumu"><em>Modül / Bileşenlerin Genel Görünümü:</em></a></li>
-<li><a class="reference internal" href="#spiffworkflow-engine"><strong>SpiffWorkflow Engine</strong></a></li>
-<li><a class="reference internal" href="#pyoko"><strong>Pyoko</strong></a></li>
-<li><a class="reference internal" href="#zengine"><strong>ZEngine</strong></a></li>
-<li><a class="reference internal" href="#kural-motoru-rule-engine"><strong>Kural Motoru (Rule Engine)</strong></a></li>
-<li><a class="reference internal" href="#zato-servisleri"><strong>Zato Servisleri</strong></a></li>
-<li><a class="reference internal" href="#falcon-wsgi-framework"><strong>Falcon WSGI Framework</strong></a></li>
-<li><a class="reference internal" href="#gunicorn-wsgi-server"><strong>Gunicorn WSGI Server</strong></a></li>
-<li><a class="reference internal" href="#raporlama-ve-analiz"><strong>Raporlama ve Analiz</strong></a></li>
-<li><a class="reference internal" href="#kullanici-arayuz-bilesenleri"><strong>Kullanıcı Arayüz Bileşenleri</strong></a></li>
-<li><a class="reference internal" href="#kullanici-arayuz-tasariminda-uyulacak-kurallar-ve-ilkeler"><em>Kullanıcı arayüz tasarımında uyulacak kurallar ve ilkeler:</em></a></li>
-<li><a class="reference internal" href="#kullanici-veri-girisi-ilkeleri"><em>Kullanıcı veri girişi ilkeleri:</em></a></li>
-<li><a class="reference internal" href="#arayuz-tasarimi-ilkeleri"><em>Arayüz tasarımı ilkeleri:</em></a></li>
-<li><a class="reference internal" href="#hata-mesajlari-uyarilar-ve-gosterilecek-diger-bilgi-ilkeleri"><em>Hata mesajları, uyarılar ve gösterilecek diğer bilgi ilkeleri:</em></a></li>
-<li><a class="reference internal" href="#modul-yapisi-ve-klasor-hiyerarsisi"><em>Modül Yapısı ve Klasör Hiyerarşisi:</em></a></li>
-<li><a class="reference internal" href="#ekran-listesi"><em>Ekran Listesi:</em></a></li>
-<li><a class="reference internal" href="#navigasyon-diagrami"><em>Navigasyon Diagramı:</em></a></li>
-<li><a class="reference internal" href="#cevrimici-yardim-ve-rehberler"><em>Çevrimiçi Yardım ve Rehberler:</em></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#veri-tasarimi"><strong>Veri Tasarımı</strong></a><ul>
-<li><a class="reference internal" href="#gecici-veri"><strong>Geçici Veri</strong></a></li>
-<li><a class="reference internal" href="#kalici-veri"><strong>Kalıcı Veri</strong></a></li>
-<li><a class="reference internal" href="#veri-ve-veri-sablonu-gocu"><em>Veri ve Veri Şablonu Göçü:</em></a></li>
-<li><a class="reference internal" href="#varliklar-entities"><strong>Varlıklar (Entities)</strong></a></li>
-<li><a class="reference internal" href="#dis-veri-kaynaklari"><strong>Dış Veri Kaynakları</strong></a></li>
-<li><a class="reference internal" href="#ldap"><em>LDAP:</em></a></li>
-<li><a class="reference internal" href="#kbs"><em>KBS:</em></a></li>
-<li><a class="reference internal" href="#hitap"><em>HİTAP:</em></a></li>
-<li><a class="reference internal" href="#asal"><em>ASAL:</em></a></li>
-<li><a class="reference internal" href="#osym"><em>ÖSYM:</em></a></li>
-<li><a class="reference internal" href="#yoksis"><em>YÖKSİS:</em></a></li>
-<li><a class="reference internal" href="#aks"><em>AKS:</em></a></li>
-<li><a class="reference internal" href="#mernis"><em>MERNİS:</em></a></li>
-<li><a class="reference internal" href="#bankalar"><em>BANKALAR:</em></a></li>
-<li><a class="reference internal" href="#sms"><em>SMS:</em></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rol-ve-yetki-kontrolu-acl-access-control-list"><strong>Rol ve Yetki Kontrolü (ACL - Access Control List)</strong></a><ul>
-<li><a class="reference internal" href="#rol-tabanli-yetkilendirme-rol-based-authorization-control"><strong>Rol Tabanlı Yetkilendirme (Rol Based Authorization Control)</strong></a></li>
-<li><a class="reference internal" href="#oznitelik-tabanli-yetkilendirme-attribute-based-authorization-control"><strong>Öznitelik Tabanlı Yetkilendirme (Attribute Based Authorization Control)</strong></a></li>
-<li><a class="reference internal" href="#satir-ve-hucre-seviyesinde-erisim-kontrolu"><strong>Satır ve Hücre Seviyesinde Erişim Kontrolü</strong></a></li>
-<li><a class="reference internal" href="#iki-seviye-yetkilendirme"><strong>İki Seviye Yetkilendirme</strong></a></li>
-<li><a class="reference internal" href="#yetki-devri"><strong>Yetki Devri</strong></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#test-dongusu"><strong>Test Döngüsü</strong></a></li>
-<li><a class="reference internal" href="#yerellestirme"><strong>Yerelleştirme</strong></a></li>
-<li><a class="reference internal" href="#guvenlik-olcumleri"><strong>Güvenlik Ölçümleri</strong></a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="wiki.html">Documentation overview</a><ul>
-  <li><a href="developers.html">Geliştiriciler</a><ul>
-      <li>Previous: <a href="git_workflow.html" title="önceki bölüm">Git İş-Akışı</a></li>
-      <li>Next: <a href="yazilim_gelistirme_ve_test_dongusu.html" title="sonraki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>Bu Sayfa</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/yazilim_tasarim_analizi_belgesi.txt"
-            rel="nofollow">Kaynağı Göster</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Hızlı Arama</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015 Zetaops.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
-      
-      |
-      <a href="_sources/yazilim_tasarim_analizi_belgesi.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="git_workflow.html" title="Git İş-Akışı"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+      </ul>
     </div>
+<div class="container text-center">
+            <p><b>Copyright © ULAKBUS Bütünleşik Üniversite Sistemi 2015</b></p>
+        </div>
 
-    
-
-    
   </body>
 </html>
