@@ -1,0 +1,60 @@
+body {
+	font-family:'robotoregular';
+	background-image: url(../dots.png);
+}
+
+a {
+	color:#A90F11;
+	-webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+a:hover {
+	color:#960E10;
+}
+
+.ulakbus-navbar {
+	background-color:#A90F11;
+}
+
+a.logo img {
+	width:210px;
+}
+
+ul.main-nav li a {
+	color:#fff;
+	font-family:'robotobold';
+}
+
+ul.main-nav li a:hover {
+	background-color:#960E10;
+}
+
+.banner {
+	margin-top:86px;
+	border-radius:0 !important;
+	background-color: rgba(0,0,0,0.03);
+}
+
+footer {
+	height:40px;
+	background-color:#960E10;
+	margin-top:15px;
+}
+
+footer p {
+	margin:0;
+	padding-top:10px;
+	color:#fff;
+}
+
+
+@media (min-width:768px) {
+	ul.main-nav li a {
+		height:85px;
+		line-height:55px;
+	}
+}
