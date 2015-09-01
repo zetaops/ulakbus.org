@@ -52,8 +52,15 @@ footer p {
 	text-align:center;
 }
 
+.navbar-toggle {
+	margin-top:26px;	
+}
+
 .navbar-toggle .icon-bar {
-	background-color:#fff;	
+	background-color:#fff;
+	width: 32px;
+    height: 3px;
+    border-radius: 3px;	
 }
 
 
