@@ -31,9 +31,6 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
-    <link rel="next" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
-    <link rel="prev" title="Git İş-Akışı" href="git_workflow.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -93,7 +90,7 @@
                         <a href="/topluluk.html" style="color:white;">Topluluk</a>
                     </li>
                      <li>
-                        <a href="/takip.html" style="color:white;">Ne Oluyor ?</a>
+                        <a href="/ne_oluyor.html" style="color:white;">Ne Oluyor ?</a>
                     </li>
                 </ul>
             </div>
@@ -120,14 +117,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
-        <li class="right" >
-          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
-             accesskey="N">sonraki</a> |</li>
-        <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
-             accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -139,7 +129,7 @@
   <ul>
 <li><a class="reference internal" href="#">Yazılım Tasarım Analizi Belgesi</a><ul>
 <li><a class="reference internal" href="#sistem-mimarisi"><strong>Sistem Mimarisi</strong></a><ul>
-<li><a class="reference internal" href="#is-akisi-workflow-tabanli-uyguluma"><em>İş Akışı (Workflow) Tabanlı Uyguluma</em></a></li>
+<li><a class="reference internal" href="#is-akisi-workflow-tabanli-uygulama"><em>İş Akışı (Workflow) Tabanlı Uygulama</em></a></li>
 <li><a class="reference internal" href="#kurumsal-veri-yolu-kullanimi"><em>Kurumsal Veri Yolu Kullanımı</em></a></li>
 <li><a class="reference internal" href="#sunucu-ve-servis-yerlesimi"><strong>Sunucu ve Servis Yerleşimi</strong></a></li>
 <li><a class="reference internal" href="#vm-konfigurasyonlari"><em>VM Konfigürasyonları:</em></a></li>
@@ -228,12 +218,6 @@
 </li>
 </ul>
 
-  <h4>Önceki konu</h4>
-  <p class="topless"><a href="git_workflow.html"
-                        title="önceki bölüm">Git İş-Akışı</a></p>
-  <h4>Sonraki konu</h4>
-  <p class="topless"><a href="yazilim_gelistirme_ve_test_dongusu.html"
-                        title="sonraki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -266,9 +250,9 @@
 <h1>Yazılım Tasarım Analizi Belgesi<a class="headerlink" href="#yazilim-tasarim-analizi-belgesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <div class="section" id="sistem-mimarisi">
 <h2><strong>Sistem Mimarisi</strong><a class="headerlink" href="#sistem-mimarisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="section" id="is-akisi-workflow-tabanli-uyguluma">
-<h3><em>İş Akışı (Workflow) Tabanlı Uyguluma</em><a class="headerlink" href="#is-akisi-workflow-tabanli-uyguluma" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>İş Akışı (Workflow) Tabanlı Uygulumalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.</p>
+<div class="section" id="is-akisi-workflow-tabanli-uygulama">
+<h3><em>İş Akışı (Workflow) Tabanlı Uygulama</em><a class="headerlink" href="#is-akisi-workflow-tabanli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.</p>
 <a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" /></a>
 <p><em>Örnek İş Akış Şeması</em></p>
 <p>İş süreçleri yönetimi için, BPMN2 kural setine uyan Workflow Management yapısı seçilmiştir.   Python dünyasında WorkFlow Management ve BPMN desteği bulunan SpiffWorkFlow kütüphanesi geliştirilmeye açık en uygun aday olduğu için seçilmiştir.</p>
@@ -1077,14 +1061,7 @@ SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?</
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
-        <li class="right" >
-          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
-             >sonraki</a> |</li>
-        <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
-             >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
       </ul>
     </div>
 <div class="container text-center">

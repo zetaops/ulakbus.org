@@ -32,7 +32,7 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
-    <link rel="next" title="Yazılım Tasarım Analizi Belgesi" href="yazilim_tasarim_analizi_belgesi.html" />
+    <link rel="next" title="Sistem Operatörleri" href="devops.html" />
     <link rel="prev" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -93,7 +93,7 @@
                         <a href="/topluluk.html" style="color:white;">Topluluk</a>
                     </li>
                      <li>
-                        <a href="/takip.html" style="color:white;">Ne Oluyor ?</a>
+                        <a href="/ne_oluyor.html" style="color:white;">Ne Oluyor ?</a>
                     </li>
                 </ul>
             </div>
@@ -121,7 +121,7 @@
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="yazilim_tasarim_analizi_belgesi.html" title="Yazılım Tasarım Analizi Belgesi"
+          <a href="devops.html" title="Sistem Operatörleri"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
@@ -139,7 +139,7 @@
   <ul>
 <li><a class="reference internal" href="#">Git İş-Akışı</a><ul>
 <li><a class="reference internal" href="#git-kurulumu"><strong>Git kurulumu</strong></a></li>
-<li><a class="reference internal" href="#brancler"><strong>Brancler</strong></a></li>
+<li><a class="reference internal" href="#branchler"><strong>Branchler</strong></a></li>
 <li><a class="reference internal" href="#getting-code"><strong>Getting code</strong></a></li>
 <li><a class="reference internal" href="#basic-day-to-day-flow"><strong>Basic day-to-day flow</strong></a></li>
 <li><a class="reference internal" href="#work-on-feature-bug-fix"><strong>Work on feature/bug fix</strong></a></li>
@@ -157,8 +157,8 @@
   <p class="topless"><a href="ulakbus_user_interface.html"
                         title="önceki bölüm">Geliştirme Ortamı Kurulumu(Frontend)</a></p>
   <h4>Sonraki konu</h4>
-  <p class="topless"><a href="yazilim_tasarim_analizi_belgesi.html"
-                        title="sonraki bölüm">Yazılım Tasarım Analizi Belgesi</a></p>
+  <p class="topless"><a href="devops.html"
+                        title="sonraki bölüm">Sistem Operatörleri</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -189,15 +189,15 @@
             
   <div class="section" id="git-is-akisi">
 <h1>Git İş-Akışı<a class="headerlink" href="#git-is-akisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<p><strong>HIÇ BIR ZAMAN MASTER&#8217;A PUSH ETMEYINIZ, SUREKLI BRACHLER KULLANINIZ.</strong></p>
+<p><strong>HİÇBİR ZAMAN MASTER&#8217;A PUSH ETMEYİNİZ, SÜREKLİ BRANCHLER KULLANINIZ.</strong></p>
 <ul class="simple">
 <li>Lütfen TÜM dökümanı okuyunuz.</li>
 <li>Bağımlılıklarınızı sürekli iki kere kontrol ediniz.</li>
 <li>PATH değişkenlerini sürekli iki kere kontrol ediniz.</li>
-<li>Asla repoya büyük commitlerde bulunmayınız. Commitler için sürekli küçük iterasyonlarda bulununuz. Yoksa KAFAYI YERSİNİZ:</li>
+<li>Depoya büyük değişiklikler göndermeyiniz.Küçük değişiklikler yaptıkça depoya gönderiniz.</li>
 <li>requirements.txt dosyasına yeni kütüphaneleri eklemeyi unutmayınız.</li>
-<li>Asla MASTER brach&#8217;i rebase etmeyi unutmayınız.</li>
-<li>Gelişim raporları düzenli olarak her gün Redmine&#8217;e yüklenmeli.</li>
+<li>Asla MASTER branch&#8217;i rebase etmeyi unutmayınız.</li>
+<li>Gelişim raporları düzenli olarak her gün Redmine&#8217;a yüklenmeli.</li>
 </ul>
 <div class="section" id="git-kurulumu">
 <h2><strong>Git kurulumu</strong><a class="headerlink" href="#git-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -206,29 +206,29 @@
 <li>Mac OS X -&gt;    bakınız <a class="reference external" href="http://help.github.com/mac-git-installation/">http://help.github.com/mac-git-installation/</a></li>
 <li>Windows -&gt;     bakınız <a class="reference external" href="http://help.github.com/win-git-installation/">http://help.github.com/win-git-installation/</a></li>
 </ul>
-<p>Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresini değiştirmeyi unutmayınız.):</p>
+<p>Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresini değiştirmeyi unutmayınız.)</p>
 <div class="highlight-python"><div class="highlight"><pre>git config --global user.name &quot;Emo Coder&quot;
 git config --global user.email &quot;emo@zetaops.io&quot;
 </pre></div>
 </div>
 <p><strong>Git Temelleri</strong></p>
-<p>Git çok güçlü bir sistemdir. Önemsemek gerekmektedir ama hiç bir değişiklik asla kaybolmaz (eğer daima commitliyorsanız) bu yüzden kendinizi özgür hissedebilir özelliklerini rahatlıkla deneyebilirsiniz.Git&#8217;i iyi anlamak için, git&#8217;in arkasında yatan kavramları okumak iyi bir fikirdir GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.</p>
-<p>Genel olarak, git biraz ayrintilidir ve basit islemleri gerceklestirmek icin bir cok komut gereklidir.Korkmayin, git&#8217;i anladiktan sonra, herseyin ne kadar iyi dusunuldugunu ve nedenlerinin oldugunu goruceksiniz.</p>
-<p>Svn hakkında tecrübe kazanmak istiyorsanız, bu bağlantıyı okuyabilirsiniz. <a class="reference external" href="http://git-scm.com/course/svn.html">http://git-scm.com/course/svn.html</a>
-Eğer programcı değilseniz, okuyunuz <a class="reference external" href="http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/">http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/</a></p>
-<p>Boş zamanınızda git in arkasında yatan temel kavramları anlamak için <a class="reference external" href="http://www.eecs.harvard.edu/~cduan/technical/git/">http://www.eecs.harvard.edu/~cduan/technical/git/</a> bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.</p>
+<p>Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiçbir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git&#8217;i iyi anlamak için, git&#8217;in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.</p>
+<p>Genel olarak Git biraz ayrıntılıdır ve basit işlemleri gerçekleştirmek için bir çok komut gereklidir.Korkmayın! Git&#8217;i anladıktan sonra, her şeyin ne kadar iyi düşünüldüğünü ve nedenlerinin olduğunu göreceksiniz.</p>
+<p>Svn hakkında tecrübe kazanmak istiyorsanız bu bağlantıyı okuyabilirsiniz: <a class="reference external" href="http://git-scm.com/course/svn.html">http://git-scm.com/course/svn.html</a></p>
+<p>Eğer programcı değilseniz okuyunuz: <a class="reference external" href="http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/">http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/</a></p>
+<p>Boş zamanınızda Git&#8217;in arkasında yatan temel kavramları anlamak için <a class="reference external" href="http://www.eecs.harvard.edu/~cduan/technical/git/">http://www.eecs.harvard.edu/~cduan/technical/git/</a> bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.</p>
 </div>
-<div class="section" id="brancler">
-<h2><strong>Brancler</strong><a class="headerlink" href="#brancler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="branchler">
+<h2><strong>Branchler</strong><a class="headerlink" href="#branchler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <ul class="simple">
-<li>Master Branch sadece görüntülenen ve test edilen kodları içermektedir.</li>
+<li>Master branch sadece görüntülenen ve test edilen kodları içermektedir.</li>
 <li>Her özellik ve yazılım yatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.</li>
 <li>Yeni branchler son master branch temel alınarak başlatılmalıdır.</li>
-<li>Her branch master branch&#8217;i ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.</li>
-<li>Her branch&#8217;i master branch&#8217;i ile merge etmeden önce en son master branch temel alınmalıdır.</li>
+<li>Her branch, master branch ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.</li>
+<li>Her branch, master branch ile merge edilmeden önce en son master branch temel alınmalıdır.</li>
 <li>Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine issue adı ve kısa açıklaması issue adından gelmelidir.</li>
 </ul>
-<p>Tüm branch&#8217;leri görüntülemek için:</p>
+<p>Tüm branchleri görüntülemek için:</p>
 <div class="highlight-python"><div class="highlight"><pre>git branch -a
 </pre></div>
 </div>
@@ -252,7 +252,7 @@ gitk --all                      # yes, it’s not a typo - it’s a tool called 
 tig                         #you can also use tig from console. apt-get install tig, you can use SourceTree for mac if you are Mac coder
 </pre></div>
 </div>
-<p>yeni branch yaratmak için:</p>
+<p>Yeni branch yaratmak için:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd path/to/project
 git checkout master
 git pull --rebase
@@ -274,7 +274,7 @@ git rebase master
 <div class="highlight-python"><div class="highlight"><pre>git checkout feature/some-feature
 </pre></div>
 </div>
-<p><em>Sourse File&#8217;ınızı düzenleyiniz ve ardından commitleyiniz.</em></p>
+<p><em>Source File&#8217;ınızı düzenleyiniz ve ardından commitleyiniz.</em></p>
 <div class="highlight-python"><div class="highlight"><pre>git add path/to/changed/file1       # you need to mark each file you want to commit
 git add path/to/another-file2       # with this command
 
@@ -284,7 +284,7 @@ git commit -m &quot;commit message&quot;      # shortcut for one line commit mes
 </div>
 <p>Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlayınız ve servise push ediniz.</p>
 <div class="highlight-python"><div class="highlight"><pre>git pull origin feature/some-feature        # make sure that push will be successful
-                                                            # by ensuring that local changes
+                                        # by ensuring that local changes
                                         # are applicable on top of the
                                         # latest code; may result in conflicts
 
@@ -301,7 +301,7 @@ git pull --rebase origin master             # ensuring that your local master is
 
 git checkout feature/some-feature
 git rebase master                                   # it ensure that following merge will be                                                                # successful AND that all merge conflicts are
-                                        # handled in feature branch, not master
+                                       # handled in feature branch, not master
 git checkout master
 git merge --no-ff feature/some-feature              # use of --no-ff will ensure that merge
                                             # is visible in history graph as a
@@ -310,7 +310,7 @@ git merge --no-ff feature/some-feature              # use of --no-ff will ensure
 git push origin master                          # push changes to origin master( on the server )
 </pre></div>
 </div>
-<p>EĞER NE YAPTIGINIZIN FARKINDA DEGILSENIZ, BU KODLARDAN UZAK DURMANIZI ONERIRIZ.</p>
+<p>EĞER NE YAPTIĞINIZIN FARKINDA DEĞİLSENİZ, BU KODLARDAN UZAK DURMANIZI ÖNERİRİZ.</p>
 <div class="highlight-python"><div class="highlight"><pre>git branch -d feature/some-feature                  # delete local feature branch
 git branch -r -d feature/some-feature               # delete remote feature branch ( if needed, be aware to do this )
 </pre></div>
@@ -334,24 +334,24 @@ git branch -r -d feature/some-feature               # delete remote feature bran
 <h2><strong>Magit</strong><a class="headerlink" href="#magit" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Eğer emacs kullanıyorsanız, Magit kullanınız.</p>
 <p><a class="reference external" href="http://philjackson.github.com/magit/">http://philjackson.github.com/magit/</a></p>
-<p>Not: Magit sizin ihtiyacınızın olduğu kadar fonksiyoneldir, ama bazen Git&#8217;i komut satırından kullanmak akıllıca! (örn <em>git merge &#8211;no-ff</em> komutunu magitte kullanmak mümkün değildir.)</p>
-<p>okuyunuz:
-<a class="reference external" href="http://philjackson.github.com/magit/magit.html">http://philjackson.github.com/magit/magit.html</a></p>
-<p>Eğer hala öğrenmek istiyorsanuzı
-<a class="reference external" href="http://daemianmack.com/magit-cheatsheet.html">http://daemianmack.com/magit-cheatsheet.html</a></p>
+<p>Not: Magit sizin ihtiyacınızın olduğu kadar fonksiyoneldir, ama bazen Git&#8217;i komut satırından kullanmak akıllıcadır! (örn <em>git merge &#8211;no-ff</em> komutunu magitte kullanmak mümkün değildir.)</p>
+<p>Okuyunuz:</p>
+<p><a class="reference external" href="http://philjackson.github.com/magit/magit.html">http://philjackson.github.com/magit/magit.html</a></p>
+<p>Eğer hala öğrenmek istiyorsanız:</p>
+<p><a class="reference external" href="http://daemianmack.com/magit-cheatsheet.html">http://daemianmack.com/magit-cheatsheet.html</a></p>
 </div>
 <div class="section" id="code-style">
 <h2><strong>Code style</strong><a class="headerlink" href="#code-style" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Gereksiz boşluklara dikkat ediniz.
-Boşlukları ve tabları karıştırmayınız.
-80 karakterden daha uzun satılar kullanmayınız.
-Python kodları için hrfiyen PEP8 kurallarını takip edin ve uygulayın.</p>
+<p>Gereksiz boşluklara dikkat ediniz.</p>
+<p>Boşlukları ve tabları karıştırmayınız.</p>
+<p>80 karakterden daha uzun satırlar kullanmayınız.</p>
+<p>Python kodları için harfiyen PEP8 kurallarını takip edin ve uygulayın.</p>
 </div>
 <div class="section" id="writing-commit-messages">
 <h2><strong>Writing Commit Messages</strong><a class="headerlink" href="#writing-commit-messages" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Commitlerinizi böyle yapılandırınız:
-Bir satırın özeti (50 karakterden az)
-Uzun açıklamalar (72 karakterde sınırla)</p>
+<p>Commitlerinizi böyle yapılandırınız:</p>
+<p>Bir satırın özeti (50 karakterden az)</p>
+<p>Uzun açıklamalar (72 karakterde sınırla)</p>
 </div>
 <div class="section" id="summary">
 <h2><strong>Summary</strong><a class="headerlink" href="#summary" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -360,7 +360,7 @@ Uzun açıklamalar (72 karakterde sınırla)</p>
 </li>
 <li><p class="first">Neler değişti.</p>
 </li>
-<li><p class="first">Zorunlu Şimdiki zaman (fix, add, change)</p>
+<li><p class="first">Zorunlu şimdiki zaman (fix, add, change)</p>
 <blockquote>
 <div><ul class="simple">
 <li>Fix bug 123</li>
@@ -388,7 +388,7 @@ Uzun açıklamalar (72 karakterde sınırla)</p>
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="yazilim_tasarim_analizi_belgesi.html" title="Yazılım Tasarım Analizi Belgesi"
+          <a href="devops.html" title="Sistem Operatörleri"
              >sonraki</a> |</li>
         <li class="right" >
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"

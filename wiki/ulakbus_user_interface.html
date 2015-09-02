@@ -93,7 +93,7 @@
                         <a href="/topluluk.html" style="color:white;">Topluluk</a>
                     </li>
                      <li>
-                        <a href="/takip.html" style="color:white;">Ne Oluyor ?</a>
+                        <a href="/ne_oluyor.html" style="color:white;">Ne Oluyor ?</a>
                     </li>
                 </ul>
             </div>
@@ -219,20 +219,20 @@
 </div></blockquote>
 </li>
 </ol>
-<p><em>Uygulamayı sunmak için başka http server kullanabilirsiniz</em></p>
+<p><em>Uygulamayı sunmak için başka http server kullanabilirsiniz.</em></p>
 </div>
 <div class="section" id="development-cycle">
 <h2><strong>Development Cycle</strong><a class="headerlink" href="#development-cycle" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Şuan gerekli repo&#8217;ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.</p>
+<p>Şu an gerekli repo&#8217;ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.</p>
 <p>Extreme programming techniques kullanımları için, <a class="reference external" href="http://www.extremeprogramming.org/introduction.html">http://www.extremeprogramming.org/introduction.html</a> sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
 Using extreme programming techniques, we demand you to follow this cycle of development showing on the first page of xp website: <a class="reference external" href="http://www.extremeprogramming.org/introduction.html">http://www.extremeprogramming.org/introduction.html</a></p>
 <a class="reference internal image-reference" href="_images/planning_feedback_loops.png"><img alt="_images/planning_feedback_loops.png" class="align-center" src="_images/planning_feedback_loops.png" /></a>
 <p>Kodlarken aşağıdaki adımları izleyiniz.</p>
 <ul class="simple">
-<li>Yeni bir tane bracnh oluşturun. Örnek olarak(e.g: search_func)</li>
+<li>Yeni bir tane branch oluşturun. Örnek olarak(e.g: search_func)</li>
 <li><code class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;branch&gt;</span></code></li>
 <li><code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code></li>
-<li>verilen gorev icin bir branch olusturup master branch’i rebase ettikten sonra, kodunuzu yazabilirsiniz.</li>
+<li>Verilen görev için bir branch oluşturup master branch’i rebase ettikten sonra, kodunuzu yazabilirsiniz.</li>
 <li>Kodunuzu denemek için testler yazınız.</li>
 <li>Testlerinizi çalıştırınız.</li>
 <li>Push yapmadan önce tekrardan master branch&#8217;i rebase edin <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code></li>
@@ -245,7 +245,7 @@ Using extreme programming techniques, we demand you to follow this cycle of deve
 <div class="highlight-python"><div class="highlight"><pre>npm test
 </pre></div>
 </div>
-<p>bu komut testleri bulacak ve sonucu ekrana yazdıracak.</p>
+<p>Bu komut testleri bulacak ve sonucu ekrana yazdıracak.</p>
 <p>e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor kullanınız. Aşağıdaki komutu çalıştırabilirsiniz.</p>
 <div class="highlight-python"><div class="highlight"><pre>protractor e2e-tests/protractor.conf.js
 </pre></div>
@@ -256,18 +256,18 @@ Using extreme programming techniques, we demand you to follow this cycle of deve
 <div class="section" id="git">
 <h3><strong>Git:</strong><a class="headerlink" href="#git" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <ul class="simple">
-<li>Her zaman brachler ile çalışır.</li>
-<li><strong>Hiç bir zaman MASTER BRANCH&#8217; e karışmayınız(müdahele etmeyiniz)!!</strong></li>
+<li>Her zaman branchler ile çalışır.</li>
+<li><strong>Hiçbir zaman MASTER BRANCH&#8217;e karışmayınız(müdahele etmeyiniz)!!</strong></li>
 <li>Küçük değişiklikleri commitleyiniz.</li>
 </ul>
 </div>
 <div class="section" id="kod">
 <h3><strong>Kod:</strong><a class="headerlink" href="#kod" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <ul class="simple">
-<li>DRY - don&#8217;t repeat yourself(kendini tekrarlama) Bunu okuyunuz. <a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">https://en.wikipedia.org/wiki/Don%27t_repeat_yourself</a></li>
+<li>DRY - don&#8217;t repeat yourself(kendini tekrarlama)!!! Bunu okuyunuz. <a class="reference external" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">https://en.wikipedia.org/wiki/Don%27t_repeat_yourself</a></li>
 <li>Kodunuzu yazarken açıklamalarda bulununuz.</li>
 <li>Kodunuz düzenli ve açık olsun.</li>
-<li>Değişken isimleri nesneleri açıklayıcı şekilde olmalıdır.</li>
+<li>Değişken isimleri ve nesneleri açıklayıcı şekilde olmalıdır.</li>
 </ul>
 </div>
 <div class="section" id="test">

@@ -27,13 +27,13 @@ Geliştirme Ortamı Kurulumu(Frontend)
 
     ``npm start``
 
-*Uygulamayı sunmak için başka http server kullanabilirsiniz*
+*Uygulamayı sunmak için başka http server kullanabilirsiniz.*
 
 =====================
 **Development Cycle**
 =====================
 
-Şuan gerekli repo'ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.
+Şu an gerekli repo'ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.
 
 
 Extreme programming techniques kullanımları için, http://www.extremeprogramming.org/introduction.html sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
@@ -47,13 +47,13 @@ Using extreme programming techniques, we demand you to follow this cycle of deve
 
 Kodlarken aşağıdaki adımları izleyiniz.
 
-* Yeni bir tane bracnh oluşturun. Örnek olarak(e.g: search_func)
+* Yeni bir tane branch oluşturun. Örnek olarak(e.g: search_func)
 
 * ``git checkout <branch>``
 
 * ``git pull --rebase``
 
-* verilen gorev icin bir branch olusturup master branch’i rebase ettikten sonra, kodunuzu yazabilirsiniz.
+* Verilen görev için bir branch oluşturup master branch’i rebase ettikten sonra, kodunuzu yazabilirsiniz.
 
 * Kodunuzu denemek için testler yazınız.
 
@@ -73,7 +73,7 @@ Kodlarken aşağıdaki adımları izleyiniz.
 
     npm test
 
-bu komut testleri bulacak ve sonucu ekrana yazdıracak.
+Bu komut testleri bulacak ve sonucu ekrana yazdıracak.
 
 e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor kullanınız. Aşağıdaki komutu çalıştırabilirsiniz.
 
@@ -89,23 +89,23 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 **Git:**
 --------
 
-* Her zaman brachler ile çalışır.
+* Her zaman branchler ile çalışır.
 
-* **Hiç bir zaman MASTER BRANCH' e karışmayınız(müdahele etmeyiniz)!!**
+* **Hiçbir zaman MASTER BRANCH'e karışmayınız(müdahele etmeyiniz)!!**
 
 * Küçük değişiklikleri commitleyiniz.
 
----------
+--------
 **Kod:**
----------
+--------
 
-* DRY - don't repeat yourself(kendini tekrarlama) Bunu okuyunuz. https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+* DRY - don't repeat yourself(kendini tekrarlama)!!! Bunu okuyunuz. https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
 * Kodunuzu yazarken açıklamalarda bulununuz.
 
 * Kodunuz düzenli ve açık olsun.
 
-* Değişken isimleri nesneleri açıklayıcı şekilde olmalıdır.
+* Değişken isimleri ve nesneleri açıklayıcı şekilde olmalıdır.
 
 ---------
 **Test:**

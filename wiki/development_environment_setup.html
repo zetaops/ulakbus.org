@@ -93,7 +93,7 @@
                         <a href="/topluluk.html" style="color:white;">Topluluk</a>
                     </li>
                      <li>
-                        <a href="/takip.html" style="color:white;">Ne Oluyor ?</a>
+                        <a href="/ne_oluyor.html" style="color:white;">Ne Oluyor ?</a>
                     </li>
                 </ul>
             </div>
@@ -180,6 +180,7 @@
             
   <div class="section" id="gelistirme-ortami-kurulumu-backend">
 <h1>Geliştirme Ortamı Kurulumu(Backend)<a class="headerlink" href="#gelistirme-ortami-kurulumu-backend" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalıdır. Biz, işletim sistemi olarak Ubuntu 14.04 kullanıyoruz.</p>
 <div class="section" id="vagrant">
 <h2><strong>Vagrant</strong><a class="headerlink" href="#vagrant" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Geliştiriciler için hazırladığımız vagrant box&#8217;ı kullanarak hızlıca kurulum yapabilirsiniz. Ulakbus&#8217;e ait tüm bileşenler box içinde bulunmaktadır. Ortamı kurabilmek için aşağıdaki komutları kullanabilirsiniz.</p>
@@ -250,7 +251,7 @@ service riak restart
 apt-get install redis-server
 </pre></div>
 </div>
-<p>Zato için tüm gerekli kurulumları gerçekleşiriniz.</p>
+<p>Zato için tüm gerekli kurulumları gerçekleştiriniz.</p>
 <div class="highlight-python"><div class="highlight"><pre>apt-get install apt-transport-https
 curl -s https://zato.io/repo/zato-0CBD7F72.pgp.asc | sudo apt-key add -
 apt-add-repository https://zato.io/repo/stable/2.0/ubuntu
@@ -268,7 +269,7 @@ mkdir ~/ulakbus
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">~/ulakbus</span></code> klasörünün altına <em>pwzato.config</em> adında bir dosya oluşturunuz ve aşağıdaki script&#8217;i dosyanın içine yazınız.</p>
-<p>Bu script&#8217;i kullanmak için de <code class="docutils literal"><span class="pre">zato</span> <span class="pre">from-config</span> <span class="pre">~/ulakbus/pwzato.config</span></code> komutunuz çalıştırıyor olmalısınız.</p>
+<p>Bu script&#8217;i kullanmak için de <code class="docutils literal"><span class="pre">zato</span> <span class="pre">from-config</span> <span class="pre">~/ulakbus/pwzato.config</span></code> komutunu çalıştırıyor olmalısınız.</p>
 <div class="highlight-python"><div class="highlight"><pre>command=update_password
 path=/opt/zato/ulakbus/web-admin
 store_config=True
@@ -276,7 +277,7 @@ username=admin
 password=ulakbus
 </pre></div>
 </div>
-<p>Zato Servislerini başlatmak için tekrardan <em>root</em> kullanıcısına geçiniz.</p>
+<p>Zato servislerini başlatmak için tekrardan <em>root</em> kullanıcısına geçiniz.</p>
 <p>Zato bileşeni için sembolik bağlantı oluşturunuz.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">load</span><span class="o">-</span><span class="n">balancer</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">load</span><span class="o">-</span><span class="n">balancer</span>
 <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">server1</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">server1</span>
@@ -284,7 +285,7 @@ password=ulakbus
 <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">admin</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">web</span><span class="o">-</span><span class="n">admin</span>
 </pre></div>
 </div>
-<p>Ve Zato Servisini başlatınız.</p>
+<p>Ve Zato servisini başlatınız.</p>
 <div class="highlight-python"><div class="highlight"><pre>service zato start
 </pre></div>
 </div>
@@ -292,7 +293,7 @@ password=ulakbus
 <div class="highlight-python"><div class="highlight"><pre>apt-get install virtualenvwrapper
 </pre></div>
 </div>
-<p><em>app</em> adında bir dizin oluşturunuz ve <em>ulakbus</em> kullanıcısını <em>app</em> klasörü için ekleyin.</p>
+<p><em>app</em> adında bir dizin oluşturunuz ve <em>ulakbus</em> kullanıcısını <em>app</em> klasörü içine ekleyin.</p>
 <div class="highlight-python"><div class="highlight"><pre>mkdir /app
 /usr/sbin/useradd --home-dir /app --shell /bin/bash --comment &#39;ulakbus operations&#39; ulakbus
 </pre></div>
@@ -303,12 +304,12 @@ su ulakbus
 cd ~
 </pre></div>
 </div>
-<p>Virtual Environment yaratınız ve actif ediniz.</p>
+<p>Virtual Environment yaratınız ve aktif ediniz.</p>
 <div class="highlight-python"><div class="highlight"><pre>virtualenv --no-site-packages env
 source env/bin/activate
 </pre></div>
 </div>
-<p>pip&#8217; yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.</p>
+<p>pip yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install --upgrade pip
 pip install ipython
 </pre></div>
