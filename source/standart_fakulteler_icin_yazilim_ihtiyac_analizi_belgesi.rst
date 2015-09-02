@@ -685,9 +685,9 @@ Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere
 
     - Üst yarıyıl dersleri ile birlikte toplam 45 kredi aşılamaz.
 
-    - Üst yarıyıl dersleri 45 kredinin %20 sini aşamaz.
+    - Üst yarıyıl dersleri 45 kredinin % 20'sini aşamaz.
 
-     - Genel Not ortalaması >= 3.00 olmalıdır.
+     - Genel not ortalaması >= 3.00 olmalıdır.
 
     - Danışmanın olumlu görüşü şarttır.
 
@@ -695,15 +695,15 @@ Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere
 
 * Muaf olunan dersler seçilemezler.
 
-Danışman Onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, Danışman Onay Süreci içinde Danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
+Danışman onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, danışman onay süreci içinde danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
 
-Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik program da bölüm kurulu tarafından yapılmış olmalıdır.
+Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik programda Bölüm Kurulu tarafından yapılmış olmalıdır.
 
 -----------------------------------------------
-**Ders Ekleme Çıkarma ve Mazeretli Ders Kaydı**
+**Ders Ekleme-Çıkarma ve Mazeretli Ders Kaydı**
 -----------------------------------------------
 
-Normal ders kaydı sürecinde ders kaydı yapmayan öğrencilerden mazereti olanlar bu süre içerisinde, yönetim kurulu onayıyla ders seçimini yapabilirler. Seçilen dersler dilekçe ile belirtilir. Fakülte Öğrenci işleri gerekli dersleri ekler ve çıkarır. Bu işlem danışman onaylı gerçekleşir.
+Normal ders kaydı sürecinde ders kaydı yapmayan öğrencilerden mazereti olanlar bu süre içerisinde, yönetim kurulu onayıyla ders seçimini yapabilirler. Seçilen dersler dilekçe ile belirtilir. Fakülte öğrenci işleri gerekli dersleri ekler ve çıkarır. Bu işlem danışman onaylı gerçekleşir.
 
 Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. Bu değişiklikler önceki paragraftaki süreçle aynı şekilde yapılır.
 
@@ -717,7 +717,7 @@ Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. 
 **Program Değişikliği**
 -----------------------
 
-Program değişiklikleri, Bölüm Kurulunun önerisi üzerine Yönetim Kurulu tarafından karara bağlanarak en geç Mayıs ayı içinde REKTÖRlüğe sunulur. SENATO onayı ile kesinleşir.
+Program değişiklikleri, Bölüm Kurulu'nun önerisi üzerine Yönetim Kurulu tarafından karara bağlanarak en geç Mayıs ayı içinde REKTÖRLÜĞE sunulur. SENATO onayı ile kesinleşir.
 
 Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrencilerin derslerini ve ders bağımlılıklarını etkileyebilir. Kaldırılan veya yeni eklenen dersler sebebiyle mevcut öğrenciler için belirli dersler korunabilir. Bu sebeple program değişiklikleri versiyonlanmalı ve ilgili versiyona kayıt yaptıran öğrenciler için ders zorunlulukları ve bağımlılıklılar saklanmalıdır.
 
@@ -727,26 +727,26 @@ Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrenci
 
 Bir dersten muafiyet şartları şu şekildedir:
 
-* Programdan kaldırılan ve yerine herhangi bir ders konulmayan herhangi bir dersten başarısız olan öğrenci, o dersten muaf sayılır.
+* Programdan kaldırılan ve yerine herhangi bir ders konulmayan, herhangi bir dersten başarısız olan öğrenci, o dersten muaf sayılır.
 
-* İlgili dersin muafiyet sınavını başarmış olmak
+* İlgili dersin muafiyet sınavını başarmış olmak.
 
 --------------
 **Not Girişi**
 --------------
 
-Hoca notları kendi ekrarnından girer. Yayınla diyene kadar her türlü değişikliği yapabilir. Yayınla dedikten sonra, öğreciler notları görebilir, hoca artık hiç bir değişiklik yapamaz. Hoca tarafından yapılacak yanlışlık düzeltmeleri hocanın dilekçesi üzerine öğrenci işleri tarafından yapılır.
+Hoca notları kendi ekranından girer. Yayınla diyene kadar her türlü değişikliği yapabilir. Yayınla dedikten sonra, öğreciler notları görebilir, hoca artık hiçbir değişiklik yapamaz. Hoca tarafından yapılacak yanlışlık düzeltmeleri hocanın dilekçesi üzerine öğrenci işleri tarafından yapılır.
 
 Öğrenci itirazları yine dilekçe üzerinden takip edilip, öğrenci işleri tarafından yapılır.
 
-Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemli.
+Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemlidir.
 
 Hoca dilekçesi üzerine tüm notlar yayından kaldırılıp, hocanın değerlendirilmesine açılabilir.
 
-Büt ve final sonuçlarının girilmesi, öğrencinin harf notunun hesaplanmasına neden olur. Eğer büt ve final sonuçlarının değiştirilmesi sonucu harf değişikliklerinden kaynaklanan sonuçlar olursa bunlar elle düzeltilir. Geçme kalma veya şartlı geçme vb..
+Büt ve final sonuçlarının girilmesi, öğrencinin harf notunun hesaplanmasına neden olur. Eğer büt ve final sonuçlarının değiştirilmesi sonucu harf değişikliklerinden kaynaklanan sonuçlar olursa bunlar elle düzeltilir. Geçme-kalma veya şartlı geçme vb..
 
 
-%10 İşlemeleri
+% 10 İşlemleri
 
 * Değişim programları dışındaki
 
@@ -758,7 +758,7 @@ Büt ve final sonuçlarının girilmesi, öğrencinin harf notunun hesaplanması
 
 * Başarısız dersi olmayan
 
-* Bulunduğu dönemde, sınıf ortalamasının en yüksek %10 udur.
+* Bulunduğu dönemde, sınıf ortalamasının en yüksek  % 10'udur.
 
 Bunların **sadece sonraki dönem harçları** birinci dönem gibi hesaplanır.
 
@@ -766,11 +766,11 @@ Bunların **sadece sonraki dönem harçları** birinci dönem gibi hesaplanır.
 **Onur Belgeleri**
 ------------------
 
-* Bulunduğu dönemde ve sınıfta
+* Bulunduğu dönemde ve sınıfta;
 
-* Başarısız dersi olmayan
+* Başarısız dersi olmayan,
 
-* Genel ortalaması >= 3,5 ise yüksek onur
+* Genel ortalaması >= 3,5 ise yüksek onur,
 
 * Genel ortalaması >= 3 olan onur belgesi alır.
 
@@ -786,7 +786,7 @@ Harf değişimlerini etkileyen her operasyonun ardından -sınav notlarının de
 
 * Onur belgesi
 
-* 10% işlemleri
+* % 10 işlemleri
 
 --------------------
 **Mazeret Yönetimi**
@@ -800,16 +800,16 @@ Mazeret öngörülen devam süresine dahil edilmez. Kaybedilen süre eğitim ö�
 **Devamlılık Takibi**
 ---------------------
 
-Devamın denetimi, Dekanlıkça uygun görülen bir yöntemle yapılır. Devamsız öğrencilerin durumu genel sınavlardan önce ilgili öğretim elemanı tarafından ilân edilir.
+Devamın denetimi, dekanlıkça uygun görülen bir yöntemle yapılır. Devamsız öğrencilerin durumu genel sınavlardan önce ilgili öğretim elemanı tarafından ilân edi Hoca sisteme devamsızlıktan kaldı şekinde giriş yapar. Not F olur. Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girmez öğrenci dersin devam şartını yerine getirmiş sayılır. Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte Öğrenci işleri düzeltir.
 
-Devamlılık ders için takip edilir. Hoca tarafından takip yapılır. Hoca sisteme devamsızlıktan kaldı şekinde giriş yapar. Not F olur. Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girmez öğrenci dersin devam şartını yerine getirmiş sayılır. Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte Öğrenci işleri düzeltir.
+Devamlılık ders için takip edilir. Hoca tarafından takip yapılır. Hoca sisteme devamsızlıktan kaldı şeklinde giriş yapar. Not F olur. Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girilmezse öğrenci dersin devam şartını yerine getirmiş sayılır. Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte öğrenci işleri düzeltir.
 
 -------------
 **Mezuniyet**
 -------------
 
 Bir öğrencinin kayıtlı olduğu programdan mezun olabilmesi için o programdaki bütün dersleri almış ve başarmış olması ve mezuniyet ağırlıklı not ortalamasının en az 2.00 olması gerekir.
-Mezuniyet tarihi, o sınav dönemindeki sınavın son günüdü̈r. Tarih elle girebilir.
+Mezuniyet tarihi, o sınav dönemindeki sınavın son günüdü̈r. Tarih elle girilebilir.
 
 Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ödevi/tezi, arazi çalışması ve benzeri sebeplerle mezun olamayan öğrenciler; tek ders sınavında başarılı olduğu veya bu çalışmaların tamamlanarak kabul edildiği tarihte mezun olurlar.
 
@@ -831,9 +831,9 @@ Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ö
 
 * Fakülte Yönetim Kurulu Başkanı
 
-* Ana Bilim Dalı Kurulu Üyesi
+* Anabilim Dalı Kurulu Üyesi
 
-* Ana Bilim Dalı Kurulu Başkanı
+* Anabilim Dalı Kurulu Başkanı
 
 * Fakülte Kurulu Üyesi
 
@@ -851,7 +851,7 @@ Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ö
 **Yetki Devri**
 ---------------
 
-Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli olarak devredebilmelidir. Örneğin; Dekanlar ve tıptaki hocalar not girişi yapmak istemiyorlar. Bu yüzden şifrelerini asistanlarıyla veya öğrenci işleriyle paylaşıyorlar. Bunu engellemek için akademisyen A dersi için Not girme yetkisini X-Y tarihleri arasında asistanına devredebilmelidir.
+Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli olarak devredebilmelidir. Örneğin; dekanlar ve tıptaki hocalar not girişi yapmak istemiyorlar. Bu yüzden şifrelerini asistanlarıyla veya öğrenci işleriyle paylaşıyorlar. Bunu engellemek için akademisyen A dersi için not girme yetkisini X-Y tarihleri arasında asistanına devredebilmelidir.
 
 ============
 **Ekranlar**
@@ -867,7 +867,7 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 
 * Toplu sınav tarih girişi
 
-* Toplu Not durum belgesi
+* Toplu not durum belgesi
 
 * Mezuniyet ekranı
 
@@ -879,7 +879,7 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 
 * Genel durum ve işleyiş raporu (Fakülte faaliyet raporu)
 
-* Öğrenci Sınıf Listeleri
+* Öğrenci sınıf listeleri
 
 * Dersi alan öğrenciler listesi.
 
@@ -893,17 +893,17 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 
 * Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir.)
 
-* Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir)
+* Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir.)
 
 * Not durum belgesi (Yıllık, dönemlik)
 
-* Geçici mezuniyet Belgesi (Sadece mezun durumundaki öğrencilere verilebilir)
+* Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir.)
 
 * Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir.)
 
-* Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir)
+* Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir.)
 
-* Diploma (Sadece mezun durumundaki öğrencilere verilebilir)
+* Diploma (Sadece mezun durumundaki öğrencilere verilebilir.)
 
     - Diploma metni her bölüme göre değişebilir. Diploma metnin içine parametre geçirilmelidir.
 
@@ -917,13 +917,13 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 **YÖKSİS Kurum Ağacı**
 ----------------------
 
-YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistemdeki bilgiler, bu servisten sağlananllarla güncellenir. Bu kurum ağacında okulun tüm akademik birimleri kendilerine verilen bir kod ile yer alır.
+YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistemdeki bilgiler, bu servisten sağlananlarla güncellenir. Bu kurum ağacında okulun tüm akademik birimleri kendilerine verilen bir kod ile yer alır.
 
 ------------------
 **Ders Kopyalama**
 ------------------
 
-Önceki yıldan bölüöm dersleri aktarılıp, değişiklikler işlenir.
+Önceki yıldan bölüm dersleri aktarılıp, değişiklikler işlenir.
 
 ----------------
 **Ders Tipleri**
@@ -978,9 +978,8 @@ YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistem
 -------------
 
 Türkçe
-İngilizce
-…
-…
+
+İngilizce...
 
 ----------------------------
 **Derslerin Dili Kuralları**
@@ -998,9 +997,11 @@ Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar. Onu
 * Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
 
 Program örneği
+
 http://konya.edu.tr/dosyalar/fakulte/ahmetkelesogluegitimfakultesi/derskodlari/ALMANCA.pdf
 
 Bologna Ders Kartı
+
 http://konya.edu.tr/bologna/goster/12198
 
 İsteğe bağlı hazırlık sınıfı açılabilir. - **Hazırlık sınıfının isteğe bağlı olup olmamasını saklamalıyız**.  Bu hazırlık sınıfında başarılı olamayan öğrencilerin ilişikleri kesilmez ve eğitimlerine devam ederler.
@@ -1015,13 +1016,13 @@ Ayrıca bu öğrenciler, kayıtlı olduğu yükseköğretim kurumunda eşdeğer 
 **Sınav Hakkı**
 ---------------
 
-azami sürelerini tamamlamış son sınıf öğrencilerine,
+Azami sürelerini tamamlamış son sınıf öğrencilerine,
 
-* başarısız oldukları bütün dersler için iki ek sınav hakkı verilir.
+* Başarısız oldukları bütün dersler için iki ek sınav hakkı verilir.
 
 * Bu sınavlar sonunda başarısız ders sayısını beş derse indirenlere bu beş ders için üç yarıyıl,
 
-* ek sınavları almadan beş derse kadar başarısız olan öğrencilere ise dört yarıyıl (sınıf geçme esasına göre öğretim yapılan kurumlarda iki öğretim yılı);
+* ek sınavları almadan beş derse kadar başarısız olan öğrencilere ise dört yarıyıl (sınıf geçme esasına göre öğretim yapılan kurumlarda iki öğretim yılı),
 
 * ek dersi almadan bir dersten başarısız olanlara ise öğrencilik hakkından yararlanmaksızın sınırsız,
 
@@ -1030,7 +1031,7 @@ başarısız oldukları dersin sınavlarına girme hakkı tanınır.
 * İzledikleri programdan mezun olmak için gerekli bütün derslerden geçer not aldıkları hâlde yönetmeliklerinde başarılı sayılabilmeleri için öngörülen not ortalamalarını sağlayamamaları sebebiyle ilişikleri kesilme durumuna gelen son dönem (sınıf geçme esasına göre öğretim yapılan kurumlarda son sınıf) öğrencilerine not ortalamalarını yükseltmek üzere diledikleri derslerden sınırsız sınav hakkı tanınır. Bunlardan uygulamalı, uygulaması olan ve daha önce alınmamış dersler dışındaki derslere devam şartı aranmaz. Açılacak sınavlara, üst üste veya aralıklı olarak toplam üç eğitim-öğretim yılı hiç girmeyen öğrenci, sınırsız sınav hakkından vazgeçmiş sayılır ve bu haktan yararlanamaz. Sınırsız hak kullanma durumunda olan öğrenciler sınava girdiği ders başına öğrenci katkı payını/öğrenim ücretini ödemeye devam ederler. Ancak bu öğrenciler, sınav hakkı dışındaki diğer öğrencilik haklarından yararlanamazlar. Açık öğretim öğrencileri, öğrencilik haklarından yararlanmak kaydı ile bu sürelerle kısıtlı değildir.
 
 
-Derslere devam yükümlülüklerini yerine getirdikleri hâlde, yıl içi ve yıl sonu sınav yükümlülüklerini bu maddede belirtilen hükümlere uygun olarak yerine getiremedikleri için öğretim kurumları ile ilişiği kesilen hazırlık sınıfı ve birinci sınıfta en fazla bir dersten, ara sınıflarda ise en fazla üç dersten başarısız olan öğrencilere üç yıl içinde kullanacakları üç sınav hakkı, not ortalamasını tutturamadıkları için hazırlık sınıfı dâhil ara sınıflarda da sene kaybeden öğrencilere diledikleri üç dersten bir sınav hakkı verilir. Sınav hakkı verilenler, yıl içi veya yıl sonu sınavı olduğuna bakılmaksızın başvurmaları hâlinde üniversite veya yüksek teknoloji enstitülerinin her eğitim-öğretim yılı başında açacakları sınavlara alınırlar. Sınavların sonunda sorumlu oldukları tüm dersleri başaranların kayıtları yeniden yapılır ve öğrenimlerine kaldıkları yerden devam ederler. Bu durumda olan öğrencilerin sınavlara girdikleri süre, öğrenim süresinden sayılmaz. Bu sınavlara katılan öğrenciler öğrencilik haklarından hiçbir şekilde yararlanamazlar.”
+Derslere devam yükümlülüklerini yerine getirdikleri hâlde, yıl içi ve yıl sonu sınav yükümlülüklerini bu maddede belirtilen hükümlere uygun olarak yerine getiremedikleri için öğretim kurumları ile ilişiği kesilen hazırlık sınıfı ve birinci sınıfta en fazla bir dersten, ara sınıflarda ise en fazla üç dersten başarısız olan öğrencilere üç yıl içinde kullanacakları üç sınav hakkı, not ortalamasını tutturamadıkları için hazırlık sınıfı dâhil ara sınıflarda da sene kaybeden öğrencilere diledikleri üç dersten bir sınav hakkı verilir. Sınav hakkı verilenler, yıl içi veya yıl sonu sınavı olduğuna bakılmaksızın başvurmaları hâlinde üniversite veya yüksek teknoloji enstitülerinin her eğitim-öğretim yılı başında açacakları sınavlara alınırlar. Sınavların sonunda sorumlu oldukları tüm dersleri başaranların kayıtları yeniden yapılır ve öğrenimlerine kaldıkları yerden devam ederler. Bu durumda olan öğrencilerin sınavlara girdikleri süre, öğrenim süresinden sayılmaz. Bu sınavlara katılan öğrenciler öğrencilik haklarından hiçbir şekilde yararlanamazlar.
 
 =================
 **WorkFlow List**
@@ -1041,8 +1042,10 @@ Derslerin Subelendirilmesi ve Öğretim Elemanlarının Atanması
 Bu işlemlerin son tarihi ders kaydının başlamasından önceki cumadır. Eğer tamamlanmamışsa n zamanı öncesinden üst birime bilgi verilir.
 
 Bölüm başkanı veya delege ettiği birisi kendi ekranındaki ilgili bağlantıya tıklayarak workflow başlatır.
+
 Bölüm başkanı Programların ders listelerini indirir.
-her bir ders için ders koordinatörlerini belirler.
+
+Her bir ders için ders koordinatörlerini belirler.
 Her bir ders için şube sayısını belirler
 Her bir şube için hoca atamasını yapar
 Her bir ders için öğrencilerin seçim biçimini belirler auto/manual
@@ -1050,13 +1053,16 @@ Her bir şube için kontenjan belirler.
 
 Tüm derslerin tamamlanmasının ardından öğrencilerin seçebilecekleri dersler öğrencilerin kayıtları altına gönderilir.
 
-Eğer ders seçme biçimi otomatik ise
+Eğer ders seçme biçimi otomatik ise;
+
 Öğrenciler kontenjana göre şubelere dağıtılır.
 
-Manuel ise
+Manuel ise;
+
 Öğrenciler kendi seçimlerini kendileri yaparlar.
 
 Öğrencilerin seçebilecekleri şubelerin listesi öğrencinin kaydına işlenir.
 
 Öğretim Elamanı, Öğrenci İşleri ve diğer ilgililer bilgilendiririlir.
+
 Work Flow tamamlanır.
