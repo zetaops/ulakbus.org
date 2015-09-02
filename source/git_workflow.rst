@@ -2,7 +2,7 @@
 Git İş-Akışı
 ++++++++++++
 
-**HİÇ BİR ZAMAN MASTER'A PUSH ETMEYİNİZ, SÜREKLİ BRANCH'LER KULLANINIZ.**
+**HİÇBİR ZAMAN MASTER'A PUSH ETMEYİNİZ, SÜREKLİ BRANCHLER KULLANINIZ.**
 
 * Lütfen TÜM dökümanı okuyunuz.
 
@@ -16,7 +16,7 @@ Git İş-Akışı
 
 * Asla MASTER branch'i rebase etmeyi unutmayınız.
 
-* Gelişim raporları düzenli olarak her gün Redmine'e yüklenmeli.
+* Gelişim raporları düzenli olarak her gün Redmine'a yüklenmeli.
 
 ----------------
 **Git kurulumu**
@@ -28,7 +28,7 @@ Git İş-Akışı
 
 * Windows ->     bakınız http://help.github.com/win-git-installation/
 
-Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresini değiştirmeyi unutmayınız.):
+Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresini değiştirmeyi unutmayınız.)
 
 ::
 
@@ -38,34 +38,34 @@ Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresi
 
 **Git Temelleri**
 
-Git çok güçlü bir sistemdir. Önemsemek gerekmektedir ama hiç bir değişiklik asla kaybolmaz (eğer daima commitliyorsanız) bu yüzden kendinizi özgür hissedebilir özelliklerini rahatlıkla deneyebilirsiniz.Git'i iyi anlamak için, git'in arkasında yatan kavramları okumak iyi bir fikirdir.GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.
+Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiçbir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git'i iyi anlamak için, git'in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.
 
-Genel olarak, git biraz ayrıntılıdır ve basit işlemleri gerçekleştirmek için bir çok komut gereklidir.Korkmayın, git'i anladıktan sonra herşeyin ne kadar iyi düşünüldüğünü ve nedenlerinin olduğunu göreceksiniz.
+Genel olarak Git biraz ayrıntılıdır ve basit işlemleri gerçekleştirmek için bir çok komut gereklidir.Korkmayın! Git'i anladıktan sonra, her şeyin ne kadar iyi düşünüldüğünü ve nedenlerinin olduğunu göreceksiniz.
 
 Svn hakkında tecrübe kazanmak istiyorsanız bu bağlantıyı okuyabilirsiniz: http://git-scm.com/course/svn.html
+
 Eğer programcı değilseniz okuyunuz: http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
 
-Boş zamanınızda git in arkasında yatan temel kavramları anlamak için http://www.eecs.harvard.edu/~cduan/technical/git/ bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.
+Boş zamanınızda Git'in arkasında yatan temel kavramları anlamak için http://www.eecs.harvard.edu/~cduan/technical/git/ bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.
 
-
-------------
+-------------
 **Branchler**
-------------
+-------------
 
-* Master Branch sadece görüntülenen ve test edilen kodları içermektedir.
+* Master branch sadece görüntülenen ve test edilen kodları içermektedir.
 
 * Her özellik ve yazılım yatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.
 
 * Yeni branchler son master branch temel alınarak başlatılmalıdır.
 
-* Her branch master branch'i ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.
+* Her branch, master branch ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.
 
-* Her branch'i master branch'i ile merge etmeden önce en son master branch temel alınmalıdır.
+* Her branch, master branch ile merge edilmeden önce en son master branch temel alınmalıdır.
 
 * Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine issue adı ve kısa açıklaması issue adından gelmelidir.
 
 
-Tüm branch'leri görüntülemek için:
+Tüm branchleri görüntülemek için:
 
 ::
 
@@ -100,7 +100,7 @@ Eğer local ve uzak repoların durumunu anlamakta zorluk çekiyorsanız:
     gitk --all		            # yes, it’s not a typo - it’s a tool called gitK
     tig                         #you can also use tig from console. apt-get install tig, you can use SourceTree for mac if you are Mac coder
 
-yeni branch yaratmak için:
+Yeni branch yaratmak için:
 
 ::
 
@@ -140,19 +140,17 @@ Programlamadan önceki hazırlık:
 
 Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlayınız ve servise push ediniz.
 
-
-
-
 ::
 
     git pull origin feature/some-feature	# make sure that push will be successful
-					                        # by ensuring that local changes
+                                            # by ensuring that local changes
                                             # are applicable on top of the
                                             # latest code; may result in conflicts
 
     git pull --rebase origin master         # rebase with master
     git push origin feature/some-feature	# pushes local changes to server, push may be
                                             # rejected if you haven't done previous step
+
 ------------------------------
 **Merging branch into master**
 ------------------------------
@@ -164,7 +162,7 @@ Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlay
 
     git checkout feature/some-feature
     git rebase master       				# it ensure that following merge will be 								# successful AND that all merge conflicts are
-                                            # handled in feature branch, not master
+                                           # handled in feature branch, not master
     git checkout master
     git merge --no-ff feature/some-feature		# use of --no-ff will ensure that merge
                                                 # is visible in history graph as a
@@ -172,9 +170,7 @@ Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlay
 
     git push origin master		            # push changes to origin master( on the server )
 
-
 EĞER NE YAPTIĞINIZIN FARKINDA DEĞİLSENİZ, BU KODLARDAN UZAK DURMANIZI ÖNERİRİZ.
-
 
 ::
 
@@ -201,9 +197,11 @@ http://philjackson.github.com/magit/
 Not: Magit sizin ihtiyacınızın olduğu kadar fonksiyoneldir, ama bazen Git'i komut satırından kullanmak akıllıcadır! (örn *git merge --no-ff* komutunu magitte kullanmak mümkün değildir.)
 
 Okuyunuz:
+
 http://philjackson.github.com/magit/magit.html
 
 Eğer hala öğrenmek istiyorsanız:
+
 http://daemianmack.com/magit-cheatsheet.html
 
 --------------
@@ -211,8 +209,11 @@ http://daemianmack.com/magit-cheatsheet.html
 --------------
 
 Gereksiz boşluklara dikkat ediniz.
+
 Boşlukları ve tabları karıştırmayınız.
+
 80 karakterden daha uzun satırlar kullanmayınız.
+
 Python kodları için harfiyen PEP8 kurallarını takip edin ve uygulayın.
 
 ---------------------------
