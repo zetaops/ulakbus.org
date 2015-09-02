@@ -63,6 +63,15 @@ footer p {
     border-radius: 3px;	
 }
 
+.issues {
+	width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    padding: 15px;	
+}
+
 
 @media (min-width:768px) {
 	ul.main-nav li a {
