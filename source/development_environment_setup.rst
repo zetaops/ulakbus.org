@@ -2,6 +2,8 @@
 Geliştirme Ortamı Kurulumu(Backend)
 +++++++++++++++++++++++++++++++++++
 
+Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalıdır. Biz, işletim sistemi olarak Ubuntu 14.04 kullanıyoruz.
+
 ===========
 **Vagrant**
 ===========
@@ -162,7 +164,7 @@ Zato bileşeni için sembolik bağlantı oluşturunuz.
 
 
 
-Ve Zato Servisini başlatınız.
+Ve Zato servisini başlatınız.
 
 ::
 
@@ -193,14 +195,14 @@ Ulakbus kullanıcısına *app* klasörü için yetki verin ve ulakbus kullanıc�
     su ulakbus
     cd ~
 
-Virtual Environment yaratınız ve actif ediniz.
+Virtual Environment yaratınız ve aktif ediniz.
 
 ::
 
     virtualenv --no-site-packages env
     source env/bin/activate
 
-pip' yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.
+pip yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.
 
 ::
 
