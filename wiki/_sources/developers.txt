@@ -8,9 +8,9 @@ Geliştiriciler
    development_environment_setup.rst
    ulakbus_user_interface.rst
    git_workflow.rst
-   yazılım_tasarım_analizi_belgesi
-   yazılım_geliştirme_ve_test_döngüsü
-   standart_fakülteler_için_yazılım_ihtiyaç_analizi_belgesi.rst
+   yazilim_tasarim_analizi_belgesi.rst
+   yazilim_gelistirme_ve_test_dongusu.rst
+   standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.rst
 
 
 
