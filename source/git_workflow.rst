@@ -35,7 +35,6 @@ Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresi
     git config --global user.name "Emo Coder"
     git config --global user.email "emo@zetaops.io"
 
-
 **Git Temelleri**
 
 Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiçbir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git'i iyi anlamak için, git'in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.
@@ -71,7 +70,6 @@ Tüm branchleri görüntülemek için:
 
     git branch -a
 
-
 ----------------
 **Getting code**
 ----------------
@@ -86,7 +84,6 @@ Tüm sistemi meta repository kullanarak klonlamak için aşağıdaki komutu kull
 ::
 
     git clone gitosis@test.zetaops.io:zops-ubys.git
-
 
 -------------------------
 **Basic day-to-day flow**
@@ -157,18 +154,19 @@ Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlay
 
 ::
 
-    git checkout master         			# prepare local master by
-    git pull --rebase origin master	    	# ensuring that your local master is up to date
+    git checkout master         			    # prepare local master by
+    git pull --rebase origin master	    	    # ensuring that your local master is up to date
 
     git checkout feature/some-feature
-    git rebase master       				# it ensure that following merge will be 								# successful AND that all merge conflicts are
-                                           # handled in feature branch, not master
+    git rebase master       				    # it ensure that following merge will be
+                                                # successful AND that all merge conflicts are
+                                                # handled in feature branch, not master
     git checkout master
     git merge --no-ff feature/some-feature		# use of --no-ff will ensure that merge
                                                 # is visible in history graph as a
                                                 # separate branch
 
-    git push origin master		            # push changes to origin master( on the server )
+    git push origin master		                # push changes to origin master( on the server )
 
 EĞER NE YAPTIĞINIZIN FARKINDA DEĞİLSENİZ, BU KODLARDAN UZAK DURMANIZI ÖNERİRİZ.
 
@@ -181,11 +179,14 @@ EĞER NE YAPTIĞINIZIN FARKINDA DEĞİLSENİZ, BU KODLARDAN UZAK DURMANIZI ÖNER
 **Reverting**
 -------------
 
-::  git checkout -- path/to/file	    # reverts changes in particular file
+::
+
+    git checkout -- path/to/file	    # reverts changes in particular file
                                         # to last version in repo
     git reset --hard HEAD	        	# reverts ALL changes made in your working copy
                                         # handy if working copy is a mess
                                         # (e.g. failed merge, rm -rf *, etc)
+
 ---------
 **Magit**
 ---------
