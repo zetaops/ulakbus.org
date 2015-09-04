@@ -17,7 +17,6 @@ Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca ku
     wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
     vagrant up
 
-
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
 Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.
@@ -41,8 +40,6 @@ Aynı yöntemle pyoko, ulakbus-ui, zengine depolarını da güncelleyin.
     sudo apt-get update
     sudo apt-get upgrade
 
-
-
 Riak için dosya limitini 65536 olarak değiştirin.
 
 ``ulimit -n`` kalıcı olarak değiştirmek için;
@@ -53,14 +50,12 @@ Riak için dosya limitini 65536 olarak değiştirin.
     sudo vi /etc/security/limits.conf
 
 
-
-ve aşağıdaki satırları dosyanın sonuna ekleyin.
+Ve aşağıdaki satırları dosyanın sonuna ekleyin.
 
 ::
 
     * soft nofile 65536
     * hard nofile 65536
-
 
 Riak'ı ve bağımlılıklarını kurun.
 
@@ -79,7 +74,6 @@ Riak'ı ve bağımlılıklarını kurun.
     apt-add-repository ppa:webupd8team/java -y && apt-get update
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
     apt-get install -y oracle-java8-installer
-
 
 ::
 
@@ -108,7 +102,6 @@ Riak'ı ve bağımlılıklarını kurun.
 
     apt-get install redis-server
 
-
 Zato için tüm gerekli kurulumları gerçekleştiriniz.
 
 ::
@@ -119,24 +112,17 @@ Zato için tüm gerekli kurulumları gerçekleştiriniz.
     apt-get update
     apt-get install zato
 
-
-
 Zato kurulumunun ardından, *zato* kullanıcısına geçiniz ve *ulakbus* adında bir dizin oluşturunuz.
 ::
 
     sudo su - zato
     mkdir ~/ulakbus
 
-
-
-
-
 Zato Cluster oluşturunuz. Aşağıdaki komut, Sertifika, Web-Admin, Load-Balancer ve Zato server kurulumunu gerçekleştirecektir.
 
 ::
 
     zato quickstart create ~/ulakbus sqlite localhost 6379 --kvdb_password='' --verbose
-
 
 ``~/ulakbus`` klasörünün altına *pwzato.config* adında bir dosya oluşturunuz ve aşağıdaki script'i dosyanın içine yazınız.
 
@@ -150,7 +136,6 @@ Bu script'i kullanmak için de ``zato from-config ~/ulakbus/pwzato.config`` komu
     username=admin
     password=ulakbus
 
-
 Zato servislerini başlatmak için tekrardan *root* kullanıcısına geçiniz.
 
 Zato bileşeni için sembolik bağlantı oluşturunuz.
@@ -162,21 +147,17 @@ Zato bileşeni için sembolik bağlantı oluşturunuz.
     ln -s /opt/zato/ulakbus/server2 /etc/zato/components-enabled/ulakbus.server2
     ln -s /opt/zato/ulakbus/web-admin /etc/zato/components-enabled/ulakbus.web-admin
 
-
-
 Ve Zato servisini başlatınız.
 
 ::
 
     service zato start
 
-
 Ulakbus uygulaması için python virtual environment hazırlayınız.
 
 ::
 
     apt-get install virtualenvwrapper
-
 
 *app* adında bir dizin oluşturunuz ve *ulakbus* kullanıcısını *app* klasörü içine ekleyin.
 
@@ -185,7 +166,6 @@ Ulakbus uygulaması için python virtual environment hazırlayınız.
 
     mkdir /app
     /usr/sbin/useradd --home-dir /app --shell /bin/bash --comment 'ulakbus operations' ulakbus
-
 
 Ulakbus kullanıcısına *app* klasörü için yetki verin ve ulakbus kullanıcısına geçiniz.
 
@@ -209,8 +189,6 @@ pip yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.
     pip install --upgrade pip
     pip install ipython
 
-
-
 Pyoko'yu https://github.com/zetaops/pyoko.git adresinden çekiniz ve gereksinimleri kurunuz.
 
 ::
@@ -221,14 +199,11 @@ Pyoko'yu https://github.com/zetaops/pyoko.git adresinden çekiniz ve gereksiniml
 
     pip install git+https://github.com/zetaops/pyoko.git
 
-
-Environmet'e PYOKO_SETTINGS değişkeni ekleyiniz(*root* kullanıcısı iken)
+Environment'a PYOKO_SETTINGS değişkeni ekleyiniz(*root* kullanıcısı iken)
 
 ::
 
     echo "export PYOKO_SETTINGS='ulakbus.settings'" >> /etc/profile
-
-
 
 Ulakbus'u https://github.com/zetaops/pyoko.git adresinden çekiniz ve gereksinimleri kurunuz.
 
@@ -301,9 +276,9 @@ Aşağıdaki komutlar yardımı ile şemaları güncelleyin.(*ulakbus* kullanıc
     cd ~/ulakbus/ulakbus
     python manage.py update_schema --bucket all
 
-
 Server'ı 8000(default) portunda çalıştırınız.
 
 ::
 
     python runserver.py
+
