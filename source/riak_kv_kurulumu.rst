@@ -9,7 +9,7 @@ Bu dökümanda 5 node riak ve yük dengelemek için haproxy kurulum ve konfigür
 
 Kurulum için tavsiyemiz en az 2 CPU/VCPU ile 8 GB RAM bulunan sanal ya da gerçek sunucular kullanmanız yönündedir.
 
-Bu kurulumu 3 node şeklinde VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.
+Bu kurulumu, geliştirme ortamınız için, 1 CPU ve 1GB RAM ile 3 node olarak VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.
 
 Ön Hazırlıklar
 --------------
