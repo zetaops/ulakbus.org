@@ -57,11 +57,14 @@ Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmas�
 
 Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.
 
+NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).
+
 Modeller
 *********
-Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde
-
+Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılabilecek, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir model nesnesine referans verildiği takdirde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz.
+Bir modelin içinde başka bir modele referans verdiğimizde ise iki model arasında OneToMany tarzı bir bağıntı kurulmuş olur.
 ::
+
     from pyoko import Model, ListNode, field
 
     class Lecturer(Model):
