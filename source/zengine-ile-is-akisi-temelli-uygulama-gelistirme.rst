@@ -1,6 +1,9 @@
-+++++++++++++++++++++++++++++++
+.. highlight:: python
+   :linenothreshold: 3
+
+++++++++++++++++++++++++++++++++++++++++++++++++
 ZEngine ile İş Akışı Temelli Uygulama Geliştirme
-+++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 .. - İş akışı ve iş akışı temelli uygulama.
@@ -25,8 +28,8 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 
 İş akışları bir kurumun yürüttüğü işlerin belirli bir notasyona göre görselleştirilmesi amacıyla kullanılırlar. İşlerin kim tarafından, hangi sırayla, hangi koşullara bağlı olarak yürütüleceğinin ilgili personel tarafından üzerinde uzlaşılmış bir standartta ifade edilmesi, iş süreçlerinin kişiler arasında daha kolay ve doğru biçimde anlatılabilmesini sağladığı gibi sürecin iyileştirilmesi için yapılacak değişiklikleri tasarlamayı da kolaylaştırmaktadır.
 
-.. image:: http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png
-	:width: 600px
+.. image:: _static/workflow_ornek.png
+    :width: 600px
 
 İş akışı tabanlı uygulamalar, belirli bir dilde yazılmış akış diagramlarının, iş akışı motoru (workflow engine) tarafından işletilmesi temeline dayanırlar. İş akış motoru kullanıcı girdileri ve çevre değişkenlerini, iş akışında tanımlanmış koşullara karşı işletir. İlgili koşulun yönlendirdiği adımının (workflow step) etkinleştirilmesi, bu adımla ilişkilendilimiş uygulama metodlarının çalıştırılması ve kullanıcı etkileşimleri arasında akışın durumunun (workflow state) saklanması yine iş akışı motorunun görevidir.
 
@@ -48,14 +51,33 @@ Pyoko
 *****
 Riak KV için tasarlanmış bir ORM (Object Relational Mapper) aracı olan Pyoko, Riak KV'nin Solr arama motoru ile olan entegrasyonunu tümüyle desteklemekte ve bu iki ürünün tek bir API üzerinden ilişkisel bir veri tabanı rahatlığında kullanılabilmesini olanaklı kılmaktadır.
 
-Modeleler
-*********
 Uygulamanın konusunu oluşturan varlıklar (entities) Pyoko modelleri olarak tasarlanmakta, bu modeller altında saklanan verilere erişim yine modellerde tanımlanan yetki koşullarına uygun olarak yönetilmektedir. Bir varlıkla doğrudan ilişkili metodlar kendi modelinin altında tanımlanebilmekte, böylece uygulamanın kod organizasyonu kolaylaşmaktadır.
 
+Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmasına imkan vermenin yanı sıra, bu veri varlıkları arasında ilişkisel veritabanlarındakine benzer bağlantılar oluşturmasını sağlar. Veri girdilerinin model tanımına uygunluğunun kontrolü ve kullanıcıların bu verilerle yetkileri dahilinde etkileşime geçebilmelerini garanti edilmesi de Pyoko sayesinde veri katmanı seviyesinde çözülebilen uygulama ihtiyaçlarıdır.
+
+Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.
+
+Modeller
+*********
+Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde
+
 ::
+    from pyoko import Model, ListNode, field
 
-	from pyoko.model import Model, field
+    class Lecturer(Model):
+        name = field.String("Adı", index=True)
 
-	class Student(Model):
-		name = field.String("Adı", index=True)
-		join_date = field.Date("Kayıt tarihi", index=True)
+
+    class Lecture(Model):
+        name = field.String("Ders adı", index=True)
+
+
+    class Student(Model):
+        name = field.String("Adı", index=True)
+        advisor = Lecturer()
+
+        class Lectures(ListNode):
+            lecture = Lecture()
+            confirmed = field.Boolean("Onaylandı", default=False)
+
+
