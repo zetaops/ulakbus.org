@@ -31,8 +31,9 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="next" title="Kullanıcılar" href="users.html" />
-    <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Sistem Operatörleri" href="devops.html" />
+    <link rel="prev" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi" href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -155,12 +156,13 @@
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="users.html" title="Kullanıcılar"
+          <a href="devops.html" title="Sistem Operatörleri"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+          <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -168,16 +170,31 @@
             <p class="logo"><a href="wiki.html">
               <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
             </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a><ul>
+<li><a class="reference internal" href="#is-akisi-ve-is-akisi-temelli-uygulama">İş akışı ve iş akışı temelli uygulama</a></li>
+<li><a class="reference internal" href="#zengine-web-catisi">ZEngine Web Çatısı</a><ul>
+<li><a class="reference internal" href="#falcon">Falcon</a></li>
+<li><a class="reference internal" href="#spiffworkflow">SpiffWorkflow</a></li>
+<li><a class="reference internal" href="#pyoko">Pyoko</a></li>
+<li><a class="reference internal" href="#modeleler">Modeleler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Önceki konu</h4>
-  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
-                        title="önceki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
+  <p class="topless"><a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html"
+                        title="önceki bölüm">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a></p>
   <h4>Sonraki konu</h4>
-  <p class="topless"><a href="users.html"
-                        title="sonraki bölüm">Kullanıcılar</a></p>
+  <p class="topless"><a href="devops.html"
+                        title="sonraki bölüm">Sistem Operatörleri</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/devops.txt"
+      <li><a href="_sources/zengine-ile-is-akisi-temelli-uygulama-gelistirme.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -202,8 +219,41 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sistem-operatorleri">
-<h1>Sistem Operatörleri<a class="headerlink" href="#sistem-operatorleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+  <div class="section" id="zengine-ile-is-akisi-temelli-uygulama-gelistirme">
+<h1>ZEngine ile İş Akışı Temelli Uygulama Geliştirme<a class="headerlink" href="#zengine-ile-is-akisi-temelli-uygulama-gelistirme" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="is-akisi-ve-is-akisi-temelli-uygulama">
+<h2>İş akışı ve iş akışı temelli uygulama<a class="headerlink" href="#is-akisi-ve-is-akisi-temelli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>İş akışları bir kurumun yürüttüğü işlerin belirli bir notasyona göre görselleştirilmesi amacıyla kullanılırlar. İşlerin kim tarafından, hangi sırayla, hangi koşullara bağlı olarak yürütüleceğinin ilgili personel tarafından üzerinde uzlaşılmış bir standartta ifade edilmesi, iş süreçlerinin kişiler arasında daha kolay ve doğru biçimde anlatılabilmesini sağladığı gibi sürecin iyileştirilmesi için yapılacak değişiklikleri tasarlamayı da kolaylaştırmaktadır.</p>
+<a class="reference internal image-reference" href="http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png"><img alt="http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png" src="http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png" style="width: 600px;" /></a>
+<p>İş akışı tabanlı uygulamalar, belirli bir dilde yazılmış akış diagramlarının, iş akışı motoru (workflow engine) tarafından işletilmesi temeline dayanırlar. İş akış motoru kullanıcı girdileri ve çevre değişkenlerini, iş akışında tanımlanmış koşullara karşı işletir. İlgili koşulun yönlendirdiği adımının (workflow step) etkinleştirilmesi, bu adımla ilişkilendilimiş uygulama metodlarının çalıştırılması ve kullanıcı etkileşimleri arasında akışın durumunun (workflow state) saklanması yine iş akışı motorunun görevidir.</p>
+</div>
+<div class="section" id="zengine-web-catisi">
+<h2>ZEngine Web Çatısı<a class="headerlink" href="#zengine-web-catisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen REST odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunmaktadır.</p>
+<div class="section" id="falcon">
+<h3>Falcon<a class="headerlink" href="#falcon" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Falcon, WSGI standardını destekleyen, REST mimarisinde servisler oluşturmak için geliştirilmiş aşırı hızlı ve hafif bir web çatısıdır.</p>
+</div>
+<div class="section" id="spiffworkflow">
+<h3>SpiffWorkflow<a class="headerlink" href="#spiffworkflow" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Spiffworkflow Python ile yazılmış BPMN 2 notasyonunu destekleyen güçlü bir iş akışı motorudur. ZEngine altında kullanılan sürümüne ihtiyaç duyulan ek işlevlerin eklenmesi ve bakımı Zetaops tarafından yapılmaktadır.</p>
+</div>
+<div class="section" id="pyoko">
+<h3>Pyoko<a class="headerlink" href="#pyoko" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Riak KV için tasarlanmış bir ORM (Object Relational Mapper) aracı olan Pyoko, Riak KV&#8217;nin Solr arama motoru ile olan entegrasyonunu tümüyle desteklemekte ve bu iki ürünün tek bir API üzerinden ilişkisel bir veri tabanı rahatlığında kullanılabilmesini olanaklı kılmaktadır.</p>
+</div>
+<div class="section" id="modeleler">
+<h3>Modeleler<a class="headerlink" href="#modeleler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Uygulamanın konusunu oluşturan varlıklar (entities) Pyoko modelleri olarak tasarlanmakta, bu modeller altında saklanan verilere erişim yine modellerde tanımlanan yetki koşullarına uygun olarak yönetilmektedir. Bir varlıkla doğrudan ilişkili metodlar kendi modelinin altında tanımlanebilmekte, böylece uygulamanın kod organizasyonu kolaylaşmaktadır.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko.model</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">join_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Kayıt tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -219,12 +269,13 @@
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="users.html" title="Kullanıcılar"
+          <a href="devops.html" title="Sistem Operatörleri"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+          <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
 	<footer>

@@ -36,9 +36,7 @@ Geliştirme Ortamı Kurulumu(Frontend)
 Şu an gerekli repo'ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.
 
 
-Extreme programming techniques kullanımları için, http://www.extremeprogramming.org/introduction.html sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
-Using extreme programming techniques, we demand you to follow this cycle of development showing on the first page of xp website: http://www.extremeprogramming.org/introduction.html
-
+Daha ileri programlama teknikleri kullanımları için, http://www.extremeprogramming.org/introduction.html sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.
 
 .. image:: _static/planning_feedback_loops.png
    :scale: 100 %
