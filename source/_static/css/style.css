@@ -79,3 +79,12 @@ footer p {
 		line-height:55px;
 	}
 }
+
+div.sphinxsidebar h3, div.sphinxsidebar h4, div.related ul {
+	background-color: #960E10 !important;
+	border: 1px solid #960E10 !important;
+}
+
+div.bodywrapper {
+	margin: 100px 0 0 240px !important;
+}
