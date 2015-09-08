@@ -5,7 +5,9 @@ Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir: http://
 
 Bu dökümanda 5 node riak ve yük dengelemek için haproxy kurulum ve konfigürasyonu anlatılacaktır.
 
-5 makinede taze Ubuntu 14.10 (trusty) dağıtımının kurulu olduğu varsayılmıştır.
+5 makinada üzerinde başka bir uygulama kurulmamış bulunan Ubuntu 14.10 (trusty) dağıtımının kurulu olduğu varsayılmıştır. 
+
+Kurulum için tavsiyemiz en az 2 CPU/VCPU ile 8 GB RAM bulunan sanal ya da gerçek sunucular kullanmanız yönündedir.
 
 Bu kurulumu 3 node şeklinde VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.
 
