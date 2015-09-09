@@ -1,0 +1,338 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+  <title>ULAKBUS</title>
+  
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Ulakbüs</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+ <script>
+     /**
+       * Check an href for an anchor. If exists, and in document, scroll to it.
+       * If href argument omitted, assumes context (this) is HTML Element,
+       * which will be the case when invoked by jQuery after an event
+       */
+     function scroll_if_anchor(href) {
+         href = typeof(href) == "string" ? href : $(this).attr("href");
+
+         // If href missing, ignore
+         if(!href) return;
+
+         // You could easily calculate this dynamically if you prefer
+         var fromTop = 100;
+
+         // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+         // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+         var $target = $(href);
+
+         // Older browsers without pushState might flicker here, as they momentarily
+         // jump to the wrong position (IE < 10)
+         if($target.length) {
+             $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+             if(history && "pushState" in history) {
+                 history.pushState({}, document.title, window.location.pathname + href);
+                 return false;
+             }
+         }
+     }
+
+     // When our page loads, check to see if it contains and anchor
+     scroll_if_anchor(window.location.hash);
+
+     // Intercept all anchor clicks
+     $("body").on("click", "a[href^='#']", scroll_if_anchor);
+ </script>
+ </head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+	<nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/index.html" class="logo"><img src="http://www.ulakbus.org/ulakbus.png"></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                       <ul class="nav navbar-nav navbar-right main-nav">
+                            <li>
+                                <a href="http://www.ulakbus.org/index.html">ANASAYFA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/hakkinda.html">PROJE HAKKINDA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                            </li>
+                            <li>
+                                <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Fork me on github icons -->
+             <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+
+<div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Data Erişim Seçimleri</a></li>
+<li><a class="reference internal" href="#neden-rdbms-kullanmiyoruz">Neden RDBMS Kullanmıyoruz?</a></li>
+<li><a class="reference internal" href="#neden-eventually-consistent-kullanmiyoruz">Neden Eventually Consistent Kullanmıyoruz?</a></li>
+<li><a class="reference internal" href="#neden-data-type-kullanmiyoruz">Neden Data Type Kullanmıyoruz?</a></li>
+<li><a class="reference internal" href="#neden-write-once-kullanmiyoruz">Neden Write Once Kullanmıyoruz?</a></li>
+<li><a class="reference internal" href="#neden-strong-consistency">Neden Strong Consistency?</a></li>
+<li><a class="reference internal" href="#neyi-nasil-kullanacagiz">Neyi Nasıl Kullanacağız?</a></li>
+<li><a class="reference internal" href="#caching">Caching?</a></li>
+<li><a class="reference internal" href="#sorular">Sorular</a></li>
+<li><a class="reference internal" href="#sorgular">Sorgular</a></li>
+<li><a class="reference internal" href="#create-ve-update-islemleri">Create ve Update İşlemleri</a></li>
+<li><a class="reference internal" href="#raporlar">Raporlar</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/data_erisim_secimleri.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="data-erisim-secimleri">
+<h1>Data Erişim Seçimleri<a class="headerlink" href="#data-erisim-secimleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Sözlük</p>
+<p>Bucket</p>
+<p>Conflict</p>
+<p>Eventually Consistent</p>
+<p>Sibling</p>
+<p>Application = Uygulama</p>
+<p>Nested</p>
+<p>Entity</p>
+<p>RDBMS</p>
+</div>
+<div class="section" id="neden-rdbms-kullanmiyoruz">
+<h1>Neden RDBMS Kullanmıyoruz?<a class="headerlink" href="#neden-rdbms-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Bu sebeple:</p>
+</div>
+<div class="section" id="neden-eventually-consistent-kullanmiyoruz">
+<h1>Neden Eventually Consistent Kullanmıyoruz?<a class="headerlink" href="#neden-eventually-consistent-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Riak&#8217;ı Eventually Consistent modunda kullandığımızda, concurrent yazma işlemleri sonucu verinin birden fazla değişik versiyonu oluşabiliyor. (Sibling) Çünkü veri, farklı nodelardaki kopyalarının durumu gözetilmeksizin yazılıyor. Oluşan conflictler ise daha sonra çözüme kavuşturuluyor. * [1] Bu da ayrıca yönetilmesi gereken oldukça karmaşık bir problemi beraberinde getiriyor.</p>
+<p>Oluşan conflictler birkaç yolla çözüme bağlanabiliyor.[2] Bu çözümlerin bir kısmı Riak tarafından otomatik olarak yapılabiliyor. Riak&#8217;ın sağladığı iki temel çözüm time-based ve last-write-wins şeklinde. Riak&#8217;ın internal çözümleri dışında uygulama katmanından bu çözümleri uygulamak da mümkün. Fakat aynı bucket üzerinde hem Riak internal hem de application taraflı çözümleri kullanamıyoruz. Bir bucketdaki conflictlerin nasıl çözüleceği bucket metadataları ile kontrol ediliyor. Riak internallar için allow_mult parametresi false olması gerekirken, uygulama taraflı çözümler için true olması gerekiyor.</p>
+<p>Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir bucket üzerinde birlikte kullanmak mümkün değil. Bizim durumumuzda bu tür conflictlerin uygulama katmanında</p>
+<p>çözüme bağlanması kaçınılmaz. Bu da birçok bucketta Riak&#8217;ın last-write-wins veya timestamp gibi çözümlerini kullanamayacağımız anlamına geliyor. Çünkü aynı verinin farklı kesitlerine farklı kullanıcılar erişiyor. Uygulama katmanında conflict resolution ise data layerında daha fazla complexity demek.</p>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a></p>
+</div>
+<div class="section" id="neden-data-type-kullanmiyoruz">
+<h1>Neden Data Type Kullanmıyoruz?<a class="headerlink" href="#neden-data-type-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Veri tipleri sadece eventually consistent sistemlerde kullanılabiliyor.[3] Veri tipleri, yukarıdaki problemi her bir data type için Riak tarafından farklı tanımlanmış kurallar dahilinde çözüyorlar[4] ve buna uygulama katmanında müdahale etmek mümkün değil. Kararı Riak veriyor. Eventually consistent ortamda, uygulama katmanında conflict resolution mümkün olmadığı için veri tipleri kullanamıyoruz.</p>
+<p>Riak veri tipleri sayesinde sınırlı da olsa search (arama) imkanı sağlıyor. Bunu da register, flag gibi belirli tipleri solr şemasında dynamic field olarak tanımlayarak yapıyor.[4] Bizim register, flag şeklinde işaretlediğimiz her veri, dynamic field tanımlaması sayesinde solr da indexleniyor. Riak&#8217;ın bu veri tipleri sayesinde search için eklediği ekstra bir özelliğe dair dökümanlarda altı çizilen bilgi  yok. Bizim verimize uyacak nested biçimde register, counter ve setler içeren maplere bağlı olarak dynamic field ı bu şekilde kullanmak, sayısız ve kontrolsüz biçimde artan index ve inverted indexlere[5] yol açacaktır.</p>
+</div>
+<div class="section" id="neden-write-once-kullanmiyoruz">
+<h1>Neden Write Once Kullanmıyoruz?<a class="headerlink" href="#neden-write-once-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Write Once kullandığımızda sistem sürekli farklı keylere yazacağı için conflict oluşmaz. Fakat uygulama katmanında verinin bütünlüğü için alacağımız önlem, yani verinin yazılmadan önce okunması, farklı nodelardan okuma ve sistemde oluşabilecek gecikmelerden dolayı yüzde yüz garanti sağlamaz. Yazma isteğinin doğrulanması için yapılacak okuma ve yazma farklı nodelardan yapılacağı için burada da verinin bir öncekini baz alan iki farklı kopyası oluşacaktır.</p>
+<p>Bunun yanı sıra arama işini daha karmaşık hale getirmekte, çok kopyalı sonuçlar arasında en son kopyaya ulaşma gibi ekstra bir zorluk eklemektedir.</p>
+</div>
+<div class="section" id="neden-strong-consistency">
+<h1>Neden Strong Consistency?<a class="headerlink" href="#neden-strong-consistency" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Riak Strong Consistency modunda conflictlere izin vermez. Veri tüm nodelarda eşlenene kadar yazıldı olarak kabul edilmez. Concurrent işlemlerde tıpkı RDBMS’lerdeki locklarda olduğu gibi yazma hataları döndürür. Bu da uygulama katmanında çok daha kolay yönetilebilir ve basit bir conflict resolution policy anlamına gelir.</p>
+</div>
+<div class="section" id="neyi-nasil-kullanacagiz">
+<h1>Neyi Nasıl Kullanacağız?<a class="headerlink" href="#neyi-nasil-kullanacagiz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Log, temporary datalar hariç Strong Consistent bucketlar kullanacağız. Tek kopya üzerinde çalışacağız. Datayı yapabildiğimiz kadar flat hale getirip, solr indexleri için mümkün olduğunca az dynamic field içeren şemalar kullanacağız. Flat haline getirilmiş bucket arasında linkler ile relationlar kuracağız. Versiyonları ayrı bir Write Once Bucket’ta tutacağız. Bunlara bir pk ve date fieldları ekleyip bu iki field ı solr da indexleyeceğiz.</p>
+</div>
+<div class="section" id="caching">
+<h1>Caching?<a class="headerlink" href="#caching" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Redis nasıl kullanılacak?</li>
+<li>Okuma nasıl yapılacak?</li>
+<li>REDIS&#8217;ten Riak&#8217;a ve tersi akışta verinin bütünlüğü nasıl korunacak?</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="sorular">
+<h1>Sorular<a class="headerlink" href="#sorular" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.</li>
+<li>Verinin parçaları farklı bucket ve keylerde saklanacak. Biz hepsini veya bir kısmını ilgilendiren bir yazma/update işlemi yaptığımızda gereken tüm bucketlar dolaşılıp yazma işlemi tamamlanacak. Strong Consistency ile kazandığımız verinin bütünlüğü ve eşsizliği bu modelde tehlikeye girmiş olmuyor mu? Concurrent bağlantılarda henüz bizim zincirimizde sırası gelmemiş bir kayıt başka bir zincir tarafından biz yazmadan önce güncellenmiş ise bunu nasıl anlayacağız ya da bunun önüne nasıl geçeceğiz?</li>
+<li>Pyoko’nun kendi gelişim seyri içerisinde ortaya çıkacak bugünden öngörülemeyen geliştirme ihtiyacı  bir yana, flat bucketlar arasında relational bir yapı kurmacanın öngörülemeyen zorlukları / sorunlarını da göze alıyoruz. Bunun tek sebebi dynamic field kullanmamak mıdır? Öyleyse 1 milyon solr dökümana yol açacak kadar çok kayıt  içinde birçok dynamic field testi yapmaya değmez miydi?</li>
+<li>Aşağıdaki sorgu ve rapor örneklerinin nasıl yapılabileceği hakkında bugünden ne açıklıkla yanıtlar verebiliyoruz?</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="sorgular">
+<h1>Sorgular<a class="headerlink" href="#sorgular" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi</li>
+<li>Sosyal Bilimler Enstitüsü’nde 2010 - 2015 yılları arasında kademe cezası almış kadın personellerin listesi. (kademe cezası önceki yıla göre veya kademe farklarına göre bulunabilir.)</li>
+<li>Tıp fakültesinde, en az lise mezunu, kadro derecesi 7’den büyük, askerlik engeli bulunmayan personeller</li>
+<li>Bir öğrencinin seçmek istediği bir derse bağlı olan ön şartlı ders notu</li>
+<li>Bir dersin genel sınavına (final) girmeye hak kazanmış öğrencilerin listesi</li>
+<li>Belirli bir tarihe kadar sisteme not girmesi beklenen hocaların listesi. (Sınavın yapıldığı tarihi takiben max 15 gün, sonraki sınav tarihinden min 7 gün önce gibi sabit birkaç kural söz konusu.)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="create-ve-update-islemleri">
+<h1>Create ve Update İşlemleri<a class="headerlink" href="#create-ve-update-islemleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Yeni öğrenci yarat</li>
+<li>Yeni personel yarat</li>
+<li>Öğrenci özlük bilgisi güncelle</li>
+<li>Okul lokasyon bilgisi güncelle</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="raporlar">
+<h1>Raporlar<a class="headerlink" href="#raporlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Fakülte, bölüm ve program başına beklenen harç miktarları</li>
+<li>Fakülte, bölüm ve program başına hocalara ödenecek beklenen ek ders ücretleri</li>
+<li>Bir akademik personelin danışmanlığını yaptığı öğrencilerin performansına dair son iki yılda aldığı not ortalaması</li>
+<li>Yıllara göre mezunların başarı ortalaması (Her programın mezuniyet için öğrencilerin tutturması gereken asgari bir program mezuniyet ortalaması değeri vardır. Öğrenciler bu değerin neresindedir?)</li>
+<li>Azami öğretim süresine gelmiş ve mezun olmayacak öğrencilerin listesi</li>
+</ul>
+</div></blockquote>
+<p>1: If you are using Riak in an eventually consistent way, conflicts between object values on different nodes is unavoidable. Often, Riak can resolve these conflicts on its own internally if you use causal context, i.e. vector clocks or dotted version vectors, when updating objects.  Instructions on this can be found in the section.</p>
+<p><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a> 2.paragraf</p>
+<p>2:<a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/#Client-and-Server-side-Conflict-Resolution">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/#Client-and-Server-side-Conflict-Resolution</a></p>
+<p>3: <a class="reference external" href="http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats">http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats</a></p>
+<p>4: <a class="reference external" href="https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100">https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100</a></p>
+<p>5: <a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_index">https://en.wikipedia.org/wiki/Inverted_index</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+	<footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank" style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a href="http://zetaops.io" target="_blank" style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>
