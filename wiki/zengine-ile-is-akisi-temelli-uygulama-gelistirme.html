@@ -147,7 +147,7 @@
              <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 
-
+<div id="doccontainer">
 
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
@@ -178,7 +178,7 @@
 <li><a class="reference internal" href="#falcon">Falcon</a></li>
 <li><a class="reference internal" href="#spiffworkflow">SpiffWorkflow</a></li>
 <li><a class="reference internal" href="#pyoko">Pyoko</a></li>
-<li><a class="reference internal" href="#modeleler">Modeleler</a></li>
+<li><a class="reference internal" href="#modeller">Modeller</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +224,7 @@
 <div class="section" id="is-akisi-ve-is-akisi-temelli-uygulama">
 <h2>İş akışı ve iş akışı temelli uygulama<a class="headerlink" href="#is-akisi-ve-is-akisi-temelli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>İş akışları bir kurumun yürüttüğü işlerin belirli bir notasyona göre görselleştirilmesi amacıyla kullanılırlar. İşlerin kim tarafından, hangi sırayla, hangi koşullara bağlı olarak yürütüleceğinin ilgili personel tarafından üzerinde uzlaşılmış bir standartta ifade edilmesi, iş süreçlerinin kişiler arasında daha kolay ve doğru biçimde anlatılabilmesini sağladığı gibi sürecin iyileştirilmesi için yapılacak değişiklikleri tasarlamayı da kolaylaştırmaktadır.</p>
-<a class="reference internal image-reference" href="http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png"><img alt="http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png" src="http://pm.zetaops.io/attachments/39/kayit_yenileme_ve_ders_kaydi.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/workflow_ornek.png"><img alt="_images/workflow_ornek.png" src="_images/workflow_ornek.png" style="width: 600px;" /></a>
 <p>İş akışı tabanlı uygulamalar, belirli bir dilde yazılmış akış diagramlarının, iş akışı motoru (workflow engine) tarafından işletilmesi temeline dayanırlar. İş akış motoru kullanıcı girdileri ve çevre değişkenlerini, iş akışında tanımlanmış koşullara karşı işletir. İlgili koşulun yönlendirdiği adımının (workflow step) etkinleştirilmesi, bu adımla ilişkilendilimiş uygulama metodlarının çalıştırılması ve kullanıcı etkileşimleri arasında akışın durumunun (workflow state) saklanması yine iş akışı motorunun görevidir.</p>
 </div>
 <div class="section" id="zengine-web-catisi">
@@ -241,17 +241,49 @@
 <div class="section" id="pyoko">
 <h3>Pyoko<a class="headerlink" href="#pyoko" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Riak KV için tasarlanmış bir ORM (Object Relational Mapper) aracı olan Pyoko, Riak KV&#8217;nin Solr arama motoru ile olan entegrasyonunu tümüyle desteklemekte ve bu iki ürünün tek bir API üzerinden ilişkisel bir veri tabanı rahatlığında kullanılabilmesini olanaklı kılmaktadır.</p>
-</div>
-<div class="section" id="modeleler">
-<h3>Modeleler<a class="headerlink" href="#modeleler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Uygulamanın konusunu oluşturan varlıklar (entities) Pyoko modelleri olarak tasarlanmakta, bu modeller altında saklanan verilere erişim yine modellerde tanımlanan yetki koşullarına uygun olarak yönetilmektedir. Bir varlıkla doğrudan ilişkili metodlar kendi modelinin altında tanımlanebilmekte, böylece uygulamanın kod organizasyonu kolaylaşmaktadır.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko.model</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">field</span>
+<p>Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmasına imkan vermenin yanı sıra, bu veri varlıkları arasında ilişkisel veritabanlarındakine benzer bağlantılar oluşturmasını sağlar. Veri girdilerinin model tanımına uygunluğunun kontrolü ve kullanıcıların bu verilerle yetkileri dahilinde etkileşime geçebilmelerini garanti edilmesi de Pyoko sayesinde veri katmanı seviyesinde çözülebilen uygulama ihtiyaçlarıdır.</p>
+<p>Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.</p>
+<p>NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).</p>
+</div>
+<div class="section" id="modeller">
+<h3>Modeller<a class="headerlink" href="#modeller" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="k">class</span> <span class="nc">Lecturer</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Lecture</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
 
 <span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">join_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Kayıt tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">advisor</span> <span class="o">=</span> <span class="n">Lecturer</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">Lectures</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">lecture</span> <span class="o">=</span> <span class="n">Lecture</span><span class="p">()</span>
+        <span class="n">confirmed</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 </div>
 </div>
@@ -277,6 +309,7 @@
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
+    </div>
     </div>
 	<footer>
         <div class="container">

@@ -1,0 +1,424 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+  <title>ULAKBUS</title>
+  
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Ulakbüs</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+ <script>
+     /**
+       * Check an href for an anchor. If exists, and in document, scroll to it.
+       * If href argument omitted, assumes context (this) is HTML Element,
+       * which will be the case when invoked by jQuery after an event
+       */
+     function scroll_if_anchor(href) {
+         href = typeof(href) == "string" ? href : $(this).attr("href");
+
+         // If href missing, ignore
+         if(!href) return;
+
+         // You could easily calculate this dynamically if you prefer
+         var fromTop = 100;
+
+         // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+         // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+         var $target = $(href);
+
+         // Older browsers without pushState might flicker here, as they momentarily
+         // jump to the wrong position (IE < 10)
+         if($target.length) {
+             $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+             if(history && "pushState" in history) {
+                 history.pushState({}, document.title, window.location.pathname + href);
+                 return false;
+             }
+         }
+     }
+
+     // When our page loads, check to see if it contains and anchor
+     scroll_if_anchor(window.location.hash);
+
+     // Intercept all anchor clicks
+     $("body").on("click", "a[href^='#']", scroll_if_anchor);
+ </script>
+ </head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+	<nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/index.html" class="logo"><img src="http://www.ulakbus.org/ulakbus.png"></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                       <ul class="nav navbar-nav navbar-right main-nav">
+                            <li>
+                                <a href="http://www.ulakbus.org/index.html">ANASAYFA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/hakkinda.html">PROJE HAKKINDA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                            </li>
+                            <li>
+                                <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Fork me on github icons -->
+             <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+
+<div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">RIAK KV Kurulumu</a><ul>
+<li><a class="reference internal" href="#on-hazirliklar">Ön Hazırlıklar</a></li>
+<li><a class="reference internal" href="#java-kurulumu">Java Kurulumu</a></li>
+<li><a class="reference internal" href="#riak-kurulumu">Riak Kurulumu</a></li>
+<li><a class="reference internal" href="#riak-konfigurasyonu">Riak Konfigurasyonu</a></li>
+<li><a class="reference internal" href="#cluster-olusturma">Cluster Oluşturma</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/riak_kv_kurulumu.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="riak-kv-kurulumu">
+<h1>RIAK KV Kurulumu<a class="headerlink" href="#riak-kv-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Riak production ortamında en az 3 node, mümkünse 5 node çalışması önerilen dağıtık bir veritabanı sistemidir.
+Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir: <a class="reference external" href="http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak">http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak</a></p>
+<p>Bu dökümanda 5 node riak ve yük dengelemek için haproxy kurulum ve konfigürasyonu anlatılacaktır.</p>
+<p>5 makinada üzerinde başka bir uygulama kurulmamış bulunan Ubuntu 14.10 (trusty) dağıtımının kurulu olduğu varsayılmıştır.</p>
+<p>Kurulum için tavsiyemiz en az 2 CPU/VCPU ile 8 GB RAM bulunan sanal ya da gerçek sunucular kullanmanız yönündedir.</p>
+<p>Bu kurulumu, geliştirme ortamınız için, 1 CPU ve 1GB RAM ile 3 node olarak VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.</p>
+<div class="section" id="on-hazirliklar">
+<h2>Ön Hazırlıklar<a class="headerlink" href="#on-hazirliklar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Öncelikle her bir makinenin hostname ve IP adreslerinin düzgün şekilde ayarlandığından emin olalım. Bizim örneğimizde
+IP adresleri ve hostnamelerin şu şekilde olduğu kabul edilmiştir.</p>
+<div class="highlight-python"><div class="highlight"><pre>10.0.0.10    node1.example.org
+10.0.0.11    node2.example.org
+10.0.0.12    node3.example.org
+10.0.0.13    node4.example.org
+10.0.0.14    node5.example.org
+</pre></div>
+</div>
+<p>Hostname ayarlamak için</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># sudo hostnamectl set-hostname node1</span>
+</pre></div>
+</div>
+<p>komutunu kullanabilirsiniz.</p>
+<p>Fully qualified domain name için de /etc/hosts dosyasına aşağıdaki gibi bir girdiyi eklememiz gerekmektedir.</p>
+<div class="highlight-python"><div class="highlight"><pre># sudo vim /etc/hosts
+
+...
+10.0.0.10   node1.example.org   node1
+</pre></div>
+</div>
+<p>İlgili değişikliği yaptıktan sonra</p>
+<div class="highlight-python"><div class="highlight"><pre>$ hostname -f
+</pre></div>
+</div>
+<p>çıktısınının <code class="docutils literal"><span class="pre">node1.example.org</span></code> şeklinde alanadı ve hostname ile birlikte olduğundan emin oluyoruz.</p>
+<p>Bu işlemleri yaptıktan sonra eğer sisteminizde yoksa bazı yardımcı paketlerin kurulması gereklidir:</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get install -y curl wget
+</pre></div>
+</div>
+</div>
+<div class="section" id="java-kurulumu">
+<h2>Java Kurulumu<a class="headerlink" href="#java-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Riak Search için java gerekmektedir. Aşağıdaki komutlarla sistemimize Java kuruyoruz.</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get update -qq &amp;&amp; apt-get install -y software-properties-common &amp;&amp; \
+     apt-add-repository ppa:webupd8team/java -y &amp;&amp; apt-get update -qq &amp;&amp; \
+     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections &amp;&amp; \
+     apt-get install -y oracle-java8-installer
+</pre></div>
+</div>
+<p>Kurulumu aşağıdaki komut ile doğrulayabiliriz:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ java -version
+java version &quot;1.8.0_60&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_60-b27)
+Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
+</pre></div>
+</div>
+</div>
+<div class="section" id="riak-kurulumu">
+<h2>Riak Kurulumu<a class="headerlink" href="#riak-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Riak Kurulumu birkaç yol ile yapılabilir. Kaynak kod derlemek bunlardan birisidir. Fakat bu pek pratik değildir. Biz
+kaynak koddan kendimiz derleyerek elde ettiğimiz deb paketlerini kullanacağız. Packagecloud.io da tuttuğumuz paketleri
+sisteminize yüklemek için</p>
+<div class="highlight-python"><div class="highlight"><pre>$ curl -s https://packagecloud.io/install/repositories/zetaops/riak/script.deb.sh | sudo bash
+$ apt-get install -y riak
+</pre></div>
+</div>
+<p>komutlarını kullanabilirsiniz.</p>
+<p>Riak&#8217;ın düzgün çalışabilmesi için dosya limitlerini değiştirmemiz gerekmektedir. Bunu kalıcı şekilde yapmak için</p>
+<div class="highlight-python"><div class="highlight"><pre>echo &#39;* soft nofile 65536&#39; &gt;&gt;   /etc/security/limits.conf
+echo &#39;* hard nofile 65536&#39; &gt;&gt;   /etc/security/limits.conf
+echo &quot;session required        pam_limits.so&quot; &gt;&gt; /etc/pam.d/common-session-noninteractive
+echo &quot;session required        pam_limits.so&quot; &gt;&gt; /etc/pam.d/common-session
+</pre></div>
+</div>
+<p>komutlarını kullanabilirsiniz.</p>
+<p>Riak kurulumunu</p>
+<blockquote>
+<div>::
+$ sudo riak-admin status
+Node is not running!</div></blockquote>
+<p>komutuyla doğrulayabilirsiniz.</p>
+<p>Paketlerin kurulumunun ardından riak servisi başlamayabilir. Bu durumda yukarıdaki gibi <code class="docutils literal"><span class="pre">Node</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">running!</span></code> çıktısı
+alırsınız. Servisi başlatmak için</p>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo service riak start
+</pre></div>
+</div>
+<p>komutunu kullanabilirsiniz. Bu komut hiçbir çıktı üretmeyebilir. Servisin başladığından emin olmak için yeniden</p>
+<div class="highlight-python"><div class="highlight"><pre>$ riak-admin status
+1-minute stats for &#39;riak@127.0.0.1&#39;
+-------------------------------------------
+connected_nodes : []
+consistent_get_objsize_100 : 0
+consistent_get_objsize_95 : 0
+consistent_get_objsize_99 : 0
+consistent_get_objsize_mean : 0
+consistent_get_objsize_median : 0
+....
+</pre></div>
+</div>
+<p>komutunu çalıştırabiliriz. Eğer riak çalıştıysa, konfigürasyonuyla ilgili oldukça uzun bir çıktı üretecektir.</p>
+<p>Riak&#8217;ın üzerinde çalışacağı sistemin performansı ile ilgili daha birçok parametre vardır. Oldukça detaylı bu
+ayarlar ayrı bir belgede ele alınacaktır. Başlangıç için bu düzenlemeler yeterlidir ve Riak kararlı şekilde çalışabilir.</p>
+</div>
+<div class="section" id="riak-konfigurasyonu">
+<h2>Riak Konfigurasyonu<a class="headerlink" href="#riak-konfigurasyonu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Riak standart bir kurulumda /etc/riak dizini altındaki riak.conf dosyası ile konfigüre edilir. Bazı özellikler ise hala
+eski tip konfigürasyon dosyaları olan advanaced.config ve app.config dosyaları ile yapılır. Riak başlama esnasında bu
+dosyalara bakıp validasyon yapar ve tek bir nihayi konfigürasyon üretir. Dolayısı ile bu dosyalarda yapılacak her
+değişikliğin ardından riak servisi yeniden başlatılmalıdır.</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo service riak restart
+</pre></div>
+</div>
+<p>komutuyla Ubuntu üzerinde Riak servisini yeniden başlatabilirsiniz.</p>
+<p>Konfigürasyon için ilk adım nodename değiştirmektir. riak.conf içindeki <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;127.0.0.1</span></code> değerini <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;10.0.0.10</span></code> şeklinde makine ip adresi ile değiştirmek gerekir. Bunu bir editör yardımı ile
+yapabilirsiniz. Ya da basitçe aşağıdaki komut ile de ilgili değişikliği yapabilirsiniz.</p>
+<div class="highlight-python"><div class="highlight"><pre>sed -i.bak &quot;s/riak@127.0.0.1/riak@10.0.0.10/&quot; /etc/riak/riak.conf
+</pre></div>
+</div>
+<p>Riak servislerinin bağlandığı IP adreslerini de düzenlememiz gerekmektedir. Farklı bir hosttan haproxy ile erişeceğimiz
+bu servislerin bağlandığı IP adresleri host makinenin IP adresi 10.0.0.10 veya 0.0.0.0 şeklinde ayarlanabilir. Bu amaçla
+riak.conf dosyasındaki</p>
+<div class="highlight-python"><div class="highlight"><pre>listener.http.internal = 127.0.0.1:8098
+listener.protobuf.internal = 0.0.0.0:8087
+</pre></div>
+</div>
+<p>değerleri</p>
+<div class="highlight-python"><div class="highlight"><pre>listener.http.internal = 10.0.0.10:8098
+listener.protobuf.internal = 10.0.0.10:8087
+</pre></div>
+</div>
+<p>şeklinde değiştirilmelidir.</p>
+<p>Riak Search için yine riak.conf dosyasındaki <code class="docutils literal"><span class="pre">search</span> <span class="pre">=</span> <span class="pre">off</span></code> değerini <code class="docutils literal"><span class="pre">search=on</span></code> şeklinde değiştirmemiz gereklidir.</p>
+<p>Bu değişikliklerin ardından riak servisi yeniden başlatılmalıdır.</p>
+<p>Buraya kadar yapılan işlemler 5 node için tekrar edilmelidir.</p>
+</div>
+<div class="section" id="cluster-olusturma">
+<h2>Cluster Oluşturma<a class="headerlink" href="#cluster-olusturma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>5 node düzgün bir şekilde yapılandırıltan sonra Riak nodelar cluster olmak için hazırdır. Cluster oluşturmak için bir
+node seçilmeli ve diğer nodelardan bu node&#8217;a clustera katılma isteği gönderilmelidir.</p>
+<p>Birinci node&#8217;u (10.0.0.10) seçtiğimizi varsayarsak diğer nodelarda sırayla</p>
+<div class="highlight-python"><div class="highlight"><pre>riak-admin cluster join riak@10.0.0.10
+</pre></div>
+</div>
+<p>komutu çalıştırılır.</p>
+<p>Diğer 4 node&#8217;da bu komut sırayla çalıştırılır. Cluster&#8217;a katılma talebi başarıyla gerçekleştiyese şöyle bir mesaj ile
+karşılaşırız:</p>
+<div class="highlight-python"><div class="highlight"><pre>Success: staged join request for &#39;riak@10.0.0.11&#39; to &#39;riak@10.0.0.10&#39;
+</pre></div>
+</div>
+<p>Bütün nodlarda başarıyla cluster katılım talebini yaptıktan sonra, herhangi bir node&#8217;da sırasıyla şu komutlar
+çalıştırılarak yeni cluster değişiklikleri uygulanır:</p>
+<div class="highlight-python"><div class="highlight"><pre>riak-admin cluster plan
+riak-admin cluster commit
+</pre></div>
+</div>
+<p>Birinci komut cluster ile ilgili yeni değişiklikleri bize gösterir. Bu komutun çıktısı aşağıdaki gibidir:</p>
+<div class="highlight-python"><div class="highlight"><pre>=============================== Staged Changes ================================
+Action         Nodes(s)
+-------------------------------------------------------------------------------
+join           &#39;riak@10.0.0.10&#39;
+join           &#39;riak@10.0.0.10&#39;
+join           &#39;riak@10.0.0.10&#39;
+join           &#39;riak@10.0.0.10&#39;
+-------------------------------------------------------------------------------
+
+
+NOTE: Applying these changes will result in 1 cluster transition
+
+###############################################################################
+                         After cluster transition 1/1
+###############################################################################
+
+================================= Membership ==================================
+Status     Ring    Pending    Node
+-------------------------------------------------------------------------------
+valid     100.0%     20.3%    &#39;riak@10.0.0.10&#39;
+valid       0.0%     20.3%    &#39;riak@10.0.0.11&#39;
+valid       0.0%     20.3%    &#39;riak@10.0.0.12&#39;
+valid       0.0%     20.3%    &#39;riak@10.0.0.13&#39;
+valid       0.0%     18.8%    &#39;riak@10.0.0.14&#39;
+-------------------------------------------------------------------------------
+Valid:5 / Leaving:0 / Exiting:0 / Joining:0 / Down:0
+
+Transfers resulting from cluster changes: 51
+  12 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.11&#39;
+  13 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.12&#39;
+  13 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.13&#39;
+  13 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.14&#39;
+</pre></div>
+</div>
+<p>Bu tablolar bize cluster değişikliğinin ardından ring dağılımını ve clusterin yeni üyelerini gösterir.</p>
+<p>Sonuncu commit komutuyla da bu değişikler aktif hale getirilir.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+	<footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank" style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a href="http://zetaops.io" target="_blank" style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

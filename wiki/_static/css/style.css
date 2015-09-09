@@ -53,14 +53,14 @@ footer p {
 }
 
 .navbar-toggle {
-	margin-top:26px;	
+	margin-top:26px;
 }
 
 .navbar-toggle .icon-bar {
 	background-color:#fff;
 	width: 32px;
     height: 3px;
-    border-radius: 3px;	
+    border-radius: 3px;
 }
 
 .issues {
@@ -69,9 +69,19 @@ footer p {
     margin-right: auto;
     background-color: #E2E2E2;
     border-radius: 5px;
-    padding: 15px;	
+    padding: 15px;
 }
 
+@media (max-width: 767px) {
+	div.sphinxsidebar {
+		display: inline-block;
+		width: 700px;
+	}
+
+	#doccontainer div.bodywrapper {
+		margin: 100px 0 0 0px !important;
+	}
+}
 
 @media (min-width:768px) {
 	ul.main-nav li a {
@@ -88,3 +98,26 @@ div.sphinxsidebar h3, div.sphinxsidebar h4, div.related ul {
 div.bodywrapper {
 	margin: 100px 0 0 240px !important;
 }
+
+div.body{
+	max-width: 750px;
+	min-height: 500px;
+}
+div#doccontainer{
+	margin: 0 auto;
+	width:1111px;
+	margin-top: -21px;
+}
+
+div.document{
+	box-shadow: 2px 3px 16px #D2C8C8 !important;
+	-moz-box-shadow: 2px 3px 16px #D2C8C8 !important;
+ 	-webkit-box-shadow: 2px 3px 16px #D2C8C8 !important;
+}
+
+div.sphinxsidebarwrapper {
+    padding: 0;
+    padding-top: 16px;
+    padding-left: 9px;
+}
+
