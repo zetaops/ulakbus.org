@@ -61,8 +61,7 @@ NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, iliş
 
 Modeller
 *********
-Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılabilecek, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir model nesnesine referans verildiği takdirde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz.
-Bir modelin içinde başka bir modele referans verdiğimizde ise iki model arasında OneToMany tarzı bir bağıntı kurulmuş olur.
+Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.
 ::
 
     from pyoko import Model, ListNode, field
