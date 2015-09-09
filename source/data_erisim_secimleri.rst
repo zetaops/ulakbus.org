@@ -20,15 +20,15 @@ Entity
 
 RDBMS
 
-++++++++++++++++++++++++++
-Neden RDBMS Kullanmıyoruz?
-++++++++++++++++++++++++++
+==============================
+**Neden RDBMS Kullanmıyoruz?**
+==============================
 
 Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Bu sebeple:
 
-++++++++++++++++++++++++++++++++++++++++++
-Neden Eventually Consistent Kullanmıyoruz?
-++++++++++++++++++++++++++++++++++++++++++
+==============================================
+**Neden Eventually Consistent Kullanmıyoruz?**
+==============================================
 
 Riak'ı Eventually Consistent modunda kullandığımızda, concurrent yazma işlemleri sonucu verinin birden fazla değişik versiyonu oluşabiliyor. (Sibling) Çünkü veri, farklı nodelardaki kopyalarının durumu gözetilmeksizin yazılıyor. Oluşan conflictler ise daha sonra çözüme kavuşturuluyor. * [1] Bu da ayrıca yönetilmesi gereken oldukça karmaşık bir problemi beraberinde getiriyor.
 
@@ -40,45 +40,45 @@ Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir buc
 
 *http://docs.basho.com/riak/latest/dev/using/conflict-resolution/
 
-++++++++++++++++++++++++++++++
-Neden Data Type Kullanmıyoruz?
-++++++++++++++++++++++++++++++
+==================================
+**Neden Data Type Kullanmıyoruz?**
+==================================
 
 Veri tipleri sadece eventually consistent sistemlerde kullanılabiliyor.[3] Veri tipleri, yukarıdaki problemi her bir data type için Riak tarafından farklı tanımlanmış kurallar dahilinde çözüyorlar[4] ve buna uygulama katmanında müdahale etmek mümkün değil. Kararı Riak veriyor. Eventually consistent ortamda, uygulama katmanında conflict resolution mümkün olmadığı için veri tipleri kullanamıyoruz.
 
 Riak veri tipleri sayesinde sınırlı da olsa search (arama) imkanı sağlıyor. Bunu da register, flag gibi belirli tipleri solr şemasında dynamic field olarak tanımlayarak yapıyor.[4] Bizim register, flag şeklinde işaretlediğimiz her veri, dynamic field tanımlaması sayesinde solr da indexleniyor. Riak'ın bu veri tipleri sayesinde search için eklediği ekstra bir özelliğe dair dökümanlarda altı çizilen bilgi  yok. Bizim verimize uyacak nested biçimde register, counter ve setler içeren maplere bağlı olarak dynamic field ı bu şekilde kullanmak, sayısız ve kontrolsüz biçimde artan index ve inverted indexlere[5] yol açacaktır.
 
-+++++++++++++++++++++++++++++++
-Neden Write Once Kullanmıyoruz?
-+++++++++++++++++++++++++++++++
+===================================
+**Neden Write Once Kullanmıyoruz?**
+===================================
 
 Write Once kullandığımızda sistem sürekli farklı keylere yazacağı için conflict oluşmaz. Fakat uygulama katmanında verinin bütünlüğü için alacağımız önlem, yani verinin yazılmadan önce okunması, farklı nodelardan okuma ve sistemde oluşabilecek gecikmelerden dolayı yüzde yüz garanti sağlamaz. Yazma isteğinin doğrulanması için yapılacak okuma ve yazma farklı nodelardan yapılacağı için burada da verinin bir öncekini baz alan iki farklı kopyası oluşacaktır.
 
 Bunun yanı sıra arama işini daha karmaşık hale getirmekte, çok kopyalı sonuçlar arasında en son kopyaya ulaşma gibi ekstra bir zorluk eklemektedir.
 
-+++++++++++++++++++++++++
-Neden Strong Consistency?
-+++++++++++++++++++++++++
+=============================
+**Neden Strong Consistency?**
+=============================
 
 Riak Strong Consistency modunda conflictlere izin vermez. Veri tüm nodelarda eşlenene kadar yazıldı olarak kabul edilmez. Concurrent işlemlerde tıpkı RDBMS’lerdeki locklarda olduğu gibi yazma hataları döndürür. Bu da uygulama katmanında çok daha kolay yönetilebilir ve basit bir conflict resolution policy anlamına gelir.
 
-++++++++++++++++++++++++
-Neyi Nasıl Kullanacağız?
-++++++++++++++++++++++++
+============================
+**Neyi Nasıl Kullanacağız?**
+============================
 
 Log, temporary datalar hariç Strong Consistent bucketlar kullanacağız. Tek kopya üzerinde çalışacağız. Datayı yapabildiğimiz kadar flat hale getirip, solr indexleri için mümkün olduğunca az dynamic field içeren şemalar kullanacağız. Flat haline getirilmiş bucket arasında linkler ile relationlar kuracağız. Versiyonları ayrı bir Write Once Bucket’ta tutacağız. Bunlara bir pk ve date fieldları ekleyip bu iki field ı solr da indexleyeceğiz.
 
-++++++++
-Caching?
-++++++++
+============
+**Caching?**
+============
 
  * Redis nasıl kullanılacak?
  * Okuma nasıl yapılacak?
  * REDIS'ten Riak'a ve tersi akışta verinin bütünlüğü nasıl korunacak?
 
-+++++++
-Sorular
-+++++++
+===========
+**Sorular**
+===========
 
  * Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.
 
@@ -88,9 +88,9 @@ Sorular
 
  * Aşağıdaki sorgu ve rapor örneklerinin nasıl yapılabileceği hakkında bugünden ne açıklıkla yanıtlar verebiliyoruz?
 
-++++++++
-Sorgular
-++++++++
+============
+**Sorgular**
+============
 
  * Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi
 
@@ -104,9 +104,9 @@ Sorgular
 
  * Belirli bir tarihe kadar sisteme not girmesi beklenen hocaların listesi. (Sınavın yapıldığı tarihi takiben max 15 gün, sonraki sınav tarihinden min 7 gün önce gibi sabit birkaç kural söz konusu.)
 
-++++++++++++++++++++++++++
-Create ve Update İşlemleri
-++++++++++++++++++++++++++
+==============================
+**Create ve Update İşlemleri**
+==============================
 
  - Yeni öğrenci yarat
 
@@ -116,9 +116,9 @@ Create ve Update İşlemleri
 
  - Okul lokasyon bilgisi güncelle
 
-++++++++
-Raporlar
-++++++++
+============
+**Raporlar**
+============
 
  - Fakülte, bölüm ve program başına beklenen harç miktarları
 
