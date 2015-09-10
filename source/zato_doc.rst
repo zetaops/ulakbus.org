@@ -1,14 +1,12 @@
-============================================
+======================================
 **ESB ve SOA ne anlama geliyor yani?**
-============================================
+======================================
 
-:: 
+::
 
   Sistemlerin sistemini düşünmek hakkında harika bir özet olmuş.
 
-							Nick Coghlan, Core Python Geliştiricisi
-
-
+  Nick Coghlan, Core Python Geliştiricisi
 
 Aşağıdaki dillerde okuyabilirsiniz. `Català <https://zato.io/docs/intro/esb-soa-ca.html>`_, `Deutsch <https://zato.io/docs/intro/esb-soa-de.html>`_, `Français <https://zato.io/docs/intro/esb-soa-fr.html>`_, `Português <https://zato.io/docs/intro/esb-soa-pt.html>`_, `ру́сский <https://zato.io/docs/intro/esb-soa-ru.html>`_ `İngilizce <https://zato.io/docs/intro/esb-soa.html>`_ ve `中文 <https://zato.io/docs/intro/esb-soa-cn.html>`_.
 
@@ -17,7 +15,7 @@ ESB tanımının SOA ile bağlantılı oluşu kafa karışıklığına neden olu
 Ama bu kavramlar da, sürü sepet kurumsal gevezelik olmadan, sade bir Türkçe ile bile yeterince açık olmuyor maalesef.
 
 Tüm gerçek
---------------
+----------
 
 Bankanızın uygulamasına girdiğinizde neler olduğunu bir düşünün:
 
@@ -69,7 +67,7 @@ Peki 400 ayrı uygulama ile başa çıkabilir misiniz? Ya 2000? Her bir uygulama
 Bu duruma gayet uyan bir tanımımız var. Buna karmaşa diyoruz.
 
 Bu karmaşayı nasıl düzelteceksiniz?
----------------------------------------------
+-----------------------------------
 
 Yapılacak ilk şey, durumun kontrolden çıktığını kabul etmektir. Bu da size çok fazla suçluluk hissetmeden vaziyeti kurtarma şansı verir. Tamam, oldu bir kere, daha iyisini bilmiyordunuz, ama şimdi düzeltmek için bir çare var.
 
@@ -241,7 +239,7 @@ Nasıl İTA olacak?	E zaten öyle şu an.
 Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulamanızı servis olarak bir dış uygulamaya açmanın, başka biri tarafından yazılmış koda kendi kodunuzu API olarak açmakla kesinlikle benzediğini görebilirsiniz. Aradaki tek fark, tekil bir sistemdeki alt sistemlerle uğraşmak yerine, birbirinden tamamen ayrılmış sistemlerde çalışıyor oluşunuz.
 
 ESB üzerinde SOA ile servis yaratmak
----------------------------------------------
+------------------------------------
 
 Şimdi sistemlerin asla doğrudan bilgi alışverişi yapmadığını ve bir servisin ne olduğunu anladığınıza göre ESB’den faydalanmaya başlayabilirsiniz.
 
@@ -277,7 +275,7 @@ Bir zaman sonra tüm organizasyonun kafasına dank edecek gerçeklik şudur; Bu 
 Bu, sabır, koordine bir çaba ve zaman alacak bir süreç ancak yapılabilir bir şey.
 
 Aman dikkat edin...
----------------------------------------------
+-------------------
 
 Servis odaklı uygulama (SOA) konseptini mahvetmenin en kolay yolu KVY hizmetini açıp ondan sonra olayların kendiliğinden düzelmesini beklemek olabilir. Hala harika bir fikir olmasına rağmen, sadece KVY sistemini kurmakla çok büyük bir kazanım sahibi olamazsınız maalesef.
 
@@ -322,7 +320,7 @@ Kısaca hayır, SOA sadece XML, SOAP ve web servisleri hakkında değildir. Bu d
 SOA hakkında gerçekleri öğrenmek isteyen ve yolunu kaybetmiş meslektaşlarınız varsa onları da bu makaleye yönlendirmenizi, SOA hakkındaki gerçekleri anlamaya davet ediyoruz.
 
 Ve fazlası da var
----------------------------------------------
+-----------------
 
 Bu bölüm sadece temelleri kapsıyor ancak size KVY ve SOA’nın neye benzediği ve nasıl başarıyla uygulayabileceğiniz hakkında sağlam bir anlayış verdiğini umuyoruz.
 
@@ -336,7 +334,7 @@ Burada ele almadığımız ve bununla sınırlı olmayan diğer konular;
 - Herhangi bir API’si olmayan sistemlerle ne yapacaksınız. Mesela KVY bunların veritabanına doğrudan erişmeli mi? (cevap - bu konuda belirlenmiş net bir kural yok)
 
 Zato tam olarak nedir?
----------------------------------------------
+----------------------
 
 Zato middleware ve backend sistemler inşa etmek için Python dili ile yazışmış bir KVY ve uygulama sunucusudur. Hem ticari hem de topluluk desteği bulunan açık kaynak kodlu bir yazılımdır. Ve Python da kullanım kolaylığı ve üretkenliği ile meşhur bir dil. Python ve Zato’yu birlikte kullanıyor olmanız demek, başbelası olan pek çok konuya daha az zaman harcamak ve daha verimli olmak anlamına gelir.
 

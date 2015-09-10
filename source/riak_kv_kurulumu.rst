@@ -1,7 +1,10 @@
+++++++++++++++++
 RIAK KV Kurulumu
 ++++++++++++++++
 Riak production ortamında en az 3 node, mümkünse 5 node çalışması önerilen dağıtık bir veritabanı sistemidir.
-Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir: http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak
+Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir:
+
+http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak
 
 Bu dökümanda 5 node riak ve yük dengelemek için haproxy kurulum ve konfigürasyonu anlatılacaktır.
 
@@ -9,7 +12,7 @@ Bu dökümanda 5 node riak ve yük dengelemek için haproxy kurulum ve konfigür
 
 Kurulum için tavsiyemiz en az 2 CPU/VCPU ile 8 GB RAM bulunan sanal ya da gerçek sunucular kullanmanız yönündedir.
 
-Bu kurulumu, geliştirme ortamınız için, 1 CPU ve 1GB RAM ile 3 node olarak VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.
+Bu kurulumu, geliştirme ortamınız için, 1 CPU ve 1 GB RAM ile 3 node olarak VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.
 
 Ön Hazırlıklar
 --------------
@@ -43,7 +46,7 @@ Fully qualified domain name için de /etc/hosts dosyasına aşağıdaki gibi bir
 
    $ hostname -f
 
-çıktısınının ``node1.example.org`` şeklinde alanadı ve hostname ile birlikte olduğundan emin oluyoruz.
+çıktısınının ``node1.example.org`` şeklinde alan adı ve hostname ile birlikte olduğundan emin oluyoruz.
 
 Bu işlemleri yaptıktan sonra eğer sisteminizde yoksa bazı yardımcı paketlerin kurulması gereklidir:
 ::
@@ -71,7 +74,7 @@ Kurulumu aşağıdaki komut ile doğrulayabiliriz:
 
 Riak Kurulumu
 -------------
-Riak Kurulumu birkaç yol ile yapılabilir. Kaynak kod derlemek bunlardan birisidir. Fakat bu pek pratik değildir. Biz
+Riak kurulumu birkaç yol ile yapılabilir. Kaynak kod derlemek bunlardan birisidir. Fakat bu pek pratik değildir. Biz
 kaynak koddan kendimiz derleyerek elde ettiğimiz deb paketlerini kullanacağız. Packagecloud.io da tuttuğumuz paketleri
 sisteminize yüklemek için
 ::
@@ -93,7 +96,8 @@ komutlarını kullanabilirsiniz.
 
 Riak kurulumunu
 
-    ::
+::
+
     $ sudo riak-admin status
     Node is not running!
 
@@ -125,7 +129,7 @@ Riak'ın üzerinde çalışacağı sistemin performansı ile ilgili daha birçok
 ayarlar ayrı bir belgede ele alınacaktır. Başlangıç için bu düzenlemeler yeterlidir ve Riak kararlı şekilde çalışabilir.
 
 
-Riak Konfigurasyonu
+Riak Konfigürasyonu
 -------------------
 Riak standart bir kurulumda /etc/riak dizini altındaki riak.conf dosyası ile konfigüre edilir. Bazı özellikler ise hala
 eski tip konfigürasyon dosyaları olan advanaced.config ve app.config dosyaları ile yapılır. Riak başlama esnasında bu
@@ -137,7 +141,7 @@ değişikliğin ardından riak servisi yeniden başlatılmalıdır.
 
 komutuyla Ubuntu üzerinde Riak servisini yeniden başlatabilirsiniz.
 
-Konfigürasyon için ilk adım nodename değiştirmektir. riak.conf içindeki ``nodename = riak@127.0.0.1`` değerini ``nodename = riak@10.0.0.10`` şeklinde makine ip adresi ile değiştirmek gerekir. Bunu bir editör yardımı ile
+Konfigürasyon için ilk adım nodename değiştirmektir. riak.conf içindeki ``nodename = riak@127.0.0.1`` değerini ``nodename = riak@10.0.0.10`` şeklinde makine IP adresi ile değiştirmek gerekir. Bunu bir editör yardımı ile
 yapabilirsiniz. Ya da basitçe aşağıdaki komut ile de ilgili değişikliği yapabilirsiniz.
 ::
 
@@ -167,7 +171,7 @@ Buraya kadar yapılan işlemler 5 node için tekrar edilmelidir.
 
 Cluster Oluşturma
 -----------------
-5 node düzgün bir şekilde yapılandırıltan sonra Riak nodelar cluster olmak için hazırdır. Cluster oluşturmak için bir
+5 node düzgün bir şekilde yapılandırıldıktan sonra Riak nodelar cluster olmak için hazırdır. Cluster oluşturmak için bir
 node seçilmeli ve diğer nodelardan bu node'a clustera katılma isteği gönderilmelidir.
 
 Birinci node'u (10.0.0.10) seçtiğimizi varsayarsak diğer nodelarda sırayla
@@ -178,7 +182,7 @@ Birinci node'u (10.0.0.10) seçtiğimizi varsayarsak diğer nodelarda sırayla
 komutu çalıştırılır.
 
 
-Diğer 4 node'da bu komut sırayla çalıştırılır. Cluster'a katılma talebi başarıyla gerçekleştiyese şöyle bir mesaj ile
+Diğer 4 node'da bu komut sırayla çalıştırılır. Cluster'a katılma talebi başarıyla gerçekleştiyse şöyle bir mesaj ile
 karşılaşırız:
 ::
 

@@ -6,7 +6,7 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. - İş akışı ve iş akışı temelli uygulama.
+.. - İş akışı ve iş akışı temelli uygulama
 .. - ZEngine: İş akışı tabanlı web çatısı
 ..	- Falcon
 ..	- SpiffWorkflow
@@ -14,14 +14,14 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 ..	- Modeller
 ..	- Ekranlar (Activities)
 ..	- Görevler (Jobs)
-..	- Yetkiler ve Rol tabanlı erişim kontrolü.
+..	- Yetkiler ve Rol tabanlı erişim kontrolü
 .. - Adım adım bir web uygulamasının geliştirilmesi
 ..	- Geliştirme ortamının kurulumu
 ..	- Dizin & dosya yapısının oluşturulması
-..	- İş akışlarının tasarlanması.
-..	- Modellerin tanımlanması.
-..	- Ekleme görüntüleme düzenleme ve silme işlemleri için CRUDView kullanımı.
-..	- Özelleştirilmiş ekranların oluşturulması.
+..	- İş akışlarının tasarlanması
+..	- Modellerin tanımlanması
+..	- Ekleme, görüntüleme, düzenleme ve silme işlemleri için CRUDView kullanımı
+..	- Özelleştirilmiş ekranların oluşturulması
 
 İş akışı ve iş akışı temelli uygulama
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,12 +55,12 @@ Uygulamanın konusunu oluşturan varlıklar (entities) Pyoko modelleri olarak ta
 
 Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmasına imkan vermenin yanı sıra, bu veri varlıkları arasında ilişkisel veritabanlarındakine benzer bağlantılar oluşturmasını sağlar. Veri girdilerinin model tanımına uygunluğunun kontrolü ve kullanıcıların bu verilerle yetkileri dahilinde etkileşime geçebilmelerini garanti edilmesi de Pyoko sayesinde veri katmanı seviyesinde çözülebilen uygulama ihtiyaçlarıdır.
 
-Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.
+Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürülürler.
 
 NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).
 
 Modeller
-*********
+********
 Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.
 ::
 
