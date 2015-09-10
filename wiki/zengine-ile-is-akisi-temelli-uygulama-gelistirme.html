@@ -178,7 +178,8 @@
 <li><a class="reference internal" href="#falcon">Falcon</a></li>
 <li><a class="reference internal" href="#spiffworkflow">SpiffWorkflow</a></li>
 <li><a class="reference internal" href="#pyoko">Pyoko</a></li>
-<li><a class="reference internal" href="#modeller">Modeller</a></li>
+<li><a class="reference internal" href="#veri-modelleri">Veri Modelleri</a></li>
+<li><a class="reference internal" href="#workflow-metodlari-views-tasks">Workflow Metodları (Views &amp; Tasks)</a></li>
 </ul>
 </li>
 </ul>
@@ -229,7 +230,7 @@
 </div>
 <div class="section" id="zengine-web-catisi">
 <h2>ZEngine Web Çatısı<a class="headerlink" href="#zengine-web-catisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen REST odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunmaktadır.</p>
+<p>ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen servis odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunar.</p>
 <div class="section" id="falcon">
 <h3>Falcon<a class="headerlink" href="#falcon" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Falcon, WSGI standardını destekleyen, REST mimarisinde servisler oluşturmak için geliştirilmiş aşırı hızlı ve hafif bir web çatısıdır.</p>
@@ -246,9 +247,15 @@
 <p>Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürülürler.</p>
 <p>NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).</p>
 </div>
-<div class="section" id="modeller">
-<h3>Modeller<a class="headerlink" href="#modeller" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.</p>
+<div class="section" id="veri-modelleri">
+<h3>Veri Modelleri<a class="headerlink" href="#veri-modelleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Model, Node ve ListNode adında üç temel nesne tipi sunmaktadır. Bu nesneleri, ihtiyacımız doğrultusunda iç içe ya da bir birleriyle ilişkilendirerek kullanabiliriz. Bu nesneler üzerinde saklanacak verileri tanımlamak için ise String, Boolean, Integer, Date gibi çeşitli veri alanları tanımlanmıştır.</p>
+<p>Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu &#8220;öğrencinin ders seçmesi, danışman öğretmeninin bu dersi onaylaması&#8221; olan bir iş akışın gerektirdiği veri modelinin minimal bir örneği listelenmiştir.</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">15.</span></code> Bir modelden başka bir modele referans verdiğimizde ise iki model arasında <em>OneToMany</em> tipinde bir bağ kurmuş oluruz.</p>
+<p><code class="docutils literal"><span class="pre">17.</span></code> Satırda öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir.</p>
+<p><code class="docutils literal"><span class="pre">18.</span></code> ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki <em>ManyToMany</em> benzeri bir ilişki tanımlamış oluruz.</p>
+</div></blockquote>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -265,7 +272,9 @@
 14
 15
 16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
 
 <span class="k">class</span> <span class="nc">Lecturer</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -273,10 +282,12 @@
 
 <span class="k">class</span> <span class="nc">Lecture</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">credit</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Kredisi&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">join_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Kayıt tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">advisor</span> <span class="o">=</span> <span class="n">Lecturer</span><span class="p">()</span>
 
     <span class="k">class</span> <span class="nc">Lectures</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
@@ -284,6 +295,11 @@
         <span class="n">confirmed</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
+</div>
+<div class="section" id="workflow-metodlari-views-tasks">
+<h3>Workflow Metodları (Views &amp; Tasks)<a class="headerlink" href="#workflow-metodlari-views-tasks" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>İş akışı tabanlı bir uygulamada, uygulamanın tüm işlevlerini bir iş akışı  adımı üzerinden çalıştırılacak şekilde planlarız. Servis tabanlı bir uygulamanın işlevlerinin çoğu istemci (web tarayıcı) ile etkileşimi sağlayan API&#8217;lerden üzerinden sağlanırken (views), bazı işlemler de arkaplanda çalışan görevler (tasks) ile yürütülür.
+Bu belgende task olarak anılacak arkaplan görevleri, doğası gereği tamamlanması uzun sürebilecek hesaplamalar olabileceği gibi, dış servislere bağımlı işlerin kullanıcı deneyimini etkilemeden çalıştırılmasını sağlayan görev kuyruklarıda olabilirler.</p>
 </div>
 </div>
 </div>
