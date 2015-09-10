@@ -172,18 +172,20 @@
             </a></p>
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Data Erişim Seçimleri</a></li>
-<li><a class="reference internal" href="#neden-rdbms-kullanmiyoruz">Neden RDBMS Kullanmıyoruz?</a></li>
-<li><a class="reference internal" href="#neden-eventually-consistent-kullanmiyoruz">Neden Eventually Consistent Kullanmıyoruz?</a></li>
-<li><a class="reference internal" href="#neden-data-type-kullanmiyoruz">Neden Data Type Kullanmıyoruz?</a></li>
-<li><a class="reference internal" href="#neden-write-once-kullanmiyoruz">Neden Write Once Kullanmıyoruz?</a></li>
-<li><a class="reference internal" href="#neden-strong-consistency">Neden Strong Consistency?</a></li>
-<li><a class="reference internal" href="#neyi-nasil-kullanacagiz">Neyi Nasıl Kullanacağız?</a></li>
-<li><a class="reference internal" href="#caching">Caching?</a></li>
-<li><a class="reference internal" href="#sorular">Sorular</a></li>
-<li><a class="reference internal" href="#sorgular">Sorgular</a></li>
-<li><a class="reference internal" href="#create-ve-update-islemleri">Create ve Update İşlemleri</a></li>
-<li><a class="reference internal" href="#raporlar">Raporlar</a></li>
+<li><a class="reference internal" href="#">Data Erişim Seçimleri</a><ul>
+<li><a class="reference internal" href="#neden-rdbms-kullanmiyoruz"><strong>Neden RDBMS Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-eventually-consistent-kullanmiyoruz"><strong>Neden Eventually Consistent Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-data-type-kullanmiyoruz"><strong>Neden Data Type Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-write-once-kullanmiyoruz"><strong>Neden Write Once Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-strong-consistency"><strong>Neden Strong Consistency?</strong></a></li>
+<li><a class="reference internal" href="#neyi-nasil-kullanacagiz"><strong>Neyi Nasıl Kullanacağız?</strong></a></li>
+<li><a class="reference internal" href="#caching"><strong>Caching?</strong></a></li>
+<li><a class="reference internal" href="#sorular"><strong>Sorular</strong></a></li>
+<li><a class="reference internal" href="#sorgular"><strong>Sorgular</strong></a></li>
+<li><a class="reference internal" href="#create-ve-update-islemleri"><strong>Create ve Update İşlemleri</strong></a></li>
+<li><a class="reference internal" href="#raporlar"><strong>Raporlar</strong></a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Önceki konu</h4>
@@ -231,13 +233,12 @@
 <p>Nested</p>
 <p>Entity</p>
 <p>RDBMS</p>
-</div>
 <div class="section" id="neden-rdbms-kullanmiyoruz">
-<h1>Neden RDBMS Kullanmıyoruz?<a class="headerlink" href="#neden-rdbms-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Neden RDBMS Kullanmıyoruz?</strong><a class="headerlink" href="#neden-rdbms-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Bu sebeple:</p>
 </div>
 <div class="section" id="neden-eventually-consistent-kullanmiyoruz">
-<h1>Neden Eventually Consistent Kullanmıyoruz?<a class="headerlink" href="#neden-eventually-consistent-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Neden Eventually Consistent Kullanmıyoruz?</strong><a class="headerlink" href="#neden-eventually-consistent-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Riak&#8217;ı Eventually Consistent modunda kullandığımızda, concurrent yazma işlemleri sonucu verinin birden fazla değişik versiyonu oluşabiliyor. (Sibling) Çünkü veri, farklı nodelardaki kopyalarının durumu gözetilmeksizin yazılıyor. Oluşan conflictler ise daha sonra çözüme kavuşturuluyor. * [1] Bu da ayrıca yönetilmesi gereken oldukça karmaşık bir problemi beraberinde getiriyor.</p>
 <p>Oluşan conflictler birkaç yolla çözüme bağlanabiliyor.[2] Bu çözümlerin bir kısmı Riak tarafından otomatik olarak yapılabiliyor. Riak&#8217;ın sağladığı iki temel çözüm time-based ve last-write-wins şeklinde. Riak&#8217;ın internal çözümleri dışında uygulama katmanından bu çözümleri uygulamak da mümkün. Fakat aynı bucket üzerinde hem Riak internal hem de application taraflı çözümleri kullanamıyoruz. Bir bucketdaki conflictlerin nasıl çözüleceği bucket metadataları ile kontrol ediliyor. Riak internallar için allow_mult parametresi false olması gerekirken, uygulama taraflı çözümler için true olması gerekiyor.</p>
 <p>Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir bucket üzerinde birlikte kullanmak mümkün değil. Bizim durumumuzda bu tür conflictlerin uygulama katmanında</p>
@@ -245,25 +246,25 @@
 <p><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a></p>
 </div>
 <div class="section" id="neden-data-type-kullanmiyoruz">
-<h1>Neden Data Type Kullanmıyoruz?<a class="headerlink" href="#neden-data-type-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Neden Data Type Kullanmıyoruz?</strong><a class="headerlink" href="#neden-data-type-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Veri tipleri sadece eventually consistent sistemlerde kullanılabiliyor.[3] Veri tipleri, yukarıdaki problemi her bir data type için Riak tarafından farklı tanımlanmış kurallar dahilinde çözüyorlar[4] ve buna uygulama katmanında müdahale etmek mümkün değil. Kararı Riak veriyor. Eventually consistent ortamda, uygulama katmanında conflict resolution mümkün olmadığı için veri tipleri kullanamıyoruz.</p>
 <p>Riak veri tipleri sayesinde sınırlı da olsa search (arama) imkanı sağlıyor. Bunu da register, flag gibi belirli tipleri solr şemasında dynamic field olarak tanımlayarak yapıyor.[4] Bizim register, flag şeklinde işaretlediğimiz her veri, dynamic field tanımlaması sayesinde solr da indexleniyor. Riak&#8217;ın bu veri tipleri sayesinde search için eklediği ekstra bir özelliğe dair dökümanlarda altı çizilen bilgi  yok. Bizim verimize uyacak nested biçimde register, counter ve setler içeren maplere bağlı olarak dynamic field ı bu şekilde kullanmak, sayısız ve kontrolsüz biçimde artan index ve inverted indexlere[5] yol açacaktır.</p>
 </div>
 <div class="section" id="neden-write-once-kullanmiyoruz">
-<h1>Neden Write Once Kullanmıyoruz?<a class="headerlink" href="#neden-write-once-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Neden Write Once Kullanmıyoruz?</strong><a class="headerlink" href="#neden-write-once-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Write Once kullandığımızda sistem sürekli farklı keylere yazacağı için conflict oluşmaz. Fakat uygulama katmanında verinin bütünlüğü için alacağımız önlem, yani verinin yazılmadan önce okunması, farklı nodelardan okuma ve sistemde oluşabilecek gecikmelerden dolayı yüzde yüz garanti sağlamaz. Yazma isteğinin doğrulanması için yapılacak okuma ve yazma farklı nodelardan yapılacağı için burada da verinin bir öncekini baz alan iki farklı kopyası oluşacaktır.</p>
 <p>Bunun yanı sıra arama işini daha karmaşık hale getirmekte, çok kopyalı sonuçlar arasında en son kopyaya ulaşma gibi ekstra bir zorluk eklemektedir.</p>
 </div>
 <div class="section" id="neden-strong-consistency">
-<h1>Neden Strong Consistency?<a class="headerlink" href="#neden-strong-consistency" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Neden Strong Consistency?</strong><a class="headerlink" href="#neden-strong-consistency" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Riak Strong Consistency modunda conflictlere izin vermez. Veri tüm nodelarda eşlenene kadar yazıldı olarak kabul edilmez. Concurrent işlemlerde tıpkı RDBMS’lerdeki locklarda olduğu gibi yazma hataları döndürür. Bu da uygulama katmanında çok daha kolay yönetilebilir ve basit bir conflict resolution policy anlamına gelir.</p>
 </div>
 <div class="section" id="neyi-nasil-kullanacagiz">
-<h1>Neyi Nasıl Kullanacağız?<a class="headerlink" href="#neyi-nasil-kullanacagiz" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Neyi Nasıl Kullanacağız?</strong><a class="headerlink" href="#neyi-nasil-kullanacagiz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Log, temporary datalar hariç Strong Consistent bucketlar kullanacağız. Tek kopya üzerinde çalışacağız. Datayı yapabildiğimiz kadar flat hale getirip, solr indexleri için mümkün olduğunca az dynamic field içeren şemalar kullanacağız. Flat haline getirilmiş bucket arasında linkler ile relationlar kuracağız. Versiyonları ayrı bir Write Once Bucket’ta tutacağız. Bunlara bir pk ve date fieldları ekleyip bu iki field ı solr da indexleyeceğiz.</p>
 </div>
 <div class="section" id="caching">
-<h1>Caching?<a class="headerlink" href="#caching" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Caching?</strong><a class="headerlink" href="#caching" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Redis nasıl kullanılacak?</li>
@@ -273,7 +274,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="sorular">
-<h1>Sorular<a class="headerlink" href="#sorular" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Sorular</strong><a class="headerlink" href="#sorular" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.</li>
@@ -284,7 +285,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="sorgular">
-<h1>Sorgular<a class="headerlink" href="#sorgular" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Sorgular</strong><a class="headerlink" href="#sorgular" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi</li>
@@ -297,7 +298,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="create-ve-update-islemleri">
-<h1>Create ve Update İşlemleri<a class="headerlink" href="#create-ve-update-islemleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Create ve Update İşlemleri</strong><a class="headerlink" href="#create-ve-update-islemleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Yeni öğrenci yarat</li>
@@ -308,7 +309,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="raporlar">
-<h1>Raporlar<a class="headerlink" href="#raporlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h2><strong>Raporlar</strong><a class="headerlink" href="#raporlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Fakülte, bölüm ve program başına beklenen harç miktarları</li>
@@ -324,6 +325,7 @@
 <p>3: <a class="reference external" href="http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats">http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats</a></p>
 <p>4: <a class="reference external" href="https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100">https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100</a></p>
 <p>5: <a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_index">https://en.wikipedia.org/wiki/Inverted_index</a></p>
+</div>
 </div>
 
 

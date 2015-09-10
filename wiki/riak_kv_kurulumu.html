@@ -166,7 +166,7 @@
 <li><a class="reference internal" href="#on-hazirliklar">Ön Hazırlıklar</a></li>
 <li><a class="reference internal" href="#java-kurulumu">Java Kurulumu</a></li>
 <li><a class="reference internal" href="#riak-kurulumu">Riak Kurulumu</a></li>
-<li><a class="reference internal" href="#riak-konfigurasyonu">Riak Konfigurasyonu</a></li>
+<li><a class="reference internal" href="#riak-konfigurasyonu">Riak Konfigürasyonu</a></li>
 <li><a class="reference internal" href="#cluster-olusturma">Cluster Oluşturma</a></li>
 </ul>
 </li>
@@ -203,11 +203,12 @@
   <div class="section" id="riak-kv-kurulumu">
 <h1>RIAK KV Kurulumu<a class="headerlink" href="#riak-kv-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <p>Riak production ortamında en az 3 node, mümkünse 5 node çalışması önerilen dağıtık bir veritabanı sistemidir.
-Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir: <a class="reference external" href="http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak">http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak</a></p>
+Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir:</p>
+<p><a class="reference external" href="http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak">http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak</a></p>
 <p>Bu dökümanda 5 node riak ve yük dengelemek için haproxy kurulum ve konfigürasyonu anlatılacaktır.</p>
 <p>5 makinada üzerinde başka bir uygulama kurulmamış bulunan Ubuntu 14.10 (trusty) dağıtımının kurulu olduğu varsayılmıştır.</p>
 <p>Kurulum için tavsiyemiz en az 2 CPU/VCPU ile 8 GB RAM bulunan sanal ya da gerçek sunucular kullanmanız yönündedir.</p>
-<p>Bu kurulumu, geliştirme ortamınız için, 1 CPU ve 1GB RAM ile 3 node olarak VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.</p>
+<p>Bu kurulumu, geliştirme ortamınız için, 1 CPU ve 1 GB RAM ile 3 node olarak VirtualBox veya benzeri bir sanallaştırma ortamı üzerinde yapabilirsiniz.</p>
 <div class="section" id="on-hazirliklar">
 <h2>Ön Hazırlıklar<a class="headerlink" href="#on-hazirliklar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Öncelikle her bir makinenin hostname ve IP adreslerinin düzgün şekilde ayarlandığından emin olalım. Bizim örneğimizde
@@ -235,7 +236,7 @@ IP adresleri ve hostnamelerin şu şekilde olduğu kabul edilmiştir.</p>
 <div class="highlight-python"><div class="highlight"><pre>$ hostname -f
 </pre></div>
 </div>
-<p>çıktısınının <code class="docutils literal"><span class="pre">node1.example.org</span></code> şeklinde alanadı ve hostname ile birlikte olduğundan emin oluyoruz.</p>
+<p>çıktısınının <code class="docutils literal"><span class="pre">node1.example.org</span></code> şeklinde alan adı ve hostname ile birlikte olduğundan emin oluyoruz.</p>
 <p>Bu işlemleri yaptıktan sonra eğer sisteminizde yoksa bazı yardımcı paketlerin kurulması gereklidir:</p>
 <div class="highlight-python"><div class="highlight"><pre>apt-get install -y curl wget
 </pre></div>
@@ -260,7 +261,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
 </div>
 <div class="section" id="riak-kurulumu">
 <h2>Riak Kurulumu<a class="headerlink" href="#riak-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Riak Kurulumu birkaç yol ile yapılabilir. Kaynak kod derlemek bunlardan birisidir. Fakat bu pek pratik değildir. Biz
+<p>Riak kurulumu birkaç yol ile yapılabilir. Kaynak kod derlemek bunlardan birisidir. Fakat bu pek pratik değildir. Biz
 kaynak koddan kendimiz derleyerek elde ettiğimiz deb paketlerini kullanacağız. Packagecloud.io da tuttuğumuz paketleri
 sisteminize yüklemek için</p>
 <div class="highlight-python"><div class="highlight"><pre>$ curl -s https://packagecloud.io/install/repositories/zetaops/riak/script.deb.sh | sudo bash
@@ -277,10 +278,10 @@ echo &quot;session required        pam_limits.so&quot; &gt;&gt; /etc/pam.d/commo
 </div>
 <p>komutlarını kullanabilirsiniz.</p>
 <p>Riak kurulumunu</p>
-<blockquote>
-<div>::
-$ sudo riak-admin status
-Node is not running!</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo riak-admin status
+Node is not running!
+</pre></div>
+</div>
 <p>komutuyla doğrulayabilirsiniz.</p>
 <p>Paketlerin kurulumunun ardından riak servisi başlamayabilir. Bu durumda yukarıdaki gibi <code class="docutils literal"><span class="pre">Node</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">running!</span></code> çıktısı
 alırsınız. Servisi başlatmak için</p>
@@ -305,7 +306,7 @@ consistent_get_objsize_median : 0
 ayarlar ayrı bir belgede ele alınacaktır. Başlangıç için bu düzenlemeler yeterlidir ve Riak kararlı şekilde çalışabilir.</p>
 </div>
 <div class="section" id="riak-konfigurasyonu">
-<h2>Riak Konfigurasyonu<a class="headerlink" href="#riak-konfigurasyonu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Riak Konfigürasyonu<a class="headerlink" href="#riak-konfigurasyonu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Riak standart bir kurulumda /etc/riak dizini altındaki riak.conf dosyası ile konfigüre edilir. Bazı özellikler ise hala
 eski tip konfigürasyon dosyaları olan advanaced.config ve app.config dosyaları ile yapılır. Riak başlama esnasında bu
 dosyalara bakıp validasyon yapar ve tek bir nihayi konfigürasyon üretir. Dolayısı ile bu dosyalarda yapılacak her
@@ -314,7 +315,7 @@ değişikliğin ardından riak servisi yeniden başlatılmalıdır.</p>
 </pre></div>
 </div>
 <p>komutuyla Ubuntu üzerinde Riak servisini yeniden başlatabilirsiniz.</p>
-<p>Konfigürasyon için ilk adım nodename değiştirmektir. riak.conf içindeki <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;127.0.0.1</span></code> değerini <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;10.0.0.10</span></code> şeklinde makine ip adresi ile değiştirmek gerekir. Bunu bir editör yardımı ile
+<p>Konfigürasyon için ilk adım nodename değiştirmektir. riak.conf içindeki <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;127.0.0.1</span></code> değerini <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;10.0.0.10</span></code> şeklinde makine IP adresi ile değiştirmek gerekir. Bunu bir editör yardımı ile
 yapabilirsiniz. Ya da basitçe aşağıdaki komut ile de ilgili değişikliği yapabilirsiniz.</p>
 <div class="highlight-python"><div class="highlight"><pre>sed -i.bak &quot;s/riak@127.0.0.1/riak@10.0.0.10/&quot; /etc/riak/riak.conf
 </pre></div>
@@ -338,14 +339,14 @@ listener.protobuf.internal = 10.0.0.10:8087
 </div>
 <div class="section" id="cluster-olusturma">
 <h2>Cluster Oluşturma<a class="headerlink" href="#cluster-olusturma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>5 node düzgün bir şekilde yapılandırıltan sonra Riak nodelar cluster olmak için hazırdır. Cluster oluşturmak için bir
+<p>5 node düzgün bir şekilde yapılandırıldıktan sonra Riak nodelar cluster olmak için hazırdır. Cluster oluşturmak için bir
 node seçilmeli ve diğer nodelardan bu node&#8217;a clustera katılma isteği gönderilmelidir.</p>
 <p>Birinci node&#8217;u (10.0.0.10) seçtiğimizi varsayarsak diğer nodelarda sırayla</p>
 <div class="highlight-python"><div class="highlight"><pre>riak-admin cluster join riak@10.0.0.10
 </pre></div>
 </div>
 <p>komutu çalıştırılır.</p>
-<p>Diğer 4 node&#8217;da bu komut sırayla çalıştırılır. Cluster&#8217;a katılma talebi başarıyla gerçekleştiyese şöyle bir mesaj ile
+<p>Diğer 4 node&#8217;da bu komut sırayla çalıştırılır. Cluster&#8217;a katılma talebi başarıyla gerçekleştiyse şöyle bir mesaj ile
 karşılaşırız:</p>
 <div class="highlight-python"><div class="highlight"><pre>Success: staged join request for &#39;riak@10.0.0.11&#39; to &#39;riak@10.0.0.10&#39;
 </pre></div>
