@@ -6,7 +6,7 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.. - İş akışı ve iş akışı temelli uygulama
+.. - İş akışı ve iş akışı temelli uygulama.
 .. - ZEngine: İş akışı tabanlı web çatısı
 ..	- Falcon
 ..	- SpiffWorkflow
@@ -14,14 +14,14 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 ..	- Modeller
 ..	- Ekranlar (Activities)
 ..	- Görevler (Jobs)
-..	- Yetkiler ve Rol tabanlı erişim kontrolü
+..	- Yetkiler ve Rol tabanlı erişim kontrolü.
 .. - Adım adım bir web uygulamasının geliştirilmesi
 ..	- Geliştirme ortamının kurulumu
 ..	- Dizin & dosya yapısının oluşturulması
-..	- İş akışlarının tasarlanması
-..	- Modellerin tanımlanması
-..	- Ekleme, görüntüleme, düzenleme ve silme işlemleri için CRUDView kullanımı
-..	- Özelleştirilmiş ekranların oluşturulması
+..	- İş akışlarının tasarlanması.
+..	- Modellerin tanımlanması.
+..	- Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
+..	- Özelleştirilmiş ekranların oluşturulması.
 
 İş akışı ve iş akışı temelli uygulama
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,7 +37,7 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 ZEngine Web Çatısı
 %%%%%%%%%%%%%%%%%%
 
-ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen REST odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunmaktadır.
+ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen servis odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunar.
 
 Falcon
 ******
@@ -55,18 +55,24 @@ Uygulamanın konusunu oluşturan varlıklar (entities) Pyoko modelleri olarak ta
 
 Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmasına imkan vermenin yanı sıra, bu veri varlıkları arasında ilişkisel veritabanlarındakine benzer bağlantılar oluşturmasını sağlar. Veri girdilerinin model tanımına uygunluğunun kontrolü ve kullanıcıların bu verilerle yetkileri dahilinde etkileşime geçebilmelerini garanti edilmesi de Pyoko sayesinde veri katmanı seviyesinde çözülebilen uygulama ihtiyaçlarıdır.
 
-Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürülürler.
+Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.
 
 NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).
 
-<<<<<<< HEAD
-Modeller
-********
-=======
 Veri Modelleri
 ***************
->>>>>>> a5072871566987b265f8b7b9424d4e7ea1c7dd3d
-Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.
+Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Model, Node ve ListNode adında üç temel nesne tipi sunmaktadır. Bu nesneleri, ihtiyacımız doğrultusunda iç içe ya da bir birleriyle ilişkilendirerek kullanabiliriz. Bu nesneler üzerinde saklanacak verileri tanımlamak için ise String, Boolean, Integer, Date gibi çeşitli veri alanları tanımlanmıştır.
+
+Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu "öğrencinin ders seçmesi, danışman öğretmeninin bu dersi onaylaması" olan bir iş akışın gerektirdiği veri modelinin minimal bir örneği listelenmiştir.
+
+..
+
+    ``15.`` Bir modelden başka bir modele referans verdiğimizde ise iki model arasında *OneToMany* tipinde bir bağ kurmuş oluruz.
+
+    ``17.`` Satırda öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir.
+
+    ``18.`` ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki *ManyToMany* benzeri bir ilişki tanımlamış oluruz.
+
 ::
 
     from pyoko import Model, ListNode, field
@@ -77,14 +83,20 @@ Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer mo
 
     class Lecture(Model):
         name = field.String("Ders adı", index=True)
+        credit = field.Integer("Kredisi", default=0, index=True)
 
 
     class Student(Model):
         name = field.String("Adı", index=True)
+        join_date = field.Date("Kayıt tarihi", index=True)
         advisor = Lecturer()
 
         class Lectures(ListNode):
             lecture = Lecture()
             confirmed = field.Boolean("Onaylandı", default=False)
 
-Ekranlar
+Workflow Metodları (Views & Tasks)
+**********************************
+İş akışı tabanlı bir uygulamada, uygulamanın tüm işlevlerini bir iş akışı  adımı üzerinden çalıştırılacak şekilde planlarız. Servis tabanlı bir uygulamanın işlevlerinin çoğu istemci (web tarayıcı) ile etkileşimi sağlayan API'lerden üzerinden sağlanırken (views), bazı işlemler de arkaplanda çalışan görevler (tasks) ile yürütülür.
+Bu belgende task olarak anılacak arkaplan görevleri, doğası gereği tamamlanması uzun sürebilecek hesaplamalar olabileceği gibi, dış servislere bağımlı işlerin kullanıcı deneyimini etkilemeden çalıştırılmasını sağlayan görev kuyruklarıda olabilirler.
+
