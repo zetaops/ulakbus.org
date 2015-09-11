@@ -1,8 +1,8 @@
 body {
-    font-family: 'robotoregular';
-    background-image: url(../dots.png);
+	font-family:'robotoregular';
+	background-image: url(../dots.png);
+	border:none !important;
 }
-
 a {
     color: #A90F11;
     -webkit-transition: all .2s;
@@ -73,6 +73,11 @@ footer p {
     padding: 15px;
 }
 
+@media (max-width: 1000px) {
+    .ulakbus-navbar {
+        zoom: 0.8;
+    }
+}
 @media (max-width: 767px) {
     div.sphinxsidebar {
         display: inline-block;
@@ -92,7 +97,9 @@ footer p {
     }
 
     #forkme {
-        zoom: 0.5;
+        width: 90px;
+        top: -9px;
+        right: -11px;
     }
 
 }
@@ -102,6 +109,10 @@ footer p {
         height: 85px;
         line-height: 55px;
     }
+    .navbar-right {
+
+        margin-right: 80px;
+    }
 
     div#doccontainer {
         margin: 0 auto;
@@ -110,7 +121,9 @@ footer p {
     }
 
     #forkme {
-        zoom: 0.8;
+        width: 100px;
+        top: -9px;
+        right: -11px;
     }
 
 }
@@ -142,12 +155,11 @@ div.sphinxsidebarwrapper {
 }
 
 #forkme {
-    position: absolute;
-    top: -13px;
-    right: -16px;
+    position: fixed;
+    /*top: -13px;*/
+    /*right: -10px;*/
     border: 0;
-    height: 160px;
-    z-index: 99999;
+    z-index: 1999;
 }
 
 div.related ul a, div.related li {
@@ -165,4 +177,12 @@ div.related {
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
+}
+
+ul.navbar-nav {
+    z-index: 99999 !important;
+    position: relative !important;
+}
+.container{
+    width: auto !important;
 }
