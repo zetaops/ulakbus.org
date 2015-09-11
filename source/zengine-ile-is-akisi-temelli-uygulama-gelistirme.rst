@@ -93,6 +93,9 @@ Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu "öğ
             lecture = Lecture()
             confirmed = field.Boolean("Onaylandı", default=False)
 
+Bu modeller üzerinde kayıt ekleme, sorgulama, silme, güncelleme işlemlerinin
+nasıl yapılacağını belgenin devamında "özelleştirilmiş ekranların oluşturulması" bölümünde inceleyebilirsiniz.
+
 Workflow Metodları (Views & Tasks)
 **********************************
 Workflow tabanlı bir uygulamada, uygulamanın tüm işlevselliği iş akışı adımları üzerinden çalıştırılacak şekilde hazırlanır. Bu işlevler BPMN diagramında UserTask ve ServiceTask adımlarının ilgili alanlarına girilen metod ve sınıf çağrıları ile yerine getirilir. İş akışı motoru, kullanıcı girdilerini (TaskData), o an işlettiği akış diagramında tanımlı ExclusiveGateway gibi karar kapılarına karşı işleterek akışı yönlendirir. Etkinleştirilen akış adımlarıyla ilişkili metod çağrıları sonucuna göre akış sonraki adıma devam edebilir ya da akışın durumu kaydedilip işlem çıktısı akışı tetikleyen kullanıcıya geri döndürülebilir.
@@ -100,9 +103,8 @@ Workflow tabanlı bir uygulamada, uygulamanın tüm işlevselliği iş akışı 
 
 Bir web uygulamasının işlevlerini yerine getirmesi için yazılan kodların büyük bir kısmı istemci (web tarayıcı) ile etkileşimi sağlayan API çağrıları üzerinden çağırılırken (views), bazı işlemler de arkaplanda çalışan görevler (tasks) ile yürütülür. Bu belgede *task* olarak anılacak bu arkaplan görevleri, doğası gereği tamamlanması uzun sürebilecek çeşitli hesaplamalar olabileceği gibi, dış servislere bağımlı olduklarından, kullanıcı deneyimini etkilememeleri için arkaplanda çalıştırılması gereken anlık görevler de olabilirer.
 
-Current Nesnesi
-----------------
-İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
+İster view ister task tipinde olsunlar, workflow metodarının tüm girdi & çıktı işlemleri current.input ve current.output sözlükleri üzerinden yapılır.
+
 
 ::
 
@@ -113,7 +115,11 @@ Current Nesnesi
             current.user.first_login = False
             current.user.save()
 
-**Current nesnesi aşağıdaki ögeleri içerir;**
+Current Nesnesi
+----------------
+İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
+
+Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ögeleri içerir. Bunlardan *session, user, auth* gibi sadece view metodlarında işlevsel olanlar arkaplanda çalışan task metodlarında geçersizdirler.
 
 ``input`` İstemciden gelen JSON verisinin çözümlenip (decode) Python sözlüğü şekline getirilmiş hali.
 
@@ -123,18 +129,74 @@ Current Nesnesi
 
 ``auth`` Kullanıcı yetkilendirmesi ile ilgili metodları barındıran AuthBackend nesnesidir. *get_user(), get_permissions(), has_permission(), authenticate()* metodlarını içerir. ZEngine bu nesnenin referans sürümünü içerir ancak kendi uygulamamızda kullanıcı ve yetki sistemimize uygun şekilde özelleştirilmiş bir AuthBackend nesnesi kullanmamıza izin verir.
 
-``user``
+``user`` Sisteme giriş yapmış kullanıcıyı veren vekil (lazy proxy) kullanıcı nesnesidir. Asıl kullanıcı bilgileri, bu nesneye erişildiği anda veritabanından çekilir.
 
-``workflow_name``
+``task_data`` İş akışının karar adımlarında tanımlı koşullar bu sözlüğün içerdiği veriler ile işletilir.
 
-``workflow``
+``workflow_name`` İşletilmekte olan iş akışının adı.
 
-``task``
+``workflow`` İşletilmekte olan iş akışı nesnesi.
 
-``task_data``
+``task`` Etkin durumdaki iş akışı adımı (Task) nesnesi.
 
-``is_auth``
+``is_auth`` Kullanıcının sisteme giriş yapma durumunu belirten bool tipinde bir özelliktir.
 
-``has_permission()``
+``has_permission(perm_code_name)`` Kullanıcının adı verilen yetkiye sahip olup olmadığını boolean tipinde döndürür.
 
-``get_permissions()``
+``get_permissions()`` Kullanıcının sahip olduğu tüm yetkileri döndürür.
+
+Yetkiler ve Rol Tabanlı Erişim Kontrolü
+****************************************
+ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrolüne* ek olarak, sisteme yüklenmiş iş akışlarının tüm adımlarını birer yetki olarak tanımlar. Otomatik olarak türetilen iş akışı yetkilerine ek olarak, CustomPermission nesnesi ile, kendi view metodlarımızda kontrol edebileceğimiz ek yetkiler de tanımlayabilirz. Tüm bu yetkiler *Role* ve *AbstractRole* modelleri ile ifade edilen kullanıcı rolleri üzerinden ilgili User'a tanımlanır.
+
+.. note::
+    ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
+
+.. plantuml::
+    User "1" -- "1" Student
+    User "1" -- "1" Employee
+    User "0..*" o-- "1" Role
+    Role "1" --o "0..*" AbstractRole
+    AbstractRole "0..*" o-- "0..*" Permission
+    Role "0..*" o-- "0..*" Permission
+    LimitedPermissions "0..*" -- "0..*" Permission
+    LimitedPermissions "0..*" -- "0..*" Role
+    LimitedPermissions "0..*" -- "0..*" AbstractRole
+
+Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
