@@ -57,7 +57,7 @@ Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmas�
 
 Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.
 
-NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).
+NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (write-time join, auto-denormalization).
 
 Veri Modelleri
 ***************
@@ -65,13 +65,11 @@ Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Mo
 
 Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu "öğrencinin ders seçmesi, danışman öğretmeninin bu dersi onaylaması" olan bir iş akışın gerektirdiği veri modelinin minimal bir örneği listelenmiştir.
 
-..
+``15.`` Satırda olduğu gibi bir modelden başka bir modele referans verdiğimizde bu iki model arasında *OneToMany* tipinde bir bağ kurmuş oluruz.
 
-    ``15.`` Bir modelden başka bir modele referans verdiğimizde ise iki model arasında *OneToMany* tipinde bir bağ kurmuş oluruz.
+``17.`` Satırda öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir.
 
-    ``17.`` Satırda öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir.
-
-    ``18.`` ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki *ManyToMany* benzeri bir ilişki tanımlamış oluruz.
+``18.`` Satırda olduğu gibi ListNode içinde başka bir modele referans verildiğimizde, iki model arasında ilişkisel veritabanlarındaki *ManyToMany* benzeri bir ilişki tanımlamış oluruz.
 
 ::
 
@@ -97,6 +95,46 @@ Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu "öğ
 
 Workflow Metodları (Views & Tasks)
 **********************************
-İş akışı tabanlı bir uygulamada, uygulamanın tüm işlevlerini bir iş akışı  adımı üzerinden çalıştırılacak şekilde planlarız. Servis tabanlı bir uygulamanın işlevlerinin çoğu istemci (web tarayıcı) ile etkileşimi sağlayan API'lerden üzerinden sağlanırken (views), bazı işlemler de arkaplanda çalışan görevler (tasks) ile yürütülür.
-Bu belgende task olarak anılacak arkaplan görevleri, doğası gereği tamamlanması uzun sürebilecek hesaplamalar olabileceği gibi, dış servislere bağımlı işlerin kullanıcı deneyimini etkilemeden çalıştırılmasını sağlayan görev kuyruklarıda olabilirler.
+Workflow tabanlı bir uygulamada, uygulamanın tüm işlevselliği iş akışı adımları üzerinden çalıştırılacak şekilde hazırlanır. Bu işlevler BPMN diagramında UserTask ve ServiceTask adımlarının ilgili alanlarına girilen metod ve sınıf çağrıları ile yerine getirilir. İş akışı motoru, kullanıcı girdilerini (TaskData), o an işlettiği akış diagramında tanımlı ExclusiveGateway gibi karar kapılarına karşı işleterek akışı yönlendirir. Etkinleştirilen akış adımlarıyla ilişkili metod çağrıları sonucuna göre akış sonraki adıma devam edebilir ya da akışın durumu kaydedilip işlem çıktısı akışı tetikleyen kullanıcıya geri döndürülebilir.
 
+
+Bir web uygulamasının işlevlerini yerine getirmesi için yazılan kodların büyük bir kısmı istemci (web tarayıcı) ile etkileşimi sağlayan API çağrıları üzerinden çağırılırken (views), bazı işlemler de arkaplanda çalışan görevler (tasks) ile yürütülür. Bu belgede *task* olarak anılacak bu arkaplan görevleri, doğası gereği tamamlanması uzun sürebilecek çeşitli hesaplamalar olabileceği gibi, dış servislere bağımlı olduklarından, kullanıcı deneyimini etkilememeleri için arkaplanda çalıştırılması gereken anlık görevler de olabilirer.
+
+Current Nesnesi
+----------------
+İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
+
+::
+
+    def say_hello(current):
+        if current.user.first_login:
+            current.output["msg"] = ("Welcome %s, Thank you for registering "
+                                     "to our site." % current.input['name'])
+            current.user.first_login = False
+            current.user.save()
+
+**Current nesnesi aşağıdaki ögeleri içerir;**
+
+``input`` İstemciden gelen JSON verisinin çözümlenip (decode) Python sözlüğü şekline getirilmiş hali.
+
+``output`` İstemciye gönderilecek veri sözlüğü. Bu sözlük otomatik olarak JSON verisi şekline dönüştürülür.
+
+``session`` Kullanıcı oturumunu içeren sözlük benzeri bir nesnedir. Bu nesne üzerinde herhangi bir yazma/okuma işlemi yapıldığında, değişikliker otomatik olarak oturuma kaydedilir. Kullanıcı henüz sisteme giriş yapmamış olsa bile oturumu mevcuttur ve giriş yaptıktan sonra aynı oturum devam eder.
+
+``auth`` Kullanıcı yetkilendirmesi ile ilgili metodları barındıran AuthBackend nesnesidir. *get_user(), get_permissions(), has_permission(), authenticate()* metodlarını içerir. ZEngine bu nesnenin referans sürümünü içerir ancak kendi uygulamamızda kullanıcı ve yetki sistemimize uygun şekilde özelleştirilmiş bir AuthBackend nesnesi kullanmamıza izin verir.
+
+``user``
+
+``workflow_name``
+
+``workflow``
+
+``task``
+
+``task_data``
+
+``is_auth``
+
+``has_permission()``
+
+``get_permissions()``
