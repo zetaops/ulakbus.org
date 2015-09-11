@@ -152,7 +152,7 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
 .. note::
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
-.. uml::
+.. u.ml::
     User "1" -- "1" Student
     User "1" -- "1" Employee
     User "0..*" o-- "1" Role
@@ -165,8 +165,13 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
 
 Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.
 
+AbstractRole nesnesi "Tıp Fakültesi Öğrenci İşleri Müdürü" gibi belirli bir makamı temsil ederken, Role nesnesi ise AbstractRole'ün bir kullanıcı ile ilişkilendirilmesi sonucu bu makamı fiilen işgal eden bir kişiyi ifade etmektedir.
 
+Permission nesnesinin hem Role ile hem de AbstractRole ile ManyToMany tipinde ilişkili olması sayesinde, bir kullanıcıya sahip olduğu makamın getirdiği standart yetkilere ek yetkilerin tanıması da mümkün olabilmektedir.
 
+LimitedPermissions nesnesi IP adres ve saat bazlı olarak Permission, Role ve AbstractRole nesneleri ile ManyToMany tipinde ilişkilidir. Bu ilişki sayesinde seçilen rol ya da makamın, seçilen yetkileri belirli saatlere, istemci IP'lerine yada belirli saatlerler için belirli IP'lere göre kısıtlanabilir ya da verilebilir.
+
+Student ve Employee nesnelerinin User ile OneToOne şeklinde ilişkili olmaları, bir kullanıcının aynı anda hem öğrenci hem de personel statüsünde olabilmesine olanak vermektedir. Benzer şekilde User ile Role nesnesi arasındaki OneToMany tipindeki ilişki, bir kullanıcının birden fazla rolü yani makamı olabilmesine imkan vermektedir. Birden fazla rolü olan bir kullanıcı giriş yaptığında son çıkış yaptığı rolün ana ekranı ile karşılaşır, isterse kullanıcı menüsünden hesabına kayıtlı diğer bir role geçiş yapabilir. Kullanıcı belirli bir anda, sadece o anda etkin durumda olan rolünün yetkileri ile işlem yapabilir.
 
 
 
