@@ -152,7 +152,7 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
 .. note::
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
-.. plantuml::
+.. uml::
     User "1" -- "1" Student
     User "1" -- "1" Employee
     User "0..*" o-- "1" Role

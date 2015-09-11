@@ -90,8 +90,9 @@ footer p {
     div#doccontainer {
         width: 100%;
     }
+
     #forkme {
-        zoom:0.5;
+        zoom: 0.5;
     }
 
 }
@@ -107,8 +108,9 @@ footer p {
         width: 1111px;
         margin-top: -21px;
     }
+
     #forkme {
-        zoom:0.8;
+        zoom: 0.8;
     }
 
 }
@@ -145,4 +147,22 @@ div.sphinxsidebarwrapper {
     right: -16px;
     border: 0;
     height: 160px;
-    z-index: 99999;}
+    z-index: 99999;
+}
+
+div.related ul a, div.related li {
+    color: #afafaf !important;
+}
+
+div.related ul {
+    background-color: #fff !important;
+
+    border: 0 !important;
+}
+
+div.related {
+    font-size: 1em;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
