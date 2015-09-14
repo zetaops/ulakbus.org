@@ -153,14 +153,10 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
 .. uml::
-    skinparam classAttributeFontName Monospaced
-    skinparam classBackgroundColor #EFF2FB
-    skinparam classBorderColor #D8D8D8
-    skinparam packageBorderColor #BDBDBD
-    skinparam classArrowColor #0B615E
+    skinparam classBackgroundColor #ffffff
     skinparam shadowing false
 
-    class LimitedPermissions <<(M,orchid)>> {
+    class LimitedPermissions {
     restrictive     Boolean(False)
     time_start      String
     time_end        String
