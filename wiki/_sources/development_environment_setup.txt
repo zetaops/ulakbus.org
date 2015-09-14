@@ -8,6 +8,15 @@ Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalı
 **Vagrant**
 ===========
 
+Vagrant nedir?
+--------------
+
+Vagrant'la ilgili başlıca bilgilere aşağıdaki linklerden ulaşabilirsiniz:
+
+https://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time
+
+http://www.cyberciti.biz/cloud-computing/use-vagrant-to-create-small-virtual-lab-on-linux-osx/
+
 Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca kurulum yapabilirsiniz. Ulakbus'e ait tüm bileşenler box içinde bulunmaktadır. Ortamı kurabilmek için aşağıdaki komutları kullanabilirsiniz.
 
 ::

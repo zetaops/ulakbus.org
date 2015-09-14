@@ -59,8 +59,13 @@ Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritab
 
 NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).
 
+<<<<<<< HEAD
 Modeller
 ********
+=======
+Veri Modelleri
+***************
+>>>>>>> a5072871566987b265f8b7b9424d4e7ea1c7dd3d
 Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.
 ::
 
@@ -82,4 +87,4 @@ Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer mo
             lecture = Lecture()
             confirmed = field.Boolean("Onaylandı", default=False)
 
-
+Ekranlar
