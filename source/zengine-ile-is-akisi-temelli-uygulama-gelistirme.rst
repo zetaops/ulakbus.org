@@ -153,6 +153,21 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
 .. uml::
+    skinparam classAttributeFontName Monospaced
+    skinparam classBackgroundColor #EFF2FB
+    skinparam classBorderColor #D8D8D8
+    skinparam packageBorderColor #BDBDBD
+    skinparam classArrowColor #0B615E
+    skinparam shadowing false
+
+    class LimitedPermissions <<(M,orchid)>> {
+    restrictive     Boolean(False)
+    time_start      String
+    time_end        String
+    --
+    **IPList(ListNode)**
+    |_ ip           String
+    }
     User "1" -- "1" Student
     User "1" -- "1" Employee
     User "0..*" o-- "1" Role
@@ -201,15 +216,15 @@ Yukarıdaki Personel modelinin ``6.`` satırında tanımlanan **row_level_access
 
 Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde **field_permissions** adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlalamız yeterlidir. Yukarıda ``12.`` satırda tanımlanan kısıtlama sayesinde, *can_see_private_data* yetkisine sahip olmayan kullanıcıların *phone* ve *address* alanlarını okuyup yazmaları engellenmiş olur.
 
-Aşağıda (*current* nesnesi ile ilklendirilerek) veri tabanındaki tüm kişileri listelemeye çalışan view metodumuz, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir.
+Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir. Benzer şekilde kullanıcı kişilerin özel bilgilerini görüntüleme yetkisine sahip değilse de *person_list* listesinin *phone* sütunu boş kalacaktır.
 
 ::
 
     def show_person_list(current):
         for person in Person(current).objects.filter():
             current.output['person_list'].append({'name': person.name,
-                                                  'id': person.key})
-
+                                                  'id': person.key,
+                                                  'phone': person.phone})
 
 
 
