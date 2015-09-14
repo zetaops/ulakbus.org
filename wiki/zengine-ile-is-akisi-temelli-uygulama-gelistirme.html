@@ -191,7 +191,10 @@
 <li><a class="reference internal" href="#current-nesnesi">Current Nesnesi</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#yetkiler-ve-rol-tabanli-erisim-kontrolu">Yetkiler ve Rol Tabanlı Erişim Kontrolü</a></li>
+<li><a class="reference internal" href="#yetkiler-ve-rol-tabanli-erisim-kontrolu">Yetkiler ve Rol Tabanlı Erişim Kontrolü</a><ul>
+<li><a class="reference internal" href="#satir-ve-hucre-seviyesinde-erisim-kontrolu">Satır ve Hücre Seviyesinde Erişim Kontrolü</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -352,7 +355,22 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
 <p class="last">ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.</p>
 </div>
 <p class="plantuml">
-<img src="_images/plantuml-1fce134dd2d35651f0b2d7bd87f49f570e4e768d.png" alt="User &quot;1&quot; -- &quot;1&quot; Student
+<img src="_images/plantuml-51fe08947be1118fb94a2f79b5a7218fd2f224c1.png" alt="skinparam classAttributeFontName Monospaced
+skinparam classBackgroundColor #EFF2FB
+skinparam classBorderColor #D8D8D8
+skinparam packageBorderColor #BDBDBD
+skinparam classArrowColor #0B615E
+skinparam shadowing false
+
+class LimitedPermissions &lt;&lt;(M,orchid)&gt;&gt; {
+restrictive     Boolean(False)
+time_start      String
+time_end        String
+--
+**IPList(ListNode)**
+|_ ip           String
+}
+User &quot;1&quot; -- &quot;1&quot; Student
 User &quot;1&quot; -- &quot;1&quot; Employee
 User &quot;0..*&quot; o-- &quot;1&quot; Role
 Role &quot;1&quot; --o &quot;0..*&quot; AbstractRole
@@ -363,6 +381,60 @@ LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Role
 LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; AbstractRole" />
 </p>
 <p>Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.</p>
+<p>AbstractRole nesnesi &#8220;Tıp Fakültesi Öğrenci İşleri Müdürü&#8221; gibi belirli bir makamı temsil ederken, Role nesnesi ise AbstractRole&#8217;ün bir kullanıcı ile ilişkilendirilmesi sonucu bu makamı fiilen işgal eden bir kişiyi ifade etmektedir.</p>
+<p>Permission nesnesinin hem Role ile hem de AbstractRole ile ManyToMany tipinde ilişkili olması sayesinde, bir kullanıcıya sahip olduğu makamın getirdiği standart yetkilere ek yetkilerin tanıması da mümkün olabilmektedir.</p>
+<p>LimitedPermissions nesnesi IP adres ve saat bazlı olarak Permission, Role ve AbstractRole nesneleri ile ManyToMany tipinde ilişkilidir. Bu ilişki sayesinde seçilen rol ya da makamın, seçilen yetkileri belirli saatlere, istemci IP&#8217;lerine yada belirli saatlerler için belirli IP&#8217;lere göre kısıtlanabilir ya da verilebilir.</p>
+<p>Student ve Employee nesnelerinin User ile OneToOne şeklinde ilişkili olmaları, bir kullanıcının aynı anda hem öğrenci hem de personel statüsünde olabilmesine olanak vermektedir. Benzer şekilde User ile Role nesnesi arasındaki OneToMany tipindeki ilişki, bir kullanıcının birden fazla rolü yani makamı olabilmesine imkan vermektedir. Birden fazla rolü olan bir kullanıcı giriş yaptığında son çıkış yaptığı rolün ana ekranı ile karşılaşır, isterse kullanıcı menüsünden hesabına kayıtlı diğer bir role geçiş yapabilir. Kullanıcı belirli bir anda, sadece o anda etkin durumda olan rolünün yetkileri ile işlem yapabilir.</p>
+<div class="section" id="satir-ve-hucre-seviyesinde-erisim-kontrolu">
+<h4>Satır ve Hücre Seviyesinde Erişim Kontrolü<a class="headerlink" href="#satir-ve-hucre-seviyesinde-erisim-kontrolu" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Pyoko, model tanımları içerisinde satır ve hücre seviyesinde erişim kontrolü yapılmasına izin verir. Burada satır seviyesinden  kasıt, kullanıcının yetkisinin izin vermediği kayıtlara erişememesidir. Hücre seviyesinde ise, kullanıcının bir modelin altındaki kayıtların sadece bazı alanlarına erişimesine izin verip, bazı alanlardaki verilere erişiminin kısıtlanabilir.</p>
+<p>Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde çalışabilmesi için, model nesnelerinin kullanıcı yetkilerini içeren <em>Current</em> nesnesi ile ilklendirilmeleri gerekmektedir. Bu işlevler isteğe bağlı özellikler olduklarından, bu gereklilik sadece aşağıdaki gibi model içinde yetki kısıtlaması yapıldığı durumlarda geçerlidir.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Personel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">section</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">phone</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">row_level_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">current</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="s">&quot;access_to_other_sections&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">section</span><span class="p">)</span>
+
+    <span class="n">META</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;field_permissions&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;can_see_private_data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;phone&#39;</span><span class="p">,</span> <span class="s">&#39;address&#39;</span><span class="p">]</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Yukarıdaki Personel modelinin <code class="docutils literal"><span class="pre">6.</span></code> satırında tanımlanan <strong>row_level_access()</strong> metodu, modelin ilkendirilmesi (initialization) aşamasında çağırılır. <code class="docutils literal"><span class="pre">7.</span></code> satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa <code class="docutils literal"><span class="pre">8.</span></code> satıda <strong>objects</strong> nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.</p>
+<p>Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde <strong>field_permissions</strong> adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlalamız yeterlidir. Yukarıda <code class="docutils literal"><span class="pre">12.</span></code> satırda tanımlanan kısıtlama sayesinde, <em>can_see_private_data</em> yetkisine sahip olmayan kullanıcıların <em>phone</em> ve <em>address</em> alanlarını okuyup yazmaları engellenmiş olur.</p>
+<p>Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir. Benzer şekilde kullanıcı kişilerin özel bilgilerini görüntüleme yetkisine sahip değilse de <em>person_list</em> listesinin <em>phone</em> sütunu boş kalacaktır.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">show_person_list</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">Person</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">():</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;person_list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                              <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                              <span class="s">&#39;phone&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">phone</span><span class="p">})</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 </div>
 </div>
