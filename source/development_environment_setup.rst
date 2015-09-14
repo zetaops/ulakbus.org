@@ -9,7 +9,7 @@ Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalı
 ===========
 
 Vagrant nedir?
-______________
+--------------
 
 Vagrant'la ilgili başlıca bilgilere aşağıdaki linklerden ulaşabilirsiniz:
 

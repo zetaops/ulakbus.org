@@ -336,7 +336,7 @@ Burada ele almadığımız ve bununla sınırlı olmayan diğer konular;
 Zato tam olarak nedir?
 ----------------------
 
-Zato middleware ve backend sistemler inşa etmek için Python dili ile yazışmış bir KVY ve uygulama sunucusudur. Hem ticari hem de topluluk desteği bulunan açık kaynak kodlu bir yazılımdır. Ve Python da kullanım kolaylığı ve üretkenliği ile meşhur bir dil. Python ve Zato’yu birlikte kullanıyor olmanız demek, başbelası olan pek çok konuya daha az zaman harcamak ve daha verimli olmak anlamına gelir.
+Zato middleware ve backend sistemler inşa etmek için Python dili ile yazışmış bir KVY ve uygulama sunucusudur. Hem ticari hem de topluluk desteği bulunan açık kaynak kodlu bir yazılımdır. Ve Python da kullanım kolaylığı ve üretkenliği ile meşhur bir dil. Python ve Zato’yu birlikte kullanıyor olmanız demek, baş belası olan pek çok konuya daha az zaman harcamak ve daha verimli olmak anlamına gelir.
 
 Zato **pragmatistler tarafından pragmatistler için** yazılmıştır. Herhangi bir tedarikçinin SOA/KVY pazarından pay kapmak amacıyla alelacele bitiştiriverdiği dingabak bir sistem değildir.
 
