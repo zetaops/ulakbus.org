@@ -152,7 +152,7 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
 .. note::
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
-.. u.ml::
+.. uml::
     User "1" -- "1" Student
     User "1" -- "1" Employee
     User "0..*" o-- "1" Role
@@ -173,6 +173,42 @@ LimitedPermissions nesnesi IP adres ve saat bazlı olarak Permission, Role ve Ab
 
 Student ve Employee nesnelerinin User ile OneToOne şeklinde ilişkili olmaları, bir kullanıcının aynı anda hem öğrenci hem de personel statüsünde olabilmesine olanak vermektedir. Benzer şekilde User ile Role nesnesi arasındaki OneToMany tipindeki ilişki, bir kullanıcının birden fazla rolü yani makamı olabilmesine imkan vermektedir. Birden fazla rolü olan bir kullanıcı giriş yaptığında son çıkış yaptığı rolün ana ekranı ile karşılaşır, isterse kullanıcı menüsünden hesabına kayıtlı diğer bir role geçiş yapabilir. Kullanıcı belirli bir anda, sadece o anda etkin durumda olan rolünün yetkileri ile işlem yapabilir.
 
+Satır ve Hücre Seviyesinde Erişim Kontrolü
+------------------------------------------
+Pyoko, model tanımları içerisinde satır ve hücre seviyesinde erişim kontrolü yapılmasına izin verir. Burada satır seviyesinden  kasıt, kullanıcının yetkisinin izin vermediği kayıtlara erişememesidir. Hücre seviyesinde ise, kullanıcının bir modelin altındaki kayıtların sadece bazı alanlarına erişimesine izin verip, bazı alanlardaki verilere erişiminin kısıtlanabilir.
+
+Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde çalışabilmesi için, model nesnelerinin kullanıcı yetkilerini içeren *Current* nesnesi ile ilklendirilmeleri gerekmektedir. Bu işlevler isteğe bağlı özellikler olduklarından, bu gereklilik sadece aşağıdaki gibi model içinde yetki kısıtlaması yapıldığı durumlarda geçerlidir.
+
+::
+
+    class Personel(Model):
+        name = field.String(index=True)
+        section = field.String(index=True)
+        phone = field.String(index=True)
+        address = field.String(index=True)
+
+        def row_level_access(self, current):
+            if not current.has_permission("access_to_other_sections"):
+                self.objects = self.objects.filter(section=current.user.section)
+
+        META = {
+            'field_permissions': {
+                'can_see_private_data': ['phone', 'address']
+            },
+        }
+
+Yukarıdaki Personel modelinin ``6.`` satırında tanımlanan **row_level_access()** metodu, modelin ilkendirilmesi (initialization) aşamasında çağırılır. ``7.`` satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa ``8.`` satıda **objects** nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.
+
+Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde **field_permissions** adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlalamız yeterlidir. Yukarıda ``12.`` satırda tanımlanan kısıtlama sayesinde, *can_see_private_data* yetkisine sahip olmayan kullanıcıların *phone* ve *address* alanlarını okuyup yazmaları engellenmiş olur.
+
+Aşağıda (*current* nesnesi ile ilklendirilerek) veri tabanındaki tüm kişileri listelemeye çalışan view metodumuz, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir.
+
+::
+
+    def show_person_list(current):
+        for person in Person(current).objects.filter():
+            current.output['person_list'].append({'name': person.name,
+                                                  'id': person.key})
 
 
 
