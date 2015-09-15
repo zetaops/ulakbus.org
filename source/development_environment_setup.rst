@@ -53,7 +53,6 @@ Riak için dosya limitini 65536 olarak değiştirin.
 
 ``ulimit -n`` kalıcı olarak değiştirmek için;
 
-
 ::
 
     sudo vi /etc/security/limits.conf
