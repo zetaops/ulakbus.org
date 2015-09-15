@@ -81,6 +81,8 @@ denklik_tarihi          Date
 denklik_okulu           String
 denklik_bolum           String
 kurum_onay_tarihi       Date     * *
+--
+personel       Personel()    * *
 
 --
 }
@@ -99,6 +101,8 @@ denklik_bolum           String
 ogrenim_suresi          Int      * *
 hazirlik                Boolean  * *
 kurum_onay_tarihi       Date     * *
+--
+personel       Personel()    * *
 }
 
 
@@ -120,6 +124,8 @@ gecerli_dogum_tarihi    Date
 aciklama                String
 gun_sayisi              Int
 kurum_onay_tarihi       Date     * *
+--
+personel       Personel()    * *
 }
 
 class HizmetBirlestirme <<(M,orchid)>>{
@@ -139,6 +145,8 @@ kıdem_tazminat_odeme_durumu   String
 ayrilma_nedeni                String
 kha_durum                     String
 kurum_onay_tarihi             Date     * *
+--
+personel       Personel()    * *
 }
 
 class HizmetTazminat <<(M,orchid)>>{
@@ -152,6 +160,8 @@ tazminat_tarihi         Date     * *
 tazminat_bitis_tarihi   Date
 kadrosuzluk             Int
 kurum_onay_tarihi       Date     * *
+--
+personel       Personel()    * *
 }
 
 class HizmetUnvan <<(M,orchid)>>{
@@ -165,6 +175,8 @@ asil_vekil              String   * *
 atama_sekli             String   * *
 kurum_onay_tarihi       Date     * *
 fhz_orani               Float
+--
+personel       Personel()    * *
 }
 
 class HizmetAcikSure <<(M,orchid)>>{
@@ -185,6 +197,8 @@ goreve_son_aylik_bit_tarih    Date
 s_yonetim_kald_tarih          Date
 aciktan_atanma_tarih          Date
 kurum_onay_tarihi             Date     * *
+--
+personel       Personel()    * *
 }
 
 class HizmetBorclanma <<(M,orchid)>>{
@@ -209,6 +223,8 @@ isyeri_ilce          String   * *
 borclanma_tarihi     Date
 odeme_tarihi         Date
 kurum_onay_tarihi    Date     * *
+--
+personel       Personel()    * *
 }
 class HizmetIHS <<(M,orchid)>>{
 tckn                 String   * *
@@ -216,6 +232,8 @@ kayit_no             String
 baslama_tarihi       Date     * *
 bitis_tarihi         Date     * *
 ihz_nevi             Int      * *
+--
+personel       Personel()    * *
 }
 
 class HizmetIstisnaiIlgi <<(M,orchid)>>{
@@ -227,6 +245,8 @@ gun_sayisi           Int      * *
 istisnai_ilgi_nevi   Int      * *
 kha_durum            String   * *
 kurum_onay_tarihi    Date     * *
+--
+personel       Personel()    * *
 }
 
 
@@ -253,14 +273,9 @@ emekli_ekgosterge                   Int      * *
 sebep_kod                           Int      * *
 kurum_onay_tarihi                   Date     * *
 --
-employee             **Personel()**
+personel             **Personel()**
 }
-class Birim<<(M,orchid)>>{
-type        String
-name        String
-parent      **Birim()**
---
-}
+
 
 
 
@@ -283,11 +298,16 @@ gorev_yeri                       String
 kurum_onay_tarihi                Date     * *
 astegmen_nasp_tarihi             Date
 --
-employee             **Personel()**
+personel                         **Personel()**
 }
 
 
-
+class Birim<<(M,orchid)>>{
+type        String
+name        String
+parent      **Birim()**
+--
+}
 
 class Personel <<(M,orchid)>>{
 tckn              String
@@ -366,8 +386,8 @@ onay           Date           * *
 adres          String         * *
 telefon        String         * *
 --
-kullanici      Kullanici()    * *
-vekil          Kullanici()    * *
+personel       Personel()    * *
+vekil          Personel()    * *
 }
 
 class UcretsizIzin<<(M,orchid)>>{
