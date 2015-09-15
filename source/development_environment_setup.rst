@@ -58,7 +58,6 @@ Riak için dosya limitini 65536 olarak değiştirin.
 
     sudo vi /etc/security/limits.conf
 
-
 Ve aşağıdaki satırları dosyanın sonuna ekleyin.
 
 ::
