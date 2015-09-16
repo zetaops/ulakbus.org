@@ -203,11 +203,10 @@ Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde ça
             if not current.has_permission("access_to_other_sections"):
                 return objects.filter(section=current.user.section)
 
-        META = {
-            'field_permissions': {
+        class Meta:
+            field_permissions = {
                 'can_see_private_data': ['phone', 'address']
-            },
-        }
+            }
 
 Yukarıdaki Personel modelinin ``6.`` satırında tanımlanan **row_level_access()** metodu, modelin ilkendirilmesi (initialization) aşamasında çağırılır. ``7.`` satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa ``8.`` satıda **objects** nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.
 
