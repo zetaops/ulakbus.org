@@ -198,9 +198,10 @@ Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde ça
         phone = field.String(index=True)
         address = field.String(index=True)
 
-        def row_level_access(self, current):
+        @staticmethod
+        def row_level_access(current, objects):
             if not current.has_permission("access_to_other_sections"):
-                self.objects = self.objects.filter(section=current.user.section)
+                return objects.filter(section=current.user.section)
 
         META = {
             'field_permissions': {
