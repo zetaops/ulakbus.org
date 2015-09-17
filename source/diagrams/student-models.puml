@@ -1,0 +1,161 @@
+@startuml
+
+skinparam classAttributeFontName Monospaced
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #D8D8D8
+skinparam packageBorderColor #BDBDBD
+skinparam classArrowColor #0B615E
+skinparam shadowing false
+
+'skinparam monochrome true
+'skinparam nodesep 100
+'skinparam ranksep 100
+'note "All <color:black><b> (M)odels</b></color> extends <b>pyoko.Model</b> class" as N #orchid
+title
+<size:24>Entity Based Model Diagram</size>
+( All Models extends <b>pyoko.Model</b> class )
+endtitle
+'legend left
+'n..*     n or more instances
+'n..m    Min n, Max m instances
+'endlegend
+
+
+
+class Okutman<<(M,orchid)>>{
+calisan         **Personel()**
+ad              String
+tip             String
+--
+note: non-employee (guest) lecturers data
+will be stored here
+--
+}
+
+class Program<<(M,orchid)>>{
+birim         **Birim()**
+periyot      Int
+--
+dersler    **Ders()**
+
+}
+
+
+'class OgrenciDersProgrami<<(M,orchid)>>{
+'ogrenci           **Ogrenci()**
+'ders_programi     **DersProgrami()**
+'ders_gunu         Int
+'ders_saati        Int
+'}
+
+class Derslik<<(M,orchid)>>{
+kod             String
+bina            String
+--
+dersler        **Sube()**
+}
+
+class Sube<<(M,orchid)>>{
+ad              String
+kod
+okutman           **Okutman()**
+ana_ders          **Ders()**
+derslik           **Derslik()**
+saat              Int
+gun               String
+kredi             Int
+donem             String
+kontenjan         Int
+--
+}
+
+class Ders<<(M,orchid)>>{
+ad                String
+kod               String
+kredi             String
+--
+}
+class DersProgrami<<(M,orchid)>>{
+ders             **Sube()**
+yer              **Derslik()**
+ders_gunu        Int
+ders_saati       Int
+toplam_saat      Int
+--
+}
+
+class Not<<(M,orchid)>>{
+puan                Int
+durum               String
+
+}
+
+
+class Ogrenci <<(M,orchid)>> {
+ders_programi       **DersProgrami()**
+rol                 **Role()**
+
+--
+**Dersler(ListNode)**
+|_ ders       **Sube()**
+**Sinavlar(ListModel)**
+|_ sinav             **Sinav()**
+**Katilimlar(ListModel)**
+|_ katilim        **Katilim()**
+}
+
+
+class Sinav <<(M,orchid)>> {
+ders               **Sube()**
+tip                String
+tarih              Date
+puan               Int
+--
+}
+
+class Katilim <<(M,orchid)>> {
+ders              **Sube()**
+katilim_durumu    Boolean
+tarih             Date
+saat              Int
+--
+}
+
+
+Sube "1" -- "0..*" Derslik
+Sube "0..*" -- "1" Sinav
+Sinav "1" -- "0..*" Not
+
+
+Sube "0..*" -- "1" Okutman
+Sube "0..*" -- "1" Ogrenci
+' Birim "0..*" o-- "1" Program
+Ders "1" --  "1" Program
+Ders "1" -- "0..*" Sube
+
+DersProgrami "0..*" -- "1" Ogrenci
+
+Program "1" -- "1" Sube
+' Birim "0..*" -- "1" Role
+' Birim "0..1" --o "0..*" Birim
+' User "0..*" o-- "1" Role
+' Okutman --o Personel
+' Sube --o DersProgrami
+' Role "1" --o "0..*" AbstractRole
+' AbstractRole "0..*" o-- "0..*" Permission
+' Role "0..*" o-- "0..*" Permission
+Ogrenci "0..*" -- "1" Sinav
+
+Ogrenci "1" -- "0..*" Katilim
+
+' Kullanici "1" -- "1" Ogrenci
+' Kullanici "1" -- "1" Personel
+' DersProgrami "1" o-- "0..*" Derslik
+' Birim "0..*" o-- "1..*" Derslik
+' DersProgrami "0..*" --o "0..*" Ogrenci
+
+' XXXXXXXXXXXX
+' Birim "0..*" -- "0..*" Personel
+' Ogrenci "1..*" --o "0..*" Program
+' XXXXXXXXXXXX
+@enduml
