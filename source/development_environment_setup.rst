@@ -304,4 +304,5 @@ Server'ı 8000(default) portunda çalıştırınız.
     update_permissions  Syncs permissions with DB
     create_user         Creates a new user
 
+
 Uygulamayı geliştirmeye devam etmek için http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html sayfasına göz atabilirsiniz.
