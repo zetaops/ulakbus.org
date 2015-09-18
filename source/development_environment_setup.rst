@@ -287,5 +287,20 @@ Server'ı 8000(default) portunda çalıştırınız.
 
 ::
 
-    python runserver.py
+    python runserver.py --help
+    usage: manage.py [-h]
+                 {runserver,migrate,flush_model,update_permissions,create_user}
+                 ...
 
+    optional arguments:
+    -h, --help            show this help message and exit
+
+    Possible commands:
+    {runserver,migrate,flush_model,update_permissions,create_user}
+    runserver           Run the development server
+    migrate             Creates/Updates SOLR schemas for given model(s)
+    flush_model         REALLY DELETES the contents of buckets
+    update_permissions  Syncs permissions with DB
+    create_user         Creates a new user
+
+Uygulamayı geliştirmeye devam etmek için http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html sayfasına göz atabilirsiniz.
