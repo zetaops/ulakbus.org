@@ -25,6 +25,7 @@ Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca ku
     cd ulakbus
     wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
     vagrant up
+    vagrant init
 
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
