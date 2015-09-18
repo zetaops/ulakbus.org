@@ -23,13 +23,29 @@ Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca ku
 
     mkdir ulakbus
     cd ulakbus
+    vagrant init zetaops/ulakbus
+
+Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM'ı 2 GB yapmanızı öneririz.Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:
+
+
+::
+
     wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
+
+Vagrantfile'ı düzenledikten sonra:
+
+
+::
+
     vagrant up
-    vagrant init
+
+komutuyla makinenizi başlatabilirsiniz.
 
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
 Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.
+
+
 
 ::
 
