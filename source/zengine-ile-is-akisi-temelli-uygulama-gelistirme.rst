@@ -60,7 +60,7 @@ Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritab
 NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (write-time join, auto-denormalization).
 
 Veri Modelleri
-***************
+**************
 Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Model, Node ve ListNode adında üç temel nesne tipi sunmaktadır. Bu nesneleri, ihtiyacımız doğrultusunda iç içe ya da bir birleriyle ilişkilendirerek kullanabiliriz. Bu nesneler üzerinde saklanacak verileri tanımlamak için ise String, Boolean, Integer, Date gibi çeşitli veri alanları tanımlanmıştır.
 
 Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu "öğrencinin ders seçmesi, danışman öğretmeninin bu dersi onaylaması" olan bir iş akışın gerektirdiği veri modelinin minimal bir örneği listelenmiştir.
@@ -116,7 +116,7 @@ Bir web uygulamasının işlevlerini yerine getirmesi için yazılan kodların b
             current.user.save()
 
 Current Nesnesi
-----------------
+---------------
 İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
 
 Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ögeleri içerir. Bunlardan *session, user, auth* gibi sadece view metodlarında işlevsel olanlar arkaplanda çalışan task metodlarında geçersizdirler.
@@ -146,7 +146,7 @@ Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ög
 ``get_permissions()`` Kullanıcının sahip olduğu tüm yetkileri döndürür.
 
 Yetkiler ve Rol Tabanlı Erişim Kontrolü
-****************************************
+***************************************
 ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrolüne* ek olarak, sisteme yüklenmiş iş akışlarının tüm adımlarını birer yetki olarak tanımlar. Otomatik olarak türetilen iş akışı yetkilerine ek olarak, CustomPermission nesnesi ile, kendi view metodlarımızda kontrol edebileceğimiz ek yetkiler de tanımlayabilirz. Tüm bu yetkiler *Role* ve *AbstractRole* modelleri ile ifade edilen kullanıcı rolleri üzerinden ilgili User'a tanımlanır.
 
 .. note::
@@ -221,34 +221,5 @@ Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, 
             current.output['person_list'].append({'name': person.name,
                                                   'id': person.key,
                                                   'phone': person.phone})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
