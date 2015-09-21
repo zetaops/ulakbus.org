@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>ULAKBUS</title>
-
+  <title>ULAKBUS</title>
+  
     
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -31,16 +31,13 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Sistem Operatörleri" href="devops.html" />
-    <link rel="next" title="Kullanıcılar" href="users.html" />
-    <link rel="prev" title="Sistem Operatörleri" href="devops.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
   <body role="document">
-    <meta charset="utf-8">
+ <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -48,114 +45,106 @@
 
 
     <title>Ulakbüs</title>
-    <link rel="stylesheet"
-          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap Core CSS -->
     <link href="_static/css/bootstrap.css" rel="stylesheet">
     <link href="_static/css/style.css" rel="stylesheet">
     <link href="_static/css/roboto/roboto.css" rel="stylesheet">
 
-    <script>
-        /**
-         * Check an href for an anchor. If exists, and in document, scroll to it.
-         * If href argument omitted, assumes context (this) is HTML Element,
-         * which will be the case when invoked by jQuery after an event
-         */
-        function scroll_if_anchor(href) {
-            href = typeof(href) == "string" ? href : $(this).attr("href");
+ <script>
+     /**
+       * Check an href for an anchor. If exists, and in document, scroll to it.
+       * If href argument omitted, assumes context (this) is HTML Element,
+       * which will be the case when invoked by jQuery after an event
+       */
+     function scroll_if_anchor(href) {
+         href = typeof(href) == "string" ? href : $(this).attr("href");
 
-            // If href missing, ignore
-            if (!href) return;
+         // If href missing, ignore
+         if(!href) return;
 
-            // You could easily calculate this dynamically if you prefer
-            var fromTop = 100;
+         // You could easily calculate this dynamically if you prefer
+         var fromTop = 100;
 
-            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
-            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
-            var $target = $(href);
+         // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+         // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+         var $target = $(href);
 
-            // Older browsers without pushState might flicker here, as they momentarily
-            // jump to the wrong position (IE < 10)
-            if ($target.length) {
-                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
-                if (history && "pushState" in history) {
-                    history.pushState({}, document.title, window.location.pathname + href);
-                    return false;
-                }
-            }
-        }
+         // Older browsers without pushState might flicker here, as they momentarily
+         // jump to the wrong position (IE < 10)
+         if($target.length) {
+             $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+             if(history && "pushState" in history) {
+                 history.pushState({}, document.title, window.location.pathname + href);
+                 return false;
+             }
+         }
+     }
 
-        // When our page loads, check to see if it contains and anchor
-        scroll_if_anchor(window.location.hash);
+     // When our page loads, check to see if it contains and anchor
+     scroll_if_anchor(window.location.hash);
 
-        // Intercept all anchor clicks
-        $("body").on("click", "a[href^='#']", scroll_if_anchor);
-    </script>
-    </head>
+     // Intercept all anchor clicks
+     $("body").on("click", "a[href^='#']", scroll_if_anchor);
+ </script>
+ </head>
 
-    <body id="page-top" data-target=".navbar-fixed-top">
-    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="/index.html" class="logo"><img
-                            src="http://www.ulakbus.org/ulakbus.png"></a>
-                </div>
+<body id="page-top" data-target=".navbar-fixed-top">
+	<nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/index.html" class="logo"><img src="http://www.ulakbus.org/ulakbus.png"></a>
+                    </div>
 
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right main-nav">
-
-
-
-                        <li>
-                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
-                        </li>
-                        <li>
-                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                       <ul class="nav navbar-nav navbar-right main-nav">
+                            <li>
+                                <a href="http://www.ulakbus.org/index.html">ANASAYFA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/hakkinda.html">PROJE HAKKINDA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                            </li>
+                            <li>
+                                <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Fork me on github icons -->
-    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
-                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-                                                              alt="Fork me on GitHub"
-                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+        <!-- Fork me on github icons -->
+             <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 
-    <div id="doccontainer">
+<div id="doccontainer">
 
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
@@ -163,14 +152,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
-        <li class="right" >
-          <a href="users.html" title="Kullanıcılar"
-             accesskey="N">sonraki</a> |</li>
-        <li class="right" >
-          <a href="devops.html" title="Sistem Operatörleri"
-             accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="devops.html" accesskey="U">Sistem Operatörleri</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -190,12 +172,6 @@
 </li>
 </ul>
 
-  <h4>Önceki konu</h4>
-  <p class="topless"><a href="devops.html"
-                        title="önceki bölüm">Sistem Operatörleri</a></p>
-  <h4>Sonraki konu</h4>
-  <p class="topless"><a href="users.html"
-                        title="sonraki bölüm">Kullanıcılar</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -433,25 +409,14 @@ Transfers resulting from cluster changes: 51
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
-        <li class="right" >
-          <a href="users.html" title="Kullanıcılar"
-             >sonraki</a> |</li>
-        <li class="right" >
-          <a href="devops.html" title="Sistem Operatörleri"
-             >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="devops.html" >Sistem Operatörleri</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
       </ul>
     </div>
     </div>
-    <footer>
+	<footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
-                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
-                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
-                        href="http://zetaops.io" target="_blank"
-                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank" style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a href="http://zetaops.io" target="_blank" style="text-decoration:underline; color:#fff;">Zetaops</a></p>
             </div>
         </div>
     </footer>

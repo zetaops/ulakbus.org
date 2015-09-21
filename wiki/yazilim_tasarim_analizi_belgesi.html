@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>ULAKBUS</title>
-
+  <title>ULAKBUS</title>
+  
     
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -40,7 +40,7 @@
     <![endif]-->
   </head>
   <body role="document">
-    <meta charset="utf-8">
+ <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -48,114 +48,106 @@
 
 
     <title>Ulakbüs</title>
-    <link rel="stylesheet"
-          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap Core CSS -->
     <link href="_static/css/bootstrap.css" rel="stylesheet">
     <link href="_static/css/style.css" rel="stylesheet">
     <link href="_static/css/roboto/roboto.css" rel="stylesheet">
 
-    <script>
-        /**
-         * Check an href for an anchor. If exists, and in document, scroll to it.
-         * If href argument omitted, assumes context (this) is HTML Element,
-         * which will be the case when invoked by jQuery after an event
-         */
-        function scroll_if_anchor(href) {
-            href = typeof(href) == "string" ? href : $(this).attr("href");
+ <script>
+     /**
+       * Check an href for an anchor. If exists, and in document, scroll to it.
+       * If href argument omitted, assumes context (this) is HTML Element,
+       * which will be the case when invoked by jQuery after an event
+       */
+     function scroll_if_anchor(href) {
+         href = typeof(href) == "string" ? href : $(this).attr("href");
 
-            // If href missing, ignore
-            if (!href) return;
+         // If href missing, ignore
+         if(!href) return;
 
-            // You could easily calculate this dynamically if you prefer
-            var fromTop = 100;
+         // You could easily calculate this dynamically if you prefer
+         var fromTop = 100;
 
-            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
-            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
-            var $target = $(href);
+         // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+         // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+         var $target = $(href);
 
-            // Older browsers without pushState might flicker here, as they momentarily
-            // jump to the wrong position (IE < 10)
-            if ($target.length) {
-                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
-                if (history && "pushState" in history) {
-                    history.pushState({}, document.title, window.location.pathname + href);
-                    return false;
-                }
-            }
-        }
+         // Older browsers without pushState might flicker here, as they momentarily
+         // jump to the wrong position (IE < 10)
+         if($target.length) {
+             $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+             if(history && "pushState" in history) {
+                 history.pushState({}, document.title, window.location.pathname + href);
+                 return false;
+             }
+         }
+     }
 
-        // When our page loads, check to see if it contains and anchor
-        scroll_if_anchor(window.location.hash);
+     // When our page loads, check to see if it contains and anchor
+     scroll_if_anchor(window.location.hash);
 
-        // Intercept all anchor clicks
-        $("body").on("click", "a[href^='#']", scroll_if_anchor);
-    </script>
-    </head>
+     // Intercept all anchor clicks
+     $("body").on("click", "a[href^='#']", scroll_if_anchor);
+ </script>
+ </head>
 
-    <body id="page-top" data-target=".navbar-fixed-top">
-    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="/index.html" class="logo"><img
-                            src="http://www.ulakbus.org/ulakbus.png"></a>
-                </div>
+<body id="page-top" data-target=".navbar-fixed-top">
+	<nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/index.html" class="logo"><img src="http://www.ulakbus.org/ulakbus.png"></a>
+                    </div>
 
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right main-nav">
-
-
-
-                        <li>
-                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
-                        </li>
-                        <li>
-                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                       <ul class="nav navbar-nav navbar-right main-nav">
+                            <li>
+                                <a href="http://www.ulakbus.org/index.html">ANASAYFA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/hakkinda.html">PROJE HAKKINDA</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                            </li>
+                            <li>
+                                <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                            </li>
+                            <li>
+                                <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Fork me on github icons -->
-    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
-                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-                                                              alt="Fork me on GitHub"
-                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+        <!-- Fork me on github icons -->
+             <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 
-    <div id="doccontainer">
+<div id="doccontainer">
 
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
@@ -312,7 +304,7 @@
 <div class="section" id="is-akisi-workflow-tabanli-uygulama">
 <h3><em>İş Akışı (Workflow) Tabanlı Uygulama</em><a class="headerlink" href="#is-akisi-workflow-tabanli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.</p>
-<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" style="width: 1048.0px; height: 389.0px;" /></a>
+<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" /></a>
 <p><em>Örnek İş Akış Şeması</em></p>
 <p>İş süreçleri yönetimi için, BPMN2 kural setine uyan Workflow Management yapısı seçilmiştir.   Python dünyasında WorkFlow Management ve BPMN desteği bulunan SpiffWorkFlow kütüphanesi geliştirilmeye açık en uygun aday olduğu için seçilmiştir.</p>
 <p>İş süreçlerinin görsel olarak oluşturulması için de Camunda Modeler seçilmiştir.</p>
@@ -601,7 +593,7 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 </div>
 <div class="section" id="genel-sistem-akis-semasi">
 <h3><em>Genel Sistem Akış Şeması:</em><a class="headerlink" href="#genel-sistem-akis-semasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<a class="reference internal image-reference" href="_images/genelsistemakssemas.png"><img alt="_images/genelsistemakssemas.png" class="align-center" src="_images/genelsistemakssemas.png" style="width: 240.8px; height: 518.0px;" /></a>
+<a class="reference internal image-reference" href="_images/genelsistemakssemas.png"><img alt="_images/genelsistemakssemas.png" class="align-center" src="_images/genelsistemakssemas.png" /></a>
 </div>
 <div class="section" id="modul-bilesenlerin-genel-gorunumu">
 <h3><em>Modül / Bileşenlerin Genel Görünümü:</em><a class="headerlink" href="#modul-bilesenlerin-genel-gorunumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -693,10 +685,10 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 </ul>
 <p>kod, api, kullanici, gelistirici, sistem yoneticisi dokumanlari yer alacaktir.</p>
 <p>Uygulamanın veri ve iş mantığının şu ana kadar planlanan yapısını gösteren class diagramlar aşağıda görülebilir.</p>
-<a class="reference internal image-reference" href="_images/pyoko.png"><img alt="_images/pyoko.png" class="align-center" src="_images/pyoko.png" style="width: 252.0px; height: 630.0px;" /></a>
-<a class="reference internal image-reference" href="_images/spiffworkflow.png"><img alt="_images/spiffworkflow.png" class="align-center" src="_images/spiffworkflow.png" style="width: 280.7px; height: 627.2px;" /></a>
-<a class="reference internal image-reference" href="_images/entitybasedmodeldiagram.png"><img alt="_images/entitybasedmodeldiagram.png" class="align-center" src="_images/entitybasedmodeldiagram.png" style="width: 1346.0px; height: 1605.0px;" /></a>
-<a class="reference internal image-reference" href="_images/genericrequesttoresponseseqdiagram.png"><img alt="_images/genericrequesttoresponseseqdiagram.png" class="align-center" src="_images/genericrequesttoresponseseqdiagram.png" style="width: 1496.0px; height: 1124.0px;" /></a>
+<a class="reference internal image-reference" href="_images/pyoko.png"><img alt="_images/pyoko.png" class="align-center" src="_images/pyoko.png" /></a>
+<a class="reference internal image-reference" href="_images/spiffworkflow.png"><img alt="_images/spiffworkflow.png" class="align-center" src="_images/spiffworkflow.png" /></a>
+<a class="reference internal image-reference" href="_images/entitybasedmodeldiagram.png"><img alt="_images/entitybasedmodeldiagram.png" class="align-center" src="_images/entitybasedmodeldiagram.png" /></a>
+<a class="reference internal image-reference" href="_images/genericrequesttoresponseseqdiagram.png"><img alt="_images/genericrequesttoresponseseqdiagram.png" class="align-center" src="_images/genericrequesttoresponseseqdiagram.png" /></a>
 </div>
 <div class="section" id="spiffworkflow-engine">
 <h3><strong>SpiffWorkflow Engine</strong><a class="headerlink" href="#spiffworkflow-engine" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -937,7 +929,7 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <div class="section" id="navigasyon-diagrami">
 <h3><em>Navigasyon Diagramı:</em><a class="headerlink" href="#navigasyon-diagrami" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Üniversite web uygulaması ve katmanlarını içerir.</p>
-<a class="reference internal image-reference" href="_images/webappkatmanlar.png"><img alt="_images/webappkatmanlar.png" class="align-center" src="_images/webappkatmanlar.png" style="width: 2500.0px; height: 241.0px;" /></a>
+<a class="reference internal image-reference" href="_images/webappkatmanlar.png"><img alt="_images/webappkatmanlar.png" class="align-center" src="_images/webappkatmanlar.png" /></a>
 </div>
 <div class="section" id="cevrimici-yardim-ve-rehberler">
 <h3><em>Çevrimiçi Yardım ve Rehberler:</em><a class="headerlink" href="#cevrimici-yardim-ve-rehberler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -946,9 +938,9 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <p>Kullanıcı sistemin bir noktasında sorunla karşılaştığında bağlamsal olarak derhal konuyla ilgili yardıma erişmesi için çevrimiçi yardım araçları kullanılır.</p>
 <p><a class="reference external" href="http://usablica.github.io/intro.js/">http://usablica.github.io/intro.js/</a></p>
 <p><em>Şekil: Kullanıcı Formları Request/Response Cycle Talep/Cevap Yaşam Döngüsü</em></p>
-<a class="reference internal image-reference" href="_images/kullaniciformlari.png"><img alt="_images/kullaniciformlari.png" class="align-center" src="_images/kullaniciformlari.png" style="width: 352.0px; height: 634.0px;" /></a>
+<a class="reference internal image-reference" href="_images/kullaniciformlari.png"><img alt="_images/kullaniciformlari.png" class="align-center" src="_images/kullaniciformlari.png" /></a>
 <p><em>Şekil: Kullanıcı Arayüz Bileşenleri  Request/Response Cycle Talep/Cevap Yaşam Döngüsü</em></p>
-<a class="reference internal image-reference" href="_images/kullancform2.png"><img alt="_images/kullancform2.png" class="align-center" src="_images/kullancform2.png" style="width: 565.0px; height: 617.0px;" /></a>
+<a class="reference internal image-reference" href="_images/kullancform2.png"><img alt="_images/kullancform2.png" class="align-center" src="_images/kullancform2.png" /></a>
 </div>
 </div>
 <div class="section" id="veri-tasarimi">
@@ -1131,14 +1123,10 @@ SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?</
       </ul>
     </div>
     </div>
-    <footer>
+	<footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
-                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
-                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
-                        href="http://zetaops.io" target="_blank"
-                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank" style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a href="http://zetaops.io" target="_blank" style="text-decoration:underline; color:#fff;">Zetaops</a></p>
             </div>
         </div>
     </footer>
