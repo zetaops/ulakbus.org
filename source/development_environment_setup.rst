@@ -305,8 +305,8 @@ Server'ı 8000(default) portunda çalıştırınız.
 
     python runserver.py --help
     usage: manage.py [-h]
-                 {runserver,migrate,flush_model,update_permissions,create_user}
-                 ...
+     {runserver,migrate,flush_model,update_permissions,create_user}
+      ...
 
     optional arguments:
     -h, --help            show this help message and exit
