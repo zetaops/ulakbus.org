@@ -8,20 +8,20 @@ ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 
 .. - İş akışı ve iş akışı temelli uygulama.
 .. - ZEngine: İş akışı tabanlı web çatısı
-..	- Falcon
-..	- SpiffWorkflow
-..	- Pyoko
-..	- Modeller
-..	- Ekranlar (Activities)
-..	- Görevler (Jobs)
-..	- Yetkiler ve Rol tabanlı erişim kontrolü.
+.. - Falcon
+.. - SpiffWorkflow
+.. - Pyoko
+.. - Modeller
+.. - Ekranlar (Activities)
+.. - Görevler (Jobs)
+.. - Yetkiler ve Rol tabanlı erişim kontrolü.
 .. - Adım adım bir web uygulamasının geliştirilmesi
-..	- Geliştirme ortamının kurulumu
-..	- Dizin & dosya yapısının oluşturulması
-..	- İş akışlarının tasarlanması.
-..	- Modellerin tanımlanması.
-..	- Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
-..	- Özelleştirilmiş ekranların oluşturulması.
+.. - Geliştirme ortamının kurulumu
+.. - Dizin & dosya yapısının oluşturulması
+.. - İş akışlarının tasarlanması.
+.. - Modellerin tanımlanması.
+.. - Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
+.. - Özelleştirilmiş ekranların oluşturulması.
 
 İş akışı ve iş akışı temelli uygulama
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,5 +221,4 @@ Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, 
             current.output['person_list'].append({'name': person.name,
                                                   'id': person.key,
                                                   'phone': person.phone})
-
 
