@@ -91,11 +91,37 @@ ders              Ders()
 
 }
 class Ogrenci <<(M,orchid)>> {
+ad                  String
+soyad               String
+ikamet_adresi       String
+tckn                String
+dogum_tarihi        Date
+dogum_yeri          String
+uyruk               String
+giris_tarihi        Date
+mezuniyet_tarihi    Date
+bolum               String
+fakulte             String
+e_posta             String
+ogrenci_no          Int
+tel_no              Int
+akademik_yil        String
+donem               String
+kan_grubu           String
+
+
 ders_programi       **DersProgrami()**
 rol                 **Role()**
 
 --
 **Dersler(ListNode)**
+saat          String
+gun           String
+kontenjan     Int
+on_kosul      Boolean
+gecme_notu    Int
+akademik_yil  String
+donem         String
 |_ ders       **Sube()**
 }
 
