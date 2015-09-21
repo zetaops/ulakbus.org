@@ -46,7 +46,6 @@ Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilir
 Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.
 
 
-
 ::
 
      sudo su - ulakbus
