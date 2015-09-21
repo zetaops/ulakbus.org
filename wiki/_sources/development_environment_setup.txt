@@ -19,12 +19,30 @@ http://www.cyberciti.biz/cloud-computing/use-vagrant-to-create-small-virtual-lab
 
 Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca kurulum yapabilirsiniz. Ulakbus'e ait tüm bileşenler box içinde bulunmaktadır. Ortamı kurabilmek için aşağıdaki komutları kullanabilirsiniz.
 
+
+
 ::
 
-    mkdir ulakbus
-    cd ulakbus
+   mkdir ulakbus
+   cd ulakbus
+   vagrant init zetaops/ulakbus
+
+
+Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM'ı 2 GB yapmanızı öneririz.Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:
+
+
+::
+
     wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
+
+Vagrantfile'ı düzenledikten sonra:
+
+
+::
+
     vagrant up
+
+komutuyla makinenizi başlatabilirsiniz.
 
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
@@ -289,5 +307,20 @@ Server'ı 8000(default) portunda çalıştırınız.
 
 ::
 
-    python runserver.py
+    python runserver.py--help
+
+    usage: manage.py [-h]
+                 {runserver,migrate,flush_model,update_permissions,create_user}
+                 ...
+
+    optional arguments:
+    -h, --help            show this help message and exit
+
+     Possible commands:
+     {runserver,migrate,flush_model,update_permissions,create_user}
+       runserver           Run the development server
+       migrate             Creates/Updates SOLR schemas for given model(s)
+       flush_model         REALLY DELETES the contents of buckets
+       update_permissions  Syncs permissions with DB
+       create_user         Creates a new user
 
