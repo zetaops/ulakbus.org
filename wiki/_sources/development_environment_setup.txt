@@ -1,4 +1,4 @@
-+++++++++++++++++++++++++++++++++++
+sou +++++++++++++++++++++++++++++++++++
 Geliştirme Ortamı Kurulumu(Backend)
 +++++++++++++++++++++++++++++++++++
 
@@ -8,9 +8,8 @@ Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalı
 **Vagrant**
 ===========
 
-Vagrant nedir?
+Vagrant Nedir?
 --------------
-
 
 Vagrant'la ilgili başlıca bilgilere aşağıdaki linklerden ulaşabilirsiniz:
 
@@ -20,14 +19,11 @@ http://www.cyberciti.biz/cloud-computing/use-vagrant-to-create-small-virtual-lab
 
 Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca kurulum yapabilirsiniz. Ulakbus'e ait tüm bileşenler box içinde bulunmaktadır. Ortamı kurabilmek için aşağıdaki komutları kullanabilirsiniz.
 
-
-
 ::
 
-   mkdir ulakbus
-   cd ulakbus
-   vagrant init zetaops/ulakbus
-
+    mkdir ulakbus
+    cd ulakbus
+    vagrant init zetaops/ulakbus
 
 Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM'ı 2 GB yapmanızı öneririz.Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:
 
@@ -48,6 +44,7 @@ komutuyla makinenizi başlatabilirsiniz.
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
 Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.
+
 
 ::
 
@@ -72,11 +69,9 @@ Riak için dosya limitini 65536 olarak değiştirin.
 
 ``ulimit -n`` kalıcı olarak değiştirmek için;
 
-
 ::
 
     sudo vi /etc/security/limits.conf
-
 
 Ve aşağıdaki satırları dosyanın sonuna ekleyin.
 
@@ -308,5 +303,20 @@ Server'ı 8000(default) portunda çalıştırınız.
 
 ::
 
-    python runserver.py
+    python runserver.py --help
+    usage: manage.py [-h]
+     {runserver,migrate,flush_model,update_permissions,create_user}
+      ...
 
+    optional arguments:
+    -h, --help            show this help message and exit
+
+    Possible commands:
+    {runserver,migrate,flush_model,update_permissions,create_user}
+    runserver           Run the development server
+    migrate             Creates/Updates SOLR schemas for given model(s)
+    flush_model         REALLY DELETES the contents of buckets
+    update_permissions  Syncs permissions with DB
+    create_user         Creates a new user
+
+Uygulamayı geliştirmeye devam etmek için http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html sayfasına göz atabilirsiniz.

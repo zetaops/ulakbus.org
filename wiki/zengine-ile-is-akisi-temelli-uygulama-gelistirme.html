@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-  <title>ULAKBUS</title>
-  
+    <title>ULAKBUS</title>
+
     
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -40,7 +40,7 @@
     <![endif]-->
   </head>
   <body role="document">
- <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -48,106 +48,114 @@
 
 
     <title>Ulakbüs</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap Core CSS -->
     <link href="_static/css/bootstrap.css" rel="stylesheet">
     <link href="_static/css/style.css" rel="stylesheet">
     <link href="_static/css/roboto/roboto.css" rel="stylesheet">
 
- <script>
-     /**
-       * Check an href for an anchor. If exists, and in document, scroll to it.
-       * If href argument omitted, assumes context (this) is HTML Element,
-       * which will be the case when invoked by jQuery after an event
-       */
-     function scroll_if_anchor(href) {
-         href = typeof(href) == "string" ? href : $(this).attr("href");
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
 
-         // If href missing, ignore
-         if(!href) return;
+            // If href missing, ignore
+            if (!href) return;
 
-         // You could easily calculate this dynamically if you prefer
-         var fromTop = 100;
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
 
-         // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
-         // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
-         var $target = $(href);
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
 
-         // Older browsers without pushState might flicker here, as they momentarily
-         // jump to the wrong position (IE < 10)
-         if($target.length) {
-             $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
-             if(history && "pushState" in history) {
-                 history.pushState({}, document.title, window.location.pathname + href);
-                 return false;
-             }
-         }
-     }
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
 
-     // When our page loads, check to see if it contains and anchor
-     scroll_if_anchor(window.location.hash);
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
 
-     // Intercept all anchor clicks
-     $("body").on("click", "a[href^='#']", scroll_if_anchor);
- </script>
- </head>
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
 
-<body id="page-top" data-target=".navbar-fixed-top">
-	<nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="/index.html" class="logo"><img src="http://www.ulakbus.org/ulakbus.png"></a>
-                    </div>
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
 
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">
-                       <ul class="nav navbar-nav navbar-right main-nav">
-                            <li>
-                                <a href="http://www.ulakbus.org/index.html">ANASAYFA</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/hakkinda.html">PROJE HAKKINDA</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
-                            </li>
-                            <li>
-                                <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Fork me on github icons -->
-             <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
 
 
-<div id="doccontainer">
+    <div id="doccontainer">
 
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
@@ -178,6 +186,15 @@
 <li><a class="reference internal" href="#falcon">Falcon</a></li>
 <li><a class="reference internal" href="#spiffworkflow">SpiffWorkflow</a></li>
 <li><a class="reference internal" href="#pyoko">Pyoko</a></li>
+<li><a class="reference internal" href="#veri-modelleri">Veri Modelleri</a></li>
+<li><a class="reference internal" href="#workflow-metodlari-views-tasks">Workflow Metodları (Views &amp; Tasks)</a><ul>
+<li><a class="reference internal" href="#current-nesnesi">Current Nesnesi</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#yetkiler-ve-rol-tabanli-erisim-kontrolu">Yetkiler ve Rol Tabanlı Erişim Kontrolü</a><ul>
+<li><a class="reference internal" href="#satir-ve-hucre-seviyesinde-erisim-kontrolu">Satır ve Hücre Seviyesinde Erişim Kontrolü</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -228,7 +245,7 @@
 </div>
 <div class="section" id="zengine-web-catisi">
 <h2>ZEngine Web Çatısı<a class="headerlink" href="#zengine-web-catisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen REST odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunmaktadır.</p>
+<p>ZEngine, Zetaops tarafından Python dili kullanılarak geliştirilen, Ulakbüs projesinin de üzerine inşa edildiği, BPMN 2.0 iş akışlarını destekleyen servis odaklı bir web çatısıdır. Falcon, SpiffWorkflow ve Pyoko olmak üzere üç temel öge üzerine kurulmuş olan ZEngine, iş akışı tabanlı web servislerinin Python nesneleri ile kolayca inşa edilmesini sağlayan, ölçeklenebilir ve güvenli bir platform sunar.</p>
 <div class="section" id="falcon">
 <h3>Falcon<a class="headerlink" href="#falcon" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Falcon, WSGI standardını destekleyen, REST mimarisinde servisler oluşturmak için geliştirilmiş aşırı hızlı ve hafif bir web çatısıdır.</p>
@@ -242,16 +259,16 @@
 <p>Riak KV için tasarlanmış bir ORM (Object Relational Mapper) aracı olan Pyoko, Riak KV&#8217;nin Solr arama motoru ile olan entegrasyonunu tümüyle desteklemekte ve bu iki ürünün tek bir API üzerinden ilişkisel bir veri tabanı rahatlığında kullanılabilmesini olanaklı kılmaktadır.</p>
 <p>Uygulamanın konusunu oluşturan varlıklar (entities) Pyoko modelleri olarak tasarlanmakta, bu modeller altında saklanan verilere erişim yine modellerde tanımlanan yetki koşullarına uygun olarak yönetilmektedir. Bir varlıkla doğrudan ilişkili metodlar kendi modelinin altında tanımlanebilmekte, böylece uygulamanın kod organizasyonu kolaylaşmaktadır.</p>
 <p>Pyoko, veritabanında saklanacak verilerin Python nesneleri olarak tanımlanmasına imkan vermenin yanı sıra, bu veri varlıkları arasında ilişkisel veritabanlarındakine benzer bağlantılar oluşturmasını sağlar. Veri girdilerinin model tanımına uygunluğunun kontrolü ve kullanıcıların bu verilerle yetkileri dahilinde etkileşime geçebilmelerini garanti edilmesi de Pyoko sayesinde veri katmanı seviyesinde çözülebilen uygulama ihtiyaçlarıdır.</p>
-<p>Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürülürler.</p>
-<p>NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (auto-denormalization).</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Modeller
-<strong>****</strong>
-=======
-Veri Modelleri
-<strong>***********</strong>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; a5072871566987b265f8b7b9424d4e7ea1c7dd3d
-Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer modellerinde öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir. ListNode içinde başka bir modele referans verildiğimizde, ilişkisel veritabanlarındaki ManyToMany benzeri bir ilişki tanımlamış oluruz. Benzer şekilde bir modelin içinden başka bir modele referans verdiğimizde ise iki model arasında OneToMany tipinde bir bağ kurulmuş olur.</p>
+<p>Modellerde iç içe sınıflar şeklinde ifade edilen veri varlıkları, veritabanına JSON biçiminde kaydedilir, okunurken tekrar Python nesnelerine dönüştürlürler.</p>
+<p>NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, ilişkisel veri tabanlarındaki (RDBMS) join kavramı olmadığından, henüz tasarım aşamasındayken verilerin nasıl sorgulanacağı iyi düşünülmeli ve mümkün mertebe tek sorguda ihtiyaç duyulan tüm verinin alınabileceği bir veri varlığı yapısı tasarlanmalıdır. Bu işlemin kolaylaştırılması ve uygulamanın iş mantığının veri senkronizasyonu amaçlı kodlarla dolmasını engellemek için Pyoko verileri yazma anında birleştirir (write-time join, auto-denormalization).</p>
+</div>
+<div class="section" id="veri-modelleri">
+<h3>Veri Modelleri<a class="headerlink" href="#veri-modelleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Model, Node ve ListNode adında üç temel nesne tipi sunmaktadır. Bu nesneleri, ihtiyacımız doğrultusunda iç içe ya da bir birleriyle ilişkilendirerek kullanabiliriz. Bu nesneler üzerinde saklanacak verileri tanımlamak için ise String, Boolean, Integer, Date gibi çeşitli veri alanları tanımlanmıştır.</p>
+<p>Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu &#8220;öğrencinin ders seçmesi, danışman öğretmeninin bu dersi onaylaması&#8221; olan bir iş akışın gerektirdiği veri modelinin minimal bir örneği listelenmiştir.</p>
+<p><code class="docutils literal"><span class="pre">15.</span></code> Satırda olduğu gibi bir modelden başka bir modele referans verdiğimizde bu iki model arasında <em>OneToMany</em> tipinde bir bağ kurmuş oluruz.</p>
+<p><code class="docutils literal"><span class="pre">17.</span></code> Satırda öğrencinin aldığı dersler ListNode tipindeki Lectures nesnesi ile ifade edilmiştir. ListNode, liste benzeri veri yapılarını ifade etmek için kullanılan, yinelenebilir (iterable) bir nesnedir.</p>
+<p><code class="docutils literal"><span class="pre">18.</span></code> Satırda olduğu gibi ListNode içinde başka bir modele referans verildiğimizde, iki model arasında ilişkisel veritabanlarındaki <em>ManyToMany</em> benzeri bir ilişki tanımlamış oluruz.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -268,7 +285,9 @@ Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer mo
 14
 15
 16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
 
 <span class="k">class</span> <span class="nc">Lecturer</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -276,10 +295,12 @@ Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer mo
 
 <span class="k">class</span> <span class="nc">Lecture</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">credit</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Kredisi&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">join_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Kayıt tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">advisor</span> <span class="o">=</span> <span class="n">Lecturer</span><span class="p">()</span>
 
     <span class="k">class</span> <span class="nc">Lectures</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
@@ -287,7 +308,129 @@ Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer mo
         <span class="n">confirmed</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Ekranlar</p>
+<p>Bu modeller üzerinde kayıt ekleme, sorgulama, silme, güncelleme işlemlerinin
+nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranların oluşturulması&#8221; bölümünde inceleyebilirsiniz.</p>
+</div>
+<div class="section" id="workflow-metodlari-views-tasks">
+<h3>Workflow Metodları (Views &amp; Tasks)<a class="headerlink" href="#workflow-metodlari-views-tasks" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Workflow tabanlı bir uygulamada, uygulamanın tüm işlevselliği iş akışı adımları üzerinden çalıştırılacak şekilde hazırlanır. Bu işlevler BPMN diagramında UserTask ve ServiceTask adımlarının ilgili alanlarına girilen metod ve sınıf çağrıları ile yerine getirilir. İş akışı motoru, kullanıcı girdilerini (TaskData), o an işlettiği akış diagramında tanımlı ExclusiveGateway gibi karar kapılarına karşı işleterek akışı yönlendirir. Etkinleştirilen akış adımlarıyla ilişkili metod çağrıları sonucuna göre akış sonraki adıma devam edebilir ya da akışın durumu kaydedilip işlem çıktısı akışı tetikleyen kullanıcıya geri döndürülebilir.</p>
+<p>Bir web uygulamasının işlevlerini yerine getirmesi için yazılan kodların büyük bir kısmı istemci (web tarayıcı) ile etkileşimi sağlayan API çağrıları üzerinden çağırılırken (views), bazı işlemler de arkaplanda çalışan görevler (tasks) ile yürütülür. Bu belgede <em>task</em> olarak anılacak bu arkaplan görevleri, doğası gereği tamamlanması uzun sürebilecek çeşitli hesaplamalar olabileceği gibi, dış servislere bağımlı olduklarından, kullanıcı deneyimini etkilememeleri için arkaplanda çalıştırılması gereken anlık görevler de olabilirer.</p>
+<p>İster view ister task tipinde olsunlar, workflow metodarının tüm girdi &amp; çıktı işlemleri current.input ve current.output sözlükleri üzerinden yapılır.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">first_login</span><span class="p">:</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&quot;msg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;Welcome </span><span class="si">%s</span><span class="s">, Thank you for registering &quot;</span>
+                                 <span class="s">&quot;to our site.&quot;</span> <span class="o">%</span> <span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">first_login</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="current-nesnesi">
+<h4>Current Nesnesi<a class="headerlink" href="#current-nesnesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>İş akışı motoru bir view ya da task metodunu &#8220;Current&#8221; adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.</p>
+<p>Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ögeleri içerir. Bunlardan <em>session, user, auth</em> gibi sadece view metodlarında işlevsel olanlar arkaplanda çalışan task metodlarında geçersizdirler.</p>
+<p><code class="docutils literal"><span class="pre">input</span></code> İstemciden gelen JSON verisinin çözümlenip (decode) Python sözlüğü şekline getirilmiş hali.</p>
+<p><code class="docutils literal"><span class="pre">output</span></code> İstemciye gönderilecek veri sözlüğü. Bu sözlük otomatik olarak JSON verisi şekline dönüştürülür.</p>
+<p><code class="docutils literal"><span class="pre">session</span></code> Kullanıcı oturumunu içeren sözlük benzeri bir nesnedir. Bu nesne üzerinde herhangi bir yazma/okuma işlemi yapıldığında, değişikliker otomatik olarak oturuma kaydedilir. Kullanıcı henüz sisteme giriş yapmamış olsa bile oturumu mevcuttur ve giriş yaptıktan sonra aynı oturum devam eder.</p>
+<p><code class="docutils literal"><span class="pre">auth</span></code> Kullanıcı yetkilendirmesi ile ilgili metodları barındıran AuthBackend nesnesidir. <em>get_user(), get_permissions(), has_permission(), authenticate()</em> metodlarını içerir. ZEngine bu nesnenin referans sürümünü içerir ancak kendi uygulamamızda kullanıcı ve yetki sistemimize uygun şekilde özelleştirilmiş bir AuthBackend nesnesi kullanmamıza izin verir.</p>
+<p><code class="docutils literal"><span class="pre">user</span></code> Sisteme giriş yapmış kullanıcıyı veren vekil (lazy proxy) kullanıcı nesnesidir. Asıl kullanıcı bilgileri, bu nesneye erişildiği anda veritabanından çekilir.</p>
+<p><code class="docutils literal"><span class="pre">task_data</span></code> İş akışının karar adımlarında tanımlı koşullar bu sözlüğün içerdiği veriler ile işletilir.</p>
+<p><code class="docutils literal"><span class="pre">workflow_name</span></code> İşletilmekte olan iş akışının adı.</p>
+<p><code class="docutils literal"><span class="pre">workflow</span></code> İşletilmekte olan iş akışı nesnesi.</p>
+<p><code class="docutils literal"><span class="pre">task</span></code> Etkin durumdaki iş akışı adımı (Task) nesnesi.</p>
+<p><code class="docutils literal"><span class="pre">is_auth</span></code> Kullanıcının sisteme giriş yapma durumunu belirten bool tipinde bir özelliktir.</p>
+<p><code class="docutils literal"><span class="pre">has_permission(perm_code_name)</span></code> Kullanıcının adı verilen yetkiye sahip olup olmadığını boolean tipinde döndürür.</p>
+<p><code class="docutils literal"><span class="pre">get_permissions()</span></code> Kullanıcının sahip olduğu tüm yetkileri döndürür.</p>
+</div>
+</div>
+<div class="section" id="yetkiler-ve-rol-tabanli-erisim-kontrolu">
+<h3>Yetkiler ve Rol Tabanlı Erişim Kontrolü<a class="headerlink" href="#yetkiler-ve-rol-tabanli-erisim-kontrolu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>ZEngine Pyoko&#8217;dan miras aldığı <em>satır ve hücre seviyesinde erişim kontrolüne</em> ek olarak, sisteme yüklenmiş iş akışlarının tüm adımlarını birer yetki olarak tanımlar. Otomatik olarak türetilen iş akışı yetkilerine ek olarak, CustomPermission nesnesi ile, kendi view metodlarımızda kontrol edebileceğimiz ek yetkiler de tanımlayabilirz. Tüm bu yetkiler <em>Role</em> ve <em>AbstractRole</em> modelleri ile ifade edilen kullanıcı rolleri üzerinden ilgili User&#8217;a tanımlanır.</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.</p>
+</div>
+<p class="plantuml">
+<img src="_images/plantuml-054299ce34d98edbef80bfa6d3d463b4d751cd2b.png" alt="skinparam classBackgroundColor #ffffff
+skinparam shadowing false
+
+class LimitedPermissions {
+restrictive     Boolean(False)
+time_start      String
+time_end        String
+--
+**IPList(ListNode)**
+|_ ip           String
+}
+User &quot;1&quot; -- &quot;1&quot; Student
+User &quot;1&quot; -- &quot;1&quot; Employee
+User &quot;0..*&quot; o-- &quot;1&quot; Role
+Role &quot;1&quot; --o &quot;0..*&quot; AbstractRole
+AbstractRole &quot;0..*&quot; o-- &quot;0..*&quot; Permission
+Role &quot;0..*&quot; o-- &quot;0..*&quot; Permission
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Permission
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Role
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; AbstractRole" />
+</p>
+<p>Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.</p>
+<p>AbstractRole nesnesi &#8220;Tıp Fakültesi Öğrenci İşleri Müdürü&#8221; gibi belirli bir makamı temsil ederken, Role nesnesi ise AbstractRole&#8217;ün bir kullanıcı ile ilişkilendirilmesi sonucu bu makamı fiilen işgal eden bir kişiyi ifade etmektedir.</p>
+<p>Permission nesnesinin hem Role ile hem de AbstractRole ile ManyToMany tipinde ilişkili olması sayesinde, bir kullanıcıya sahip olduğu makamın getirdiği standart yetkilere ek yetkilerin tanıması da mümkün olabilmektedir.</p>
+<p>LimitedPermissions nesnesi IP adres ve saat bazlı olarak Permission, Role ve AbstractRole nesneleri ile ManyToMany tipinde ilişkilidir. Bu ilişki sayesinde seçilen rol ya da makamın, seçilen yetkileri belirli saatlere, istemci IP&#8217;lerine yada belirli saatlerler için belirli IP&#8217;lere göre kısıtlanabilir ya da verilebilir.</p>
+<p>Student ve Employee nesnelerinin User ile OneToOne şeklinde ilişkili olmaları, bir kullanıcının aynı anda hem öğrenci hem de personel statüsünde olabilmesine olanak vermektedir. Benzer şekilde User ile Role nesnesi arasındaki OneToMany tipindeki ilişki, bir kullanıcının birden fazla rolü yani makamı olabilmesine imkan vermektedir. Birden fazla rolü olan bir kullanıcı giriş yaptığında son çıkış yaptığı rolün ana ekranı ile karşılaşır, isterse kullanıcı menüsünden hesabına kayıtlı diğer bir role geçiş yapabilir. Kullanıcı belirli bir anda, sadece o anda etkin durumda olan rolünün yetkileri ile işlem yapabilir.</p>
+<div class="section" id="satir-ve-hucre-seviyesinde-erisim-kontrolu">
+<h4>Satır ve Hücre Seviyesinde Erişim Kontrolü<a class="headerlink" href="#satir-ve-hucre-seviyesinde-erisim-kontrolu" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Pyoko, model tanımları içerisinde satır ve hücre seviyesinde erişim kontrolü yapılmasına izin verir. Burada satır seviyesinden  kasıt, kullanıcının yetkisinin izin vermediği kayıtlara erişememesidir. Hücre seviyesinde ise, kullanıcının bir modelin altındaki kayıtların sadece bazı alanlarına erişimesine izin verip, bazı alanlardaki verilere erişiminin kısıtlanabilir.</p>
+<p>Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde çalışabilmesi için, model nesnelerinin kullanıcı yetkilerini içeren <em>Current</em> nesnesi ile ilklendirilmeleri gerekmektedir. Bu işlevler isteğe bağlı özellikler olduklarından, bu gereklilik sadece aşağıdaki gibi model içinde yetki kısıtlaması yapıldığı durumlarda geçerlidir.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Personel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">section</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">phone</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">row_level_access</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">objects</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">current</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="s">&quot;access_to_other_sections&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">section</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">field_permissions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;can_see_private_data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;phone&#39;</span><span class="p">,</span> <span class="s">&#39;address&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Yukarıdaki Personel modelinin <code class="docutils literal"><span class="pre">6.</span></code> satırında tanımlanan <strong>row_level_access()</strong> metodu, modelin ilkendirilmesi (initialization) aşamasında çağırılır. <code class="docutils literal"><span class="pre">7.</span></code> satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa <code class="docutils literal"><span class="pre">8.</span></code> satıda <strong>objects</strong> nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.</p>
+<p>Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde <strong>field_permissions</strong> adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlalamız yeterlidir. Yukarıda <code class="docutils literal"><span class="pre">12.</span></code> satırda tanımlanan kısıtlama sayesinde, <em>can_see_private_data</em> yetkisine sahip olmayan kullanıcıların <em>phone</em> ve <em>address</em> alanlarını okuyup yazmaları engellenmiş olur.</p>
+<p>Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir. Benzer şekilde kullanıcı kişilerin özel bilgilerini görüntüleme yetkisine sahip değilse de <em>person_list</em> listesinin <em>phone</em> sütunu boş kalacaktır.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">show_person_list</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">Person</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">():</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;person_list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                              <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                              <span class="s">&#39;phone&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">phone</span><span class="p">})</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 </div>
 </div>
@@ -315,10 +458,14 @@ Aşağıda basitleştirilmiş olarak gösterilen Student, Lecture ve Lecturer mo
       </ul>
     </div>
     </div>
-	<footer>
+    <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank" style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a href="http://zetaops.io" target="_blank" style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
             </div>
         </div>
     </footer>
