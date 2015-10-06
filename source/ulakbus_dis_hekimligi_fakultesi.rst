@@ -1,86 +1,6 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ULAKBUS Diş Hekimliği Fakültesi Yazılım İhtiyaç Analizi Belgesi
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Standart Fakülteler İçin Yazılım İhtiyaç Analizi Belgesi
-Tanımlar
-Fakülte
-Dekan
-Dekan Yardımcısı
-Fakülte Kurulu
-Fakülte Yönetim Kurulu
-Fakülte Sekreteri
-Fakülte Öğrenci İşleri
-Bölüm
-Bölüm Başkanı
-Bölüm Kurulu
-Anabilim Dalı
-Danışman
-Program
-Ders
-Ders Şubesi
-Öğrenci Şubesi
-Ders Kredisi
-Zorunlu Ortak Ders
-Ön Şartlı Ders
-Seçtirmeli Ders
-Öğretim Yılı
-Normal Öğretim Süresi
-Azami (En fazla) Öğretim Süresi
-Ücretler
-Sınavlar
-Kural Setleri
-Süreler
-Normal Öğretim Süresi
-Azami Öğretim Süresi
-Öğrencinin 5 adet dersi ancak nottan kaldıysa 3 yarıyıl daha ek süre verilir.
-Öğrenci bu dersleri 3 derse indirebilirse, zaman sınırı olmadan sınav hakkı verilir.
-Devamlılık Kuralları
-Sınava Katılma Şartları
-Puan Sistemi
-Harfler Sistemi
-Ders Başarı Hesaplama
-Başarı Hesaplama
-Ücret Hesaplama
-Normal Öğrenim
-İkinci Öğretim
-İş Akışları
-Kayıt İşlemleri
-İlk Kayıt
-Kesin Kayıt Sonrası
-Kayıt Yenileme
-Kayıt Dondurma
-Kayıt Silme
-Ders Açma
-Seçmeli Derslerin Açılması
-Sınıf Açma
-Ders Alma Biçimleri
-Ders Seçme
-Ders Ekleme Çıkarma ve Mazeretli Ders Kaydı
-Başka Bölümlerden Ders Alma
-Program Değişikliği
-Ders Muafiyeti
-Not Girişi
-%10 İşlemeleri
-Onur Belgeleri
-Harf Yeniden Hesaplama
-Mazeret Yönetimi
-Devamlılık Takibi
-Mezuniyet
-Roller
-Yetkiler
-Yetki Devri
-Ekranlar
-Sistemden Beklenecek Raporlar
-Sistem Tarafından Üretilecek Belgeler
-EBYS Entegrasyonu
-YÖKSİS Kurum Ağacı
-Ders Kopyalama
-Ders Tipleri
-Ders Durumları
-Ders Alış Tipi
-Ders Dili
-Derslerin Dili Kuralları
-Sınav Hakkı
 
 ============
 **Tanımlar**
@@ -298,7 +218,7 @@ YÖK Kanunu ve YÖK Yürütme Kurulu'nca belirlenen şu dersleri ifade eder:
 **Ön Şartlı Ders**
 ------------------
 
-YOK.
+YOK
 
 -------------------
 **Seçtirmeli Ders**
@@ -690,7 +610,7 @@ Seçmeli Derslerin açılabilemesi için en az 10 öğrencinin ilgili dersi seç
 **Sınıf Açma**
 --------------
 
-YOK.
+YOK
 
 -----------------------
 **Ders Alma Biçimleri**
@@ -737,7 +657,7 @@ Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. 
 **Başka Bölümlerden Ders Alma**
 -------------------------------
 
-YOK.
+YOK
 
 -----------------------
 **Program Değişikliği**
@@ -777,7 +697,7 @@ Büt ve final sonuçlarının girilmesi, öğrencinin harf notunun hesaplanması
 **% 10 İşlemleri**
 ------------------
 
-YOK.
+YOK
 
 ------------------
 **Onur Belgeleri**
@@ -949,3 +869,34 @@ http://konya.edu.tr/bologna/goster/12198
 
 Sağlık Bilimleri ile birlikte online görüşme.
 
+-----------------
+**Staj Dersleri**
+-----------------
+3. , 4. ve 5. sınıflarda farklı sürelerde olaiblir.
+Her staj dersi sistemde ayrı bir ders olarak açılır.
+Ara sınavları yoktur. Sadece final notu girilir. Final notu değerlendirme formu ile hesaplanır.
+
+ * Her bir staj dersi için ayrı bir değerlendirme formu vardır. Bu değerlendirme formu ile öğrenci notu hesaplanır.
+Her kliniğin başarılması için barajlar vardır. Bu dersin tanımında yer almalıdır. Bu barajlar aşılmadığı zaman öğrenci değerlendirme formu açılmaz. Öğrenci final notu FF olarak sisteme işaretlenir.
+
+Eğer öğrenci başarısız olursa yaz stajına gelir. Burada aldığı not da bütünleme olarak kaydedilir.
+
+Her öğrenci bir stajı dönem içinde sadece bir kere alabilir. Staj ile birlikte bir de staj sorumlusu açılır. Her staj dersinden sadece bir tane açılır.
+
+-------------------
+**Entegre Stajlar**
+-------------------
+
+-----------------------
+**Laboratuvar Dersler**
+-----------------------
+
+Yaplan işler notlanır. Her labda nelerin yapılacağı sene başında bellidir. Ders tanımında yer alır. Her iş için aynı not alanı açılır.
+
+  1.Vize
+
+  2.Vize
+
+  3.Yapılan işler
+
+  4.Final
