@@ -763,6 +763,8 @@ Bir dersten muafiyet şartları şu şekildedir:
 
 Hoca notları kendi ekranından girer. Yayınla diyene kadar her türlü değişikliği yapabilir. Yayınla dedikten sonra, öğreciler notları görebilir, hoca artık hiçbir değişiklik yapamaz. Hoca tarafından yapılacak yanlışlık düzeltmeleri hocanın dilekçesi üzerine öğrenci işleri tarafından yapılır.
 
+**Hocanın sehven yaptığı maddi hataların düzeltilmesi için merkez öğrenci işlerinin de bulunduğu bir yazışma yapılıyor. Süreç çok uzuyor. Nasıl çözüm bulabliriz?**
+
 Öğrenci itirazları yine dilekçe üzerinden takip edilip, öğrenci işleri tarafından yapılır.
 
 Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemlidir.
@@ -771,22 +773,11 @@ Hoca dilekçesi üzerine tüm notlar yayından kaldırılıp, hocanın değerlen
 
 Büt ve final sonuçlarının girilmesi, öğrencinin harf notunun hesaplanmasına neden olur. Eğer büt ve final sonuçlarının değiştirilmesi sonucu harf değişikliklerinden kaynaklanan sonuçlar olursa bunlar elle düzeltilir. Geçme-kalma veya şartlı geçme vb..
 
+------------------
+**% 10 İşlemleri**
+------------------
 
-% 10 İşlemleri
-
-* Değişim programları dışındaki
-
-* Disiplin cezası almamış
-
-* İkinci öğretimde okuyan öğrencilerden
-
-* **Genel ortalaması 3’ten büyük**
-
-* Başarısız dersi olmayan
-
-* Bulunduğu dönemde, sınıf ortalamasının en yüksek  % 10'udur.
-
-Bunların **sadece sonraki dönem harçları** birinci dönem gibi hesaplanır.
+YOK.
 
 ------------------
 **Onur Belgeleri**
@@ -826,9 +817,10 @@ Mazeret öngörülen devam süresine dahil edilmez. Kaybedilen süre eğitim ö�
 **Devamlılık Takibi**
 ---------------------
 
-Devamın denetimi, dekanlıkça uygun görülen bir yöntemle yapılır. Devamsız öğrencilerin durumu genel sınavlardan önce ilgili öğretim elemanı tarafından ilân edi Hoca sisteme devamsızlıktan kaldı şekinde giriş yapar. Not F olur. Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girmez öğrenci dersin devam şartını yerine getirmiş sayılır. Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte Öğrenci işleri düzeltir.
-
-Devamlılık ders için takip edilir. Hoca tarafından takip yapılır. Hoca sisteme devamsızlıktan kaldı şeklinde giriş yapar. Not F olur. Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girilmezse öğrenci dersin devam şartını yerine getirmiş sayılır. Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte öğrenci işleri düzeltir.
+Devamın denetimi, dekanlıkça uygun görülen bir yöntemle yapılır. Devamsız öğrencilerin durumu genel sınavlardan önce ilgili öğretim elemanı tarafından ilân edilir.
+Devamlılık ders için takip edilir. Hoca tarafından takip yapılır. Not F olur.
+Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girilmezse öğrenci dersin devam şartını yerine getirmiş sayılır.
+Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte öğrenci işleri düzeltir.
 
 -------------
 **Mezuniyet**
@@ -931,7 +923,7 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 
 * Diploma (Sadece mezun durumundaki öğrencilere verilebilir.)
 
-    - Diploma metni her bölüme göre değişebilir. Diploma metnin içine parametre geçirilmelidir.
+    - Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
 
 * Diploma Eki (Sadece mezun durumundaki öğrencilere verilebilir)
 
@@ -939,156 +931,21 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 **EBYS Entegrasyonu**
 =====================
 
+----------
+**Notlar**
+----------
+
 ----------------------
 **YÖKSİS Kurum Ağacı**
 ----------------------
 
 YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistemdeki bilgiler, bu servisten sağlananlarla güncellenir. Bu kurum ağacında okulun tüm akademik birimleri kendilerine verilen bir kod ile yer alır.
 
-------------------
-**Ders Kopyalama**
-------------------
-
-Önceki yıldan bölüm dersleri aktarılıp, değişiklikler işlenir.
-
-----------------
-**Ders Tipleri**
-----------------
-
-* Hazırlık
-
-* Normal
-
-* Seçmeli
-
-* Staj
-
-* Tıp Staj
-
-* Entegre
-
-------------------
-**Ders Durumları**
-------------------
-
-* Alıyor
-
-* Geçti
-
-* Kaldı
-
-* Devamsızlıktan Kaldı
-
-* Danışman Onayı Bekliyor
-
-* Muaf
-
-* Notsuz Muaf
-
-------------------
-**Ders Alış Tipi**
-------------------
-
-* İlk
-
-* Üstten
-
-* Devamlı Tekrar
-
-* Yükseltme İçin
-
-* Devamsız Tekrar
-
--------------
-**Ders Dili**
--------------
-
-Türkçe
-
-İngilizce...
-
-----------------------------
-**Derslerin Dili Kuralları**
-----------------------------
-
-Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar. Onun yerine ilgili dersin Türkçesini alırlar.
-
-
-* Personel ana bilim dalında yer alır, öğrenciler programda yer alırlar.
-
-* Bölümlerden öğrenci işlerine giden tum evraklardan örnek isteyelim.
-
-    - Diploma eki nasıl verilir?
-
-* Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
-
 Program örneği
-
 http://konya.edu.tr/dosyalar/fakulte/ahmetkelesogluegitimfakultesi/derskodlari/ALMANCA.pdf
 
 Bologna Ders Kartı
-
 http://konya.edu.tr/bologna/goster/12198
 
-İsteğe bağlı hazırlık sınıfı açılabilir. - **Hazırlık sınıfının isteğe bağlı olup olmamasını saklamalıyız**.  Bu hazırlık sınıfında başarılı olamayan öğrencilerin ilişikleri kesilmez ve eğitimlerine devam ederler.
+Sağlık Bilimleri ile birlikte online görüşme.
 
-Öğretim dili tamamen veya kısmen yabancı dil olan programların hazırlık sınıfını iki yıl içinde başarı ile tamamlayamayan öğrencilerin programdan ilişiği kesilir. - **İlişki kesme nedeni.**
-
-Öğretim dili tamamen veya kısmen yabancı dil olan programların hazırlık sınıfından ilişiği kesilen öğrenciler kendi yükseköğretim kurumlarında öğretim dili Türkçe olan eşdeğer bir programa kayıt yaptırabilirler. - **Öğrenci geliş nedeni**.
-
-Ayrıca bu öğrenciler, kayıtlı olduğu yükseköğretim kurumunda eşdeğer program bulunmaması hâlinde talep etmeleri durumunda Ölçme, Seçme ve Yerleştirme Merkezi Başkanlığı tarafından bir defaya mahsus olmak üzere kayıt yaptırdığı yıl itibarıyla, öğrencinin üniversiteye giriş puanının, yerleştirileceği programa kayıt yaptırmak için aranan taban puanından düşük olmaması şartıyla öğretim dili Türkçe olan programlardan birine merkezî olarak yerleştirilebilirler. - **Öğrenci geliş nedeni.**
-
----------------
-**Sınav Hakkı**
----------------
-
-Azami sürelerini tamamlamış son sınıf öğrencilerine,
-
-* Başarısız oldukları bütün dersler için iki ek sınav hakkı verilir.
-
-* Bu sınavlar sonunda başarısız ders sayısını beş derse indirenlere bu beş ders için üç yarıyıl,
-
-* ek sınavları almadan beş derse kadar başarısız olan öğrencilere ise dört yarıyıl (sınıf geçme esasına göre öğretim yapılan kurumlarda iki öğretim yılı),
-
-* ek dersi almadan bir dersten başarısız olanlara ise öğrencilik hakkından yararlanmaksızın sınırsız,
-
-başarısız oldukları dersin sınavlarına girme hakkı tanınır.
-
-* İzledikleri programdan mezun olmak için gerekli bütün derslerden geçer not aldıkları hâlde yönetmeliklerinde başarılı sayılabilmeleri için öngörülen not ortalamalarını sağlayamamaları sebebiyle ilişikleri kesilme durumuna gelen son dönem (sınıf geçme esasına göre öğretim yapılan kurumlarda son sınıf) öğrencilerine not ortalamalarını yükseltmek üzere diledikleri derslerden sınırsız sınav hakkı tanınır. Bunlardan uygulamalı, uygulaması olan ve daha önce alınmamış dersler dışındaki derslere devam şartı aranmaz. Açılacak sınavlara, üst üste veya aralıklı olarak toplam üç eğitim-öğretim yılı hiç girmeyen öğrenci, sınırsız sınav hakkından vazgeçmiş sayılır ve bu haktan yararlanamaz. Sınırsız hak kullanma durumunda olan öğrenciler sınava girdiği ders başına öğrenci katkı payını/öğrenim ücretini ödemeye devam ederler. Ancak bu öğrenciler, sınav hakkı dışındaki diğer öğrencilik haklarından yararlanamazlar. Açık öğretim öğrencileri, öğrencilik haklarından yararlanmak kaydı ile bu sürelerle kısıtlı değildir.
-
-
-Derslere devam yükümlülüklerini yerine getirdikleri hâlde, yıl içi ve yıl sonu sınav yükümlülüklerini bu maddede belirtilen hükümlere uygun olarak yerine getiremedikleri için öğretim kurumları ile ilişiği kesilen hazırlık sınıfı ve birinci sınıfta en fazla bir dersten, ara sınıflarda ise en fazla üç dersten başarısız olan öğrencilere üç yıl içinde kullanacakları üç sınav hakkı, not ortalamasını tutturamadıkları için hazırlık sınıfı dâhil ara sınıflarda da sene kaybeden öğrencilere diledikleri üç dersten bir sınav hakkı verilir. Sınav hakkı verilenler, yıl içi veya yıl sonu sınavı olduğuna bakılmaksızın başvurmaları hâlinde üniversite veya yüksek teknoloji enstitülerinin her eğitim-öğretim yılı başında açacakları sınavlara alınırlar. Sınavların sonunda sorumlu oldukları tüm dersleri başaranların kayıtları yeniden yapılır ve öğrenimlerine kaldıkları yerden devam ederler. Bu durumda olan öğrencilerin sınavlara girdikleri süre, öğrenim süresinden sayılmaz. Bu sınavlara katılan öğrenciler öğrencilik haklarından hiçbir şekilde yararlanamazlar.
-
-=================
-**WorkFlow List**
-=================
-
-Derslerin Subelendirilmesi ve Öğretim Elemanlarının Atanması
-
-Bu işlemlerin son tarihi ders kaydının başlamasından önceki cumadır. Eğer tamamlanmamışsa n zamanı öncesinden üst birime bilgi verilir.
-
-Bölüm başkanı veya delege ettiği birisi kendi ekranındaki ilgili bağlantıya tıklayarak workflow başlatır.
-
-Bölüm başkanı Programların ders listelerini indirir.
-
-Her bir ders için ders koordinatörlerini belirler.
-Her bir ders için şube sayısını belirler
-Her bir şube için hoca atamasını yapar
-Her bir ders için öğrencilerin seçim biçimini belirler auto/manual
-Her bir şube için kontenjan belirler.
-
-Tüm derslerin tamamlanmasının ardından öğrencilerin seçebilecekleri dersler öğrencilerin kayıtları altına gönderilir.
-
-Eğer ders seçme biçimi otomatik ise;
-
-Öğrenciler kontenjana göre şubelere dağıtılır.
-
-Manuel ise;
-
-Öğrenciler kendi seçimlerini kendileri yaparlar.
-
-Öğrencilerin seçebilecekleri şubelerin listesi öğrencinin kaydına işlenir.
-
-Öğretim Elamanı, Öğrenci İşleri ve diğer ilgililer bilgilendiririlir.
-
-Work Flow tamamlanır.
