@@ -1,5 +1,5 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-ULAKBUS sosyal Bilimler Enstitüsü Yazılım İhtiyaç Analizi
+ULAKBUS Sosyal Bilimler Enstitüsü Yazılım İhtiyaç Analizi
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 --------
