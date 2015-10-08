@@ -355,4 +355,721 @@ Aynı ders başka bir programda farklı bir derstir. Aynı ders başka bir progr
 
 - Ders İçeriği - (Kısa notlar)
 
+Ders Kredisi
+------------
 
+Bir dersin başarıyla tamamlanabilmesi için, öğrencinin yapması gereken çalışmaların tümünü (teorik dersler, uygulama, seminer, bireysel çalışma, sınavlar, ödevler, kütüphane çalışmaları, proje, stajlar, mezuniyet tezi vb.) ifade eden değerdir.
+
+Krediler dersi teklif eden öğretim elemanı tarafından belirlenir. Ancak AKTS sisteminde (Bologna süreci) iş yükü hesabı ile kredi belirlenir (25 saat = 1 Kredi şeklinde [Bu eşitlik bazı üniversitelerde farklı olabiliyor]).
+
+Zorunlu Ortak Ders
+------------------
+
+YOK
+
+Bilimsel Hazırlık
+-----------------
+
+Öğrenci lisanta başka bir bölümden mezunsa bilimsel hazırlık uygulanabilir. Anabilim dalı karar verir.
+
+Ön şartlar önceden ilan edilir.
+
+Öğrenci asgari yarım dönem, azami 1 yıl lisans programlarından veya yüksek lisans programlarından ders alır. Danışmanı ile ders seçiyor. En az 4 ders almalıdır. Kredisi dikkate alınmaz. 20 AKTS.
+
+Bilimsel hazırlık dersini enstitü açmışsa, kredisini anabilim dalı belirler. Ders eğer başka bir programdan alınıyorsa ilgili programdaki kredisi esas alınır.
+
+Ön Şartlı Ders
+--------------
+
+YOK
+
+Seçtirmeli Ders
+---------------
+
+YOK
+
+Öğretim Yılı
+------------
+
+14 haftadan az olmayan iki yarıyıldan oluşur.  (tüm ens. için geçerli)
+Tezsiz yüksek lisans programlarında ayrı bir akademik takvim ilan edilir. (sağlık harici diğerlerini kapsar) Belirli bir tarih aralığı belirlenir.
+
+Süreler
+-------
+
+**Minimum Bitirme Süresi**
+
+Tezli Yüksek Lisansta 2 yıl - 4 dönem.
+
+* 2 dönem ders (ders dönemi 1 dönemde bitirilemez.)
+* 2 dönem tez.
+
+Tezsiz Yüksek Lisanta, 3 dönem.
+
+* 2 dönem ders
+* 1 dönem proje (öğrenci dönem içinde projeyi tamamladığı zaman mezun olabilir.)
+
+Doktora, 3 yıl - 6 dönem.
+
+* 2 dönem ders
+* 1 dönem yeterlilik
+* 2 dönem tez
+* 1 dönem dersten yeterliliğe geçişte doğal kayıp. Sınav 6 ayda bir yapılır.
+
+**Azami Süre**
+
+Tezli Yüksek Lisans, 3 yıl - 6 dönem.
+
+Tezsiz Yüksek Lisans, 3 yıl - 6 dönem.
+
+Doktora, 6 yıl - 12 dönem.
+
+Azami sürenin aşılmasının ardından öğrencilik haklarından yararlanmaksızın harç ödeyerek devam eder.
+
+Doğum, askerlik, yurtdışı, görevlendirme, sağlık/heyet raporları vb. sebepler azami süreye dahil edilmez.
+
+Ücretler
+--------
+
+Yüksek lisans ve doktorada öğrenci azami süreyi tamamladıktan sonra dönemlik harç alınır.
+
+Tezsiz yüksek lisansta kayıttan itibaren harç alınır.
+
+Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirlenir.
+
+Özel öğrenciden ders başına ve dönemlik ücret alınıyor. Enstitü yönetim kurulu kararıyla ücretler belirlenir.
+
+Sınavlar
+--------
+
+**Genel Sınav**
+
+- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır. Sonuçları sınavın ardından en geç 5 gün içinde açıklanmalıdır.
+
+- Devam zorunluluğu sağlanmalı (% 70). Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.
+
+**Bütünleme**
+
+-  Genel sınava girme hakkı olup giremeyen veya ara sınav ya da genel sınav sonucu başarısız olanlar için yapılır.
+
+Kural Setleri
+-------------
+
+Süreler
+-------
+
+**Normal Öğretim Süresi**
+
+Üniversiteden süreli uzaklaştırma cezası alan öğrencilerin ceza süreleri ve mesleki hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılır. Ancak yabancı dil hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılmaz. Kayıt dondurma sayılmaz.
+
+**Azami Öğretim Süresi**
+
+Öğrencinin kayıt dondurduğu yıllar dahil edilmez. Afla veya intibakla gelen öğrenciler için başlangıç dönemi girilecek ve bu dönemden itibaren kaç tane aktif dönemi varsa sayılarak maksimum süreyi geçip geçmediği tespit edilecek.
+
+**Af ve intibak:** Öğrenci gelir. Önceki durumu (en son transkript) bölüme gönderiyoruz. Bölüm kararı ile öğrencinin hangi derslerden muaf olduğu ve hangi dersleri alacağı bildirilir. Ayrıca hangi dönemden başlayacağı bildirilir. Öğrencinin önceki dönemleri kaç yılda tamamladığı hesaba katılmaz. Başladığı dönem hesaba katılarak azami ve normal öğretim süresi işletilir.
+
+Azami süre içerisinde başarılı olmadıysa kayıt ücretlerini ödemek koşulu ile ders ve sınavlara katılma hariç, öğrencilere tanınan diğer haklardan yararlandırılmaksızın öğrencilik statüleri devam eder.
+
+Devamlılık Kuralları
+--------------------
+
+Öğrenciler, teorik derslerin % 30’undan ve / veya uygulamaların % 20’sinden fazlasına devam etmezlerse başarısız sayılırlar.
+Tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş ise, sadece sınavlara girmek kaydıyla bu derslerde devam şartı aranmaz.
+
+Sınava Katılma Şartları
+-----------------------
+
+* İlgili dersten muaf öğrenciler sınava giremezler.
+
+* Kayıtları dondurulmuş öğrenciler sınavlara giremezler.
+
+* Devamlılık kurallarına uymayan öğrenciler o dersin genel sınavına giremezler.
+
+* Uygulamalarda başarılı olamayan öğrenciler o dersin genel sınavına giremezler.
+
+* Disiplin cezası almış öğrenciler, ceza süresi içerisinde hiçbir sınava giremezler.
+
+Puan Sistemi
+------------
+
+Hocalar değiştirmediği sürece, sınav sonuçları şu şekillerde ifade edilir:
+
+
++---------------+-----------+---------------+
+|100'lük Sistem |   Harf    | 4'lük Sistem  |
++---------------+-----------+---------------+
+|90-100         |    AA     |    4.00       |
++---------------+-----------+---------------+
+|85-89          |    BA     |    3.50       |
++---------------+-----------+---------------+
+|75-84          |    BB     |    3.00       |
++---------------+-----------+---------------+
+|70-74          |    CB     |    2.50       |
++---------------+-----------+---------------+
+|60-69          |    CC     |    2.00       |
++---------------+-----------+---------------+
+|55-59          |    DC     |    1.50       |
++---------------+-----------+---------------+
+|50-54          |    DD     |    1.00       |
++---------------+-----------+---------------+
+|40-49          |    FD     |    0.50       |
++---------------+-----------+---------------+
+|0-39           |    FF     |    0.00       |
++---------------+-----------+---------------+
+|--             |    F      |    0.00       |
++---------------+-----------+---------------+
+
+Yök detaylı not dönüşüm tablosu: https://www.yok.gov.tr/documents/10279/31737/4_luk_sistem_100/f3d72044-c756-4302-ab26-91af35f45f43
+
+----------------
+**Harf Sistemi**
+----------------
+
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        AA,BA,BB,CB,CC         |    Başarılı                                                                                                   |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        DC                     |    Şartlı Başarılı (Teorik ve Ortak zorunlu dersler için)                                                     |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        DD,FD,FF               |    Başarısız                                                                                                  |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        F                      |    Devamsızlık veya uygulamadan başarısız, genel sınava girme hakkı bulunmayan öğrenci                        |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        G                      |    Geçer notu, kredisiz derslerde başarılı olan öğrenci                                                       |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        K                      |    Geçmez not, kredisiz derslerde başarısız öğrenci                                                           |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        M                      |    Dikey/yatay geçişle kabul olunan başarılı sayıldıkları dersler                                             |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+
+Ders Başarı Hesaplama
+---------------------
+
+Yüksek lisansta 70, doktorada 75 alan öğrenci o dersten başarılı sayılır.
+Ortalamaya göre sınıf geçmek gibi bir kural yoktur.
+
+Başarı Hesaplama
+----------------
+
+AKTS Ağırlıklı Not = AKTS * Not Katsayısı (mevcut durumda yüzlük not)
+
+Normal Kredi Ağırlıklı Not = Kredi * Not Katsayısı (mevcut durumda yüzlük not)
+
+Dönem Ağırlıklı Not Ortalaması = O dönem alınan tüm derslerin ağırlıklı not toplamı / tüm derslerin kredi toplamı
+
+Genel Ağırlıklı Not Ortalaması = Kayıt olunan zamandan hesaplama zamanına kadar alınan ve harflenmiş tüm derslerin ağırlıklı not toplamı / aynı derslerin kredi toplamı
+
+Mezuniyet Ağırlıklı Not ortalaması:
+
+Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
+
+Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5 ten küçükse 0'a indirgenir, 5'ten büyüksek ikinci hane bir arttırılarak hesaplanır.
+
+3,144 -> 3,140 -> 3,14
+
+23,145 -> 3,150 -> 3,15
+
+
+Yerine alınan ders dahil edilir. Bırakılan ders dahil edilmez.
+
+Tekrar edilen derslerden son not dikkate alınır.
+
+Muaf dersler ortalama hesaplamaya dahil edilmez.
+
+Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplamaya dahil edilir.
+
+**Tüm hesaplar hem AKTS hem de Normal Kredi sistemi için yapılacak.**
+
+Ücret Hesaplama
+---------------
+
+Ücretler Harç Tipine göre hesaplanır.  100'lük hesaplancak.
+
+- Normal Harç
+
+- Yabancı Uyruklu
+
+- Ücretsizler (Şehit ve Gazi Çocukları)
+
+- Ücretsizler (Mavi kart)
+
+- Ücretsizler (Suriyeli, Mısırlı)
+
+- Ücretsizler (YD Öğrenimini Tamamlayanlar)
+
+- Ücretsizler (YD Türk Okulunda Tamamlayanlar)
+
+- MEB Burslusu
+
+- Özel Üniversiteden Yatay Geçişle Gelen
+
+- Diyanet Burslusu
+
+- Türk Asıllı Yabancı Uyruklular
+
+- Formasyon Harcı
+
+- Türkiye Burslular
+
+- Hükümet Burslular
+
+- Özel öğrenci. Başka bir üniversitede okuyan ya da dışarıdan katılan, sadece kendini geliştirmek için ders almak üzere gelenler.
+
+Azami süre içerisinde harç yok. Aşıldığında sadece harç hesaplanır. Ders başına ücret yoktur.
+Tezsiz yüksek lisans için harç ödenir, tezli olanlar için harç ödenmez.
+
+**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARÇ)
+
+Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
+
+Yabancı uyruklu öğrenciler burssuz ise en baştan harç alınır.
+
+İki tür yabancı uyruklu öğrenci vardır:
+
+* Burslu öğrenciler: Normal harçlı öğrenciler. Azami süre içinde bitirmek zorundalar. Yoksa oturum izinleri iptal edilir.
+
+* Burssuz öğrenciler: Kendi imkanları ile okuyan öğrenciler. Başlangıçtan itibaren para öderler. Normal harç ücretinin 3 katıdır.
+
+İş Akışları
+-----------
+
+Kayıt İşlemleri
+---------------
+
+**İlk Kayıt**
+
+* Öğrenci web sitesi üzerinden ön kayıt yapar.
+
+* Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
+
+* Öğrenci için öğrenci numarası ve geçici bir parola verilir.
+
+* Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Askerlik engeli olanlar kayıt yaptıramazlar.
+
+* Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
+
+* 2. Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
+
+* Harcını ödememiş olanların kayıt işlemleri yapılamaz.
+
+* Askerlik sıkıntısı olanların durumu bankaya uygun şekilde bildirilir.
+
+* Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
+
+* Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur.  öğrenci kayıtlı hale gelir.
+
+Kayıt dönemi kapandığında kesin kayıt haline gelmemiş geçici kayıtlar ve ön kayıtlar silinir.
+Kesin kayıt dönemi bittiğinde boş kontenjanlar için rapor haline getirilir. Web'den duyurulur.
+Ek kontenjan ile gelenler de ilk kayıt sürecine tabidir.
+
+Kesin Kayıt Sonrası
+-------------------
+
+* Öğrencilere bir danışman hoca ataması, öğrenci işleri tarafından yapılır.
+
+* Askerlik durumları bildiriliyor. Belge üretip postaya verilecek.
+
+Kayıt Yenileme
+--------------
+
+* Kayıt yenileme için Tezsiz YL veya azami öğretim süresini aşanlar harç yatırarak kayıt yenilerler.
+
+* Normal öğretim süresi içinde olan öğrenciler harç ödemeden, ders seçimi yaparak kayıt yenilerler.
+
+* Bu aşamaların ardından dersler danışman onayına açık hale getirilir.
+
+* Danışman onayıyla kayıt yenileme işlemi tamamlanır.
+
+* Ders dönemlerini tamamlayanlar, ders seçmeden kayıt yenilerler.
+
+*Ders seçme ve harç ödeme zorunluluğu olmayan öğrenciler, sistemden sadece kayıt yenile butonuna basarak, ilgili dönem için öğrencilik haklarından faydalanırlar.
+
+Kayıt Dondurma
+--------------
+
+Haklı ve geçerli mazereti olan öğrencilerin öğrenim süreleri, yönetim kurulu kararıyla dondurulur. Sağlık ile ilgili mazeretlerde sağlık kurulu raporu zorunludur. Kayıt dondurma süresi öğretim sürelerinden sayılmaz.
+
+Hiçbir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, transkript) alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb..
+
+Kayıt Silme
+-----------
+
+Aşağıdaki hallerde kayıt silme işlemi yapılır:
+
+* İlgili mevzuat hükümlerine göre üniversiteden çıkarma cezası almış olması, terör.
+
+* Öğrenci tarafından yazılı olarak kayıtlı olduğu birim ile ilişiğinin kesilmesi talebinde bulunması.
+
+* Kayıt esnasında istenen belgelerden herhangi birinin daha sonradan gerçeğe aykırı olduğunun tespit edilmesi.
+
+* Vefat
+
+* Yatay Geçiş vb.
+
+* Kayıt silme aslında silindi olarak işaretlenir. Hiçbir öğrencilik haklarından faydalanamaz. Sistemde görünmez hale gelir.
+
+Yatay Geçiş
+-----------
+
+Kayıt nedeni yatay geçiş.
+
+Dönem başında başvurulur. Başvuruda istenen evraklar, transkript ve ders içerikler anabilim dalına gönderilir. Uygun görülürse yatay geçiş olarak kaydedilir. Bu öğrencinin geldiği üniversitedeki dersleri sisteme işlenmeli.
+
+Dersler, ders karşılıkları şeklinde işlenir. Kredi değerleri açıklamasında buradakiler esas alıınır. Transkripte karşılık dersler görünür. Ders muafiyet dilekçesi.
+
+Ders Açma
+---------
+
+Program yıllara göre versiyonlanır. Her öğrenim yılı başında program yeni versiyona geçer. Değişikliker işlenir. Ders ile ilgili kurallar ve şubeler tanımlanır.
+
+Ders Alma Biçimleri
+-------------------
+
+* İlk
+
+* Devamsız Tekrar
+
+* Devamlı Tekrar
+
+Ders Seçme
+----------
+
+* Öğrenciler sisteme giriş yapıp ders seçimlerini yapabilmeliler.
+
+Dersler nottan kaldıysa devamsız tekrar, devamsızlıktan kaldıysa devamlı tekrar şeklinde alınır.
+
+Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere sahip olmalıdır:
+
+* Öncelik, alt yarıyıllarda hiç alınmayan, devamsız veya başarısız olunan derslere verilmelidir.
+
+* Muaf olunan dersler seçilemezler.
+
+Danışman onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, danışman onay süreci içinde danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
+
+Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik programda Anabilim Dalı Kurulu tarafından yapılmış olmalıdır.
+
+Ders Ekleme-Çıkarma ve Mazeretli Ders Kaydı
+-------------------------------------------
+
+Normal ders kaydı sürecinin ardından öğrenciye son bir ders ekleme çıkarma hakkı verilir. Bu süreç mazeretli ders kaydı ile birlikte yapılır.
+
+Bu aşamadaki tüm ders değişiklikleri danışmanlar tarafından yapılır. Öğrenci sistemden ders seçmez, ekleyip çıkarmaz.
+
+Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. Bu değişiklikler önceki paragraftaki süreçle aynı şekilde yapılır.
+
+Rapor: Ahmet Hoca, Ali öğrencisinin, x, y derslerini çıkardı, z ve t'yi ekledi. Ali öğrencisinin son durumu a, b, c, z ve t.
+
+Başka Bölümlerden Ders Alma
+---------------------------
+
+İlgili bölüm veya Anabilim Dalı Kurulu uygun gördüğü hallerde başka fakülte ve bölümlerden dersler alınabilir. Ilgili dersler, ilgili programdaki kredi ve başarı şartları ile değerlendirilirler.
+
+Program Değişikliği
+-------------------
+
+Program değişiklikleri, Bölüm Kurulu'nun önerisi üzerine Yönetim Kurulu tarafından karara bağlanarak en geç Mayıs ayı içinde REKTÖRLÜĞE sunulur. SENATO onayı ile kesinleşir.
+
+Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrencilerin derslerini ve ders bağımlılıklarını etkileyebilir. Kaldırılan veya yeni eklenen dersler sebebiyle mevcut öğrenciler için belirli dersler korunabilir. Bu sebeple program değişiklikleri versiyonlanmalı ve ilgili versiyona kayıt yaptıran öğrenciler için ders zorunlulukları ve bağımlılıklar saklanmalıdır.
+
+Ders Muafiyeti
+--------------
+
+Bir dersten muafiyet şartları şu şekildedir:
+
+* Tezsiz yüksek lisansta kurumsal protokol dahilinde ders muafiyeti olablir.
+
+* Yatay geçişle gelen öğrenciler, geldikleri okuldan denk derslerden anabilim dalı kararıyla muaf sayılabilir.
+
+Mazeret Yönetimi
+----------------
+
+Mazeret bitiş tarihinden itibaren en geç bir hafta içinde bildirimde bulunulmalıdır. Bu süre içinde bildirilmeyen mazeret kabul edilmez.
+
+Mazeret öngörülen devam süresine dahil edilmez. Kaybedilen süre eğitim-öğretim süresine eklenir.
+
+Devamlılık Takibi
+-----------------
+
+Devamın denetimi, dekanlıkça uygun görülen bir yöntemle yapılır. Devamsız öğrencilerin durumu genel sınavlardan önce ilgili öğretim elemanı tarafından ilân edilir.
+
+Devamlılık ders için takip edilir. Hoca tarafından takip yapılır. Hoca sisteme devamsızlıktan kaldı şekinde giriş yapar. Not F olur. Bir daha not girişi yapamaz. Bu işlem geriye de alınamaz. Sisteme bir bilgi girilmezse öğrenci dersin devam şartını yerine getirmiş sayılır. Bu işlemin geriye alınması dilekçe ile yönetim kuruluna gider. Fakülte öğrenci işleri düzeltir.
+
+Mezuniyet
+---------
+
+Bir öğrencinin kayıtlı olduğu programdan mezun olabilmesi için o programdaki bütün dersleri almış ve başarmış olması ve mezuniyet ağırlıklı not ortalamasının yüksek lisansta 70, doktorada 75 olması gerekir.
+
+Mezuniyet tarihi, tez savunma sınavını başardığı tarihtir. Tarih elle girebilir.
+
+Roller
+------
+
+* Öğrenci
+
+* Danışman
+
+* Dekan
+
+* Fakülte Sekreteri
+
+* Fakülte Öğrenci İşleri Personeli
+
+* Fakülte Yönetim Kurulu Üyesi
+
+* Fakülte Yönetim Kurulu Başkanı
+
+* Anabilim Dalı Kurulu Üyesi
+
+* Anabilim Dalı Kurulu Başkanı
+
+* Fakülte Kurulu Üyesi
+
+* Fakülte Kurulu Başkanı
+
+* Bölüm Başkanı
+
+* Danışman
+
+Yetkiler
+--------
+
+Ekranlar
+--------
+
+* Not ve devamsızlık giriş ekranları
+
+* Toplu askerlik belgesi bastır
+
+* Toplu danışman atama
+
+* Toplu sınıf şubelendirme
+
+* Toplu sınav tarih girişi
+
+* Toplu not durum belgesi
+
+* Mezuniyet ekranı
+
+* Toplu Mernis ve AKS güncelleme
+
+Sistemden Beklenecek Raporlar
+-----------------------------
+
+* Çoktan seçmeli rapor
+
+* Genel durum ve işleyiş raporu (enstitü faaliyet raporu)
+
+* Öğrenci sınıf listeleri
+
+* Dersi alan öğrenciler listesi.
+
+* Bölüm ders müfredatı
+
+* Hocalara göre rapor:
+
+ - Hocanın okuttuğu dersler
+
+ - Öğrenci listesi
+
+ - Öğrencilerin durum bilgileri
+
+  * Ders / tez / yeterlilik aşamasında
+
+  * Öğerncinin aldığı dersler, kaldığı geçtiği dersler.
+
+  * Seminer ve tez konuları
+
+- Hocanın not istatistikleri
+
+  * Verdiği derslerde öğrencilere verdiği notların dersi
+
+* Öğrenci temelli rapor
+
+  * Anabilim dalı
+
+  * Almış olduğu dersler
+
+  * Aşaması
+
+  * Kayıt tarihi
+
+  * Zorunlu mezuniyet tarihi (ÖYP, Burslu yabancı uyruklular)
+
+  * İletişim bilgileri
+
+  * Durum bilgisi
+
+     * Notları
+
+     * Seminer /tez
+
+Sistem Tarafından Üretilecek Belgeler
+-------------------------------------
+
+* Öğrenci belgesi
+
+* Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir)
+
+* Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir)
+
+* Not durum belgesi (Yıllık, dönemlik)
+
+* Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir)
+
+* Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir)
+
+* Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir)
+
+* Diploma (Sadece mezun durumundaki öğrencilere verilebilir)
+
+     * Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
+
+* Öğrenci zarfı. Gönderici ve alıcı bilgileri.
+
+* İlgili makama belgesi, öğrencilik hakkından yararlanamayanlar için burada eğitim-öğretimini devam ettirmektedir.
+
+EBYS Entegrasyonu
+-----------------
+
+**Notlar**
+
+* Personel anabilim dalında yer alır, öğrenciler programda yer alırlar.
+
+* Bölümlerden öğrenci işlerine giden tum evraklardan örnek isteyelim.
+
+     * Diploma eki nasıl verilir?
+
+* Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
+
+Ders Kopyalama
+--------------
+
+Önceki yıldan bölüm dersleri aktarılıp, değişiklikler işlenir.
+
+Staj ders tipi tanımlanacak.
+
+Derslerin Dili Kuralları
+------------------------
+
+Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar.
+
+Ders Tipleri
+------------
+
+* Hazırlık
+
+* Normal
+
+* Seçmeli
+
+* Staj
+
+* Tıp Staj
+
+* Entegre
+
+Ders Durumları
+--------------
+
+* Alıyor
+
+* Geçti
+
+* Kaldı
+
+* Devamsızlıktan Kaldı
+
+* Danışman Onayı Bekliyor
+
+* Muaf
+
+* Notsuz Muaf
+
+Ders Alış Tİpi
+--------------
+
+* İlk
+
+* Üstten
+
+* Devamlı Tekrar
+
+* Yükseltme İçin
+
+* Devamsız Tekrar
+
+
+Ders Dili
+---------
+
+* Türkçe
+
+* İngilizce...
+
+
+Dersin dönemlik veya yıllık olup olmadığını kaydetmeliyiz.
+
+**Bir dersin**
+
+- Teorik Kredisi
+
+- Pratik Kredisi
+
+- Kredisi = Teorik + Pratik / 2
+
+- ECTS = Sabit
+
+Dersin uygulama olup olmaması ne değiştiriyor?
+
+Hoca notları kendi ekrarnından girer. Yayınla diyene kadar her türlü değişikliği yapabilir. Yayınla dedikten sonra, öğreciler notları görebilir, hoca artık hiç bir değişiklik yapamaz. Hoca tarafından yapılacak yanlışlık düzeltmeleri hocanın dilekçesi üzerine öğrenci işleri tarafından yapılır.
+
+Öğrenci itirazları yine dilekçe üzerinden takip edilip, öğrenci işleri tarafından yapılır.
+
+Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemli.
+
+Hoca dilekçesi üzerine tüm notlar yayından kaldırılıp, hocanın değerlendirilmesine açılabilir.
+
+Eğer büt ve final sonuçlarının değiştirilmesi sonucu harf değişikliklerinden kaynaklanan sonuçlar olursa bunlar elle düzeltilir.
+
+Programda aynı ders birden fazla dönemde yer alabiir.
+
+Şartlı geçiş tüm not girişlerinin tamamlanmasının ardından otomatik yapılır.
+
+Harf değişimlerini etkileyen her operasyonun ardından ona bağlı işlemler yeniden hesaplanır.
+
+* Şartlı geçiş
+
+* Geçme-kalma
+
+%10 İşlemleri
+-------------
+
+* İkinci öğretimde
+
+* Genel ortalaması 3'ten büyük
+
+* Başarısız dersi olmayan
+
+* Bulunduğu dönem ve sınıfın ortalamasının en yüksek %10'udur.
+
+Bunların sadece sonraki dönem harçları birinci dönem gibi hesaplanır.
+
+Onur Belgeleri
+--------------
+
+* Başarısız dersi olmayan
+
+* Genel ortalaması >= 3,5 ise yüksek onur
+
+* Genel ortalaması >= 3 olan onur belgesi alır.
+
+Yetki Devri
+-----------
+
+Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli olarak devredebilmelidir. Örneğin; dekanlar ve tıptaki hocalar not girişi yapmak istemiyorlar. Bu yüzden şifrelerini asistanlarıyla veya öğrenci işleriyle paylaşıyorlar. Bunu engellemek için akademisyen A dersi için not girme yetkisini X-Y tarihleri arasında asistanına devredebilmelidir.
+
+YÖKSİS Kurum Ağacı
+------------------
+
+YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistemdeki bilgiler, bu servisten sağlananlarla güncellenir.
+
+Askerlik belgesi sadece Türk uyruklu öğrenciler için olmalıdır.
