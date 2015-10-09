@@ -379,84 +379,128 @@ Ders Seçme
 
 Eğer ders veya bölüm kapanmamışsa bir ders her zaman yeni öğrenciye sahiptir ve yeni öğrenciler için hep açık tutulmalıdır. Seçilmeye de müsaittir.
 
-ŞUBE ler neye göre açılır? Nasıl karar verilir.
+--------------------------------------------------
+**Şubeler neye göre açılır? Nasıl karar verilir?**
+--------------------------------------------------
+
 Fakülte öğrenci işleri tarafından açılır. Öğrenci sayısı fazla olduğunda tek sınıfta ders işlenemeyeceği için öğrenciler ve dersler şubelere bölünür.
-Öğrenciler 1. sınıfa geldiğinde fakülte öğrenci işleri tarafından birden çok şubeye bölünebilir. Burada hazır şablonlar sunmamız gerebilir. Öğrenci numarası tek öğrencileri 1. şubeye çift öğrencileri 2. şubeye at. Veya ilk 30 öğrenciyi 1. şubeye kalanları 2. şubeye at vb.
+Öğrenciler 1. sınıfa geldiğinde fakülte öğrenci işleri tarafından birden çok şubeye bölünebilir. Burada hazır şablonlar sunmamız gerekebilir. Öğrenci numarası tek öğrencileri 1. şubeye çift öğrencileri 2. şubeye at. Veya ilk 30 öğrenciyi 1. şubeye kalanları 2. şubeye at vb.
 Öğrencinin şubesinin dışında ayrıca derslerinde şubesi oluyor. Dersin şubelerine aynı hoca girebileceği gibi farklı hocalarda girebilir.
 Ders kaydı yapılırken öğrencilerin sadece kendi şubesindeki hocayı seçmesi zorunlu tutulabilir veya öğrencinin herhangi bir şubeye ders kaydı yapması sağlanabilir.
 Ders Şubelerinin bölüm içi ve bölüm dışı kontenjanları olur. Bu kontenjanlar aşılamaz.
 
 Program değişmediği sürece öğrencinin alması gereken dersler sabittir. Program ileriye yönelik değişir.
 
-2010 - Öğrenci kayıt yaptırdı. Bu yıl itibariyle 7. dönem, 2014 güz, cobol dersi var.
-2010 - Mayısta program değişti. cobol - fortran ıoldu
-2011 - Değişiklik geçerli oldu. Bu sene ve sonraki sene kayıt yaptıranlar 7. dönem 2015 te, fortran alacaklar.
-2011 - 2011 de 7. döneme başlayanlar hangi dersi alacak?
-2014 - 2010 da kayıt yaptıran hangi dersi alacak?
+2010 - Öğrenci kayıt yaptırdı. Bu yıl itibarıyla 7. dönem, 2014 güz, Cobol dersi var.
 
-Baska bir ifadeyle; Program degisikligi sonucu, programlar çatallanabilir mi, öğrenciler farklı derslerden oluşan programlara sahip olabilirler mi?
+2010 - Mayısta program değişti. Cobol - Fortran oldu.
+
+2011 - Değişiklik geçerli oldu. Bu sene ve sonraki sene kayıt yaptıranlar 7. dönem 2015'te, Fortran alacaklar.
+
+2011 - 2011'de 7. döneme başlayanlar hangi dersi alacak?
+
+2014 - 2010'da kayıt yaptıran hangi dersi alacak?
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+**Başka bir ifadeyle; program degişikliği sonucu, programlar çatallanabilir mi, öğrenciler farklı derslerden oluşan programlara sahip olabilirler mi?**
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Uzaktan Eğitim Dersleri
+-----------------------
+
+Esaslar senato tarafından belirlenir.
 
 
-UZAKTAN EĞİTİM DERSLERİ
-Esaslar SENATO tarafından belirlenir.
+Ön Şartlı Dersler
+-----------------
+
+Ön şartlı dersler ve ön şartlar senato onayı ile belirlenir.
 
 
-ÖN ŞARTLI DERSLER
-Ön şartlı dersler ve ön şartlar SENATO onayı ile belirlenir.
+Değişim Öğrencileri
+-------------------
 
+- Bir veya iki yarıyıl öğrenci kaydı yapılabilir.
 
-DEĞİŞİM ÖĞRENCİLERİ
-- Bir veya iki yarı yıl öğrenci kaydı yapılabilir.
-- Bu süre boyunca öğrencilerin kaydı ÜNİVERSİTE'de tutulur.
-- Öğrencilerin hangi dersleri alacağı DEĞİŞİM PROGRAM KOORDİNATÖRÜ yardımıyla belirlenip, bölüm kurulunun teklifi ve fakülte yönetim kurulunun onayı ile kesinleşir.
+- Bu süre boyunca öğrencilerin kaydı üniversitede tutulur.
 
-?Öğrencinin başarısız olduğu dersler yerine ilgili dönemde almadğı dersler arasindan danışmanın uygun göreceği ve bölüm başkanınn önerisi üzerine fakülte yönetim kurulunca onaylanan dersleri alır.?
+- Öğrencilerin hangi dersleri alacağı değişim program koordinatörü yardımıyla belirlenip, bölüm kurulunun teklifi ve fakülte yönetim kurulunun onayı ile kesinleşir.
 
-?Aynı değişim programı kapsamında üniversitelerden gelen öğrencilere de Üniversitede okudukları süre içerisinde bu Yönetmelik hükümleri uygulanır ve aldıkları dersler için kendilerine transkript verilir.?
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Öğrencinin başarısız olduğu dersler yerine ilgili dönemde almadğı dersler arasindan danışmanın uygun göreceği ve bölüm başkanınn önerisi üzerine fakülte yönetim kurulunca onaylanan hangi dersleri alır?**
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Aynı değişim programı kapsamında üniversitelerden gelen öğrencilere de üniversitede okudukları süre içerisinde bu yönetmelik hükümleri uygulanır ve aldıkları dersler için kendilerine transkript verilir mi?**
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Devamlılık
+----------
 
-Öğrenci, derslere ve uygulamalara devam etmek zorundadır
+Öğrenci, derslere ve uygulamalara devam etmek zorundadır.
 
-- Teorik derslerin % 30’undan ve / veya uygulamaların % 20’sinden fazlasına devam etmeyen
+--------------------------------------------------------------------------------------------
+**Teorik derslerin % 30’undan ve / veya uygulamaların % 20’sinden fazlasına devam etmeyen,**
+--------------------------------------------------------------------------------------------
 
-- Uygulamalarda başarılı olamayan öğrenci o dersin genel sınavına giremez  Bütün programlar için mi geçerli?
+------------------------------------------------------------------------------------------------------------------
+**Uygulamalarda başarılı olamayan öğrenci o dersin genel sınavına giremez.  Bütün programlar için mi geçerli?**
+------------------------------------------------------------------------------------------------------------------
 
+- Tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş ise, ara sınavlara girmek kaydıyla bu derslerde devam şartı aranmaz.
 
-- Tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş ise, ara sınavlara girmek kaydıyla bu derslerde devam şartı aranmaz
-
-- Ancak, uygulama sınavı yapılan dersler ile sınıf geçme sistemi uygulanan fakülte ve yüksekokullar için devam şartı aranır
+- Ancak, uygulama sınavı yapılan dersler ile sınıf geçme sistemi uygulanan fakülte ve yüksekokullar için devam şartı aranır.
 
 Devamın denetimi, dekanlık veya yüksekokul müdürlüğünce uygun görülen bir yöntemle yapılır. Devamsız öğrencilerin durumu genel sınavlardan önce ilgili öğretim elemanı tarafından ilân edilir.
 
 Staj Uygulaması
-
+---------------
 
 Sınavlar
+--------
+
 Türleri
-	- Ara Sınav
-    	her yarı yılda en az bir tane
-	- Genel Sınav
-    	dersin tamamlandığı yarı yıl veya yıl sonunda yapılır.
-    	bu sınava girebilme şartı
-        	- devam zorunluluğu
-        	- uygulamalı bir ders ise uygulamalarda başarılı olmaktır.
-	- Bütünleme
-    	genel sınava girme hakkı olup giremeyen veya başarılı olamayanlar girebilir.
-	- Tek ders
-    	mezuniyetleri için tek ders kalan öğrenciler,
-    	ilgili dersin devam zorunluluğunu yerine getirmeyen veya dersi hiç almamış olanlar bu sınava giremezler. Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.
-	- Muafiyet
-    	Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarı yıl başında açılır.
-	- Mazeret
-    	Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.
+-------
+
+- Ara Sınav
+
+  * her yarıyılda en az bir tane
+
+- Genel Sınav
+
+  * dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.
+
+  * bu sınava girebilme şartı
+
+      - devam zorunluluğu
+
+      - uygulamalı bir ders ise uygulamalarda başarılı olmaktır.
+
+- Bütünleme
+
+  * genel sınava girme hakkı olup giremeyen veya başarılı olamayanlar girebilir.
+
+- Tek ders
+
+  * mezuniyetleri için tek ders kalan öğrenciler,
+
+  * ilgili dersin devam zorunluluğunu yerine getirmeyen veya dersi hiç almamış olanlar bu sınava giremezler. Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.
+
+- Muafiyet
+
+  * Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarıyıl başında açılır.
+
+- Mazeret
+
+  * Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.
 
 Biçimleri
-	- Yazılı
-	- Sözlü
-	- Yazılı - Sözlü
-	- Uygulamalı
+---------
+
+- Yazılı
+- Sözlü
+- Yazılı - Sözlü
+- Uygulamalı
 
 Uygulamalı derslerin ek sınavları olabilir. Ek sınavlarda alınan ara sınav şartı aranmaksızın en az CC ise öğrenci başarılı sayılır.
 
@@ -464,239 +508,283 @@ Ara sınav sonuçları en geç genel sınavdan 15 gün önce öğretim görevlil
 
 Genel sınav sonuçları, sınavların ardından 5 gün içinde ilan edilmelidir.
 
-a) Puanlar Notlar Katsayılar
-90-100 AA 4.00
-85-89 BA 3.50
-75-84 BB 3.00
-70-74 CB 2.50
-60-69 CC 2.00
-55-59 DC 1.50
-50-54 DD 1.00
-40-49 FD 0.50
-0-39 FF 0.00
---- F 0.00
 
-DD - Başarısız
-FD - Başarısız
-FF - Başarısız
-F  - Devamsızlık veya uygulamadan başarsıze genel sınava girme hakkı
-bulunmayan öğrenciyi,
-G  - Geçer notunu, kredisiz derslerde başarılı olan öğrenciyi,
-K  - Geçmez notunu, kredisiz derslerde başarısız öğrenciyi
-M  - Dikey/yatay geçişle kabul oluna başarılı sayıldıkları dersleri
++---------------+-----------+---------------+
+|Puanlar        |   Notlar  | Katsayılar    |
++---------------+-----------+---------------+
+|90-100         |    AA     |    4.00       |
++---------------+-----------+---------------+
+|85-89          |    BA     |    3.50       |
++---------------+-----------+---------------+
+|75-84          |    BB     |    3.00       |
++---------------+-----------+---------------+
+|70-74          |    CB     |    2.50       |
++---------------+-----------+---------------+
+|60-69          |    CC     |    2.00       |
++---------------+-----------+---------------+
+|55-59          |    DC     |    1.50       |
++---------------+-----------+---------------+
+|50-54          |    DD     |    1.00       |
++---------------+-----------+---------------+
+|40-49          |    FD     |    0.50       |
++---------------+-----------+---------------+
+|0-39           |    FF     |    0.00       |
++---------------+-----------+---------------+
+|--             |    F      |    0.00       |
++---------------+-----------+---------------+
 
 
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        AA,BA,BB,CB,CC         |    Başarılı                                                                                                   |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        DC                     |    Şartlı Başarılı (Teorik ve Ortak zorunlu dersler için)                                                     |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        DD,FD,FF               |    Başarısız                                                                                                  |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        F                      |    Devamsızlık veya uygulamadan başarısız, genel sınava girme hakkı bulunmayan öğrenci                        |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        G                      |    Geçer notu, kredisiz derslerde başarılı olan öğrenci                                                       |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        K                      |    Geçmez not, kredisiz derslerde başarısız öğrenci                                                           |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        M                      |    Dikey/yatay geçişle kabul olunan başarılı sayıldıkları dersler                                             |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
 
+Başarı
+------
 
-BAŞARI
-Bir dersten
-
-AA
-BA
-BB
-CB
-CC
-
-alınmışsa o dersten başarılı sayılır.
+Bir dersten AA, BA, BB, CB veya CC alınmışsa o dersten başarılı sayılır.
 
 Ayrıca dönem / yıl ağırlıklı not ortalaması 2.50 olan öğrenci DC olan derslerden de başarılı sayılır.
 
+Eğitim Süreleri
+---------------
 
-EĞİTİM SÜRELERİ
+**İlk kayıttan itibaren**
 
-İlk kayıttan itibaren
-Bir yıl süreli yabancı dil hazırlık sınıfı
-+
-Ön lisans ise azami 4 yıl
-Lisan ise azami 7 yıl
-Lisan + Yüksek Lisan ise azami 9 yıl
+Bir yıl süreli yabancı dil hazırlık sınıfı + Ön Lisans ise azami 4 yıl
 
-barşarılı olmadıysa kayıt ücretlerini ödemek koşulu ile ders ve sınavlara katılma hariç, öğrencilere tanınan diğer haklardan yararlandırılmaksızın öğrencilik statüleri devam eder.
+Lisans ise azami 7 yıl
 
-- Mesela okula girip yemek yiyemezler, yurtlarda barınamazlar, indirimli kartlardan faydalanamazlar, sosyal etkinliklere öğrenci sifati ile katilamazlar, okulu öğrenci olarak temsil edemezler vb mi?
+Lisan + Yüksek Lisans ise azami 9 yıl
+
+- başarılı olmadıysa kayıt ücretlerini ödemek koşulu ile ders ve sınavlara katılma hariç, öğrencilere tanınan diğer haklardan yararlandırılmaksızın öğrencilik statüleri devam eder.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Mesela okula girip yemek yiyemezler, yurtlarda barınamazlar, indirimli kartlardan faydalanamazlar, sosyal etkinliklere öğrenci sıfatı ile katılamazlar, okulu öğrenci olarak temsil edemezler vb. mi?**
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Üniversiteden süreli uzaklaştırma cezası alan öğrencilerin ceza süreleri ve mesleki hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılır. Ancak yabancı dil hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılmaz.
 
-
 Kayıt Silme
+-----------
+
 - İlgili mevzuat hükümlerine göre üniversiteden çıkarma cezası almış olması.
+
 - Öğrenci tarafından yazılı olarak kayıtlı olduğu birim ile ilişiğinin kesilmesi talebinde bulunması.
+
 - Kayıt esnasında istenen belgelerden herhangi birinin daha sonradan gerçeğe aykırı olduğunun tespit edilmesi.
 
-Fakülte  Yönetim Kurulu kararı mı gerekli?
+----------------------------------------------
+**Fakülte  Yönetim Kurulu kararı mı gerekli?**
+----------------------------------------------
 
-Kayıt silindiğinde tam olarak neler olacak? Notları silecek miyiz? Kaydı silinmiş öğrencinin sistemle ilişkisi nasil olacak? Nelerden faydalanacak, nelerden faydalanamayacak?
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Kayıt silindiğinde tam olarak neler olacak? Notları silecek miyiz? Kaydı silinmiş öğrencinin sistemle ilişkisi nasil olacak? Nelerden faydalanacak, nelerden faydalanamayacak?**
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Afla geri dönebilir.
 
 Mazeret (Yönetimi?)
-Mazeret bitiş tarihinden itibaren en geç bir hafta içinde bildirimde bulunmalııdr. Bu süre içinde bildirilmeyen mazeret kabul edilmez. Ara sınav dışında başka sınavlar için mazeret kabul edilmez.
+-------------------
 
-Mazeret yönetmelikte öngörülen devam süresine dahil edilmez. Kaybedilen süre eğitim öğretim süresine eklenir.
+Mazeret bitiş tarihinden itibaren en geç bir hafta içinde bildirimde bulunmalıdır. Bu süre içinde bildirilmeyen mazeret kabul edilmez. Ara sınav dışında başka sınavlar için mazeret kabul edilmez.
+
+Mazeret yönetmelikte öngörülen devam süresine dahil edilmez. Kaybedilen süre eğitim-öğretim süresine eklenir.
 
 Raporlu öğrenciler sınava girmezler. Sınava girerlerse, sınavları geçersiz sayılır.
 
+Yatay ve Dikey Geçişler
+-------------------------
 
+Yatay ve dikey geçiş ile gelen öğrencilerin intibakları ilgili kararlar yönetim kurulu kararı ile verilir.
 
+Üniversitenin bir fakültesinin bir bölümünden bir başka fakültesinin veya aynı fakültenin bir başka bölümüne geçiş senato kararlarına göre yapılır.
 
+Çift Anadal ve Yan Dal
+-----------------------
 
+Çift anadal ve yan dal eğitim-öğretimi ile ilgili usul ve esaslar, ilgili mevzuat çerçevesinde senatoca belirlenir.
 
-Yatay ve dikey geçişler
+Yabancı Dil Destekli Eğitim
+---------------------------
 
-Yatay ve dikey geçiş ile gelen öğrencilerin intibakları ilgili yönetim kurulu kararı ile yapılır.
-
-Üniversitenin bir fakültesinin bir bölümünden bir başka fakültesinin veya aynı fakültenin bir başka bölümüne geçiş Senato kararlarına göre yapılır.
-
-
-Çift anadal ve yan dal
-Çift anadal ve yan dal eğitim-öğretimi ile ilgili usul ve esaslar, ilgili mevzuat çerçevesinde Senatoca belirlenir.
-
-Yabancı dil destekli eğitim
-Senatoca belirlenen şartlara uygun olmak kaydıyla, ilgili kurulun önerisi ve Senatonun onayı ile hazırlık sınıfı olan bölümlerde yabancı dil destekli eğitim yaptırılabilir. Bu eğitimin şartları Senatoca belirlenir.
-
+Senatoca belirlenen şartlara uygun olmak kaydıyla, ilgili kurulun önerisi ve senatonun onayı ile hazırlık sınıfı olan bölümlerde yabancı dil destekli eğitim yaptırılabilir. Bu eğitimin şartları senatoca belirlenir.
 
 Mezuniyet
+---------
+
 Bir öğrencinin kayıtlı olduğu programdan mezun olabilmesi için o programdaki bütün dersleri almış ve başarmış olması ve mezuniyet ağırlıklı not ortalamasının en az 2.00 olması gerekir.
 
 Mezuniyet tarihi, o sınav dönemindeki sınavın son günüdü̈r.
 
-Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ödevi/tezi, arazi çalışması ve benzeri sebeplerle mezun olamayan öğrenciler; tek ders sınavında başarılı olduğu veya bu çalışmaların tamamlanarak kabul edildiği tarihte mezun olurlar.
+Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ödevi/tezi, arazi çalışması vb. sebeplerle mezun olamayan öğrenciler; tek ders sınavında başarılı olduğu veya bu çalışmaların tamamlanarak kabul edildiği tarihte mezun olurlar.
 
 Mezuniyetleri müteakip akademik yıla taşan öğrenciler ise, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler.
 
 Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
 
-
-
 Diploma yüksek onur/onur belgesi
-Mezun olmaya hak kazanmış
-Disiplin cezası almamış
-Mezuniyet ağırlıklı not ortalaması
-	3.50-4.00 - diploma yüksek onur öğrencsi
-	3.00-3.49 - diploma onur öğrencis
+---------------------------------
 
-Öğrenciye diploması ile birlikte diploma yüksek onur/diploma onur öğrencisi olduğunu gösterir bir belge verilir. Diploma ekinde belirtilir.
+* Mezun olmaya hak kazanmış
+
+* Disiplin cezası almamış
+
+* Mezuniyet ağırlıklı not ortalaması
+
+3.50-4.00 - diploma yüksek onur öğrencisi
+
+3.00-3.49 - diploma onur öğrencisi
+
+Öğrenciye diploması ile birlikte diploma yüksek onur/diploma onur öğrencisi olduğunu gösteren bir belge verilir. Diploma ekinde belirtilir.
 
 Diplomalar
-Eğitim Öğretim Programini basariyla tamamlayan öğrencilere
+----------
+
+Eğitim-öğretim programini başarıyla tamamlayan öğrencilere verilir.
 
 Fakülte -> Lisans
-Yüksekokul -> Ön lisans diplomasi verilir.
+
+Yüksekokul -> Ön lisans diploması verilir.
 
 Diplomalar hazırlanıncaya kadar, öğrenciye diplomasını alırken iade etmek üzere geçici mezuniyet belgesi verilebilir.
 
-Diploma ve mezuniyet belgeleri Rektörlükçe soğuk damga ile mühürlenir. Diplomaların şekli ve üzerinde yer alacak bilgiler Rektörlükçe düzenlenir.
+Diploma ve mezuniyet belgeleri rektörlükçe soğuk damga ile mühürlenir. Diplomaların şekli ve üzerinde yer alacak bilgiler rektörlükçe düzenlenir.
 
-Diploma eki (onur belgeleri vb) diplomayla birlikte ücretsiz olarak öğrencinin isteğine bağlı olmaksızıln verilir.
+Diploma eki (onur belgeleri vb.) diplomayla birlikte ücretsiz olarak öğrencinin isteğine bağlı olmaksızın verilir.
 
-Lisans Programinin ilk dort yariyilinin butun derslerinden basarili olanlara istemeleri halinde ön lisans diplomasi verilir. Ön lisans alanların ilişiği kesilmiş sayilir._?? Evet
-Tip disinda tum lisans bolumleri icin bu durum gecerlimidir? Mesela egitim fakultesi??
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Lisans Programının ilk dört yarıyılının bütün derslerinden başarılı olanlara istemeleri halinde ön lisans diploması verilir. Ön lisans alanların ilişiği kesilmiş sayılır mı?**
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Evet.
 
+------------------------------------------------------------------------------------------
+**Tıp dışında tüm lisans bölümleri için bu durum geçerli midir? Mesela eğitim fakültesi?**
+------------------------------------------------------------------------------------------
 
-Tebligat ve adres bildirme
-Bildirim - Tebligat kayıt sırsasinda bildirilen adrese yapılır. Adres degisikligi bilgi degisikligi ogrencinin sorumlulugundadir. Eski adrese gitmis ise tebligat yapilmis sayilir.
+Tebligat ve Adres Bildirme
+--------------------------
 
+Bildirim - Tebligat kayıt sırasında bildirilen adrese yapılır. Adres değişikliği ve bilgi değişikliği öğrencinin sorumluluğundadır. Eski adrese gitmiş ise tebligat yapılmış sayılır.
 
-BEŞİNCİ BÖLÜM Çeşitli ve Son Hükümler
+BEŞİNCİ BÖLÜM
 
-
-
+Çeşitli ve Son Hükümler
+---------------------------
 
 Yabancı Dil Hazırlık Sınıfı
-SENATO kararı ile açılır. Öğretim ve Sınav esasları SENATO tarafından belirlenir.
+---------------------------
+
+Senato kararı ile açılır. Öğretim ve sınav esasları senato tarafından belirlenir.
 
 Kurul üyeleri ABD başkanlarından.
 Bunlardan birisi de bölüm başkanı.
 
+Fakülte
+-------
 
-	FAKÜLTE
-    	BÖLÜM
-        	ANA BİLİM DALI
-        	ANA SANAT DALI
-            	EĞİTİM ÖĞRETİM PROGRAMI
-    	KURULLAR
-    	Fakülte Kurulu
-    	YuksekOkul Kurulu
-    	Bölüm / AnaBilim / AnaSanat Dalı Kurulu
+Bölüm
 
-	Kilit görevler neler?
+Anabilim Dalı
 
-	Dekan
-	Sekreter
-	Fakülte Kurulu
-    	Ana Bilim Dalı
-        	Başkan
-        	Öğretim Üyeleri
+Anasanat Dalı
 
-	Fakülte Yönetim Kurulu
-    	Kimlerden oluşuyor
+Eğitim-öğretim Programı
 
-	Müdür
-	Yüksekokul Kurulu
-	Yüksek Okul Yönetim Kurulu
+Kurullar
+--------
 
+Fakülte Kurulu
 
-	Akademik Personel Türleri
+Yüksekokul Kurulu
 
+Bölüm / Anabilim / Anasanat Dalı Kurulu
 
+-------------------------
+**Kilit görevler neler?**
+-------------------------
 
+Dekan
 
+Sekreter
 
+Fakülte Kurulu
 
+Anabilim Dalı
 
+Başkan
 
+Öğretim Üyeleri
 
+----------------------------------------------
+**Fakülte Yönetim Kurulu kimlerden oluşuyor?**
+----------------------------------------------
 
+Müdür
 
+Yüksekokul Kurulu
 
-
-
-
-
+Yüksekokul Yönetim Kurulu
 
 
+Akademik Personel Türleri
+-------------------------
 
-SORU:  Programdaki değişiklikler gelecek yıllar için geçerli olur?
-CEVAP: Versiyonlama yapmamız gerek. Dersler ve kredi değerleri programın ilgili versiyonuna bağlanmalı.
+**SORU:**  Programdaki değişiklikler gelecek yıllar için geçerli olur mu?
 
-SORU: Aynı ders başka bir programda farklı bir kredi değerine sahip olabilir mi?
-CEVAP: Ders kodu farklı olmak şartıyla aynı isimde ders olabilir ve kredisi farklı olabilir.
-( Ders adı ve kodunun aynı olması kredilerin aynı olacağı anlamına gelmez)
+**CEVAP:** Versiyonlama yapmamız gerek. Dersler ve kredi değerleri programın ilgili versiyonuna bağlanmalı.
+
+**SORU:** Aynı ders başka bir programda farklı bir kredi değerine sahip olabilir mi?
+
+**CEVAP:** Ders kodu farklı olmak şartıyla aynı isimde ders olabilir ve kredisi farklı olabilir.
+(Ders adı ve kodunun aynı olması kredilerin aynı olacağı anlamına gelmez)
 
 DERSID	DERSKODU		DERSADI	YIL	BOLUM	DONEM	KREDI
 1		MAT101		Matematik 1	2012	1		1		4
 2		MAT101		Matematik 1	2012	2		1		3
 
-SORU: Mucahit, veritabaninda su an eksik oldugunu dusundugun alanlari buraya yazar misin?
+**SORU:** Mucahit, veritabanında şu an eksik olduğunu düşündüğün alanları buraya yazar mısın?
 
-SORU: Anabilim dalı , anasanat dalı nerede yer alır?
-CEVAP: Bölümlerin altında yer alır.
-	Örnek:
+**SORU:** Anabilim dalı, anasanat dalı nerede yer alır?
+
+**CEVAP:** Bölümlerin altında yer alır.
+
+Örnek:
+
 Fen Fakültesi
+
 Matematik-Bilgisayar Bilimleri Bölümü
-	Uygulamalı Matematik ---> Ana Bilim Dali
-	Analiz ---> Ana Bilim Dali
-	Geometri ---> Ana Bilim Dali
 
+Uygulamalı Matematik ---> Anabilim Dalı
 
-SORU: Yatay gecis vb durumlarda ya da universiteler arasi ders eslestirme bakimindan,
-Derslerin denkligi nasil hesap ediliyor?
-Puanli muafiyet, puansiz muafiyet nedir?
+Analiz ---> Anabilim Dalı
 
-CEVAP:
+Geometri ---> Anabilim Dalı
+
+**SORU:** Yatay geçiş vb. durumlarda ya da üniversiteler arası ders eşleştirme bakımından,
+
+--------------------------------------------
+**Derslerin denkliği nasıl hesap ediliyor?**
+--------------------------------------------
+
+--------------------------------------------
+**Puanlı muafiyet, puansız muafiyet nedir?**
+--------------------------------------------
+
+**CEVAP:**
+
 Bölüm kurulu kararı ile belirleniyor. Hocalar inceliyor hangi ders hangi ders için karşılık gelebilir. Sonuç bölüm kurulu kararı yazısı ile öğrenci işlerine bildiriliyor. (İntibak İşlemi)
-Başarılı sayıldı ise notu girilerek muaf sayılırken, bazen Muafiyet için başarılı başarısız demek yeterli olmaktadır. (Notlu muaf / harf CC-AA ve Notsuz muaf/ harf G)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Başarılı sayıldı ise notu girilerek muaf sayılırken, bazen muafiyet için başarılı başarısız demek yeterli olmaktadır. (Notlu muaf / harf CC-AA ve Notsuz muaf/ harf G)
