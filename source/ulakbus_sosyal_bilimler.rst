@@ -47,9 +47,9 @@ Enstitü Öğrenci İşleri
 
 - Askerlik işlemleri
 
-* Yeni kayıtlar, kaydı silinenler, mezun olanlar, aktif öğrenciler askerlik şubesine bilidirilir.
+  * Yeni kayıtlar, kaydı silinenler, mezun olanlar, aktif öğrenciler askerlik şubesine bilidirilir.
 
-* Askerlik durum belgesi çıktısı alınıp postayla gonderilir.
+  * Askerlik durum belgesi çıktısı alınıp postayla gonderilir.
 
 - Öğrenci durumunu gücelleme (pasif, disiplin cezası, kayıt dondurma)
 - Mezuniyet işlemleri
@@ -108,8 +108,11 @@ Danışman
 * Ders onayı yapar.
 * Ders ekleme çıkarma yapabilir.
 * Ders başarı durumuna göre
-	- öğrencinin seminer aşamasına,
-	- doktora için yeterlilik aşamasına geçmesine onay verir.
+
+  * öğrencinin seminer aşamasına,
+
+  *  doktora için yeterlilik aşamasına geçmesine onay verir.
+
 * Öğrencinin kişisel bilgilerini, notlarını, devamsızlık durumunu görebilir.
 * Sistemden uyarılar alır.
 * Farabiyle giden, erasmus ile giden, kayıt donduran, yatay geçişle giden ve kendisi ders kaydı yapmamış öğrenci yerine ders kaydı yapamaz.
@@ -159,10 +162,14 @@ Tezli Yüksek Lisans için:
 - Başka üniversitelerde uzmanlık alan dersine sınav yoktur, harf notu verilebilir.
 - 2 dönem yapamazsa öğrencilik haklarından yararlanmaksızın harç ödeyerek tez hazırlamaya devam eder. Sonsuza kadar.
 - Tamamlanan tez danışmana sunulur. Uygun görmesi halinde 3 kişilik bir jüri oluşturulur. Jüri  danışman, 1 tane ilgili Anabilim Dalı ve 1 tanesi de farklı anabilim dalından enstitü içinden oluşturulur. Anabilim Dalı Başkanı onayı ile enstitü YK'dan sınav tarihi alır.
-- Tez savunma sınavına girer. Sınavdan 3 karar çıkabilir.
-- Kabul edilir. Öğrenci mezun olur.  YÖKSİS'e işlenir. Diplamasını alır.
-- Düzeltme istenir. 3 ile 6 ay arasında süre verilir.
-- Reddedilir. Öğrenci tez aşamasının başına geri döner.
+- Tez savunma sınavına girer. Sınavdan 3 karar çıkabilir:
+
+  * Kabul edilir. Öğrenci mezun olur.  YÖKSİS'e işlenir. Diplamasını alır.
+
+  * Düzeltme istenir. 3 ile 6 ay arasında süre verilir.
+
+  * Reddedilir. Öğrenci tez aşamasının başına geri döner.
+
 - Öğrenci istemesi halinde 2 danışman atanabilir.
 - Birinci danışman aynı üniversiten ve çalışma alanından olmak zorundadır. Farklı üniversiteden kesinlikle olamaz.
 - İkinci danışman çalışma alanı dışında ve/veya farklı üniversiteden olabilir.
@@ -184,7 +191,6 @@ Tezsiz Yüksek Lisans
 
 **Ders aşaması**
 
-
 İki dönemden oluşur. Kayıttan sonra danışman atanır. Danışman ataması tezli yüksek lisanstaki gibidir. İki dönemde minimum 30 kredi alır. Dersleri seçimlik değildir, pakettir. Final ve bütünleme sınavları vardır.
 
 **Proje aşaması**
@@ -205,11 +211,11 @@ Doktora
 - Doktora yeterlilik sınavları sadece Ekim / Kasım ve/veya Mart / Nisan aylarında yapılır.
 - Yeterlilik Sınavı Jürisi: Danışman ve ABD Başkanı'nın onayı ile 3 kişilik bir juri oluşturulur.
 
-* Danışman
+  * Danışman
 
-* Anabilim dalından bir hoca
+  * Anabilim dalından bir hoca
 
-* Dışarıdan bir hoca. Başka bir üniversiteden olabilir. Üniversitedeki başka bir akademik birimden olabilir.
+  * Dışarıdan bir hoca. Başka bir üniversiteden olabilir. Üniversitedeki başka bir akademik birimden olabilir.
 
 - Öğrenci yeterlilik sınavına hem sözlü hem yazılı olarak girer. Sınav sonucu başarılı veya başarısız olarak enstitüye 3 gün içerisinde iletilir.
 - Öğrenci başarılıysa yeterlilik aşamasına geçilir. Başarısız ise bir sınav hakkı daha verilir. İki defa başarısız olmuşsa öğrencilik haklarından faydalanamaz. İstemesi halinde 6 ayda bir sınavlara devam edebilir.
@@ -218,11 +224,11 @@ Doktora
 
 - Danışmanın teklifi, ABD Başkanı uygun görüşü ve YK kararıyla 3 kişilik bir tez izleme komitesi oluşturulur.
 
-* Danışman
+  * Danışman
 
-* Anabilim Dalı üyesi
+  * Anabilim Dalı üyesi
 
-* Anabilim Dalı dışından bir üye.
+  * Anabilim Dalı dışından bir üye.
 
 - Tez izleme komitesi gerek duyulursa değiştirilebilir.
 - Azami 6 aydır. 6 ay içinde hazırlayacağı doktora tezini projelendirip tez izleme komitesine sunması gerekir. Kabul edilirse öğrenci tez aşamasına geçer.
@@ -240,15 +246,17 @@ Doktora
 - Bu aşamanın başlaması için ön şart, akademik bir yayın yapılmak zorundadır. Akademik yayının ne olduğu öğrenci kartına işlenmelidir.
 - Öğrenci tezini 6 nüsha olarak hazırlar.
 - Danışmanının önerisiyle, tez jürisi kurulur.
-- Birisi danışman, bir tanesi başka bir üniversiteden hoca olmak üzere 5 asil 2 yedek üyeden oluşur.
+
+  * Birisi danışman, bir tanesi başka bir üniversiteden hoca olmak üzere 5 asil 2 yedek üyeden oluşur.
+
 - Tez savunma sınavı için en erken 1 ay sonraya tarih verilir. Tezlerin jüri üyeleri tarafından okunabilmeleri için.
 - Öğrenci juri karşısında tezini savunur.  Sınav sonucunda 3 karar verilebilir:
 
-* Kabul kararı. Jüri salt çoğunluğu yeterlidir. Öğrenci mezun olur.
+  * Kabul kararı. Jüri salt çoğunluğu yeterlidir. Öğrenci mezun olur.
 
-* Düzeltme kararı. Gerekçelidir. Gerekçe ortak veya bireysel yazılabilir. Öğrenci 6 ay içinde tezi kararda yazılan şekilde düzelterek yeniden savunur. Direnebilir fakat gelende, düzeltir.
+  * Düzeltme kararı. Gerekçelidir. Gerekçe ortak veya bireysel yazılabilir. Öğrenci 6 ay içinde tezi kararda yazılan şekilde düzelterek yeniden savunur. Direnebilir fakat genelde, düzeltir.
 
-* Red kararı. Öğrenci hakları olmaksızın tez aşamasına geri döner.
+  * Red kararı. Öğrenci hakları olmaksızın tez aşamasına geri döner.
 
 Öğrenci alım kriterleri
 -----------------------
@@ -305,11 +313,11 @@ ABD, her özel öğrenci için bir danışman belirler.
 - Özel Öğrenciler
 - Yabancı Uyruklu Öğrenciler
 
-* Türkiye Burslusu (YTB)
+  * Türkiye Burslusu (YTB)
 
-* Diyanet Burslusu
+  * Diyanet Burslusu
 
-* Ücretli
+  * Ücretli
 
 - ÖYP - Araştırma görevlileridir.
 
@@ -561,9 +569,7 @@ Dönem Ağırlıklı Not Ortalaması = O dönem alınan tüm derslerin ağırlı
 
 Genel Ağırlıklı Not Ortalaması = Kayıt olunan zamandan hesaplama zamanına kadar alınan ve harflenmiş tüm derslerin ağırlıklı not toplamı / aynı derslerin kredi toplamı
 
-Mezuniyet Ağırlıklı Not ortalaması:
-
-Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
+Mezuniyet Ağırlıklı Not ortalaması = Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
 
 Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5 ten küçükse 0'a indirgenir, 5'ten büyüksek ikinci hane bir arttırılarak hesaplanır.
 
@@ -585,7 +591,7 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 Ücret Hesaplama
 ---------------
 
-Ücretler Harç Tipine göre hesaplanır.  100'lük hesaplancak.
+Ücretler Harç Tipine göre hesaplanır.  100'lük hesaplanacak.
 
 - Normal Harç
 
@@ -650,7 +656,7 @@ Kayıt İşlemleri
 
 * Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
 
-* 2. Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
+* 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
 
 * Harcını ödememiş olanların kayıt işlemleri yapılamaz.
 
@@ -684,7 +690,7 @@ Kayıt Yenileme
 
 * Ders dönemlerini tamamlayanlar, ders seçmeden kayıt yenilerler.
 
-*Ders seçme ve harç ödeme zorunluluğu olmayan öğrenciler, sistemden sadece kayıt yenile butonuna basarak, ilgili dönem için öğrencilik haklarından faydalanırlar.
+* Ders seçme ve harç ödeme zorunluluğu olmayan öğrenciler, sistemden sadece kayıt yenile butonuna basarak, ilgili dönem için öğrencilik haklarından faydalanırlar.
 
 Kayıt Dondurma
 --------------
@@ -778,7 +784,7 @@ Ders Muafiyeti
 
 Bir dersten muafiyet şartları şu şekildedir:
 
-* Tezsiz yüksek lisansta kurumsal protokol dahilinde ders muafiyeti olablir.
+* Tezsiz yüksek lisansta kurumsal protokol dahilinde ders muafiyeti olabilir.
 
 * Yatay geçişle gelen öğrenciler, geldikleri okuldan denk derslerden anabilim dalı kararıyla muaf sayılabilir.
 
@@ -857,35 +863,24 @@ Ekranlar
 Sistemden Beklenecek Raporlar
 -----------------------------
 
-* Çoktan seçmeli rapor
+- Çoktan seçmeli rapor
+- Genel durum ve işleyiş raporu (enstitü faaliyet raporu)
+- Öğrenci sınıf listeleri
+- Dersi alan öğrenciler listesi.
+- Bölüm ders müfredatı
+- Hocalara göre rapor:
 
-* Genel durum ve işleyiş raporu (enstitü faaliyet raporu)
+  * Hocanın okuttuğu dersler
+  * Öğrenci listesi
+  * Öğrencilerin durum bilgileri
 
-* Öğrenci sınıf listeleri
+    - Ders / tez / yeterlilik aşamasında
+    - Öğrencinin aldığı dersler, kaldığı geçtiği dersler.
+    - Seminer ve tez konuları
+  * Hocanın not istatistikleri
 
-* Dersi alan öğrenciler listesi.
-
-* Bölüm ders müfredatı
-
-* Hocalara göre rapor:
-
- - Hocanın okuttuğu dersler
-
- - Öğrenci listesi
-
- - Öğrencilerin durum bilgileri
-
-  * Ders / tez / yeterlilik aşamasında
-
-  * Öğrencinin aldığı dersler, kaldığı geçtiği dersler.
-
-  * Seminer ve tez konuları
-
-- Hocanın not istatistikleri
-
-  * Verdiği derslerde öğrencilere verdiği notların dersi
-
-* Öğrenci temelli rapor
+    - Verdiği derslerde öğrencilere verdiği notların dersi
+- Öğrenci temelli rapor
 
   * Anabilim dalı
 
@@ -901,47 +896,37 @@ Sistemden Beklenecek Raporlar
 
   * Durum bilgisi
 
-     * Notları
-
-     * Seminer /tez
+    - Notları
+    - Seminer /tez
 
 Sistem Tarafından Üretilecek Belgeler
 -------------------------------------
 
-* Öğrenci belgesi
+- Öğrenci belgesi
+- Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir)
+- Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir)
+- Not durum belgesi (Yıllık, dönemlik)
+- Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir)
+- Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir)
+- Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir)
+- Diploma (Sadece mezun durumundaki öğrencilere verilebilir)
 
-* Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir)
+  * Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
 
-* Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir)
-
-* Not durum belgesi (Yıllık, dönemlik)
-
-* Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir)
-
-* Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir)
-
-* Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir)
-
-* Diploma (Sadece mezun durumundaki öğrencilere verilebilir)
-
-     * Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
-
-* Öğrenci zarfı. Gönderici ve alıcı bilgileri.
-
-* İlgili makama belgesi, öğrencilik hakkından yararlanamayanlar için burada eğitim-öğretimini devam ettirmektedir.
+- Öğrenci zarfı. Gönderici ve alıcı bilgileri.
+- İlgili makama belgesi, öğrencilik hakkından yararlanamayanlar için burada eğitim-öğretimini devam ettirmektedir.
 
 EBYS Entegrasyonu
 -----------------
 
 **Notlar**
 
-* Personel anabilim dalında yer alır, öğrenciler programda yer alırlar.
+- Personel anabilim dalında yer alır, öğrenciler programda yer alırlar.
+- Bölümlerden öğrenci işlerine giden tum evraklardan örnek isteyelim.
 
-* Bölümlerden öğrenci işlerine giden tum evraklardan örnek isteyelim.
+  * Diploma eki nasıl verilir?
 
-     * Diploma eki nasıl verilir?
-
-* Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
+- Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
 
 Ders Kopyalama
 --------------
