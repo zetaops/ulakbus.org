@@ -428,3 +428,197 @@ Azami (en fazla) Öğretim Süresi
 Yeni yönetmelikler incelenecek. 6 yıllık ve hazırlıkla ilgili bilgi alınacak.
 Hazırlık sınıfları azami 2 yıldır.
 
+Ücretler
+--------
+
+Yüksek lisans ve doktorada öğrenci azami süreyi tamamladıktan sonra dönemlik harç alınır.
+
+Tezsiz yüksek lisansta kayıttan itibaren harç alınır.
+
+Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirlenir.
+
+Özel öğrenciden ders başına ve dönemlik ücret alınıyor. Enstitü yönetim kurulu kararıyla ücretler belirlenir.
+
+Sınavlar
+--------
+
+**Genel Sınav**
+
+- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır. Sonuçları sınavın ardından en geç 5 gün içinde açıklanmalıdır.
+
+- Devam zorunluluğu sağlanmalı (% 70). Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.
+
+**Bütünleme**
+
+-  Genel sınava girme hakkı olup giremeyen veya ara sınav ya da genel sınav sonucu başarısız olanlar için yapılır.
+
+Kural Setleri
+-------------
+
+Süreler
+-------
+
+**Normal Öğretim Süresi**
+
+Üniversiteden süreli uzaklaştırma cezası alan öğrencilerin ceza süreleri ve mesleki hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılır. Ancak yabancı dil hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılmaz. Kayıt dondurma sayılmaz.
+
+**Azami Öğretim Süresi**
+
+Öğrencinin kayıt dondurduğu yıllar dahil edilmez. Afla veya intibakla gelen öğrenciler için başlangıç dönemi girilecek ve bu dönemden itibaren kaç tane aktif dönemi varsa sayılarak maksimum süreyi geçip geçmediği tespit edilecek.
+
+**Af ve intibak:** Öğrenci gelir. Önceki durumu (en son transkript) bölüme gönderiyoruz. Bölüm kararı ile öğrencinin hangi derslerden muaf olduğu ve hangi dersleri alacağı bildirilir. Ayrıca hangi dönemden başlayacağı bildirilir. Öğrencinin önceki dönemleri kaç yılda tamamladığı hesaba katılmaz. Başladığı dönem hesaba katılarak azami ve normal öğretim süresi işletilir.
+
+Azami süre içerisinde başarılı olmadıysa kayıt ücretlerini ödemek koşulu ile ders ve sınavlara katılma hariç, öğrencilere tanınan diğer haklardan yararlandırılmaksızın öğrencilik statüleri devam eder.
+
+Devamlılık Kuralları
+--------------------
+
+Öğrenciler, teorik derslerin % 30’undan ve / veya uygulamaların % 20’sinden fazlasına devam etmezlerse başarısız sayılırlar.
+Tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş ise, sadece sınavlara girmek kaydıyla bu derslerde devam şartı aranmaz.
+
+**Yatay Geçiş vb. sebeplerle kayıt yaptıran öğrenciler:** Öğrencinin durumuna bakılır. Daha önce aldığı dersler sisteme bir biçimde kayıt edilmeli. Denk gelen derslerle eşleştirilmeli. Öğrencinin nereden devam edeceğine Anabilim Dalı karar verir.
+
+Sınava Katılma Şartları
+-----------------------
+
+* İlgili dersten muaf öğrenciler sınava giremezler.
+
+* Kayıtları dondurulmuş öğrenciler sınavlara giremezler.
+
+* Devamlılık kurallarına uymayan öğrenciler o dersin genel sınavına giremezler.
+
+* Uygulamalarda başarılı olamayan öğrenciler o dersin genel sınavına giremezler.
+
+* Disiplin cezası almış öğrenciler, ceza süresi içerisinde hiçbir sınava giremezler.
+
+Puan Sistemi
+------------
+
+Hocalar değiştirmediği sürece, sınav sonuçları şu şekillerde ifade edilir:
+
+
++---------------+-----------+---------------+
+|100'lük Sistem |   Harf    | 4'lük Sistem  |
++---------------+-----------+---------------+
+|90-100         |    AA     |    4.00       |
++---------------+-----------+---------------+
+|85-89          |    BA     |    3.50       |
++---------------+-----------+---------------+
+|75-84          |    BB     |    3.00       |
++---------------+-----------+---------------+
+|70-74          |    CB     |    2.50       |
++---------------+-----------+---------------+
+|60-69          |    CC     |    2.00       |
++---------------+-----------+---------------+
+|55-59          |    DC     |    1.50       |
++---------------+-----------+---------------+
+|50-54          |    DD     |    1.00       |
++---------------+-----------+---------------+
+|40-49          |    FD     |    0.50       |
++---------------+-----------+---------------+
+|0-39           |    FF     |    0.00       |
++---------------+-----------+---------------+
+|--             |    F      |    0.00       |
++---------------+-----------+---------------+
+
+Yök detaylı not dönüşüm tablosu: https://www.yok.gov.tr/documents/10279/31737/4_luk_sistem_100/f3d72044-c756-4302-ab26-91af35f45f43
+
+Öğrenci lisanstan gelirken 4 lük notun 100 lük karşılığını buluyoruz.
+
+----------------
+**Harf Sistemi**
+----------------
+
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        AA,BA,BB,CB,CC         |    Başarılı                                                                                                   |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        DC                     |    Şartlı Başarılı (Teorik ve Ortak zorunlu dersler için)                                                     |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        DD,FD,FF               |    Başarısız                                                                                                  |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        F                      |    Devamsızlık veya uygulamadan başarısız, genel sınava girme hakkı bulunmayan öğrenci                        |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        G                      |    Geçer notu, kredisiz derslerde başarılı olan öğrenci                                                       |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        K                      |    Geçmez not, kredisiz derslerde başarısız öğrenci                                                           |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+|        M                      |    Dikey/yatay geçişle kabul olunan başarılı sayıldıkları dersler                                             |
++-------------------------------+---------------------------------------------------------------------------------------------------------------+
+
+Ders Başarı Hesaplama
+---------------------
+
+Yüksek lisansta 70, doktorada 75 alan öğrenci o dersten başarılı sayılır.
+Ortalamaya göre sınıf geçmek gibi bir kural yoktur.
+
+Başarı Hesaplama
+----------------
+
+AKTS Ağırlıklı Not = AKTS * Not Katsayısı (mevcut durumda yüzlük not)
+
+Dönem Ağırlıklı Not Ortalaması = O dönem alınan tüm derslerin ağırlıklı not toplamı / tüm derslerin kredi toplamı
+
+Genel Ağırlıklı Not Ortalaması = Kayıt olunan zamandan hesaplama zamanına kadar alınan ve harflenmiş tüm derslerin ağırlıklı not toplamı / aynı derslerin kredi toplamı
+
+Mezuniyet Ağırlıklı Not ortalaması = Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
+
+Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5 ten küçükse 0'a indirgenir, 5'ten büyüksek ikinci hane bir arttırılarak hesaplanır.
+
+3,144 -> 3,140 -> 3,14
+
+23,145 -> 3,150 -> 3,15
+
+
+Yerine alınan ders dahil edilir. Bırakılan ders dahil edilmez.
+
+Tekrar edilen derslerden son not dikkate alınır.
+
+Muaf dersler ortalama hesaplamaya dahil edilmez.
+
+Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplamaya dahil edilir.
+
+Ücret Hesaplama
+---------------
+
+Ücretler Harç Tipine göre hesaplanır.  100'lük hesaplanacak.
+
+- Normal Harç
+
+- Yabancı Uyruklu
+
+- Ücretsizler (Şehit ve Gazi Çocukları)
+
+- Ücretsizler (Mavi kart)
+
+- Ücretsizler (Suriyeli, Mısırlı)
+
+- Ücretsizler (YD Öğrenimini Tamamlayanlar)
+
+- Ücretsizler (YD Türk Okulunda Tamamlayanlar)
+
+- MEB Burslusu
+
+- Özel Üniversiteden Yatay Geçişle Gelen
+
+- Diyanet Burslusu
+
+- Türk Asıllı Yabancı Uyruklular
+
+- Formasyon Harcı
+
+- Türkiye Burslular
+
+- Hükümet Burslular
+
+- Özel öğrenci. Başka bir üniversitede okuyan ya da dışarıdan katılan, sadece kendini geliştirmek için ders almak üzere gelenler.
+
+Sadece harç hesaplanır. Normal öğretim süresinde
+Tezsiz yüksek lisans için harç ödenir, tezli olanlar için harç ödenmez.
+
+**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARÇ)
+
+Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
+
+
+
+
