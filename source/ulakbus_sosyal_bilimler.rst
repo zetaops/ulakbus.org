@@ -71,15 +71,18 @@ Anabilim Dalı
 
 * Her bölümün YÖKSİS Birim ID'si bulunur.  / TUIK Kodu
 
-* Bilimsel hazırlık.
+* Bilimsel hazırlık. Lisansı farklı bir bölümse.
 
-* Lisansı farklı bir bölümse dil hazırlığı.
+* Dil hazırlığı. Yabancı uyruklulara Türkçe eğitimi.
 
-* Yabancı uyruklulara Türkçe eğitimi.
+* Dil hazırlığı, öğretimin şart koşmasıyla başka dillerde de olabilir.
 
-Dil hazırlığı, öğretimin şart koşmasıyla başka dillerde de olabilir.
+Eğitim Tipi
+-----------
 
-Eğitimi Tipi - Dönemlik ve Yıllık
+- Dönemlik
+
+- Yıllık
 
 Anabilim Dalı Başkanı
 ---------------------
@@ -874,7 +877,7 @@ Sistemden Beklenecek Raporlar
 
   * Ders / tez / yeterlilik aşamasında
 
-  * Öğerncinin aldığı dersler, kaldığı geçtiği dersler.
+  * Öğrencinin aldığı dersler, kaldığı geçtiği dersler.
 
   * Seminer ve tez konuları
 
