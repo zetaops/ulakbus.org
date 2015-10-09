@@ -619,6 +619,319 @@ Tezsiz yüksek lisans için harç ödenir, tezli olanlar için harç ödenmez.
 
 Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
 
+İş Akışları
+-----------
 
+Kayıt İşlemleri
+---------------
 
+**İlk Kayıt**
 
+* Öğrenci web sitesi üzerinden ön kayıt yapar.
+
+* Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
+
+* Öğrenci için öğrenci numarası ve geçici bir parola verilir.
+
+* Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Öğrencinin durumu ASAL servisine bildirilir. ASAL’dan gelebilecek bilgiler kayıt önüne engel değildir. Öğrencinin askerlik hizmetine başlayacak olması kayıt dondurma  için geçerli bir sebeptir.
+
+* Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
+
+* 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
+
+  * Harcını ödememiş olanların kayıt işlemleri yapılamaz.
+
+  * Askerlik sıkıntısı olanların durumu bankaya uygun şekilde bildirilir.
+
+* Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
+
+* Öğrencinin lisans bilgileri, adı, bölümü, mazuniyet tarihi vb. sisteme kaydedilir.
+
+* Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur.  öğrenci kayıtlı hale gelir.
+
+Kayıt dönemi kapandığında kesin kayıt haline gelmemiş geçici kayıtlar ve ön kayıtlar silinir.
+Kesin kayıt dönemi bittiğinde boş kontenjanlar için rapor haline getirilir. Web'den duyurulur.
+Ek kontenjan ile gelenler de ilk kayıt sürecine tabidir.
+
+Kesin Kayıt Sonrası
+-------------------
+
+* Öğrencilere bir danışman hoca ataması, öğrenci işleri tarafından yapılır.
+
+* Askerlik durumları bildiriliyor. Belge üretip postaya verilecek. Mevcut durumda üretilen belgede öğrenci numarası eksik. Öğrenci askerlik bilgilerini, ASAL iletişimi sonuçlarını veya üretilen belgeleri görebilmelidir.
+
+Kayıt Yenileme
+--------------
+
+* Kayıt yenileme için Tezsiz YL veya azami öğretim süresini aşanlar harç yatırarak kayıt yenilerler.
+
+* Normal öğretim süresi içinde olan öğrenciler harç ödemeden, ders seçimi yaparak kayıt yenilerler.
+
+* Bu aşamaların ardından dersler danışman onayına açık hale getirilir.
+
+* Danışman onayıyla kayıt yenileme işlemi tamamlanır.
+
+* Ders dönemlerini tamamlayanlar, ders seçmeden kayıt yenilerler.
+
+* Ders seçme ve harç ödeme zorunluluğu olmayan öğrenciler, sistemden sadece kayıt yenile butonuna basarak, ilgili dönem için öğrencilik haklarından faydalanırlar.
+
+Kayıt Dondurma
+--------------
+
+Haklı ve geçerli mazereti olan öğrencilerin öğrenim süreleri, yönetim kurulu kararıyla dondurulur. Sağlık ile ilgili mazeretlerde sağlık kurulu raporu zorunludur. Kayıt dondurma süresi öğretim sürelerinden sayılmaz.
+
+Hiçbir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, transkript) alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb..
+
+Kayıt dondurma süresi sisteme tanımlanmalı ve süre sonunda otomatik olarak açılmalıdır.
+
+Kayıt Silme
+-----------
+
+Aşağıdaki hallerde kayıt silme işlemi yapılır:
+
+* İlgili mevzuat hükümlerine göre üniversiteden çıkarma cezası almış olması, terör.
+
+* Öğrenci tarafından yazılı olarak kayıtlı olduğu birim ile ilişiğinin kesilmesi talebinde bulunması.
+
+* Kayıt esnasında istenen belgelerden herhangi birinin daha sonradan gerçeğe aykırı olduğunun tespit edilmesi.
+
+* Vefat
+
+* Yatay Geçiş vb.
+
+* Kayıt silme aslında silindi olarak işaretlenir. Hiçbir öğrencilik haklarından faydalanamaz. Sistemde görünmez hale gelir.
+
+Ders Açma
+---------
+
+Program yıllara göre versiyonlanır. Her öğrenim yılı başında program yeni versiyona geçer. Değişikliker işlenir. Ders ile ilgili kurallar ve şubeler tanımlanır.
+
+Ders Alma Biçimleri
+-------------------
+
+* İlk
+
+* Devamsız Tekrar
+
+* Devamlı Tekrar
+
+Ders Seçme
+----------
+
+* Öğrenciler sisteme giriş yapıp ders seçimlerini yapabilmeliler.
+
+Dersler nottan kaldıysa devamsız tekrar, devamsızlıktan kaldıysa devamlı tekrar şeklinde alınır.
+
+Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere sahip olmalıdır:
+
+* Öncelik, alt yarıyıllarda hiç alınmayan, devamsız veya başarısız olunan derslere verilmelidir.
+
+* Muaf olunan dersler seçilemezler.
+
+Danışman onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, danışman onay süreci içinde danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
+
+Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik programda Anabilim Dalı Kurulu tarafından yapılmış olmalıdır.
+
+Ders Ekleme-Çıkarma ve Mazeretli Ders Kaydı
+-------------------------------------------
+
+Normal ders kaydı sürecinin ardından öğrenciye son bir ders ekleme çıkarma hakkı verilir. Bu süreç mazeretli ders kaydı ile birlikte yapılır.
+
+Bu aşamadaki tüm ders değişiklikleri danışmanlar tarafından yapılır. Öğrenci sistemden ders seçmez, ekleyip çıkarmaz.
+
+Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. Bu değişiklikler önceki paragraftaki süreçle aynı şekilde yapılır.
+
+Rapor: Ahmet Hoca, Ali öğrencisinin, x, y derslerini çıkardı, z ve t'yi ekledi. Ali öğrencisinin son durumu a, b, c, z ve t.
+
+Başka Bölümlerden Ders Alma
+---------------------------
+
+İlgili bölüm veya Anabilim Dalı Kurulu uygun gördüğü hallerde başka fakülte ve bölümlerden dersler alınabilir. Ilgili dersler, ilgili programdaki kredi ve başarı şartları ile değerlendirilirler.
+
+Başka Üniversitelerden Ders Alma
+--------------------------------
+
+İlgili bölüm veya Anabilim Dalı Kurulu uygun gördüğü hallerde başka fakülte ve bölümlerden dersler alınabilir. Ilgili dersler, ilgili programdaki kredi ve başarı şartları ile değerlendirilirler. Bu dersler öğrenciye özel açılır. Ders bilgileri, kredisi ve notu sisteme girilir.
+
+Program Değişikliği
+-------------------
+
+Program değişiklikleri, Bölüm Kurulu'nun önerisi üzerine Yönetim Kurulu tarafından karara bağlanarak en geç Mayıs ayı içinde REKTÖRLÜĞE sunulur. SENATO onayı ile kesinleşir.
+
+Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrencilerin derslerini ve ders bağımlılıklarını etkileyebilir. Kaldırılan veya yeni eklenen dersler sebebiyle mevcut öğrenciler için belirli dersler korunabilir. Bu sebeple program değişiklikleri versiyonlanmalı ve ilgili versiyona kayıt yaptıran öğrenciler için ders zorunlulukları ve bağımlılıklar saklanmalıdır.
+
+Ders Muafiyeti
+--------------
+
+Bir dersten muafiyet şartları şu şekildedir:
+
+* Tezsiz yüksek lisansta kurumsal protokol dahilinde ders muafiyeti olabilir.
+
+* Yatay geçişle gelen öğrenciler, geldikleri okuldan denk derslerden anabilim dalı kararıyla muaf sayılabilir.
+
+Mazeret Yönetimi
+----------------
+
+Mazeret bitiş tarihinden itibaren en geç bir hafta içinde bildirimde bulunulmalıdır. Bu süre içinde bildirilmeyen mazeret kabul edilmez.
+
+Mazeret öngörülen devam süresine dahil edilmez. Kaybedilen süre eğitim-öğretim süresine eklenir.
+
+Devamlılık Takibi
+-----------------
+
+Hocalar takip ediyor.
+
+Mezuniyet
+---------
+
+Bir öğrencinin kayıtlı olduğu programdan mezun olabilmesi için o programdaki bütün dersleri almış ve başarmış olması ve mezuniyet ağırlıklı not ortalamasının en az 2.00 olması gerekir.
+
+Mezuniyet tarihi, o sınav dönemindeki sınavın son günüdü̈r. Tarih elle girebilir.
+
+Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ödevi/tezi, arazi çalışması vb. sebeplerle mezun olamayan öğrenciler; tek ders sınavında başarılı olduğu takdirde veya bu çalışmalarını tamamlayarak kabul edildiği tarihte mezun olurlar.
+
+Roller
+------
+
+* Öğrenci
+
+* Danışman
+
+* Dekan
+
+* Fakülte Sekreteri
+
+* Fakülte Öğrenci İşleri Personeli
+
+* Fakülte Yönetim Kurulu Üyesi
+
+* Fakülte Yönetim Kurulu Başkanı
+
+* Anabilim Dalı Kurulu Üyesi
+
+* Anabilim Dalı Kurulu Başkanı
+
+* Fakülte Kurulu Üyesi
+
+* Fakülte Kurulu Başkanı
+
+* Bölüm Başkanı
+
+* Danışman
+
+Yetkiler
+--------
+
+Ekranlar
+--------
+
+* Not ve devamsızlık giriş ekranları
+
+* Toplu askerlik belgesi bastır
+
+* Toplu danışman atama
+
+* Toplu sınıf şubelendirme
+
+* Toplu sınav tarihi girişi
+
+* Toplu not durum belgesi
+
+* Mezuniyet ekranı
+
+* Toplu Mernis ve AKS güncelleme
+
+Sistemden Beklenecek Raporlar
+-----------------------------
+
+* Genel durum ve işleyiş raporu (enstitü faaliyet raporu)
+
+* Öğrenci sınıf listeleri
+
+* Dersi alan öğrenciler listesi.
+
+* Bölüm ders müfredatı
+
+Sistem Tarafından Üretilecek Belgeler
+-------------------------------------
+
+* Öğrenci belgesi
+
+* Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir)
+
+* Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir)
+
+* Not durum belgesi (Yıllık, dönemlik)
+
+* Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir)
+
+* Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir)
+
+* Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir)
+
+* Diploma (Sadece mezun durumundaki öğrencilere verilebilir)
+
+  * Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
+
+EBYS Entegrasyonu
+-----------------
+
+Muhasebe İşlemleri
+------------------
+
+Maaşlar
+-------
+
+- Stratejinin kullandığı Say 2000 Otomasyonu
+
+  * Gelen kişilerin bilgilerini strateji giriyor.
+
+  * Bu sistem KBS'ye gönderiyor.
+
+  * Muhasebe de KBS  üzerinden bilgileri görebiliyorsunuz
+
+  * Maaş hesaplaması
+
+  * Ek dersi
+
+- Çarşaf ve puantajı elle KBS ye giriyoruz.
+
+- Taşınır ve her türlü malzeme KBS’ye işleniyor.
+
+Ek Ders
+-------
+
+- Puantaj tablosu anabilim dalı başkanı tarafından hazırlanır.
+- Muhasebe tarafından kontrolü yapılır.
+
+  * Uzmanlık dersi 8 saaten fazla olamaz.
+
+  * Danışmanlık 10 saati geçemez.
+
+  * Haftada 20 saatten fazla ders veremez.
+
+  * Yaz dönemi 30 saaten fazla ders veremez.
+
+  * Tatil günleri
+
+- Doğruysa KBS girilir.  Muhasebe birimine gönder butonu ile sistem üzerinden Stratejiye gider.
+- Evrakları imzalı ve mühürlü ayrıca gönderilir.
+
+Satın Alma
+----------
+
+Yolluklar
+---------
+
+- Öğrenci tez savunması verecek, jüri için şehir dışından gelecek hocalara ödenek verilecek.
+- Harç gelirlerinin %70'i birimin harcaması için ayrılır. %30 üniversite bütçesi.
+
+Çarşaf
+------
+
+Fakülte tarafından bölüm için hazırlanır. Bölüm başkanı tarafından hazırlanır, dekana imzalatılır. Bu belgede bölümdeki bütün hocaların hem bölümde, hem enstitüde hem de diğer bölümlerdeki ders, (teori ve diğer diye ayrılır.)
+
+Puantaj
+-------
+
+İlgili birimden ücret alacak bütün hocaların, sadece ilgili birimdeki ders saatleri ve ders türleri yer alır.
