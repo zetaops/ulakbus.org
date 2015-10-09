@@ -170,13 +170,13 @@ Bölüm Kurulu kararıyla dersler şubelere bölünebilir. Öğrenciler ders se�
 
 İlk kayıt sırasında, öğrencileri gruplandırmak için şubelere bölünür. Öğrenciler ilk kayıt yaptırdığında şube açma işlemi;
 
-* çeşitli şablonlara göre yapılabilir:
+- çeşitli şablonlara göre yapılabilir:
 
-    - tek numara / çift numara
+  * tek numara / çift numara
 
-    - ilk n sayıda öğrenci, sonraki n sayıda öğrenci vb.
+  * ilk n sayıda öğrenci, sonraki n sayıda öğrenci vb.
 
-* elle seçilebilir.
+- elle seçilebilir.
 
 Eğer şubelendirme yapılmamışsa, öğrenciler ŞUBE 1'dir.
 
@@ -190,15 +190,12 @@ Bir dersin başarıyla tamamlanabilmesi için öğrencinin yapması gereken çal
 
 Krediler anabilim dalı kurulu tarafından belirlenir. Mayıs ayında senatoya gider. Senatodan onay çıktığı takdirde yöke gönderilir.  Ancak AKTS sisteminde (Bologna süreci) iş yükü hesabı ile kredi belirlenir (25 saat = 1 Kredi şeklinde [Bu eşitlik bazı üniversitelerde farklı olabiliyor]).
 
-Bir dersin
+Bir dersin:
 
-    Teorik = Teorik Kredisi
-
-    Pratik = Pratik Kredisi
-
-    Klasik Ders Kredisi = Teorik + Pratik / 2
-
-    ECTS = Sabit (Bologna hesabı)
+- Teorik = Teorik Kredisi
+- Pratik = Pratik Kredisi
+- Klasik Ders Kredisi = Teorik + Pratik / 2
+- ECTS = Sabit (Bologna hesabı)
 
 ----------------------
 **Zorunlu Ortak Ders**
@@ -238,10 +235,10 @@ Grup tanımı yapacağız. Grup başarısı için alınması gereken ders sayıs
 **Normal Öğretim Süresi**
 -------------------------
 
-(Y) Lisans eğitimi 5 yıldır. Kayıt dondurma normal öğretim süresine dahil değildir.
+Lisans eğitimi 5 yıldır. Kayıt dondurma normal öğretim süresine dahil değildir.
 
 -----------------------------------
-**Azami (En fazla) Öğretim Süresi**
+**Azami (en fazla) Öğretim Süresi**
 -----------------------------------
 
 5 yıllık okullarda 8 yıldır.
@@ -260,32 +257,31 @@ Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirleni
 
 **Ara Sınav**
 
-    - Her yarıyılda en az bir adet yapılır.
-    - Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir. (Devam zorunluluğu sağlanmalı)
+- Her yarıyılda en az bir adet yapılır.
+- Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir. (Devam zorunluluğu sağlanmalı)
 
 **Genel Sınav**
 
-    - Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.(Devam zorunluluğu sağlanmalı)
+- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.(Devam zorunluluğu sağlanmalı)
 
 **Bütünleme**
 
-    -  Genel sınava girme hakkı olup giremeyen veya genel sınav sonucu başarısız olanlar veya genel sınava girme hakkına sahip olamayıp, bütünleme sınavına kadar ilgili anabilim dalı kriterlerini yerine getiren öğrenciler.
+-  Genel sınava girme hakkı olup giremeyen veya genel sınav sonucu başarısız olanlar veya genel sınava girme hakkına sahip olamayıp, bütünleme sınavına kadar ilgili anabilim dalı kriterlerini yerine getiren öğrenciler.
 
 **Tek ders**
 
-     - Her yıl sonunda en çok 1 dersten kalan öğrenciye sınıflarını geçmeleri için tanınan sınavdır.
+- Her yıl sonunda en çok 1 dersten kalan öğrenciye sınıflarını geçmeleri için tanınan sınavdır.
+- Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.(Devam zorunluluğu sağlanmalı)
 
-     - Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.(Devam zorunluluğu sağlanmalı)
-
-     Otomasyon ile başvurular alınabilir mi?
+Otomasyon ile başvurular alınabilir mi?
 
 **Muafiyet**
 
-    - Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için öğretim yılı başında yapılır.CC ile geçer. Ortalamaya dahil edilir
+- Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için öğretim yılı başında yapılır.CC ile geçer. Ortalamaya dahil edilir
 
 **Mazeret**
 
-    - Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz. Staj derslerinde uygulanmaz. (Ara sınav dönemi için geçerli mazeret bildirilmelidir.)
+- Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz. Staj derslerinde uygulanmaz. (Ara sınav dönemi için geçerli mazeret bildirilmelidir.)
 
 **Staj Sınavı**
 
@@ -319,16 +315,15 @@ Ancak üniversite yetkili kurullarının kararı ve YÖK onayı ile dört yıl �
 
 Azami süre içerisinde başarılı olmadıysa kayıt ücretlerini ödemek koşulu ile ders ve sınavlara katılma hariç, öğrencilere tanınan diğer haklardan yararlandırılmaksızın öğrencilik statüleri devam eder.
 
- - Azami öğretim süresi sonunda öğrencinin 5 adet dersi ancak nottan kaldıysa 3 yarıyıl daha ek süre verilir.
- - Öğrenci bu dersleri 3 derse indirebilirse, zaman sınırı olmadan sınav hakkı verilir.
+- Azami öğretim süresi sonunda öğrencinin 5 adet dersi ancak nottan kaldıysa 3 yarıyıl daha ek süre verilir.
+- Öğrenci bu dersleri 3 derse indirebilirse, zaman sınırı olmadan sınav hakkı verilir.
 
 ------------------------
 **Devamlılık Kuralları**
 ------------------------
 
-* Öğrenciler, teorik derslerin % 30’undan ve / veya uygulamaların % 20’sinden fazlasına devam etmezlerse başarısız sayılırlar.
-
-* Ortak zorunlu dersler dışındaki tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş olsa da devam şartı aranır.
+- Öğrenciler, teorik derslerin % 30’undan ve / veya uygulamaların % 20’sinden fazlasına devam etmezlerse başarısız sayılırlar.
+- Ortak zorunlu dersler dışındaki tekrarlanan derslerde önceki dönemde devam şartı yerine getirilmiş olsa da devam şartı aranır.
 
 ---------------------------
 **Sınava Katılma Şartları**
@@ -639,8 +634,11 @@ Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere
   - Seçmeli zorunlu dersler.
 
 * Alınabilecek toplam kredi minimum 30, maksimum 45 olmalıdır.
+
   - Bu değerlere alt yıl dersleri dahildir.
+
 * Muaf olunan dersler seçilemezler.
+
   - Danışman onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, danışman onay süreci içinde danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
 
 Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik program da fakülte kurulu tarafından yapılmış olmalıdır.
@@ -827,25 +825,18 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 **Sistem Tarafından Üretilecek Belgeler**
 =========================================
 
-* Öğrenci belgesi
+- Öğrenci belgesi
+- Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir.)
+- Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir.)
+- Not durum belgesi (Yıllık, dönemlik)
+- Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir.)
+- Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir.)
+- Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir.)
+- Diploma (Sadece mezun durumundaki öğrencilere verilebilir.)
 
-* Askerlik durum belgesi (Sadece erkek öğrencilere verilebilir.)
+  * Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
 
-* Transkript (Dönemlik bölümler için dönemlik, yıllık bölümler için yıllık verilir.)
-
-* Not durum belgesi (Yıllık, dönemlik)
-
-* Geçici mezuniyet belgesi (Sadece mezun durumundaki öğrencilere verilebilir.)
-
-* Tömer belgesi (Sadece tömer kursunda kayıtlı öğrencilere verilebilir.)
-
-* Yabancı uyruklu öğrenci bilgi formu (Sadece yabancı uyruklu öğrencilere verilebilir.)
-
-* Diploma (Sadece mezun durumundaki öğrencilere verilebilir.)
-
-    - Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
-
-* Diploma Eki (Sadece mezun durumundaki öğrencilere verilebilir)
+- Diploma Eki (Sadece mezun durumundaki öğrencilere verilebilir.)
 
 =====================
 **EBYS Entegrasyonu**
@@ -876,7 +867,7 @@ Sağlık Bilimleri ile birlikte online görüşme.
 Her staj dersi sistemde ayrı bir ders olarak açılır.
 Ara sınavları yoktur. Sadece final notu girilir. Final notu değerlendirme formu ile hesaplanır.
 
- * Her bir staj dersi için ayrı bir değerlendirme formu vardır. Bu değerlendirme formu ile öğrenci notu hesaplanır.
+* Her bir staj dersi için ayrı bir değerlendirme formu vardır. Bu değerlendirme formu ile öğrenci notu hesaplanır.
 Her kliniğin başarılması için barajlar vardır. Bu dersin tanımında yer almalıdır. Bu barajlar aşılmadığı zaman öğrenci değerlendirme formu açılmaz. Öğrenci final notu FF olarak sisteme işaretlenir.
 
 Eğer öğrenci başarısız olursa yaz stajına gelir. Burada aldığı not da bütünleme olarak kaydedilir.
