@@ -634,7 +634,7 @@ Mezuniyetleri müteakip akademik yıla taşan öğrenciler ise, o yarıyıl�
 
 Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
 
-Diploma yüksek onur/onur belgesi
+Diploma Yüksek Onur/Onur Belgesi
 ---------------------------------
 
 * Mezun olmaya hak kazanmış
@@ -643,9 +643,9 @@ Diploma yüksek onur/onur belgesi
 
 * Mezuniyet ağırlıklı not ortalaması
 
-3.50-4.00 - diploma yüksek onur öğrencisi
+3.50 - 4.00 - diploma yüksek onur öğrencisi
 
-3.00-3.49 - diploma onur öğrencisi
+3.00 - 3.49 - diploma onur öğrencisi
 
 Öğrenciye diploması ile birlikte diploma yüksek onur/diploma onur öğrencisi olduğunu gösteren bir belge verilir. Diploma ekinde belirtilir.
 
@@ -680,6 +680,7 @@ Tebligat ve Adres Bildirme
 Bildirim - Tebligat kayıt sırasında bildirilen adrese yapılır. Adres değişikliği ve bilgi değişikliği öğrencinin sorumluluğundadır. Eski adrese gitmiş ise tebligat yapılmış sayılır.
 
 BEŞİNCİ BÖLÜM
+------------------
 
 Çeşitli ve Son Hükümler
 ---------------------------
@@ -751,9 +752,11 @@ Akademik Personel Türleri
 **CEVAP:** Ders kodu farklı olmak şartıyla aynı isimde ders olabilir ve kredisi farklı olabilir.
 (Ders adı ve kodunun aynı olması kredilerin aynı olacağı anlamına gelmez)
 
-DERSID	DERSKODU		DERSADI	YIL	BOLUM	DONEM	KREDI
-1		MAT101		Matematik 1	2012	1		1		4
-2		MAT101		Matematik 1	2012	2		1		3
+DERSID	    DERSKODU		DERSADI	        YIL	    BOLUM	  DONEM	    KREDI
+
+1	    	MAT101		    Matematik 1	    2012	  1		    1		  4
+
+2		    MAT101		    Matematik 1	    2012	  2		    1		  3
 
 **SORU:** Mucahit, veritabanında şu an eksik olduğunu düşündüğün alanları buraya yazar mısın?
 
