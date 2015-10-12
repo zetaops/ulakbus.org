@@ -143,7 +143,7 @@ Kadrosuz Personel
 - Sistem Yöneticisi
 - Şirket Sorumlusu
 
-* Eğitim öğretim faaliyetlerini yürüten kişilerdir.
+* Eğitim-öğretim faaliyetlerini yürüten kişilerdir.
 * Ders saati ayarlayabilir.
 * Ders notu verebilir.
 
@@ -151,4 +151,3 @@ Kullanıcı Kuralları
 -------------------
 
 Dışarıdan ders veren hoca, aynı zamanda akademik personel gibi davranabilir.
-
