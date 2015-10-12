@@ -112,10 +112,10 @@ Her bir kullanıcının görev tanımı, yetki tanımı ve yapabileceği eylemle
 Öğrenci
 -------
 
-* Normal düzenli gelen
-* Farabi programı
-* Erasmus programı
-* Yabancı uyruklu
+- Normal düzenli gelen
+- Farabi programı
+- Erasmus programı
+- Yabancı uyruklu
 
 - Önlisans
 - Lisans
