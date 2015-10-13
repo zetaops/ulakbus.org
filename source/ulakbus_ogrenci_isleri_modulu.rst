@@ -165,11 +165,16 @@ Ders Süreleri
 - Erasmus
 - Farabi
 - Yabancı Öğrenci
-- Geçişler
+
+Geçişler
+--------
+
 - Dikey Geçiş
 - Yatay Geçiş
-- Dış yatay geçiş
-- İç yatay geçiş
+
+  * Dış yatay geçiş
+
+  * İç yatay geçiş
 
 Öğrencilerin önceki numaraları, GANO (genel ağırlıklı not ortalaması) bilgisi, geçiş sınav puanı, önceki universitede bitirilen yarıyıl adedi, önceki derslerin kodları ve içerikleri gibi bilgiler saklanmalıdır.
 
