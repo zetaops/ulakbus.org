@@ -62,10 +62,6 @@ ad              String
 kod
 okutman           **Okutman()**
 ana_ders          **Ders()**
-derslik           **Derslik()**
-saat              Int
-gun               String
-kredi             Int
 donem             String
 kontenjan         Int
 --
@@ -81,15 +77,22 @@ akts_uygulama     Float
 donem             Int
 ders_dili         String
 verilis_bicimi    Int
-
 --
+**Degerlendirme(ListNode)**
+|_ tur                           String
+|_ toplam_puana_etki_yuzdesi     Int
+
+note: tur, final, arasinav,
+tekders, butunleme, odev vb.
 }
 
 
 class Sinav <<(M,orchid)>> {
-ders              Ders()
-
+tarih             Date
+degerlendirme     **Degerlendirme()**
 }
+
+
 class Ogrenci <<(M,orchid)>> {
 ad                  String
 soyad               String
@@ -115,27 +118,16 @@ rol                 **Role()**
 
 --
 **Dersler(ListNode)**
-saat          String
-gun           String
-kontenjan     Int
-on_kosul      Boolean
-gecme_notu    Int
-akademik_yil  String
-donem         String
-|_ ders       **Sube()**
+ders       **Sube()**
 }
 
-
-class Degerlendirme <<(M,orchid)>> {
-ogrenci               **Ogrenci()**
-ders                  **Ders()**
-tur                   String
-tarih                 Date
-puan                  Int
---
-note: tur, final, arasinav,
-tekders, butunleme, odev vb.
+class DersProgrami<<(M,orchid)>> {
+sube                  **Sube()**
+derslik               **Derslik**
+gun                   String
+saat                  String
 }
+
 
 class DersDevamsizligi <<(M,orchid)>> {
 katilim_durumu    Int            * *
@@ -155,8 +147,11 @@ odeme_tarihi
 
 
 class Not <<(M,orchid)>> {
+puan     Integer
+--
 sinav    **Sinav()**
 ogrenci  **Ogrenci()**
+
 }
 
 class Donem <<(M,orchid)>> {
@@ -168,19 +163,23 @@ program            **Program()**
 }
 
 
-Sube "1" -- "0..*" Derslik
-Sinav "1" -- "0..*" Ders
-Not "1" --"0..*" Ogrenci
-
+DersProgrami "1" -- "0..*" Derslik
+DersProgrami "1" -- "0..*" Sube
+Sinav "1" -- "0..*" Sube
 
 Sube "0..*" -- "1" Okutman
 Sube "0..*" -- "1" Ogrenci
 
 Ders "1" --  "1" Program
 Ders "1" -- "0..*" Sube
+Ders "1" -- "0..*" Donem
 
 Program "1" -- "1" Birim
 Ogrenci "1" -- "0..*" DersDevamsizligi
+Sube "1" -- "0..*" DersDevamsizligi
 Program "1"-- "0..*" Donem
+
+Not "1" -- "0..*" Ogrenci
+Not "1"-- "0..*" Sinav
 
 @enduml
