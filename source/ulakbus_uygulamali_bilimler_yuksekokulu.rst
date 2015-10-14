@@ -61,7 +61,7 @@ Yüksekokul Öğrenci İşleri
 
   *  Ders ekleme-çıkarma
 
-- Öğrenci durumunu gücelleme (pasif, disiplin cezası, kayıt dondurma)
+- Öğrenci durumunu güncelleme (pasif, disiplin cezası, kayıt dondurma)
 
 - Harç işlemleri
 
