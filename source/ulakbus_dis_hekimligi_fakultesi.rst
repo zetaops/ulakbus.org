@@ -53,22 +53,27 @@ Fakültenin idari amiridir.
 **Fakülte Öğrenci İşleri**
 --------------------------
 
-*Öğrencilerin kayıt işlemleri*
-    İlk ve sonraki kayıtlar
+- Öğrencilerin kayıt işlemleri
 
-*Askerlik işlemleri*
-     Yeni kayıtları, kaydı silinenleri, mezun olanları, aktif öğrencileri askerlik şubesine bildiriyorsunuz. Askerlik durum belgesi çıktısı alınıp postayla gönderiliyor.
+  * İlk ve sonraki kayıtlar
 
-*Ders işlemleri*
-    Ders kaydı: Birinci sınıfa gelenler
+- Askerlik işlemleri
 
-*Ders ekleme çıkarma*
-    Öğrenci durumunu güncelleme (pasif, disiplin cezası, kayıt dondurma)
+  * Yeni kayıtları, kaydı silinenleri, mezun olanları, aktif öğrencileri askerlik şubesine bildiriyorsunuz. Askerlik durum belgesi çıktısı alınıp postayla gönderiliyor.
 
-*Harç işlemleri*
-    Öğrencinin harç bilgisi sistemde duracak. Banka web servisi ile bilgiyi alacak. Ödendiyse geri bildirecek.
+- Ders işlemleri
 
-*Mezuniyet İşlemleri*
+  * Ders kaydı: Birinci sınıfa gelenler
+
+- Ders ekleme-çıkarma
+
+  * Öğrenci durumunu güncelleme (pasif, disiplin cezası, kayıt dondurma)
+
+- Harç işlemleri
+
+  * Öğrencinin harç bilgisi sistemde duracak. Banka web servisi ile bilgiyi alacak. Ödendiyse geri bildirecek.
+
+- Mezuniyet İşlemleri
 
 ---------
 **Bölüm**
@@ -204,11 +209,8 @@ Bir dersin:
 YÖK Kanunu ve YÖK Yürütme Kurulu'nca belirlenen şu dersleri ifade eder:
 
 - Atatürk İlkeleri İnkılap Tarihi
-
 - Türk Dili
-
 - Yabancı Dil Dersleri
-
 - Bilgisayar Dersleri
 
 ------------------
@@ -277,7 +279,7 @@ Otomasyon ile başvurular alınabilir mi?
 
 **Muafiyet**
 
-- Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için öğretim yılı başında yapılır.CC ile geçer. Ortalamaya dahil edilir
+- Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için öğretim yılı başında yapılır.CC ile geçer. Ortalamaya dahil edilir.
 
 **Mazeret**
 
@@ -305,13 +307,11 @@ Otomasyon ile başvurular alınabilir mi?
 
 Öğrencinin kayıt dondurduğu yıllar dahil edilmez. Afla veya intibakla gelen öğrenciler için başlangıç dönemi girilecek ve bu dönemden itibaren kaç tane aktif dönemi varsa sayılarak maksimum süreyi geçip geçmediği tespit edilecek.
 
-
 **Af ve intibak:** Öğrenci gelir. Önceki durumu (en son transkript) bölüme gönderiyoruz. Bölüm kararı ile öğrencinin hangi derslerden muaf olduğu ve hangi dersleri alacağı bildirilir. Ayrıca hangi dönemden başlayacağı bildirilir. Öğrencinin önceki dönemleri kaç yılda tamamladığı hesaba katılmaz. Başladığı dönem hesaba katılarak azami ve normal öğretim süresi işletilir.
 
 Azami süreler içinde katkı payı veya öğrenim ücretinin ödenmemesi ile kayıt yenilenmemesi nedeniyle öğrencilerin ilişikleri kesilmez.
 
 Ancak üniversite yetkili kurullarının kararı ve YÖK onayı ile dört yıl üst üste katkı payı veya öğrenim ücretinin ödenmemesi ile kayıt yenilenmemesi nedeniyle öğrencilerin ilişikleri kesilebilir. - **İlişik kesme nedeni**.
-
 
 Azami süre içerisinde başarılı olmadıysa kayıt ücretlerini ödemek koşulu ile ders ve sınavlara katılma hariç, öğrencilere tanınan diğer haklardan yararlandırılmaksızın öğrencilik statüleri devam eder.
 
@@ -415,9 +415,7 @@ Dönem Ağırlıklı Not Ortalaması = O dönem alınan tüm derslerin ağırlı
 
 Genel Ağırlıklı Not Ortalaması = Kayıt olunan zamandan hesaplama zamanına kadar alınan ve harflenmiş tüm derslerin ağırlıklı not toplamı / aynı derslerin kredi toplamı
 
-Mezuniyet Ağırlıklı Not ortalaması:
-
-Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
+Mezuniyet Ağırlıklı Not ortalaması = Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
 
 Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5'ten küçükse 0'a indirgenir, 5'ten büyükse ikinci hane bir arttırılarak hesaplanır.
 
@@ -436,39 +434,26 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 **Ücret Hesaplama**
 -------------------
 
-Ücretler Harç Tipine göre hesaplanır.  100'lük hesaplancak.
+Ücretler Harç Tipine göre hesaplanır.  100'lük hesaplanacak.
 
 - Normal Harç
-
 - Formasyon Harcı
-
 - Yabancı Uyruklu
-
 - Ücretsizler (Şehit ve Gazi Çocukları)
-
 - Ücretsizler (Mavi kart)
-
 - Ücretsizler (Suriyeli)
-
 - Ücretsizler (YD Öğrenimini Tamamlayanlar)
-
 - Ücretsizler (YD Türk Okulunda Tamamlayanlar)
-
 - MEB Burslusu
-
 - Özel Üniversiteden Yatay Geçişle Gelen
-
 - Diyanet Burslusu
-
 - Türk Asıllı Yabancı Uyruklular
-
 - Türkiye Burslular
-
 - Hükümet Burslular
 
 İki farklı ücret hesaplanmaktadır.
 
-**Harç**: Bakanlar Kurulu tarafından belirlenen miktar **(HARÇ)**
+**Harç**: Bakanlar Kurulu tarafından belirlenen miktar **(HARC)**
 
 **Kalan Derslerin Kredi Toplamları:** Normal Öğretim Süresi ardından kalan dersler arasından ilgili dönemde alınacak derslerin kredi toplamı **(KDKT)**
 
@@ -481,7 +466,7 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 +---------------------------------------+-------------------------------------------+
 |    Normal Öğretim Süresi              |    0 TL                                   |
 +---------------------------------------+-------------------------------------------+
-|    Normal Öğretim Süresini Aşanlar    |    HARÇ + (((HARÇ / DKT) * KDKT) * 3/2)   |
+|    Normal Öğretim Süresini Aşanlar    |    HARC + (((HARC / DKT) * KDKT) * 3/2)   |
 +---------------------------------------+-------------------------------------------+
 |    Örnek Hesaplama                    |    300 + ((300 / 30) * 6 * 3/2)           |
 |    Harç 300 TL                        |    300 + 90                               |
@@ -494,9 +479,9 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 ------------------
 
 +---------------------------------------+-------------------------------------------+
-|    Normal Öğretim Süresi              |    HARÇ                                   |
+|    Normal Öğretim Süresi              |    HARC                                   |
 +---------------------------------------+-------------------------------------------+
-|    Normal Öğretim Süresini Aşanlar    |    HARÇ + (((HARÇ / DKT) * KDKT) * 3/2)   |
+|    Normal Öğretim Süresini Aşanlar    |    HARC + (((HARC / DKT) * KDKT) * 3/2)   |
 +---------------------------------------+-------------------------------------------+
 |    Örnek Hesaplama                    |    300 + ((300 / 30) * 6 * 3/2)           |
 |    Harç 300 TL                        |    300 + 90                               |
@@ -569,7 +554,7 @@ Haklı ve geçerli mazereti olan öğrencilerin öğrenim süreleri, yönetim ku
 Diş Hekimliği Fakültesi'nde en çok iki kez, en fazla 1 yıl süreyle kayıt dondurulabilir.
 Askerlik sebebiyle dondurulduysa, terhis süresine kadar doldurulur. Askerden sonra bir kez daha dondurma hakkı var mıdır?
 
-Hiç bir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, transkript) alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb.
+Hiçbir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, transkript) alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb.
 
 --------------
 *Kayıt Silme:*
@@ -863,7 +848,7 @@ Sağlık Bilimleri ile birlikte online görüşme.
 -----------------
 **Staj Dersleri**
 -----------------
-3. , 4. ve 5. sınıflarda farklı sürelerde olaiblir.
+3. , 4. ve 5. sınıflarda farklı sürelerde olabilir.
 Her staj dersi sistemde ayrı bir ders olarak açılır.
 Ara sınavları yoktur. Sadece final notu girilir. Final notu değerlendirme formu ile hesaplanır.
 

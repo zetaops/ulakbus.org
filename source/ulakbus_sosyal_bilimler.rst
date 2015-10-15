@@ -31,7 +31,7 @@ Müdür başkanlık eder.  Bağlı anabilim dalı başkanları enstitü müdür 
 Enstitü Yönetim Kurulu
 ----------------------
 
-Enstitü ile ilgili kararların alındığı birim.  Müdür başkanlık eder.  Üyeleri, 2 Müdür ymrdımcıları ve enstitü kurul üyelerinden seçilecek 3 üyeden oluşur. Müdür çağrısı üzerine toplanır.
+Enstitü ile ilgili kararların alındığı birim.  Müdür başkanlık eder.  Üyeleri, 2 müdür yardımcıları ve enstitü kurul üyelerinden seçilecek 3 üyeden oluşur. Müdür çağrısı üzerine toplanır.
 
 Öğrenci ve hocaların verdiği dilekçeleri inceler ve karara bağlar. Öğrencilerin kabulü, ders intibakları ve çıkarılmaları ile eğitim-öğretim ve sınavlara ait işlemler hakkında kararlar verir.
 
@@ -51,7 +51,7 @@ Enstitü Öğrenci İşleri
 
   * Askerlik durum belgesi çıktısı alınıp postayla gonderilir.
 
-- Öğrenci durumunu gücelleme (pasif, disiplin cezası, kayıt dondurma)
+- Öğrenci durumunu güncelleme (pasif, disiplin cezası, kayıt dondurma)
 - Mezuniyet işlemleri
 - Harç ve ders takip işlemleri
 
@@ -103,7 +103,7 @@ Danışman
 --------
 
 * Anabilim Dalı Başkanı önerisiyle Yönetim Kurulu tarafından görevlendirilen akademik personeldir.
-* Öğrencilerin ders seçme gibi eğitim, öğretim faaliyetlerine danışmanlık eder.
+* Öğrencilerin ders seçme gibi eğitim-öğretim faaliyetlerine danışmanlık eder.
 * Ders seçimlerinde yardımcı olur.
 * Ders onayı yapar.
 * Ders ekleme çıkarma yapabilir.
@@ -111,7 +111,7 @@ Danışman
 
   * öğrencinin seminer aşamasına,
 
-  *  doktora için yeterlilik aşamasına geçmesine onay verir.
+  * doktora için yeterlilik aşamasına geçmesine onay verir.
 
 * Öğrencinin kişisel bilgilerini, notlarını, devamsızlık durumunu görebilir.
 * Sistemden uyarılar alır.
@@ -160,8 +160,8 @@ Tezli Yüksek Lisans için:
 - Danışmanın uzmanlık alan dersi devam eder.
 - NEU’de uzmanlık alan dersi başarılı veya başarısız şeklinde işlenir.
 - Başka üniversitelerde uzmanlık alan dersine sınav yoktur, harf notu verilebilir.
-- 2 dönem yapamazsa öğrencilik haklarından yararlanmaksızın harç ödeyerek tez hazırlamaya devam eder. Sonsuza kadar.
-- Tamamlanan tez danışmana sunulur. Uygun görmesi halinde 3 kişilik bir jüri oluşturulur. Jüri  danışman, 1 tane ilgili Anabilim Dalı ve 1 tanesi de farklı anabilim dalından enstitü içinden oluşturulur. Anabilim Dalı Başkanı onayı ile enstitü YK'dan sınav tarihi alır.
+- 2 dönem yapamazsa öğrencilik haklarından yararlanmaksızın harç ödeyerek tez hazırlamaya devam eder. Zaman sınırı yoktur.
+- Tamamlanan tez danışmana sunulur. Uygun görmesi halinde 3 kişilik bir jüri oluşturulur. Jüri;  danışman, 1 tane ilgili Anabilim Dalı ve 1 tanesi de farklı anabilim dalından enstitü içinden oluşturulur. Anabilim Dalı Başkanı onayı ile enstitü YK'dan sınav tarihi alır.
 - Tez savunma sınavına girer. Sınavdan 3 karar çıkabilir:
 
   * Kabul edilir. Öğrenci mezun olur.  YÖKSİS'e işlenir. Diplamasını alır.
@@ -209,13 +209,13 @@ Doktora
 - Final ve bütünleme sınavlarına girer. Başaranlar doktora yeterlilik sınavına girmeye hak kazanır.
 - Hak kazananlara sınav tarihi belirlenir.
 - Doktora yeterlilik sınavları sadece Ekim / Kasım ve/veya Mart / Nisan aylarında yapılır.
-- Yeterlilik Sınavı Jürisi: Danışman ve ABD Başkanı'nın onayı ile 3 kişilik bir juri oluşturulur.
+- Yeterlilik Sınavı Jürisi: Danışman ve ABD Başkanı'nın onayı ile 3 kişilik bir jüri oluşturulur.
 
   * Danışman
 
   * Anabilim dalından bir hoca
 
-  * Dışarıdan bir hoca. Başka bir üniversiteden olabilir. Üniversitedeki başka bir akademik birimden olabilir.
+  * Dışarıdan bir hoca. Başka bir üniversiteden olabilir. Üniversitedeki başka bir akademik birimden de olabilir.
 
 - Öğrenci yeterlilik sınavına hem sözlü hem yazılı olarak girer. Sınav sonucu başarılı veya başarısız olarak enstitüye 3 gün içerisinde iletilir.
 - Öğrenci başarılıysa yeterlilik aşamasına geçilir. Başarısız ise bir sınav hakkı daha verilir. İki defa başarısız olmuşsa öğrencilik haklarından faydalanamaz. İstemesi halinde 6 ayda bir sınavlara devam edebilir.
@@ -249,7 +249,7 @@ Doktora
 
   * Birisi danışman, bir tanesi başka bir üniversiteden hoca olmak üzere 5 asil 2 yedek üyeden oluşur.
 
-- Tez savunma sınavı için en erken 1 ay sonraya tarih verilir. Tezlerin jüri üyeleri tarafından okunabilmeleri için.
+- Tezlerin jüri üyeleri tarafından okunabilmeleri amacıyla, tez savunma sınavı için en erken 1 ay sonraya tarih verilir.
 - Öğrenci juri karşısında tezini savunur.  Sınav sonucunda 3 karar verilebilir:
 
   * Kabul kararı. Jüri salt çoğunluğu yeterlidir. Öğrenci mezun olur.
@@ -275,9 +275,9 @@ Doktora
 
 **Doktora**
 
-- Yüksek Lisans Mezunu olmalı
+- Yüksek Lisans mezunu olmalı
 - ALES sınav sonuç belgesi olmalı
-- Dil belgesi olmalı (YÖK’ün kabul ettiği bazı sınavlar. Bunu her yıl sitesinden yayınlıyor. YDS kendi sınavı)
+- Dil belgesi olmalı (YÖK’ün kabul ettiği bazı sınavlar. Bunu her yıl sitesinden yayınlıyor. Örnek: YDS)
 - Bilim sınavına alınır. Tezlideki gibi öğrenci kabul edilir.
 
 Tezli ve doktorada öğrenci istemesi halinde danışman onayı ve YK kararı ile her dönem en fazla 1 dersini başka bir üniversiteden alabilir. Ders olduğu için not dönmesi gerekir.
@@ -385,7 +385,7 @@ Bilimsel Hazırlık
 
 Ön şartlar önceden ilan edilir.
 
-Öğrenci asgari yarım dönem, azami 1 yıl lisans programlarından veya yüksek lisans programlarından ders alır. Danışmanı ile ders seçiyor. En az 4 ders almalıdır. Kredisi dikkate alınmaz. 20 AKTS.
+Öğrenci asgari yarım dönem, azami 1 yıl lisans programlarından veya yüksek lisans programlarından ders alır. Danışmanı ile ders seçiyor. En az 4 ders almalıdır. Kredisi dikkate alınmaz. 20 AKTS'dir.
 
 Bilimsel hazırlık dersini enstitü açmışsa, kredisini anabilim dalı belirler. Ders eğer başka bir programdan alınıyorsa ilgili programdaki kredisi esas alınır.
 
@@ -415,7 +415,7 @@ Tezli Yüksek Lisansta 2 yıl - 4 dönem.
 * 2 dönem ders (ders dönemi 1 dönemde bitirilemez.)
 * 2 dönem tez.
 
-Tezsiz Yüksek Lisanta, 3 dönem.
+Tezsiz Yüksek Lisansta, 3 dönem.
 
 * 2 dönem ders
 * 1 dönem proje (öğrenci dönem içinde projeyi tamamladığı zaman mezun olabilir.)
@@ -623,10 +623,10 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 
 - Özel öğrenci. Başka bir üniversitede okuyan ya da dışarıdan katılan, sadece kendini geliştirmek için ders almak üzere gelenler.
 
-Azami süre içerisinde harç yok. Aşıldığında sadece harç hesaplanır. Ders başına ücret yoktur.
+Azami süre içerisinde harç yoktur. Aşıldığında sadece harç hesaplanır. Ders başına ücret yoktur.
 Tezsiz yüksek lisans için harç ödenir, tezli olanlar için harç ödenmez.
 
-**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARÇ)
+**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARC)
 
 Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
 
@@ -646,25 +646,19 @@ Kayıt İşlemleri
 
 **İlk Kayıt**
 
-* Öğrenci web sitesi üzerinden ön kayıt yapar.
+- Öğrenci web sitesi üzerinden ön kayıt yapar.
+- Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
+- Öğrenci için öğrenci numarası ve geçici bir parola verilir.
+- Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Askerlik engeli olanlar kayıt yaptıramazlar.
+- Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
+- 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
 
-* Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
+  * Harcını ödememiş olanların kayıt işlemleri yapılamaz.
 
-* Öğrenci için öğrenci numarası ve geçici bir parola verilir.
+  * Askerlik sıkıntısı olanların durumu bankaya uygun şekilde bildirilir.
 
-* Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Askerlik engeli olanlar kayıt yaptıramazlar.
-
-* Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
-
-* 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
-
-* Harcını ödememiş olanların kayıt işlemleri yapılamaz.
-
-* Askerlik sıkıntısı olanların durumu bankaya uygun şekilde bildirilir.
-
-* Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
-
-* Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur.  öğrenci kayıtlı hale gelir.
+- Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
+- Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur. Öğrenci kayıtlı hale gelir.
 
 Kayıt dönemi kapandığında kesin kayıt haline gelmemiş geçici kayıtlar ve ön kayıtlar silinir.
 Kesin kayıt dönemi bittiğinde boş kontenjanlar için rapor haline getirilir. Web'den duyurulur.
@@ -728,7 +722,7 @@ Dersler, ders karşılıkları şeklinde işlenir. Kredi değerleri açıklamas�
 Ders Açma
 ---------
 
-Program yıllara göre versiyonlanır. Her öğrenim yılı başında program yeni versiyona geçer. Değişikliker işlenir. Ders ile ilgili kurallar ve şubeler tanımlanır.
+Program yıllara göre versiyonlanır. Her öğrenim yılı başında program yeni versiyona geçer. Değişiklikler işlenir. Ders ile ilgili kurallar ve şubeler tanımlanır.
 
 Ders Alma Biçimleri
 -------------------
@@ -1012,7 +1006,7 @@ Hoca notları kendi ekrarnından girer. Yayınla diyene kadar her türlü deği�
 
 Öğrenci itirazları yine dilekçe üzerinden takip edilip, öğrenci işleri tarafından yapılır.
 
-Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemli.
+Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemlidir.
 
 Hoca dilekçesi üzerine tüm notlar yayından kaldırılıp, hocanın değerlendirilmesine açılabilir.
 

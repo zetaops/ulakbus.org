@@ -140,7 +140,7 @@ Bölüm Kurulu’nun önerisi üzerine Yönetim Kurulu tarafından karara bağla
 Ders
 ----
 
-- 1. ,  2. ve 3. sınıflarda entegre derslerden oluşur.
+- 1.,  2. ve 3. sınıflarda entegre derslerden oluşur.
 - Entegre ders, alt derslerden oluşur.
 - Alt dersler teorik ve pratik ders saatlerinden oluşur.
 
@@ -149,7 +149,7 @@ Ders Kurulu, entegre ders içindeki ders gruplarından oluşur. Ders Kurulu’nu
 4. , 5. ve 6. sınıflarda dersler, belirli süreli stajlardan oluşur. Bu stajların sürelerine, içeriklerine eğitim komisyonu karar verir. Koordinatörler ve baş koordinatörler uygulamadan sorumludurlar.
 Öğrencilerin gruplara ayrılması da koordinatörlerin sorumluluğundadır. Koordinatörler staj seyir tablosundan sorumludur.  Gruplara ayrılan öğrenciler koordinatör tarafından öğrenci işlerine bildirilir.
 
-4. , 5. ve 6. sınıflarda tüm stajlar bitirilmeden üst dönemden staj alınamaz. Kalan stajlar tamamlandıktan sonra, staj seyrine uygun şekilde üst dönemden ders alabilir.
+4., 5. ve 6. sınıflarda tüm stajlar bitirilmeden üst dönemden staj alınamaz. Kalan stajlar tamamlandıktan sonra, staj seyrine uygun şekilde üst dönemden ders alabilir.
 
 Öğrenci Şubesi
 --------------
@@ -274,10 +274,8 @@ Sınavlar
 Kural Setleri
 -------------
 
-
 Süreler
 -------
-
 
 Normal Öğretim Süresi
 ---------------------
@@ -427,7 +425,9 @@ Dönem hesabı yapılırken o dönem alınan fakat kapatılan dersler hesaplamay
 İki farklı ücret hesaplanmaktadır:
 
 **Harç:** Bakanlar Kurulu tarafından belirlenen miktar **(HARC)**
+
 **Kalan Derslerin Kredi Toplamları:** Normal öğretim süresi ardından kalan dersler arasından ilgili dönemde alınacak derslerin kredi toplamı **(KDKT)**
+
 **Dönem Kredi Toplamı:** O dönemde alınması gereken toplam kredi **(DKT)**
 
 Normal Öğrenim
@@ -483,7 +483,7 @@ Kayıt Yenileme
 - Normal öğretim süresi içinde olan öğrenciler harç ödemeden,ders seçimi yaparak kayıt yenilerler.
 - Bu aşamaların ardından dersler öğrenci işleri tarafından onaylanır.
 - Kayıt yenileme işlemi tamamlanır.
-- Kayıt Dondurma
+- Kayıt dondurma
 - Haklı ve geçerli mazereti olan öğrencilerin öğrenim süreleri, Yönetim Kurulu kararıyla dondurulur. Sağlık ile ilgili mazeretlerde sağlık kurulu raporu zorunludur. Kayıt dondurma süresi öğretim sürelerinden sayılmaz.
 
 Hiçbir öğrencilik haklarından faydalanamazlar. Belgeleri (askerlik, öğrenci, transkript)  alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb..
@@ -535,9 +535,8 @@ Ara dönemlerde sınıf değiştiren öğrenciler ders seçimi yaparlar.
 
 Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere sahip olmalıdır:
 
-  * Öncelik, alt yarıyıllarda hiç alınmayan, devamsız veya başarısız olunan derslere verilmelidir.
-
-  * Muaf olunan dersler, dilekçe ile muafiyetinden vazgeçilip, seçilebilir olabilirler.
+- Öncelik, alt yarıyıllarda hiç alınmayan, devamsız veya başarısız olunan derslere verilmelidir.
+- Muaf olunan dersler, dilekçe ile muafiyetinden vazgeçilip, seçilebilir olabilirler.
 
 Ders seçiminin ardından harç hesabı yapılır.
 

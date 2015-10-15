@@ -32,7 +32,7 @@ Müdür başkanlık eder.  Bağlı anabilim dalı başkanları enstitü müdür 
 Enstitü Yönetim Kurulu
 ----------------------
 
-Enstitü ile ilgili kararların alındığı birim.  Müdür başkanlık eder.  Üyeleri, 2 Müdür ymrdımcıları ve enstitü kurul üyelerinden seçilecek 3 üyeden oluşur. Müdür çağrısı üzerine toplanır.
+Enstitü ile ilgili kararların alındığı birim.  Müdür başkanlık eder.  Üyeleri, 2 müdür yardımcıları ve enstitü kurul üyelerinden seçilecek 3 üyeden oluşur. Müdür çağrısı üzerine toplanır.
 
 Öğrenci ve hocaların verdiği dilekçeleri inceler ve karara bağlar. Öğrencilerin kabulü, ders intibakları ve çıkarılmaları ile eğitim-öğretim ve sınavlara ait işlemler hakkında kararlar verir.
 
@@ -50,23 +50,18 @@ Enstitü Öğrenci İşleri
 
 - Askerlik işlemleri
 
-* Yeni kayıtlar, kaydı silinenler, mezun olanlar, aktif öğrenciler askerlik şubesine bilidirilir.
-
-* Askerlik durum belgesi çıktısı alınıp postayla gonderilir.
-
+- Yeni kayıtlar, kaydı silinenler, mezun olanlar, aktif öğrenciler askerlik şubesine bilidirilir.
+- Askerlik durum belgesi çıktısı alınıp postayla gonderilir.
 - Ders işlemleri
 
   * Ders kaydı
 
-     Birinci döneme gelenler
+    * Birinci döneme gelenler
 
   * Ders ekleme çıkarma
 
-
-- Öğrenci durumunu gücelleme (pasif, disiplin cezası, kayıt dondurma)
-
+- Öğrenci durumunu güncelleme (pasif, disiplin cezası, kayıt dondurma)
 - Mezuniyet işlemleri
-
 - Harç işlemleri
 
   * Öğrencinin harç bilgisi sistemde duracak. Banka web servisi ile bilgiyi alacak. Ödendiyse geri bildirecek.
@@ -143,7 +138,7 @@ Bilimsel Hazırlık
 
 Ön şartlar önceden ilan edilir.
 
-Öğrenci asgari yarım dönem, azami 1 yıl lisans programlarından veya yüksek lisans programlarından ders alır. Danışmanı ile ders seçiyor. En az 4 ders almalıdır. Kredisi dikkate alınmaz. 20 AKTS.
+Öğrenci asgari yarım dönem, azami 1 yıl lisans programlarından veya yüksek lisans programlarından ders alır. Danışmanı ile ders seçiyor. En az 4 ders almalıdır. Kredisi dikkate alınmaz. 20 AKTS'dir.
 
 **Azami 1 yılın ardından ders seçemez.**
 
@@ -192,8 +187,8 @@ Tezli Yüksek Lisans için:
 - Danışmanın uzmanlık alan dersi devam eder.
 - NEU’de uzmanlık alan dersi başarılı veya başarısız şeklinde işlenir.
 - Başka üniversitelerde uzmanlık alan dersine sınav yoktur, harf notu verilebilir.
-- 2 dönem yapamazsa öğrencilik haklarından yararlanmaksızın harç ödeyerek tez hazırlamaya devam eder. Sonsuza kadar.
-- Tamamlanan tez danışmana sunulur. Uygun görmesi halinde 3 kişilik bir jüri oluşturulur. Jüri  danışman, 1 tane ilgili Anabilim Dalı ve 1 tanesi de farklı anabilim dalından enstitü içinden oluşturulur. Anabilim Dalı Başkanı onayı ile enstitü YK'dan sınav tarihi alır.(2 yedek olur.)
+- 2 dönem yapamazsa öğrencilik haklarından yararlanmaksızın harç ödeyerek tez hazırlamaya devam eder. Zaman sınırı yoktur.
+- Tamamlanan tez danışmana sunulur. Uygun görmesi halinde 3 kişilik bir jüri oluşturulur. Jüri;  danışman, 1 tane ilgili Anabilim Dalı ve 1 tanesi de farklı anabilim dalından enstitü içinden oluşturulur. Anabilim Dalı Başkanı onayı ile enstitü YK'dan sınav tarihi alır.(2 yedek olur.)
 - Tez savunma sınavına girer. Sınavdan 3 karar çıkabilir.
 
   * Kabul edilir. Öğrenci mezun olur.  YÖKSİS'e işlenir. Diplamasını alır.
@@ -285,11 +280,11 @@ Doktora
 - Tez savunma sınavı için en erken 1 ay sonraya tarih verilir. Tezlerin jüri üyeleri tarafından okunabilmeleri için.
 - Öğrenci juri karşısında tezini savunur.  Sınav sonucunda 3 karar verilebilir:
 
-* Kabul kararı. Jüri salt çoğunluğu yeterlidir. Öğrenci mezun olur.
+  * Kabul kararı. Jüri salt çoğunluğu yeterlidir. Öğrenci mezun olur.
 
-* Düzeltme kararı. Gerekçelidir. Gerekçe ortak veya bireysel yazılabilir. Öğrenci 6 ay içinde tezi kararda yazılan şekilde düzelterek yeniden savunur. Direnebilir fakat genelde, düzeltir.
+  * Düzeltme kararı. Gerekçelidir. Gerekçe ortak veya bireysel yazılabilir. Öğrenci 6 ay içinde tezi kararda yazılan şekilde düzelterek yeniden savunur. Direnebilir fakat genelde, düzeltir.
 
-* Red kararı. Öğrenci hakları olmaksızın tez aşamasına geri döner.
+  * Red kararı. Öğrenci hakları olmaksızın tez aşamasına geri döner.
 
 Öğrenci alım kriterleri
 -----------------------
@@ -299,7 +294,7 @@ Doktora
 - ALES sınav sonuç belgesi
 - Lisans programından mezun olması
 - Öğrenciler bilim sınavına alınır. Bilim sınavına göre ALES %60, Mezuniyet Puanı 20%, bilim sınavının %20'si alınarak kontejan dahilinde yukarıdan aşağıya alınır.
-- Kontenjanlar yk tarafından dönem başında belirlenir.
+- Kontenjanlar YK tarafından dönem başında belirlenir.
 - Bir anabilim dalı istemesi halinde bilim sınavı yapmadan ALES %60, Mezuniyet Puanı %40 ile öğrenci kabul edebilir.
 
 **Tezsiz**
@@ -308,7 +303,7 @@ Doktora
 
 **Doktora**
 
-- Yüksek Lisans Mezunu olmalı
+- Yüksek Lisans mezunu olmalı
 - ALES sınav sonuç belgesi olmalı
 - Dil belgesi olmalı (YÖK’ün kabul ettiği bazı sınavlar. Bunu her yıl sitesinden yayınlıyor. YDS kendi sınavı)
 - Bilim sınavına alınır. Tezlideki gibi öğrenci kabul edilir.
@@ -615,7 +610,7 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 Sadece harç hesaplanır. Normal öğretim süresinde
 Tezsiz yüksek lisans için harç ödenir, tezli olanlar için harç ödenmez.
 
-**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARÇ)
+**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARC)
 
 Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
 
@@ -627,17 +622,17 @@ Kayıt İşlemleri
 
 **İlk Kayıt**
 
-* Öğrenci web sitesi üzerinden ön kayıt yapar.
+- Öğrenci web sitesi üzerinden ön kayıt yapar.
 
-* Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
+- Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
 
-* Öğrenci için öğrenci numarası ve geçici bir parola verilir.
+- Öğrenci için öğrenci numarası ve geçici bir parola verilir.
 
-* Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Öğrencinin durumu ASAL servisine bildirilir. ASAL’dan gelebilecek bilgiler kayıt önüne engel değildir. Öğrencinin askerlik hizmetine başlayacak olması kayıt dondurma  için geçerli bir sebeptir.
+- Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Öğrencinin durumu ASAL servisine bildirilir. ASAL’dan gelebilecek bilgiler kayıt önüne engel değildir. Öğrencinin askerlik hizmetine başlayacak olması kayıt dondurma  için geçerli bir sebeptir.
 
-* Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
+- Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
 
-* 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
+- 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
 
   * Harcını ödememiş olanların kayıt işlemleri yapılamaz.
 
@@ -645,7 +640,7 @@ Kayıt İşlemleri
 
 * Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
 
-* Öğrencinin lisans bilgileri, adı, bölümü, mazuniyet tarihi vb. sisteme kaydedilir.
+* Öğrencinin lisans bilgileri, adı, bölümü, mezuniyet tarihi vb. sisteme kaydedilir.
 
 * Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur.  öğrenci kayıtlı hale gelir.
 
@@ -704,7 +699,7 @@ Aşağıdaki hallerde kayıt silme işlemi yapılır:
 Ders Açma
 ---------
 
-Program yıllara göre versiyonlanır. Her öğrenim yılı başında program yeni versiyona geçer. Değişikliker işlenir. Ders ile ilgili kurallar ve şubeler tanımlanır.
+Program yıllara göre versiyonlanır. Her öğrenim yılı başında program yeni versiyona geçer. Değişiklikler işlenir. Ders ile ilgili kurallar ve şubeler tanımlanır.
 
 Ders Alma Biçimleri
 -------------------
