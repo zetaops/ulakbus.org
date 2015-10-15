@@ -24,8 +24,24 @@ endtitle
 
 class Okutman<<(M,orchid)>>{
 calisan         **Personel()**
-ad              String
-tip             String
+ad                 String
+soyad              String
+tckn               String
+dogum_tarihi       String
+dogum_yeri         String
+tip                String
+ucret              String
+uyruk              String
+ikamet_adresi      String
+telefon_no         String
+oda_no             String
+oda_tel_no         String
+e_posta            String
+kan_grubu          String
+fakulte            String
+bolum              String
+akademik_yayinlari String
+verdigi_dersler    String
 --
 note: non-employee (guest) lecturers data
 will be stored here
@@ -33,7 +49,8 @@ will be stored here
 }
 
 class Program<<(M,orchid)>>{
-birim                            **Birim()** 'bolum
+birim                            **Birim()**
+bolum                              String
 ucret                              Int
 yil                                String
 donem                              Int
@@ -53,13 +70,16 @@ akademik_kordinator              **Role()**
 class Derslik<<(M,orchid)>>{
 kod             String
 bina            String
+tur             String
+kapasite        String
+
 --
 dersler        **Sube()**
 }
 
 class Sube<<(M,orchid)>>{
-ad              String
-kod
+ad                String
+kod               String
 okutman           **Okutman()**
 ana_ders          **Ders()**
 donem             String
@@ -89,6 +109,8 @@ tekders, butunleme, odev vb.
 
 class Sinav <<(M,orchid)>> {
 tarih             Date
+tur               String
+aciklama          String
 degerlendirme     **Degerlendirme()**
 }
 
@@ -111,6 +133,10 @@ tel_no              Int
 akademik_yil        String
 donem               String
 kan_grubu           String
+basari_durumu       String
+ilisik_kesme        String
+hazırlık_durumu     Boolean
+belge_basvurusu     String
 
 
 ders_programi       **DersProgrami()**
@@ -118,7 +144,7 @@ rol                 **Role()**
 
 --
 **Dersler(ListNode)**
-ders       **Sube()**
+ders                **Sube()**
 }
 
 class DersProgrami<<(M,orchid)>> {
@@ -130,36 +156,37 @@ saat                  String
 
 
 class DersDevamsizligi <<(M,orchid)>> {
-katilim_durumu    Int            * *
+katilim_durumu       Int            * *
 --
-ders              **Sube()**     * *
-ogrenci           **Ogrenci()**  * *
+ders                 **Sube()**     * *
+ogrenci              **Ogrenci()**  * *
 }
 
 class Borc <<(M,orchid)>> {
-miktar   Float
-tur      Int
-ogrenci  **Ogrenci()**
-donem    **Donem()**
-son_odeme_taerihi
-odeme_tarihi
+miktar                Float
+tur                   Int
+ogrenci               **Ogrenci()**
+donem                 **Donem()**
+son_odeme_tarihi      Date
+odeme_tarihi          Date
+durum                 Boolean
 }
 
-
 class Not <<(M,orchid)>> {
-puan     Integer
+puan                  Integer
+aciklama              String
 --
-sinav    **Sinav()**
-ogrenci  **Ogrenci()**
+sinav                 **Sinav()**
+ogrenci               **Ogrenci()**
 
 }
 
 class Donem <<(M,orchid)>> {
-baslangic_tarihi   date
-bitis_tarihi       date
-ad                 String
-ucret              Int
-program            **Program()**
+baslangic_tarihi      date
+bitis_tarihi          date
+ad                    String
+ucret                 Int
+program               **Program()**
 }
 
 
