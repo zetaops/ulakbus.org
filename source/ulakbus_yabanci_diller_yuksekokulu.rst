@@ -339,9 +339,8 @@ Sınıf Açma
 Ders Alma Biçimleri
 -------------------
 
-İlk
-
-İsteğe bağlı tekrar. Devam zorunluluğu vardır.
+- İlk
+- İsteğe bağlı tekrar. Devam zorunluluğu vardır.
 
 Sınavsız Muafiyet
 -----------------

@@ -273,11 +273,13 @@ Kural Setleri
 Süreler
 -------
 
-- Normal Öğretim Süresi
+Normal Öğretim Süresi
+---------------------
 
 Üniversiteden süreli uzaklaştırma cezası alan öğrencilerin ceza süreleri ve mesleki hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılır. Ancak yabancı dil hazırlık sınıfı için verilen ek süreler eğitim-öğretim süresinden sayılmaz. Kayıt dondurma sayılmaz.
 
-- Azami Öğretim Süresi
+Azami Öğretim Süresi
+--------------------
 
 Öğrencinin kayıt dondurduğu yıllar dahil edilmez. Afla veya intibakla gelen öğrenciler için başlangıç dönemi girilecek ve bu dönemden itibaren kaç tane aktif dönemi varsa sayılarak maksimum süreyi geçip geçmediği tespit edilecek.
 
@@ -291,9 +293,8 @@ Azami süre içerisinde başarılı olmadıysa kayıt ücretlerini ödemek koşu
 
 Azami öğretim süresi sonunda;
 
-  * Öğrencinin 5 adet dersi ancak nottan kaldıysa 3 yarıyıl daha ek süre verilir.
-
-  * Öğrenci bu dersleri 3 derse indirebilirse, zaman sınırı olmadan sınav hakkı verilir.
+- Öğrencinin 5 adet dersi ancak nottan kaldıysa 3 yarıyıl daha ek süre verilir.
+- Öğrenci bu dersleri 3 derse indirebilirse, zaman sınırı olmadan sınav hakkı verilir.
 
 http://www.resmigazete.gov.tr/eskiler/2014/11/20141126-3.htm  Madde 25 ve devamı
 
@@ -417,7 +418,9 @@ Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5’ten küçüks
 İki farklı ücret hesaplanmaktadır:
 
 **Harç:** Bakanlar Kurulu tarafından belirlenen miktar **(HARC)**
+
 **Kalan Derslerin Kredi Toplamları:** Normal Öğretim Süresi ardından kalan dersler arasından ilgili dönemde alınacak derslerin kredi toplamı **(KDKT)**
+
 **Dönem Kredi Toplamı:** O dönemde alınması gereken toplam kredi **(DKT)**
 
 Normal Öğrenim

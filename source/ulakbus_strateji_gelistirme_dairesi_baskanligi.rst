@@ -191,7 +191,9 @@ Strateji Dairesi
 ----------------
 
 Mal Alımı - 200
+
 Hizmet Alımı - 300
+
 Yapım İşleri - 500
 
 için ödenek rakamları girecek.

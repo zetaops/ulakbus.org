@@ -66,8 +66,8 @@ Paylaşılan Teknik Özellikler Belgesinden Çıkan Kavramlar
 - Görevleri
 - İmza Paraf Yetkileri
 
-Bölgesel Sabitler?
-------------------
+Bölgesel Sabitler
+-----------------
 
 - Nüfus Bilgileri, Nufüs İdaresi Sistemi ile
 - Adres Bilgileri Adres Kayıt Siteminden

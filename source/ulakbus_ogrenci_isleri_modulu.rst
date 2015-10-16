@@ -46,7 +46,7 @@ YÖK tarafından zorunlu olarak konulan veya akademik birimler tarafından açı
 Müfredat / Yarıyıl ve Yıllık Öğretim Programı
 ---------------------------------------------
 
-Belli ders gruplarından oluşurlar. Müfredatlar önceden tanımlı derslerden oluşurlar. Yılı, dönemi, geçerlilik tarihleri, toplam kredisi, AKTS kredisi gibi değerler tanımlanırlar. Öğretim programının başarıyla bitirilebilmesi için gerekli şartlar (örneğin 140 kredi tamamlanması), “önkoşul zincirleriyle” birlikte bu kısımda sisteme girilebilmelidir. Bir bölümde birden fazla program olabilir. Müfredatlardaki değişiklikler kayıt altına alınmalı, istenildiğinde görüntülenebilmeli ve değişiklik kararlarına ilişkin resmi yazılara erişim sağlanabilmelidir.
+Belli ders gruplarından oluşurlar. Müfredatlar önceden tanımlı derslerden oluşurlar. Yılı, dönemi, geçerlilik tarihleri, toplam kredisi, AKTS kredisi gibi değerler tanımlanırlar. Öğretim programının başarıyla bitirilebilmesi için gerekli şartlar (örneğin 140 kredi tamamlanması), “ön koşul zincirleriyle” birlikte bu kısımda sisteme girilebilmelidir. Bir bölümde birden fazla program olabilir. Müfredatlardaki değişiklikler kayıt altına alınmalı, istenildiğinde görüntülenebilmeli ve değişiklik kararlarına ilişkin resmi yazılara erişim sağlanabilmelidir.
 
 **Özet:**
 
@@ -59,82 +59,83 @@ Ders için bir dönemde açılacak sınav sayısı sınırsız olabilir. Bu sın
 
 **Ara sınav (vize)**
 
-  * Kurallar: Ara sınav sayısı en az 1 olmak üzere 1’den fazla tanımlanabilir. Her ders için bu sayı farklı olarak tanımlanabilir. Hoca tarafından açılıp katkıları değiştirilebilir.
+- Kurallar: Ara sınav sayısı en az 1 olmak üzere 1’den fazla tanımlanabilir. Her ders için bu sayı farklı olarak tanımlanabilir. Hoca tarafından açılıp katkıları değiştirilebilir.
 
 **Genel sınav (final)**
 
-  * Kurallar: Her bir ders için dönemde 1 kez yapılabilir. Dersin harflendirmesi bu sınavın sonucu yayınlanırken hesaplanır.  Hoca tarafından katkısı değiştirilebilir.
+- Kurallar: Her bir ders için dönemde 1 kez yapılabilir. Dersin harflendirmesi bu sınavın sonucu yayınlanırken hesaplanır.  Hoca tarafından katkısı değiştirilebilir.
 
 **Bütünleme sınavı**
 
-  * Kurallar: Her bir ders için dönemde 1 kez yapılabilir. Yanlızca genel sınav sonucunda durumu “KALDI” olan öğrenciler girebilir. Dersin harflendirmesinde bu sınava giren öğrencilerin genel sınavı hesaplanmaz yerine bütünleme sınavı dahil edilir. Katkısı genel sınavın katkısına eşit olmalıdır.
+- Kurallar: Her bir ders için dönemde 1 kez yapılabilir. Yanlızca genel sınav sonucunda durumu “KALDI” olan öğrenciler girebilir. Dersin harflendirmesinde bu sınava giren öğrencilerin genel sınavı hesaplanmaz yerine bütünleme sınavı dahil edilir. Katkısı genel sınavın katkısına eşit olmalıdır.
 
 **Muafiyet sınavı**
 
-  * Kurallar: Dönemin başında dersten muaf olacak öğrencileri belirlemek için yapılır. Her dönemde 1 kez yapılabilir. Katkısı 100% olmalıdır. Sınav sonucunda geçme şartını sağlayan öğrenciler için harflendirme yapılarak GEÇTİ durumuna alınmalıdır. Kalan öğrenciler dersi almaya devam edecekleri için dersi alıyor durumunda olmalıdır.
+- Kurallar: Dönemin başında dersten muaf olacak öğrencileri belirlemek için yapılır. Her dönemde 1 kez yapılabilir. Katkısı 100% olmalıdır. Sınav sonucunda geçme şartını sağlayan öğrenciler için harflendirme yapılarak GEÇTİ durumuna alınmalıdır. Kalan öğrenciler dersi almaya devam edecekleri için dersi alıyor durumunda olmalıdır.
 
 **Tek ders sınavı**
 
-  * Kurallar: Tüm derslerden geçip yanlızca 1 dersten kalan öğrenciler için dönem sonunda yapılır. Sınava girecek öğrenciler öğrenci işleri tarafından belirlenir ve sınav sonucundaki notlar öğrenci işleri tarafından girilir. Muafiyet sınavına benzer şekilde katkısı 100% olup geçen ve kalan ğrenciler harflendirir. Kalan öğrenciler dersin açıldığı bir sonraki dönemde bu dersi tekrar alır. (Bazı üniversitelerde 2 dersten kalan öğrenciler girebilir.) (26 Kasım yönetmeliğinde değiştirilmiş)
+- Kurallar: Tüm derslerden geçip yanlızca 1 dersten kalan öğrenciler için dönem sonunda yapılır. Sınava girecek öğrenciler öğrenci işleri tarafından belirlenir ve sınav sonucundaki notlar öğrenci işleri tarafından girilir. Muafiyet sınavına benzer şekilde katkısı 100% olup geçen ve kalan ğrenciler harflendirir. Kalan öğrenciler dersin açıldığı bir sonraki dönemde bu dersi tekrar alır. (Bazı üniversitelerde 2 dersten kalan öğrenciler girebilir.) (26 Kasım yönetmeliğinde değiştirilmiş)
 
 **Staj sınav**
 
-  * Kurallar: Staj derslerinde öğrencilerin staj notlarını girmeleri için açılır. Katkısı 100% olmalıdır. Notu girildiğinde öğrenciler harflendirilir. Bu sınavın açıldığı derste final ve bütünleme olmaz.
+- Kurallar: Staj derslerinde öğrencilerin staj notlarını girmeleri için açılır. Katkısı 100% olmalıdır. Notu girildiğinde öğrenciler harflendirilir. Bu sınavın açıldığı derste final ve bütünleme olmaz.
 
 **Ek sınav**
 
-  * Kurallar:
+- Kurallar:
 
 **Online sınav**
 
-  * Kurallar:
+- Kurallar:
 
 **Yeterlilik sınavı**
 
-  * Kurallar:
+- Kurallar:
 
 **Kısa yoklama**
 
-  * Kurallar:
+- Kurallar:
 
 **Uzun Yoklama**
 
-  * Kurallar:
+- Kurallar:
 
 **Sınıf içi Değerlendirme**
 
-  * Kurallar:
+- Kurallar:
 
 **Quiz**
 
-  * Kurallar:
+- Kurallar:
 
 Not Türleri
 -----------
 
 Ders Türleri
 ------------
-Erasmus
-Normal
-Seçmeli
-Staj
-Hazırlık
-Entegre
+
+- Erasmus
+- Normal
+- Seçmeli
+- Staj
+- Hazırlık
+- Entegre
 
 Ders Süreleri
 -------------
 
 **Yıllık**
 
-  * Kurallar:
+- Kurallar:
 
 **Dönemlik**
 
-  * Kurallar:
+- Kurallar:
 
 **Belli süreli**
 
-  * Kurallar:
+- Kurallar:
 
 Öğrenci
 -------

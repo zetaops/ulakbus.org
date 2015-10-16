@@ -130,22 +130,23 @@ Akademik Personel
 
 Kendi içinde hiyerarşik dizilimi vardır. Dizilim sırası:
 
-İdari Personel
---------------
+- İdari Personel
 
-- Tekniker
-- Memur
-- Mühendis
+  * Tekniker
 
-Kadrosuz Personel
------------------
+  *  Memur
 
-- Sistem Yöneticisi
-- Şirket Sorumlusu
+  * Mühendis
 
-* Eğitim-öğretim faaliyetlerini yürüten kişilerdir.
-* Ders saati ayarlayabilir.
-* Ders notu verebilir.
+- Kadrosuz Personel
+
+  * Sistem Yöneticisi
+
+  * Şirket Sorumlusu
+
+- Eğitim-öğretim faaliyetlerini yürüten kişilerdir.
+- Ders saati ayarlayabilir.
+- Ders notu verebilir.
 
 Kullanıcı Kuralları
 -------------------

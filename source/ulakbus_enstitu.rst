@@ -57,7 +57,7 @@ Enstitü Öğrenci İşleri
 
   * Ders Ekleme-Çıkarma
 
-- Öğrenci durumunu gücelleme (pasif, disiplin cezası, kayıt dondurma)
+- Öğrenci durumunu güncelleme (pasif, disiplin cezası, kayıt dondurma)
 - Mezuniyet işlemleri
 - Harç işlemleri: Öğrencinin harç bilgisi sistemde duracak. Banka web servisi ile bilgiyi alacak. Ödendiyse geri bildirecek.
 
@@ -111,7 +111,7 @@ Danışman
 * Anabilim Dalı Başkanı önerisiyle Yönetim Kurulu tarafından görevlendirilen akademik personeldir.
 * Öğrencilerin ders seçme gibi eğitim, öğretim faaliyetlerine danışmanlık eder.
 * Ders onayı yapar.
-* Ders ekleme çıkarma yapabilir.
+* Ders ekleme-çıkarma yapabilir.
 * Transkript görüp mezuniyet onayı verir.
 * Öğrencinin kişisel bilgilerini, notlarını, devamsızlık durumunu görebilir.
 * Sistemden uyarılar alır.
@@ -375,7 +375,7 @@ Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplama
 
 Sadece harç hesaplanır. Normal öğretim süresinde Tezsiz Yüksek Lisans için harç ödenir, Tezli olanlar için harç ödenmez.
 
-**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARÇ)
+**Harç:** Bakanlar Kurulu tarafından belirlenen miktar (HARC)
 
 Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da katkı payını veya ikinci öğretim ücretini öderler. Ancak tek ders sınavında başarılı olan öğrenciden o dönemin harcı alınmaz.
 
@@ -739,7 +739,7 @@ Hoca notları kendi ekrarnından girer. Yayınla diyene kadar her türlü deği�
 
 Öğrenci itirazları yine dilekçe üzerinden takip edilip, öğrenci işleri tarafından yapılır.
 
-Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemli.
+Sınav ve sonuçların yayınlanma tarihleri akabindeki süreçler için önemlidir.
 
 Hoca dilekçesi üzerine tüm notlar yayından kaldırılıp, hocanın değerlendirilmesine açılabilir.
 
