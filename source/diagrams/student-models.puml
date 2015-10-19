@@ -20,89 +20,97 @@ endtitle
 'n..m    Min n, Max m instances
 'endlegend
 
-
+' field_name            field_type     null blank
+'                                      _ = True
+'                                      * * = False
 
 class Okutman<<(M,orchid)>>{
-calisan              **Personel()**
-ad                    String  *
-soyad                 String  *
+ad                    String  * *
+soyad                 String  * *
 tckn                  String
 dogum_tarihi          String
 dogum_yeri            String
-tip                   String  *
+tip                   String  * *
 ucret                 String
 uyruk                 String
 medeni_hali           String
 ikamet_adresi         String
 telefon_no            String
-oda_no                String  *
-oda_tel_no            String  *
-e_posta               String  *
+oda_no                String  * *
+oda_tel_no            String  * *
+e_posta               String  * *
 kan_grubu             String
-fakulte               String  *
+fakulte               String  * *
 ehliyet               String
-bolum                 String  *
-akademik_yayinlari    String  *
-verdigi_dersler       String  *
+bolum                 String  * *
+akademik_yayinlari    String  * *
+verdigi_dersler       String  * *
 --
 note: non-employee (guest) lecturers data
 will be stored here
 --
+calisan               Personel()  * *
 }
 
 class Program<<(M,orchid)>>{
-birim                                **Birim()**
-bolum                                String        *
+bolum                                String        * *
 ucret                                Int
-yil                                  String        *
-donem                                Int           *
-adi                                  String        *
-tanim                                String        *
-yeterlilik_kosullari_aciklamasi      String        *
+yil                                  String        * *
+donem                                Int           * *
+adi                                  String        * *
+tanim                                String        * *
+yeterlilik_kosullari_aciklamasi      String        * *
 program_ciktilari                    String
-mezuniyet_kosullari                  String        *
-kabul_kosullari                      String        *
-bolum_baskani                        **Role()**
-ects_bolum_kordinator                **Role()**
-akademik_kordinator                  **Role()**
-
-
+mezuniyet_kosullari                  String        * *
+kabul_kosullari                      String        * *
 --
+bolum_baskani                        Role()        * *
+ects_bolum_kordinator                Role()        * *
+akademik_kordinator                  Role()        * *
+birim                                Birim()       * *
+donem                                Donem()       * *
+
 }
 class Derslik<<(M,orchid)>>{
-kod                                  String        *
+kod                                  String        * *
 bina                                 String
 tur                                  String
-kapasite                             String        *
+kapasite                             String        * *
 
 --
-dersler                              **Sube()**
+dersler                              Sube()        * *
 }
 
 class Sube<<(M,orchid)>>{
-ad                                   String        *
-kod                                  String        *
-okutman                              **Okutman()**
-ana_ders                             **Ders()**
-donem                                String        *
-kontenjan                            Int           *
+ad                                   String             * *
+kod                                  String             * *
+donem                                String             * *
+kontenjan                            Int                * *
 --
+okutman                              Okutman()          * *
+ana_ders                             Ders()             * *
+ogrenci                              Ogrenci()          * *
+ders_devamsizligi                    DersDevamsizligi() * *
 }
 
 class Ders<<(M,orchid)>>{
-ad                                   String  *
-kod                                  String  *
-kredi                                String  *
-zorunlu                              Boolean *
+ad                                   String  * *
+kod                                  String  * *
+kredi                                String  * *
+zorunlu                              Boolean * *
 akts_teori                           Float
 akts_uygulama                        Float
-donem                                Int     *
-ders_dili                            String  *
-verilis_bicimi                       Int     *
+donem                                Int     * *
+ders_dili                            String  * *
+verilis_bicimi                       Int     * *
+--
+program                              Program() * *
+sube                                 Sube()    * *
+donem                                Donem()   * *
 --
 **Degerlendirme(ListNode)**
 |_ tur                               String
-|_ toplam_puana_etki_yuzdesi         Int     *
+|_ toplam_puana_etki_yuzdesi         Int     * *
 
 note: tur, final, arasinav,
 tekders, butunleme, odev vb.
@@ -110,17 +118,19 @@ tekders, butunleme, odev vb.
 
 
 class Sinav <<(M,orchid)>> {
-tarih                                Date      *
-yapilacagi_yer                       String    *
+tarih                                Date             * *
+yapilacagi_yer                       String           * *
 tur                                  String
 aciklama                             String
-degerlendirme                        **Degerlendirme()**
+--
+degerlendirme                        Degerlendirme()  * *
+sube                                 Sube()           * *
 }
 
 
 class Ogrenci <<(M,orchid)>> {
-ad                                   String  *
-soyad                                String  *
+ad                                   String             * *
+soyad                                String             * *
 ikamet_adresi                        String
 tckn                                 String
 dogum_tarihi                         Date
@@ -128,76 +138,79 @@ dogum_yeri                           String
 uyruk                                String
 medeni_hali                          String
 ehliyet                              String
-giris_tarihi                         Date    *
+giris_tarihi                         Date               * *
 mezuniyet_tarihi                     Date
-bolum                                String  *
-fakulte                              String  *
-e_posta                              String  *
-ogrenci_no                           Int     *
+bolum                                String             * *
+fakulte                              String             * *
+e_posta                              String             * *
+ogrenci_no                           Int                * *
 tel_no                               Int
-akademik_yil                         String  *
-donem                                String  *
+akademik_yil                         String             * *
+donem                                String             * *
 kan_grubu                            String
 basari_durumu                        String
 ilisik_kesme                         String
-hazırlık_durumu                      Boolean *
+hazırlık_durumu                      Boolean            * *
 belge_basvurusu                      String
-devamsizlik_durumu                   String  *
-
-
-ders_programi                        **DersProgrami()**
-rol                                  **Role()**
+devamsizlik_durumu                   String             * *
+--
+ders_programi                        DersProgrami()     * *
+rol                                  Role()             * *
+ders_devamsizligi                    DersDevamsizligi() * *
 
 --
 **Dersler(ListNode)**
-ders                               **Sube()**
+ders                               Sube()
 }
 
 class DersProgrami<<(M,orchid)>> {
-sube                               **Sube()**
-derslik                            **Derslik**
-gun                                String      *
-saat                               String      *
+gun                                String      * *
+saat                               String      * *
+--
+sube                               Sube()      * *
+derslik                            Derslik()   * *
 }
 
 
 class DersDevamsizligi <<(M,orchid)>> {
-katilim_durumu                     Int            *
+katilim_durumu                     Int            * *
 --
-ders                               **Sube()**     * *
-ogrenci                            **Ogrenci()**  * *
+ders                               Sube()         * *
+ogrenci                            Ogrenci()      * *
 }
 
 class Borc <<(M,orchid)>> {
-miktar                             Float           *
-yil                                Int             *
-odeme_turu                         String          *
-ogrenci                            **Ogrenci()**
-donem                              **Donem()**
-son_odeme_tarihi                   Date            *
-odeme_tarihi                       Date            *
+miktar                             Float           * *
+yil                                Int             * *
+odeme_turu                         String          * *
+son_odeme_tarihi                   Date            * *
+odeme_tarihi                       Date            * *
 aciklama                           String
-para_birimi                        String          *
-odenen_miktar                      String          *
+para_birimi                        String          * *
+odenen_miktar                      String          * *
 kalan_bakiye                       String
-durum                              Boolean         *
+durum                              Boolean         * *
+--
+ogrenci                            Ogrenci()       * *
+donem                              Donem()         * *
 }
 
 class Not <<(M,orchid)>> {
-puan                               Int             *
+puan                               Int             * *
 aciklama                           String
 --
-sinav                              **Sinav()**
-ogrenci                            **Ogrenci()**
+sinav                              Sinav()         * *
+ogrenci                            Ogrenci()       * *
 
 }
 
 class Donem <<(M,orchid)>> {
-baslangic_tarihi                   Date            *
-bitis_tarihi                       Date            *
-ad                                 String          *
+baslangic_tarihi                   Date            * *
+bitis_tarihi                       Date            * *
+ad                                 String          * *
 ucret                              Int
-program                            **Program()**
+--
+program                            Program()       * *
 }
 
 
