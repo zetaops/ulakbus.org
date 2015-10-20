@@ -39,6 +39,9 @@ telefon_no            String
 oda_no                String  * *
 oda_tel_no            String  * *
 e_posta               String  * *
+web_sitesi            String
+yayinlar              String  * *
+projeler              String
 kan_grubu             String
 fakulte               String  * *
 ehliyet               String
@@ -96,12 +99,25 @@ ders_devamsizligi                    DersDevamsizligi() * *
 class Ders<<(M,orchid)>>{
 ad                                   String  * *
 kod                                  String  * *
-kredi                                String  * *
+tanim                                String  * *
+aciklama                             String  * *
+onkosul                              String  * *
+uygulama_saati                       Int     * *
+teori_saati                          Int     * *
+ects_kredisi                         Int     * *
+akts_kredisi                         Int     * *
 zorunlu                              Boolean * *
-akts_teori                           Float
-akts_uygulama                        Float
 donem                                Int     * *
 ders_dili                            String  * *
+ders_turu                            String  * *
+ders_koordinatoru                    String  * *
+ders_yardimcilari                    String  * *
+dersi_verenler                       String  * *
+ders_amaci                           String  * *
+ogrenme_ciktilari                    String  * *
+ders_icerigi                         String  * *
+ders_kategorisi                      String  * *
+ders_kaynaklari                      String  * *
 verilis_bicimi                       Int     * *
 --
 program                              Program() * *
@@ -198,6 +214,12 @@ donem                              Donem()         * *
 class Not <<(M,orchid)>> {
 puan                               Int             * *
 aciklama                           String
+yil                                Int             * *
+donem                              String          * *
+ders_kodu                          Int             * *
+ders_adi                           String          * *
+ders_kredisi                       Int             * *
+ogretim_elemani                    String          * *
 --
 sinav                              Sinav()         * *
 ogrenci                            Ogrenci()       * *
