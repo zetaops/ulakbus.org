@@ -36,7 +36,7 @@ class Okutman<<(M,orchid)>>{
 ad                    String  * *
 soyad                 String  * *
 tckn                  String
-dogum_tarihi          String
+dogum_tarihi          Date
 dogum_yeri            String
 uyruk                 String
 medeni_hali           String
