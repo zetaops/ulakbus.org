@@ -61,7 +61,7 @@ NoSQL olarak da anılan Anahtar/Değer (K/V) tipindeki veri tabanlarında, iliş
 
 Veri Modelleri
 **************
-Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Model, Node ve ListNode adında üç temel nesne tipi sunmaktadır. Bu nesneleri, ihtiyacımız doğrultusunda iç içe ya da bir birleriyle ilişkilendirerek kullanabiliriz. Bu nesneler üzerinde saklanacak verileri tanımlamak için ise String, Boolean, Integer, Date gibi çeşitli veri alanları tanımlanmıştır.
+Pyoko karmaşık veri yapılarının nesnel şekilde ifade edilebilmesi için Model, Node ve ListNode adında üç temel nesne tipi sunmaktadır. Bu nesneleri, ihtiyacımız doğrultusunda iç içe ya da birbirleriyle ilişkilendirerek kullanabiliriz. Bu nesneler üzerinde saklanacak verileri tanımlamak için ise String, Boolean, Integer, Date gibi çeşitli veri alanları tanımlanmıştır.
 
 Aşağıda, bu belgenin devamında birlikte hazırlayacağımız ve konusu "öğrencinin ders seçmesi, danışman öğretmeninin bu dersi onaylaması" olan bir iş akışın gerektirdiği veri modelinin minimal bir örneği listelenmiştir.
 
@@ -117,7 +117,7 @@ Bir web uygulamasının işlevlerini yerine getirmesi için yazılan kodların b
 
 Current Nesnesi
 ---------------
-İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
+İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıktı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
 
 Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ögeleri içerir. Bunlardan *session, user, auth* gibi sadece view metodlarında işlevsel olanlar arkaplanda çalışan task metodlarında geçersizdirler.
 
@@ -125,7 +125,7 @@ Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ög
 
 ``output`` İstemciye gönderilecek veri sözlüğü. Bu sözlük otomatik olarak JSON verisi şekline dönüştürülür.
 
-``session`` Kullanıcı oturumunu içeren sözlük benzeri bir nesnedir. Bu nesne üzerinde herhangi bir yazma/okuma işlemi yapıldığında, değişikliker otomatik olarak oturuma kaydedilir. Kullanıcı henüz sisteme giriş yapmamış olsa bile oturumu mevcuttur ve giriş yaptıktan sonra aynı oturum devam eder.
+``session`` Kullanıcı oturumunu içeren sözlük benzeri bir nesnedir. Bu nesne üzerinde herhangi bir yazma/okuma işlemi yapıldığında, değişiklikler otomatik olarak oturuma kaydedilir. Kullanıcı henüz sisteme giriş yapmamış olsa bile oturumu mevcuttur ve giriş yaptıktan sonra aynı oturum devam eder.
 
 ``auth`` Kullanıcı yetkilendirmesi ile ilgili metodları barındıran AuthBackend nesnesidir. *get_user(), get_permissions(), has_permission(), authenticate()* metodlarını içerir. ZEngine bu nesnenin referans sürümünü içerir ancak kendi uygulamamızda kullanıcı ve yetki sistemimize uygun şekilde özelleştirilmiş bir AuthBackend nesnesi kullanmamıza izin verir.
 
@@ -186,7 +186,7 @@ Student ve Employee nesnelerinin User ile OneToOne şeklinde ilişkili olmaları
 
 Satır ve Hücre Seviyesinde Erişim Kontrolü
 ------------------------------------------
-Pyoko, model tanımları içerisinde satır ve hücre seviyesinde erişim kontrolü yapılmasına izin verir. Burada satır seviyesinden  kasıt, kullanıcının yetkisinin izin vermediği kayıtlara erişememesidir. Hücre seviyesinde ise, kullanıcının bir modelin altındaki kayıtların sadece bazı alanlarına erişimesine izin verip, bazı alanlardaki verilere erişiminin kısıtlanabilir.
+Pyoko, model tanımları içerisinde satır ve hücre seviyesinde erişim kontrolü yapılmasına izin verir. Burada satır seviyesinden  kasıt, kullanıcının yetkisinin izin vermediği kayıtlara erişememesidir. Hücre seviyesinde ise, kullanıcının bir modelin altındaki kayıtların sadece bazı alanlarına erişimesine izin verip, bazı alanlardaki verilere erişimi kısıtlanabilir.
 
 Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde çalışabilmesi için, model nesnelerinin kullanıcı yetkilerini içeren *Current* nesnesi ile ilklendirilmeleri gerekmektedir. Bu işlevler isteğe bağlı özellikler olduklarından, bu gereklilik sadece aşağıdaki gibi model içinde yetki kısıtlaması yapıldığı durumlarda geçerlidir.
 
@@ -208,9 +208,9 @@ Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde ça
                 'can_see_private_data': ['phone', 'address']
             }
 
-Yukarıdaki Personel modelinin ``6.`` satırında tanımlanan **row_level_access()** metodu, modelin ilkendirilmesi (initialization) aşamasında çağırılır. ``7.`` satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa ``8.`` satıda **objects** nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.
+Yukarıdaki Personel modelinin ``6.`` satırında tanımlanan **row_level_access()** metodu, modelin ilklendirilmesi (initialization) aşamasında çağırılır. ``7.`` satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa ``8.`` satıda **objects** nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.
 
-Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde **field_permissions** adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlalamız yeterlidir. Yukarıda ``12.`` satırda tanımlanan kısıtlama sayesinde, *can_see_private_data* yetkisine sahip olmayan kullanıcıların *phone* ve *address* alanlarını okuyup yazmaları engellenmiş olur.
+Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde **field_permissions** adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlamamız yeterlidir. Yukarıda ``12.`` satırda tanımlanan kısıtlama sayesinde, *can_see_private_data* yetkisine sahip olmayan kullanıcıların *phone* ve *address* alanlarını okuyup yazmaları engellenmiş olur.
 
 Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir. Benzer şekilde kullanıcı kişilerin özel bilgilerini görüntüleme yetkisine sahip değilse de *person_list* listesinin *phone* sütunu boş kalacaktır.
 

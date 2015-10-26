@@ -40,6 +40,9 @@ extensions = [
     'sphinxcontrib.plantuml',
 ]
 
+# please adjust plantuml path 
+plantuml = 'java -jar /opt/plantuml/plantuml.jar'
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -146,7 +149,7 @@ html_theme = 'bizstyle'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_logo = "ulakbus.png"
+html_logo = "_static/ulakbus.png"
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
