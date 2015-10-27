@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-  <title>ULAKBUS</title>
-  
+    <title>ULAKBUS</title>
+
     
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -31,13 +31,16 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Sistem Operatörleri" href="devops.html" />
+    <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
   <body role="document">
- <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -45,106 +48,114 @@
 
 
     <title>Ulakbüs</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap Core CSS -->
     <link href="_static/css/bootstrap.css" rel="stylesheet">
     <link href="_static/css/style.css" rel="stylesheet">
     <link href="_static/css/roboto/roboto.css" rel="stylesheet">
 
- <script>
-     /**
-       * Check an href for an anchor. If exists, and in document, scroll to it.
-       * If href argument omitted, assumes context (this) is HTML Element,
-       * which will be the case when invoked by jQuery after an event
-       */
-     function scroll_if_anchor(href) {
-         href = typeof(href) == "string" ? href : $(this).attr("href");
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
 
-         // If href missing, ignore
-         if(!href) return;
+            // If href missing, ignore
+            if (!href) return;
 
-         // You could easily calculate this dynamically if you prefer
-         var fromTop = 100;
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
 
-         // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
-         // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
-         var $target = $(href);
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
 
-         // Older browsers without pushState might flicker here, as they momentarily
-         // jump to the wrong position (IE < 10)
-         if($target.length) {
-             $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
-             if(history && "pushState" in history) {
-                 history.pushState({}, document.title, window.location.pathname + href);
-                 return false;
-             }
-         }
-     }
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
 
-     // When our page loads, check to see if it contains and anchor
-     scroll_if_anchor(window.location.hash);
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
 
-     // Intercept all anchor clicks
-     $("body").on("click", "a[href^='#']", scroll_if_anchor);
- </script>
- </head>
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
 
-<body id="page-top" data-target=".navbar-fixed-top">
-	<nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="/index.html" class="logo"><img src="http://www.ulakbus.org/ulakbus.png"></a>
-                    </div>
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
 
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">
-                       <ul class="nav navbar-nav navbar-right main-nav">
-                            <li>
-                                <a href="http://www.ulakbus.org/index.html">ANASAYFA</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/hakkinda.html">PROJE HAKKINDA</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
-                            </li>
-                            <li>
-                                <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
-                            </li>
-                            <li>
-                                <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Fork me on github icons -->
-             <a href="https://github.com/zetaops" target="_blank"><img style="position: absolute; top: 85px; right: 0; border: 0; height:160px;  " src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
 
 
-<div id="doccontainer">
+    <div id="doccontainer">
 
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
@@ -152,7 +163,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+        <li class="right" >
+          <a href="devops.html" title="Sistem Operatörleri"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -175,6 +193,12 @@
 </li>
 </ul>
 
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
+                        title="önceki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="devops.html"
+                        title="sonraki bölüm">Sistem Operatörleri</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -235,7 +259,7 @@ Nick Coghlan, Core Python Geliştiricisi
 <p><strong>Bu ayrı mimarilerin birbiriyle doğrudan konuşmasına izin vermeyeceksiniz.</strong> Bu, zaten başa çıkılması zor olan mimarilerin her birinin, kendi içinde ölçekli çalışabilmesini sağlayabilmek için temel bir ilkedir.</p>
 <p>Aşağıdaki çizimde, sistemin yaptığı her bir servis çağrısı değişik boyut ve stilde belirtilmiştir.</p>
 <div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="_images/mess1.png"><img alt="_images/mess1.png" src="_images/mess1.png" /></a>
+<a class="reference internal image-reference" href="_images/mess1.png"><img alt="_images/mess1.png" src="_images/mess1.png" style="width: 290.0px; height: 207.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Lütfen dikkat ediniz, daha üst seviye süreçleri bu çizimde göstermedik bile. Mesela App1, App6’nın daha önce verdiği cevaba göre App2 veya App3 ya da App5’i çağırır ve böylece App4 daha sonra App2 tarafından üretilen veriyi alır ve fakat sadece App1 veri çekmeye izin veriyorsa ;_;</p>
@@ -244,7 +268,7 @@ Nick Coghlan, Core Python Geliştiricisi
 <p>Bu arayüzleri nasıl birbirinden ayıracağız? Yeni sürümü nasıl planlayabilirsiniz? Her biri değişik ekipler, satıcılar veya bölümler tarafından yönetilen uygulamaların güncellemelerini ya da sürüm indirimlerini nasıl koordine edeceksiniz? Üstelik işin başındaki ekibin yarısı çoktan işten ayrılmışken?</p>
 <p>Eğer 6 değişik uygulamayla başa çıkabileceğinizi düşünüyorsanız, 30 taneye ne dersiniz?</p>
 <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="_images/mess2.png"><img alt="_images/mess2.png" src="_images/mess2.png" /></a>
+<a class="reference internal image-reference" href="_images/mess2.png"><img alt="_images/mess2.png" src="_images/mess2.png" style="width: 480.0px; height: 505.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Peki 400 ayrı uygulama ile başa çıkabilir misiniz? Ya 2000? Her bir uygulamanın 10 sunucu gerektiren tekil bir ortamda koştuğunu ve bu 20K’lık sistemin parçalarının kıtalara dağıtık olduğunu ve arada her türlü teknik ve kültürel sınırlar olduğunu, üstelik sistemin her bir parçasının hiç bir kesinti olmadan son derece geveze bir şekilde, diğer parçalarla sürekli olarak durmadan mesaj alıp verdiğini? (Bu durumun çizimini paylaşmayacağız korkmayın)</p>
@@ -441,7 +465,7 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
 <h2>ESB üzerinde SOA ile servis yaratmak<a class="headerlink" href="#esb-uzerinde-soa-ile-servis-yaratmak" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi sistemlerin asla doğrudan bilgi alışverişi yapmadığını ve bir servisin ne olduğunu anladığınıza göre ESB’den faydalanmaya başlayabilirsiniz.</p>
 <div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="_images/esb-ok.png"><img alt="_images/esb-ok.png" src="_images/esb-ok.png" /></a>
+<a class="reference internal image-reference" href="_images/esb-ok.png"><img alt="_images/esb-ok.png" src="_images/esb-ok.png" style="width: 414.0px; height: 336.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Tümleşik sistemlerde servisleri çağırmak ve kullanmak, artık Kurumsal Veri Yolu’nun (ESB) işine dönüşüyor. Bu şekilde, genellikle KVY kullanarak sadece bir arayüz ve bir erişim metodu yazmak yeterli oluyor.</p>
@@ -462,7 +486,7 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
 <p>Servis odaklı uygulama (SOA) konseptini mahvetmenin en kolay yolu KVY hizmetini açıp ondan sonra olayların kendiliğinden düzelmesini beklemek olabilir. Hala harika bir fikir olmasına rağmen, sadece KVY sistemini kurmakla çok büyük bir kazanım sahibi olamazsınız maalesef.</p>
 <p>En iyi halde, aşağıdaki diyagramdaki gibi bazı şeyleri halı altına süpürmek, size hiç bir şey kazandırmayacaktır.</p>
 <div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="_images/esb-mess.png"><img alt="_images/esb-mess.png" src="_images/esb-mess.png" /></a>
+<a class="reference internal image-reference" href="_images/esb-mess.png"><img alt="_images/esb-mess.png" src="_images/esb-mess.png" style="width: 545.0px; height: 378.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>IT ekibiniz ondan tiksinecek, yönetim ise önce bu yeni gelen çocuğa tolerans gösterecek ancak daha sonra KVY iyice alay konusu olacak. “Ney ney, sihirli değnek değil mi, Hahahaha”.</p>
@@ -521,14 +545,25 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
+        <li class="right" >
+          <a href="devops.html" title="Sistem Operatörleri"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
     </div>
-	<footer>
+    <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank" style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a href="http://zetaops.io" target="_blank" style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
             </div>
         </div>
     </footer>
