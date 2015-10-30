@@ -43,16 +43,88 @@ komutuyla makinenizi başlatabilirsiniz.
 
 Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
 
-Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.
 
+```Eğer depolarınızı sanal makinaya mount ederek dışardan paylaşıyorsanız, git ile ilgili işlemleri ana makinada yapmanızı öneriyoruz.``` 
+
+Git depoları sanal makina içinde yer almaktadır. Vagrantfile içinde kendi makinanızdaki bir klasörde yer alan git deposunu mount etmedikçe 
+geliştirme için hazırladığımız vagrant vm güncellendiği an, depolarda yaptığınız her tür geliştirme çalışması, vm üzerine kurduğunuz tüm uygulamalar 
+kaybolacaktır. 
 
 ::
 
-     sudo su - ulakbus
-     cd ulakbus
-     git pull https://github.com/zetaops/ulakbus.git
+``` 
+# ulakbus
+config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus", "/app/ulakbus", owner: "ulakbus", group: "ulakbus"
 
-Aynı yöntemle pyoko, ulakbus-ui, zengine depolarını da güncelleyin.
+# zengine
+config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/zengine", "/app/zengine", owner: "ulakbus", group: "ulakbus"
+
+# pyoko
+config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/pyoko", "/app/pyoko", owner: "ulakbus", group: "ulakbus"
+
+# ulakbus-ui
+config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus-ui", "/app/ulakbus-ui", owner: "ulakbus", group: "ulakbus"
+  
+```
+
+Geliştirme sanal makinasının güncellenmesi
+
+ulakbus klasörü içine gidin. Klasörde Vagrantfile bulunduğundan emin olun.
+Sürüm kontrolü yapın
+vagrant box outdated
+
+Eğer sanal makina sürümü eski ise aşağıdaki gibi bir mesaj alacaksınız.
+
+A newer version of the box 'zetaops/ulakbus' is available! You currently
+have version '0.1.9'. The latest is version '0.2.2'. Run
+`vagrant box update` to update.
+
+Gene ulakbus klasörü içindeyken 
+vagrant box update
+
+komutu güncelleme işlemini yapacaktır.
+
+
+** Kontrol edilmesi gereken servisler **
+
+Vagrant sanal makinasına ```vagrant ssh``` ile bağlandıktan sonra, aşağıdaki servislerin çalıştığından emin olunuz.
+
+sudo su 
+service redis-server status
+service riak ping
+service zato status
+
+ulakbus kullanıcısına ait klasör altında aşağıdaki alt klasörler yer almaktadır.
+
+
+pyoko  pyokoenv  pyoko_postactivate  ulakbus  ulakbusenv  ulakbus_postactivate  ulakbus-ui  zengine  zengineenv  zengine_postactivate
+
+ulakbus projesi ile çalışmak için 
+
+source ulakbusenv/bin/activate
+
+Virtualenv aktif hale getiriniz. 
+
+(ulakbusenv)ulakbus@ulakbus:~$
+
+yukarıdaki komut satırını gördüğünüzde virtualenv set edilmiş demektir. virtualenv hakkında detaylı bilgi için, (buraya kaynak ver)
+
+daha sonra **ipython** komutu ile konsolda çalışmalar yapabilirsiniz. 
+
+Geliştirme İçin Editör Ayarlanması
+
+Python ile geliştirme yaparkan değişik IDE(link)'ler kullanabilirsiniz. Ulakbüs geliştirmesi yaparken PyCharm(link) kullanıyor ve şiddetle öneriyoruz.
+Öğrenciler ve AKK projeler için özel lisanslar sunan PyCharm sayesinde ücretsiz olarak kullanabilirsiniz.
+
+
+
+
+
+
+
+
+
+
 
 ================
 **Elle Kurulum**
