@@ -14,4 +14,4 @@ Belge, sisteme kaydı yapılan bir kullanıcının kendi hesabına ulaşma bilgi
 
 *permission_query:* Giriş yapan kişinin sistemde izni olup olmadığını sorgular. Eğer giriş yapmak isteyen kişi kayıtlı değilse login ekranı hata verir.
 
-*help:* Kullanıcıya yardımcı olabilicek ekranı output olarak verir.
+*help:* Kullanıcıya yardımcı olabilecek ekranı output olarak verir.
