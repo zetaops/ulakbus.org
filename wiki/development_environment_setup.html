@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <link rel="icon" type="image/png" href="/img/favicon.ico">
+    
 
     <title>ULAKBUS</title>
 
@@ -182,6 +182,9 @@
 <li><a class="reference internal" href="#">Geliştirme Ortamı Kurulumu(Backend)</a><ul>
 <li><a class="reference internal" href="#vagrant"><strong>Vagrant</strong></a><ul>
 <li><a class="reference internal" href="#vagrant-nedir">Vagrant Nedir?</a></li>
+<li><a class="reference internal" href="#gelistirme-sanal-makinasinin-guncellenmesi">Geliştirme Sanal Makinasının Güncellenmesi</a></li>
+<li><a class="reference internal" href="#kontrol-edilmesi-gereken-servisler">Kontrol edilmesi gereken servisler</a></li>
+<li><a class="reference internal" href="#gelistirme-icin-editor-ayarlanmasi">Geliştirme İçin Editör Ayarlanması</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#elle-kurulum"><strong>Elle Kurulum</strong></a></li>
@@ -249,13 +252,78 @@ vagrant init zetaops/ulakbus
 </div>
 <p>komutuyla makinenizi başlatabilirsiniz.</p>
 <p>Bu işlem bitince <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> komutu ile geliştirme ortamına bağlanabilirsiniz.</p>
-<p>Bağlandıktan sonra aşağıdaki komutlarla öncelikle repoları güncelleyin.</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo su - ulakbus
-cd ulakbus
-git pull https://github.com/zetaops/ulakbus.git
+<p><code class="docutils literal"><span class="pre">Eğer</span> <span class="pre">depolarınızı</span> <span class="pre">sanal</span> <span class="pre">makinaya</span> <span class="pre">mount</span> <span class="pre">ederek</span> <span class="pre">dışardan</span> <span class="pre">paylaşıyorsanız,</span> <span class="pre">git</span> <span class="pre">ile</span> <span class="pre">ilgili</span> <span class="pre">işlemleri</span> <span class="pre">ana</span> <span class="pre">makinada</span> <span class="pre">yapmanızı</span> <span class="pre">öneriyoruz.</span></code></p>
+<p>Git depoları sanal makina içinde yer almaktadır. Vagrantfile içinde kendi makinanızdaki bir klasörde yer alan git deposunu mount etmedikçe
+geliştirme için hazırladığımız vagrant vm güncellendiği an, depolarda yaptığınız her tür geliştirme çalışması, vm üzerine kurduğunuz tüm uygulamalar
+kaybolacaktır.</p>
+<p>Vagrant file içinde dosya paylaşımlarını aşağıdaki gibi yapınız:</p>
+<div class="highlight-python"><div class="highlight"><pre># ulakbus
+ config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus&quot;, &quot;/app/ulakbus&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
+
+# zengine
+ config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/zengine&quot;, &quot;/app/zengine&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
+
+# pyoko
+ config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/pyoko&quot;, &quot;/app/pyoko&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
+
+# ulakbus-ui
+ config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus-ui&quot;, &quot;/app/ulakbus-ui&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
 </pre></div>
 </div>
-<p>Aynı yöntemle pyoko, ulakbus-ui, zengine depolarını da güncelleyin.</p>
+</div>
+<div class="section" id="gelistirme-sanal-makinasinin-guncellenmesi">
+<h3>Geliştirme Sanal Makinasının Güncellenmesi<a class="headerlink" href="#gelistirme-sanal-makinasinin-guncellenmesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<ul class="simple">
+<li>Ulakbus klasörü içine gidin. Klasörde Vagrantfile bulunduğundan emin olun.</li>
+<li>Sürüm kontrolü yapın</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>vagrant box outdated
+</pre></div>
+</div>
+<p>Eğer sanal makina sürümü eski ise aşağıdaki gibi bir mesaj alacaksınız.</p>
+<div class="highlight-python"><div class="highlight"><pre>A newer version of the box &#39;zetaops/ulakbus&#39; is available! You currently
+have version &#39;0.1.9&#39;. The latest is version &#39;0.2.2&#39;. Run
+`vagrant box update` to update.
+</pre></div>
+</div>
+<p>Gene ulakbus klasörü içindeyken</p>
+<div class="highlight-python"><div class="highlight"><pre>vagrant box update
+</pre></div>
+</div>
+<p>komutu güncelleme işlemini yapacaktır.</p>
+</div>
+<div class="section" id="kontrol-edilmesi-gereken-servisler">
+<h3>Kontrol edilmesi gereken servisler<a class="headerlink" href="#kontrol-edilmesi-gereken-servisler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Vagrant sanal makinasına <code class="docutils literal"><span class="pre">`vagrant</span> <span class="pre">ssh`</span></code> ile bağlandıktan sonra, aşağıdaki servislerin çalıştığından emin olunuz.</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo su
+service redis-server status
+service riak ping
+service zato status
+</pre></div>
+</div>
+<p>ulakbus kullanıcısına ait klasör altında aşağıdaki alt klasörler yer almaktadır.</p>
+<div class="highlight-python"><div class="highlight"><pre>pyoko  pyokoenv  pyoko_postactivate  ulakbus  ulakbusenv  ulakbus_postactivate  ulakbus-ui  zengine  zengineenv  zengine_postactivate
+</pre></div>
+</div>
+<p>ulakbus projesi ile çalışmak için</p>
+<div class="highlight-python"><div class="highlight"><pre>source ulakbusenv/bin/activate
+</pre></div>
+</div>
+<p>Virtualenv aktif hale getiriniz.</p>
+<div class="highlight-python"><div class="highlight"><pre>(ulakbusenv)ulakbus@ulakbus:~$
+</pre></div>
+</div>
+<p>yukarıdaki komut satırını gördüğünüzde virtualenv set edilmiş demektir. virtualenv hakkında detaylı bilgi için:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://istihza.com/forum/viewtopic.php?t=2164">http://istihza.com/forum/viewtopic.php?t=2164</a></p>
+<p><a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">http://docs.python-guide.org/en/latest/dev/virtualenvs/</a></p>
+</div></blockquote>
+<p>daha sonra <strong>ipython</strong> komutu ile konsolda çalışmalar yapabilirsiniz.</p>
+</div>
+<div class="section" id="gelistirme-icin-editor-ayarlanmasi">
+<h3>Geliştirme İçin Editör Ayarlanması<a class="headerlink" href="#gelistirme-icin-editor-ayarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Python ile geliştirme yaparkan değişik <a class="reference external" href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments">IDE&#8217;ler</a> kullanabilirsiniz. Ulakbüs geliştirmesi yaparken <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> kullanıyor ve şiddetle öneriyoruz.
+Öğrenciler ve AKK projeler için özel lisanslar sunan PyCharm sayesinde ücretsiz olarak kullanabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="elle-kurulum">
