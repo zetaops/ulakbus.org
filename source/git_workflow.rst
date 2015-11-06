@@ -2,11 +2,11 @@
 Git İş-Akışı
 ++++++++++++
 
-**HİÇBİR ZAMAN MASTER'A PUSH ETMEYİNİZ, SÜREKLİ BRANCHLER KULLANINIZ.**
+**HİÇBİR ZAMAN MASTER'A PUSH ETMEYİNİZ, DAİMA BRANCH KULLANINIZ.**
 
 * Lütfen TÜM dökümanı okuyunuz.
 
-* Bağımlılıklarınızı sürekli iki kere kontrol ediniz.
+* Paket bağımlılıklarını sürekli iki kere kontrol ediniz.
 
 * PATH değişkenlerini sürekli iki kere kontrol ediniz.
 
@@ -37,31 +37,37 @@ Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresi
 
 **Git Temelleri**
 
-Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiçbir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git'i iyi anlamak için, git'in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.
+Git temellerini öğrenmek için aşağıdaki kaynakları okuyunuz.
 
-Genel olarak Git biraz ayrıntılıdır ve basit işlemleri gerçekleştirmek için bir çok komut gereklidir.Korkmayın! Git'i anladıktan sonra, her şeyin ne kadar iyi düşünüldüğünü ve nedenlerinin olduğunu göreceksiniz.
+* http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+* https://try.github.io/levels/1/challenges/1
+* http://gitref.org
+* http://www.slideshare.net/kunthar/git-101-15229948
+* http://www.sbf5.com/~cduan/technical/git/
 
-Svn hakkında tecrübe kazanmak istiyorsanız bu bağlantıyı okuyabilirsiniz: http://git-scm.com/course/svn.html
+Eğer tasarımcı iseniz :  http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
 
-Eğer programcı değilseniz okuyunuz: http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
+Eğer programcı değilseniz şu linkleri takip edebilirsiniz:
+* http://oyun.mynet.com/okey
+* https://aylak.com/batak-oyna/
+* http://www.oyunoyna.com
 
-Boş zamanınızda Git'in arkasında yatan temel kavramları anlamak için http://www.eecs.harvard.edu/~cduan/technical/git/ bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.
 
 -------------
-**Branchler**
+**Branch Yönetimi**
 -------------
 
-* Master branch sadece görüntülenen ve test edilen kodları içermektedir.
+* Master branch sadece gözden geçirilmiş ve test edilmiş kodu içerir. Sadece yetkili geliştiriciler master'a kod gönderebilir (commit).
 
-* Her özellik ve yazılım yatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.
+* Her yeni özellik ve yazılım hatası düzeltimi, yeni bir branch içinde geliştirilir.
 
-* Yeni branchler son master branch temel alınarak başlatılmalıdır.
+* Yeni branch en son master temel alınarak başlatılmalıdır.
 
-* Her branch, master branch ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.
+* Her branch, master branch ile merge edilmeden önce en az bir başka geliştirici tarafından ve test edilmelidir.
 
-* Her branch, master branch ile merge edilmeden önce en son master branch temel alınmalıdır.
+* Her branch, master branch ile merge edilmeden önce en son master branch ile rebase edilmelidir.
 
-* Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine issue adı ve kısa açıklaması issue adından gelmelidir.
+* Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine ya da github issue adı ve kısa açıklaması issue adından gelmelidir.
 
 
 Tüm branchleri görüntülemek için:
@@ -71,31 +77,46 @@ Tüm branchleri görüntülemek için:
     git branch -a
 
 ----------------
-**Getting code**
+**Kodu edinmek**
 ----------------
 
- ``~/.ssh/config`` dosyasını oluşturun.
+Mevcut kod ile çalışmak için mutlaka "Geliştirme Ortamı Kurulumu" http://www.ulakbus.org/wiki/development_environment_setup.html belgesini inceleyiniz. 
+Bu belgede hem ortam kurulumu hem de depoların bağlanması detaylı olarak anlatılmaktadır.
 
-*host zopstest.zetaops.io*
-*port 99*
 
-Tüm sistemi meta repository kullanarak klonlamak için aşağıdaki komutu kullanınız.
+-------------------------
+**Günlük geliştirme iş akışı**
+-------------------------
+
+Depolarımızın tamamı Github üzerinde yer almaktadır. Bu sebeple Github üzerinde çalışmak konusunda kendinizi eğitiniz.
+
+* https://guides.github.com/activities/hello-world/
+* https://help.github.com/desktop/guides/contributing/working-with-your-remote-repository-on-github-or-github-enterprise/
+* http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1
+
+Github üzerinde kendinize bir kullanıcı hesabı açınız. Depolarımızı kendi Github hesabınız üzerinden fork ediniz.
+Artık kendi github hesabınızda ulakbus ve ulakbus-ui temel depolarınız görülecektir.
+Github üzerinde HTTPS clone URL ibaresi altındaki satırı kopyalayarak klonlama işlemine hazırlanın:
 
 ::
 
-    git clone gitosis@test.zetaops.io:zops-ubys.git
+    mkdir -p ~/development/zetaops/
+    cd ~/development/zetaops/
+    mkdir repos
+    mkdir vms
+    cd repos
+    git clone https://github.com/sizin_user_adınız/ulakbus
+    git clone https://github.com/sizin_user_adınız/ulakbus-ui
+    cd ulakbus
+    git remote add origin https://github.com/zetaops/ulakbus.git
+    cd ~/development/zetaops/repos/ulakbus-ui
+    git remote add origin https://github.com/zetaops/ulakbus-ui.git
 
--------------------------
-**Basic day-to-day flow**
--------------------------
 
-Eğer local ve uzak repoların durumunu anlamakta zorluk çekiyorsanız:
-
-::
-
-    git remote update
-    gitk --all		            # yes, it’s not a typo - it’s a tool called gitK
-    tig                         #you can also use tig from console. apt-get install tig, you can use SourceTree for mac if you are Mac coder
+Bu şekilde kendi fork deponuz üzerinde çalışacaksınız ve bizim depomuz, sizin deponuza "upstream" depo olarak eklenecektir.
+Her bir depo içinde ne olup bittiğini görsel olarak görmek isterseniz, konsolda tig kullanabilirsiniz. apt-get install tig, macports ile sudo port install tig
+Eğer penceresel bir ortamdan geliyorsanız SourceTree kullanabilirsiniz. Tasarımcılar hariç, tüm geliştirme ortamı Ubuntu, Debian, Pardus, ArchLinux ya da MacOS gibi işletim
+sistemine sahip bilgisayarlarda bulunmaktadır. Bu sebeple sinir sahibi olmak istemiyorsanız, w$ndoze üzerinde geliştirme yapmaya çalışmayınız.
 
 Yeni branch yaratmak için:
 
@@ -113,33 +134,36 @@ Programlamadan önceki hazırlık:
     cd path/to/project
 
     git checkout master
-    git pull --rebase			# use this if your local code has no local changes, which has not been pushed to server
+    git pull --rebase
     git checkout feature/some-feature
     git rebase master
 
+
+
 ---------------------------
-**Work on feature/bug fix**
+**feature/bug Üzerinde Çalışmak**
 ---------------------------
 
 ::
 
     git checkout feature/some-feature
 
-*Source File'ınızı düzenleyiniz ve ardından commitleyiniz.*
+Yeni branch üzerinde gereken düzenlemelerinizi yapınız. Daha sonra commit ile dosyalarınızı ekleyin. 
 
 ::
+    
+   git add path/to/changed/file1    # commit edilecek her dosyayı 
+   git add path/to/another-file2    # bu şekilde ekleyin.
+   git commit -m  "bu commit neden yapılıyor."      #lütfen fix, düzeltme, herşey gönderildi gibi saçma sapan açıklamalar yazmayın. ne yaptıysanız bunu düzgün bir şekilde ifade edin. 
 
-    git add path/to/changed/file1	# you need to mark each file you want to commit
-    git add path/to/another-file2	# with this command
 
-    git commit	        			# opens editor were you can write commit message, OR
-    git commit -m "commit message"	# shortcut for one line commit messages
+Her bir değişiklikte commit edin. Yüzlerce değişiklik yaptıktan sonra kocaman bir commit yapmayın!
 
-Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlayınız ve servise push ediniz.
 
+Değişikliklerin geri gönderilmesi:
 ::
 
-    git pull origin feature/some-feature	# make sure that push will be successful
+    git pull origin feature/some-featur     # make sure that push will be successful
                                             # by ensuring that local changes
                                             # are applicable on top of the
                                             # latest code; may result in conflicts
@@ -149,7 +173,7 @@ Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlay
                                             # rejected if you haven't done previous step
 
 ------------------------------
-**Merging branch into master**
+**Branch master ile merge etmek**
 ------------------------------
 
 ::
