@@ -484,15 +484,6 @@ Sistem Tarafından Üretilecek Belgeler
 EBYS Entegrasyonu
 -----------------
 
-**Notlar**
-
-YÖKSİS Kurum Ağacı
-------------------
-
-YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistemdeki bilgiler, bu servisten sağlananlarla güncellenir.
-
-Bu kurum ağacında okulun tüm akademik birimleri kendilerine verilen bir kod ile yer alır.
-
 Ders Kopyalama
 --------------
 
@@ -556,17 +547,6 @@ Derslerin Dili Kuralları
 ------------------------
 
 Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar. Onun yerine ilgili dersin Türkçesini alırlar.
-
-- Personel anabilim dalında yer alır, öğrenciler programda yer alırlar.
-- Bölümlerden öğrenci işlerine giden tüm evraklardan örnek isteyelim.
-
-  * Diploma eki nasıl verilir?
-
-- Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
-
-Program örneği: http://konya.edu.tr/dosyalar/fakulte/ahmetkelesogluegitimfakultesi/derskodlari/ALMANCA.pdf
-
-Bologna Ders Kartı: http://konya.edu.tr/bologna/goster/12198
 
 İsteğe bağlı hazırlık sınıfı açılabilir. **- Hazırlık sınıfının isteğe bağlı olup olmamasını saklamalıyız.**  Bu hazırlık sınıfında başarılı olamayan öğrencilerin ilişikleri kesilmez ve eğitimlerine devam ederler.
 

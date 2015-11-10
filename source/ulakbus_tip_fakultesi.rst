@@ -669,15 +669,6 @@ Sistemden Beklenecek Raporlar
 - Dönem 4-5-6 öğrencileri için aldığı staj ve notlarını gösteren çizelge
 - Öğrenci bilgi formu (Ön kayıt formundaki bilgiler, ikinci dönemin başında istiyoruz.)
 
-Notlar
-------
-
-- Personel anabilim dalında yer alır, öğrenciler programda yer alırlar.
-- Bölümlerden öğrenci işlerine giden tüm evraklardan örnek isteyelim.
-- Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
-
-Staj Ders tipi tanımlanacak
-
 Derslerin Dili Kuralları
 ------------------------
 

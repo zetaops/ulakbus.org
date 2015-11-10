@@ -215,8 +215,8 @@ Sınavlar
 |                 |                                                                  |     başarılı olunmalıdır.   |
 |                 |                                                                  |                             |
 +-----------------+------------------------------------------------------------------+-----------------------------+
-|                 |   -Genel sınava girme hakkı olup giremeyen veya ara              |                             |
-| **Bütünleme**   |    sınav ve genel sınav sonucu başarısız olanlar.                |                             |
+|                 |   - Genel sınava girme hakkı olup giremeyen veya ara             |                             |
+| **Bütünleme**   |     sınav ve genel sınav sonucu başarısız olanlar.               |                             |
 |                 |                                                                  |                             |
 |                 |                                                                  |                             |
 +-----------------+------------------------------------------------------------------+-----------------------------+
@@ -788,9 +788,5 @@ Yetki Devri
 
 Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli olarak devredebilmelidir. Örneğin; dekanlar ve tıptaki hocalar not girişi yapmak istemiyorlar. Bu yüzden şifrelerini asistanlarıyla veya öğrenci işleriyle paylaşıyorlar. Bunu engellemek için akademisyen A dersi için not girme yetkisini X-Y tarihleri arasında asistanına devredebilmelidir.
 
-YÖKSİS Kurum Ağacı
-------------------
 
-YÖKSİS tarafından sağlanan web servislerinden kurum ağacı çekilir. Sistemdeki bilgiler, bu servisten sağlananlarla güncellenir.
 
-Askerlik belgesi sadece Türk uyruklu öğrenciler için olmalıdır.
