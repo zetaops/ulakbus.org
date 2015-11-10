@@ -232,40 +232,55 @@ Yeni yönetmelikler incelenecek. 6 yıllık ve hazırlıkla ilgili bilgi alınac
 Sınavlar
 --------
 
-**Ara Sınav**
-
-- Her yarıyılda en az bir adet yapılır.
-- Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir.
-
-**Genel Sınav**
-
-- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.
-- Sonuçları sınavların ardından en geç 5 gün içinde açıklanmalıdır.
-- Devam zorunluluğu sağlanmalı
-- Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.
-
-**Bütünleme**
-
-- Genel sınava girme hakkı olup giremeyen veya ara sınav ve genel sınav sonucu başarısız olanlar için yapılır.
-
-**Tek Ders**
-
-- Mezuniyetleri için tek ders kalan öğrenciler için yapılır.
-- Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.
-- Devam zorunluluğu sağlanmalı
-- Ders önceki yıllarda alınmış olmalı
-
-**Muafiyet**
-
-- Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarıyıl başında açılır.
-- 70 ile geçer. Ortalamaya dahil edilmez.
-- Hazırlık sınıfı olmayan, zorunlu ingilizce dersi için öğretim yılı başında yapılır.
-- CC ile geçer. Ortalamaya dahil edilir.
-
-**Mazeret**
-
-- Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.
-- Ara sınav dönemi için geçerli mazeret bildirilmelidir.
++------------------+-----------------------------------------------------+----------------------------+
+|  **Ara Sınav**   |     - Her yarıyılda en az bir adet yapılır.         |                            |
+|                  |                                                     |                            |
+|                  |                                                     |                            |
+|                  |                                                     |                            |
+|                  |     - Sonuçları en geç genel sınavdan               |                            |
+|                  |       15 gün önce öğretim görevlileri tarafından    |                            |
+|                  |       sisteme girilmelidir.                         |                            |
+|                  |                                                     |                            |
++------------------+-----------------------------------------------------+----------------------------+
+|                  |     - Dersin tamamlandığı yarıyıl veya              |                            |
+|                  |       yıl sonunda yapılır.                          |                            |
+| **Genel Sınav**  |     - Sonuçları sınavların ardından                 |   - Devam zorunluluğu      |
+|                  |       en geç 5 gün içinde açıklanmalıdır.           |     sağlanmalıdır.         |
+|                  |                                                     |                            |
+|                  |                                                     |   - Uygulamalı bir ders    |
+|                  |                                                     |     ise uygulamalarda      |
+|                  |                                                     |     başarılı olunmalıdır.  |
+|                  |                                                     |                            |
++------------------+-----------------------------------------------------+----------------------------+
+|                  |      - Genel sınava girme hakkı olup giremeyen      |                            |
+| **Bütünleme**    |        veya ara sınav ve genel sınav sonucu         |                            |
+|                  |        başarısız olanlar.                           |                            |
+|                  |                                                     |                            |
++------------------+-----------------------------------------------------+----------------------------+
+|                  | - Mezuniyetleri için tek dersi kalan öğrenciler.    |  - Devam zorunluluğu       |
+|                  | - Ara sınav şartı aranmadan CC ile öğrenci          |    sağlanmalıdır.          |
+|   **Tek Ders**   |   başarılı sayılır.                                 |  - Ders önceki yıllarda    |
+|                  |                                                     |    alınmış olmalıdır.      |
+|                  |                                                     |                            |
+|                  |                                                     |                            |
++------------------+-----------------------------------------------------+----------------------------+
+|                  | - Yabancı dil hazırlık sınıfında okumak zorunda     |                            |
+|                  |   olanlar için ilgili dil dersinden yarıyıl         |                            |
+|                  |   başında açılır.                                   |                            |
+|  **Muafiyet**    | - 70 ile geçer. Ortalamaya dahil edilmez.           |                            |
+|                  | - Hazırlık sınıfı olmayan, zorunlu İngilizce dersi  |                            |
+|                  |   ve tıbbi bilgisayar dersi için öğretim yılı       |                            |
+|                  |   başında yapılır.                                  |                            |
+|                  | - CC ile geçer. Ortalamaya dahil edilir.            |                            |
+|                  |                                                     |                            |
+|                  |                                                     |                            |
++------------------+-----------------------------------------------------+----------------------------+
+|                  | - Geçerli mazeretleri olan öğrencilere ara sınavlar | - Ara sınav dönemi için    |
+|    **Mazeret**   |   için tanınan haktır. Başka hiçbir sınav için      |   geçerli mazeret          |
+|                  |   mazeret sınavı uygulanmaz.                        |   bildirilmelidir.         |
+|                  |                                                     |                            |
+|                  |                                                     |                            |
++------------------+-----------------------------------------------------+----------------------------+
 
 Kural Setleri
 -------------

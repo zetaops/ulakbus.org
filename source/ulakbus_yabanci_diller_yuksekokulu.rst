@@ -195,43 +195,52 @@ Azami (En fazla) Öğretim Süresi
 Sınavlar
 --------
 
-**Ara Sınav**
 
-Her yarıyılda en az iki adet yapılır. Yılda toplam 4 adet yapılır.
-
-**Kısa Yoklama Sınavları Quiz**
-
-Her yarıyılda 5 tane yapılır. Toplam 10 tane.
-
-**Uzun Yoklama Sınavlar**
-
-Her yarıyılda iki tane. Toplam 4 tane.
-
-**Genel Sınav (Final Sınavı)**
-
-Dersin tamamlandığı yıl sonunda yapılır. Devam zorunluluğu sağlanmalıdır. Yıl içi ortalama en az 39 ve üzeri not almalıdır.
-
-**Bütünleme**
-
-Final sınavının telafisidir. Yükseokul tarihini belirler.
-
-Devam zorunluluğu sağlanmalıdır.
-
-Yıl içi ortalama en az 39 ve üzeri not almalıdır.
-
-Finale girmek zorunlu değildir.
-
-**Muafiyet**
-
-Yabancı dil hazırlık sınıfında okumak zorunda olanlar veya seçenler için ilgili dil dersinden yarıyıl başında açılır. 70 ile geçer.
-
-Ortak zorunlu yabancı dil dersi için öğretim yılı başında yapılır. 100'lük nottan harflendirme işlemi öğrencinin bağlı bulunduğu fakülte tarafından yapılır.
-
-**Mazeret**
-
-Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.
-
-Ara sınav dönemi için geçerli mazeret bildirilmelidir.
++----------------------+-----------------------------------------------------+----------------------------------+
+|  **Ara Sınav**       |     - Her yarıyılda en az iki adet yapılır.         |                                  |
+|                      |     - Yılda toplam 4 defa yapılır.                  |                                  |
+|                      |                                                     |                                  |
++----------------------+-----------------------------------------------------+----------------------------------+
+|                      |     - Her yarıyılda 5 tane yapılır. Yılda           |                                  |
+|  **Kısa Yokalama**   |       toplam 10 defa yapılır.                       |                                  |
+|  **Sınavları**       |                                                     |                                  |
+|  **Quiz**            |                                                     |                                  |
+|                      |                                                     |                                  |
++----------------------+-----------------------------------------------------+----------------------------------+
+|                      |  - Her yarıyılda 2 tane yapılır.                    |                                  |
+|  **Uzun Yoklama**    |    Yılda toplam 4 defa yapılır.                     |                                  |
+|  **Sınavlar**        |                                                     |                                  |
+|                      |                                                     |                                  |
++----------------------+-----------------------------------------------------+----------------------------------+
+|                      | -  Dersin tamamlandığı yıl sonunda yapılır.         | - Devam zorunluluğu sağlanmalı.  |
+|                      |                                                     | - Yıl içi ortalama en az 39 ve   |
+|  **Genel SInav**     |                                                     |   üzeri not almalıdır.           |
+|  **(Final Sınavı)**  |                                                     |                                  |
+|                      |                                                     |                                  |
+|                      |                                                     |                                  |
++----------------------+-----------------------------------------------------+----------------------------------+
+|                      | - Final sınavının telafisidir.                      | - Devam zorunluluğu sağlanmalı.  |
+|                      |   Yükseokul tarihini belirler.                      | - Yıl içi ortalama en az 39 ve   |
+|  **Bütünleme**       |                                                     |   üzeri not almalıdır.           |
+|                      |                                                     | - Finale girmek zorunlu          |
+|                      |                                                     |   değildir.                      |
++----------------------+-----------------------------------------------------+----------------------------------+
+|                      | - Geçerli mazeretleri olan öğrencilere ara sınavlar | - Ara sınav dönemi için          |
+|  **Mazeret**         |   için tanınan haktır. Başka hiçbir sınav için      |   geçerli mazeret                |
+|                      |   mazeret sınavı uygulanmaz.                        |   bildirilmelidir.               |
+|                      |                                                     |                                  |
+|                      |                                                     |                                  |
++----------------------+-----------------------------------------------------+----------------------------------+
+|                      | - Yabancı dil hazırlık sınıfında okumak zorunda     |                                  |
+|                      |   olanlar için ilgili dil dersinden yarıyıl         |                                  |
+|                      |   başında açılır.                                   |                                  |
+|  **Muafiyet**        | - 70 ile geçer.                                     |                                  |
+|                      | - Ortak zorunlu yabancı dil dersi için öğretim      |                                  |
+|                      |   yılı başında yapılır. 100lük nottan harflendirme  |                                  |
+|                      |   işlemi öğrencinin bağlı bulunduğu fakülte         |                                  |
+|                      |   tarafından yapılır.                               |                                  |
+|                      |                                                     |                                  |
++----------------------+-----------------------------------------------------+----------------------------------+
 
 Kural Setleri
 -------------

@@ -223,53 +223,83 @@ Azami (En fazla) Öğretim Süresi
 Sınavlar
 --------
 
-**Ara Sınav**
-
-- Her yarıyılda en az bir adet yapılır. Birden çok olabilir.
-- Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir.
-- 1,2 ve 3. dönemlerde entegre derslerdeki kurul sınavlarıdır. Sınav sonuçları  koordinatörlük aracılığıyla baş koordinatörlük tarafından gönderilir.  Kurul sayıları kadardır.  4-5-6’da ara sınav yoktur.
-
-**Genel Sınav**
-
-- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.
-- Sonuçları sınavların ardından en geç 5 gün içinde açıklanmalıdır.
-- 1-2 ve 3’te yıl sonunda bir kere yapılır.
-- Devam zorunluluğu sağlanmalıdır.
-- Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.
-
-**Bütünleme**
-
-- Genel sınava girme hakkı olup giremeyen veya başarılı olamayanlar girebilir.
-- 1-2-3-4-5 bütünleme sınavları var. 1-2-3’te entegre derslerin bütünlemesi olur. 4-5’te her bir staj sonu sınavlarının bütünlemesi olur.
-- Yıl sonu bütünlemesi, yıl sonunda yapılan bütünlemedir.
-- Ara bütünleme, yıl içerisinde staj seyrine uygun şekilde staj sonu sınavlarına girenlere yapılır.
-- Öğrenci, her ders ve staj için ya ara bütünleme ya da yıl sonundaki bütünleme hakkını kullanabilir.
-
-**Staj Sonu Sınavı**
-
-- 4-5’te her staj sonu sınavı genel sınav niteliğindedir. 6’da her staj için yeterlilik sonucu gönderilir.
-- 4-5’teki staj sonuçlarına itiraz edilebilir. 6’da ki yeterlilik için itiraz edilemez.
-
-**Tek Ders**
-
-- Mezuniyetleri için tek dersi kalan öğrenciler
-- Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.
-- Devam zorunluluğu sağlanmalıdır.
-- Ders önceki yıllarda alınmış olmalıdır.
-
-**Muafiyet**
-
-- Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarıyıl başında açılır.
-- 70 ile geçer. Ortalamaya dahil edilmez.
-- Hazırlık sınıfı olmayan, zorunlu İngilizce dersi ve tıbbi bilgisayar dersi için öğretim yılı başında yapılır.
-- CC ile geçer. Ortalamaya dahil edilir.
-- Muafiyet dersinden geçenler harflendirilir. Geçemeyenlerin puanları saklanır fakat dersi alıyor durumunda kalırlar.
-
-**Mazeret**
-
-- Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.
-- 1-2-3 için yıl sonunda genel sınavdan önce sadece ara sınavlar için yapılır. 4-5-6’da mazeret sınavları yapılmaz.
-- Ara sınav dönemi için geçerli mazeret bildirilmelidir.
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  |                                                     |                                                 |                            |
+|                  |     **Ortak Zorunlu Ders**                          |     **Entegre Ders**                            |  **Şartlar**               |
+|                  |                                                     |                                                 |                            |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|  **Ara Sınav**   |     - Her yarıyılda en az bir adet yapılır.         |   - 1,2 ve 3. dönemlerde entegre derslerdeki    |                            |
+|                  |       Birden çok yapılabilir.                       |     kurul sınavlarıdır.                         |                            |
+|                  |                                                     |   - Sınav sonuçları koordinatörlük aracılığıyla |                            |
+|                  |                                                     |     baş koordinatörlük  tarafından gönderilir.  |                            |
+|                  |     - Sonuçları en geç genel sınavdan               |     Kurul sayıları kadardır.                    |                            |
+|                  |       15 gün önce öğretim görevlileri tarafından    |     4. , 5. ve 6. dönemlerde ara sınav yoktur.  |                            |
+|                  |       sisteme girilmelidir.                         |                                                 |                            |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  |     - Dersin tamamlandığı yarıyıl veya              |                                                 |                            |
+|                  |       yıl sonunda yapılır.                          |                                                 |                            |
+| **Genel Sınav**  |     - Sonuçları sınavların ardından                 | - 1. , 2. ve 3. dönemlerde                      |  - Devam zorunluluğu       |
+|                  |       en geç 5 gün içinde açıklanmalıdır.           |   yıl sonunda bir kere yapılır.                 |    sağlanmalıdır.          |
+|                  |                                                     |                                                 |                            |
+|                  |                                                     |                                                 |  - Uygulamalı bir ders     |
+|                  |                                                     |                                                 |    ise uygulamalarda       |
+|                  |                                                     |                                                 |    başarılı olunmalıdır.   |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  |      - Genel sınava girme hakkı olup giremeyen      | - 1. , 2. , 3. , 4. ve 5. dönemlerde bütünleme  |                            |
+| **Bütünleme**    |        veya ara sınav ve genel sınav sonucu         |   sınavları var.                                |  - Yıl sonu bütünlemesi,   |
+|                  |        başarısız olanlar.                           |                                                 |    yıl sonunda yapılan     |
+|                  |                                                     |   1-2-3’te entegre derslerin bütünlemesi olur.  |    bütünlemedir.           |
+|                  |                                                     |   4. ve 5. dönemlerde her bir staj sonu         |                            |
+|                  |                                                     |   sınavlarının bütünlemesi olur.                |  - Ara bütünleme, yıl      |
+|                  |                                                     |                                                 |    içerisinde staj seyrine |
+|                  |                                                     |                                                 |    uygun şekilde staj sonu |
+|                  |                                                     |                                                 |    sınavlarına girenlere   |
+|                  |                                                     |                                                 |                            |
+|                  |                                                     |                                                 |  - Öğrenci, her ders ve    |
+|                  |                                                     |                                                 |    staj için ya ara        |
+|                  |                                                     |                                                 |    bütünleme ya da yıl     |
+|                  |                                                     |                                                 |    sonundaki bütünleme     |
+|                  |                                                     |                                                 |    hakkını kullanabilir.   |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  |                                                     |                                                 |                            |
+|  **Staj Sonu**   |                                                     |                                                 |                            |
+|  **Sınavı**      |                                                     | - 4. ve 5. dönemlerde her staj sonu sınavı      |  - 4. ve 5. dönemlerdeki   |
+|                  |                                                     |   genel sınav niteliğindedir. 6. dönemde her    |    staj sonuçlarına itiraz |
+|                  |                                                     |   staj için yeterlilik sonucu gönderilir.       |    edilebilir. 6. dönemdeki|
+|                  |                                                     |                                                 |    yeterlilik için itiraz  |
+|                  |                                                     |                                                 |    edilemez.               |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  | - Mezuniyetleri için tek dersi kalan öğrenciler.    |                                                 |  - Devam zorunluluğu       |
+|                  | - Ara sınav şartı aranmadan CC ile öğrenci          |                                                 |    sağlanmalıdır.          |
+|   **Tek Ders**   |   başarılı sayılır.                                 |                                                 |  - Ders önceki yıllarda    |
+|                  |                                                     |                                                 |    alınmış olmalıdır.      |
+|                  |                                                     |                                                 |                            |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  | - Yabancı dil hazırlık sınıfında okumak zorunda     |                                                 |                            |
+|                  |   olanlar için ilgili dil dersinden yarıyıl         |                                                 |                            |
+|                  |   başında açılır.                                   |                                                 |                            |
+|  **Muafiyet**    | - 70 ile geçer. Ortalamaya dahil edilmez.           |                                                 |                            |
+|                  | - Hazırlık sınıfı olmayan, zorunlu İngilizce dersi  |                                                 |                            |
+|                  |   ve tıbbi bilgisayar dersi için öğretim yılı       |                                                 |                            |
+|                  |   başında yapılır.                                  |                                                 |                            |
+|                  | - CC ile geçer. Ortalamaya dahil edilir.            |                                                 |                            |
+|                  | - Muafiyet dersinden geçenler harflendirilir.       |                                                 |                            |
+|                  |   Geçemeyenlerin puanları saklanır fakat dersi      |                                                 |                            |
+|                  |   alıyor durumunda kalırlar.                        |                                                 |                            |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
+|                  | - Geçerli mazeretleri olan öğrencilere ara sınavlar |  - 1. , 2. ve 3.  yıl sonunda genel sınavdan    |  - Ara sınav dönemi için   |
+|    **Mazeret**   |   için tanınan haktır. Başka hiçbir sınav için      |    önce sadece ara sınavlar için yapılır.       |    geçerli mazeret         |
+|                  |   mazeret sınavı uygulanmaz.                        |  - 4. , 5. ve 6. yıllarda mazeret sınavları     |    bildirilmelidir.        |
+|                  |                                                     |    yapılmaz.                                    |                            |
+|                  |                                                     |                                                 |                            |
++------------------+-----------------------------------------------------+-------------------------------------------------+----------------------------+
 
 Kural Setleri
 -------------

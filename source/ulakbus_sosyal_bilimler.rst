@@ -453,15 +453,17 @@ Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirleni
 Sınavlar
 --------
 
-**Genel Sınav**
-
-- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır. Sonuçları sınavın ardından en geç 5 gün içinde açıklanmalıdır.
-
-- Devam zorunluluğu sağlanmalı (% 70). Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.
-
-**Bütünleme**
-
--  Genel sınava girme hakkı olup giremeyen veya ara sınav ya da genel sınav sonucu başarısız olanlar için yapılır.
++-------------------+----------------------------------------------------------+-----------------------------------------+
+|                   | - Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.  | - Devam zorunluluğu sağlanmalı %70.     |
+| **Genel SInav**   |                                                          | - Uygulamalı bir ders ise uygulamalarda |
+|                   | - Sonuçları sınavların ardından en geç 5 gün içinde      |   başarılı olunmalıdır.                 |
+|                   |   açıklanmalıdır.                                        |                                         |
+|                   |                                                          |                                         |
++-------------------+----------------------------------------------------------+-----------------------------------------+
+|                   | - Genel sınava girme hakkı olup giremeyen veya ara       |                                         |
+| **Bütünleme**     |   sınav ve genel sınav sonucu başarısız olanlar.         |                                         |
+|                   |                                                          |                                         |
++-------------------+----------------------------------------------------------+-----------------------------------------+
 
 Kural Setleri
 -------------

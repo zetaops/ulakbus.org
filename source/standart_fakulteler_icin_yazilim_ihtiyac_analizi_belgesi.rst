@@ -272,38 +272,55 @@ Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirleni
 **Sınavlar**
 ------------
 
-**Ara Sınav**
 
-    - Her yarıyılda en az bir adet yapılır.
-    - Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir.
-
-**Genel Sınav**
-
-    - Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.(Devam zorunluluğu sağlanmalı)
-    - Sonuçları sınavların ardından en geç 5 gün içinde açıklanmalıdır.(Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.)
-
-**Bütünleme**
-
-    - Genel sınava girme hakkı olup giremeyen veya ara sınav ve genel sınav sonucu başarısız olanlar.
-
-**Tek ders**
-
-     - Mezuniyetleri için tek dersi kalan öğrenciler.(Devam zorunluluğu sağlanmalı)
-     - Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.(Ders önceki yıllarda alınmış olmalı)
-
-**Muafiyet**
-
-    - Yabancı dil hazırlık sınıfında okumak zorunda olanlar için ilgili dil dersinden yarıyıl başında açılır. 70 ile geçer. Ortalamaya dahil edilmez.
-    - Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için öğretim yılı başında yapılır. CC ile geçer. Ortalamaya dahil edilir.
-
-**Mazeret**
-
-    - Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz.(Ara sınav dönemi için geçerli mazeret bildirilmelidir.)
-
-**Ek Sınav**
-
-    - Uygulamalı derslerin ek sınavları olabilir. Ara sınav şartı aranmaksızın ek sınavlarda alınan en az CC ise öğrenci başarılı sayılır.
-
++-----------------+------------------------------------------------------------------+-------------------------+
+|  **Ara Sınav**  |     - Her yarıyılda en az bir adet yapılır.                      |                         |
+|                 |     - Sonuçları en geç genel sınavdan 15 gün                     |                         |
+|                 |       önce öğretim görevlileri tarafından sisteme girilmelidir.  |                         |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
+|                 |     - Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.      |                         |
+| **Genel Sınav** |     - Sonuçları sınavların ardından                              | - Devam zorunluluğu     |
+|                 |       en geç 5 gün içinde açıklanmalıdır.                        |   sağlanmalı            |
+|                 |                                                                  |                         |
+|                 |                                                                  | - Uygulamalı bir ders   |
+|                 |                                                                  |   ise uygulamalarda     |
+|                 |                                                                  |   başarılı olunmalıdır. |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
+|                 |      - Genel sınava girme hakkı olup giremeyen veya              |                         |
+|  **Bütünleme**  |        ara sınav ve genel sınav sonucu başarısız olanlar.        |                         |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
+|                 |      - Mezuniyetleri için tek dersi kalan öğrenciler.            |                         |
+|  **Tek ders**   |      - Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.| - Devam zorunluluğu     |
+|                 |                                                                  |   sağlanmalı            |
+|                 |                                                                  |                         |
+|                 |                                                                  | - Ders önceki yıllarda  |
+|                 |                                                                  |   alınmış olmalı        |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
+|                 |    - Yabancı dil hazırlık sınıfında okumak zorunda olanlar       |                         |
+|                 |      için ilgili dil dersinden yarıyıl başında açılır.           |                         |
+|                 |      70 ile geçer. Ortalamaya dahil edilmez.                     |                         |
+|  **Muafiyet**   |                                                                  |                         |
+|                 |    - Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için       |                         |
+|                 |      öğretim yılı başında yapılır. CC ile geçer.                 |                         |
+|                 |      Ortalamaya dahil edilir.                                    |                         |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
+|                 |    - Geçerli mazeretleri olan öğrencilere ara sınavlar için      |                         |
+|                 |      tanınan haktır. Başka hiçbir sınav için mazeret             | - Ara sınav dönemi      |
+|                 |      sınavı uygulanmaz.                                          |   için geçerli          |
+|   **Mazeret**   |                                                                  |   mazeret               |
+|                 |                                                                  |   bildirilmelidir.      |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
+|                 |    - Uygulamalı derslerin ek sınavları olabilir. Ara sınav       |                         |
+|  **Ek Sınav**   |      şartı aranmaksızın  ek sınavlarda alınan en az CC ise       |                         |
+|                 |      öğrenci başarılı sayılır.                                   |                         |
+|                 |                                                                  |                         |
++-----------------+------------------------------------------------------------------+-------------------------+
 
 =================
 **Kural Setleri**

@@ -205,15 +205,21 @@ Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirleni
 Sınavlar
 --------
 
-**Genel Sınav**
 
-- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır. Sonuçları sınavın ardından en geç 5 gün içinde açıklanmalıdır.
-
-- Devam zorunluluğu sağlanmalı (% 70). Uygulamalı bir ders ise uygulamalarda başarılı olunmalıdır.
-
-**Bütünleme**
-
--  Genel sınava girme hakkı olup giremeyen veya ara sınav ya da genel sınav sonucu başarısız olanlar için yapılır.
++-----------------+------------------------------------------------------------------+-----------------------------+
+| **Genel Sınav** |   - Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.        |   - Devam zorunluluğu       |
+|                 |   - Sonuçları sınavların ardından                                |     sağlanmalı %70          |
+|                 |     en geç 5 gün içinde açıklanmalıdır.                          |   - Uygulamalı bir          |
+|                 |                                                                  |     ders ise                |
+|                 |                                                                  |     uygulamalarda           |
+|                 |                                                                  |     başarılı olunmalıdır.   |
+|                 |                                                                  |                             |
++-----------------+------------------------------------------------------------------+-----------------------------+
+|                 |   -Genel sınava girme hakkı olup giremeyen veya ara              |                             |
+| **Bütünleme**   |    sınav ve genel sınav sonucu başarısız olanlar.                |                             |
+|                 |                                                                  |                             |
+|                 |                                                                  |                             |
++-----------------+------------------------------------------------------------------+-----------------------------+
 
 Kural Setleri
 -------------

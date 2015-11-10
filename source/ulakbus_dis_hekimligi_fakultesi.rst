@@ -257,35 +257,59 @@ Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirleni
 **Sınavlar**
 ------------
 
-**Ara Sınav**
 
-- Her yarıyılda en az bir adet yapılır.
-- Sonuçları en geç genel sınavdan 15 gün önce öğretim görevlileri tarafından sisteme girilmelidir. (Devam zorunluluğu sağlanmalı)
-
-**Genel Sınav**
-
-- Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.(Devam zorunluluğu sağlanmalı)
-
-**Bütünleme**
-
--  Genel sınava girme hakkı olup giremeyen veya genel sınav sonucu başarısız olanlar veya genel sınava girme hakkına sahip olamayıp, bütünleme sınavına kadar ilgili anabilim dalı kriterlerini yerine getiren öğrenciler.
-
-**Tek ders**
-
-- Her yıl sonunda en çok 1 dersten kalan öğrenciye sınıflarını geçmeleri için tanınan sınavdır.
-- Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.(Devam zorunluluğu sağlanmalı)
-
-Otomasyon ile başvurular alınabilir mi?
-
-**Muafiyet**
-
-- Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için öğretim yılı başında yapılır.CC ile geçer. Ortalamaya dahil edilir.
-
-**Mazeret**
-
-- Geçerli mazeretleri olan öğrencilere ara sınavlar için tanınan haktır. Başka hiçbir sınav için mazeret sınavı uygulanmaz. Staj derslerinde uygulanmaz. (Ara sınav dönemi için geçerli mazeret bildirilmelidir.)
-
-**Staj Sınavı**
++-----------------+------------------------------------------------------------------+------------------------+
+|  **Ara Sınav**  |     - Her yarıyılda en az bir adet yapılır.                      |  - Devam zorunluluğu   |
+|                 |     - Sonuçları en geç genel sınavdan 15 gün                     |    sağlanmalı          |
+|                 |       önce öğretim görevlileri tarafından sisteme girilmelidir.  |                        |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
+|                 |     - Dersin tamamlandığı yarıyıl veya yıl sonunda yapılır.      |                        |
+| **Genel Sınav** |                                                                  | - Devam zorunluluğu    |
+|                 |                                                                  |   sağlanmalı           |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
+|                 |      - Genel sınava girme hakkı olup giremeyen veya genel        |                        |
+|                 |        sınav sonucu başarısız olanlar veya genel sınava          |                        |
+|  **Bütünleme**  |        girme hakkına sahip olamayıp, bütünleme sınavına          |                        |
+|                 |        kadar ilgili anabilimdalı kritlerini yerine getiren       |                        |
+|                 |        öğrenciler.                                               |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
+|                 |      - Her yıl sonunda en çok 1 dersten kalan öğrenciye          |                        |
+|                 |        sınıflarını geçmeleri için tanınan sınavdır.              |                        |
+|  **Tek ders**   |      - Ara sınav şartı aranmadan CC ile öğrenci başarılı sayılır.| - Devam zorunluluğu    |
+|                 |                                                                  |   sağlanmalı           |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
+|  **Muafiyet**   |                                                                  |                        |
+|                 |    - Hazırlık sınıfı olmayan, zorunlu İngilizce dersi için       |                        |
+|                 |      öğretim yılı başında yapılır. CC ile geçer.                 |                        |
+|                 |      Ortalamaya dahil edilir.                                    |                        |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
+|                 |    - Geçerli mazeretleri olan öğrencilere ara sınavlar için      | - Ara sınav dönemi     |
+|                 |      tanınan haktır. Başka hiçbir sınav için mazeret             |   için geçerli         |
+|   **Mazeret**   |      sınavı uygulanmaz. Staj derslerinde de uygulanmaz.          |   mazeret              |
+|                 |                                                                  |   bildirilmelidir.     |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
+|                 |                                                                  |                        |
+| **Staj Sınavı** |                                                                  |                        |
+|                 |                                                                  |                        |
+|                 |                                                                  |                        |
++-----------------+------------------------------------------------------------------+------------------------+
 
 =================
 **Kural Setleri**
