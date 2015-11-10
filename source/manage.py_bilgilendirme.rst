@@ -15,3 +15,37 @@ Belge, sisteme kaydı yapılan bir kullanıcının kendi hesabına ulaşma bilgi
 **permission_query:** Giriş yapan kişinin sistemde izni olup olmadığını sorgular. Eğer giriş yapmak isteyen kişi kayıtlı değilse login ekranı hata verir.
 
 **help:** Kullanıcıya yardımcı olabilecek ekranı output olarak verir.
+
+Eğer sistemde girilen kullanıcı adı sistemde kayıtlı değilse, sistem yeni bir kullanıcı yaratır.
+Yeni kullanıcının bilgileri; kullanıcı adı, şifresi, atanan rol, özel yetkiler ve izin verilen işlemler şeklinde sisteme kaydedilir.
+
+Sistemde 'load fixtures' adında datalar tutulmaktadır.
+Bu dataların içeriği, eldeki json dosyası veya dosyalarında biriken verilerin yenilenmiş versiyonlarını ve dosyaların path'lerini kapsamaktadır.
+
+**path:** Bu parametre bize elimizdeki json dosyalarının depolandığı yeri 'Load fixture file or directory' şeklinde output olarak verir.
+
+- json dosyalarının path'lerini alabilmek için ilk önce import etmemiz gerekmektedir.
+
+json dosyalarını bulundukları path içinde çalıştırdığımızda sistem o dosyaları depolar.
+Dosya depolandığında
+::
+
+ "%s: %s stored.."
+
+uyarısı ekranda görülür.
+
+Depolanan dosyayı
+
+::
+
+ "please validate your json file: %s"
+
+komutunun ekrana gelmesiyle onaylamamız gerekmektedir. Aksi takdirde dosya sisteme kaydedilmez ve sonraki işlemler için arattığımızda sistemde bulunamaz.
+
+Sistemde bulunmayan dosya
+
+::
+
+ "file not found: %s"
+
+şeklinde uyarı verir.
