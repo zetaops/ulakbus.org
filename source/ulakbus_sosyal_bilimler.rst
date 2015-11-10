@@ -834,9 +834,6 @@ Roller
 
 * Danışman
 
-Yetkiler
---------
-
 Ekranlar
 --------
 
@@ -911,13 +908,6 @@ Sistem Tarafından Üretilecek Belgeler
 
 - Öğrenci zarfı. Gönderici ve alıcı bilgileri.
 - İlgili makama belgesi, öğrencilik hakkından yararlanamayanlar için burada eğitim-öğretimini devam ettirmektedir.
-
-EBYS Entegrasyonu
------------------
-
-
-
-
 
 Ders Kopyalama
 --------------

@@ -305,11 +305,6 @@ Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirleni
 |                 |                                                                  |   bildirilmelidir.     |
 |                 |                                                                  |                        |
 +-----------------+------------------------------------------------------------------+------------------------+
-|                 |                                                                  |                        |
-| **Staj Sınavı** |                                                                  |                        |
-|                 |                                                                  |                        |
-|                 |                                                                  |                        |
-+-----------------+------------------------------------------------------------------+------------------------+
 
 =================
 **Kural Setleri**
@@ -620,11 +615,9 @@ YOK
 **Ders Alma Biçimleri**
 -----------------------
 
-İlk
-
-Tekrar
-
-Yükseltme için
+- İlk
+- Tekrar
+- Yükseltme için
 
 --------------
 **Ders Seçme**
@@ -724,13 +717,10 @@ YOK
 
 Harf değişimlerini etkileyen her operasyonun ardından -sınav notlarının değişmesi- ona bağlı işlemler yeniden hesaplanır.
 
-* Şartlı geçiş
-
-* Geçme kalma
-
-* Onur belgesi
-
-* % 10 işlemleri
+- Şartlı geçiş
+- Geçme kalma
+- Onur belgesi
+- % 10 işlemleri
 
 --------------------
 **Mazeret Yönetimi**
@@ -762,31 +752,19 @@ Ancak, bu tarihe kadar tek ders, staj, endüstriye dayalı öğretim, bitirme ö
 **Roller**
 ==========
 
-* Öğrenci
-
-* Danışman
-
-* Dekan
-
-* Fakülte Sekreteri
-
-* Fakülte Öğrenci İşleri Personeli
-
-* Fakülte Yönetim Kurulu Üyesi
-
-* Fakülte Yönetim Kurulu Başkanı
-
-* Anabilim Dalı Kurulu Üyesi
-
-* Anabilim Dalı Kurulu Başkanı
-
-* Fakülte Kurulu Üyesi
-
-* Fakülte Kurulu Başkanı
-
-* Bölüm Başkanı
-
-* Danışman
+- Öğrenci
+- Danışman
+- Dekan
+- Fakülte Sekreteri
+- Fakülte Öğrenci İşleri Personeli
+- Fakülte Yönetim Kurulu Üyesi
+- Fakülte Yönetim Kurulu Başkanı
+- Anabilim Dalı Kurulu Üyesi
+- Anabilim Dalı Kurulu Başkanı
+- Fakülte Kurulu Üyesi
+- Fakülte Kurulu Başkanı
+- Bölüm Başkanı
+- Danışman
 
 ============
 **Yetkiler**
@@ -802,33 +780,23 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 **Ekranlar**
 ============
 
-* Not ve devamsızlık giriş ekranları
-
-* Toplu askerlik belgesi bastır
-
-* Toplu danışman atama
-
-* Toplu sınıf şubelendirme
-
-* Toplu sınav tarih girişi
-
-* Toplu not durum belgesi
-
-* Mezuniyet ekranı
-
-* Toplu Mernis ve AKS güncelleme.
+- Not ve devamsızlık giriş ekranları
+- Toplu askerlik belgesi bastır
+- Toplu danışman atama
+- Toplu sınıf şubelendirme
+- Toplu sınav tarih girişi
+- Toplu not durum belgesi
+- Mezuniyet ekranı
+- Toplu Mernis ve AKS güncelleme.
 
 =================================
 **Sistemden Beklenecek Raporlar**
 =================================
 
-* Genel durum ve işleyiş raporu (Fakülte faaliyet raporu)
-
-* Öğrenci sınıf listeleri
-
-* Dersi alan öğrenciler listesi.
-
-* Bölüm ders müfredatı
+- Genel durum ve işleyiş raporu (Fakülte faaliyet raporu)
+- Öğrenci sınıf listeleri
+- Dersi alan öğrenciler listesi.
+- Bölüm ders müfredatı
 
 =========================================
 **Sistem Tarafından Üretilecek Belgeler**
@@ -847,11 +815,6 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 
 - Diploma Eki (Sadece mezun durumundaki öğrencilere verilebilir.)
 
-=====================
-**EBYS Entegrasyonu**
-=====================
-
-
 -----------------
 **Staj Dersleri**
 -----------------
@@ -859,16 +822,12 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 Her staj dersi sistemde ayrı bir ders olarak açılır.
 Ara sınavları yoktur. Sadece final notu girilir. Final notu değerlendirme formu ile hesaplanır.
 
-* Her bir staj dersi için ayrı bir değerlendirme formu vardır. Bu değerlendirme formu ile öğrenci notu hesaplanır.
+- Her bir staj dersi için ayrı bir değerlendirme formu vardır. Bu değerlendirme formu ile öğrenci notu hesaplanır.
 Her kliniğin başarılması için barajlar vardır. Bu dersin tanımında yer almalıdır. Bu barajlar aşılmadığı zaman öğrenci değerlendirme formu açılmaz. Öğrenci final notu FF olarak sisteme işaretlenir.
 
 Eğer öğrenci başarısız olursa yaz stajına gelir. Burada aldığı not da bütünleme olarak kaydedilir.
 
 Her öğrenci bir stajı dönem içinde sadece bir kere alabilir. Staj ile birlikte bir de staj sorumlusu açılır. Her staj dersinden sadece bir tane açılır.
-
--------------------
-**Entegre Stajlar**
--------------------
 
 -----------------------
 **Laboratuvar Dersler**

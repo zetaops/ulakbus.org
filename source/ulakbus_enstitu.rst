@@ -148,9 +148,6 @@ Zorunlu Ortak Ders
 
 YOK
 
-Bilimsel Hazırlık
------------------
-
 Ön Şartlı Ders
 --------------
 
@@ -549,9 +546,6 @@ Bir dersten muafiyet şartları şu şekildedir:
 - Programdan kaldırılan ve yerine herhangi bir ders konulmayan herhangi bir dersten başarısız olan öğrenci, o dersten muaf sayılır.
 - İlgili dersin muafiyet sınavını başarmış olmak
 
-Sınav Yönetimi
---------------
-
 Mazeret Yönetimi
 ----------------
 
@@ -603,9 +597,6 @@ Roller
 
 * Danışman
 
-Yetkiler
---------
-
 Ekranlar
 --------
 
@@ -649,24 +640,10 @@ Sistem Tarafından Üretilecek Belgeler
 
 - Diploma eki (Sadece mezun durumundaki öğrencilere verilebilir)
 
-EBYS Entegrasyonu
------------------
-
-**Notlar**
-
-- Personel anabilim dalında yer alır, öğrenciler programda yer alırlar.
-- Bölümlerden öğrenci işlerine giden tüm evraklardan örnek isteyelim.
-
-  * Diploma eki nasıl verilir?
-
-- Dış servislere erişim sorunu varsa uygulama uyarı yapsın.
-
 Ders Kopyalama
 --------------
 
 Önceki yıldan bölüm dersleri aktarılıp, değişiklikler işlenir.
-
-Staj ders tipi tanımlanacak.
 
 Derslerin Dili Kuralları
 ------------------------

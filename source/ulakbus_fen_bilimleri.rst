@@ -128,9 +128,6 @@ Danışman
 * Sistemden uyarılar alır.
 * Farabiyle giden, erasmus ile giden, kayıt donduran, yatay geçişle giden ve kendisi ders kaydı yapmamış öğrenci yerine ders kaydı yapamaz.
 
-Ön Kayıt
---------
-
 Bilimsel Hazırlık
 -----------------
 
@@ -140,7 +137,7 @@ Bilimsel Hazırlık
 
 Öğrenci asgari yarım dönem, azami 1 yıl lisans programlarından veya yüksek lisans programlarından ders alır. Danışmanı ile ders seçiyor. En az 4 ders almalıdır. Kredisi dikkate alınmaz. 20 AKTS'dir.
 
-**Azami 1 yılın ardından ders seçemez.**
+Azami 1 yılın ardından ders seçemez.
 
 Aşamalar
 --------
@@ -391,9 +388,6 @@ Zorunlu Ortak Ders
 
 YOK
 
-Bilimsel Hazırlık
------------------
-
 Ön Şartlı Ders
 --------------
 
@@ -628,26 +622,19 @@ Kayıt İşlemleri
 **İlk Kayıt**
 
 - Öğrenci web sitesi üzerinden ön kayıt yapar.
-
 - Öğrencilerin ALES bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçici kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
-
 - Öğrenci için öğrenci numarası ve geçici bir parola verilir.
-
 - Askerlik durumları ASAL’dan web serivisi ile öğrenilir. Öğrencinin durumu ASAL servisine bildirilir. ASAL’dan gelebilecek bilgiler kayıt önüne engel değildir. Öğrencinin askerlik hizmetine başlayacak olması kayıt dondurma  için geçerli bir sebeptir.
-
 - Ön kayıtlar kontrol edilir. Kayıt hakkı olanlar işaretlenir. Kayıt hakkı olanlara bildirim gönderilir. Kayıt hakkı kazananlar için sonraki adımlar açılır.
-
 - 2.Öğretim öğrencilerinin harç ödeme bilgilerini banka bizim sistemden öğrenip, ödeme bilgilerini web serivisi aracılığıyla yine bizim sisteme yazacak.
 
   * Harcını ödememiş olanların kayıt işlemleri yapılamaz.
 
   * Askerlik sıkıntısı olanların durumu bankaya uygun şekilde bildirilir.
 
-* Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
-
-* Öğrencinin lisans bilgileri, adı, bölümü, mezuniyet tarihi vb. sisteme kaydedilir.
-
-* Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur.  öğrenci kayıtlı hale gelir.
+- Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formunu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
+- Öğrencinin lisans bilgileri, adı, bölümü, mezuniyet tarihi vb. sisteme kaydedilir.
+- Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur.  öğrenci kayıtlı hale gelir.
 
 Kayıt dönemi kapandığında kesin kayıt haline gelmemiş geçici kayıtlar ve ön kayıtlar silinir.
 Kesin kayıt dönemi bittiğinde boş kontenjanlar için rapor haline getirilir. Web'den duyurulur.
@@ -656,9 +643,8 @@ Ek kontenjan ile gelenler de ilk kayıt sürecine tabidir.
 Kesin Kayıt Sonrası
 -------------------
 
-* Öğrencilere bir danışman hoca ataması, öğrenci işleri tarafından yapılır.
-
-* Askerlik durumları bildiriliyor. Belge üretip postaya verilecek. Mevcut durumda üretilen belgede öğrenci numarası eksik. Öğrenci askerlik bilgilerini, ASAL iletişimi sonuçlarını veya üretilen belgeleri görebilmelidir.
+- Öğrencilere bir danışman hoca ataması, öğrenci işleri tarafından yapılır.
+- Askerlik durumları bildiriliyor. Belge üretip postaya verilecek. Mevcut durumda üretilen belgede öğrenci numarası eksik. Öğrenci askerlik bilgilerini, ASAL iletişimi sonuçlarını veya üretilen belgeleri görebilmelidir.
 
 Kayıt Yenileme
 --------------
@@ -709,11 +695,9 @@ Program yıllara göre versiyonlanır. Her öğrenim yılı başında program ye
 Ders Alma Biçimleri
 -------------------
 
-* İlk
-
-* Devamsız Tekrar
-
-* Devamlı Tekrar
+- İlk
+- Devamsız Tekrar
+- Devamlı Tekrar
 
 Ders Seçme
 ----------
@@ -819,9 +803,6 @@ Roller
 
 * Danışman
 
-Yetkiler
---------
-
 Ekranlar
 --------
 
@@ -873,9 +854,6 @@ Sistem Tarafından Üretilecek Belgeler
 
   * Diploma metni her bölüme göre değişebilir. Diploma metninin içine parametre geçirilmelidir.
 
-EBYS Entegrasyonu
------------------
-
 Muhasebe İşlemleri
 ------------------
 
@@ -916,9 +894,6 @@ Ek Ders
 
 - Doğruysa KBS girilir.  Muhasebe birimine gönder butonu ile sistem üzerinden Stratejiye gider.
 - Evrakları imzalı ve mühürlü ayrıca gönderilir.
-
-Satın Alma
-----------
 
 Yolluklar
 ---------

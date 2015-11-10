@@ -639,14 +639,6 @@ Roller
 - Bölüm Başkanı
 - Danışman
 
-Yetkiler
---------
-
-
-Ekranlar
---------
-
-
 Sistemden Beklenecek Raporlar
 -----------------------------
 
@@ -673,4 +665,3 @@ Derslerin Dili Kuralları
 ------------------------
 
 Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar.
-

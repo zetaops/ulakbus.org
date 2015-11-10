@@ -764,9 +764,6 @@ Sistem Tarafından Üretilecek Belgeler
 
 - Diploma Eki (Sadece mezun durumundaki öğrencilere verilebilir)
 
-EBYS Entegrasyonu
------------------
-
 Ders Kopyalama
 --------------
 

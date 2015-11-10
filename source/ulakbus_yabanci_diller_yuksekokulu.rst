@@ -47,8 +47,6 @@ Yüksekokulun idari amiridir.
 Yüksekokul Öğrenci İşleri
 -------------------------
 
-Öğrencilerin kayıt işlemlerini YAPMIYORUZ.
-
 Tek ders, tek vize ve tek final var.
 
 Ders işlemleri ve ders şubeleme de burada yapılır.
@@ -404,31 +402,19 @@ Devamsızlık, devam barajının altındaysa öğrenciler final sınavına girme
 Roller
 ------
 
-* Öğrenci
-
-* Danışman
-
-* Dekan
-
-* Fakülte Sekreteri
-
-* Fakülte Öğrenci İşleri Personeli
-
-* Fakülte Yönetim Kurulu Üyesi
-
-* Fakülte Yönetim Kurulu Başkanı
-
-* Anabilim Dalı Kurulu Üyesi
-
-* Anabilim Dalı Kurulu Başkanı
-
-* Fakülte Kurulu Üyesi
-
-* Fakülte Kurulu Başkanı
-
-* Bölüm Başkanı
-
-* Danışman
+- Öğrenci
+- Danışman
+- Dekan
+- Fakülte Sekreteri
+- Fakülte Öğrenci İşleri Personeli
+- Fakülte Yönetim Kurulu Üyesi
+- Fakülte Yönetim Kurulu Başkanı
+- Anabilim Dalı Kurulu Üyesi
+- Anabilim Dalı Kurulu Başkanı
+- Fakülte Kurulu Üyesi
+- Fakülte Kurulu Başkanı
+- Bölüm Başkanı
+- Danışman
 
 Yetkiler
 --------
@@ -441,21 +427,14 @@ Personeller kendine ait bazı yetkilerini başka bir personele geçici süreli o
 Ekranlar
 --------
 
-* Not ve devamsızlık giriş ekranları
-
-* Toplu askerlik belgesi bastır
-
-* Toplu danışman atama
-
-* Toplu sınıf şubelendirme
-
-* Toplu sınav tarih girişi
-
-* Toplu not durum belgesi
-
-* Mezuniyet ekranı
-
-* Toplu Mernis ve AKS güncelleme
+- Not ve devamsızlık giriş ekranları
+- Toplu askerlik belgesi bastır
+- Toplu danışman atama
+- Toplu sınıf şubelendirme
+- Toplu sınav tarih girişi
+- Toplu not durum belgesi
+- Mezuniyet ekranı
+- Toplu Mernis ve AKS güncelleme
 
 Sistemden Beklenecek Raporlar
 -----------------------------
@@ -481,9 +460,6 @@ Sistem Tarafından Üretilecek Belgeler
 
 - Diploma eki (Sadece mezun durumundaki öğrencilere verilebilir)
 
-EBYS Entegrasyonu
------------------
-
 Ders Kopyalama
 --------------
 
@@ -492,56 +468,39 @@ Ders Kopyalama
 Ders Tipleri
 ------------
 
-* Hazırlık
-
-* Normal
-
-* Seçmeli
-
-* Staj
-
-* Tıp Staj
-
-* Entegre
+- Hazırlık
+- Normal
+- Seçmeli
+- Staj
+- Tıp Staj
+- Entegre
 
 Ders Durumları
 --------------
 
-* Alıyor
-
-* Geçti
-
-* Kaldı
-
-* Devamsızlıktan Kaldı
-
-* Danışman Onayı Bekliyor
-
-* Muaf
-
-* Notsuz Muaf
+- Alıyor
+- Geçti
+- Kaldı
+- Devamsızlıktan Kaldı
+- Danışman Onayı Bekliyor
+- Muaf
+- Notsuz Muaf
 
 
 Ders Alış Tİpi
 --------------
 
-* İlk
-
-* Üstten
-
-* Devamlı Tekrar
-
-* Yükseltme İçin
-
-* Devamsız Tekrar
-
+- İlk
+- Üstten
+- Devamlı Tekrar
+- Yükseltme İçin
+- Devamsız Tekrar
 
 Ders Dili
 ---------
 
-* Türkçe
-
-* İngilizce...
+- Türkçe
+- İngilizce...
 
 Derslerin Dili Kuralları
 ------------------------
