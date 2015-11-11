@@ -310,12 +310,26 @@ parent      **Birim()**
 }
 
 class Personel <<(M,orchid)>>{
-tckn              String
-ad                String
-soyad             String
-personel_turu     String
-dogum_tarihi      Date
-cep_telefonu      String
+tckn                  String
+ad                    String  * *
+soyad                 String  * *
+dogum_tarihi          Date
+dogum_yeri            String  * *
+cep_telefonu          String  * *
+uyruk                 String
+medeni_hali           String
+ikamet_adresi         String
+oda_no                Int     * *
+oda_tel_no            String  * *
+e_posta               String  * *
+web_sitesi            String
+yayinlar              String  * *
+projeler              String
+kan_grubu             String
+ehliyet               String
+akademik_yayinlari    String  * *
+verdigi_dersler       String  * *
+unvan                 String  * *
 --
 **NufusKayitlari(Node)**
 |_ tckn                       String  * *
