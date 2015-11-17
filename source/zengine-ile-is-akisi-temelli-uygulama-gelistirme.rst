@@ -153,6 +153,7 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
 .. uml::
+
     skinparam classBackgroundColor #ffffff
     skinparam shadowing false
 
@@ -222,32 +223,3 @@ Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, 
                                                   'id': person.key,
                                                   'phone': person.phone})
 
-Adım adım bir web uygulamasının geliştirilmesi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Aşağıdaki adımları tamamlayınca kullanıcı yetkilerinin ayarlandığı bir ayar ekranı oluşturmuş olacağız.
-
-
-
-Geliştirme ortamının kurulumu
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Git ve Vagrant araçlarına ihtiyacınız var.
-Vagrant box ile gerekli ortamı elde edebilirsiniz. (link eklenecek)
-
-
-Dizin & dosya yapısının oluşturulması
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-İş akışlarının tasarlanması.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-Modellerin tanımlanması.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Özelleştirilmiş ekranların oluşturulması.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
