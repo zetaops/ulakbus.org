@@ -5,8 +5,17 @@
 Ulakbüs'ü Geliştirelim
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-Aşağıdaki adımları izleyerek Ulakbüs projesine öğrencilerin ders seçmesini sağlayan bir işlev eklemiş olacağız
+Aşağıdaki adımları izleyerek Ulakbüs projesine öğrencilerin ders seçmesini sağlayan bir işlev eklemiş olacağız.
 
+    * Öğrenci seçebileceği derslerin listesini görüntüler.
+    * Almak istediği dersleri seçer ve "kaydet" düğmesine basar.
+    * Seçtiği derslerin listesini tekrar gözden geçirir ve "onay" düğmesine basar.
+    * Dersleri onaylaması için öğrencinin danışmanına bir ileti gönderilir.
+    * Danışman iletideki bağlantıya tıklayarak iş akışına katılır.
+    * Danışman seçili dersleri görür;
+        * Onayla düğmesine basması durumunda, ders listesi onaylanmış olarak kaydedilir.
+        * Bir dersi listeden çıkarması durumunda öğrenciye ileti gönderilerek tekrar ders seçmesi istenir.
+    * Öğrenci ders listesini günceller ve tekrar onaylar.
 
 
 Geliştirme ortamının kurulumu
@@ -24,6 +33,7 @@ View, task ve model modülleri, proje kök dizininde yer alan ``views``, ``tasks
 .. uml::
 
     @startsalt
+
     {
     {T
     +manage.py
@@ -108,7 +118,7 @@ Basit bir view fonksiyonu hazırlayalım
 Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
 ***********************************************************************************
 
-..
+sdsd
 
 CrudView'ı genişletmek
 ***********************************************************************************
