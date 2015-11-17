@@ -222,3 +222,32 @@ Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, 
                                                   'id': person.key,
                                                   'phone': person.phone})
 
+Adım adım bir web uygulamasının geliştirilmesi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Aşağıdaki adımları tamamlayınca kullanıcı yetkilerinin ayarlandığı bir ayar ekranı oluşturmuş olacağız.
+
+
+
+Geliştirme ortamının kurulumu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Git ve Vagrant araçlarına ihtiyacınız var.
+Vagrant box ile gerekli ortamı elde edebilirsiniz. (link eklenecek)
+
+
+Dizin & dosya yapısının oluşturulması
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+İş akışlarının tasarlanması.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+Modellerin tanımlanması.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Özelleştirilmiş ekranların oluşturulması.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
