@@ -7,22 +7,22 @@ Ulakbüs'ü Geliştirelim
 
 Aşağıdaki adımları izleyerek Ulakbüs projesine öğrencilerin ders seçmesini sağlayan bir işlev eklemiş olacağız.
 
-    * Öğrenci seçebileceği derslerin listesini görüntüler.
-    * Almak istediği dersleri seçer ve "kaydet" düğmesine basar.
-    * Seçtiği derslerin listesini tekrar gözden geçirir ve "onay" düğmesine basar.
-    * Dersleri onaylaması için öğrencinin danışmanına bir ileti gönderilir.
-    * Danışman iletideki bağlantıya tıklayarak iş akışına katılır.
-    * Danışman seçili dersleri görür;
-        * Onayla düğmesine basması durumunda, ders listesi onaylanmış olarak kaydedilir.
-        * Bir dersi listeden çıkarması durumunda öğrenciye ileti gönderilerek tekrar ders seçmesi istenir.
-    * Öğrenci ders listesini günceller ve tekrar onaylar.
+* Öğrenci seçebileceği derslerin listesini görüntüler.
+* Almak istediği dersleri seçer ve "kaydet" düğmesine basar.
+* Seçtiği derslerin listesini tekrar gözden geçirir ve "onay" düğmesine basar.
+* Dersleri onaylaması için öğrencinin danışmanına bir ileti gönderilir.
+* Danışman iletideki bağlantıya tıklayarak iş akışına katılır ve öğrencinin seçtiği dersleri görüntüler.
+* Onayla düğmesine basması durumunda, ders listesi onaylanmış olarak kaydedilir ve öğrenciye ders seçiminin danışmanı tarafından onaylandığı mesajı gider. İş akışı tamamlanmış olur.
+* Danışmanın bir dersi listeden çıkarması durumunda öğrenciye ileti gönderilerek tekrar ders seçmesi istenir.
+* Öğrenci ders listesini günceller ve tekrar onaylar.
+* Danışmana tekrar inceler, onaylama durumuna bağlı olarak akış sonlanır ya da başa döner.
 
 
 Geliştirme ortamının kurulumu
 ***********************************************************************************
 
 Geliştirmeye başlamak için **git** ve **vagrant** araçlarına ihtiyacımız olacak.
-Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant box ile gerekli ortam hazır olarak gelmektedir. (link eklenecek)
+Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant sanal makinası ile gerekli ortam hazır olarak gelmektedir. (link eklenecek)
 
 
 View, Task ve Model dosyalarının konumları
