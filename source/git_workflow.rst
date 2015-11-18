@@ -47,7 +47,7 @@ Git temellerini öğrenmek için aşağıdaki kaynakları okuyunuz.
 
 Eğer tasarımcı iseniz :  http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
 
-Eğer programcı değilseniz şu linkleri takip edebilirsiniz:
+Eğer yazılım geliştirici değilseniz şu linkleri takip edebilirsiniz:
 * http://oyun.mynet.com/okey
 * https://aylak.com/batak-oyna/
 * http://www.oyunoyna.com
