@@ -39,23 +39,24 @@ Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresi
 
 Git temellerini öğrenmek için aşağıdaki kaynakları okuyunuz.
 
-* http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
-* https://try.github.io/levels/1/challenges/1
-* http://gitref.org
-* http://www.slideshare.net/kunthar/git-101-15229948
-* http://www.sbf5.com/~cduan/technical/git/
+- http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+- https://try.github.io/levels/1/challenges/1
+- http://gitref.org
+- http://www.slideshare.net/kunthar/git-101-15229948
+- http://www.sbf5.com/~cduan/technical/git/
 
 Eğer tasarımcı iseniz :  http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
 
 Eğer yazılım geliştirici değilseniz şu linkleri takip edebilirsiniz:
-* http://oyun.mynet.com/okey
-* https://aylak.com/batak-oyna/
-* http://www.oyunoyna.com
+
+- http://oyun.mynet.com/okey
+- https://aylak.com/batak-oyna/
+- http://www.oyunoyna.com
 
 
--------------
+-------------------
 **Branch Yönetimi**
--------------
+-------------------
 
 * Master branch sadece gözden geçirilmiş ve test edilmiş kodu içerir. Sadece yetkili geliştiriciler master'a kod gönderebilir (commit).
 
@@ -84,9 +85,9 @@ Mevcut kod ile çalışmak için mutlaka "Geliştirme Ortamı Kurulumu" http://w
 Bu belgede hem ortam kurulumu hem de depoların bağlanması detaylı olarak anlatılmaktadır.
 
 
--------------------------
+------------------------------
 **Günlük geliştirme iş akışı**
--------------------------
+------------------------------
 
 Depolarımızın tamamı Github üzerinde yer almaktadır. Bu sebeple Github üzerinde çalışmak konusunda kendinizi eğitiniz.
 
@@ -140,9 +141,9 @@ Programlamadan önceki hazırlık:
 
 
 
----------------------------
+---------------------------------
 **feature/bug Üzerinde Çalışmak**
----------------------------
+---------------------------------
 
 ::
 
@@ -172,9 +173,9 @@ Değişikliklerin geri gönderilmesi:
     git push origin feature/some-feature	# pushes local changes to server, push may be
                                             # rejected if you haven't done previous step
 
-------------------------------
+---------------------------------
 **Branch master ile merge etmek**
-------------------------------
+---------------------------------
 
 ::
 
