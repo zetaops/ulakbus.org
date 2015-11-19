@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
     
     <script type="text/javascript">
@@ -29,6 +30,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
@@ -261,7 +265,6 @@
 <div class="section" id="yazilim-gelistirme-modeli">
 <h2><strong>Yazılım Geliştirme Modeli</strong><a class="headerlink" href="#yazilim-gelistirme-modeli" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Yazılım geliştirme modeli döngüsel artımlı (iterative and incremental) modele bağlı <a class="reference external" href="http://www.extremeprogramming.org">XP</a> olacaktır. Şekil 1’de gösterilmektedir.</p>
-<a class="reference internal image-reference" href="_images/xp_gelistirme_semasi.png"><img alt="_images/xp_gelistirme_semasi.png" class="align-center" src="_images/xp_gelistirme_semasi.png" /></a>
 <p><em>Şekil 1 - XP geliştirme şeması</em></p>
 <div class="section" id="gelistirme-ve-test-dongusu">
 <h3><strong>Geliştirme ve Test Döngüsü</strong><a class="headerlink" href="#gelistirme-ve-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -671,7 +674,6 @@ Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile
 Chrome 45.0.2412 (Mac OS X 10.10.3): Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)</p>
 <p>Bu çıktıdan 8 test senaryosunun başarıyla geçtiği görülmektedir (Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)).</p>
 <p>Birim testlerinin kodun ne kadarını kapsadığı yine karma ile incelenecektir. Karma testler çalıştıktan sonra coverage/ dizini altında bir html dosyası oluşturarak kod kapsama oranını yayınlar. Örnek html çıktı sayfası şu şekildedir:</p>
-<a class="reference internal image-reference" href="_images/codecoverage.png"><img alt="_images/codecoverage.png" class="align-center" src="_images/codecoverage.png" /></a>
 </div>
 <div class="section" id="kabul-testleri">
 <h3><em>Kabul Testleri:</em><a class="headerlink" href="#kabul-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>

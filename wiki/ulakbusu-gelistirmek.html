@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
     
     <script type="text/javascript">
@@ -29,6 +30,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
@@ -250,7 +254,7 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 <h2>View, Task ve Model dosyalarının konumları<a class="headerlink" href="#view-task-ve-model-dosyalarinin-konumlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>View, task ve model modülleri, proje kök dizininde yer alan <code class="docutils literal"><span class="pre">views</span></code>, <code class="docutils literal"><span class="pre">tasks</span></code> ve <code class="docutils literal"><span class="pre">models</span></code>  dizinleri altında konumlanırlar.</p>
 <p class="plantuml">
-<img src="_images/plantuml-d9561c6e268f951bc1efede95e48b54c67db5013.png" alt="&#64;startsalt
+<img src="_images/plantuml-d92f24074b4f65b7f26c0fe807ae3e1ddc180de8.png" alt="&#64;startsalt
 
 {
 {T
@@ -268,6 +272,11 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 +++~__init__.py
 +++atama.py
 +++kadro.py
+++**lectures**
++++~__init__.py
++++select.py
++++student_review.py
++++advisor_review.py
 ++auth.py
 ++dashboard.py
 ++system.py
@@ -284,10 +293,28 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 <p>Ulakbüs projesinin üzerine inşa edildiği ZEngine frameworkü BPMN 2.0 standardıyla tanımlanmış olan iş akışı ögelerinin uygulama işlevselliği için elzem olan kısımlarını desteklemektedir. Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kullanacağımız ögelerin başında gelmektedir.</p>
 <p>BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.</p>
 <p>Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.</p>
-<img alt="_images/du_bpmn_lecture_selection.png" src="_images/du_bpmn_lecture_selection.png" />
-<p>Advisor lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
-<img alt="_images/du_bpmn_lane_properties.png" src="_images/du_bpmn_lane_properties.png" />
-<p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
+<a data-lightbox="group-526d73ec-a8dc-49af-8826-db4156ac5e4f"
+                   href="_images/du_bpmn_lecture_selection.png"
+                   class=""
+                   title=""
+                   data-title=""
+                   ><img src="_images/du_bpmn_lecture_selection.png"
+                    class=""
+                    width="100%"
+                    height="auto"
+                    alt=""/>
+                    </a><p>Advisor lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
+<a data-lightbox="group-2dc18929-1f8b-4a95-92aa-a499f67f00d4"
+                   href="_images/du_bpmn_lane_properties.png"
+                   class=""
+                   title=""
+                   data-title=""
+                   ><img src="_images/du_bpmn_lane_properties.png"
+                    class=""
+                    width="100%"
+                    height="auto"
+                    alt=""/>
+                    </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
 <p><code class="docutils literal"><span class="pre">owners</span></code> parametresi tanımlandığı lane&#8217;in olası kullanıcılarını ifade etmek için kullanılır. İş akışı bir lane&#8217;den diğerine geçtiğinde, iş akışı motoru bu tanımlamanın işaret ettiği kullanıcılara bir ileti göndererek akışa katılmalarını sağlar.</p>
 <p>Örneğimizde advisor lane&#8217;ini işletecek kişinin student lane&#8217;ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bununla birlikte, bu alana birden fazla nesne döndürebilecek geçerli bir Python ifadesi girilmesi gerektiğinden, <strong>[student.ogrenci.danisman.personel]</strong> şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya <strong>User</strong> nesnesi olmalı ya da geriye ilgili user nesnesini döndüren bir <strong>get_user()</strong> metoduna sahip olmalıdırlar.</p>
 <p><code class="docutils literal"><span class="pre">permissions</span></code> parametresi virgülle ayrılmış şekilde yetki kodları kabul etmektedir. İlgili lane&#8217;i işletecek kullanıcının bu yetkilere sahip olması koşulu aranacaktır. Sistemde halihazırda tanımlı olmayan yetkiler burada doğrudan kullanılıp update_permissions komutu ile otomatik olarak yetki tablosuna eklenebilir. <code class="docutils literal"><span class="pre">::</span> <span class="pre">TODO</span> <span class="pre">::</span></code></p>
@@ -358,10 +385,44 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 </div>
 <div class="section" id="basit-bir-view-fonksiyonu-hazirlayalim">
 <h2>Basit bir view fonksiyonu hazırlayalım<a class="headerlink" href="#basit-bir-view-fonksiyonu-hazirlayalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+<span class="c"># This file is licensed under the GNU General Public License v3</span>
+<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
+
+<span class="k">class</span> <span class="nc">BaslaForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s">&#39;Ders Seçimine Hoşgeldiniz&#39;</span>
+        <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod &quot;</span> \
+                    <span class="s">&quot;tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,&quot;</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Başla&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">hosgeldiniz</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+    <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaslaForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi">
 <h2>Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.<a class="headerlink" href="#ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>sdsd</p>
 </div>
 <div class="section" id="crudview-i-genisletmek">
 <h2>CrudView&#8217;ı genişletmek<a class="headerlink" href="#crudview-i-genisletmek" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -399,7 +460,19 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 32
 33
 34
-35</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
 <span class="c">#</span>
 <span class="c"># This file is licensed under the GNU General Public License v3</span>
 <span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
@@ -407,9 +480,21 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 
 <span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
 <span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
-<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">obj_filter</span><span class="p">,</span> <span class="n">view_method</span><span class="p">,</span> <span class="n">list_query</span>
-
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">view_method</span><span class="p">,</span> <span class="n">list_query</span>
 <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">LectureSelection</span>
+
+
+<span class="k">class</span> <span class="nc">BaslaForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s">&#39;Ders Seçimine Hoşgeldiniz&#39;</span>
+        <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod &quot;</span> \
+                    <span class="s">&quot;tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,&quot;</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Başla&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">hosgeldiniz</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+    <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaslaForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">SelectLecturesView</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
@@ -556,7 +641,7 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 
     <span class="k">def</span> <span class="nf">send_success_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">])</span>
-        <span class="n">Notify</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">rol</span><span class="o">.</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">set_message</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Ders seçimleriniz onaylandı&quot;</span><span class="p">,</span>
+        <span class="n">Notify</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">rol</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">set_message</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Ders seçimleriniz onaylandı&quot;</span><span class="p">,</span>
                                              <span class="n">msg</span><span class="o">=</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
