@@ -1,20 +1,21 @@
 
 
+
 <!doctype html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
 
     <title>ULAKBUS</title>
 
-    
+
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -45,7 +46,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="/img/favicon.ico">
+
 
     <title>Ulakbüs</title>
     <link rel="stylesheet"
@@ -170,7 +171,7 @@
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li>
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -182,11 +183,11 @@
   <ul>
 <li><a class="reference internal" href="#">Git İş-Akışı</a><ul>
 <li><a class="reference internal" href="#git-kurulumu"><strong>Git kurulumu</strong></a></li>
-<li><a class="reference internal" href="#branchler"><strong>Branchler</strong></a></li>
-<li><a class="reference internal" href="#getting-code"><strong>Getting code</strong></a></li>
-<li><a class="reference internal" href="#basic-day-to-day-flow"><strong>Basic day-to-day flow</strong></a></li>
-<li><a class="reference internal" href="#work-on-feature-bug-fix"><strong>Work on feature/bug fix</strong></a></li>
-<li><a class="reference internal" href="#merging-branch-into-master"><strong>Merging branch into master</strong></a></li>
+<li><a class="reference internal" href="#branch-yonetimi"><strong>Branch Yönetimi</strong></a></li>
+<li><a class="reference internal" href="#kodu-edinmek"><strong>Kodu edinmek</strong></a></li>
+<li><a class="reference internal" href="#gunluk-gelistirme-is-akisi"><strong>Günlük geliştirme iş akışı</strong></a></li>
+<li><a class="reference internal" href="#feature-bug-uzerinde-calismak"><strong>feature/bug Üzerinde Çalışmak</strong></a></li>
+<li><a class="reference internal" href="#branch-master-ile-merge-etmek"><strong>Branch master ile merge etmek</strong></a></li>
 <li><a class="reference internal" href="#reverting"><strong>Reverting</strong></a></li>
 <li><a class="reference internal" href="#magit"><strong>Magit</strong></a></li>
 <li><a class="reference internal" href="#code-style"><strong>Code style</strong></a></li>
@@ -229,13 +230,13 @@
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
-            
+
   <div class="section" id="git-is-akisi">
 <h1>Git İş-Akışı<a class="headerlink" href="#git-is-akisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<p><strong>HİÇBİR ZAMAN MASTER&#8217;A PUSH ETMEYİNİZ, SÜREKLİ BRANCHLER KULLANINIZ.</strong></p>
+<p><strong>HİÇBİR ZAMAN MASTER&#8217;A PUSH ETMEYİNİZ, DAİMA BRANCH KULLANINIZ.</strong></p>
 <ul class="simple">
 <li>Lütfen TÜM dökümanı okuyunuz.</li>
-<li>Bağımlılıklarınızı sürekli iki kere kontrol ediniz.</li>
+<li>Paket bağımlılıklarını sürekli iki kere kontrol ediniz.</li>
 <li>PATH değişkenlerini sürekli iki kere kontrol ediniz.</li>
 <li>Depoya büyük değişiklikler göndermeyiniz.Küçük değişiklikler yaptıkça depoya gönderiniz.</li>
 <li>requirements.txt dosyasına yeni kütüphaneleri eklemeyi unutmayınız.</li>
@@ -255,46 +256,70 @@ git config --global user.email &quot;emo@zetaops.io&quot;
 </pre></div>
 </div>
 <p><strong>Git Temelleri</strong></p>
-<p>Git, çok güçlü bir sistemdir. Önemsemek gerekmektedir. Hiçbir değişiklik asla kaybolmaz (eğer daima commitliyorsanız). Bu yüzden kendinizi özgür hissedebilir, özelliklerini rahatlıkla deneyebilirsiniz.Git&#8217;i iyi anlamak için, git&#8217;in arkasında yatan kavramları okumak iyi bir fikirdir. GIT, SVN ile aynı değildir! İkisi farklı soyut düşünüşlerdir.</p>
-<p>Genel olarak Git biraz ayrıntılıdır ve basit işlemleri gerçekleştirmek için bir çok komut gereklidir.Korkmayın! Git&#8217;i anladıktan sonra, her şeyin ne kadar iyi düşünüldüğünü ve nedenlerinin olduğunu göreceksiniz.</p>
-<p>Svn hakkında tecrübe kazanmak istiyorsanız bu bağlantıyı okuyabilirsiniz: <a class="reference external" href="http://git-scm.com/course/svn.html">http://git-scm.com/course/svn.html</a></p>
-<p>Eğer programcı değilseniz okuyunuz: <a class="reference external" href="http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/">http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/</a></p>
-<p>Boş zamanınızda Git&#8217;in arkasında yatan temel kavramları anlamak için <a class="reference external" href="http://www.eecs.harvard.edu/~cduan/technical/git/">http://www.eecs.harvard.edu/~cduan/technical/git/</a> bu bağlantıyı okuyunuz. Bu sizin geleceğe yönelik git kullanımına yönelmenize imkan sağlayacaktır.</p>
-</div>
-<div class="section" id="branchler">
-<h2><strong>Branchler</strong><a class="headerlink" href="#branchler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Git temellerini öğrenmek için aşağıdaki kaynakları okuyunuz.</p>
 <ul class="simple">
-<li>Master branch sadece görüntülenen ve test edilen kodları içermektedir.</li>
-<li>Her özellik ve yazılım yatası düzeltilmesi ayrı ayrı branchlerde geliştirilir.</li>
-<li>Yeni branchler son master branch temel alınarak başlatılmalıdır.</li>
-<li>Her branch, master branch ile merge edilmeden önce her kullanıcı tarafından görüntülenmeli ve test edilmelidir.</li>
-<li>Her branch, master branch ile merge edilmeden önce en son master branch temel alınmalıdır.</li>
-<li>Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine issue adı ve kısa açıklaması issue adından gelmelidir.</li>
+<li><a class="reference external" href="http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control</a></li>
+<li><a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></li>
+<li><a class="reference external" href="http://gitref.org">http://gitref.org</a></li>
+<li><a class="reference external" href="http://www.slideshare.net/kunthar/git-101-15229948">http://www.slideshare.net/kunthar/git-101-15229948</a></li>
+<li><a class="reference external" href="http://www.sbf5.com/~cduan/technical/git/">http://www.sbf5.com/~cduan/technical/git/</a></li>
+</ul>
+<p>Eğer tasarımcı iseniz :  <a class="reference external" href="http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/">http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/</a></p>
+<p>Eğer yazılım geliştirici değilseniz şu linkleri takip edebilirsiniz:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://oyun.mynet.com/okey">http://oyun.mynet.com/okey</a></li>
+<li><a class="reference external" href="https://aylak.com/batak-oyna/">https://aylak.com/batak-oyna/</a></li>
+<li><a class="reference external" href="http://www.oyunoyna.com">http://www.oyunoyna.com</a></li>
+</ul>
+</div>
+<div class="section" id="branch-yonetimi">
+<h2><strong>Branch Yönetimi</strong><a class="headerlink" href="#branch-yonetimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<ul class="simple">
+<li>Master branch sadece gözden geçirilmiş ve test edilmiş kodu içerir. Sadece yetkili geliştiriciler master&#8217;a kod gönderebilir (commit).</li>
+<li>Her yeni özellik ve yazılım hatası düzeltimi, yeni bir branch içinde geliştirilir.</li>
+<li>Yeni branch en son master temel alınarak başlatılmalıdır.</li>
+<li>Her branch, master branch ile merge edilmeden önce en az bir başka geliştirici tarafından ve test edilmelidir.</li>
+<li>Her branch, master branch ile merge edilmeden önce en son master branch ile rebase edilmelidir.</li>
+<li>Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine ya da github issue adı ve kısa açıklaması issue adından gelmelidir.</li>
 </ul>
 <p>Tüm branchleri görüntülemek için:</p>
 <div class="highlight-python"><div class="highlight"><pre>git branch -a
 </pre></div>
 </div>
 </div>
-<div class="section" id="getting-code">
-<h2><strong>Getting code</strong><a class="headerlink" href="#getting-code" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">~/.ssh/config</span></code> dosyasını oluşturun.</div></blockquote>
-<p><em>host zopstest.zetaops.io</em>
-<em>port 99</em></p>
-<p>Tüm sistemi meta repository kullanarak klonlamak için aşağıdaki komutu kullanınız.</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone gitosis@test.zetaops.io:zops-ubys.git
+<div class="section" id="kodu-edinmek">
+<h2><strong>Kodu edinmek</strong><a class="headerlink" href="#kodu-edinmek" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Mevcut kod ile çalışmak için mutlaka &#8220;Geliştirme Ortamı Kurulumu&#8221; <a class="reference external" href="http://www.ulakbus.org/wiki/development_environment_setup.html">http://www.ulakbus.org/wiki/development_environment_setup.html</a> belgesini inceleyiniz.
+Bu belgede hem ortam kurulumu hem de depoların bağlanması detaylı olarak anlatılmaktadır.</p>
+</div>
+<div class="section" id="gunluk-gelistirme-is-akisi">
+<h2><strong>Günlük geliştirme iş akışı</strong><a class="headerlink" href="#gunluk-gelistirme-is-akisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Depolarımızın tamamı Github üzerinde yer almaktadır. Bu sebeple Github üzerinde çalışmak konusunda kendinizi eğitiniz.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></li>
+<li><a class="reference external" href="https://help.github.com/desktop/guides/contributing/working-with-your-remote-repository-on-github-or-github-enterprise/">https://help.github.com/desktop/guides/contributing/working-with-your-remote-repository-on-github-or-github-enterprise/</a></li>
+<li><a class="reference external" href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1</a></li>
+</ul>
+<p>Github üzerinde kendinize bir kullanıcı hesabı açınız. Depolarımızı kendi Github hesabınız üzerinden fork ediniz.
+Artık kendi github hesabınızda ulakbus ve ulakbus-ui temel depolarınız görülecektir.
+Github üzerinde HTTPS clone URL ibaresi altındaki satırı kopyalayarak klonlama işlemine hazırlanın:</p>
+<div class="highlight-python"><div class="highlight"><pre>mkdir -p ~/development/zetaops/
+cd ~/development/zetaops/
+mkdir repos
+mkdir vms
+cd repos
+git clone https://github.com/sizin_user_adınız/ulakbus
+git clone https://github.com/sizin_user_adınız/ulakbus-ui
+cd ulakbus
+git remote add origin https://github.com/zetaops/ulakbus.git
+cd ~/development/zetaops/repos/ulakbus-ui
+git remote add origin https://github.com/zetaops/ulakbus-ui.git
 </pre></div>
 </div>
-</div>
-<div class="section" id="basic-day-to-day-flow">
-<h2><strong>Basic day-to-day flow</strong><a class="headerlink" href="#basic-day-to-day-flow" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Eğer local ve uzak repoların durumunu anlamakta zorluk çekiyorsanız:</p>
-<div class="highlight-python"><div class="highlight"><pre>git remote update
-gitk --all                      # yes, it’s not a typo - it’s a tool called gitK
-tig                         #you can also use tig from console. apt-get install tig, you can use SourceTree for mac if you are Mac coder
-</pre></div>
-</div>
+<p>Bu şekilde kendi fork deponuz üzerinde çalışacaksınız ve bizim depomuz, sizin deponuza &#8220;upstream&#8221; depo olarak eklenecektir.
+Her bir depo içinde ne olup bittiğini görsel olarak görmek isterseniz, konsolda tig kullanabilirsiniz. apt-get install tig, macports ile sudo port install tig
+Eğer penceresel bir ortamdan geliyorsanız SourceTree kullanabilirsiniz. Tasarımcılar hariç, tüm geliştirme ortamı Ubuntu, Debian, Pardus, ArchLinux ya da MacOS gibi işletim
+sistemine sahip bilgisayarlarda bulunmaktadır. Bu sebeple sinir sahibi olmak istemiyorsanız, w$ndoze üzerinde geliştirme yapmaya çalışmayınız.</p>
 <p>Yeni branch yaratmak için:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd path/to/project
 git checkout master
@@ -306,27 +331,26 @@ git branch (feature/bug)/some-new-feature/bug
 <div class="highlight-python"><div class="highlight"><pre>cd path/to/project
 
 git checkout master
-git pull --rebase                   # use this if your local code has no local changes, which has not been pushed to server
+git pull --rebase
 git checkout feature/some-feature
 git rebase master
 </pre></div>
 </div>
 </div>
-<div class="section" id="work-on-feature-bug-fix">
-<h2><strong>Work on feature/bug fix</strong><a class="headerlink" href="#work-on-feature-bug-fix" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="feature-bug-uzerinde-calismak">
+<h2><strong>feature/bug Üzerinde Çalışmak</strong><a class="headerlink" href="#feature-bug-uzerinde-calismak" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>git checkout feature/some-feature
 </pre></div>
 </div>
-<p><em>Source File&#8217;ınızı düzenleyiniz ve ardından commitleyiniz.</em></p>
-<div class="highlight-python"><div class="highlight"><pre>git add path/to/changed/file1       # you need to mark each file you want to commit
-git add path/to/another-file2       # with this command
-
-git commit                                  # opens editor were you can write commit message, OR
-git commit -m &quot;commit message&quot;      # shortcut for one line commit messages
+<p>Yeni branch üzerinde gereken düzenlemelerinizi yapınız. Daha sonra commit ile dosyalarınızı ekleyin.</p>
+<div class="highlight-python"><div class="highlight"><pre>git add path/to/changed/file1    # commit edilecek her dosyayı
+git add path/to/another-file2    # bu şekilde ekleyin.
+git commit -m  &quot;bu commit neden yapılıyor.&quot;      #lütfen fix, düzeltme, herşey gönderildi gibi saçma sapan açıklamalar yazmayın. ne yaptıysanız bunu düzgün bir şekilde ifade edin.
 </pre></div>
 </div>
-<p>Düzenleme ve commitleme döngüsünü gerektiği kadar tekrar ediniz, hazırlayınız ve servise push ediniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>git pull origin feature/some-feature        # make sure that push will be successful
+<p>Her bir değişiklikte commit edin. Yüzlerce değişiklik yaptıktan sonra kocaman bir commit yapmayın!</p>
+<p>Değişikliklerin geri gönderilmesi:</p>
+<div class="highlight-python"><div class="highlight"><pre>git pull origin feature/some-featur     # make sure that push will be successful
                                         # by ensuring that local changes
                                         # are applicable on top of the
                                         # latest code; may result in conflicts
@@ -337,8 +361,8 @@ git push origin feature/some-feature        # pushes local changes to server, pu
 </pre></div>
 </div>
 </div>
-<div class="section" id="merging-branch-into-master">
-<h2><strong>Merging branch into master</strong><a class="headerlink" href="#merging-branch-into-master" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="branch-master-ile-merge-etmek">
+<h2><strong>Branch master ile merge etmek</strong><a class="headerlink" href="#branch-master-ile-merge-etmek" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>git checkout master                                     # prepare local master by
 git pull --rebase origin master                 # ensuring that your local master is up to date
 
@@ -434,7 +458,7 @@ git reset --hard HEAD                       # reverts ALL changes made in your w
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li>
       </ul>
     </div>
     </div>
