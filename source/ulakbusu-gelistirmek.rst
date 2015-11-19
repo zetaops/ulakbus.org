@@ -21,8 +21,9 @@ Aşağıdaki adımları izleyerek Ulakbüs projesine öğrencilerin ders seçmes
 Geliştirme ortamının kurulumu
 ***********************************************************************************
 
-Geliştirmeye başlamak için **git** ve **vagrant** araçlarına ihtiyacımız olacak.
-Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant sanal makinası ile gerekli ortam hazır olarak gelmektedir. (link eklenecek)
+Geliştirmeye başlamak için öncelikle **Camunda Modeller**, **git** ve **Vagrant** araçlarına ihtiyacımız olacak.
+Camunda Modeller ile iş akışı diagramlarımızı hazırlayacağız. (link eklenecek)
+Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant sanal makinası ile gerekli ortam hazır olarak gelmektedir. (belgeye link verilecek)
 
 
 View, Task ve Model dosyalarının konumları
@@ -66,13 +67,22 @@ View, task ve model modülleri, proje kök dizininde yer alan ``views``, ``tasks
 İş akışlarının tasarlanması.
 ***********************************************************************************
 
+Ulakbüs projesinin üzerine inşa edildiği ZEngine frameworkü BPMN 2.0 standardıyla tanımlanmış olan iş akışı ögelerinin uygulama işlevselliği için elzem olan kısımlarını desteklemektedir. Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway'ler en çok kullanacağımız ögelerin başında gelmektedir.
+
+BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.
+
 Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.
 
 
 .. image:: _static/du_bpmn_lecture_selection.png
 
 
+
 Advisor lane'inin boş bir yerine tıklayarak bu lane'in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.
+
+
+.. image:: _static/du_bpmn_lane_properties.png
+
 
 ``relations`` parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte **advisor** laneninin kullanıcısının student lane'inin kullanıcısının **danisman** ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.
 
@@ -87,44 +97,21 @@ Advisor lane'inin boş bir yerine tıklayarak bu lane'in özelliklerini görünt
 
 
 
-.. image:: _static/du_bpmn_lane_properties.png
-
 
 
 Modellerin tanımlanması.
 ***********************************************************************************
 
-Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölümde ele aldığımız Student, Lecture ve Lecturer modellerini "dersler.py" gibi geçerli bir isimle models dizinine kaydedip, ``models/__init__.py`` içine import etmemiz yeterli olacaktır.
+Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölümde ele aldığımız Student, Lecture ve Lecturer modellerini "lectures.py" gibi geçerli bir isimle models dizinine kaydedip, ``models/__init__.py`` içine import etmemiz yeterli olacaktır.
 
-::
-
-    # ulakbus/models/lectures.py
-
-    from pyoko import Model, field
-    from .ogrenci import Ogrenci
+.. literalinclude:: ../../ulakbus/ulakbus/models/lectures.py
+    :linenos:
+    :lines: 1, 6-
 
 
-    class Lecture(Model):
-        name = field.String("Ders adı", index=True)
-        credit = field.Integer("Kredisi", default=0, index=True)
-
-
-    class StudentLectures(Model):
-        lecture = Lecture()
-        student = Ogrenci()
-        confirmed = field.Boolean("Onaylandı", default=False)
-
-
-
-::
-
-    # ulakbus/models/__init__.py
-
-    from .personel import *
-    from .auth import *
-    from .ogrenci import *
-    from .hitap import *
-    from .lectures import *
+.. literalinclude:: ../../ulakbus/ulakbus/models/__init__.py
+    :linenos:
+    :lines: 1, 6-
 
 
 Basit bir view fonksiyonu hazırlayalım
@@ -140,3 +127,16 @@ sdsd
 CrudView'ı genişletmek
 ***********************************************************************************
 
+.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/select.py
+    :linenos:
+    :lines: 1, 6-
+
+
+.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/student_review.py
+    :linenos:
+    :lines: 1, 6-
+
+
+.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/advisor_review.py
+    :linenos:
+    :lines: 1, 6-
