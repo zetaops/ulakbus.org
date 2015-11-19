@@ -51,6 +51,11 @@ View, task ve model modülleri, proje kök dizininde yer alan ``views``, ``tasks
     +++~__init__.py
     +++atama.py
     +++kadro.py
+    ++**lectures**
+    +++~__init__.py
+    +++select.py
+    +++student_review.py
+    +++advisor_review.py
     ++auth.py
     ++dashboard.py
     ++system.py
@@ -114,15 +119,19 @@ Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölüm
     :lines: 1, 6-
 
 
-Basit bir view fonksiyonu hazırlayalım
+JsonForm ile basit bir view hazırlayalım
 ***********************************************************************************
 
+
+.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/select.py
+    :linenos:
+    :lines: 1,7,8,11,12, 16-29
 
 
 Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
 ***********************************************************************************
 
-sdsd
+
 
 CrudView'ı genişletmek
 ***********************************************************************************

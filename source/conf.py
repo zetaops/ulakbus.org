@@ -38,9 +38,13 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinxcontrib.plantuml',
+    'sphinxcontrib.images',
 ]
+images_config = {
+    'override_image_directive': True,
+}
 
-# please adjust plantuml path 
+# please adjust plantuml path
 plantuml = 'java -jar /opt/plantuml/plantuml.jar'
 
 # Add any paths that contain templates here, relative to this directory.
