@@ -457,11 +457,7 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 19
 20
 21
-22
-23
-24
-25
-26</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+22</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
 <span class="c">#</span>
 <span class="c"># This file is licensed under the GNU General Public License v3</span>
 <span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
@@ -483,10 +479,6 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
     <span class="nd">@list_query</span>
     <span class="k">def</span> <span class="nf">students_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span>
-
-    <span class="c"># def __init__(self, current):</span>
-    <span class="c">#     super(StudentSelectionReview, self).__init__(current)</span>
-    <span class="c">#     self.ogrenci = self.current.role.ogrenci</span>
 </pre></div>
 </td></tr></table></div>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -515,14 +507,29 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 24
 25
 26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
 <span class="c">#</span>
 <span class="c"># This file is licensed under the GNU General Public License v3</span>
 <span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
 <span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
 <span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
-<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span>
+<span class="kn">from</span> <span class="nn">zengine.notifications</span> <span class="kn">import</span> <span class="n">Notify</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">view_method</span>
 <span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">list_query</span>
+
+<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Ogrenci</span>
 
 
 <span class="k">class</span> <span class="nc">AdvisorSelectionReview</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
@@ -539,9 +546,18 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
     <span class="k">def</span> <span class="nf">students_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">])</span>
 
-    <span class="c"># def __init__(self, current):</span>
-    <span class="c">#     super(AdvisorSelectionReview, self).__init__(current)</span>
-    <span class="c">#     self.personel = self.current.role.personel</span>
+    <span class="c"># @view_method</span>
+    <span class="k">def</span> <span class="nf">set_student_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;lane_change_msg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;Ders seçimlerinizi gözden geçirin&#39;</span><span class="p">,</span>
+            <span class="s">&#39;body&#39;</span><span class="p">:</span> <span class="s">&#39;Danışmanınız bazı dersleriniziz değişmesi gerektiğini düşünüyor. &#39;</span>
+                    <span class="s">&#39;Aşağıdaki bağlantıya tıklayarak ders seçim ekranınızı görüntüleyebilirsiniz.&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">send_success_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">])</span>
+        <span class="n">Notify</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">rol</span><span class="o">.</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">set_message</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Ders seçimleriniz onaylandı&quot;</span><span class="p">,</span>
+                                             <span class="n">msg</span><span class="o">=</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 </div>
