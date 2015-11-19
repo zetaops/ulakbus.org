@@ -1,0 +1,586 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>ULAKBUS</title>
+
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="ESB ve SOA ne anlama geliyor yani?" href="zato_doc.html" />
+    <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Ulakbüs</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
+
+            // If href missing, ignore
+            if (!href) return;
+
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
+
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
+
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
+
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
+
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
+
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+
+
+    <div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ulakbüs&#8217;ü Geliştirelim</a><ul>
+<li><a class="reference internal" href="#gelistirme-ortaminin-kurulumu">Geliştirme ortamının kurulumu</a></li>
+<li><a class="reference internal" href="#view-task-ve-model-dosyalarinin-konumlari">View, Task ve Model dosyalarının konumları</a></li>
+<li><a class="reference internal" href="#is-akislarinin-tasarlanmasi">İş akışlarının tasarlanması.</a></li>
+<li><a class="reference internal" href="#modellerin-tanimlanmasi">Modellerin tanımlanması.</a></li>
+<li><a class="reference internal" href="#basit-bir-view-fonksiyonu-hazirlayalim">Basit bir view fonksiyonu hazırlayalım</a></li>
+<li><a class="reference internal" href="#ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi">Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.</a></li>
+<li><a class="reference internal" href="#crudview-i-genisletmek">CrudView&#8217;ı genişletmek</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
+                        title="önceki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="zato_doc.html"
+                        title="sonraki bölüm"><strong>ESB ve SOA ne anlama geliyor yani?</strong></a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ulakbusu-gelistirmek.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ulakbus-u-gelistirelim">
+<h1>Ulakbüs&#8217;ü Geliştirelim<a class="headerlink" href="#ulakbus-u-gelistirelim" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Aşağıdaki adımları izleyerek Ulakbüs projesine öğrencilerin ders seçmesini sağlayan bir işlev eklemiş olacağız.</p>
+<ul class="simple">
+<li>Öğrenci seçebileceği derslerin listesini görüntüler.</li>
+<li>Almak istediği dersleri seçer ve &#8220;kaydet&#8221; düğmesine basar.</li>
+<li>Seçtiği derslerin listesini tekrar gözden geçirir ve &#8220;onay&#8221; düğmesine basar.</li>
+<li>Dersleri onaylaması için öğrencinin danışmanına bir ileti gönderilir.</li>
+<li>Danışman iletideki bağlantıya tıklayarak iş akışına katılır ve öğrencinin seçtiği dersleri görüntüler.</li>
+<li>Onayla düğmesine basması durumunda, ders listesi onaylanmış olarak kaydedilir ve öğrenciye ders seçiminin danışmanı tarafından onaylandığı mesajı gider. İş akışı tamamlanmış olur.</li>
+<li>Danışmanın bir dersi listeden çıkarması durumunda öğrenciye ileti gönderilerek tekrar ders seçmesi istenir.</li>
+<li>Öğrenci ders listesini günceller ve tekrar onaylar.</li>
+<li>Danışmana tekrar inceler, onaylama durumuna bağlı olarak akış sonlanır ya da başa döner.</li>
+</ul>
+<div class="section" id="gelistirme-ortaminin-kurulumu">
+<h2>Geliştirme ortamının kurulumu<a class="headerlink" href="#gelistirme-ortaminin-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Geliştirmeye başlamak için öncelikle <strong>Camunda Modeller</strong>, <strong>git</strong> ve <strong>Vagrant</strong> araçlarına ihtiyacımız olacak.
+Camunda Modeller ile iş akışı diagramlarımızı hazırlayacağız. (link eklenecek)
+Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant sanal makinası ile gerekli ortam hazır olarak gelmektedir. (belgeye link verilecek)</p>
+</div>
+<div class="section" id="view-task-ve-model-dosyalarinin-konumlari">
+<h2>View, Task ve Model dosyalarının konumları<a class="headerlink" href="#view-task-ve-model-dosyalarinin-konumlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>View, task ve model modülleri, proje kök dizininde yer alan <code class="docutils literal"><span class="pre">views</span></code>, <code class="docutils literal"><span class="pre">tasks</span></code> ve <code class="docutils literal"><span class="pre">models</span></code>  dizinleri altında konumlanırlar.</p>
+<p class="plantuml">
+<img src="_images/plantuml-d9561c6e268f951bc1efede95e48b54c67db5013.png" alt="&#64;startsalt
+
+{
+{T
++manage.py
++settings.py
++**models**
+++~__init__.py
+++ogrenci.py
+++personel.py
+++auth.py
+++hitap.py
++**views**
+++~__init__.py
+++personel
++++~__init__.py
++++atama.py
++++kadro.py
+++auth.py
+++dashboard.py
+++system.py
++**tasks**
+++~__init__.py
+}
+}
+
+&#64;endsalt" />
+</p>
+</div>
+<div class="section" id="is-akislarinin-tasarlanmasi">
+<h2>İş akışlarının tasarlanması.<a class="headerlink" href="#is-akislarinin-tasarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Ulakbüs projesinin üzerine inşa edildiği ZEngine frameworkü BPMN 2.0 standardıyla tanımlanmış olan iş akışı ögelerinin uygulama işlevselliği için elzem olan kısımlarını desteklemektedir. Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kullanacağımız ögelerin başında gelmektedir.</p>
+<p>BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.</p>
+<p>Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.</p>
+<img alt="_images/du_bpmn_lecture_selection.png" src="_images/du_bpmn_lecture_selection.png" />
+<p>Advisor lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
+<img alt="_images/du_bpmn_lane_properties.png" src="_images/du_bpmn_lane_properties.png" />
+<p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
+<p><code class="docutils literal"><span class="pre">owners</span></code> parametresi tanımlandığı lane&#8217;in olası kullanıcılarını ifade etmek için kullanılır. İş akışı bir lane&#8217;den diğerine geçtiğinde, iş akışı motoru bu tanımlamanın işaret ettiği kullanıcılara bir ileti göndererek akışa katılmalarını sağlar.</p>
+<p>Örneğimizde advisor lane&#8217;ini işletecek kişinin student lane&#8217;ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bununla birlikte, bu alana birden fazla nesne döndürebilecek geçerli bir Python ifadesi girilmesi gerektiğinden, <strong>[student.ogrenci.danisman.personel]</strong> şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya <strong>User</strong> nesnesi olmalı ya da geriye ilgili user nesnesini döndüren bir <strong>get_user()</strong> metoduna sahip olmalıdırlar.</p>
+<p><code class="docutils literal"><span class="pre">permissions</span></code> parametresi virgülle ayrılmış şekilde yetki kodları kabul etmektedir. İlgili lane&#8217;i işletecek kullanıcının bu yetkilere sahip olması koşulu aranacaktır. Sistemde halihazırda tanımlı olmayan yetkiler burada doğrudan kullanılıp update_permissions komutu ile otomatik olarak yetki tablosuna eklenebilir. <code class="docutils literal"><span class="pre">::</span> <span class="pre">TODO</span> <span class="pre">::</span></code></p>
+</div>
+<div class="section" id="modellerin-tanimlanmasi">
+<h2>Modellerin tanımlanması.<a class="headerlink" href="#modellerin-tanimlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yukarıda gösterdiğimiz &#8220;Öğrenci Ders Seçme&#8221; akışı için önceki bölümde ele aldığımız Student, Lecture ve Lecturer modellerini &#8220;lectures.py&#8221; gibi geçerli bir isimle models dizinine kaydedip, <code class="docutils literal"><span class="pre">models/__init__.py</span></code> içine import etmemiz yeterli olacaktır.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># This file is licensed under the GNU General Public License v3</span>
+<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">.ogrenci</span> <span class="kn">import</span> <span class="n">Ogrenci</span>
+
+
+<span class="k">class</span> <span class="nc">Lecture</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kredi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Kredisi&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">donem</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Dönem&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">LectureSelection</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">ders</span> <span class="o">=</span> <span class="n">Lecture</span><span class="p">()</span>
+    <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="p">()</span>
+    <span class="n">onaylandi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># This file is licensed under the GNU General Public License v3</span>
+<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="kn">from</span> <span class="nn">.personel</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.auth</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.ogrenci</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.hitap</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.lectures</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="basit-bir-view-fonksiyonu-hazirlayalim">
+<h2>Basit bir view fonksiyonu hazırlayalım<a class="headerlink" href="#basit-bir-view-fonksiyonu-hazirlayalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+</div>
+<div class="section" id="ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi">
+<h2>Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.<a class="headerlink" href="#ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>sdsd</p>
+</div>
+<div class="section" id="crudview-i-genisletmek">
+<h2>CrudView&#8217;ı genişletmek<a class="headerlink" href="#crudview-i-genisletmek" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># This file is licensed under the GNU General Public License v3</span>
+<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
+
+
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">obj_filter</span><span class="p">,</span> <span class="n">view_method</span><span class="p">,</span> <span class="n">list_query</span>
+
+<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">LectureSelection</span>
+
+
+<span class="k">class</span> <span class="nc">SelectLecturesView</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s">&#39;Lecture&#39;</span>
+        <span class="n">dispatch</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">class</span> <span class="nc">CrudForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+        <span class="n">save_list</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Seçimi Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;save_selection&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SelectLecturesView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">ogrenci</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">key</span>
+
+    <span class="nd">@list_query</span>
+    <span class="k">def</span> <span class="nf">available_lectures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">donem</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">aktif_donem</span><span class="p">)</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">save_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">itm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selected_objects</span><span class="p">():</span>
+            <span class="n">LectureSelection</span><span class="p">(</span><span class="n">ders</span><span class="o">=</span><span class="n">itm</span><span class="p">,</span> <span class="n">ogrenci</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># This file is licensed under the GNU General Public License v3</span>
+<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">list_query</span>
+
+
+<span class="k">class</span> <span class="nc">StudentSelectionReview</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s">&#39;LectureSelection&#39;</span>
+        <span class="n">dispatch</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">class</span> <span class="nc">CrudForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+        <span class="n">confirm</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Onayla&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;ders_secimi_tamam&quot;</span><span class="p">)</span>
+        <span class="n">continue_selection</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Seçime Devam Et&quot;</span><span class="p">)</span>
+
+    <span class="nd">@list_query</span>
+    <span class="k">def</span> <span class="nf">students_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span>
+
+    <span class="c"># def __init__(self, current):</span>
+    <span class="c">#     super(StudentSelectionReview, self).__init__(current)</span>
+    <span class="c">#     self.ogrenci = self.current.role.ogrenci</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># This file is licensed under the GNU General Public License v3</span>
+<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">list_query</span>
+
+
+<span class="k">class</span> <span class="nc">AdvisorSelectionReview</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s">&#39;LectureSelection&#39;</span>
+        <span class="n">dispatch</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">class</span> <span class="nc">CrudForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+        <span class="n">confirm</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Onayla&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;ders_secimi_tamam&quot;</span><span class="p">)</span>
+        <span class="n">continue_selection</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Reddet&quot;</span><span class="p">)</span>
+
+    <span class="nd">@list_query</span>
+    <span class="k">def</span> <span class="nf">students_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">])</span>
+
+    <span class="c"># def __init__(self, current):</span>
+    <span class="c">#     super(AdvisorSelectionReview, self).__init__(current)</span>
+    <span class="c">#     self.personel = self.current.role.personel</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

@@ -31,8 +31,6 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="next" title="Geliştirme Ortamı Kurulumu(Backend)" href="development_environment_setup.html" />
-    <link rel="prev" title="Ulakbus Wiki" href="wiki.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -162,12 +160,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
-        <li class="right" >
-          <a href="development_environment_setup.html" title="Geliştirme Ortamı Kurulumu(Backend)"
-             accesskey="N">sonraki</a> |</li>
-        <li class="right" >
-          <a href="wiki.html" title="Ulakbus Wiki"
-             accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
       </ul>
     </div>
@@ -176,16 +168,10 @@
             <p class="logo"><a href="wiki.html">
               <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
             </a></p>
-  <h4>Önceki konu</h4>
-  <p class="topless"><a href="wiki.html"
-                        title="önceki bölüm">Ulakbus Wiki</a></p>
-  <h4>Sonraki konu</h4>
-  <p class="topless"><a href="development_environment_setup.html"
-                        title="sonraki bölüm">Geliştirme Ortamı Kurulumu(Backend)</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/developers.txt"
+      <li><a href="_sources/manage.py_bilgilendirme.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -210,22 +196,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="gelistiriciler">
-<h1>Geliştiriciler<a class="headerlink" href="#gelistiriciler" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="development_environment_setup.html">Geliştirme Ortamı Kurulumu(Backend)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ulakbus_user_interface.html">Geliştirme Ortamı Kurulumu(Frontend)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git_workflow.html">Git İş-Akışı</a></li>
-<li class="toctree-l1"><a class="reference internal" href="yazilim_tasarim_analizi_belgesi.html">Yazılım Tasarım Analizi Belgesi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_erisim_secimleri.html">Data Erişim Seçimleri</a></li>
-<li class="toctree-l1"><a class="reference internal" href="yazilim_gelistirme_ve_test_dongusu.html">Yazılım Geliştirme ve Test Döngüsü</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ulakbusu-gelistirmek.html">Ulakbüs&#8217;ü Geliştirelim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zato_doc.html"><strong>ESB ve SOA ne anlama geliyor yani?</strong></a></li>
+  <div class="section" id="manage-py-nasil-calisir">
+<h1>Manage.py Nasıl Çalışır<a class="headerlink" href="#manage-py-nasil-calisir" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Belge, sisteme kaydı yapılan bir kullanıcının kendi hesabına ulaşma bilgilerini içermektedir. Başlıca parametreler ve açıklamaları şu şekildedir:</p>
+<p><strong>username:</strong> &#8220;Login username&#8221; ekrana gelir. Kullanıcıdan kendi kullanım adını girmesi istenir. Kullanıcı adı output olarak görünür.</p>
+<p><strong>password:</strong> &#8220;Login password&#8221; ekrana gelir. Kullanıcıdan kendisine ait şifresini girmesi istenir. Kullanıcı şifresini output ekranında görür.</p>
+<p><strong>abstract_role:</strong> &#8220;Name of the AbstractRole&#8221; ekrana gelir. Kullanıcının sistemdeki rolünü sorgular.</p>
+<p><strong>super:</strong> &#8220;This is a super user&#8221; ekranda görünür. Bu, özel yetkisi olan kullanıcılar içindir.</p>
+<p><strong>permission_query:</strong> Giriş yapan kişinin sistemde izni olup olmadığını sorgular. Eğer giriş yapmak isteyen kişi kayıtlı değilse login ekranı hata verir.</p>
+<p><strong>help:</strong> Kullanıcıya yardımcı olabilecek ekranı output olarak verir.</p>
+<p>Eğer sistemde girilen kullanıcı adı sistemde kayıtlı değilse, sistem yeni bir kullanıcı yaratır.
+Yeni kullanıcının bilgileri; kullanıcı adı, şifresi, atanan rol, özel yetkiler ve izin verilen işlemler şeklinde sisteme kaydedilir.</p>
+<p>Sistemde &#8216;load fixtures&#8217; adında datalar tutulmaktadır.
+Bu dataların içeriği, eldeki json dosyası veya dosyalarında biriken verilerin yenilenmiş versiyonlarını ve dosyaların path&#8217;lerini kapsamaktadır.</p>
+<p><strong>path:</strong> Bu parametre bize elimizdeki json dosyalarının depolandığı yeri &#8216;Load fixture file or directory&#8217; şeklinde output olarak verir.</p>
+<ul class="simple">
+<li>json dosyalarının path&#8217;lerini alabilmek için ilk önce import etmemiz gerekmektedir.</li>
 </ul>
+<p>json dosyalarını bulundukları path içinde çalıştırdığımızda sistem o dosyaları depolar.
+Dosya depolandığında</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s"> stored..&quot;</span>
+</pre></div>
 </div>
+<p>uyarısı ekranda görülür.</p>
+<p>Depolanan dosyayı</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;please validate your json file: </span><span class="si">%s</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>komutunun ekrana gelmesiyle onaylamamız gerekmektedir. Aksi takdirde dosya sisteme kaydedilmez ve sonraki işlemler için arattığımızda sistemde bulunamaz.</p>
+<p>Sistemde bulunmayan dosya</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;file not found: </span><span class="si">%s</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>şeklinde uyarı verir.</p>
 </div>
 
 
@@ -240,12 +243,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
-        <li class="right" >
-          <a href="development_environment_setup.html" title="Geliştirme Ortamı Kurulumu(Backend)"
-             >sonraki</a> |</li>
-        <li class="right" >
-          <a href="wiki.html" title="Ulakbus Wiki"
-             >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li> 
       </ul>
     </div>

@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 
 
@@ -242,10 +243,11 @@ cd ulakbus
 vagrant init zetaops/ulakbus
 </pre></div>
 </div>
-<p>Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM&#8217;ı 2 GB yapmanızı öneririz.Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:</p>
-<div class="highlight-python"><div class="highlight"><pre>wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
+<p>Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM&#8217;ı 2 GB yapmanızı öneririz. Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>wget https://raw.githubusercontent.com/zetaops/ulakbus-development-box/master/Vagrantfile.sample
 </pre></div>
 </div>
+<p>Bu komut bulunduğunuz dizine örnek bir Vagrantfile indirecektir. İhtiyaçlarınıza uygun şekilde düzenleyip kullanabilirsiniz.</p>
 <p>Vagrantfile&#8217;ı düzenledikten sonra:</p>
 <div class="highlight-python"><div class="highlight"><pre>vagrant up
 </pre></div>
@@ -253,10 +255,11 @@ vagrant init zetaops/ulakbus
 <p>komutuyla makinenizi başlatabilirsiniz.</p>
 <p>Bu işlem bitince <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> komutu ile geliştirme ortamına bağlanabilirsiniz.</p>
 <p><code class="docutils literal"><span class="pre">Eğer</span> <span class="pre">depolarınızı</span> <span class="pre">sanal</span> <span class="pre">makinaya</span> <span class="pre">mount</span> <span class="pre">ederek</span> <span class="pre">dışardan</span> <span class="pre">paylaşıyorsanız,</span> <span class="pre">git</span> <span class="pre">ile</span> <span class="pre">ilgili</span> <span class="pre">işlemleri</span> <span class="pre">ana</span> <span class="pre">makinada</span> <span class="pre">yapmanızı</span> <span class="pre">öneriyoruz.</span></code></p>
-<p>Git depoları sanal makina içinde yer almaktadır. Vagrantfile içinde kendi makinanızdaki bir klasörde yer alan git deposunu mount etmedikçe
-geliştirme için hazırladığımız vagrant vm güncellendiği an, depolarda yaptığınız her tür geliştirme çalışması, vm üzerine kurduğunuz tüm uygulamalar
-kaybolacaktır.</p>
-<p>Vagrant file içinde dosya paylaşımlarını aşağıdaki gibi yapınız:</p>
+<p>Bizim sunduğumuz Vagrantbox&#8217;ta, git depoları sanal makina içerisinde yer almaktadır. Git depolarının host makine
+üzerinde saklanması ve sanal makineye bağlanarak kullanılması, Vagrantbox&#8217;ın güncellenmesi, kaldırılması gibi işlemlerde
+veri kayıplarının önüne geçecektir.</p>
+<p>Yukarıda verilen örnek Vagrantfile içerisinde, kod depolarınızın sanal makineye bağlanmak üzere nasıl konfigüre
+edileceği bulunmaktadır. Kısaca</p>
 <div class="highlight-python"><div class="highlight"><pre># ulakbus
  config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus&quot;, &quot;/app/ulakbus&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
 

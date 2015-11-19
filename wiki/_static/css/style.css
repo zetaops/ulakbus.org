@@ -190,3 +190,7 @@ ul.navbar-nav {
 p.plantuml{
     text-align: center;
 }
+
+p{
+    margin: 10px 10px !important;
+}

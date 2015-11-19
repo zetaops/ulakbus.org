@@ -25,12 +25,14 @@ Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca ku
     cd ulakbus
     vagrant init zetaops/ulakbus
 
-Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM'ı 2 GB yapmanızı öneririz.Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:
+Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM'ı 2 GB yapmanızı öneririz. Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:
 
 
 ::
 
-    wget https://raw.githubusercontent.com/zetaops/zcloud/master/development-environment/Vagrantfile
+    wget https://raw.githubusercontent.com/zetaops/ulakbus-development-box/master/Vagrantfile.sample
+
+Bu komut bulunduğunuz dizine örnek bir Vagrantfile indirecektir. İhtiyaçlarınıza uygun şekilde düzenleyip kullanabilirsiniz.
 
 Vagrantfile'ı düzenledikten sonra:
 
@@ -46,11 +48,12 @@ Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilir
 
 ``Eğer depolarınızı sanal makinaya mount ederek dışardan paylaşıyorsanız, git ile ilgili işlemleri ana makinada yapmanızı öneriyoruz.``
 
-Git depoları sanal makina içinde yer almaktadır. Vagrantfile içinde kendi makinanızdaki bir klasörde yer alan git deposunu mount etmedikçe
-geliştirme için hazırladığımız vagrant vm güncellendiği an, depolarda yaptığınız her tür geliştirme çalışması, vm üzerine kurduğunuz tüm uygulamalar
-kaybolacaktır.
+Bizim sunduğumuz Vagrantbox'ta, git depoları sanal makina içerisinde yer almaktadır. Git depolarının host makine
+üzerinde saklanması ve sanal makineye bağlanarak kullanılması, Vagrantbox'ın güncellenmesi, kaldırılması gibi işlemlerde
+veri kayıplarının önüne geçecektir.
 
-Vagrant file içinde dosya paylaşımlarını aşağıdaki gibi yapınız:
+Yukarıda verilen örnek Vagrantfile içerisinde, kod depolarınızın sanal makineye bağlanmak üzere nasıl konfigüre
+edileceği bulunmaktadır. Kısaca
 
 ::
 
@@ -65,6 +68,7 @@ Vagrant file içinde dosya paylaşımlarını aşağıdaki gibi yapınız:
 
   # ulakbus-ui
    config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus-ui", "/app/ulakbus-ui", owner: "ulakbus", group: "ulakbus"
+
 
 Geliştirme Sanal Makinasının Güncellenmesi
 ------------------------------------------
@@ -110,13 +114,13 @@ ulakbus kullanıcısına ait klasör altında aşağıdaki alt klasörler yer al
 
   pyoko  pyokoenv  pyoko_postactivate  ulakbus  ulakbusenv  ulakbus_postactivate  ulakbus-ui  zengine  zengineenv  zengine_postactivate
 
-ulakbus projesi ile çalışmak için
+ulakbus projesi ile çalışmak için 
 
 ::
 
   source ulakbusenv/bin/activate
 
-Virtualenv aktif hale getiriniz.
+Virtualenv aktif hale getiriniz. 
 
 ::
 
@@ -128,7 +132,7 @@ yukarıdaki komut satırını gördüğünüzde virtualenv set edilmiş demektir
 
    http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-daha sonra **ipython** komutu ile konsolda çalışmalar yapabilirsiniz.
+daha sonra **ipython** komutu ile konsolda çalışmalar yapabilirsiniz. 
 
 Geliştirme İçin Editör Ayarlanması
 ----------------------------------

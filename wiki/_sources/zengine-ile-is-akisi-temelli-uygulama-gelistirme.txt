@@ -117,7 +117,7 @@ Bir web uygulamasının işlevlerini yerine getirmesi için yazılan kodların b
 
 Current Nesnesi
 ---------------
-İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıtkı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
+İş akışı motoru bir view ya da task metodunu "Current" adını verdiğimiz merkezi bir nesneyi parametre olarak vererek çağırır. Current nesnesi akışın durumu (workflow state), kullanıcı oturumu, girdi ve çıktı kapıları gibi bir workflow metodunun ihtiyaç duyabileceği tüm ögeleri barındırır.
 
 Current nesnesi, workflow metodlarından işimize yarayabilecek aşağıdaki ögeleri içerir. Bunlardan *session, user, auth* gibi sadece view metodlarında işlevsel olanlar arkaplanda çalışan task metodlarında geçersizdirler.
 
@@ -153,6 +153,7 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
     ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.
 
 .. uml::
+
     skinparam classBackgroundColor #ffffff
     skinparam shadowing false
 
@@ -210,7 +211,7 @@ Satır ve hücre seviyesinde erişim kontrolünün veri katmanı seviyesinde ça
 
 Yukarıdaki Personel modelinin ``6.`` satırında tanımlanan **row_level_access()** metodu, modelin ilklendirilmesi (initialization) aşamasında çağırılır. ``7.`` satırda kullanıcının kendi bölümü dışındaki kullanıcı kayıtlarına erişim yetkisi olup olmadığı kontrol edilip, eğer yoksa ``8.`` satıda **objects** nesnesinin üzerine yazarak etkin kullanıcı tarafından bu model üzerinde yapılacak tüm sorguların sadece kendi bölümündeki kullanıcı kayıtlarıyla sınırlanması sağlanır.
 
-Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde **field_permissions** adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlalamız yeterlidir. Yukarıda ``12.`` satırda tanımlanan kısıtlama sayesinde, *can_see_private_data* yetkisine sahip olmayan kullanıcıların *phone* ve *address* alanlarını okuyup yazmaları engellenmiş olur.
+Hücre seviyesinde erişim kısıtlaması yapmak için META sözlüğü içerisinde **field_permissions** adında bir sözlük tanımlayıp, anahtarı yetki adları, değeri de kısıtlanacak alan adlarını içeren bir liste tanımlamamız yeterlidir. Yukarıda ``12.`` satırda tanımlanan kısıtlama sayesinde, *can_see_private_data* yetkisine sahip olmayan kullanıcıların *phone* ve *address* alanlarını okuyup yazmaları engellenmiş olur.
 
 Aşağıda veri tabanındaki tüm kişileri listelemeye çalışan view metodu, etkin kullanıcının gerekli yetkiye sahip olmaması durumunda, sadece kendi bölümündeki kullanıcıları görüntüleyebilecektir. Benzer şekilde kullanıcı kişilerin özel bilgilerini görüntüleme yetkisine sahip değilse de *person_list* listesinin *phone* sütunu boş kalacaktır.
 
