@@ -66,7 +66,29 @@ View, task ve model modülleri, proje kök dizininde yer alan ``views``, ``tasks
 İş akışlarının tasarlanması.
 ***********************************************************************************
 
-Örnek uygulamamızda
+Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.
+
+
+.. image:: _static/du_bpmn_lecture_selection.png
+
+
+Advisor lane'inin boş bir yerine tıklayarak bu lane'in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.
+
+``relations`` parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte **advisor** laneninin kullanıcısının student lane'inin kullanıcısının **danisman** ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.
+
+``owners`` parametresi tanımlandığı lane'in olası kullanıcılarını ifade etmek için kullanılır. İş akışı bir lane'den diğerine geçtiğinde, iş akışı motoru bu tanımlamanın işaret ettiği kullanıcılara bir ileti göndererek akışa katılmalarını sağlar.
+
+Örneğimizde advisor lane'ini işletecek kişinin student lane'ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bununla birlikte, bu alana birden fazla nesne döndürebilecek geçerli bir Python ifadesi girilmesi gerektiğinden, **[student.ogrenci.danisman.personel]** şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya **User** nesnesi olmalı ya da geriye ilgili user nesnesini döndüren bir **get_user()** metoduna sahip olmalıdırlar.
+
+
+
+``permissions`` parametresi virgülle ayrılmış şekilde yetki kodları kabul etmektedir. İlgili lane'i işletecek kullanıcının bu yetkilere sahip olması koşulu aranacaktır. Sistemde halihazırda tanımlı olmayan yetkiler burada doğrudan kullanılıp update_permissions komutu ile otomatik olarak yetki tablosuna eklenebilir. ``:: TODO ::``
+
+
+
+
+.. image:: _static/du_bpmn_lane_properties.png
+
 
 
 Modellerin tanımlanması.
@@ -78,10 +100,8 @@ Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölüm
 
     # ulakbus/models/lectures.py
 
-    from pyoko import Model, ListNode, field
-
-    class Lecturer(Model):
-        name = field.String("Adı", index=True)
+    from pyoko import Model, field
+    from .ogrenci import Ogrenci
 
 
     class Lecture(Model):
@@ -89,14 +109,11 @@ Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölüm
         credit = field.Integer("Kredisi", default=0, index=True)
 
 
-    class Student(Model):
-        name = field.String("Adı", index=True)
-        join_date = field.Date("Kayıt tarihi", index=True)
-        advisor = Lecturer()
+    class StudentLectures(Model):
+        lecture = Lecture()
+        student = Ogrenci()
+        confirmed = field.Boolean("Onaylandı", default=False)
 
-        class Lectures(ListNode):
-            lecture = Lecture()
-            confirmed = field.Boolean("Onaylandı", default=False)
 
 
 ::
