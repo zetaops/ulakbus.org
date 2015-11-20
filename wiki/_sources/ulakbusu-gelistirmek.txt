@@ -79,14 +79,14 @@ BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da,
 Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.
 
 
-.. image:: _static/du_bpmn_lecture_selection.png
+.. thumbnail:: _static/du_bpmn_lecture_selection.png
 
 
 
 Advisor lane'inin boş bir yerine tıklayarak bu lane'in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.
 
 
-.. image:: _static/du_bpmn_lane_properties.png
+.. thumbnail:: _static/du_bpmn_lane_properties.png
 
 
 ``relations`` parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte **advisor** laneninin kullanıcısının student lane'inin kullanıcısının **danisman** ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.
@@ -119,7 +119,7 @@ Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölüm
     :lines: 1, 6-
 
 
-Basit bir view fonksiyonu hazırlayalım
+JsonForm ile basit bir view hazırlayalım
 ***********************************************************************************
 
 
