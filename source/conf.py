@@ -39,10 +39,11 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinxcontrib.plantuml',
     'sphinxcontrib.images',
+    'sphinx.ext.viewcode',
 ]
-images_config = {
-    'override_image_directive': True,
-}
+# images_config = {
+#     'override_image_directive': True,
+# }
 
 # please adjust plantuml path
 plantuml = 'java -jar /opt/plantuml/plantuml.jar'
