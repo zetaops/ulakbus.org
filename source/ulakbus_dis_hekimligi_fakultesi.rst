@@ -22,26 +22,23 @@ Rektör önerir, YÖK 3 yıllığına atar. Fakültenin ve birimlerinin temsilci
 **Dekan Yardımcısı**
 --------------------
 
-Dekan kendisine çalışmalarında yardımcı olmak üzere fakültenin aylıklı öğretim üyeleri arasından en çok iki kişiyi dekan yardımcısı olarak seçer. En çok 3 yıl.
-
-Dekana, görevi başında olmadığı zaman yardımcılarından biri vekalet eder. Göreve vekalet altı aydan fazla sürerse yeni bir dekan atanır.
+- Dekan kendisine çalışmalarında yardımcı olmak üzere fakültenin aylıklı öğretim üyeleri arasından en çok iki kişiyi dekan yardımcısı olarak seçer. En çok 3 yıl görevde kalır.
+- Dekana, görevi başında olmadığı zaman yardımcılarından biri vekalet eder. Göreve vekalet altı aydan fazla sürerse yeni bir dekan atanır.
 
 ------------------
 **Fakülte Kurulu**
 ------------------
 
-Dekan başkanlık eder.
-Bağlı bölümlerin başkanları ile varsa fakülteye bağlı enstitü ve yüksekokul müdürlerinden ve üç yıl için fakültedeki profesörlerin kendi aralarından seçecekleri üç, doçentlerin kendi aralarından seçecekleri iki, yardımcı doçentlerin kendi aralarından seçecekleri bir öğretim üyesinden oluşur.
+- Dekan başkanlık eder.
+- Bağlı bölümlerin başkanları ile varsa fakülteye bağlı enstitü ve yüksekokul müdürlerinden ve üç yıl için fakültedeki profesörlerin kendi aralarından seçecekleri 3, doçentlerin kendi aralarından seçecekleri 2, yardımcı doçentlerin kendi aralarından seçecekleri 1 öğretim üyesinden oluşur.
 
 --------------------------
 **Fakülte Yönetim Kurulu**
 --------------------------
 
-Fakülteyle ilgili kararların aldındığı birimdir.  Dekan başkanlık eder.  Üyeler, Fakülte Kurulu'nun seçtiği 3 profesör, 2 doçent ve 1 yardımcı doçentten oluşur.Dekan çağrısı üzerine toplanır.
-
-Öğrencilerin verdiği dilekçeler, hocaların verdiği dilekçeler ve senatoya gidecek tüm evraklar buradan geçer.
-
-Öğrencilerin kabulü, ders intibakları ve çıkarılmaları ile eğitim öğretim ve sınavlara ait işlemleri hakkında burada karar verilir.
+- Fakülteyle ilgili kararların aldındığı birimdir.  Dekan başkanlık eder.  Üyeler, Fakülte Kurulu'nun seçtiği 3 profesör, 2 doçent ve 1 yardımcı doçentten oluşur.Dekan çağrısı üzerine toplanır.
+- Öğrencilerin verdiği dilekçeler, hocaların verdiği dilekçeler ve senatoya gidecek tüm evraklar buradan geçer.
+- Öğrencilerin kabulü, ders intibakları ve çıkarılmaları ile eğitim-öğretim ve sınavlara ait işlemleri hakkında burada karar verilir.
 
 ---------------------
 **Fakülte Sekreteri**
@@ -79,31 +76,34 @@ Fakültenin idari amiridir.
 **Bölüm**
 ---------
 
-Bir fakülte ya da yüksekokulda, aynı veya benzer nitelikte eğitim-öğretim yapan birden fazla bölüm bulunamaz.
+- Bir fakülte ya da yüksekokulda, aynı veya benzer nitelikte eğitim-öğretim yapan birden fazla bölüm bulunamaz.
+- Her bölümün YÖKSİS Birim ID'si bulunur.
+- TUIK Kodu
+- Hazırlık durumu olur.
 
-Her bölümün YÖKSİS Birim ID'si bulunur.
+  * Yok
 
-TUIK Kodu
+  * Seçmeli
 
-Hazırlık durumu olur. Yok - Secmeli - Zorunlu
+  * Zorunlu
 
-Eğitimi Tipi - Dönemlik / Yıllık
+- Eğitimi Tipi
 
-Bölüm sistemde pasif hale getirilebilir. Pasif hale gelirse alt birimler de pasif hale gelir.
+   * Dönemlik
+
+   * Yıllık
+
+- Bölüm sistemde pasif hale getirilebilir. Pasif hale gelirse alt birimler de pasif hale gelir.
 
 -----------------
 **Bölüm Başkanı**
 -----------------
 
-Bölümü yönetir.
-
-Bölüm başkanı; bölümün aylıklı profesörleri, bulunmadığı takdirde doçentleri, doçent de bulunmadığı takdirde yardımcı doçentler arasından dekanca 3 yıl için atanır.
-
-Bölüm başkanı, görevi başında bulunamayacağı süreler için öğretim üyelerinden birini vekil olarak bırakır.
-
-Herhangi bir nedenle altı aydan fazla ayrılmalarda, kalan süreyi tamamlamak üzere aynı yöntemle yeni bir bölüm başkanı atanır.
-
-Çeşitli raporlar alabilmelidir.
+- Bölümü yönetir.
+- Bölüm başkanı; bölümün aylıklı profesörleri, bulunmadığı takdirde doçentleri, doçent de bulunmadığı takdirde yardımcı doçentler arasından dekanca 3 yıl için atanır.
+- Bölüm başkanı, görevi başında bulunamayacağı süreler için öğretim üyelerinden birini vekil olarak bırakır.
+- Herhangi bir nedenle altı aydan fazla ayrılmalarda, kalan süreyi tamamlamak üzere aynı yöntemle yeni bir bölüm başkanı atanır.
+- Çeşitli raporlar alabilmelidir.
 
 ----------------
 **Bölüm Kurulu**
@@ -223,9 +223,8 @@ YOK
 **Seçtirmeli Ders**
 -------------------
 
-Gruplar halinde tanımlanırlar. Öğrenci bu gruptaki derslerden herhangi birini veya birden çoğunu alabilir. Seçmeli derslerden kalanlar aynı gruptaki başka bir dersi alabileceği gibi, kaldıkları dersi almaya, öğrenci işleri veya danışman tarafından zorlanabilir. Bu zorlama ders grubu tanımında belirlenir.
-
-Grup tanımı yapacağız. Grup başarısı için alınması gereken ders sayısı belirlenir. Öğrenci bu kriteri sağladığında, grup dersinden geçmiş olur.
+- Gruplar halinde tanımlanırlar. Öğrenci bu gruptaki derslerden herhangi birini veya birden çoğunu alabilir. Seçmeli derslerden kalanlar aynı gruptaki başka bir dersi alabileceği gibi, kaldıkları dersi almaya, öğrenci işleri veya danışman tarafından zorlanabilir. Bu zorlama ders grubu tanımında belirlenir.
+- Grup tanımı yapacağız. Grup başarısı için alınması gereken ders sayısı belirlenir. Öğrenci bu kriteri sağladığında, grup dersinden geçmiş olur.
 
 ----------------
 **Öğretim Yılı**
@@ -249,9 +248,8 @@ Lisans eğitimi 5 yıldır. Kayıt dondurma normal öğretim süresine dahil de�
 **Ücretler**
 ------------
 
-Öğrenim ücretleri, normal öğretimlerde normal öğrenim süresinin aşmasını takiben, alınan harç ve uzatılan ders kredisi oranında alınan dönemlik ücretlerdir.
-
-Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirlenir.
+- Öğrenim ücretleri, normal öğretimlerde normal öğrenim süresinin aşmasını takiben, alınan harç ve uzatılan ders kredisi oranında alınan dönemlik ücretlerdir.
+- Harç ücretleri Bakanlar Kurulu tarafından Ağustos sonu itibarıyla belirlenir.
 
 ------------
 **Sınavlar**
@@ -348,19 +346,13 @@ Azami süre içerisinde başarılı olmadıysa kayıt ücretlerini ödemek koşu
 **Sınava Katılma Şartları**
 ---------------------------
 
-* İlgili dersten muaf öğrenciler sınava giremezler.
-
-* Kayıtları dondurulmuş öğrenciler sınavlara giremezler.
-
-* Mazeretli öğrenciler sınava girmezler. Sınava girerlerse, sınavları geçersiz sayılır.
-
-* Devamlılık kurallarına uymayan öğrenciler o dersin genel sınavına giremezler.
-
-* Uygulamalarda başarılı olamayan öğrenciler o dersin genel sınavına giremezler.
-
-* Tek ders sınavına girmek için, ilgili dersin devam şartları sağlanmış olmalıdır.
-
-* Disiplin cezası almış öğrenciler, ceza süresi içerisinde hiçbir sınava giremezler.
+- İlgili dersten muaf öğrenciler sınava giremezler.
+- Kayıtları dondurulmuş öğrenciler sınavlara giremezler.
+- Mazeretli öğrenciler sınava girmezler. Sınava girerlerse, sınavları geçersiz sayılır.
+- Devamlılık kurallarına uymayan öğrenciler o dersin genel sınavına giremezler.
+- Uygulamalarda başarılı olamayan öğrenciler o dersin genel sınavına giremezler.
+- Tek ders sınavına girmek için, ilgili dersin devam şartları sağlanmış olmalıdır.
+- Disiplin cezası almış öğrenciler, ceza süresi içerisinde hiçbir sınava giremezler.
 
 ----------------
 **Puan Sistemi**
@@ -428,26 +420,20 @@ Ayrıca dönem / yıl ağırlıklı not ortalaması 2.00 olan öğrenci şartlı
 **Başarı Hesaplama**
 --------------------
 
-Ağırlıklı Not = AKTS * Not Katsayısı (4'lük not)
-
-Dönem Ağırlıklı Not Ortalaması = O dönem alınan tüm derslerin ağırlıklı not toplamı / tüm derslerin kredi toplamı
-
-Genel Ağırlıklı Not Ortalaması = Kayıt olunan zamandan hesaplama zamanına kadar alınan ve harflenmiş tüm derslerin ağırlıklı not toplamı / aynı derslerin kredi toplamı
-
-Mezuniyet Ağırlıklı Not ortalaması = Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
-
-Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5'ten küçükse 0'a indirgenir, 5'ten büyükse ikinci hane bir arttırılarak hesaplanır.
+- Ağırlıklı Not = AKTS * Not Katsayısı (4'lük not)
+- Dönem Ağırlıklı Not Ortalaması = O dönem alınan tüm derslerin ağırlıklı not toplamı / tüm derslerin kredi toplamı
+- Genel Ağırlıklı Not Ortalaması = Kayıt olunan zamandan hesaplama zamanına kadar alınan ve harflenmiş tüm derslerin ağırlıklı not toplamı / aynı derslerin kredi toplamı
+- Mezuniyet Ağırlıklı Not ortalaması = Mezun olmaya hak kazanılan tarih itibarıyla genel ağırlıklı not ortalaması
+- Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5'ten küçükse 0'a indirgenir, 5'ten büyükse ikinci hane bir arttırılarak hesaplanır.
 
 3,144 -> 3,140 -> 3,14
 
 3,145 -> 3,150 -> 3,15
 
-
-Yerine alınan ders dahil edilir. Bırakılan ders dahil edilmez.
-Tekrar edilen derslerden son harf notu dikkate alınır.
-Muaf dersler ortalama hesaplamaya dahil edilmez.
-
-Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplamaya dahil edilir.
+- Yerine alınan ders dahil edilir. Bırakılan ders dahil edilmez.
+- Tekrar edilen derslerden son harf notu dikkate alınır.
+- Muaf dersler ortalama hesaplamaya dahil edilmez.
+- Dönem hesabı yapılırken o dönem alınanlar -bırakılanlar dahil- hesaplamaya dahil edilir.
 
 -------------------
 **Ücret Hesaplama**
@@ -522,17 +508,12 @@ Mezuniyetleri müteakip akademik yıla taşan öğrenciler, o yarıyılın da ka
 *İlk Kayıt:*
 ------------
 
-* Öğrencilerin bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçiçi kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
-
-* Öğrenci için öğrenci numarası ve geçici bir parola verilir.
-
-* Askerlik durumları ASAL’dan web servisi ile öğrenilir. Askerlik engeli olanlar kayıt yaptıramazlar.
-
-* Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
-
-* Ön kayıt yapmamış öğrenciler kesin kayıta geldiklerinde ön kayıtları yapılır.
-
-* Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur. Öğrenci kayıtlı hale gelir.
+- Öğrencilerin bilgileri ÖSYM sistemine bağlanılarak çekilir ve öğrenciler sisteme “geçiçi kayıt” olarak kaydedilir. Bilgileri Mernis ve AKS'den güncellenir.
+- Öğrenci için öğrenci numarası ve geçici bir parola verilir.
+- Askerlik durumları ASAL’dan web servisi ile öğrenilir. Askerlik engeli olanlar kayıt yaptıramazlar.
+- Öğrenciler, öğrenci numarası ve geçici parola ile giriş yapıp, ön kayıt formu internetten doldurup çıktısını alır. Öğrenci durumu ön kayıt olarak işaretlenmeli, ön kayıt formu askerlik engeli olanlara gösterilmez. Askerlik engeli bu öğrencilere uygun şekilde gösterilir.
+- Ön kayıt yapmamış öğrenciler kesin kayıta geldiklerinde ön kayıtları yapılır.
+- Öğrenci kayıt şartlarında belirlenen belgeleri teslim ettiğinde kayıt tamamlanmış olur. Öğrenci kayıtlı hale gelir.
 
 Kayıt dönemi kapandığında kesin kayıt haline gelmemiş  geçici kayıtlar ve ön kayıtlar silinir.
 Kesin kayıt dönemi bittiğinde boş kontenjanlar için rapor haline getirilir.
@@ -544,36 +525,28 @@ Eğer öğrenci ÖSYM aracılığıyla gelmiyorsa, ön kayıt işlemi yapılmaz,
 *Kesin Kayıt Sonrası:*
 ----------------------
 
-* Sistem öğrencilere programın gerektirdiği ilk ders atamalarını otomatik yapar.
-
-* Öğrencilere bir danışman hoca ataması, bölüm sekreterliği tarafından yapılır.
-
-* Askerlik durumları bildiriliyor. Belge üretip postaya verilecek.
+- Sistem öğrencilere programın gerektirdiği ilk ders atamalarını otomatik yapar.
+- Öğrencilere bir danışman hoca ataması, bölüm sekreterliği tarafından yapılır.
+- Askerlik durumları bildiriliyor. Belge üretip postaya verilecek.
 
 -----------------
 *Kayıt Yenileme:*
 -----------------
 
-* Kayıt yenileme için normal öğretim süresini aşanlar için ders seçimi yaptırılır.
-
-* Ders seçimlerinin sonucu ortaya çıkan harçlar öğrenci tarafından bankaya yatırılır.
-
-* Normal Öğretim Süresi içinde olan öğrenciler harç ödemeden, ders seçimi yaparak kayıt yenilerler.
-
-* Bu aşamaların ardından dersler danışman onayına açık hale getirilir.
-
-* Danışman onayıyla kayıt yenileme işlemi tamamlanır.
+- Kayıt yenileme için normal öğretim süresini aşanlar için ders seçimi yaptırılır.
+- Ders seçimlerinin sonucu ortaya çıkan harçlar öğrenci tarafından bankaya yatırılır.
+- Normal Öğretim Süresi içinde olan öğrenciler harç ödemeden, ders seçimi yaparak kayıt yenilerler.
+- Bu aşamaların ardından dersler danışman onayına açık hale getirilir.
+- Danışman onayıyla kayıt yenileme işlemi tamamlanır.
 
 -----------------
 *Kayıt Dondurma:*
 -----------------
 
-Haklı ve geçerli mazereti olan öğrencilerin öğrenim süreleri, yönetim kurulu kararıyla dondurulur. Sağlık ile ilgili mazeretlerde sağlık kurulu raporu zorunludur. Kayıt dondurma süresi öğretim sürelerinden sayılmaz.
-
-Diş Hekimliği Fakültesi'nde en çok iki kez, en fazla 1 yıl süreyle kayıt dondurulabilir.
-Askerlik sebebiyle dondurulduysa, terhis süresine kadar doldurulur. Askerden sonra bir kez daha dondurma hakkı var mıdır?
-
-Hiçbir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, transkript) alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb.
+- Haklı ve geçerli mazereti olan öğrencilerin öğrenim süreleri, yönetim kurulu kararıyla dondurulur. Sağlık ile ilgili mazeretlerde sağlık kurulu raporu zorunludur. Kayıt dondurma süresi öğretim sürelerinden sayılmaz.
+- Diş Hekimliği Fakültesi'nde en çok 2 kez, en fazla 1 yıl süreyle kayıt dondurulabilir.
+- Askerlik sebebiyle dondurulduysa, terhis süresine kadar doldurulur. Askerden sonra bir kez daha dondurma hakkı var mıdır?
+- Hiçbir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, transkript) alamaz, e-postasına giremez, ders kaydı yapamaz, sınavlara giremez vb.
 
 --------------
 *Kayıt Silme:*
@@ -581,15 +554,11 @@ Hiçbir öğrencilik haklarından faydalanamaz. Belgeleri (askerlik, öğrenci, 
 
 Aşağıdaki hallerde kayıt silme işlemi yapılır:
 
-* İlgili mevzuat hükümlerine göre üniversiteden çıkarma cezası almış olması.
-
-* Öğrenci tarafından yazılı olarak kayıtlı olduğu birim ile ilişiğinin kesilmesi talebinde bulunulması.
-
-* Kayıt esnasında istenen belgelerden herhangi birinin daha sonradan gerçeğe aykırı olduğunun tespit edilmesi.
-
-* Vefat
-
-* Dikey Geçiş, Nakil vb.
+- İlgili mevzuat hükümlerine göre üniversiteden çıkarma cezası almış olması.
+- Öğrenci tarafından yazılı olarak kayıtlı olduğu birim ile ilişiğinin kesilmesi talebinde bulunulması.
+- Kayıt esnasında istenen belgelerden herhangi birinin daha sonradan gerçeğe aykırı olduğunun tespit edilmesi.
+- Vefat
+- Dikey Geçiş, Nakil vb.
 
 Kayıt silme aslında silindi olarak işaretlenir. Hiçbir öğrencilik haklarından faydalanamaz. Sistemde görünmez hale gelir.
 
@@ -629,29 +598,30 @@ YOK
 
 Sistem, öğrencilerin ders seçimlerine yardımcı olmak için şu özelliklere sahip olmalıdır:
 
-* Öncelik, alt yarıyıllarda hiç alınmayan, devamsız veya başarısız olunan derslere verilmelidir.
+- Öncelik, alt yarıyıllarda hiç alınmayan, devamsız veya başarısız olunan derslere verilmelidir.
 
-  - Zorunlu bölüm dersler
-  - Ortak zorunlu dersler
-  - Seçmeli zorunlu dersler.
+  * Zorunlu bölüm dersler
 
-* Alınabilecek toplam kredi minimum 30, maksimum 45 olmalıdır.
+  * Ortak zorunlu dersler
 
-  - Bu değerlere alt yıl dersleri dahildir.
+  * Seçmeli zorunlu dersler.
 
-* Muaf olunan dersler seçilemezler.
+- Alınabilecek toplam kredi minimum 30, maksimum 45 olmalıdır.
 
-  - Danışman onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, danışman onay süreci içinde danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
+  * Bu değerlere alt yıl dersleri dahildir.
 
-Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik program da fakülte kurulu tarafından yapılmış olmalıdır.
+- Muaf olunan dersler seçilemezler.
+
+  * Danışman onay sürecine kadar, öğrenci tarafından yukarıdaki kurallara göre seçilen dersler, danışman onay süreci içinde danışman tarafından kontrol edilir ve onaylanır. Bu onayın ardından ders seçme işlemi ilgili öğrenci için tamamlanmış olur.
+
+- Ders onayı yapıldığında öğrenciye her türlü ders o döneme ait şekilde yeni ders olarak tanımlanır. Dersler tekrar veya yerine bile olsa yeni bir ders kartı açılır. Öğrencinin geçmiş dönemdeki aynı ders durumu saklanır. Tekrar derslerin kredileri farklı olabilir. Bu değişiklik program da fakülte kurulu tarafından yapılmış olmalıdır.
 
 -----------------------------------------------
 **Ders Ekleme-Çıkarma ve Mazeretli Ders Kaydı**
 -----------------------------------------------
 
-Normal ders kaydı sürecinde ders kaydı yapmayan öğrencilerden mazereti olanlar bu süre içerisinde, yönetim kurulu onayıyla ders seçimini yapabilirler. Seçilen dersler dilekçe ile belirtilir. Fakülte öğrenci işleri gerekli dersleri ekler ve çıkarır. Bu işlem danışman onaylı gerçekleşir.
-
-Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. Bu değişiklikler önceki paragraftaki süreçle aynı şekilde yapılır.
+- Normal ders kaydı sürecinde ders kaydı yapmayan öğrencilerden mazereti olanlar bu süre içerisinde, yönetim kurulu onayıyla ders seçimini yapabilirler. Seçilen dersler dilekçe ile belirtilir. Fakülte öğrenci işleri gerekli dersleri ekler ve çıkarır. Bu işlem danışman onaylı gerçekleşir.
+- Danışman veya öğrenci ders seçimlerini değiştirmek için dilekçe verir. Bu değişiklikler önceki paragraftaki süreçle aynı şekilde yapılır.
 
 -------------------------------
 **Başka Bölümlerden Ders Alma**
@@ -663,9 +633,8 @@ YOK
 **Program Değişikliği**
 -----------------------
 
-Program değişiklikleri, Fakülte Kurulu tarafından karara bağlanarak en geç Mayıs ayı içinde REKTÖRLÜĞE sunulur. SENATO onayı ile kesinleşir.
-
-Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrencilerin derslerini ve ders bağımlılıklarını etkileyebilir. Kaldırılan veya yeni eklenen dersler sebebiyle mevcut öğrenciler için belirli dersler korunabilir. Bu sebeple program değişiklikleri versiyonlanmalı ve ilgili versiyona kayıt yaptıran öğrenciler için ders zorunlulukları ve bağımlılıklılar saklanmalıdır.
+- Program değişiklikleri, Fakülte Kurulu tarafından karara bağlanarak en geç Mayıs ayı içinde REKTÖRLÜĞE sunulur. SENATO onayı ile kesinleşir.
+- Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrencilerin derslerini ve ders bağımlılıklarını etkileyebilir. Kaldırılan veya yeni eklenen dersler sebebiyle mevcut öğrenciler için belirli dersler korunabilir. Bu sebeple program değişiklikleri versiyonlanmalı ve ilgili versiyona kayıt yaptıran öğrenciler için ders zorunlulukları ve bağımlılıklılar saklanmalıdır.
 
 ------------------
 **Ders Muafiyeti**
@@ -673,9 +642,8 @@ Program değişiklikleri gelecek yıllar için geçerli olur ve mevcut öğrenci
 
 Bir dersten muafiyet şartları şu şekildedir:
 
-* Programdan kaldırılan ve yerine herhangi bir ders konulmayan, herhangi bir dersten başarısız olan öğrenci, o dersten muaf sayılır.
-
-* İlgili dersin muafiyet sınavını başarmış olmak.
+- Programdan kaldırılan ve yerine herhangi bir ders konulmayan, herhangi bir dersten başarısız olan öğrenci, o dersten muaf sayılır.
+- İlgili dersin muafiyet sınavını başarmış olmak.
 
 --------------
 **Not Girişi**
@@ -703,13 +671,10 @@ YOK
 **Onur Belgeleri**
 ------------------
 
-* Bulunduğu dönemde ve sınıfta;
-
-* Başarısız dersi olmayan,
-
-* Genel ortalaması >= 3,5 ise yüksek onur,
-
-* Genel ortalaması >= 3 olan onur belgesi alır.
+- Bulunduğu dönemde ve sınıfta;
+- Başarısız dersi olmayan,
+- Genel ortalaması >= 3,5 ise yüksek onur,
+- Genel ortalaması >= 3 olan onur belgesi alır.
 
 --------------------------
 **Harf Yeniden Hesaplama**
@@ -823,11 +788,9 @@ Her staj dersi sistemde ayrı bir ders olarak açılır.
 Ara sınavları yoktur. Sadece final notu girilir. Final notu değerlendirme formu ile hesaplanır.
 
 - Her bir staj dersi için ayrı bir değerlendirme formu vardır. Bu değerlendirme formu ile öğrenci notu hesaplanır.
-Her kliniğin başarılması için barajlar vardır. Bu dersin tanımında yer almalıdır. Bu barajlar aşılmadığı zaman öğrenci değerlendirme formu açılmaz. Öğrenci final notu FF olarak sisteme işaretlenir.
-
-Eğer öğrenci başarısız olursa yaz stajına gelir. Burada aldığı not da bütünleme olarak kaydedilir.
-
-Her öğrenci bir stajı dönem içinde sadece bir kere alabilir. Staj ile birlikte bir de staj sorumlusu açılır. Her staj dersinden sadece bir tane açılır.
+- Her kliniğin başarılması için barajlar vardır. Bu dersin tanımında yer almalıdır. Bu barajlar aşılmadığı zaman öğrenci değerlendirme formu açılmaz. Öğrenci final notu FF olarak sisteme işaretlenir.
+- Eğer öğrenci başarısız olursa yaz stajına gelir. Burada aldığı not da bütünleme olarak kaydedilir.
+- Her öğrenci bir stajı dönem içinde sadece bir kere alabilir. Staj ile birlikte bir de staj sorumlusu açılır. Her staj dersinden sadece bir tane açılır.
 
 -----------------------
 **Laboratuvar Dersler**
