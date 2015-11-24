@@ -287,7 +287,9 @@ Hocalar değiştirmediği sürece, sınav sonuçları şu şekillerde ifade edil
 |--             |    F      |    0.00       |
 +---------------+-----------+---------------+
 
-Yök detaylı not dönüşüm tablosu: https://www.yok.gov.tr/documents/10279/31737/4_luk_sistem_100/f3d72044-c756-4302-ab26-91af35f45f43
+Yök detaylı not dönüşüm tablosu:
+
+https://www.yok.gov.tr/documents/10279/31737/4_luk_sistem_100/f3d72044-c756-4302-ab26-91af35f45f43
 
 Harf Sistemi
 ------------

@@ -26,8 +26,8 @@ Müdüre görevi başında olmadığı zaman yardımcılarından biri vekalet ed
 Enstitü Kurulu
 --------------
 
-Müdür başkanlık eder.  Bağlı anabilim dalı başkanları enstitü müdür yardımcılarından oluşur. Senatoya gidecek tüm evraklar buradan geçer.
-
+Müdür başkanlık eder. İki kez toplanır. Bağlı anabilim dalı başkanları ve enstitü müdür yardımcılarından oluşur. Senatoya gidecek tüm evraklar buradan geçer.
+Senatoya karar üretir.
 
 Enstitü Yönetim Kurulu
 ----------------------
@@ -35,6 +35,8 @@ Enstitü Yönetim Kurulu
 Enstitü ile ilgili kararların alındığı birim.  Müdür başkanlık eder.  Üyeleri, 2 müdür yardımcıları ve enstitü kurul üyelerinden seçilecek 3 üyeden oluşur. Müdür çağrısı üzerine toplanır.
 
 Öğrenci ve hocaların verdiği dilekçeleri inceler ve karara bağlar. Öğrencilerin kabulü, ders intibakları ve çıkarılmaları ile eğitim-öğretim ve sınavlara ait işlemler hakkında kararlar verir.
+
+Öğrenci, hocalar ve günlük işleyiş ile ilgili kararlar alır.
 
 Enstitü Sekreteri
 -----------------
@@ -344,16 +346,6 @@ ABD, her özel öğrenci için bir danışman belirler.
   * Ücretli
 
 - ÖYP - Araştırma görevlileridir.
-
-Enstitü Kurulu
---------------
-
-İki kez toplanır. Senatoya karar üretir.
-
-Enstitü Yönetim Kurulu
-----------------------
-
-Öğrenci ve hocalar, günlük işleyiş ile ilgili kararlar alır. Bunların mutlaka otomasyon üzerinden yazılması gerekir. Belgeler bekliyoruz.
 
 Uyarılar
 --------

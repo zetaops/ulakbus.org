@@ -78,9 +78,11 @@ Bölüm
 - Bankacılık
 - Ulaştırma ve Lojistik
 
-- Her bölümün YÖKSİS Birim ID’si bulunur.
-- TUIK Kodu
-- Eğitimi Tipi: Dönemliktir.
+  * Her bölümün YÖKSİS Birim ID’si bulunur.
+
+  * TUIK Kodu
+
+  *  Eğitimi Tipi: Dönemliktir.
 
 Bölüm sistemde pasif hale getirilebilir. Pasif hale gelirse alt birimler de pasif hale gelir.
 
@@ -89,7 +91,7 @@ Bölüm Başkanı
 
 Bölümü yönetir.
 
-Bölüm başkanı; bölümün aylıklı profesörleri, bulunmadığı takdirde doçentleri, doçent de bulunmadığı takdirde yardımcı doçentler arasından dekanca üç yıl için atanır.
+Bölüm başkanı; bölümün aylıklı profesörleri, bulunmadığı takdirde doçentleri, doçent de bulunmadığı takdirde yardımcı doçentler arasından dekanca 3 yıl için atanır.
 
 Bölüm başkanı, görevi başında bulunamayacağı süreler için öğretim üyelerinden birini vekil olarak bırakır.
 
@@ -403,6 +405,7 @@ Mezuniyet Ağırlıklı Not ortalaması = Mezun olmaya hak kazanılan tarih itib
 Ortalama hesaplarında ondalık kısmı iki hane olur. 3. hane 5’ten küçükse 0’a indirgenir, 5’ten büyüksek ikinci hane bir arttırılarak hesaplanır.
 
 3,144 -> 3,140 -> 3,14
+
 3,145 -> 3,150 -> 3,15
 
 - Yerine alınan ders dahil edilir. Bırakılan ders dahil edilmez.

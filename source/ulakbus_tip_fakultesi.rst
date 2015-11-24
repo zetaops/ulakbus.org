@@ -190,11 +190,11 @@ Seçmeli Ders
 
 1-2-3’te seçmeli ders yoktur. 4-5 ve 6 sadece bir tane seçmeli ders alabilir.
 
-  * 4- İki seçmeli dersten birini seçer.
+* 4- İki seçmeli dersten birini seçer.
 
-  * 5- Üç seçmeli dersten birini seçer.
+* 5- Üç seçmeli dersten birini seçer.
 
-  * 6- Dönem 5’teki stajlardan birini seçebilir.
+* 6- Dönem 5’teki stajlardan birini seçebilir.
 
 Öğretim Yılı
 ------------

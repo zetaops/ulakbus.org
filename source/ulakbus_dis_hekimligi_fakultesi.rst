@@ -97,7 +97,7 @@ Bölüm sistemde pasif hale getirilebilir. Pasif hale gelirse alt birimler de pa
 
 Bölümü yönetir.
 
-Bölüm başkanı; bölümün aylıklı profesörleri, bulunmadığı takdirde doçentleri, doçent de bulunmadığı takdirde yardımcı doçentler arasından dekanca üç yıl için atanır.
+Bölüm başkanı; bölümün aylıklı profesörleri, bulunmadığı takdirde doçentleri, doçent de bulunmadığı takdirde yardımcı doçentler arasından dekanca 3 yıl için atanır.
 
 Bölüm başkanı, görevi başında bulunamayacağı süreler için öğretim üyelerinden birini vekil olarak bırakır.
 
@@ -835,10 +835,10 @@ Her öğrenci bir stajı dönem içinde sadece bir kere alabilir. Staj ile birli
 
 Yaplan işler notlanır. Her labda nelerin yapılacağı sene başında bellidir. Ders tanımında yer alır. Her iş için aynı not alanı açılır.
 
-  1.Vize
+1.Vize
 
-  2.Vize
+2.Vize
 
-  3.Yapılan işler
+3.Yapılan işler
 
-  4.Final
+4.Final
