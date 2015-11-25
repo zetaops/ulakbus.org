@@ -18,7 +18,7 @@ Yazılım Tasarım Analizi Belgesi
    :align: center
 
 
-*Örnek İş Akış Şeması*
+**Örnek İş Akış Şeması**
 
 İş süreçleri yönetimi için, BPMN2 kural setine uyan Workflow Management yapısı seçilmiştir.   Python dünyasında WorkFlow Management ve BPMN desteği bulunan SpiffWorkFlow kütüphanesi geliştirilmeye açık en uygun aday olduğu için seçilmiştir.
 
@@ -31,7 +31,6 @@ Yazılım Tasarım Analizi Belgesi
 Kurumsal Veri Yolu (ESB) uygulamanın parçaları ve dış servisler arası iletişimi düzenler. Veri kaynaklarını mikro ölçekte, yeniden kullanılabilir servisler haline getirerek bir iletişim düzeni kurar. Özellikle dış servislerle veri alışverişini kendi üzerine alarak uygulama içerisinde daha sade ve yönetilebilir kod yazmaya olanak verir.
 
 Neden KVY gerektiği ile ilgili, tarafımızdan çevrilmiş bulunan, açıklayıcı ve detaylı yazıyı `buradan <https://zato.io/docs/intro/esb-soa-tr.html>`_. okuyabilirsiniz.
-
 
 ------------------------------
 **Sunucu ve Servis Yerleşimi**
@@ -96,19 +95,13 @@ ve
 
 `Riak <http://www.basho.com/riak>`_, dağıtık bir veritabanı sistemidir. Verileri sunucular arasında dağıtarak yüksek erişilebilirliği sağlar. Riak’ın tercih edilmesindeki sebepler aşağıda sıralanmıştır:
 
-* Çok kullanıcılı / çok rollü sistemde verilerin sürekli erişilebilir olması,
-
-* Aynı veriye eş zamanlı erişerek okuma / yazma işlemlerinin, veriye erişimi bloke etmeyerek gerçekleştirilmesi,
-
-* İş modeline uygun senaryolara göre ortaya çıkacak uyuşmazlıkların çözümlenebilmesine olanak vermesi,
-
-* Zamanla büyüyen verinin sürekli yedekli olarak yönetilmesi,
-
-* Veri tasarım şeklinin, RDBMS kalıpları dışında yapılabilmesi,
-
-* Verinin “strong consistent” olarak tutulabilmesi sayesinde “ACID” benzeri bir tutarlılığa sahip olmak,
-
-* Sistem tüm Türkiye çapında kullanılsa bile, değişik veri merkezlerinde “multi homed” olarak çalışabilir olması.
+- Çok kullanıcılı / çok rollü sistemde verilerin sürekli erişilebilir olması,
+- Aynı veriye eş zamanlı erişerek okuma / yazma işlemlerinin, veriye erişimi bloke etmeyerek gerçekleştirilmesi,
+- İş modeline uygun senaryolara göre ortaya çıkacak uyuşmazlıkların çözümlenebilmesine olanak vermesi,
+- Zamanla büyüyen verinin sürekli yedekli olarak yönetilmesi,
+- Veri tasarım şeklinin, RDBMS kalıpları dışında yapılabilmesi,
+- Verinin “strong consistent” olarak tutulabilmesi sayesinde “ACID” benzeri bir tutarlılığa sahip olmak,
+- Sistem tüm Türkiye çapında kullanılsa bile, değişik veri merkezlerinde “multi homed” olarak çalışabilir olması.
 
 ---------
 *RiakCS:*
@@ -212,15 +205,15 @@ Projede, bu amaçla `Buildbot <http://buildbot.net/>`_ kullanılacaktır. Buildb
 **Kayıt Türleri**
 -----------------
 
-DEBUG: Geliştici ve sistem yöneticileri için, servis veya uygulamaların çalışmaları hakkında açıklayıcı bilgiler sunar. Bu bilgiler geliştirme evresinde ve sorun çözme aşamalarında kullanılır.
+**DEBUG:** Geliştici ve sistem yöneticileri için, servis veya uygulamaların çalışmaları hakkında açıklayıcı bilgiler sunar. Bu bilgiler geliştirme evresinde ve sorun çözme aşamalarında kullanılır.
 
-INFO: Servis veya uygulamaların önemli adımlarının sonuçlarına, durum değişikliklerine ilişkin detaylı bilgiler içerir. Kullanıcı giriş yaptı, yeni ders eklendi, servis yeniden başladı vb..
+**INFO:** Servis veya uygulamaların önemli adımlarının sonuçlarına, durum değişikliklerine ilişkin detaylı bilgiler içerir. Kullanıcı giriş yaptı, yeni ders eklendi, servis yeniden başladı vb..
 
-WARN: Servis veya uygulamaların beklenen dışında davranışlar göstermesi hakkında bilgiler içeren kayıtlardır. Hata olmamakla birlikte bir servise erişememek, diske yazamamak gibi geçici problemlerin sebep olduğu aksaklıkların bildirilmesini kapsar. Uygulama veya servis kesintiye uğramaz fakat nasıl yönlendirildiğine bağlı olarak bir süre sonra yeniden deneyebilir, raporlayabilir, başka bir yöne doğru ilerleyebilir.
+**WARN:** Servis veya uygulamaların beklenen dışında davranışlar göstermesi hakkında bilgiler içeren kayıtlardır. Hata olmamakla birlikte bir servise erişememek, diske yazamamak gibi geçici problemlerin sebep olduğu aksaklıkların bildirilmesini kapsar. Uygulama veya servis kesintiye uğramaz fakat nasıl yönlendirildiğine bağlı olarak bir süre sonra yeniden deneyebilir, raporlayabilir, başka bir yöne doğru ilerleyebilir.
 
-ERROR: Uygulamanın bir adımında beklenen işlevi yerine getirememesi sonucu ortaya çıkan kayıtlardır. Servis veya uygulama kesintiye uğramaz fakat ilgili adım muhtemelen elle müdahale gerektirecek bir problemle karşı karşıyadır.
+**ERROR:** Uygulamanın bir adımında beklenen işlevi yerine getirememesi sonucu ortaya çıkan kayıtlardır. Servis veya uygulama kesintiye uğramaz fakat ilgili adım muhtemelen elle müdahale gerektirecek bir problemle karşı karşıyadır.
 
-FATAL: Uygulama yada servisin, veri kaybına da neden olabilecek bir hizmet kesintisine uğraması durumunda tutulan kayıtlardır.
+**FATAL:** Uygulama yada servisin, veri kaybına da neden olabilecek bir hizmet kesintisine uğraması durumunda tutulan kayıtlardır.
 
 ----------------
 **Log Yönetimi**
@@ -236,37 +229,30 @@ Bu amaçla `Logstash <https://www.elastic.co/products/logstash>`_, `Kibana <http
 
 Uygulamanın üzerinde çalışacağı donanım, işletim sistemi, cluster ve bunlar üzerinde çalışacak servisler hakkında şu loglar tutulacaktır:
 
-* Coreos ve sanallaştırma araçlarından elde edilen loglar,
+- Coreos ve sanallaştırma araçlarından elde edilen loglar,
+- Sisteme yapılan girişler,
+- Açılan kapanan konteynerların durumları hakkındaki loglar,
+- Konteyner haline gelmiş servislerden
 
-* Sisteme yapılan girişler,
+  * Load Balancer erişim, hata, health check logları
 
-* Açılan kapanan konteynerların durumları hakkındaki loglar,
+  * Riak ve RiakCS cluster yönetimi, riak admin logları
 
-* Konteyner haline gelmiş servislerden
+  * Riak ve RiakCS kimlik dogrulama ve yetkilendirme logları
 
-    - Load Balancer erişim, hata, health check logları
+  * Zato servis hata logları
 
-    - Riak ve RiakCS cluster yönetimi, riak admin logları
-
-    - Riak ve RiakCS kimlik dogrulama ve yetkilendirme logları
-
-    - Zato servis hata logları
-
-    - Zato iç ve dış servisler için doğrulama ve yetkilendirme logları
+  * Zato iç ve dış servisler için doğrulama ve yetkilendirme logları
 
 --------------------------------
 **Sistem ve Servis Log Analizi**
 --------------------------------
 
-* Çalışması duran servislerin tespit edilmesi ve aksiyon alınması,
-
-* Servislerden gelen hata loglarının, bellek durumu, cpu yükleri, disk doluluğu, network problemleri gibi donanım ve ağ logları ile birleştirilerek, aralarında bir kolerasyon olup olmadığının anlaşılması,
-
-* Servislerin durmasından hemen önceki işlemlerin tür ve yoğunluğunun önceki servis durmaları ile ortaklık gösterip göstermediğine bakılarak, örneğin disk i/o, vtye belirli sayıların üzerinde yazma vb gibi işlemlerin servislere olan olumsuz etkilerin ve buna yol açan sebeplerin anlaşılması,
-
-* Clustered servislerden gelen loglara bakarak yük dağıtımının dengeli bir şekilde yapılıp yapılmadığının anlaşılması,
-
-* Consul ile birlikte monitoringe yardımcı olması
+- Çalışması duran servislerin tespit edilmesi ve aksiyon alınması,
+- Servislerden gelen hata loglarının, bellek durumu, cpu yükleri, disk doluluğu, network problemleri gibi donanım ve ağ logları ile birleştirilerek, aralarında bir kolerasyon olup olmadığının anlaşılması,
+- Servislerin durmasından hemen önceki işlemlerin tür ve yoğunluğunun önceki servis durmaları ile ortaklık gösterip göstermediğine bakılarak, örneğin disk i/o, vtye belirli sayıların üzerinde yazma vb gibi işlemlerin servislere olan olumsuz etkilerin ve buna yol açan sebeplerin anlaşılması,
+- Clustered servislerden gelen loglara bakarak yük dağıtımının dengeli bir şekilde yapılıp yapılmadığının anlaşılması,
+- Consul ile birlikte monitoringe yardımcı olması
 
 -----------------------------
 **Kullanıcı Arayüzü Logları**
@@ -277,30 +263,21 @@ Kullanıcı arayüzünde oluşacak çalışma zamanı hataları tarayıcı konso
 Arayüz fonksiyonları logları belirtilen log seviyelerinde tutulacaktır..
 Prod başlığında belirtilen maddeler ışığında arayüz logları için stacktrace.js kullanılacaktır.
 
-*incele:*
+**incele:**
 http://logstash.net/docs/1.1.1/outputs/riak#setting_bucket
 http://underthehood.meltwater.com/blog/2015/04/14/riak-elasticsearch-and-numad-walk-into-a-red-hat/
-
-*Notlar:*
-CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etmek nasıl?
 
 -------------
 *Refleksler:*
 -------------
 
-* Duran servisleri yeniden başlatmak
-
-* Ölenlerin yerine yenisini başlatmak
-
-* Ağır yük altında olan servisleri genişletmek
-
-* Hafif yük altında olan servisleri daraltmak
-
-* Ölçeklenecek serviler için sistem kaynaklarının yetersizliğini tespit edip yeni kaynaklar eklemek veya kaynak ihtiyacını bildirmek. Mümkünse clustera yeni nodelar otomatik eklemek.
-
-* Kronik hale gelen problemlerin tespiti ve bilgilendirilmesi. Muhtemel konfigurasyon problemleri demek.
-
-* Application loglarindan gelen uyarilar
+- Duran servisleri yeniden başlatmak
+- Ölenlerin yerine yenisini başlatmak
+- Ağır yük altında olan servisleri genişletmek
+- Hafif yük altında olan servisleri daraltmak
+- Ölçeklenecek serviler için sistem kaynaklarının yetersizliğini tespit edip yeni kaynaklar eklemek veya kaynak ihtiyacını bildirmek. Mümkünse clustera yeni nodelar otomatik eklemek.
+- Kronik hale gelen problemlerin tespiti ve bilgilendirilmesi. Muhtemel konfigurasyon problemleri demek.
+- Application loglarindan gelen uyarilar
 
 Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümkün. Node ekleyip çıkarmak için Openstack / GCE API ile konuşmamız gerekir. Notification eposta veya sms ile mümkün. Yukarıdakilere ek başka ne gibi aksiyonlar olabilir?
 
@@ -325,53 +302,49 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
 *Modül / Bileşenlerin Genel Görünümü:*
 --------------------------------------
 
-* zaerp
+- zaerp
 
-    - zdispatch
-        requestleri karsilayip ilgili is akislarina yonlendiren falcon web çatısı dosyalari yer alacaktir.
+  * zdispatch
+     requestleri karsilayip ilgili is akislarina yonlendiren falcon web çatısı dosyalari yer alacaktir.
 
-    - bin
-        çalıştırılabilir uygulamalar. örn: bpmn packager.
+  * bin
+     çalıştırılabilir uygulamalar. örn: bpmn packager.
 
-    - lib
-        yardımcı kütüphane ve fonksiyon setleri.
+  * lib
+     yardımcı kütüphane ve fonksiyon setleri.
 
-    - modules
-        bazıları kendi alt dizinlerine sahip olan uygulama modulleri.
+  * modules
+     bazıları kendi alt dizinlerine sahip olan uygulama modulleri.
 
-        + auth
-            örnek authentication modülü
+      - auth
+          örnek authentication modülü
 
-    - models
+  * models
 
-        + user.py
+      - user.py
+      - auth.py
+      - employee.py
+      - unit.py
 
-        + auth.py
+  * services
+     bu dizinde Zato mikro servis dosyaları yer alacaktır.
 
-        + employee.py
+  * workflows
+     bu dizinde iş akışı paketleri bpmn dosyaları yer alacaktır
 
-        + unit.py
+- tests
+     methodlar, uygulama birimleri ve uygulama geneli icin yazilan unit testleri yer alacaktır
 
-    - services
-        bu dizinde Zato mikro servis dosyaları yer alacaktır.
+- docs
 
-    - workflows
-        bu dizinde iş akışı paketleri bpmn dosyaları yer alacaktır
+  * geliştiriciler
 
-* tests
-    methodlar, uygulama birimleri ve uygulama geneli icin yazilan unit testleri yer alacaktır
+      - diagrams
+      - api
 
-* docs
+  * son kullanıcılar
 
-    - geliştiriciler
-
-        + diagrams
-
-        + api
-
-    - son kullanıcılar
-
-    - sistem yöneticileri
+  * sistem yöneticileri
 
 kod, api, kullanici, gelistirici, sistem yoneticisi dokumanlari yer alacaktir.
 
@@ -446,147 +419,114 @@ Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir 
 --------------------------------
 **Kullanıcı Arayüz Bileşenleri**
 --------------------------------
-* **Angular.js**
+
+- **Angular.js**
     AngularJS, MVC (Model View Controller) deseni sağlayan bir javascript uygulama çatısıdır. Kullanıcı arayüzü işlemlerini gerçekleştirecek tüm fonksiyonlar için kullanılır.  AngularJS standart sunucu taraflı yazılım geliştirme tekniklerini önyüze uygulayan ve önyüz geliştirmeyi hızlandıran bir uygulama çatısıdır. Karmaşık uygulamalarda DOM yönetimini başarıyla gerçekleştirir ve bu sayede uygulamanın kesintisiz ve sorunsuz çalışmasını sağlar.
-
-* **Karma**
+- **Karma**
     Karma, Uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.
-
-* **Selenium**
+- **Selenium**
     Selenium, E2E testlerin çalıştırıldığı test platformudur. Kullanıcının tarayıcıda gerçekleştireceği işlemlerin sunucudan dönecek sonuca kadar test edilmesini sağlar.
-
-* **Protractor**
+- **Protractor**
     Protractor Selenium E2E testleri için bir çözüm enteratörü uygulama çatısıdır. Angularjs için Selenium özelleştirmeleriyle daha etkin ve bekleme sürelerini optimize ederek daha kısa sürede test edilmesini sağlar.
-
-* **Jasmine**
+- **Jasmine**
     Jasmine, javascript testleri için kullanılan bir uygulama çatısıdır. Uygulama fonksiyonlarının testlerinde başarılı sentaksı ile geliştirme sürecini hızlandırır.
-
-* **Bower**
+- **Bower**
     Bower, uygulamada kullanılacak paketlerin yönetimi için kullandığımız paket yönetim aracıdır. Uygulamanın gerektirdiği paketlerin kurulum esnasında eksiksiz şekilde ve sürüm uyumlu olarak kurulumunu sağlar.
-
-* **Grunt**
+- **Grunt**
     Grunt javascript uygulamaları için bir görev yürütücüsüdür. Küçültme, derleme, paketleme, testler gibi tekrarlanan görevleri otomasyon ile yürütmek için kullanılır.
-
-* **Nodejs**
+- **Nodejs**
     Nodejs javascript uygulamaları için sunucu taraflı çalışma zamanı ortamıdır (runtime environment). Uygulama geliştirilirken bower, jasmine, karma gibi araçların kullanılması için gereklidir.
-
-* **StackTrace.js**
-
-* **npm**
+- **StackTrace.js**
+- **npm**
     npm nodejs için paket yönetim aracıdır. Uygulamanın geliştirme ortamı için gerekliliklerinin yönetilmesini sağlar.
-
-* **Bootstrap3**
+- **Bootstrap3**
     Bootstrap3 grid sistem standardına uygun uyumlu (responsive) arayüz geliştirmek için kullanılan html, css vs javascript uygulama çatısıdır. Uygulamanın değişik ekran boyutlarında ve farklı cihazlarda sorunsuz çalışması için kullanılır.
 
 ------------------------------------------------------------
 *Kullanıcı arayüz tasarımında uyulacak kurallar ve ilkeler:*
 ------------------------------------------------------------
 
-* Tüm tasarım bileşenleri html5 standardına uyacaktır.
-
-* Tasarım, kullanıcı arayüzü temiz ve tutarlı modeller temel alınarak anlamlı, kullanışlı ve amaca hizmet edecek şekilde organize etmelidir.
-
-* Basit ve sık yapılan işlemleri kolayca gerçekleştirebilmeli, kullanıcıyla açık ve kolay iletişim kurabilmeli, uzun işlemler için kullanışlı kısayollar sağlamalıdır.
-
-* Kullanıcı arayüzü tasarımı, yapılacak işlemler için tüm ihtiyaç duyulan opsiyonları ve materyalleri kullanıcının dikkatini dağıtmadan ve tam şekilde verebilmelidir.
-
-* Tasarım kullanıcıyı değişiklikler halinde bilgilendirmeli, kullanım esnasında oluşacak hataları kullanıcının anlayacağı şekilde sunabilmelidir.
-
-* Tasarım bileşenleri tekrar kullanılabilir olmalıdır.
-
-* Tasarım tüm ekran çözünürlüklerinde düzgün çalışabilmelidir.
-
-* Tasarım, engelli kullanıcılar için “mümkün” olduğu kadar kolay bir kullanım sunabilmelidir. `1 <http://achecker.ca/checker/index.php>`_ `2 <http://www.w3.org/standards/webdesign/accessibility>`_ `3 <http://www.w3.org/WAI/>`_ `4 <http://www.w3.org/TR/WCAG10/full-checklist.html>`_
+- Tüm tasarım bileşenleri html5 standardına uyacaktır.
+- Tasarım, kullanıcı arayüzü temiz ve tutarlı modeller temel alınarak anlamlı, kullanışlı ve amaca hizmet edecek şekilde organize etmelidir.
+- Basit ve sık yapılan işlemleri kolayca gerçekleştirebilmeli, kullanıcıyla açık ve kolay iletişim kurabilmeli, uzun işlemler için kullanışlı kısayollar sağlamalıdır.
+- Kullanıcı arayüzü tasarımı, yapılacak işlemler için tüm ihtiyaç duyulan opsiyonları ve materyalleri kullanıcının dikkatini dağıtmadan ve tam şekilde verebilmelidir.
+- Tasarım kullanıcıyı değişiklikler halinde bilgilendirmeli, kullanım esnasında oluşacak hataları kullanıcının anlayacağı şekilde sunabilmelidir.
+- Tasarım bileşenleri tekrar kullanılabilir olmalıdır.
+- Tasarım tüm ekran çözünürlüklerinde düzgün çalışabilmelidir.
+- Tasarım, engelli kullanıcılar için “mümkün” olduğu kadar kolay bir kullanım sunabilmelidir. `1 <http://achecker.ca/checker/index.php>`_ `2 <http://www.w3.org/standards/webdesign/accessibility>`_ `3 <http://www.w3.org/WAI/>`_ `4 <http://www.w3.org/TR/WCAG10/full-checklist.html>`_
 
 ---------------------------------
 *Kullanıcı veri girişi ilkeleri:*
 ---------------------------------
 
-* Kullanıcı verileri güvenli şekilde ve amaca yönelik geçerlilik kuralları çerçevesinde girilebilmelidir.
-
-* Kullanıcı daha az vuruş kullanarak kısa sürede veri girebilmelidir. Bunun için otomatik tamamlayıcılar, açılır menüler gibi kolaylaştırıcı bileşenler kullanılmalıdır.
+- Kullanıcı verileri güvenli şekilde ve amaca yönelik geçerlilik kuralları çerçevesinde girilebilmelidir.
+- Kullanıcı daha az vuruş kullanarak kısa sürede veri girebilmelidir. Bunun için otomatik tamamlayıcılar, açılır menüler gibi kolaylaştırıcı bileşenler kullanılmalıdır.
 
 ---------------------------
 *Arayüz tasarımı ilkeleri:*
 ---------------------------
 
-* Arayüz farklı amaçlar için kullanılacak farklı bölümlerden oluşmalıdır.
-
-* Kullanıcı her zaman sistemde nerede olduğunu ve hangi bilgilerin ona gösterildiğini bilmelidir.
-
-* Arayüz kolay kullanımlı ve estetik olmalıdır.
-
-+ Arayüzün kullanımı kolay öğrenilebilmelidir.
-
-+ Arayüz kullanıcının minimum eforuyla çalışabilmelidir.
+- Arayüz farklı amaçlar için kullanılacak farklı bölümlerden oluşmalıdır.
+- Kullanıcı her zaman sistemde nerede olduğunu ve hangi bilgilerin ona gösterildiğini bilmelidir.
+- Arayüz kolay kullanımlı ve estetik olmalıdır.
+- Arayüzün kullanımı kolay öğrenilebilmelidir.
+- Arayüz kullanıcının minimum eforuyla çalışabilmelidir.
 
 ----------------------------------------------------------------
 *Hata mesajları, uyarılar ve gösterilecek diğer bilgi ilkeleri:*
 ----------------------------------------------------------------
 
-* Kullanıcı hatalar hakkında anlaşılır şekilde bilgilendirilmelidir.
-
-* Uyarılar kullanıcının etkileşimini kesintiye uğratmayacak şekilde gösterilmelidir.
-
-* Tekrar eden durumlarda kullanıcı deneyimini kesintiye uğratmamalı ve tekrarlı hatalar farkedilerek ona göre gösterilmelidir.
-
-* Kullanıcının yapacağı işlemle alakasız bilgiler arayüzde yer almamalıdır.
+- Kullanıcı hatalar hakkında anlaşılır şekilde bilgilendirilmelidir.
+- Uyarılar kullanıcının etkileşimini kesintiye uğratmayacak şekilde gösterilmelidir.
+- Tekrar eden durumlarda kullanıcı deneyimini kesintiye uğratmamalı ve tekrarlı hatalar farkedilerek ona göre gösterilmelidir.
+- Kullanıcının yapacağı işlemle alakasız bilgiler arayüzde yer almamalıdır.
 
 -------------------------------------
 *Modül Yapısı ve Klasör Hiyerarşisi:*
 -------------------------------------
 
-* **app/**
+- **app/**
     Uygulamanın yer aldığı dizindir.
-
-* bower_components/
+- **bower_components/**
     Bower paket yönetimi ile uygulama kullanılan harici paketlerin tutulduğu dizindir.
-
-* components/
+- **components/**
     Uygulama ortak bileşenlerinin bulunduğu dizindir.
+- **dashboard/**
+    Yönetim paneli teması, controller, view ve testlerinin bulunduğu dizindir. her bir modül için benzer bir dizin bulunacaktır.
 
-* dashboard/
-    Yönetim paneli teması, controller, view ve testlerinin bulunduğu dizindir. her bir modül için benzer bir dizin buunacaktır.
+  * dashboard.html
 
-    - dashboard.html
+  * dashboard.js
 
-    - dashboard.js
+  * dashboard_test.js
 
-    - dashboard_test.js
-
-* app.css
+- **app.css**
     Uygulama genel css dosyası
-
-* app.js
+- **app.js**
 	Uygulama ana javascript dosyası
+- **index.html**
+- **e2e-tests/**
 
-* index.html
+  * protractor.conf.js
+      E2E testlerinin yapılandırıldığı dosyadır. E2E testleri için protractor kullanılmaktadır.
 
-* **e2e-tests/**
+  * scenarios.js
+      E2E test senaryolarının yazılı olduğu dosyadır.
 
-    - protractor.conf.js
-        E2E testlerinin yapılandırıldığı dosyadır. E2E testleri için protractor kullanılmaktadır.
-
-    - scenarios.js
-	    E2E test senaryolarının yazılı olduğu dosyadır.
-
-* node_modules/
+- **node_modules/**
     Uygulamada kullanılan nodejs modüllerinin yer aldığı dizindir.
-
-* bower.json
+- **bower.json**
     Uygulama bağımlılıklarının yapılandırıldığı dosyadır.
-
-* karma.conf.js
+- **karma.conf.js**
     Karma testleri için yapılandırma dosyasıdır.
-
-* package.json
+- **package.json**
     Uygulama nodejs bağımlılıklarının yapılandırıldığı dosyadır.
 
 ----------------
 *Ekran Listesi:*
 ----------------
 
-    Uygulamada belirlenen yetkilendirme şemasına göre, yetkili olan kişinin bir ya da daha çok kontrol paneli (dashboard) olabilir. Her bir ekran görünümü belirli parçalardan oluşacaktır. Giriş talebi yapıldığında yetki türüne göre kullanıcının ekranı bileşenleri bir araya getirilerek uygun hale getirilir (render) ve gösterilir. Sistemin kullanacağı ortak bileşenler birer `Angular <http://ngmodules.org/>`_ modülü olacaktır.
+Uygulamada belirlenen yetkilendirme şemasına göre, yetkili olan kişinin bir ya da daha çok kontrol paneli (dashboard) olabilir. Her bir ekran görünümü belirli parçalardan oluşacaktır. Giriş talebi yapıldığında yetki türüne göre kullanıcının ekranı bileşenleri bir araya getirilerek uygun hale getirilir (render) ve gösterilir. Sistemin kullanacağı ortak bileşenler birer `Angular <http://ngmodules.org/>`_ modülü olacaktır.
 
 ----------------------
 *Navigasyon Diagramı:*
@@ -612,13 +552,13 @@ http://usablica.github.io/intro.js/
 
 
 
-*Şekil: Kullanıcı Formları Request/Response Cycle Talep/Cevap Yaşam Döngüsü*
+**Şekil:** Kullanıcı Formları Request/Response Cycle Talep/Cevap Yaşam Döngüsü*
 
 .. image:: _static/kullaniciformlari.png
     :scale: 100 %
     :align: center
 
-*Şekil: Kullanıcı Arayüz Bileşenleri  Request/Response Cycle Talep/Cevap Yaşam Döngüsü*
+**Şekil:** Kullanıcı Arayüz Bileşenleri  Request/Response Cycle Talep/Cevap Yaşam Döngüsü*
 
 .. image:: _static/kullancform2.png
     :scale: 100 %
@@ -662,15 +602,11 @@ Uygulamanın yaşamı boyunca veri şablonlarında yapılacak güncellemeler ve 
 
 Uygulama içinden çağrılan tüm veri adları İngilizce olacaktır. Her bir entity için ayrıca bu belgeye ek belgeler oluşturulacaktır.
 
-* Personel
-
-* Student
-
-* Program
-
-* Lecture
-
-* Unit
+- Personel
+- Student
+- Program
+- Lecture
+- Unit
 
 -----------------------
 **Dış Veri Kaynakları**
@@ -751,11 +687,15 @@ Rol ve yetkiler, Akademik ve İdari Birimler (Units), Soyut Roller(Abstract Role
 
 Kullanıcıların bir birimde, tanımlanmış herhangi bir role (bölüm sekreteri, öğretim elemanı, öğrenci vb.) dahil olmaları onları belirli workflowların belirli adımları için yetkili olmalarını sağlayacaktır. Örnek verecek olursak:
 
-Birim: Mühendislik Fakültesi Bilgisayar Mühendisliği Bölümü
-Soyut Rol: Bölüm Başkanlığı
-Kullanıcı: Ayşe Bilgin, Öğretim Üyesi, Prof.
-İş Akışı: Ders, Öğretim Elemanı Paylaşımı. Bu iş akışının 2 aktörü vardır. Paylaşımı yapan bölüm sekreteri, bu paylaşıma onay veren bölüm başkanı.
-İş Akışı Adımları: İş akışı, yineleyen düzeltme - gözden geçirme ve nihayetinde onay ve ilgililere bildirim adımlarından oluşmaktadır.
+**Birim:** Mühendislik Fakültesi Bilgisayar Mühendisliği Bölümü
+
+**Soyut Rol:** Bölüm Başkanlığı
+
+**Kullanıcı:** Ayşe Bilgin, Öğretim Üyesi, Prof.
+
+**İş Akışı:** Ders, Öğretim Elemanı Paylaşımı. Bu iş akışının 2 aktörü vardır. Paylaşımı yapan bölüm sekreteri, bu paylaşıma onay veren bölüm başkanı.
+
+**İş Akışı Adımları:** İş akışı, yineleyen düzeltme - gözden geçirme ve nihayetinde onay ve ilgililere bildirim adımlarından oluşmaktadır.
 
 Ayşe Bilgin, bölüm başkanı olarak, sadece kendi bölümü ile ilgili olarak bu iş akışının ilgili adımları için otomatik olarak yetkilendirilmiş olacaktır.
 
@@ -818,10 +758,6 @@ https://github.com/concordusapps/python-scim
 https://www.openhub.net/p/gripped
 http://wiki.openid.net/w/page/12995226/Run%20your%20own%20identity%20server
 https://pypi.python.org/pypi/authentic2/2.0.1
-
-
-OAUTH 2 buna nasıl yaklaşacağız?
-SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?
 
 ================
 **Test Döngüsü**

@@ -37,19 +37,13 @@ Sürüm planı 3 hafta geliştirme + 1 hafta kabul test süreçleri şeklinde pl
 **Depolar**
 -----------
 
-* Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:
-
-* SpiffWorkFlow: İş akışı kütüphanesi geliştirme deposudur. Orjinalden fork edilmiştir.
-
-* Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* Zaerp (Ulakbus): Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* Zaerp-UI (Ulakbus-ui): Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştiriliyor.
+- Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:
+- SpiffWorkFlow: İş akışı kütüphanesi geliştirme deposudur. Orjinalden fork edilmiştir.
+- Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştiriliyor.
+- Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştiriliyor.
+- Zaerp (Ulakbus): Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştiriliyor.
+- Zaerp-UI (Ulakbus-ui): Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştiriliyor.
+- ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştiriliyor.
 
 Yardımcı kütüphaneler ile fork edilmiş kütüphaneler haricindeki depo isimleri, daha sonra Ulakbim tarafından verilecek isimlerle değiştirilecektir.
 
@@ -61,63 +55,44 @@ Yardımcı kütüphaneler ile fork edilmiş kütüphaneler haricindeki depo isim
 *Roller:*
 ---------
 
-*Geliştiriciler*
+**Geliştiriciler**
+Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri ve Git Workflow belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.
 
-Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri ve Git Workflow[**]  Belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.
-
-[**] Bu belgeye referans verilecek.
-
-*Beta Test Edicileri*
-
+**Beta Test Edicileri**
 Patch ve Minor sürümleri test ederek geri bildirimlerde bulunarak geliştirme faaliyetine katkıda bulunurlar.
 
-*Analiz Uzmanları*
+**Analiz Uzmanları**
 Yüksek Öğrenim Kanunu, Akademik Birimlerin Yönetmelikleri, akademinin yerleşik teammülerini bilen, projenin kapsamına detaylarıyla hakim topluluk üyeleridir. Topluluğun talep ettiği yeni özellikler, iş akışlarının değiştirilmesi, kanun ve yönetmeliklerdeki değişikliklerin projeyi nasıl etkileyeceği gibi konularda tavsiyelerde bulunurlar.
 
-*Topluluk Moderatörleri*
+**Topluluk Moderatörleri**
 Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlantılandırmak, tartışmaların gidişatını sorularla belirli hedeflere yönlendirmek gibi görevleri olan topluluk üyeleridir.
 
 ------------------------------------
 *Geliştirici ve Katkıcı Rehberleri:*
 ------------------------------------
 
-* Geliştirme Ortamı Kurulum Rehberi
-
-* UI Geliştirci Rehberi
-
-* Zaerp Geliştirici Rehberi
-
-* Workflow ve Spiff WF Rehberi
-
-* Zato ve Servis Yazma Rehberi
-
-* Git Workflow
+- Geliştirme Ortamı Kurulum Rehberi
+- UI Geliştirci Rehberi
+- Zaerp Geliştirici Rehber
+- Workflow ve Spiff WF Rehberi
+- Zato ve Servis Yazma Rehberi
+- Git Workflow
 
 ----------------------------
 **Test Döngüsünün Amaçları**
 ----------------------------
 
-* Yazılım geliştirme döngüsünün denetlenebilir, kolay yönetilebilir ve ölçülebilir hale gelmesini sağlamak,
-
-* Problemleri somutlayarak, çok sayıda yazılımcının daha kolay işbirliği yapabilmesine yardımcı olmak,
-
-* Her bir yazılım parçasını çok yönlü şekilde zamanında test ederek, geliştirme döngüsünün sonraki aşamalarına en az hata ile devam etmek,
-
-* Bir bileşende yapılan geliştirmenin diğer bileşenleri nasıl etkilediğini zamanında görebilmek,
-
-* Kod kalitesini arttırmak,
-
-* Kod yazım desenleri açısından bütünlük sağlamak ve okunabilirliği arttırmak,
-
-* Kurulum sırasında yazılım bileşenleri ve birbirlerine olan bağımlılıkları doğrulamak,
-
-* Yazılımın farklı platformlarda ve farklı ortam değişkenleriyle başarılı bir şekilde kurularak, beklenen şekilde çalıştığından emin olmak,
-
-* Yazılımın beklenen şekilde çalışmasının ardından, önceden belirlenmiş çeşitli yük testleri altında aynı şekilde davranmaya devam ettiğinden emin olmak,
-
-* Ortaya çıkan ürünün, ister belgesindeki işlevleri karşılayıp kaşılamadığını doğrulamak,
-
-* Ürünün kullanım kolaylığı, kullanıcı deneyimi, performans açısından tatmin edici ve standartları karşıladığından emin olmaktır.
+- Yazılım geliştirme döngüsünün denetlenebilir, kolay yönetilebilir ve ölçülebilir hale gelmesini sağlamak,
+- Problemleri somutlayarak, çok sayıda yazılımcının daha kolay işbirliği yapabilmesine yardımcı olmak,
+- Her bir yazılım parçasını çok yönlü şekilde zamanında test ederek, geliştirme döngüsünün sonraki aşamalarına en az hata ile devam etmek,
+- Bir bileşende yapılan geliştirmenin diğer bileşenleri nasıl etkilediğini zamanında görebilmek,
+- Kod kalitesini arttırmak,
+- Kod yazım desenleri açısından bütünlük sağlamak ve okunabilirliği arttırmak,
+- Kurulum sırasında yazılım bileşenleri ve birbirlerine olan bağımlılıkları doğrulamak,
+- Yazılımın farklı platformlarda ve farklı ortam değişkenleriyle başarılı bir şekilde kurularak, beklenen şekilde çalıştığından emin olmak,
+- Yazılımın beklenen şekilde çalışmasının ardından, önceden belirlenmiş çeşitli yük testleri altında aynı şekilde davranmaya devam ettiğinden emin olmak,
+- Ortaya çıkan ürünün, ister belgesindeki işlevleri karşılayıp kaşılamadığını doğrulamak,
+- Ürünün kullanım kolaylığı, kullanıcı deneyimi, performans açısından tatmin edici ve standartları karşıladığından emin olmaktır.
 
 ===================================================
 **Sürüm Planına Bağlı Geliştirme Döngüsü Testleri**
@@ -129,27 +104,27 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 
 Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge etmeden önce bir diğer geliştirici ile birlikte gözden geçireceklerdir. Bu gözden geçirme sırasında aşağıdaki kontrol listesine uygunluk aranacaktır:
 
-* Kod Stili: Kod, Statik analiz araçları tarafından yakalanamayan method ve değişken isimlerinin proje standartlarına uygunluğu gibi kriterlere karşı incelenir.
+- **Kod Stili:** Kod, Statik analiz araçları tarafından yakalanamayan method ve değişken isimlerinin proje standartlarına uygunluğu gibi kriterlere karşı incelenir.
 
-* Belgelendirme: Mümkün olduğunca yorum satırlarına gerek duyulmayan, anlaşılır kod yazılmalıdır. Ancak çeşitli nedenlerle kolayca anlaşılmayan bir kod öbeği varsa, bunun nedeni ve nasıl çalıştığı belgelendirilmelidir.
+- **Belgelendirme:** Mümkün olduğunca yorum satırlarına gerek duyulmayan, anlaşılır kod yazılmalıdır. Ancak çeşitli nedenlerle kolayca anlaşılmayan bir kod öbeği varsa, bunun nedeni ve nasıl çalıştığı belgelendirilmelidir.
 
-* Girdilere Karşı Savunma: Kullanıcıdan ya da üçüncü parti servis ve uygulamalardan gelen veriler, temizlenip biçimlendirilmeli, hata denetiminden geçirilmeli ve gerekiyorsa try/except blokları içerisinde işlenmelidir.
+- **Girdilere Karşı Savunma:** Kullanıcıdan ya da üçüncü parti servis ve uygulamalardan gelen veriler, temizlenip biçimlendirilmeli, hata denetiminden geçirilmeli ve gerekiyorsa try/except blokları içerisinde işlenmelidir.
 
-* Test Edilebilirlik: Sınıf ve metodlar birim testlerinin kolayca yazılabilmesine olanak verecek şekilde tasarlanmalıdır. Arayüzler (interface) mümkün olduğunca test ortamında taklit edilebilir olmalıdır.
+- **Test Edilebilirlik:** Sınıf ve metodlar birim testlerinin kolayca yazılabilmesine olanak verecek şekilde tasarlanmalıdır. Arayüzler (interface) mümkün olduğunca test ortamında taklit edilebilir olmalıdır.
 
-* Testler ve Kapsam: Kodun tamamını kapsayan, doğru tasarlanmış yeterli sayıda birim testi yazılmış olmalıdır. Dış servislere bağımlı işlevlerin testi için gerekli mocking kütüphane ve sunucuları kullanılmalıdır.
+- **Testler ve Kapsam:** Kodun tamamını kapsayan, doğru tasarlanmış yeterli sayıda birim testi yazılmış olmalıdır. Dış servislere bağımlı işlevlerin testi için gerekli mocking kütüphane ve sunucuları kullanılmalıdır.
 
-* Ayarlanabilirlik: Uygulamanın çalışmasını ve davranışını etkileyen, dosya dizin yolları, açılır menüde gösterilecek seçenek sayısı gibi  değerler ya kullanıcı tarafından ya da uygulamanın konfigurasyon standardına uygun şekilde (çevre değişkenleri) ile ayarlanabilir olmalıdır.
+- **Ayarlanabilirlik:** Uygulamanın çalışmasını ve davranışını etkileyen, dosya dizin yolları, açılır menüde gösterilecek seçenek sayısı gibi  değerler ya kullanıcı tarafından ya da uygulamanın konfigurasyon standardına uygun şekilde (çevre değişkenleri) ile ayarlanabilir olmalıdır.
 
-* Çöp Kod: Yorum satırı haline getirilmiş kod olmamalıdır. Silinen herşey sürüm kontrol sisteminden geri getirilebilir.
+- **Çöp Kod:** Yorum satırı haline getirilmiş kod olmamalıdır. Silinen herşey sürüm kontrol sisteminden geri getirilebilir.
 
-* Yapılacaklar: Todo olarak bırakılmış eksiklerin, sorun çıkarmayacağından emin olunmalıdır.
+- **Yapılacaklar:** Todo olarak bırakılmış eksiklerin, sorun çıkarmayacağından emin olunmalıdır.
 
-* Döngüler: Döngüler uzunluk ve döngüden çıkış kriterlerinin uygunluğuna karşı denetlenmelidir.
+- **Döngüler:** Döngüler uzunluk ve döngüden çıkış kriterlerinin uygunluğuna karşı denetlenmelidir.
 
-* Mevcudiyet Denetimi: Nesneler, kullanılmadan önce, o kapsamda mevcut olup olmadıklarına karşı denetlenmelidir. Bu denetimler, birçok hatanın kaynağında yakalanmasını sağlar.
+- **Mevcudiyet Denetimi:** Nesneler, kullanılmadan önce, o kapsamda mevcut olup olmadıklarına karşı denetlenmelidir. Bu denetimler, birçok hatanın kaynağında yakalanmasını sağlar.
 
-* Kod Tekrarı: Aynı işi yapan kodların tekrar yazılmasından kaçınılmalıdır. Bu amaçla özellikle projeye sonradan katılan geliştiricilerin, mevcut utility metodlarından haberdar olmaları sağlanmalıdır.
+- **Kod Tekrarı:** Aynı işi yapan kodların tekrar yazılmasından kaçınılmalıdır. Bu amaçla özellikle projeye sonradan katılan geliştiricilerin, mevcut utility metodlarından haberdar olmaları sağlanmalıdır.
 
 -------------------
 **Arkauç Testleri**
@@ -293,11 +268,11 @@ Test frameworkünün, kod kapsam analiziyle birlikte çalıştırılması sonucu
 
 HİTAP gibi test ortamı sunmayan üçüncü parti servislerle veri alışverişi yapan modüllerin testleri, harici servisin istek / yanıt setlerini mimik eden `Wiremock <http://wiremock.org/>`_ gibi bir simulatöre karşı yapılacaktır. Bu amaçla üretim ortamında servise gönderilen ve alınan veri trafiği kaydedilecek ve simulatör bu verilerle “eğitilecektir”.
 
-*Pyoko*
+**Pyoko**
 
 Veri erişim katmanı (DAL) olarak görev yapacak olan Pyoko kütüphanesi için yazılacak birim testleri, veri doğruluğu ve API işlevlerine ek olarak çalışma hızı ve bellek kullanımı gibi kriterleri de göz önünde bulunduracaktır.
 
-*SpiffWorkflow Engine*
+**SpiffWorkflow Engine**
 
 Üçüncü parti bir kütüphane olarak projeye eklenmiş olan SpiffWorkflow’un geliştirilmesi ve bakımı uygulamanın ihtiyaçları doğrultusunda sürdürülecektir. Buna ek olarak, BPMN iş akışlarının doğruluğunun devamlı olarak sınanabilmesi için entegre bir test kaydetme ve çalıştırma modülü geliştirilecektir.
 
@@ -331,11 +306,9 @@ Uygulamanın iş mantığının önemli bir kısmını oluşturan kural setleri,
 
 Kurulum ve Yayınlama (Build Release) aşamasında Buildbot aracılığı ile
 
-* kurulum ve kütüphane bağımlılık testleri
-
-* Uygulamanın tüm bileşenlerine ait birim testleri
-
-* Entegrasyon testleri uygulanacaktır.
+- Kurulum ve kütüphane bağımlılık testleri
+- Uygulamanın tüm bileşenlerine ait birim testleri
+- Entegrasyon testleri uygulanacaktır.
 
 ---------------------------------------------
 *Test Sunucuları ve Geliştirme Test Döngüsü:*
@@ -605,156 +578,100 @@ Bu amaçla genel bir kontrol listesi (checklist) hazırlanmıştır:
 
 **Genel Görünüm**
 
-* Klavye kısayollarıyla gezinmek mümkün mü?
-
-* Klavye kısayollarıyla gezinmek kolay mı?
-
-* Sayfalar otomatik olarak yenilenmemeli
-
-* Website iletişim bilgileri, referansları uygun bir alanda mı?
-
-* Servis/hizmet/uygulama bilgilerine kolayca erişiliyor mu?
-
-* Görme engelliler için erişilebilirlik düzenlenmiş mi?
-
-* Grid sistem kullanılmış mı?
-
-* Klavye kullanımı sitedeki tüm işlemleri kapsıyor mu?
-
-* Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman verililyor mu?
-
-* Hukuki ya da mali sonuçları olan işlemlerde kullanıcının hata yapma olasılığı azaltılmalıdır.
+- Klavye kısayollarıyla gezinmek mümkün mü?
+- Klavye kısayollarıyla gezinmek kolay mı?
+- Sayfalar otomatik olarak yenilenmemeli
+- Website iletişim bilgileri, referansları uygun bir alanda mı?
+- Servis/hizmet/uygulama bilgilerine kolayca erişiliyor mu?
+- Görme engelliler için erişilebilirlik düzenlenmiş mi?
+- Grid sistem kullanılmış mı?
+- Klavye kullanımı sitedeki tüm işlemleri kapsıyor mu?
+- Kullanıcılara içerikleri okuyabilmeleri için yeterli zaman verililyor mu?
+- Hukuki ya da mali sonuçları olan işlemlerde kullanıcının hata yapma olasılığı azaltılmalıdır.
 
 **Anasayfa**
 
-* Amacı kolay anlatıyor mu?
-
-* Yapmak istediği işleme kolay ulaşılıyor mu?
-
-* Sayfa görünümü pozitif bir intiba bırakıyor mu?
-
-* Giriş yapan kullanıcı ismi yer alıyor mu?
-
-* Büyük değişiklikler ana sayfadan duyuruluyor mu?
-
-* Konum ve iletişim bilgileri yer alıyor mu?
-
-* Lisans, sözleşme gibi statik sayfalara linkler var mı?
-
-* Sayfadaki imajlar ve/veya videolar amaçla alakalı mı?
-
-* Site hem www alt alanadıyla hem alt alanadı olmadan erişilebilir mi?
-
-* Sitede yapılacak temel işlemler ana sayfada yer alıyor mu?
+- Amacı kolay anlatıyor mu?
+- Yapmak istediği işleme kolay ulaşılıyor mu?
+- Sayfa görünümü pozitif bir intiba bırakıyor mu?
+- Giriş yapan kullanıcı ismi yer alıyor mu?
+- Büyük değişiklikler ana sayfadan duyuruluyor mu?
+- Konum ve iletişim bilgileri yer alıyor mu?
+- Lisans, sözleşme gibi statik sayfalara linkler var mı?
+- Sayfadaki imajlar ve/veya videolar amaçla alakalı mı?
+- Site hem www alt alanadıyla hem alt alanadı olmadan erişilebilir mi?
+- Sitede yapılacak temel işlemler ana sayfada yer alıyor mu?
 
 **Yönetim Paneli**
 
-* İçerikler kullanıcı rolüyle ilgili mi?
-
-* Uyarılar zamanında ve etkili şekilde gösteriliyor mu?
-
-* Uyarılar öncelik ve önem derecelerine göre renklendirilmiş mi?
-
-* Birden fazla role sahip kullanıcılar için roller arası geçişi sağlayan bir buton var mı?
+- İçerikler kullanıcı rolüyle ilgili mi?
+- Uyarılar zamanında ve etkili şekilde gösteriliyor mu?
+- Uyarılar öncelik ve önem derecelerine göre renklendirilmiş mi?
+- Birden fazla role sahip kullanıcılar için roller arası geçişi sağlayan bir buton var mı?
 
 **Erişilebilirlik**
 
-* İmajların “alt” özellikleri kullanılmış mı?
-
-* İçerik stil dosyası (css) olmadan da okunabilir mi?
-
-* Bağlantılar, butonlar ve seçim kutuları kolayca tıklanabilir mi?
+- İmajların “alt” özellikleri kullanılmış mı?
+- İçerik stil dosyası (css) olmadan da okunabilir mi?
+- Bağlantılar, butonlar ve seçim kutuları kolayca tıklanabilir mi?
 
 Örnek erişilebilirlik testi: http://achecker.ca/checker/index.php
 
 **Site İçi Yönlendirme**
 
-* Önemli bağlantılar sayfanın hareketli öğelerinde olmamalı
-
-* Linkler alfabetik olarak sıralanmamalı, gruplanmalı
-
-* Kullanıcı sitede hangi sayfada olduğunu kolayca farkedebilmeli
-
-* Yönlendirme bağlantıları her sayfada görünür mü?
-
-* Bağlantılar açıklayıcı mı?
-
-* Title’da site ve o sayfanın kısa bir açıklaması var mı?
-
-* Site url’si akılda kalıcı mı?
+- Önemli bağlantılar sayfanın hareketli öğelerinde olmamalı
+- Linkler alfabetik olarak sıralanmamalı, gruplanmalı
+- Kullanıcı sitede hangi sayfada olduğunu kolayca farkedebilmeli
+- Yönlendirme bağlantıları her sayfada görünür mü?
+- Bağlantılar açıklayıcı mı?
+- Title’da site ve o sayfanın kısa bir açıklaması var mı?
+- Site url’si akılda kalıcı mı?
 
 **Arama**
 
-* Bir arama kutusu var mı?
-
-* Arama kutusu her sayfada görünür mü?
-
-* Arama kutusu yeterince geniş mi?
-
-* Arama sonuçları kategorilendiriliyor mu?
+- Bir arama kutusu var mı?
+- Arama kutusu her sayfada görünür mü?
+- Arama kutusu yeterince geniş mi?
+- Arama sonuçları kategorilendiriliyor mu?
 
 **Bağlantılar**
 
-* Önemli komutlar bağlantı yerine buton olarak gösterilmeli, örn: kaydet gibi
-
-* Linkler kolayca farkedilir mi?
-
-* Kırık (erişilemeyen) link olmamalı
+- Önemli komutlar bağlantı yerine buton olarak gösterilmeli, örn: kaydet gibi
+- Linkler kolayca farkedilir mi?
+- Kırık (erişilemeyen) link olmamalı
 
 **Şablon**
 
-* Önemli içerikler öncelikli olarak gösteriliyor mu?
-
-* Site şablonu farklı ekran boyutlarında ölçekleniyor mu?
-
-* Birbiriyle alakalı bilgiler gruplandırılmış mı?
-
-* Tüm sayfalarda tutarlı mı?
-
-* Sayfalar çok sıkışık olmamalı
+- Önemli içerikler öncelikli olarak gösteriliyor mu?
+- Site şablonu farklı ekran boyutlarında ölçekleniyor mu?
+- Birbiriyle alakalı bilgiler gruplandırılmış mı?
+- Tüm sayfalarda tutarlı mı?
+- Sayfalar çok sıkışık olmamalı
 
 **Formlar**
 
-* Formlar kolay doldurulabilir mi?
-
-* Form alanlarının açıklamaları var mı?
-
-* Alanların alması gereken değerler kullanıcıya gösteriliyor mu?
-
-* Çok uzun açılır menüden kaçınılmış mı?
-
-* Form alanlarının isimleri açık ve anlaşılır mı?
-
-* Form onay butonu var mı?
-
-* Hata mesajları ilgili form alanının yanında yer alıyor mu?
-
-* Birden fazla adımdan oluşan formlar için hangi adımda olduğu anlaşılıyor mu?
+- Formlar kolay doldurulabilir mi?
+- Form alanlarının açıklamaları var mı?
+- Alanların alması gereken değerler kullanıcıya gösteriliyor mu?
+- Çok uzun açılır menüden kaçınılmış mı?
+- Form alanlarının isimleri açık ve anlaşılır mı?
+- Form onay butonu var mı?
+- Hata mesajları ilgili form alanının yanında yer alıyor mu?
+- Birden fazla adımdan oluşan formlar için hangi adımda olduğu anlaşılıyor mu?
 
 **İçerik**
 
-* Metin ve arkaplan rengi arasında yeterli derecede kontrast var mı?
-
-* İçerik gözle taranabiliyor mu?
-
-* İçerik temiz bir dille yazılmış mı?
-
-* İletişim bilgileri açık şekilde yazılmış mı?
-
-* İçerik kullanışlı ve güncel mi?
-
-* Dil kurallarına uyuyor mu?
-
-* İçerik sıralaması anlamlı mı?
-
-* İçeriklerin ayırt edilebilmesi ya da doğru anlaşılabilmesi için renk kullanımına dikkat edilmiş mi?
-
-* Hareketli içerikler kullanıcılar tarafından kontrol edilebiliyor mu?
-
-* Tekrarlı içerikler pas geçilebiliyor mu?
-
-* Metin öğeleri yeniden boyutlandırılabilir mi?
-
+- Metin ve arkaplan rengi arasında yeterli derecede kontrast var mı?
+- İçerik gözle taranabiliyor mu?
+- İçerik temiz bir dille yazılmış mı?
+- İletişim bilgileri açık şekilde yazılmış mı?
+- İçerik kullanışlı ve güncel mi?
+- Dil kurallarına uyuyor mu?
+- İçerik sıralaması anlamlı mı?
+- İçeriklerin ayırt edilebilmesi ya da doğru anlaşılabilmesi için renk kullanımına dikkat edilmiş mi?
+- Hareketli içerikler kullanıcılar tarafından kontrol edilebiliyor mu?
+- Tekrarlı içerikler pas geçilebiliyor mu?
+- Metin öğeleri yeniden boyutlandırılabilir mi?
 
 Her ekran kontrol listesi formu ile birlikte açılır. Test kullanıcıları bu formu doldurup kaydederler. Sonuçlar ilgili servise raporlanır.
 

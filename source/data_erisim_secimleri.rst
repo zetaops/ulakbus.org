@@ -2,23 +2,15 @@
 Data Erişim Seçimleri
 +++++++++++++++++++++
 
-Sözlük
-
-Bucket
-
-Conflict
-
-Eventually Consistent
-
-Sibling
-
-Application = Uygulama
-
-Nested
-
-Entity
-
-RDBMS
+- Sözlük
+- Bucket
+- Conflict
+- Eventually Consistent
+- Sibling
+- Application = Uygulama
+- Nested
+- Entity
+- RDBMS
 
 ==============================
 **Neden RDBMS Kullanmıyoruz?**
@@ -34,9 +26,7 @@ Riak'ı Eventually Consistent modunda kullandığımızda, concurrent yazma işl
 
 Oluşan conflictler birkaç yolla çözüme bağlanabiliyor.[2] Bu çözümlerin bir kısmı Riak tarafından otomatik olarak yapılabiliyor. Riak'ın sağladığı iki temel çözüm time-based ve last-write-wins şeklinde. Riak'ın internal çözümleri dışında uygulama katmanından bu çözümleri uygulamak da mümkün. Fakat aynı bucket üzerinde hem Riak internal hem de application taraflı çözümleri kullanamıyoruz. Bir bucketdaki conflictlerin nasıl çözüleceği bucket metadataları ile kontrol ediliyor. Riak internallar için allow_mult parametresi false olması gerekirken, uygulama taraflı çözümler için true olması gerekiyor.
 
-Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir bucket üzerinde birlikte kullanmak mümkün değil. Bizim durumumuzda bu tür conflictlerin uygulama katmanında
-
-çözüme bağlanması kaçınılmaz. Bu da birçok bucketta Riak'ın last-write-wins veya timestamp gibi çözümlerini kullanamayacağımız anlamına geliyor. Çünkü aynı verinin farklı kesitlerine farklı kullanıcılar erişiyor. Uygulama katmanında conflict resolution ise data layerında daha fazla complexity demek.
+Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir bucket üzerinde birlikte kullanmak mümkün değil. Bizim durumumuzda bu tür conflictlerin uygulama katmanında çözüme bağlanması kaçınılmaz. Bu da birçok bucketta Riak'ın last-write-wins veya timestamp gibi çözümlerini kullanamayacağımız anlamına geliyor. Çünkü aynı verinin farklı kesitlerine farklı kullanıcılar erişiyor. Uygulama katmanında conflict resolution ise data layerında daha fazla complexity demek.
 
 *http://docs.basho.com/riak/latest/dev/using/conflict-resolution/
 
@@ -72,63 +62,48 @@ Log, temporary datalar hariç Strong Consistent bucketlar kullanacağız. Tek ko
 **Caching?**
 ============
 
- * Redis nasıl kullanılacak?
- * Okuma nasıl yapılacak?
- * REDIS'ten Riak'a ve tersi akışta verinin bütünlüğü nasıl korunacak?
+- Redis nasıl kullanılacak?
+- Okuma nasıl yapılacak?
+- REDIS'ten Riak'a ve tersi akışta verinin bütünlüğü nasıl korunacak?
 
 ===========
 **Sorular**
 ===========
 
- * Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.
-
- * Verinin parçaları farklı bucket ve keylerde saklanacak. Biz hepsini veya bir kısmını ilgilendiren bir yazma/update işlemi yaptığımızda gereken tüm bucketlar dolaşılıp yazma işlemi tamamlanacak. Strong Consistency ile kazandığımız verinin bütünlüğü ve eşsizliği bu modelde tehlikeye girmiş olmuyor mu? Concurrent bağlantılarda henüz bizim zincirimizde sırası gelmemiş bir kayıt başka bir zincir tarafından biz yazmadan önce güncellenmiş ise bunu nasıl anlayacağız ya da bunun önüne nasıl geçeceğiz?
-
- * Pyoko’nun kendi gelişim seyri içerisinde ortaya çıkacak bugünden öngörülemeyen geliştirme ihtiyacı  bir yana, flat bucketlar arasında relational bir yapı kurmacanın öngörülemeyen zorlukları / sorunlarını da göze alıyoruz. Bunun tek sebebi dynamic field kullanmamak mıdır? Öyleyse 1 milyon solr dökümana yol açacak kadar çok kayıt  içinde birçok dynamic field testi yapmaya değmez miydi?
-
- * Aşağıdaki sorgu ve rapor örneklerinin nasıl yapılabileceği hakkında bugünden ne açıklıkla yanıtlar verebiliyoruz?
+- Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.
+- Verinin parçaları farklı bucket ve keylerde saklanacak. Biz hepsini veya bir kısmını ilgilendiren bir yazma/update işlemi yaptığımızda gereken tüm bucketlar dolaşılıp yazma işlemi tamamlanacak. Strong Consistency ile kazandığımız verinin bütünlüğü ve eşsizliği bu modelde tehlikeye girmiş olmuyor mu? Concurrent bağlantılarda henüz bizim zincirimizde sırası gelmemiş bir kayıt başka bir zincir tarafından biz yazmadan önce güncellenmiş ise bunu nasıl anlayacağız ya da bunun önüne nasıl geçeceğiz?
+- Pyoko’nun kendi gelişim seyri içerisinde ortaya çıkacak bugünden öngörülemeyen geliştirme ihtiyacı  bir yana, flat bucketlar arasında relational bir yapı kurmacanın öngörülemeyen zorlukları / sorunlarını da göze alıyoruz. Bunun tek sebebi dynamic field kullanmamak mıdır? Öyleyse 1 milyon solr dökümana yol açacak kadar çok kayıt  içinde birçok dynamic field testi yapmaya değmez miydi?
+- Aşağıdaki sorgu ve rapor örneklerinin nasıl yapılabileceği hakkında bugünden ne açıklıkla yanıtlar verebiliyoruz?
 
 ============
 **Sorgular**
 ============
 
- * Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi
-
- * Sosyal Bilimler Enstitüsü’nde 2010 - 2015 yılları arasında kademe cezası almış kadın personellerin listesi. (kademe cezası önceki yıla göre veya kademe farklarına göre bulunabilir.)
-
- * Tıp fakültesinde, en az lise mezunu, kadro derecesi 7’den büyük, askerlik engeli bulunmayan personeller
-
- * Bir öğrencinin seçmek istediği bir derse bağlı olan ön şartlı ders notu
-
- * Bir dersin genel sınavına (final) girmeye hak kazanmış öğrencilerin listesi
-
- * Belirli bir tarihe kadar sisteme not girmesi beklenen hocaların listesi. (Sınavın yapıldığı tarihi takiben max 15 gün, sonraki sınav tarihinden min 7 gün önce gibi sabit birkaç kural söz konusu.)
+- Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi
+- Sosyal Bilimler Enstitüsü’nde 2010 - 2015 yılları arasında kademe cezası almış kadın personellerin listesi. (kademe cezası önceki yıla göre veya kademe farklarına göre bulunabilir.)
+- Tıp fakültesinde, en az lise mezunu, kadro derecesi 7’den büyük, askerlik engeli bulunmayan personeller
+- Bir öğrencinin seçmek istediği bir derse bağlı olan ön şartlı ders notu
+- Bir dersin genel sınavına (final) girmeye hak kazanmış öğrencilerin listesi
+- Belirli bir tarihe kadar sisteme not girmesi beklenen hocaların listesi. (Sınavın yapıldığı tarihi takiben max 15 gün, sonraki sınav tarihinden min 7 gün önce gibi sabit birkaç kural söz konusu.)
 
 ==============================
 **Create ve Update İşlemleri**
 ==============================
 
- - Yeni öğrenci yarat
-
- - Yeni personel yarat
-
- - Öğrenci özlük bilgisi güncelle
-
- - Okul lokasyon bilgisi güncelle
+- Yeni öğrenci yarat
+- Yeni personel yarat
+- Öğrenci özlük bilgisi güncelle
+- Okul lokasyon bilgisi güncelle
 
 ============
 **Raporlar**
 ============
 
- - Fakülte, bölüm ve program başına beklenen harç miktarları
-
- - Fakülte, bölüm ve program başına hocalara ödenecek beklenen ek ders ücretleri
-
- - Bir akademik personelin danışmanlığını yaptığı öğrencilerin performansına dair son iki yılda aldığı not ortalaması
-
- - Yıllara göre mezunların başarı ortalaması (Her programın mezuniyet için öğrencilerin tutturması gereken asgari bir program mezuniyet ortalaması değeri vardır. Öğrenciler bu değerin neresindedir?)
-
- - Azami öğretim süresine gelmiş ve mezun olmayacak öğrencilerin listesi
+- Fakülte, bölüm ve program başına beklenen harç miktarları
+- Fakülte, bölüm ve program başına hocalara ödenecek beklenen ek ders ücretleri
+- Bir akademik personelin danışmanlığını yaptığı öğrencilerin performansına dair son iki yılda aldığı not ortalaması
+- Yıllara göre mezunların başarı ortalaması (Her programın mezuniyet için öğrencilerin tutturması gereken asgari bir program mezuniyet ortalaması değeri vardır. Öğrenciler bu değerin neresindedir?)
+- Azami öğretim süresine gelmiş ve mezun olmayacak öğrencilerin listesi
 
 1: If you are using Riak in an eventually consistent way, conflicts between object values on different nodes is unavoidable. Often, Riak can resolve these conflicts on its own internally if you use causal context, i.e. vector clocks or dotted version vectors, when updating objects.  Instructions on this can be found in the section.
 
