@@ -19,7 +19,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -34,7 +34,7 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="top" title="Ulakbus 0.0.3 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
     <link rel="prev" title="Geliştiriciler" href="developers.html" />
@@ -173,7 +173,7 @@
         <li class="right" >
           <a href="developers.html" title="Geliştiriciler"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.3 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
@@ -189,6 +189,7 @@
 <li><a class="reference internal" href="#vagrant-nedir">Vagrant Nedir?</a></li>
 <li><a class="reference internal" href="#gelistirme-sanal-makinasinin-guncellenmesi">Geliştirme Sanal Makinasının Güncellenmesi</a></li>
 <li><a class="reference internal" href="#kontrol-edilmesi-gereken-servisler">Kontrol edilmesi gereken servisler</a></li>
+<li><a class="reference internal" href="#frontend-ile-backendi-calistirmak">Frontend ile backendi çalıştırmak</a></li>
 <li><a class="reference internal" href="#gelistirme-icin-editor-ayarlanmasi">Geliştirme İçin Editör Ayarlanması</a></li>
 </ul>
 </li>
@@ -326,6 +327,35 @@ service zato status
 <p><a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">http://docs.python-guide.org/en/latest/dev/virtualenvs/</a></p>
 </div></blockquote>
 <p>daha sonra <strong>ipython</strong> komutu ile konsolda çalışmalar yapabilirsiniz.</p>
+<p>(env)ulakbus&#64;ulakbus:~/ulakbus/ulakbus$ dizini altında iken</p>
+<p>export ALLOWED_ORIGINS=&#8221;<a class="reference external" href="http://localhost:8000">http://localhost:8000</a>&#8220;</p>
+<p>python manage.py migrate &#8211;model all</p>
+<p>bu işlem uzun sürecektir.</p>
+<p>**  Tüm modeller en son hallerine güncellenecektir. Geliştirme esnasında modellere yapılan değiştirme, silme v.b işlemlerden sonra mutlaka yapılması gerekmektedir.</p>
+<p>Permission listesini güncelle.</p>
+<p>(ulakbusenv)ulakbus&#64;ulakbus:~/ulakbus/ulakbus$ python manage.py update_permissions</p>
+<p>Yeni bir super user ekleyiniz. Sisteme girişi bu kullanıcı yapacaktır.</p>
+<p>python manage.py create_user &#8211;username ulakbus &#8211;password 123 &#8211;super</p>
+<p>Son olarak</p>
+<p>(ulakbusenv)ulakbus&#64;ulakbus:~/ulakbus/ulakbus$ python manage.py runserver &#8211;addr 0.0.0.0</p>
+<p>şeklinde backendi çalıştırınız.</p>
+</div>
+<div class="section" id="frontend-ile-backendi-calistirmak">
+<h3>Frontend ile backendi çalıştırmak<a class="headerlink" href="#frontend-ile-backendi-calistirmak" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p><a class="reference external" href="https://github.com/zetaops/ulakbus-ui">https://github.com/zetaops/ulakbus-ui</a></p>
+<p>adresinden frontend kısmını bilgisayarınızda bir dizine klonlayınız.</p>
+<blockquote>
+<div><p>ulakbus-ui/dist dizinine geçerek bu dizin altında:</p>
+<p>python -m SimpleHTTPServer</p>
+<p>komutu ile frontendi başlatınız. Bu komutla localhost:8000 portunda frontend çalışmaya başlayacaktır.</p>
+</div></blockquote>
+<p>Frontend ilk kez browser ile çağrıldığında backendin adresini aşağıdaki gibi bildiriniz.</p>
+<p><a class="reference external" href="http://localhost:8000/?backendurl=http://localhost:9001/">http://localhost:8000/?backendurl=http://localhost:9001/</a></p>
+<p>Bu şekilde login ekranına ulaşabileceksiniz.</p>
+<p>Herhangi bir sebepten backend adres ve port bilgisi değiştirmek için menüdeki Ayarlar (Dev)
+altındaki Backend Url: alanına</p>
+<p><a class="reference external" href="http://localhost:9001/">http://localhost:9001/</a></p>
+<p>şeklinde yazabilirsiniz.</p>
 </div>
 <div class="section" id="gelistirme-icin-editor-ayarlanmasi">
 <h3>Geliştirme İçin Editör Ayarlanması<a class="headerlink" href="#gelistirme-icin-editor-ayarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -548,7 +578,7 @@ create_user         Creates a new user
         <li class="right" >
           <a href="developers.html" title="Geliştiriciler"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.3 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>

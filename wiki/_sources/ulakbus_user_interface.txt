@@ -2,22 +2,34 @@
 Geliştirme Ortamı Kurulumu(Frontend)
 ++++++++++++++++++++++++++++++++++++
 
-=============================
-**Get Ready For Development**
-=============================
+=====================================
+**Geliştirme Ortamının Hazırlanması**
+=====================================
 
-1. ``git clone git@github.com:zetaops/ulakbus-ui.git`` reposunu indirin.
+
+1. Github üzerinde ``https://github.com/zetaops/ulakbus-ui/`` adresindeki repoyu github'da oluşturacağınız hesabınızla fork ediniz. Fork etme işlemi için, Github sitesinde sağ üstte yer alan fork butonunu kullanın. 
+
+   Fork ettiğiniz ve size ait olan bu repoyu 
+   ``git clone git@github.com:sizin_kullanici_adiniz/ulakbus-ui.git`` komutu ile kendi bilgisayarınıza indirin. Lütfen içinde boşluk olan klasör isimleri kullanmayın. 
 
     *git kullanımını bilmiyorsanız, aşağıdaki bağlantılardan yardım alabilirsiniz.*
 
-    - https://git-scm.com/doc
-    - https://try.github.io/levels/1/challenges/1
+    -  http://www.ulakbus.org/wiki/git_workflow.html
+    -  https://git-scm.com/doc
+    -  https://try.github.io/levels/1/challenges/1
 
-2. Nodejs'yi indirin ve kurun.
+2. Nodejs'yi işletim sisteminize göre indirin ve kurun.
 
-    - https://nodejs.org/download/
+    - `https://nodejs.org/download/ <https://nodejs.org/download/>`_
 
-3. Bower'ı kurunuz ``npm install bower``
+    Eğer Pardüs, Debian, Ubuntu kullanıyorsanız aşağıdaki şekilde kurabilirsiniz.
+
+::
+
+  sudo apt-get install nodejs
+  sudo apt-get install npm
+
+3. Daha sonra Bower'ı kurunuz ``npm install bower``
 
 4. *bower.json* içinde listelenen paketleri yüklemek için ``bower install`` komutunu çalıştırınız.
 
@@ -25,13 +37,23 @@ Geliştirme Ortamı Kurulumu(Frontend)
 
 6. Tüm paketlerin yüklenmesininin ardından aşağıdaki komut sayesinde *http server* 'ı çalıştırabilirsiniz.
 
-    ``npm start``
+::
 
-*Uygulamayı sunmak için başka http server kullanabilirsiniz.*
+ npm start
 
-=====================
-**Development Cycle**
-=====================
+Bu komutu dist dizini içindeyken çalıştırınız.
+
+*Uygulamayı sunmak için başka bir http server kullanabilirsiniz.*
+
+Python kurulu ise http sunucu olarak kullanmak ve port seçebilmek için
+
+::
+
+ python -m SimpleHTTPServer 9000
+
+======================
+**Geliştirme Döngüsü**
+======================
 
 Şu an gerekli repo'ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.
 
@@ -44,6 +66,10 @@ Daha ileri programlama teknikleri kullanımları için, http://www.extremeprogra
 
 
 Kodlarken aşağıdaki adımları izleyiniz.
+
+* Github üzerinde kendi reponuzda ``https://github.com/sizin_kullanici_adiniz/ulakbus-ui/`` 
+
+* Mutlaka bizim repolarımızı upstream repo olarak fork ettiğiniz depoya ekleyiniz ve işlem yapmadan önce güncelleyiniz. Detaylı bilgi için Git İş Akışı belgemize bakın.
 
 * Yeni bir tane branch oluşturun. Örnek olarak(e.g: search_func)
 
@@ -87,11 +113,11 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 **Git:**
 --------
 
-* Her zaman branchler ile çalışır.
+* Fork edilmiş kendi deponuzda daima yeni bir özellik için branch oluşturun. İşiniz bitince bizim repolarımıza Pull Request (PR) açın.
 
-* **Hiçbir zaman MASTER BRANCH'e karışmayınız(müdahele etmeyiniz)!!**
+* **Hiçbir zaman MASTER BRANCH'e commit etmeyiniz**
 
-* Küçük değişiklikleri commitleyiniz.
+* Daima küçük değişiklikleri commit edin. Devasa büyük değişiklikleri commit etmeyin.
 
 --------
 **Kod:**

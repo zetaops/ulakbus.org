@@ -5,6 +5,8 @@
 ZEngine ile İş Akışı Temelli Uygulama Geliştirme
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
+tests
+
 
 .. - İş akışı ve iş akışı temelli uygulama.
 .. - ZEngine: İş akışı tabanlı web çatısı
@@ -176,6 +178,8 @@ ZEngine Pyoko'dan miras aldığı *satır ve hücre seviyesinde erişim kontrol�
     LimitedPermissions "0..*" -- "0..*" AbstractRole
 
 Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.
+
+Modeller 
 
 AbstractRole nesnesi "Tıp Fakültesi Öğrenci İşleri Müdürü" gibi belirli bir makamı temsil ederken, Role nesnesi ise AbstractRole'ün bir kullanıcı ile ilişkilendirilmesi sonucu bu makamı fiilen işgal eden bir kişiyi ifade etmektedir.
 

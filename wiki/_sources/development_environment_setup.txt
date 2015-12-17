@@ -134,6 +134,67 @@ yukarıdaki komut satırını gördüğünüzde virtualenv set edilmiş demektir
 
 daha sonra **ipython** komutu ile konsolda çalışmalar yapabilirsiniz. 
 
+
+(env)ulakbus@ulakbus:~/ulakbus/ulakbus$ dizini altında iken 
+
+
+export ALLOWED_ORIGINS="http://localhost:8000"
+
+python manage.py migrate --model all
+
+bu işlem uzun sürecektir. 
+
+**  Tüm modeller en son hallerine güncellenecektir. Geliştirme esnasında modellere yapılan değiştirme, silme v.b işlemlerden sonra mutlaka yapılması gerekmektedir.
+
+
+Permission listesini güncelle.
+
+(ulakbusenv)ulakbus@ulakbus:~/ulakbus/ulakbus$ python manage.py update_permissions
+
+Yeni bir super user ekleyiniz. Sisteme girişi bu kullanıcı yapacaktır. 
+
+python manage.py create_user --username ulakbus --password 123 --super
+
+
+Son olarak 
+
+(ulakbusenv)ulakbus@ulakbus:~/ulakbus/ulakbus$ python manage.py runserver --addr 0.0.0.0
+
+şeklinde backendi çalıştırınız. 
+
+
+
+Frontend ile backendi çalıştırmak
+----------------------------------
+
+
+https://github.com/zetaops/ulakbus-ui
+
+adresinden frontend kısmını bilgisayarınızda bir dizine klonlayınız.
+
+ ulakbus-ui/dist dizinine geçerek bu dizin altında:
+
+ python -m SimpleHTTPServer
+
+ komutu ile frontendi başlatınız. Bu komutla localhost:8000 portunda frontend çalışmaya başlayacaktır.
+
+
+Frontend ilk kez browser ile çağrıldığında backendin adresini aşağıdaki gibi bildiriniz.
+
+http://localhost:8000/?backendurl=http://localhost:9001/
+
+
+Bu şekilde login ekranına ulaşabileceksiniz. 
+
+Herhangi bir sebepten backend adres ve port bilgisi değiştirmek için menüdeki Ayarlar (Dev)
+altındaki Backend Url: alanına 
+
+http://localhost:9001/ 
+
+şeklinde yazabilirsiniz.  
+
+
+
 Geliştirme İçin Editör Ayarlanması
 ----------------------------------
 
