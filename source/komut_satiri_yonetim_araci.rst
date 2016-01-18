@@ -1,8 +1,9 @@
-:tocdepth: 2
++++++++++++++++++++++++
+Temel Yönetim Komutları
++++++++++++++++++++++++
+Komut satırı yönetim aracı ``manage.py`` ile kullanıcı ekleme, veritabanı yedekleme,
+geliştirme sunucusu çalıştırma gibi birçok operasyon kolaylıkla yapılabilir.
 
-++++++++++++++++++++++++
-manage.py nasıl çalışır?
-++++++++++++++++++++++++
 
 -h or --help
 ++++++++++++
@@ -12,31 +13,31 @@ Yardım mesajını gösteririr ve çıkış yapar.
 -----
 usage
 -----
-
 ::
 
    $ ./manage.py -h or $ ./manage.py -help
 
 
+
 dump_data
 +++++++++
 
-Bütün model verilerini standart çıktıya ya da belirtilen dosyaya dökümünü alır.
+Bütün modellere ait verileri standart çıktıya ya da belirtilen dosyaya yazar.
 
 -----
 usage
 -----
-
 ::
 
      $ ./manage.py dump_data [-h] [--timeit] --model [MODEL] [--path [PATH]]
-                           [--type [{csv,json,json_tree,pretty}]]
-                           [--batch_size [BATCH_SIZE]]
+                             [--type [{csv,json,json_tree,pretty}]]
+                             [--batch_size [BATCH_SIZE]]
 
 Zorunlu olan argüman:
 ---------------------
 
-- **model [MODEL]** Dökümü alınacak model isimleri yazılır. Bütün modellerin dökümü alınacaksa 'all' yazılır.
+- **model [MODEL]** Dökümü alınacak modellerin isimleri yazılır. Bütün modellerin
+  dökümü alınacaksa 'all' yazılır.
 
 
 Zorunlu olmayan argümanlar:
@@ -46,32 +47,33 @@ Zorunlu olmayan argümanlar:
 
 - **--timeit**    İşlemin süresini ölçer.
 
-- **--path [PATH]** Standart çıktı yerine,verilen dosyaya yazar.
+- **--path [PATH]** Standart çıktı yerine, belirtilen dosyaya yazar.
 
 - **--type [{csv,json,json_tree,pretty}]**
 
-                                    1.  **csv:** csv varsayılan formattır.Her satıra bir tane kayıt yazar.csv,diğerlerinden
-                                        daha hızlıdır ve belleği daha verimli kullanır çünkü JSON şifreleme/şifre çözme'yi atlar.
+           1.  **csv:** csv varsayılan formattır. Her satıra bir tane kayıt yazar. csv,
+               diğerlerinden daha hızlıdır ve belleği daha verimli kullanır çünkü JSON
+               encoding/decoding işlemlerini yapmaz.
 
-                                    2.  **json:** Her satırı ayrı bir json dökümanı olarak yazar.json-tree'nin aksine,bellek
-                                        kullanımı bir çok kayıt ile artmıyor.
+           2.  **json:** Her bir kayıt için,  ayrı bir json string içeren bir döküman yazar.
+               Dökümandaki her satır bir kayda ait json stringidir. json-tree'nin aksine,
+               bellek kullanımı kayıt başına artmaz.
 
-                                    3.  **json_tree:** Büyük veritabanlarında kullanmayın.Bütün dökümü büyük bir JSON nesnesi
-                                        olarak yazar.
+           3.  **json_tree:** Büyük veritabanlarında kullanmayın. Bütün dökümü tek bir
+               JSON nesnesi olarak yazar.
 
-                                    4.  **pretty:** Büyük veritabanlarında kullanmayın.json_tree'nin formatlanmış versiyonu.
-
+           4.  **pretty:** Büyük veritabanlarında kullanmayın. json_tree'nin formatlanmış
+               versiyonu.
 
 
 load_data
 +++++++++
 
-Json verisini belirtilen dosyadan okur ve modelleri doldurur.
+Belirtilen dosyadan verileri okur ve modelleri doldurur.
 
 -----
 usage
 -----
-
 ::
 
    $ ./manage.py load_data [-h] [--timeit] --path [PATH] [--update]
@@ -81,8 +83,8 @@ usage
 Zorunlu olan argüman:
 ---------------------
 
-- **--path [PATH]** Veri dosyası ya da  fixture dizininin yoludur. Bir dizinden veri yükleyeceği zaman, .js ve .csv uzantılı
-dosyaları yükleyecek.
+- **--path [PATH]** Veri dosyası ya da fixture dizininin yoludur. Bir dizinden veri
+  yükleyeceği zaman, .js ve .csv uzantılı dosyaları kullanır.
 
 
 Zorunlu olmayan argümanlar:
@@ -92,34 +94,35 @@ Zorunlu olmayan argümanlar:
 
 - **--timeit**    İşlemin süresini ölçer.
 
-- **--update**    Varolan kayıtların üzerine yazar.Objenin varlığını kontrol etmeyecek bu yüzden daha hızlı çalışacak.
+- **--update**    Varolan kayıtların üzerine yazar.Objenin varlığını kontrol
+  etmeyecek bu yüzden daha hızlı çalışacak.
+
+- **-batch_size [BATCH_SIZE]** Solr'dan varsayılan miktardaki(1000) nesneleri
+  tek seferde bulup getirir.
 
 - **--type [{csv,json,json_tree,pretty}]**
 
-                                    1.  **csv:** csv varsayılan formattır.Her satıra bir tane kayıt yazar.csv,daha hızlıdır
-                                        belleği daha verimli kullanır çünkü JSON şifreleme/şifre çözme'yi atlar.
+           1.  **csv:** csv varsayılan formattır. dump_data ile elde edilmiş veya geçerli
+               bir csv dosyası olabilir.
 
-                                    2.  **json:** Her satırı ayrı bir json dökümanı olarak yazar.json-tree'nin aksine,bellek
-                                        kullanımı bir çok kayıt ile artmıyor.
+           2.  **json:** dump_data ile elde edilmiş veya geçerli bir json dosyası olabilir.
 
-                                    3.  **json_tree:** Büyük veritabanlarında kullanmayın.Bütün dökümü büyük bir JSON nesnesi
-                                        olarak yazar.
+           3.  **json_tree:** dump_data ile elde edilmiş veya geçerli bir json_tree dosyası
+               olabilir.
 
-                                    4.  **pretty:** Büyük veritabanlarında kullanmayın.json_tree'nin formatlanmış versiyonu.
-
-**-batch_size [BATCH_SIZE]** Solr'dan varsayılan miktardaki(1000) nesneleri tek seferde bulup getirir.
+           4.  **pretty:** dump_data ile elde edilmiş veya geçerli bir pretty json_tree
+               dosyası olabilir.
 
 
 load_fixture
 ++++++++++++
 
-Fixture'ları verilen json dosyasından ya da verilen dizindeki json dosyalarından yukler. ulakbus_settings_fixtures bucket'a
-bütün mevcut keylerin verisini üzerine yazar.
+Fixture'ları verilen json dosyasından ya da verilen dizindeki json dosyalarından yükler. Verileri,
+ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak doldurur.
 
 -----
 usage
 -----
-
 ::
 
   $ ./manage.py load_fixture [-h] [--timeit] --path [PATH]
@@ -142,12 +145,11 @@ Zorunlu olmayan argümanlar:
 migrate
 +++++++
 
-Verilen model ya da modeller için SOLR şemaları üretir/günceller.
+Verilen model ya da modeller için yeni SOLR şemaları üretir veya mevcutları günceller.
 
 -----
 usage
 -----
-
 ::
 
    $ ./manage.py migrate [-h] [--timeit] --model [MODEL] [--threads [THREADS]]
@@ -174,12 +176,11 @@ Zorunlu olmayan argümanlar:
 flush_model
 +++++++++++
 
-Bucket'ların içeriğini siliyor.
+Modellere ait bucket'ların içeriğini siler.
 
 -----
 usage
 -----
-
 ::
 
   $ ./manage.py flush_model [-h] [--timeit] --model [MODEL]
@@ -187,7 +188,7 @@ usage
 Zorunlu olan argüman:
 ---------------------
 
-- **--model [MODEL]** Silinecek olan model isimleridir.Bütün modelleri silmek için 'all' yazılmalı.
+- **--model [MODEL]** Silinecek olan model isimleridir. Bütün modelleri silmek için 'all' yazılmalıdır.
 
 
 Zorunlu olmayan argümanlar:
@@ -201,12 +202,11 @@ Zorunlu olmayan argümanlar:
 update_permissions
 ++++++++++++++++++
 
-İzinleri veritabanı ile senkronize ediyor.
+İzinleri veritabanı ile senkronize eder.
 
 -----
 usage
 -----
-
 ::
 
   $ ./manage.py update_permissions [-h] [--timeit] [--dry]
@@ -224,12 +224,12 @@ Zorunlu olmayan argümanlar:
 shell
 +++++
 
-IPython shell'ini çalıştırır.
+IPython shell'ini çalıştırır. Bu shell projeye ait tüm modelleri yükler ve kullanıma hazır
+hale getirir. Çalışma kolaylığı sağlar.
 
 -----
 usage
 -----
-
 ::
 
    $ ./manage.py shell [-h] [--timeit] [--no_model]
@@ -252,7 +252,6 @@ Geliştirme sunucusunu çalıştırır.
 -----
 usage
 -----
-
 ::
 
    $ ./manage.py runserver [-h] [--timeit] [--addr [ADDR]] [--port [PORT]]
@@ -264,124 +263,9 @@ Zorunlu olmayan argümanlar:
 
 - **--timeit**      İşlemin süresini ölçer.
 
-- **--addr [ADDR]** Adresi dinler.Varsayılan 127.0.0.1'dir.
+- **--addr [ADDR]** Sunucunun dinleyeceği adres. Varsayılan 127.0.0.1'dir.
 
-- **--port [PORT]** Portu  dinler. Varsayılan 9001'dir.
-
-
-
-random_personel
-+++++++++++++++
-
-Rastgele kişi oluşturur.
-
------
-usage
------
-
-::
-
-  $ ./manage.py random_personel [-h] [--timeit] --length [LENGTH]
-
-Zorunlu olan argümanlar:
-------------------------
-
-- **--length [LENGTH]** Rastgele kişilerin sayısıdır.
-
-
-Zorunlu olmayan argümanlar:
----------------------------
-
-
-- **-h,--help**     Yardım mesajını gösterir.
-
-- **--timeit**      İşlemin süresini ölçer.
-
-
-
-
-random_harici_okutman
-+++++++++++++++++++++
-
-Kişi nesnelerinden rastgele Okutman yaratır.
-
------
-usage
------
-
-::
-
-   $ ./manage.py random_harici_okutman [-h] [--timeit] --length [LENGTH]
-
-
-Zorunlu olan argüman:
----------------------
-
-- **--length [LENGTH]** Rastgele okutmanın sayısıdır.
-
-
-Zorunlu olmayan argümanlar:
----------------------------
-
-- **-h,--help**     Yardım mesajını gösterir.
-
-- **--timeit**      İşlemin süresini ölçer.
-
-
-random_ogrencı
-++++++++++++++
-
-Rastgele Ogrencı model nesneleri oluşturur.
-
-
------
-usage
------
-
-::
-
-  $ ./manage.py random_ogrenci [-h] [--timeit] --length [LENGTH]
-
-Zorunlu olan argüman:
----------------------
-
-- **--length [LENGTH]** Rastgele öğrenci miktarıdır.
-
-
-Zorunlu olmayan argümanlar:
----------------------------
-
-- **-h,--help**     Yardım mesajını gösterir.
-
-- **--timeit**      İşlemin süresini ölçer.
-
-
-random_okutman
-++++++++++++++
-
-Kişi nesnelerinden rastgele okutman oluşturur.
-
------
-usage
------
-
-::
-
-   $ ./manage.py random_okutman [-h] [--timeit] --length [LENGTH]
-
-Zorunlu olan argüman:
----------------------
-
-- **--length [LENGTH]** Rastgele okutmanın sayıdır.
-
-
-
-Zorunlu olmayan argümanlar:
----------------------------
-
-- **-h,--help**   Yardım mesajını gösterir.
-
-- **--timeit**    İşlemin süresini ölçer.
+- **--port [PORT]** Sunucunun dinleyeceği port. Varsayılan 9001'dir.
 
 
 create_user
@@ -392,12 +276,11 @@ Yeni kullanıcı yaratır.
 -----
 usage
 -----
-
 ::
 
-  manage.py create_user [-h] [--timeit] --username [USERNAME] --password
-                             [PASSWORD] [--abstract_role [ABSTRACT_ROLE]]
-                             [--super] [--permission_query [PERMISSION_QUERY]]
+  $ ./manage.py create_user [-h] [--timeit] --username [USERNAME] --password
+                            [PASSWORD] [--abstract_role [ABSTRACT_ROLE]]
+                            [--super] [--permission_query [PERMISSION_QUERY]]
 
 
 Zorunlu olan argümanlar:
@@ -418,29 +301,120 @@ Zorunlu olmayan argümanlar:
 
 - **--super** Süper kullanıcı
 
-- **--permission_query [PERMISSION_QUERY]** Bu query'den "code:crud* OR code:login* OR code:logout*" dönecek izinleri kullanıcıya onaylatacak.
+- **--permission_query [PERMISSION_QUERY]** Bu sorgudan dönen izinler yenı eklenen kullanıcıya tanımlanır.
+  Varsayılan: "code:crud* OR code:login* OR code:logout*"
 
 
 
++++++++++++++++
+Veri Üreteçleri
++++++++++++++++
+Aşağıda sıralanan komutlar geliştirme esnasında fake(uydurma) veriler üretmek amacıyla
+eklenmiştir.
+
+random_personel
++++++++++++++++
+
+Rastgele Personel üretir.
+
+-----
+usage
+-----
+::
+
+  $ ./manage.py random_personel [-h] [--timeit] --length [LENGTH]
+
+Zorunlu olan argümanlar:
+------------------------
+
+- **--length [LENGTH]** Rastgele üretilecek personel sayısıdır.
+
+
+Zorunlu olmayan argümanlar:
+---------------------------
+
+- **-h,--help**     Yardım mesajını gösterir.
+
+- **--timeit**      İşlemin süresini ölçer.
 
 
 
+random_harici_okutman
++++++++++++++++++++++
+
+Rastgele Harici Okutman üretir.
+
+-----
+usage
+-----
+::
+
+   $ ./manage.py random_harici_okutman [-h] [--timeit] --length [LENGTH]
+
+
+Zorunlu olan argüman:
+---------------------
+
+- **--length [LENGTH]** Rastgele üretilecek okutmanın sayısıdır.
+
+
+Zorunlu olmayan argümanlar:
+---------------------------
+
+- **-h,--help**     Yardım mesajını gösterir.
+
+- **--timeit**      İşlemin süresini ölçer.
+
+
+random_ogrenci
+++++++++++++++
+
+Rastgele Ögrenci üretir.
+
+
+-----
+usage
+-----
+::
+
+  $ ./manage.py random_ogrenci [-h] [--timeit] --length [LENGTH]
+
+Zorunlu olan argüman:
+---------------------
+
+- **--length [LENGTH]** Rastgele üretilecek öğrenci sayısıdır.
+
+
+Zorunlu olmayan argümanlar:
+---------------------------
+
+- **-h,--help**     Yardım mesajını gösterir.
+
+- **--timeit**      İşlemin süresini ölçer.
+
+
+random_okutman
+++++++++++++++
+
+Personel veya HariciOkutman modellerinden rastgele Okutman üretir.
+
+-----
+usage
+-----
+::
+
+   $ ./manage.py random_okutman [-h] [--timeit] --length [LENGTH]
+
+Zorunlu olan argüman:
+---------------------
+
+- **--length [LENGTH]** Rastgele üretilecek okutmanın sayıdır.
 
 
 
+Zorunlu olmayan argümanlar:
+---------------------------
 
+- **-h,--help**   Yardım mesajını gösterir.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- **--timeit**    İşlemin süresini ölçer.
