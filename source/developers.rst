@@ -14,6 +14,7 @@ Geliştiriciler
    standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.rst
    zengine-ile-is-akisi-temelli-uygulama-gelistirme.rst
    ulakbusu-gelistirmek.rst
+   komut_satiri_yonetim_araci.rst
    zato_doc.rst
 
 
