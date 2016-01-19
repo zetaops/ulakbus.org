@@ -49,7 +49,7 @@ bir box elde edebilirsiniz. Örnek Vagrantfile:
 
 ::
 
-    https://raw.githubusercontent.com/zetaops/ulakbus-development-box/master/Vagrantfile.sample
+    https://raw.githubusercontent.com/zetaops/ulakbus.org/master/source/Vagrantfile.sample
 
 Yukarıdaki komutları kullanarak bir box oluşturduğunuzda ilgili dizin altına - örnekte
 ``ulakbus-devbox`` - bir Vagranfile yazılır. Bu dosyayı bir text düzenleme aracı ile açıp
@@ -145,4 +145,39 @@ Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları i
     $ git pull                                                    # son değişiklikleri uzak depodan çek
     $ pip install -r requirments.txt                              # ulakbus bagimliliklarini kur
     $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
+
+Sonraki Adımlar
++++++++++++++++
+Geliştirme ortamını başarıyla kurduktan sonra şu belgelerle devam edebilirsiniz:
+
+    * `Ulakbus Geliştirelim <http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html>`_
+    * `ZEngine ile İş Akışı Temelli Uygulama Geliştirme
+      <http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html>`_
+
+Ayrıca Git ve Github iş akışımız hakkında bilgi alabileceğiniz `Ulakbus Depolarına Katkı
+Yapmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ belgemize göz atabilir, geliştirme
+sürecimizin aktif bir parçası olabilirsiniz.
+
+
+Vagrant Box Güncellemek
++++++++++++++++++++++++
+Ulakbus aktif olarak geliştirilmeye devam etmektedir. Bu sebeple vagrantbox içinde kullanılan bileşenlerin
+sürümlerinin değişmesi, yenilerinin eklenmesi veya başka sebepler ile değişmektedir. Bu değişiklikleri
+https://atlas.hashicorp.com/zetaops/boxes/ulakbus adresinden takip edebilirsiniz.
+
+Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını güncellemelisiniz:
+
+::
+
+    $ vagrant box outdated
+
+
+Daha sonra mevcut box destroy edip yeniden init edebilirsiniz. Prensip olarak box içerisinde
+geliştirme süreçlerine ait herhangi bir öğe bulunmamalıdır. Eğer varsa bu işlemden önce ilgili
+öğeler host makinesine alınmalıdır.
+
+::
+
+    $ vagrant box destroy
+    $ vagtant up
 
