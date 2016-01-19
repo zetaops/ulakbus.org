@@ -1,408 +1,148 @@
-+++++++++++++++++++++++++++++++++++
-Geliştirme Ortamı Kurulumu(Backend)
-+++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++
+ULAKBUS Geliştirme Ortamının Kurulumu
++++++++++++++++++++++++++++++++++++++
 
-Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalıdır. Biz, işletim sistemi olarak Ubuntu 14.04 kullanıyoruz.
+Ulakbus için geliştirme ortamının kurulması aşağıdaki bileşenlerin herbirinin ayrı ayrı
+kurulup yapılandırılmasını kapsar:
 
-===========
-**Vagrant**
-===========
+    * Pythton Virtualenv
+    * Riak KV
+    * Zato ESB
+    * Redis
+    * Git CVS
 
-Vagrant Nedir?
---------------
-
-Vagrant'la ilgili başlıca bilgilere aşağıdaki linklerden ulaşabilirsiniz:
-
-https://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time
-
-http://www.cyberciti.biz/cloud-computing/use-vagrant-to-create-small-virtual-lab-on-linux-osx/
-
-Geliştiriciler için hazırladığımız vagrant box'ı kullanarak hızlıca kurulum yapabilirsiniz. Ulakbus'e ait tüm bileşenler box içinde bulunmaktadır. Ortamı kurabilmek için aşağıdaki komutları kullanabilirsiniz.
+Bu servislerin elle kurulumu ve yapılandırılması yeni başlayanlar için biraz karmaşık
+gelebilir. Ayrıca biraz uzun bir süreçtir. Bu amaçla hızlı başlangıç için bir
+Vagrantbox hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:
 
 ::
 
-    mkdir ulakbus
+    mkdir ulakbus-devbox
     cd ulakbus
     vagrant init zetaops/ulakbus
 
-Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM'ı 2 GB yapmanızı öneririz. Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:
 
+Vagrantbox temel olarak iki türlü kullanılabilir:
+    - Box içinde geliştirme
+    - Box servislerini kullanarak kendi makinenizde geliştirme
+
+Birincisinde backend sunucusu ve python ortamı box içindedir. Tüm geliştirme işlemleri
+box içinden yürütülür.
+
+İkinici kullanımda ise box sadece Riak, Redis ve Zato gibi servisler için kullanılır. Servis
+portları Vagrantfile konfigürasyonu ile host makine ile paylaşılır. Böylelikle box içinde
+çalışan servislere host makineden erişmek mümkün hale gelir.
+
+Python ortamı ise host makinede (kendi işletim sisteminiz üzerinde) bulunur. Bu hız
+ve üretlenlik açısından birincisine göre daha verimlidir. Eğer PyCharm gibi bir IDE
+kullanıyorsanız host makinede çalışmak özellikle detaylı DEBUG için avantajlıdır.
+
+Git depolarınıza her durumda host makine üzerinden erişmenizi öneririz. Host makinedeki
+depolarınızı box ile paylaşarak ilgili dizinlere bağlayabilirsiniz. ```git pull```
+```git push``` gibi git operasyonları da bu durumda host makine üzerinden gerçekleştirilmelidir.
+Host makine üzerindeki bir git deposu üzerinde box içerisinden işlem yaptığınızda doğrulama,
+yetkilendirme hataları almanız olasıdır.
+
+Hem git depolarının hem de portların nasıl paylaşılacağı aşağıda bağlantısı verilen örnek
+Vagrantfile icinde mevcuttur. Bu dosyada çok küçük değişiklikler yaparak istediğiniz gibi
+bir box elde edebilirsiniz. Örnek Vagrantfile:
 
 ::
 
-    wget https://raw.githubusercontent.com/zetaops/ulakbus-development-box/master/Vagrantfile.sample
+    https://raw.githubusercontent.com/zetaops/ulakbus-development-box/master/Vagrantfile.sample
 
-Bu komut bulunduğunuz dizine örnek bir Vagrantfile indirecektir. İhtiyaçlarınıza uygun şekilde düzenleyip kullanabilirsiniz.
+Yukarıdaki komutları kullanarak bir box oluşturduğunuzda ilgili dizin altına - örnekte
+``ulakbus-devbox`` - bir Vagranfile yazılır. Bu dosyayı bir text düzenleme aracı ile açıp
+düzenleyebilirsiniz.
 
-Vagrantfile'ı düzenledikten sonra:
+Port yönlendirmek için Vagrantfile içinde aşağıdaki satırlara benzeyen bölümü bulup, istediğiniz
+portları ekleyip çıkarabilirsiniz:
 
+::
+
+    # config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 9001, host: 9001
+
+Örnek dosyada hangi portun ne için kullanıldığı yorum satırları olarak eklenmiştir.
+
+Dizinleri paylaşmak için ise Vagrantfile içerisinde aşağıdakine benzeyen bölümleri bulup
+düzenleyebilirsiniz:
+
+::
+
+    # config.vm.synced_folder "../data", "/vagrant_data"
+    config.vm.synced_folder "~/dev/zetaops/ulakbus", "/app/ulakbus", owner: "ulakbus", group: "ulakbus"
+
+Bu satır host makinenizde kullanıcı dizininiz altında, dev/zetaops/ulakbus yolunda bulunan
+``ulakbus`` dizinini box içerisinde /app/ulakbus yolunda bulunan ``ulakbus`` dizinine bağlar.
+Box içindeki dizinin sahibi ve grubunu ``ulakbus`` yapar.
+
+
+Gerekli düzenlemeleri yaptıktan sonra Vagrantbox oluşturduğunuz dizin içerisinde şu komut ile
+başlatabilirsiniz:
 
 ::
 
     vagrant up
 
-komutuyla makinenizi başlatabilirsiniz.
+Başlayan makineye giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
 
-Bu işlem bitince ``vagrant ssh`` komutu ile geliştirme ortamına bağlanabilirsiniz.
-
-
-``Eğer depolarınızı sanal makinaya mount ederek dışardan paylaşıyorsanız, git ile ilgili işlemleri ana makinada yapmanızı öneriyoruz.``
-
-Bizim sunduğumuz Vagrantbox'ta, git depoları sanal makina içerisinde yer almaktadır. Git depolarının host makine
-üzerinde saklanması ve sanal makineye bağlanarak kullanılması, Vagrantbox'ın güncellenmesi, kaldırılması gibi işlemlerde
-veri kayıplarının önüne geçecektir.
-
-Yukarıda verilen örnek Vagrantfile içerisinde, kod depolarınızın sanal makineye bağlanmak üzere nasıl konfigüre
-edileceği bulunmaktadır. Kısaca
+Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
+olmadığını kontrol edebilisiniz:
 
 ::
 
-  # ulakbus
-   config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus", "/app/ulakbus", owner: "ulakbus", group: "ulakbus"
-
-  # zengine
-   config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/zengine", "/app/zengine", owner: "ulakbus", group: "ulakbus"
-
-  # pyoko
-   config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/pyoko", "/app/pyoko", owner: "ulakbus", group: "ulakbus"
-
-  # ulakbus-ui
-   config.vm.synced_folder "/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus-ui", "/app/ulakbus-ui", owner: "ulakbus", group: "ulakbus"
+    sudo service redis-server status
+    sudo service riak ping
+    sudo service zato status
 
 
-Geliştirme Sanal Makinasının Güncellenmesi
-------------------------------------------
-
-- Ulakbus klasörü içine gidin. Klasörde Vagrantfile bulunduğundan emin olun.
-- Sürüm kontrolü yapın
+Eğer geliştirme işlemlerini box içerisinde yapacaksanız, ulakbus kullanıcısına geçip python
+ortamınızı etkinleştirerek başlayabilirsiniz. En başından sırasıyla komutlar (# ile başlayan yorum
+kısımları olmadan):
 
 ::
 
-  vagrant box outdated
+    vagrant up                         # vagrantbox başlat
+    vagrant ssh                        # vagrantbox giriş
+    sudo su - ulakbus                  # ulakbus kullanıcısına geç ve home dizinine geç
+    source ulakbusenv/bin/activate     # ulakbus environment etkinleştir
 
-Eğer sanal makina sürümü eski ise aşağıdaki gibi bir mesaj alacaksınız.
 
-::
-
-  A newer version of the box 'zetaops/ulakbus' is available! You currently
-  have version '0.1.9'. The latest is version '0.2.2'. Run
-  `vagrant box update` to update.
-
-Gene ulakbus klasörü içindeyken
+Bu komutun ardından komut satırı promptu değişecek ve şu hale gelecektir:
 
 ::
 
-  vagrant box update
+    (ulakbusenv)ulakbus@ulakbus:~$
 
-komutu güncelleme işlemini yapacaktır.
 
-Kontrol edilmesi gereken servisler
-----------------------------------
+Eğer deneyiminiz yoksa virtualenv ile ilgili şu bağlantılara bakabilirsiniz:
+virtualenv hakkında detaylı bilgi için:
 
-Vagrant sanal makinasına ```vagrant ssh``` ile bağlandıktan sonra, aşağıdaki servislerin çalıştığından emin olunuz.
+   * http://istihza.com/forum/viewtopic.php?t=2164
+   * http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-::
-
-  sudo su
-  service redis-server status
-  service riak ping
-  service zato status
-
-ulakbus kullanıcısına ait klasör altında aşağıdaki alt klasörler yer almaktadır.
+Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek ve iş akışları
+izinlerini güncellemektir.
 
 ::
 
-  pyoko  pyokoenv  pyoko_postactivate  ulakbus  ulakbusenv  ulakbus_postactivate  ulakbus-ui  zengine  zengineenv  zengine_postactivate
+    $ python manage.py migrate --model all
 
-ulakbus projesi ile çalışmak için 
-
-::
-
-  source ulakbusenv/bin/activate
-
-Virtualenv aktif hale getiriniz. 
+Bu işlem uzun sürebilir. Komut satırı belgesinde detaylı kullanımına bakabilirsiniz.
 
 ::
 
-  (ulakbusenv)ulakbus@ulakbus:~$
+     python manage.py update_permissions
 
-yukarıdaki komut satırını gördüğünüzde virtualenv set edilmiş demektir. virtualenv hakkında detaylı bilgi için:
-
-   http://istihza.com/forum/viewtopic.php?t=2164
-
-   http://docs.python-guide.org/en/latest/dev/virtualenvs/
-
-daha sonra **ipython** komutu ile konsolda çalışmalar yapabilirsiniz. 
-
-Geliştirme İçin Editör Ayarlanması
-----------------------------------
-
-Python ile geliştirme yaparkan değişik `IDE'ler <https://wiki.python.org/moin/IntegratedDevelopmentEnvironments>`_ kullanabilirsiniz. Ulakbüs geliştirmesi yaparken `PyCharm <https://www.jetbrains.com/pycharm/>`_ kullanıyor ve şiddetle öneriyoruz.
-Öğrenciler ve AKK projeler için özel lisanslar sunan PyCharm sayesinde ücretsiz olarak kullanabilirsiniz.
-
-================
-**Elle Kurulum**
-================
-
-İlk olarak bilgisayarınızı güncel hale getirin.
+Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları izleyebilirsiniz:
 
 ::
 
-    sudo apt-get update
-    sudo apt-get upgrade
+    $ virtualenv ulakbusenv                                       # ulakbusenv python ortamı yarat
+    $ source ulakbusenv/bin/activate                              # python ortamını etkinleştir
+    $ cd ~/ulakbus                                                # ulakbus git deposuna gir
+    $ git pull                                                    # son değişiklikleri uzak depodan çek
+    $ pip install -r requirments.txt                              # ulakbus bagimliliklarini kur
+    $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
 
-Riak için dosya limitini 65536 olarak değiştirin.
-
-``ulimit -n`` kalıcı olarak değiştirmek için;
-
-::
-
-    sudo vi /etc/security/limits.conf
-
-Ve aşağıdaki satırları dosyanın sonuna ekleyin.
-
-::
-
-    * soft nofile 65536
-    * hard nofile 65536
-
-Riak'ı ve bağımlılıklarını kurun.
-
-
-::
-
-    #Önce Riak bağımlılıklarını kurunuz.
-
-    apt-get install libssl-dev
-    apt-get install libffi-dev
-
-::
-
-    #Ardından Java'yı kurunuz.
-
-    apt-add-repository ppa:webupd8team/java -y && apt-get update
-    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-    apt-get install -y oracle-java8-installer
-
-::
-
-    #Riak kurulumu
-
-    curl -s https://packagecloud.io/install/repositories/zetaops/riak/script.deb.sh |sudo bash
-    apt-get install riak=2.1.1-1
-
-
-::
-
-
-    # Aramayı aktifleştiriniz.
-
-    sed -i "s/search = off/search = on/" /etc/riak/riak.conf
-
-::
-
-    # Riak servisini yeniden başlatın
-
-    service riak restart
-
-::
-
-    # Redis-Server'ı kurunuz.
-
-    apt-get install redis-server
-
-Zato için tüm gerekli kurulumları gerçekleştiriniz.
-
-::
-
-    apt-get install apt-transport-https
-    curl -s https://zato.io/repo/zato-0CBD7F72.pgp.asc | sudo apt-key add -
-    apt-add-repository https://zato.io/repo/stable/2.0/ubuntu
-    apt-get update
-    apt-get install zato
-
-Zato kurulumunun ardından, *zato* kullanıcısına geçiniz ve *ulakbus* adında bir dizin oluşturunuz.
-::
-
-    sudo su - zato
-    mkdir ~/ulakbus
-
-Zato Cluster oluşturunuz. Aşağıdaki komut, Sertifika, Web-Admin, Load-Balancer ve Zato server kurulumunu gerçekleştirecektir.
-
-::
-
-    zato quickstart create ~/ulakbus sqlite localhost 6379 --kvdb_password='' --verbose
-
-``~/ulakbus`` klasörünün altına *pwzato.config* adında bir dosya oluşturunuz ve aşağıdaki script'i dosyanın içine yazınız.
-
-Bu script'i kullanmak için de ``zato from-config ~/ulakbus/pwzato.config`` komutunu çalıştırıyor olmalısınız.
-
-::
-
-    command=update_password
-    path=/opt/zato/ulakbus/web-admin
-    store_config=True
-    username=admin
-    password=ulakbus
-
-Zato servislerini başlatmak için tekrardan *root* kullanıcısına geçiniz.
-
-Zato bileşeni için sembolik bağlantı oluşturunuz.
-
-::
-
-    ln -s /opt/zato/ulakbus/load-balancer /etc/zato/components-enabled/ulakbus.load-balancer
-    ln -s /opt/zato/ulakbus/server1 /etc/zato/components-enabled/ulakbus.server1
-    ln -s /opt/zato/ulakbus/server2 /etc/zato/components-enabled/ulakbus.server2
-    ln -s /opt/zato/ulakbus/web-admin /etc/zato/components-enabled/ulakbus.web-admin
-
-Ve Zato servisini başlatınız.
-
-::
-
-    service zato start
-
-Ulakbus uygulaması için python virtual environment hazırlayınız.
-
-::
-
-    apt-get install virtualenvwrapper
-
-*app* adında bir dizin oluşturunuz ve *ulakbus* kullanıcısını *app* klasörü içine ekleyin.
-
-
-::
-
-    mkdir /app
-    /usr/sbin/useradd --home-dir /app --shell /bin/bash --comment 'ulakbus operations' ulakbus
-
-Ulakbus kullanıcısına *app* klasörü için yetki verin ve ulakbus kullanıcısına geçiniz.
-
-::
-
-    chown ulakbus:ulakbus /app -Rf
-    su ulakbus
-    cd ~
-
-Virtual Environment yaratınız ve aktif ediniz.
-
-::
-
-    virtualenv --no-site-packages env
-    source env/bin/activate
-
-pip yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.
-
-::
-
-    pip install --upgrade pip
-    pip install ipython
-
-Pyoko'yu https://github.com/zetaops/pyoko.git adresinden çekiniz ve gereksinimleri kurunuz.
-
-::
-
-    pip install riak
-    pip install enum34
-    pip install six
-
-    pip install git+https://github.com/zetaops/pyoko.git
-
-Environment'a PYOKO_SETTINGS değişkeni ekleyiniz(*root* kullanıcısı iken)
-
-::
-
-    echo "export PYOKO_SETTINGS='ulakbus.settings'" >> /etc/profile
-
-Ulakbus'u https://github.com/zetaops/pyoko.git adresinden çekiniz ve gereksinimleri kurunuz.
-
-::
-
-    pip install falcon
-    pip install beaker
-    pip install redis
-    pip install passlib
-    pip install git+https://github.com/didip/beaker_extensions.git#egg=beaker_extensions
-    pip install git+https://github.com/zetaops/SpiffWorkflow.git#egg=SpiffWorkflow
-    pip install git+https://github.com/zetaops/zengine.git#egg=zengine
-
-    git clone https://github.com/zetaops/ulakbus.git
-
-
-
-Ulakbus-ui'yi https://github.com/zetaops/pyoko.git adresinden çekiniz.
-
-::
-
-    git clone https://github.com/zetaops/ulakbus-ui.git
-
-
-Ulakbus'u PYTHONPATH'a ekleyiniz.
-
-::
-
-    echo '/app/ulakbus' >> /app/env/lib/python2.7/site-packages/ulakbus.pth
-
-
-Google kütüphanesinin çalışması için "__init__.py" adında dosya oluşturunuz(*ulakbus* kullanıcısı iken)
-
-::
-
-    touch /app/env/lib/python2.7/site-packages/google/__init__.py
-
-
-Pyoko için *solr_schema_template* 'i indirin.(*ulakbus* kullanıcısı iken)
-
-::
-
-    cd ~/env/local/lib/python2.7/site-packages/pyoko/db
-    wget https://raw.githubusercontent.com/zetaops/pyoko/master/pyoko/db/solr_schema_template.xml
-
-
-Sembolik bağlantı oluşturunuz.(*zato* kullanıcısı iken)
-
-::
-
-    ln -s /app/pyoko/pyoko /opt/zato/2.0.5/zato_extra_paths/
-    ln -s /app/env/lib/python2.7/site-packages/riak /opt/zato/2.0.5/zato_extra_paths/
-    ln -s /app/env/lib/python2.7/site-packages/riak_pb /opt/zato/2.0.5/zato_extra_paths/
-    ln -s /app/env/lib/python2.7/site-packages/google /opt/zato/2.0.5/zato_extra_paths/
-    ln -s /app/env/lib/python2.7/site-packages/passlib /opt/zato/2.0.5/zato_extra_paths/
-
-
-Bucket-type türünde modeller oluşturunuz ve aktif ediniz.(*root* kullanıcısı iken)
-
-::
-
-    riak-admin bucket-type create models '{"props":{"last_write_wins":true, "allow_mult":false}}'
-    riak-admin bucket-type activate models
-
-
-Aşağıdaki komutlar yardımı ile şemaları güncelleyin.(*ulakbus* kullanıcısı iken)
-::
-
-    source env/bin/activate
-    cd ~/ulakbus/ulakbus
-    python manage.py update_schema --bucket all
-
-Server'ı 8000(default) portunda çalıştırınız.
-
-::
-
-    python runserver.py --help
-    usage: manage.py [-h]
-     {runserver,migrate,flush_model,update_permissions,create_user}
-      ...
-
-    optional arguments:
-    -h, --help            show this help message and exit
-
-    Possible commands:
-    {runserver,migrate,flush_model,update_permissions,create_user}
-    runserver           Run the development server
-    migrate             Creates/Updates SOLR schemas for given model(s)
-    flush_model         REALLY DELETES the contents of buckets
-    update_permissions  Syncs permissions with DB
-    create_user         Creates a new user
-
-Uygulamayı geliştirmeye devam etmek için http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html sayfasına göz atabilirsiniz.
