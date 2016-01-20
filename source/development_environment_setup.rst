@@ -133,7 +133,7 @@ izinlerini güncellemektir.
     $ python manage.py migrate --model all
 
 Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları `ilgili
-belgeden <http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html>` öğrenebilirsiniz.
+belgeden <http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html>`_ öğrenebilirsiniz.
 
 ::
 
