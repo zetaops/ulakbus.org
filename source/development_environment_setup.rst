@@ -24,9 +24,9 @@ Vagrant[1] box hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:
     vagrant init zetaops/ulakbus
 
 
-Vagrant box temel olarak iki türlü kullanılabilir:
-    - Vagrant ile yaratılmış sanal makina içinde geliştirme
-    - Sanal makina servislerini kullanarak kendi makinenizde geliştirme
+Vagrant box(sanal makine, guest) temel olarak iki türlü kullanılabilir:
+    - Vagrant ile yaratılmış sanal makine içinde geliştirme
+    - Sanal makine servislerini kullanarak kendi makinenizde geliştirme
 
 Birincisinde backend sunucusu ve python ortamı box içindedir. Tüm geliştirme işlemleri
 box içinden yürütülür.
@@ -48,7 +48,7 @@ depolarınızı box ile paylaşarak ilgili dizinlere bağlayabilirsiniz. ```git 
 
 Hem git depolarının hem de portların nasıl paylaşılacağı aşağıda bağlantısı verilen örnek
 Vagrantfile icinde mevcuttur. Bu dosyada çok küçük değişiklikler yaparak istediğiniz gibi
-bir vagrant box (sanal makina, guest) elde edebilirsiniz. Örnek Vagrantfile:
+bir vagrant box (sanal makine, guest) elde edebilirsiniz. Örnek Vagrantfile:
 
 ::
 
@@ -88,7 +88,7 @@ başlatabilirsiniz:
 
     vagrant up
 
-Başlayan makinaya giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
+Başlayan makineya giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
 
 Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
 olmadığını kontrol edebilisiniz:
@@ -132,7 +132,8 @@ izinlerini güncellemektir.
 
     $ python manage.py migrate --model all
 
-Bu işlem uzun sürebilir. Komut satırı belgesinde detaylı kullanımına bakabilirsiniz.
+Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları `ilgili
+belgeden <http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html>` öğrenebilirsiniz.
 
 ::
 
@@ -152,9 +153,9 @@ Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları i
 
 Vagrant Box Güncellemek
 +++++++++++++++++++++++
-Ulakbus aktif olarak geliştirilmeye devam etmektedir. Bu sebeple vagrantbox içinde kullanılan bileşenlerin
-sürümlerinin değişmesi, yenilerinin eklenmesi veya başka sebepler ile değişmektedir. Bu değişiklikleri
-https://atlas.hashicorp.com/zetaops/boxes/ulakbus adresinden takip edebilirsiniz.
+Ulakbus aktif olarak geliştirilmeye devam etmektedir. Bu sebeple vagrantbox içinde kullanılan
+bileşenlerin sürümlerinin değişmesi, yenilerinin eklenmesi veya başka sebepler ile değişmektedir.
+Bu değişiklikleri https://atlas.hashicorp.com/zetaops/boxes/ulakbus adresinden takip edebilirsiniz.
 
 Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını güncellemelisiniz:
 
@@ -164,8 +165,8 @@ Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını günce
 
 
 Daha sonra mevcut box destroy edip yeniden init edebilirsiniz. Prensip olarak box içerisinde
-geliştirme süreçlerine ait herhangi bir veri **bulunmamalıdır**. Eğer varsa bu işlemden önce ilgili
-veriler host makinesine alınmalıdır.
+geliştirme süreçlerine ait herhangi bir veri **bulunmamalıdır**. Eğer varsa bu işlemden önce
+ilgili veriler host makinesine alınmalıdır.
 
 ::
 
@@ -185,9 +186,12 @@ Ayrıca Git ve Github iş akışımız hakkında bilgi alabileceğiniz `Ulakbus 
 Yapmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ belgemize göz atabilir, geliştirme
 sürecimizin aktif bir parçası olabilirsiniz.
 
-Eğer bir sorunla karşılaşırsanız, `destek sayfamızda <http://www.ulakbus.org/destek.html>` yer alan kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu **açık ve sarih olarak** bildirmeniz gerektiğini unutmayınız. - Bu çalışmıyor şeklindeki sorularınıza alabileceğiniz en iyi cevap **sessizlik** olacaktır. 
-Nasıl soru sorulacağını ` akıllıca soru sorma yolları belgesinden <http://belgeler.org/howto/smart-questions.html>` öğrenebilirsiniz.
+Eğer bir sorunla karşılaşırsanız, `destek sayfamızda <http://www.ulakbus.org/destek.html>` yer alan
+kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu
+**açık ve sarih olarak** bildirmeniz gerektiğini unutmayınız. "- Bu çalışmıyor" şeklindeki
+sorularınıza alabileceğiniz en iyi cevap **sessizlik** olacaktır.
+
+Nasıl soru sorulacağını `akıllıca soru sorma yolları belgesinden
+<http://belgeler.org/howto/smart-questions.html>` öğrenebilirsiniz.
 
 Kolay gelsin \o/
-
-
