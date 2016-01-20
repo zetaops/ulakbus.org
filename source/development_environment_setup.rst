@@ -186,12 +186,12 @@ Ayrıca Git ve Github iş akışımız hakkında bilgi alabileceğiniz `Ulakbus 
 Yapmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ belgemize göz atabilir, geliştirme
 sürecimizin aktif bir parçası olabilirsiniz.
 
-Eğer bir sorunla karşılaşırsanız, `destek sayfamızda <http://www.ulakbus.org/destek.html>` yer alan
+Eğer bir sorunla karşılaşırsanız, `destek sayfamızda <http://www.ulakbus.org/destek.html>`_ yer alan
 kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu
 **açık ve sarih olarak** bildirmeniz gerektiğini unutmayınız. "- Bu çalışmıyor" şeklindeki
 sorularınıza alabileceğiniz en iyi cevap **sessizlik** olacaktır.
 
 Nasıl soru sorulacağını `akıllıca soru sorma yolları belgesinden
-<http://belgeler.org/howto/smart-questions.html>` öğrenebilirsiniz.
+<http://belgeler.org/howto/smart-questions.html>`_ öğrenebilirsiniz.
 
 Kolay gelsin \o/
