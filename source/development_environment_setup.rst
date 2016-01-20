@@ -13,7 +13,9 @@ kurulup yapılandırılmasını kapsar:
 
 Bu servislerin elle kurulumu ve yapılandırılması yeni başlayanlar için biraz karmaşık
 gelebilir. Ayrıca biraz uzun bir süreçtir. Bu amaçla hızlı başlangıç için bir
-Vagrantbox hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:
+Vagrant[1] box hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:
+
+[1] https://www.vagrantup.com/
 
 ::
 
@@ -22,30 +24,31 @@ Vagrantbox hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:
     vagrant init zetaops/ulakbus
 
 
-Vagrantbox temel olarak iki türlü kullanılabilir:
-    - Box içinde geliştirme
-    - Box servislerini kullanarak kendi makinenizde geliştirme
+Vagrant box temel olarak iki türlü kullanılabilir:
+    - Vagrant ile yaratılmış sanal makina içinde geliştirme
+    - Sanal makina servislerini kullanarak kendi makinenizde geliştirme
 
 Birincisinde backend sunucusu ve python ortamı box içindedir. Tüm geliştirme işlemleri
 box içinden yürütülür.
 
-İkinici kullanımda ise box sadece Riak, Redis ve Zato gibi servisler için kullanılır. Servis
+İkinci kullanımda ise box sadece Riak, Redis ve Zato gibi servisler için kullanılır. Servis
 portları Vagrantfile konfigürasyonu ile host makine ile paylaşılır. Böylelikle box içinde
 çalışan servislere host makineden erişmek mümkün hale gelir.
 
 Python ortamı ise host makinede (kendi işletim sisteminiz üzerinde) bulunur. Bu hız
-ve üretlenlik açısından birincisine göre daha verimlidir. Eğer PyCharm gibi bir IDE
-kullanıyorsanız host makinede çalışmak özellikle detaylı DEBUG için avantajlıdır.
+ve üretkenlik açısından birincisine göre daha verimlidir. Eğer PyCharm gibi bir IDE
+kullanıyorsanız host makinede çalışmak, özellikle detaylı DEBUG için avantajlıdır.
 
 Git depolarınıza her durumda host makine üzerinden erişmenizi öneririz. Host makinedeki
 depolarınızı box ile paylaşarak ilgili dizinlere bağlayabilirsiniz. ```git pull```
 ```git push``` gibi git operasyonları da bu durumda host makine üzerinden gerçekleştirilmelidir.
-Host makine üzerindeki bir git deposu üzerinde box içerisinden işlem yaptığınızda doğrulama,
-yetkilendirme hataları almanız olasıdır.
+
+    Host makine üzerindeki bir git deposu üzerinde box içerisinden işlem yaptığınızda doğrulama,
+    yetkilendirme hataları almanız olasıdır.
 
 Hem git depolarının hem de portların nasıl paylaşılacağı aşağıda bağlantısı verilen örnek
 Vagrantfile icinde mevcuttur. Bu dosyada çok küçük değişiklikler yaparak istediğiniz gibi
-bir box elde edebilirsiniz. Örnek Vagrantfile:
+bir vagrant box (sanal makina, guest) elde edebilirsiniz. Örnek Vagrantfile:
 
 ::
 
@@ -78,14 +81,14 @@ Bu satır host makinenizde kullanıcı dizininiz altında, dev/zetaops/ulakbus y
 Box içindeki dizinin sahibi ve grubunu ``ulakbus`` yapar.
 
 
-Gerekli düzenlemeleri yaptıktan sonra Vagrantbox oluşturduğunuz dizin içerisinde şu komut ile
+Gerekli düzenlemeleri yaptıktan sonra Vagrantbox **oluşturduğunuz dizin içerisinde** şu komut ile
 başlatabilirsiniz:
 
 ::
 
     vagrant up
 
-Başlayan makineye giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
+Başlayan makinaya giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
 
 Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
 olmadığını kontrol edebilisiniz:
@@ -146,18 +149,6 @@ Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları i
     $ pip install -r requirments.txt                              # ulakbus bagimliliklarini kur
     $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
 
-Sonraki Adımlar
-+++++++++++++++
-Geliştirme ortamını başarıyla kurduktan sonra şu belgelerle devam edebilirsiniz:
-
-    * `Ulakbus Geliştirelim <http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html>`_
-    * `ZEngine ile İş Akışı Temelli Uygulama Geliştirme
-      <http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html>`_
-
-Ayrıca Git ve Github iş akışımız hakkında bilgi alabileceğiniz `Ulakbus Depolarına Katkı
-Yapmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ belgemize göz atabilir, geliştirme
-sürecimizin aktif bir parçası olabilirsiniz.
-
 
 Vagrant Box Güncellemek
 +++++++++++++++++++++++
@@ -173,11 +164,30 @@ Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını günce
 
 
 Daha sonra mevcut box destroy edip yeniden init edebilirsiniz. Prensip olarak box içerisinde
-geliştirme süreçlerine ait herhangi bir öğe bulunmamalıdır. Eğer varsa bu işlemden önce ilgili
-öğeler host makinesine alınmalıdır.
+geliştirme süreçlerine ait herhangi bir veri **bulunmamalıdır**. Eğer varsa bu işlemden önce ilgili
+veriler host makinesine alınmalıdır.
 
 ::
 
     $ vagrant box destroy
-    $ vagtant up
+    $ vagrant up
+
+
+Sonraki Adımlar
++++++++++++++++
+Geliştirme ortamını başarıyla kurduktan sonra şu belgelerle devam edebilirsiniz:
+
+    * `Ulakbus Geliştirelim <http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html>`_
+    * `ZEngine ile İş Akışı Temelli Uygulama Geliştirme
+      <http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html>`_
+
+Ayrıca Git ve Github iş akışımız hakkında bilgi alabileceğiniz `Ulakbus Depolarına Katkı
+Yapmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ belgemize göz atabilir, geliştirme
+sürecimizin aktif bir parçası olabilirsiniz.
+
+Eğer bir sorunla karşılaşırsanız, `destek sayfamızda <http://www.ulakbus.org/destek.html>` yer alan kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu **açık ve sarih olarak** bildirmeniz gerektiğini unutmayınız. - Bu çalışmıyor şeklindeki sorularınıza alabileceğiniz en iyi cevap **sessizlik** olacaktır. 
+Nasıl soru sorulacağını ` akıllıca soru sorma yolları belgesinden <http://belgeler.org/howto/smart-questions.html>` öğrenebilirsiniz.
+
+Kolay gelsin \o/
+
 
