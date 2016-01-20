@@ -1,3 +1,52 @@
+++++++++++++++++++++++++++
+Ulakbus'e Katkıda Bulunmak
+++++++++++++++++++++++++++
+
+Ulakbus kaynak kod depoları, geliştiriciler tarafından yaygın şekilde kullanılan Github üzerinde
+bulunmaktadır. Github ``git`` kaynak kod ve sürüm takip sisteminin yanısıra, oldukça güçlü proje
+yönetim ve geliştrici topluluğu inşa etme araçları sunmaktadır. Kolay kullanılabilir arayüzeyi
+sayesinde dağıtık bir geliştirme faaliyetini kolaylıkla sürdürülebilir hale getirmektedir.
+
+Hesabınıza giriş yaptıktan sonra, Ulakbus depolarımızı fork ederek geliştirmeye başlayabilirsiniz.
+Bir Github hesabınız yoksa, `github.com <https://www.github.com>`_ adresinden edinebilirsiniz.
+
+Github İş Akışı
++++++++++++++++
+
+Başlangıç için Github İş Akışı hakkında şu belgeye göz atmanızı şiddetle tavsiye ederiz:
+`Understanding the GitHub Flow <https://guides.github.com/introduction/flow/>`_
+
+Projeye katkıları 'fork & pull request' metodu ile kabul ediyoruz. Bu yönteme göre geliştirme
+döngüsü adımları şu şekildedir:
+
+    * Depoyu fork et,
+    * Uygun bir branch açıp geliştir
+    * Pull request ile kodu Ulakbus depolarına gönder
+
+
+Git İpuçları
+++++++++++++
+Git'in dağıtık yapısı birlikte çalışabilirliği kolaylaştırmaktır. Öte yandan git kullanırken commit
+mesajları, branch isimleri, commit sıklığı ve içeriği, merge / rebase alışkanlıkları gibi usüle
+ilişlin konularda mümkün olduğunca ortak olmak proje yönetimini kolaylaştırmaktadır. Bu sebeple
+Ulakbus projesine katkı yaparken sizlere yardımcı olacak aşağıdaki ipuçlarını dikkatle okumanızı
+öneririz.
+
+Branch Kullanmak
+----------------
+  * Branch kullanmayı alışkanlık haline getirin. Ana branch'e (master) doğrudan push etmeyin.
+  * Eğer bir özellik geliştirmesi yapıyorsanız `feature`, bir hata ile ilgileniyorsanız `bugfix`
+    ön ekini taşımalı: `feature\yeni_ozellik`veya `bugfix\xyx_hatasi`
+  
+
+Kod Yazma İpuçları
+++++++++++++++++++
+İşlevselliğin yanısıra, kodun nasıl yazıldığı, ne kadar optimize yazıldığı ve dökümantasyonu
+oldukça önemlidir. Bu amaçla aşağıdaki ipuçları Ulakbus depolarına kod katkısı yaparken işleri
+herkez açısından kolaylaştıracaktır.
+
+    * PEP8 python için
+
 ++++++++++++
 Git İş-Akışı
 ++++++++++++
