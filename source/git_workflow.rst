@@ -3,12 +3,14 @@ Ulakbus'e Katkıda Bulunmak
 ++++++++++++++++++++++++++
 
 Ulakbus kaynak kod depoları, geliştiriciler tarafından yaygın şekilde kullanılan Github üzerinde
-bulunmaktadır. Github ``git`` kaynak kod ve sürüm takip sisteminin yanısıra, oldukça güçlü proje
+bulunmaktadır. Github ``git`` kaynak kod ve sürüm takip sisteminin yanısıra, oldukça etkili proje
 yönetim ve geliştrici topluluğu inşa etme araçları sunmaktadır. Kolay kullanılabilir arayüzeyi
-sayesinde dağıtık bir geliştirme faaliyetini kolaylıkla sürdürülebilir hale getirmektedir.
+sayesinde dağıtık, çok aktörlü bir yazılım geliştirme faaliyetini kolaylıkla sürdürülebilir hale
+getirmektedir.
 
-Hesabınıza giriş yaptıktan sonra, Ulakbus depolarımızı fork ederek geliştirmeye başlayabilirsiniz.
-Bir Github hesabınız yoksa, `github.com <https://www.github.com>`_ adresinden edinebilirsiniz.
+Github hesabınıza giriş yaptıktan sonra, Ulakbus depolarımızı fork ederek geliştirmeye
+başlayabilirsiniz. Bir Github hesabınız yoksa, `github.com <https://www.github.com>`_
+adresinden edinebilirsiniz.
 
 Github İş Akışı
 +++++++++++++++
@@ -16,12 +18,34 @@ Github İş Akışı
 Başlangıç için Github İş Akışı hakkında şu belgeye göz atmanızı şiddetle tavsiye ederiz:
 `Understanding the GitHub Flow <https://guides.github.com/introduction/flow/>`_
 
-Projeye katkıları 'fork & pull request' metodu ile kabul ediyoruz. Bu yönteme göre geliştirme
-döngüsü adımları şu şekildedir:
+Bu belgede Github üzerinde açık kaynak kodlu projelere nasıl katkı sağlayacağınıza dair bilgiler
+bulunmaktadır. Konua yabancı olanlar için karmaşık gözükse de, aslında oldukça basit olan süreç,
+bu belgede görsel bir şekilde anlatılmıştır.
+
+Belgede adı geçen ``fork & pull request`` yöntemi, bizim de Ulakbus projesine katkı kabul etme
+yöntemimizdir. Bu yönteme göre geliştirme döngüsü adımları şu şekildedir:
 
     * Depoyu fork et,
-    * Uygun bir branch açıp geliştir
-    * Pull request ile kodu Ulakbus depolarına gönder
+    * Uygun bir branch açıp geliştir,
+    * Pull request ile Ulakbus depolarına gönder
+
+Birinci adım arayüzeyde bulunan ``Fork`` butonu yardımıyla kolaylıkla gerkeçleştirilir. Böylelikle
+Ulakbus kod deposunun o anki halini kendi depolarınız arasına girer. Kendinize ait bir depo olduğu
+için dilediğiniz gibi yönetme ve yazma hakkına sahip olursunuz.
+
+Geliştirme faaliyeti bu adımdan sonra başlar. Aşağıda ``Git İpuçları`` ve ``Kod Yazma İpuçları``
+bölümlerinde geliştirme faaliyeti süresince dikkat etmeniz gereken hususları ve Ulakbus projesi
+olarak beklentilerimizi okuyabilirsiniz. Bu bölümlerde yer alan kimi maddeler, genel yazılım
+geliştirme prensipleri ile ilgili hatırlatmalardır. Bazıları ise Ulakbus projesinin çekirdek
+ekibi tarafından da uygulanan, projemize özel hususlardır.
+
+Geliştirme aşaması tamamlanan kod, fork edilen kod deposuna, başka bir ifadeyle ``upstream depo``ya
+yani Ulakbus'e ``pull request`` ile gönderilir.
+
+Github üzerinde çalışmak ile ilgili daha fazla detayı şu bağlantılarda bulabilirsiniz:
+    * https://guides.github.com/activities/hello-world/
+    * https://help.github.com/desktop/guides/contributing/working-with-your-remote-repository-on-github-or-github-enterprise/
+    * http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1
 
 
 Git İpuçları
@@ -32,12 +56,88 @@ ilişlin konularda mümkün olduğunca ortak olmak proje yönetimini kolaylaşt�
 Ulakbus projesine katkı yaparken sizlere yardımcı olacak aşağıdaki ipuçlarını dikkatle okumanızı
 öneririz.
 
+Git Kurulumu
+------------
+    * Linux (Ubuntu):    sudo apt-get install git
+    * MacOS X:           http://help.github.com/mac-git-installation/
+    * Windows:           http://help.github.com/win-git-installation/
+
+İlk kurulumun hemen arından git'e kendinizi tanıtmayı unutmayınız:
+
+::
+
+    git config --global user.name "Emo Coder"
+    git config --global user.email "emo@zetaops.io"
+
+
+Git hakkında şu bağlantılardan detaylı bilgi alabilirsiniz:
+    * http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+    * https://try.github.io/levels/1/challenges/1
+    * http://gitref.org
+    * http://www.slideshare.net/kunthar/git-101-15229948
+    * http://www.sbf5.com/~cduan/technical/git/
+
+Eğer tasarımcıysanız aşağıdaki bağlantıda tasarımcıların git kullanımı konusunda iyi bir makale
+bulabilirsiniz: http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
+
 Branch Kullanmak
 ----------------
-  * Branch kullanmayı alışkanlık haline getirin. Ana branch'e (master) doğrudan push etmeyin.
-  * Eğer bir özellik geliştirmesi yapıyorsanız `feature`, bir hata ile ilgileniyorsanız `bugfix`
-    ön ekini taşımalı: `feature\yeni_ozellik`veya `bugfix\xyx_hatasi`
-  
+    * Branch kullanmayı alışkanlık haline getirin. Ana branch'e (master) doğrudan push etmeyin.
+    * Brnach adları eğer bir özellik geliştirmesi yapıyorsanız `feature/`, bir hata ile
+      ilgileniyorsanız `bugfix/` ön ekini taşımalıdır: ``feature/yeni_ozellik`` veya
+      ``bugfix/xyz_hatasi``
+    * Branchlerinizi düzenli şekilde rebase ederek, temel branchlerdeki değişikliklerden
+      uzaklaşmamasını sağlayınız. Ulakbus resmi depoları **Git Flow** kullanmaktadır. Bu sebeple
+      Ulakbus resmi deposu temel branch'i ``develop`` adını taşır. Eğer kendi deponuza Ulakbus
+      projesini ``upstream`` olarak eklediyseniz ``upstream/develop`` ile bu branch'e
+      erişebilirsiniz.
+
+**Git Flow** Ulakbus projesinde kullanılan branch yönetim modeli ve aracıdır. Bu modeli
+kullanmak yukarıda bahsedilenlerin yanısıra başka birçok faydayı beraberinde getirir.
+Zorunlu olmamakla birlikte, ``git`` kullanım alışkanlıklarınızı pozitif şekilde
+değiştireceğine inandığımız bu aracı ve metodu kullanmanı daha fazla uyumluluk için
+öneririz. Git Flow konusunda detaylı bilgileri bu dökümanın en altında bulabilirsiniz.
+
+
+Commit Mesajları
+----------------
+    * Mesajlarını yazarken aşağıdaki etiketlerden faydalanabilirsiniz (bakınız: http://keepachangelog.com/):
+
+      * ADD - Yapılan değişiklik yeni bir özellik ekliyorsa,
+      * CHANGE - Mevcut bir işlevsellikte değişiklik yapılıyorsa,
+      * DEPRECATE - daha önce mevcut olan bir özelliğin geliştirilmesinden vazgeçiliyorsa,
+      * REMOVE - Vazgeçilen özellikler tamamen çıkarılıyorsa,
+      * FIX - Herhangi bir hata gideriliyorsa,
+      * SECURITY - Güvenlik ile ilgili bir değişiklik yapılıyorsa.
+      * REFACTOR - Kod işlevsellikler değiştirilmeden optimizasyon gibi amaçlar ile değiştiriliyorsa
+
+    * Commit mesajlarınızın ilk satırı mümkün olduğunca kısa ve çalışmalarınızı özetlemelidir. 50 - 70
+      karakter arası.
+    * Detaylar commit summary bölümünde bulunmalıdır.
+    * Geliştirme faaliyetleriniz için gereken tüm depolarda issue açıp, commit mesajlarınızda
+      zetaops/ulakbusGH-145 şeklinde referanslar veriniz.
+
+
+Upstream Depo Eklemek
+---------------------
+Fork ettiğiniz Ulakbus deposunu kendi git deponuzun ``upstream`` deposu olarak tanımlamak, ana depodaki
+değişikliklere istenildiğinde daha kolay erişebilmek için faydalı olabilir. Örneğin:
+
+::
+
+    git remote add upstream https://github.com/zetaops/ulakbus.git
+
+Kendi remote deponuza origin adiyla, ulakbus depolarına da upstream adıyla erişebilirsiniz. Upstream
+branchleri kendi branchlerinizi rebase etmek, kod karşılaştırması yapmak, yeni geliştirilen özellikleri
+gözden geçirmek amacıyla kullanabilirsiniz.
+
+::
+
+    git rebase upstream/master
+    git diff upstream/master..master
+    git checkout upstream/feature/yeni_ozellik
+
+gibi komutlar ile upstream kullanabilirsiniz.
 
 Kod Yazma İpuçları
 ++++++++++++++++++
@@ -45,273 +145,7 @@ Kod Yazma İpuçları
 oldukça önemlidir. Bu amaçla aşağıdaki ipuçları Ulakbus depolarına kod katkısı yaparken işleri
 herkez açısından kolaylaştıracaktır.
 
-    * PEP8 python için
-
-++++++++++++
-Git İş-Akışı
-++++++++++++
-
-**HİÇBİR ZAMAN MASTER'A PUSH ETMEYİNİZ, DAİMA BRANCH KULLANINIZ.**
-
-* Lütfen TÜM dökümanı okuyunuz.
-
-* Paket bağımlılıklarını sürekli iki kere kontrol ediniz.
-
-* PATH değişkenlerini sürekli iki kere kontrol ediniz.
-
-* Depoya büyük değişiklikler göndermeyiniz.Küçük değişiklikler yaptıkça depoya gönderiniz.
-
-* requirements.txt dosyasına yeni kütüphaneleri eklemeyi unutmayınız.
-
-* Asla MASTER branch'i rebase etmeyi unutmayınız.
-
-* Gelişim raporları düzenli olarak her gün Redmine'a yüklenmeli.
-
-----------------
-**Git kurulumu**
-----------------
-
-* Linux ->      sudo apt-get install git-core
-
-* Mac OS X ->    bakınız http://help.github.com/mac-git-installation/
-
-* Windows ->     bakınız http://help.github.com/win-git-installation/
-
-Aşağıdaki komutları çalıştırınız. (Kendinize ait isim ve e-mail adresini değiştirmeyi unutmayınız.)
-
-::
-
-    git config --global user.name "Emo Coder"
-    git config --global user.email "emo@zetaops.io"
-
-**Git Temelleri**
-
-Git temellerini öğrenmek için aşağıdaki kaynakları okuyunuz.
-
-- http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
-- https://try.github.io/levels/1/challenges/1
-- http://gitref.org
-- http://www.slideshare.net/kunthar/git-101-15229948
-- http://www.sbf5.com/~cduan/technical/git/
-
-Eğer tasarımcı iseniz :  http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-designers/
-
-Eğer yazılım geliştirici değilseniz şu linkleri takip edebilirsiniz:
-
-- http://oyun.mynet.com/okey
-- https://aylak.com/batak-oyna/
-- http://www.oyunoyna.com
-
-
--------------------
-**Branch Yönetimi**
--------------------
-
-* Master branch sadece gözden geçirilmiş ve test edilmiş kodu içerir. Sadece yetkili geliştiriciler master'a kod gönderebilir (commit).
-
-* Her yeni özellik ve yazılım hatası düzeltimi, yeni bir branch içinde geliştirilir.
-
-* Yeni branch en son master temel alınarak başlatılmalıdır.
-
-* Her branch, master branch ile merge edilmeden önce en az bir başka geliştirici tarafından ve test edilmelidir.
-
-* Her branch, master branch ile merge edilmeden önce en son master branch ile rebase edilmelidir.
-
-* Her branch “feature/345/chat” veya “bug/415/crashing_on_stop” şeklinde adlandırılmalıdır. Redmine ya da github issue adı ve kısa açıklaması issue adından gelmelidir.
-
-
-Tüm branchleri görüntülemek için:
-
-::
-
-    git branch -a
-
-----------------
-**Kodu edinmek**
-----------------
-
-Mevcut kod ile çalışmak için mutlaka "Geliştirme Ortamı Kurulumu" http://www.ulakbus.org/wiki/development_environment_setup.html belgesini inceleyiniz.
-Bu belgede hem ortam kurulumu hem de depoların bağlanması detaylı olarak anlatılmaktadır.
-
-
-------------------------------
-**Günlük geliştirme iş akışı**
-------------------------------
-
-Depolarımızın tamamı Github üzerinde yer almaktadır. Bu sebeple Github üzerinde çalışmak konusunda kendinizi eğitiniz.
-
-* https://guides.github.com/activities/hello-world/
-* https://help.github.com/desktop/guides/contributing/working-with-your-remote-repository-on-github-or-github-enterprise/
-* http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1
-
-Github üzerinde kendinize bir kullanıcı hesabı açınız. Depolarımızı kendi Github hesabınız üzerinden fork ediniz.
-Artık kendi github hesabınızda ulakbus ve ulakbus-ui temel depolarınız görülecektir.
-Github üzerinde HTTPS clone URL ibaresi altındaki satırı kopyalayarak klonlama işlemine hazırlanın:
-
-::
-
-    mkdir -p ~/development/zetaops/
-    cd ~/development/zetaops/
-    mkdir repos
-    mkdir vms
-    cd repos
-    git clone https://github.com/sizin_user_adınız/ulakbus
-    git clone https://github.com/sizin_user_adınız/ulakbus-ui
-    cd ulakbus
-    git remote add origin https://github.com/zetaops/ulakbus.git
-    cd ~/development/zetaops/repos/ulakbus-ui
-    git remote add origin https://github.com/zetaops/ulakbus-ui.git
-
-
-Bu şekilde kendi fork deponuz üzerinde çalışacaksınız ve bizim depomuz, sizin deponuza "upstream" depo olarak eklenecektir.
-Her bir depo içinde ne olup bittiğini görsel olarak görmek isterseniz, konsolda tig kullanabilirsiniz. apt-get install tig, macports ile sudo port install tig
-Eğer penceresel bir ortamdan geliyorsanız SourceTree kullanabilirsiniz. Tasarımcılar hariç, tüm geliştirme ortamı Ubuntu, Debian, Pardus, ArchLinux ya da MacOS gibi işletim
-sistemine sahip bilgisayarlarda bulunmaktadır. Bu sebeple sinir sahibi olmak istemiyorsanız, w$ndoze üzerinde geliştirme yapmaya çalışmayınız.
-
-Yeni branch yaratmak için:
-
-::
-
-    cd path/to/project
-    git checkout master
-    git pull --rebase
-    git branch (feature/bug)/some-new-feature/bug
-
-Programlamadan önceki hazırlık:
-
-::
-
-    cd path/to/project
-
-    git checkout master
-    git pull --rebase
-    git checkout feature/some-feature
-    git rebase master
-
-
-
----------------------------------
-**feature/bug Üzerinde Çalışmak**
----------------------------------
-
-::
-
-    git checkout feature/some-feature
-
-Yeni branch üzerinde gereken düzenlemelerinizi yapınız. Daha sonra commit ile dosyalarınızı ekleyin.
-
-::
-
-   git add path/to/changed/file1    # commit edilecek her dosyayı
-   git add path/to/another-file2    # bu şekilde ekleyin.
-   git commit -m  "bu commit neden yapılıyor."      #lütfen fix, düzeltme, herşey gönderildi gibi saçma sapan açıklamalar yazmayın. ne yaptıysanız bunu düzgün bir şekilde ifade edin.
-
-
-Her bir değişiklikte commit edin. Yüzlerce değişiklik yaptıktan sonra kocaman bir commit yapmayın!
-
-
-Değişikliklerin geri gönderilmesi:
-::
-
-    git pull origin feature/some-featur     # make sure that push will be successful
-                                            # by ensuring that local changes
-                                            # are applicable on top of the
-                                            # latest code; may result in conflicts
-
-    git pull --rebase origin master         # rebase with master
-    git push origin feature/some-feature	# pushes local changes to server, push may be
-                                            # rejected if you haven't done previous step
-
----------------------------------
-**Branch master ile merge etmek**
----------------------------------
-
-::
-
-    git checkout master         			    # prepare local master by
-    git pull --rebase origin master	    	    # ensuring that your local master is up to date
-
-    git checkout feature/some-feature
-    git rebase master       				    # it ensure that following merge will be
-                                                # successful AND that all merge conflicts are
-                                                # handled in feature branch, not master
-    git checkout master
-    git merge --no-ff feature/some-feature		# use of --no-ff will ensure that merge
-                                                # is visible in history graph as a
-                                                # separate branch
-
-    git push origin master		                # push changes to origin master( on the server )
-
-EĞER NE YAPTIĞINIZIN FARKINDA DEĞİLSENİZ, BU KODLARDAN UZAK DURMANIZI ÖNERİRİZ.
-
-::
-
-    git branch -d feature/some-feature  		# delete local feature branch
-    git branch -r -d feature/some-feature		# delete remote feature branch ( if needed, be aware to do this )
-
--------------
-**Reverting**
--------------
-
-::
-
-    git checkout -- path/to/file	    # reverts changes in particular file
-                                        # to last version in repo
-    git reset --hard HEAD	        	# reverts ALL changes made in your working copy
-                                        # handy if working copy is a mess
-                                        # (e.g. failed merge, rm -rf *, etc)
-
----------
-**Magit**
----------
-
-Eğer emacs kullanıyorsanız, Magit kullanınız.
-
-http://philjackson.github.com/magit/
-
-Not: Magit sizin ihtiyacınızın olduğu kadar fonksiyoneldir, ama bazen Git'i komut satırından kullanmak akıllıcadır! (örn *git merge --no-ff* komutunu magitte kullanmak mümkün değildir.)
-
-Okuyunuz:
-
-http://philjackson.github.com/magit/magit.html
-
-Eğer hala öğrenmek istiyorsanız:
-
-http://daemianmack.com/magit-cheatsheet.html
-
---------------
-**Code style**
---------------
-
-Gereksiz boşluklara dikkat ediniz.
-
-Boşlukları ve tabları karıştırmayınız.
-
-80 karakterden daha uzun satırlar kullanmayınız.
-
-Python kodları için harfiyen PEP8 kurallarını takip edin ve uygulayın.
-
----------------------------
-**Writing Commit Messages**
----------------------------
-Commitlerinizi böyle yapılandırınız:
-
-Bir satırın özeti (50 karakterden az)
-
-Uzun açıklamalar (72 karakterde sınırla)
-
------------
-**Summary**
------------
-
-* 50 karakterden daha az!
-
-* Neler değişti.
-
-* Zorunlu şimdiki zaman (fix, add, change)
-
-- Fix bug 123
-- Add 'foobar' komutu
-- Change default timeout to 123
-
-* No period
+    * PEP8 Python dili için evrensel bir standarttır. Lütfen PEP8 klavuzuna uyunuz.
+    * Kod içi dökümantasyonu ``Google Style Python Docstrings`` yönergeleri ile
+      yapmaktayız. Nasıl kullanılacağı https://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html
+      adresinde bulunmaktadır.
