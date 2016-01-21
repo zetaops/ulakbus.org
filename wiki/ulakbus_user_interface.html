@@ -19,7 +19,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -34,10 +34,10 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
-    <link rel="top" title="Ulakbus 0.0.3 belgelendirme çalışması" href="wiki.html" />
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
-    <link rel="next" title="Git İş-Akışı" href="git_workflow.html" />
-    <link rel="prev" title="Geliştirme Ortamı Kurulumu(Backend)" href="development_environment_setup.html" />
+    <link rel="next" title="Ulakbus’e Katkıda Bulunmak" href="git_workflow.html" />
+    <link rel="prev" title="ULAKBUS Geliştirme Ortamının Kurulumu" href="development_environment_setup.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -168,12 +168,12 @@
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
+          <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="development_environment_setup.html" title="Geliştirme Ortamı Kurulumu(Backend)"
+          <a href="development_environment_setup.html" title="ULAKBUS Geliştirme Ortamının Kurulumu"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.3 belgelendirme çalışması</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
@@ -185,8 +185,8 @@
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Geliştirme Ortamı Kurulumu(Frontend)</a><ul>
-<li><a class="reference internal" href="#gelistirme-ortaminin-hazirlanmasi"><strong>Geliştirme Ortamının Hazırlanması</strong></a></li>
-<li><a class="reference internal" href="#gelistirme-dongusu"><strong>Geliştirme Döngüsü</strong></a></li>
+<li><a class="reference internal" href="#get-ready-for-development"><strong>Get Ready For Development</strong></a></li>
+<li><a class="reference internal" href="#development-cycle"><strong>Development Cycle</strong></a></li>
 <li><a class="reference internal" href="#deneme"><strong>Deneme</strong></a></li>
 <li><a class="reference internal" href="#prensipler"><strong>Prensipler</strong></a><ul>
 <li><a class="reference internal" href="#git"><strong>Git:</strong></a></li>
@@ -201,10 +201,10 @@
 
   <h4>Önceki konu</h4>
   <p class="topless"><a href="development_environment_setup.html"
-                        title="önceki bölüm">Geliştirme Ortamı Kurulumu(Backend)</a></p>
+                        title="önceki bölüm">ULAKBUS Geliştirme Ortamının Kurulumu</a></p>
   <h4>Sonraki konu</h4>
   <p class="topless"><a href="git_workflow.html"
-                        title="sonraki bölüm">Git İş-Akışı</a></p>
+                        title="sonraki bölüm">Ulakbus&#8217;e Katkıda Bulunmak</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -235,59 +235,46 @@
             
   <div class="section" id="gelistirme-ortami-kurulumu-frontend">
 <h1>Geliştirme Ortamı Kurulumu(Frontend)<a class="headerlink" href="#gelistirme-ortami-kurulumu-frontend" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<div class="section" id="gelistirme-ortaminin-hazirlanmasi">
-<h2><strong>Geliştirme Ortamının Hazırlanması</strong><a class="headerlink" href="#gelistirme-ortaminin-hazirlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="get-ready-for-development">
+<h2><strong>Get Ready For Development</strong><a class="headerlink" href="#get-ready-for-development" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Github üzerinde <code class="docutils literal"><span class="pre">https://github.com/zetaops/ulakbus-ui/</span></code> adresindeki repoyu github&#8217;da oluşturacağınız hesabınızla fork ediniz. Fork etme işlemi için, Github sitesinde sağ üstte yer alan fork butonunu kullanın.</p>
-<p>Fork ettiğiniz ve size ait olan bu repoyu
-<code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:sizin_kullanici_adiniz/ulakbus-ui.git</span></code> komutu ile kendi bilgisayarınıza indirin. Lütfen içinde boşluk olan klasör isimleri kullanmayın.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:zetaops/ulakbus-ui.git</span></code> reposunu indirin.</p>
 <blockquote>
 <div><p><em>git kullanımını bilmiyorsanız, aşağıdaki bağlantılardan yardım alabilirsiniz.</em></p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.ulakbus.org/wiki/git_workflow.html">http://www.ulakbus.org/wiki/git_workflow.html</a></li>
 <li><a class="reference external" href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
 <li><a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Nodejs&#8217;yi işletim sisteminize göre indirin ve kurun.</p>
+<li><p class="first">Nodejs&#8217;yi indirin ve kurun.</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="https://nodejs.org/download/">https://nodejs.org/download/</a></li>
 </ul>
-<p>Eğer Pardüs, Debian, Ubuntu kullanıyorsanız aşağıdaki şekilde kurabilirsiniz.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Bower&#8217;ı kurunuz <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">bower</span></code></p>
+</li>
+<li><p class="first"><em>bower.json</em> içinde listelenen paketleri yüklemek için <code class="docutils literal"><span class="pre">bower</span> <span class="pre">install</span></code> komutunu çalıştırınız.</p>
+</li>
+<li><p class="first"><em>package.json</em> içinde listelenen paketleri yüklemek için <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></code> komutunu çalıştırınız.</p>
+</li>
+<li><p class="first">Tüm paketlerin yüklenmesininin ardından aşağıdaki komut sayesinde <em>http server</em> &#8216;ı çalıştırabilirsiniz.</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">npm</span> <span class="pre">start</span></code></p>
 </div></blockquote>
 </li>
 </ol>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install nodejs
-sudo apt-get install npm
-</pre></div>
+<p><em>Uygulamayı sunmak için başka http server kullanabilirsiniz.</em></p>
 </div>
-<ol class="arabic simple" start="3">
-<li>Daha sonra Bower&#8217;ı kurunuz <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">bower</span></code></li>
-<li><em>bower.json</em> içinde listelenen paketleri yüklemek için <code class="docutils literal"><span class="pre">bower</span> <span class="pre">install</span></code> komutunu çalıştırınız.</li>
-<li><em>package.json</em> içinde listelenen paketleri yüklemek için <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></code> komutunu çalıştırınız.</li>
-<li>Tüm paketlerin yüklenmesininin ardından aşağıdaki komut sayesinde <em>http server</em> &#8216;ı çalıştırabilirsiniz.</li>
-</ol>
-<div class="highlight-python"><div class="highlight"><pre>npm start
-</pre></div>
-</div>
-<p>Bu komutu dist dizini içindeyken çalıştırınız.</p>
-<p><em>Uygulamayı sunmak için başka bir http server kullanabilirsiniz.</em></p>
-<p>Python kurulu ise http sunucu olarak kullanmak ve port seçebilmek için</p>
-<div class="highlight-python"><div class="highlight"><pre>python -m SimpleHTTPServer 9000
-</pre></div>
-</div>
-</div>
-<div class="section" id="gelistirme-dongusu">
-<h2><strong>Geliştirme Döngüsü</strong><a class="headerlink" href="#gelistirme-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="development-cycle">
+<h2><strong>Development Cycle</strong><a class="headerlink" href="#development-cycle" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şu an gerekli repo&#8217;ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.</p>
 <p>Daha ileri programlama teknikleri kullanımları için, <a class="reference external" href="http://www.extremeprogramming.org/introduction.html">http://www.extremeprogramming.org/introduction.html</a> sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.</p>
-<a class="reference internal image-reference" href="_images/planning_feedback_loops.png"><img alt="_images/planning_feedback_loops.png" class="align-center" src="_images/planning_feedback_loops.png" /></a>
+<a class="reference internal image-reference" href="_images/planning_feedback_loops.png"><img alt="_images/planning_feedback_loops.png" class="align-center" src="_images/planning_feedback_loops.png" style="width: 640.0px; height: 588.0px;" /></a>
 <p>Kodlarken aşağıdaki adımları izleyiniz.</p>
 <ul class="simple">
-<li>Github üzerinde kendi reponuzda <code class="docutils literal"><span class="pre">https://github.com/sizin_kullanici_adiniz/ulakbus-ui/</span></code></li>
-<li>Mutlaka bizim repolarımızı upstream repo olarak fork ettiğiniz depoya ekleyiniz ve işlem yapmadan önce güncelleyiniz. Detaylı bilgi için Git İş Akışı belgemize bakın.</li>
 <li>Yeni bir tane branch oluşturun. Örnek olarak(e.g: search_func)</li>
 <li><code class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;branch&gt;</span></code></li>
 <li><code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code></li>
@@ -315,9 +302,9 @@ sudo apt-get install npm
 <div class="section" id="git">
 <h3><strong>Git:</strong><a class="headerlink" href="#git" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <ul class="simple">
-<li>Fork edilmiş kendi deponuzda daima yeni bir özellik için branch oluşturun. İşiniz bitince bizim repolarımıza Pull Request (PR) açın.</li>
-<li><strong>Hiçbir zaman MASTER BRANCH&#8217;e commit etmeyiniz</strong></li>
-<li>Daima küçük değişiklikleri commit edin. Devasa büyük değişiklikleri commit etmeyin.</li>
+<li>Her zaman branchler ile çalışır.</li>
+<li><strong>Hiçbir zaman MASTER BRANCH&#8217;e karışmayınız(müdahele etmeyiniz)!!</strong></li>
+<li>Küçük değişiklikleri commitleyiniz.</li>
 </ul>
 </div>
 <div class="section" id="kod">
@@ -360,12 +347,12 @@ sudo apt-get install npm
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
+          <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="development_environment_setup.html" title="Geliştirme Ortamı Kurulumu(Backend)"
+          <a href="development_environment_setup.html" title="ULAKBUS Geliştirme Ortamının Kurulumu"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.3 belgelendirme çalışması</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>

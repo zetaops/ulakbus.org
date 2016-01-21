@@ -1,25 +1,21 @@
 
-
-
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-    <title>ULAKBUS</title>
-
+    <title>Index &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
     
-    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.6',
+        VERSION:     '0.6.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,164 +24,21 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script type="text/javascript" src="_static/bizstyle.js"></script>
-    <link rel="top" title="Ulakbus API Documentation 0.0.6 belgelendirme çalışması" href="index.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
-    <![endif]-->
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="ulakbus.html" /> 
   </head>
   <body role="document">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="/img/favicon.ico">
-
-    <title>Ulakbüs</title>
-    <link rel="stylesheet"
-          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Bootstrap Core CSS -->
-    <link href="_static/css/bootstrap.css" rel="stylesheet">
-    <link href="_static/css/style.css" rel="stylesheet">
-    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
-
-    <script>
-        /**
-         * Check an href for an anchor. If exists, and in document, scroll to it.
-         * If href argument omitted, assumes context (this) is HTML Element,
-         * which will be the case when invoked by jQuery after an event
-         */
-        function scroll_if_anchor(href) {
-            href = typeof(href) == "string" ? href : $(this).attr("href");
-
-            // If href missing, ignore
-            if (!href) return;
-
-            // You could easily calculate this dynamically if you prefer
-            var fromTop = 100;
-
-            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
-            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
-            var $target = $(href);
-
-            // Older browsers without pushState might flicker here, as they momentarily
-            // jump to the wrong position (IE < 10)
-            if ($target.length) {
-                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
-                if (history && "pushState" in history) {
-                    history.pushState({}, document.title, window.location.pathname + href);
-                    return false;
-                }
-            }
-        }
-
-        // When our page loads, check to see if it contains and anchor
-        scroll_if_anchor(window.location.hash);
-
-        // Intercept all anchor clicks
-        $("body").on("click", "a[href^='#']", scroll_if_anchor);
-    </script>
-    </head>
-
-    <body id="page-top" data-target=".navbar-fixed-top">
-    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="/index.html" class="logo"><img
-                            src="http://www.ulakbus.org/ulakbus.png"></a>
-                </div>
-
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right main-nav">
-
-
-
-                        <li>
-                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
-                        </li>
-                        <li>
-                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
-                        </li>
-                        <li>
-                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Fork me on github icons -->
-    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
-                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-                                                              alt="Fork me on GitHub"
-                                                              data-canonical-src="_static/forkme_right_red.png"></a>
-
-
-    <div id="doccontainer">
-
     <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="#" title="Genel Dizin"
-             accesskey="I">dizin</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">Ulakbus API Documentation 0.0.6 belgelendirme çalışması</a> &raquo;</li> 
+          <a href="#" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="ulakbus.html">Ulakbus API Documentation 0.6.6 documentation</a> &raquo;</li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
-            </a></p>
-
-   
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Hızlı Arama</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -193,39 +46,578 @@
           <div class="body" role="main">
             
 
-<h1 id="index">Dizin</h1>
+<h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
  
 </div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate._allSatisfied">_allSatisfied() (ulakbus.lib.pdfdocument.document.ReportingDocTemplate method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate._allSatisfied">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.address">address() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.address">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.address_head">address_head() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.address_head">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.afterFlowable">afterFlowable() (ulakbus.lib.pdfdocument.document.ReportingDocTemplate method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.afterFlowable">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.append">append() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.append">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.bottom_table">bottom_table() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.bottom_table">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.BottomSpacer">BottomSpacer (class in ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.BottomSpacer">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.BottomTable">BottomTable (class in ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.BottomTable">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.ZatoService.check_turkish_identity_number">check_turkish_identity_number() (ulakbus.services.zato_wrapper.ZatoService static method)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService.check_turkish_identity_number">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.confidential">confidential() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.confidential">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.views.html#ulakbus.views.dashboard.Dashboard">Dashboard (class in ulakbus.views.dashboard)</a>, <a href="ulakbus.views.dashboard.html#ulakbus.views.dashboard.Dashboard">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.html#ulakbus.views.dashboard.Dashboard.do_view">do_view() (ulakbus.views.dashboard.Dashboard method)</a>, <a href="ulakbus.views.dashboard.html#ulakbus.views.dashboard.Dashboard.do_view">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.draw_svg">draw_svg() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.draw_svg">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.draw_watermark">draw_watermark() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.draw_watermark">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.dummy_stationery">dummy_stationery() (in module ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.dummy_stationery">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.Empty">Empty (class in ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.Empty">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.end_keeptogether">end_keeptogether() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.end_keeptogether">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.generate">generate() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.generate">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.generate_style">generate_style() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.generate_style">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.ZatoService.get_uri">get_uri() (ulakbus.services.zato_wrapper.ZatoService method)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService.get_uri">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.h1">h1() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.h1">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.h2">h2() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.h2">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.h3">h3() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.h3">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapService.HITAP_USER">HITAP_USER (ulakbus.services.zato_wrapper.HitapService attribute)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapService.HITAP_USER">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapHizmetCetvelGetir">HitapHizmetCetvelGetir (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapHizmetCetvelGetir">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapHizmetCetveliSenkronizeEt">HitapHizmetCetveliSenkronizeEt (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapHizmetCetveliSenkronizeEt">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriEkle">HitapMahkemeBilgileriEkle (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriEkle">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriGuncelle">HitapMahkemeBilgileriGuncelle (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriGuncelle">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriSil">HitapMahkemeBilgileriSil (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriSil">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapService">HitapService (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapService">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.HitapServiceError">HitapServiceError</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapServiceError">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.hr">hr() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.hr">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.hr_mini">hr_mini() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.hr_mini">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_confidential_report">init_confidential_report() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_confidential_report">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_letter">init_letter() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_letter">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_report">init_report() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_report">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_templates">init_templates() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.init_templates">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.KPSAdresBilgileriGetir">KPSAdresBilgileriGetir (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.KPSAdresBilgileriGetir">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.MarkupParagraph">MarkupParagraph() (in module ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.MarkupParagraph">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.MernisKimlikBilgileriGetir">MernisKimlikBilgileriGetir (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.MernisKimlikBilgileriGetir">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.mini_html">mini_html() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.mini_html">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.next_frame">next_frame() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.next_frame">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.normalize">normalize() (in module ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.normalize">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.p">p() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.p">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.p_markup">p_markup() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.p_markup">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index">page_index() (ulakbus.lib.pdfdocument.document.ReportingDocTemplate method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.page_index_string">page_index_string() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.page_index_string">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index_string">(ulakbus.lib.pdfdocument.document.ReportingDocTemplate method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index_string">[1]</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.pagebreak">pagebreak() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.pagebreak">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.Paragraph">Paragraph() (in module ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.Paragraph">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument">PDFDocument (class in ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.register_fonts_from_paths">register_fonts_from_paths() (in module ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.register_fonts_from_paths">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate">ReportingDocTemplate (class in ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.ReportingDocTemplate">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.restart">restart() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.restart">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.RestartPageBreak">RestartPageBreak (class in ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.RestartPageBreak">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.sanitize">sanitize() (in module ulakbus.lib.pdfdocument.document)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.sanitize">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.show_boundaries">show_boundaries (ulakbus.lib.pdfdocument.document.PDFDocument attribute)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.show_boundaries">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.html#ulakbus.views.dashboard.Dashboard.show_view">show_view() (ulakbus.views.dashboard.Dashboard method)</a>, <a href="ulakbus.views.dashboard.html#ulakbus.views.dashboard.Dashboard.show_view">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.small">small() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.small">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.smaller">smaller() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.smaller">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.spacer">spacer() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.spacer">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.start_keeptogether">start_keeptogether() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.start_keeptogether">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.table">table() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.table">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.html#ulakbus.lib.convert.tl_curreny">tl_curreny() (in module ulakbus.lib.convert)</a>, <a href="ulakbus.lib.convert.html#ulakbus.lib.convert.tl_curreny">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.ul">ul() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.ul">[1]</a>
+  </dt>
+
+      
+  <dt><a href="index.html#module-ulakbus">ulakbus (module)</a>, <a href="source/ulakbus.html#module-ulakbus">[1]</a>, <a href="ulakbus.html#module-ulakbus">[2]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.html#module-ulakbus.lib">ulakbus.lib (module)</a>, <a href="ulakbus.lib.html#module-ulakbus.lib">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.html#module-ulakbus.lib.convert">ulakbus.lib.convert (module)</a>, <a href="ulakbus.lib.convert.html#module-ulakbus.lib.convert">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#module-ulakbus.lib.pdfdocument">ulakbus.lib.pdfdocument (module)</a>, <a href="ulakbus.lib.pdfdocument.html#module-ulakbus.lib.pdfdocument">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#module-ulakbus.lib.pdfdocument.document">ulakbus.lib.pdfdocument.document (module)</a>, <a href="ulakbus.lib.pdfdocument.document.html#module-ulakbus.lib.pdfdocument.document">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#module-ulakbus.services">ulakbus.services (module)</a>, <a href="ulakbus.services.html#module-ulakbus.services">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.html#module-ulakbus.services.authentication">ulakbus.services.authentication (module)</a>, <a href="ulakbus.services.authentication.html#module-ulakbus.services.authentication">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.common.html#module-ulakbus.services.common">ulakbus.services.common (module)</a>, <a href="ulakbus.services.common.html#module-ulakbus.services.common">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.personel.html#module-ulakbus.services.personel">ulakbus.services.personel (module)</a>, <a href="ulakbus.services.personel.html#module-ulakbus.services.personel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.services.personel.hitap.html#module-ulakbus.services.personel.hitap">ulakbus.services.personel.hitap (module)</a>, <a href="ulakbus.services.personel.hitap.html#module-ulakbus.services.personel.hitap">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#module-ulakbus.services.zato_wrapper">ulakbus.services.zato_wrapper (module)</a>, <a href="ulakbus.services.zato_wrapper.html#module-ulakbus.services.zato_wrapper">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.html#module-ulakbus.settings">ulakbus.settings (module)</a>, <a href="ulakbus.settings.html#module-ulakbus.settings">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.tasks.html#module-ulakbus.tasks">ulakbus.tasks (module)</a>, <a href="ulakbus.tasks.html#module-ulakbus.tasks">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.html#module-ulakbus.views">ulakbus.views (module)</a>, <a href="ulakbus.views.html#module-ulakbus.views">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.common.html#module-ulakbus.views.common">ulakbus.views.common (module)</a>, <a href="ulakbus.views.common.html#module-ulakbus.views.common">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.html#module-ulakbus.views.dashboard">ulakbus.views.dashboard (module)</a>, <a href="ulakbus.views.dashboard.html#module-ulakbus.views.dashboard">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.ders.html#module-ulakbus.views.ders">ulakbus.views.ders (module)</a>, <a href="ulakbus.views.ders.html#module-ulakbus.views.ders">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.ogrenci.html#module-ulakbus.views.ogrenci">ulakbus.views.ogrenci (module)</a>, <a href="ulakbus.views.ogrenci.html#module-ulakbus.views.ogrenci">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.ogrenci.html#module-ulakbus.views.ogrenci.basari_durumu">ulakbus.views.ogrenci.basari_durumu (module)</a>, <a href="ulakbus.views.ogrenci.basari_durumu.html#module-ulakbus.views.ogrenci.basari_durumu">[1]</a>
+  </dt>
+
+      
+  <dt><a href="source/ulakbus.views.personel.html#module-ulakbus.views.personel">ulakbus.views.personel (module)</a>, <a href="ulakbus.views.personel.html#module-ulakbus.views.personel">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.PDFDocument.watermark">watermark() (ulakbus.lib.pdfdocument.document.PDFDocument method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.PDFDocument.watermark">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.lib.pdfdocument.html#ulakbus.lib.pdfdocument.document.BottomSpacer.wrap">wrap() (ulakbus.lib.pdfdocument.document.BottomSpacer method)</a>, <a href="ulakbus.lib.pdfdocument.document.html#ulakbus.lib.pdfdocument.document.BottomSpacer.wrap">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.ZatoService.zato_request">zato_request() (ulakbus.services.zato_wrapper.ZatoService method)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService.zato_request">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="source/ulakbus.services.html#ulakbus.services.zato_wrapper.ZatoService">ZatoService (class in ulakbus.services.zato_wrapper)</a>, <a href="ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
 
 
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="#" title="Genel Dizin"
-             >dizin</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">Ulakbus API Documentation 0.0.6 belgelendirme çalışması</a> &raquo;</li> 
+          <a href="#" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="ulakbus.html">Ulakbus API Documentation 0.6.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Zetaops.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.4.
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
-                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
-                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
-                        href="http://zetaops.io" target="_blank"
-                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
-            </div>
-        </div>
-    </footer>
-
   </body>
 </html>

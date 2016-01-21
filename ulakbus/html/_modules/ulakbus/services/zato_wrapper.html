@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ulakbus.services.zato_wrapper &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.6.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../ulakbus.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../ulakbus.html">Ulakbus API Documentation 0.6.6 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for ulakbus.services.zato_wrapper</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="kn">from</span> <span class="nn">ulakbus</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+
+<div class="viewcode-block" id="ZatoService"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService">[docs]</a><span class="k">class</span> <span class="nc">ZatoService</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Simple zato service wrapper class. You can write your zato services extending this class.</span>
+
+<span class="sd">    This class simply needs some parameter to be set as you see in init payload and service uri.</span>
+<span class="sd">    Defaults are an empty dict for payload, string &quot;ping&quot; for service_uri.</span>
+
+<span class="sd">    Ping service returns just &#39;ok&#39; which can be used as an health check to determine zato servers is alive or not.</span>
+
+<span class="sd">    ``service_uri`` and ``payload`` parameters especially is set by extending class&#39; __init__.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="s2">&quot;ping&quot;</span>
+
+<div class="viewcode-block" id="ZatoService.get_uri"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService.get_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Simply returns full uri of zato service object. It uses ``ZATO_SERVER`` from settings module.</span>
+
+<span class="sd">        The ``ZATO_SERVER`` can be set as environment variable as below:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            export ZATO_SERVER=&#39;http://127.0.0.1/&#39;</span>
+
+
+<span class="sd">        :return: unique identification string of service on zato services including</span>
+<span class="sd">                 join of zato server url (generally a load balancer url) and service name on zato.</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">settings</span><span class="o">.</span><span class="n">ZATO_SERVER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span><span class="p">])</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ZatoService.check_turkish_identity_number"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService.check_turkish_identity_number">[docs]</a>    <span class="k">def</span> <span class="nf">check_turkish_identity_number</span><span class="p">(</span><span class="n">tckn</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Checks Turkish ID Number, if empty, not a string or different than 11 length</span>
+
+<span class="sd">        :param tckn: string, 11 length</span>
+<span class="sd">        :type tckn: str</span>
+
+<span class="sd">        :return: string tckn or raises exception</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tckn</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;tckn can not be empty&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tckn</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;tckn must be string which is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">tckn</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tckn</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">11</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;tckn length must be 11&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">tckn</span></div>
+
+<div class="viewcode-block" id="ZatoService.zato_request"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.ZatoService.zato_request">[docs]</a>    <span class="k">def</span> <span class="nf">zato_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Makes zato requests. Zato expects payloads as json over POST method and sends back json. Return json cotains</span>
+<span class="sd">        two parts one is status and the other is result.</span>
+
+<span class="sd">        Status part is can be ``ok`` or ``error`` depends on what happens in zato servers while running. Result part is</span>
+<span class="sd">        the data part which is expected by consumer.</span>
+
+<span class="sd">        :return: if requests fails, returns ``None``, or simply string of zato service response payload</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_uri</span><span class="p">()</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># all zato internal errors will be handled here, riak error, connection error etc..</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;your service request failed with error </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;your service response contains no status code, check your zato service package&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Service called &#39;</span><span class="si">%s</span><span class="s2">&#39; is not defined on zato &quot;</span>
+                            <span class="s2">&quot;servers or service_uri changed&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span><span class="p">)</span>
+        <span class="c1"># other than 404 errors will be handled here, such as unauthorized requests, permission denied or etc..</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Status code is something different 200 or 404 which is </span><span class="si">%s</span><span class="s2">, &quot;</span>
+                            <span class="s2">&quot;this means something really went bad, check zato server logs&quot;</span> <span class="o">%</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="HitapService"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapService">[docs]</a><span class="k">class</span> <span class="nc">HitapService</span><span class="p">(</span><span class="n">ZatoService</span><span class="p">):</span>
+    <span class="n">HITAP_USER</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></div>
+
+
+<div class="viewcode-block" id="HitapServiceError"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapServiceError">[docs]</a><span class="k">class</span> <span class="nc">HitapServiceError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="HitapHizmetCetvelGetir"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapHizmetCetvelGetir">[docs]</a><span class="k">class</span> <span class="nc">HitapHizmetCetvelGetir</span><span class="p">(</span><span class="n">HitapService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    This service takes tckn as string, consume &quot;hizmet cetveli getir&quot; of hitap which syncs local data on riak.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        from zato_wrapper_class import HitapHizmetCetvelGetir</span>
+<span class="sd">        zs = HitapHizmetCetvelGetir(tckn=&quot;12345678900&quot;)</span>
+<span class="sd">        response = zs.zato_request()</span>
+
+<span class="sd">        response: list, with lines of hizmet_cetveli</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;hizmet-cetveli-getir&#39;</span><span class="p">,</span> <span class="n">tckn</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param service_uri: string, default hizmet-cetveli-getir</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param tckn: string, of 11 byte length, can not be empty</span>
+<span class="sd">        :type tckn: str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">HitapHizmetCetvelGetir</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">tckn</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HitapHizmetCetveliSenkronizeEt"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapHizmetCetveliSenkronizeEt">[docs]</a><span class="k">class</span> <span class="nc">HitapHizmetCetveliSenkronizeEt</span><span class="p">(</span><span class="n">HitapService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    This service takes tckn as string, consume &quot;hizmet cetvel senkronize et&quot; of hitap, sync local data on riak.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        from zato_wrapper_class import HitapHizmetCetveliSenkronizeEt</span>
+<span class="sd">        zs = HitapHizmetCetveliSenkronizeEt(tckn=&quot;12345678900&quot;)</span>
+<span class="sd">        response = zs.zato_request()</span>
+
+<span class="sd">        response: string, &#39;ok&#39; for successful sync data of existent person</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;hizmet-cetveli-senkronize-et&#39;</span><span class="p">,</span> <span class="n">tckn</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Takes two parameters service_uri and tckn</span>
+
+<span class="sd">        :param service_uri: service name on zato, default is hizmet-cetveli-senkronize-et</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param tckn: 11 byte length tckn number, can not be empty</span>
+<span class="sd">        :type tckn: str</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">HitapHizmetCetveliSenkronizeEt</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">tckn</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MernisKimlikBilgileriGetir"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.MernisKimlikBilgileriGetir">[docs]</a><span class="k">class</span> <span class="nc">MernisKimlikBilgileriGetir</span><span class="p">(</span><span class="n">ZatoService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    This service takes tckn as string, consume &quot;mernis kimlik bilgileri getir&quot; of hitap services</span>
+<span class="sd">    and sync local data on riak.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        from zato_wrapper_class import MernisKimlikBilgileriGetir</span>
+<span class="sd">        zs = MernisKimlikBilgileriGetir(tckn=&quot;12345678900&quot;)</span>
+<span class="sd">        response = zs.zato_request()</span>
+
+<span class="sd">        response: dict containing identity information as key value pairs</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;mernis-kimlik-bilgileri-getir-tckn&#39;</span><span class="p">,</span> <span class="n">tckn</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Takes two parameters service_uri and tckn</span>
+
+<span class="sd">        :param service_uri: service name on zato, default is hizmet-cetvel</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param tckn: string of 11 byte length, can not be empty</span>
+<span class="sd">        :type tckn: str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MernisKimlikBilgileriGetir</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">tckn</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KPSAdresBilgileriGetir"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.KPSAdresBilgileriGetir">[docs]</a><span class="k">class</span> <span class="nc">KPSAdresBilgileriGetir</span><span class="p">(</span><span class="n">ZatoService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    This service takes tckn as string, consume &quot;mernis kimlik bilgileri getir&quot; of hitap services</span>
+<span class="sd">    and sync local data on riak.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        from zato_wrapper_class import MernisKimlikBilgileriGetir</span>
+<span class="sd">        zs = MernisKimlikBilgileriGetir(tckn=&quot;12345678900&quot;)</span>
+<span class="sd">        response = zs.zato_request()</span>
+
+<span class="sd">        response: dict containing identity information as key value pairs</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;kps-adres-bilgileri-getir-tckn&#39;</span><span class="p">,</span> <span class="n">tckn</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Takes two parameters service_uri and tckn</span>
+
+<span class="sd">        :param service_uri: service name on zato, default is hizmet-cetvel</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param tckn: string of 11 byte length, can not be empty</span>
+<span class="sd">        :type tckn: str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KPSAdresBilgileriGetir</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">tckn</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HitapMahkemeBilgileriGuncelle"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriGuncelle">[docs]</a><span class="k">class</span> <span class="nc">HitapMahkemeBilgileriGuncelle</span><span class="p">(</span><span class="n">HitapService</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;hitap-mahkeme-bilgileri-guncelle&#39;</span><span class="p">,</span> <span class="n">kayit</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Takes two parameters service_uri, tckn and payload</span>
+
+<span class="sd">        :param service_uri: service name on zato, default is hizmet-cetvel</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param kayit: object, can not be empty</span>
+<span class="sd">        :type tckn: object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">HitapMahkemeBilgileriGuncelle</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+
+        <span class="k">if</span> <span class="n">kayit</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;tckn&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tckn</span><span class="p">,</span>
+                <span class="s2">&quot;kayit_no&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span>
+                <span class="s2">&quot;mahkeme_ad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">mahkeme_ad</span><span class="p">,</span>
+                <span class="s2">&quot;sebep&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">sebep</span><span class="p">,</span>
+                <span class="s2">&quot;karar_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">karar_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;karar_sayisi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">karar_sayisi</span><span class="p">,</span>
+                <span class="s2">&quot;kesinlesme_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kesinlesme_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;asil_dogum_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">asil_dogum_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;tashih_dogum_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tashih_dogum_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;asil_ad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">asil_ad</span><span class="p">,</span>
+                <span class="s2">&quot;tashih_ad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tashih_ad</span><span class="p">,</span>
+                <span class="s2">&quot;asil_soyad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">asil_soyad</span><span class="p">,</span>
+                <span class="s2">&quot;tashih_soyad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tashih_soyad</span><span class="p">,</span>
+                <span class="s2">&quot;gecerli_dogum_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">gecerli_dogum_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;aciklama&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">aciklama</span><span class="p">,</span>
+                <span class="s2">&quot;gun_sayisi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">gun_sayisi</span><span class="p">,</span>
+                <span class="s2">&quot;kurum_onay_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kurum_onay_tarihi</span>
+            <span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;, &quot;kayit_no&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;, &quot;data&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">kayit</span><span class="o">.</span><span class="n">tckn</span><span class="p">),</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&#39;kayit_no&#39; can not be empty&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HitapMahkemeBilgileriEkle"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriEkle">[docs]</a><span class="k">class</span> <span class="nc">HitapMahkemeBilgileriEkle</span><span class="p">(</span><span class="n">HitapService</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;hitap-mahkeme-bilgileri-guncelle&#39;</span><span class="p">,</span> <span class="n">kayit</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Takes two parameters service_uri, and kayit</span>
+
+<span class="sd">        :param service_uri: service name on zato, default is hizmet-cetvel</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param kayit: object, can not be empty</span>
+<span class="sd">        :type tckn: object</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HitapMahkemeBilgileriEkle</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+
+        <span class="k">if</span> <span class="n">kayit</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;tckn&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tckn</span><span class="p">,</span>
+                <span class="c1"># &quot;kayit_no&quot;: kayit.kayit_no,</span>
+                <span class="s2">&quot;mahkeme_ad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">mahkeme_ad</span><span class="p">,</span>
+                <span class="s2">&quot;sebep&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">sebep</span><span class="p">,</span>
+                <span class="s2">&quot;karar_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">karar_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;karar_sayisi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">karar_sayisi</span><span class="p">,</span>
+                <span class="s2">&quot;kesinlesme_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kesinlesme_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;asil_dogum_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">asil_dogum_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;tashih_dogum_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tashih_dogum_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;asil_ad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">asil_ad</span><span class="p">,</span>
+                <span class="s2">&quot;tashih_ad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tashih_ad</span><span class="p">,</span>
+                <span class="s2">&quot;asil_soyad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">asil_soyad</span><span class="p">,</span>
+                <span class="s2">&quot;tashih_soyad&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">tashih_soyad</span><span class="p">,</span>
+                <span class="s2">&quot;gecerli_dogum_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">gecerli_dogum_tarihi</span><span class="p">,</span>
+                <span class="s2">&quot;aciklama&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">aciklama</span><span class="p">,</span>
+                <span class="s2">&quot;gun_sayisi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">gun_sayisi</span><span class="p">,</span>
+                <span class="s2">&quot;kurum_onay_tarihi&quot;</span><span class="p">:</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kurum_onay_tarihi</span>
+            <span class="p">}</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;,  &quot;data&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">kayit</span><span class="o">.</span><span class="n">tckn</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;be sure that all &#39;data&#39; and &#39;tckn&#39; are not empty&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HitapMahkemeBilgileriSil"><a class="viewcode-back" href="../../../ulakbus.services.zato_wrapper.html#ulakbus.services.zato_wrapper.HitapMahkemeBilgileriSil">[docs]</a><span class="k">class</span> <span class="nc">HitapMahkemeBilgileriSil</span><span class="p">(</span><span class="n">HitapService</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_uri</span><span class="o">=</span><span class="s1">&#39;hitap-mahkeme-bilgileri-sil&#39;</span><span class="p">,</span> <span class="n">kayit</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Takes two parameters service_uri, tckn and payload</span>
+
+<span class="sd">        :param service_uri: service name on zato, default is hizmet-cetvel</span>
+<span class="sd">        :type service_uri: str</span>
+
+<span class="sd">        :param kayit: object, can not be empty and instance of ulakbus.models.hitap.HizmetMahkeme</span>
+<span class="sd">        :type kayit: object</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HitapMahkemeBilgileriSil</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_uri</span> <span class="o">=</span> <span class="n">service_uri</span>
+        <span class="k">if</span> <span class="n">kayit</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;tckn&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;, &quot;kayit_no&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">check_turkish_identity_number</span><span class="p">(</span><span class="n">kayit</span><span class="o">.</span><span class="n">tckn</span><span class="p">),</span> <span class="n">kayit</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;be sure that &#39;kayit&#39; can not be empty and must be instance of HizmetMahkeme&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../ulakbus.html">Ulakbus API Documentation 0.6.6 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Zetaops.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.4.
+    </div>
+  </body>
+</html>

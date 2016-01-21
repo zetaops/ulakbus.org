@@ -19,7 +19,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -34,10 +34,10 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
-    <link rel="top" title="Ulakbus 0.0.3 belgelendirme çalışması" href="wiki.html" />
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Sistem Operatörleri" href="devops.html" />
-    <link rel="prev" title="Ulakbüs’ü Geliştirelim" href="ulakbusu-gelistirmek.html" />
+    <link rel="prev" title="Temel Yönetim Komutları" href="komut_satiri_yonetim_araci.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -171,9 +171,9 @@
           <a href="devops.html" title="Sistem Operatörleri"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="ulakbusu-gelistirmek.html" title="Ulakbüs’ü Geliştirelim"
+          <a href="komut_satiri_yonetim_araci.html" title="Temel Yönetim Komutları"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.3 belgelendirme çalışması</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
@@ -198,8 +198,8 @@
 </ul>
 
   <h4>Önceki konu</h4>
-  <p class="topless"><a href="ulakbusu-gelistirmek.html"
-                        title="önceki bölüm">Ulakbüs&#8217;ü Geliştirelim</a></p>
+  <p class="topless"><a href="komut_satiri_yonetim_araci.html"
+                        title="önceki bölüm">Temel Yönetim Komutları</a></p>
   <h4>Sonraki konu</h4>
   <p class="topless"><a href="devops.html"
                         title="sonraki bölüm">Sistem Operatörleri</a></p>
@@ -263,7 +263,7 @@ Nick Coghlan, Core Python Geliştiricisi
 <p><strong>Bu ayrı mimarilerin birbiriyle doğrudan konuşmasına izin vermeyeceksiniz.</strong> Bu, zaten başa çıkılması zor olan mimarilerin her birinin, kendi içinde ölçekli çalışabilmesini sağlayabilmek için temel bir ilkedir.</p>
 <p>Aşağıdaki çizimde, sistemin yaptığı her bir servis çağrısı değişik boyut ve stilde belirtilmiştir.</p>
 <div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="_images/mess1.png"><img alt="_images/mess1.png" src="_images/mess1.png" /></a>
+<a class="reference internal image-reference" href="_images/mess1.png"><img alt="_images/mess1.png" src="_images/mess1.png" style="width: 290.0px; height: 207.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Lütfen dikkat ediniz, daha üst seviye süreçleri bu çizimde göstermedik bile. Mesela App1, App6’nın daha önce verdiği cevaba göre App2 veya App3 ya da App5’i çağırır ve böylece App4 daha sonra App2 tarafından üretilen veriyi alır ve fakat sadece App1 veri çekmeye izin veriyorsa ;_;</p>
@@ -272,7 +272,7 @@ Nick Coghlan, Core Python Geliştiricisi
 <p>Bu arayüzleri nasıl birbirinden ayıracağız? Yeni sürümü nasıl planlayabilirsiniz? Her biri değişik ekipler, satıcılar veya bölümler tarafından yönetilen uygulamaların güncellemelerini ya da sürüm indirimlerini nasıl koordine edeceksiniz? Üstelik işin başındaki ekibin yarısı çoktan işten ayrılmışken?</p>
 <p>Eğer 6 değişik uygulamayla başa çıkabileceğinizi düşünüyorsanız, 30 taneye ne dersiniz?</p>
 <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="_images/mess2.png"><img alt="_images/mess2.png" src="_images/mess2.png" /></a>
+<a class="reference internal image-reference" href="_images/mess2.png"><img alt="_images/mess2.png" src="_images/mess2.png" style="width: 480.0px; height: 505.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Peki 400 ayrı uygulama ile başa çıkabilir misiniz? Ya 2000? Her bir uygulamanın 10 sunucu gerektiren tekil bir ortamda koştuğunu ve bu 20K’lık sistemin parçalarının kıtalara dağıtık olduğunu ve arada her türlü teknik ve kültürel sınırlar olduğunu, üstelik sistemin her bir parçasının hiç bir kesinti olmadan son derece geveze bir şekilde, diğer parçalarla sürekli olarak durmadan mesaj alıp verdiğini? (Bu durumun çizimini paylaşmayacağız korkmayın)</p>
@@ -469,7 +469,7 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
 <h2>ESB üzerinde SOA ile servis yaratmak<a class="headerlink" href="#esb-uzerinde-soa-ile-servis-yaratmak" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi sistemlerin asla doğrudan bilgi alışverişi yapmadığını ve bir servisin ne olduğunu anladığınıza göre ESB’den faydalanmaya başlayabilirsiniz.</p>
 <div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="_images/esb-ok.png"><img alt="_images/esb-ok.png" src="_images/esb-ok.png" /></a>
+<a class="reference internal image-reference" href="_images/esb-ok.png"><img alt="_images/esb-ok.png" src="_images/esb-ok.png" style="width: 414.0px; height: 336.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Tümleşik sistemlerde servisleri çağırmak ve kullanmak, artık Kurumsal Veri Yolu’nun (ESB) işine dönüşüyor. Bu şekilde, genellikle KVY kullanarak sadece bir arayüz ve bir erişim metodu yazmak yeterli oluyor.</p>
@@ -490,7 +490,7 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
 <p>Servis odaklı uygulama (SOA) konseptini mahvetmenin en kolay yolu KVY hizmetini açıp ondan sonra olayların kendiliğinden düzelmesini beklemek olabilir. Hala harika bir fikir olmasına rağmen, sadece KVY sistemini kurmakla çok büyük bir kazanım sahibi olamazsınız maalesef.</p>
 <p>En iyi halde, aşağıdaki diyagramdaki gibi bazı şeyleri halı altına süpürmek, size hiç bir şey kazandırmayacaktır.</p>
 <div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="_images/esb-mess.png"><img alt="_images/esb-mess.png" src="_images/esb-mess.png" /></a>
+<a class="reference internal image-reference" href="_images/esb-mess.png"><img alt="_images/esb-mess.png" src="_images/esb-mess.png" style="width: 545.0px; height: 378.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>IT ekibiniz ondan tiksinecek, yönetim ise önce bu yeni gelen çocuğa tolerans gösterecek ancak daha sonra KVY iyice alay konusu olacak. “Ney ney, sihirli değnek değil mi, Hahahaha”.</p>
@@ -553,9 +553,9 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
           <a href="devops.html" title="Sistem Operatörleri"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="ulakbusu-gelistirmek.html" title="Ulakbüs’ü Geliştirelim"
+          <a href="komut_satiri_yonetim_araci.html" title="Temel Yönetim Komutları"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.3 belgelendirme çalışması</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
