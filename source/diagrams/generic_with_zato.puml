@@ -20,8 +20,8 @@ boundary "Ext. HA Proxy" as ehp
 participant "Gunicorn / Falcon" as fal
 participant "Zengine" as zen
 control "SpiffWorkflow" as wfe
-participant "ZAERP Modules" as modls
-participant "Zato Service" as zato
+participant "Ulakbus Modules" as modls
+participant "Ulakbus ESB" as zato
 entity "Pyoko DAL" as pyoko
 database "Redis" as c
 boundary "Int. HA Proxy" as ihp
