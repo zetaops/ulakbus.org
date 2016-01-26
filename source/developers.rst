@@ -7,6 +7,7 @@ Geliştiriciler
 
    development_environment_setup.rst
    ulakbus_user_interface.rst
+   ulakbus-api-ui-iliskisi.rst
    git_workflow.rst
    yazilim_tasarim_analizi_belgesi.rst
    data_erisim_secimleri.rst

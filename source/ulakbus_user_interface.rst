@@ -2,9 +2,9 @@
 Geliştirme Ortamı Kurulumu(Frontend)
 ++++++++++++++++++++++++++++++++++++
 
-=============================
-**Get Ready For Development**
-=============================
+=====================================
+**Geliştirme Ortamının Hazırlanması**
+=====================================
 
 1. ``git clone git@github.com:zetaops/ulakbus-ui.git`` reposunu indirin.
 
@@ -16,6 +16,7 @@ Geliştirme Ortamı Kurulumu(Frontend)
 2. Nodejs'yi indirin ve kurun.
 
     - https://nodejs.org/download/
+    - Kurulum için bu_ linkten faydalanabilirsiniz. 
 
 3. Bower'ı kurunuz ``npm install bower``
 
@@ -27,11 +28,13 @@ Geliştirme Ortamı Kurulumu(Frontend)
 
     ``npm start``
 
+.. _bu: https://nodejs.org/en/download/package-manager/
+
 *Uygulamayı sunmak için başka http server kullanabilirsiniz.*
 
-=====================
-**Development Cycle**
-=====================
+======================
+**Geliştirme Döngüsü**
+======================
 
 Şu an gerekli repo'ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.
 
@@ -61,9 +64,9 @@ Kodlarken aşağıdaki adımları izleyiniz.
 
 * Şimdi push yapabilirsiniz ``git push origin <branch>``
 
-==========
-**Deneme**
-==========
+========
+**Test**
+========
 
 ~/_test.js dosyaları, Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:
 
