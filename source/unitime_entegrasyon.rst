@@ -7,10 +7,13 @@ UniTime Nedir?
 
 UniTime, bir araştırma sahası olan "akademik takvimleme problemleri"ni çözmek üzere geliştirilen, açık kaynaklı bir yazılım projesidir. 
 Ulakbüs projesi kapsamında, bu alanda geliştirilmiş diğer projeler incelendiğinde, UniTime'ın daha kararlı bir proje olduğu ortaya çıkmıştır. 
-Aşağıdaki listede, incelenen diğer projeler listelenmektedir :
+Aşağıdaki listede, incelenen diğer projeler ve algoritmalar listelenmektedir :
 
-   - Proje 1 
-   - Proje 2
+   - `FET (Free Timetabling Software) <http://lalescu.ro/liviu/fet/>`_
+   - `OptaPlanner <http://http://www.optaplanner.org>`_
+   - `Making a Class Schedule Using a Genetic Algorithm <http://www.codeproject.com/Articles/23111/Making-a-Class-Schedule-Using-a-Genetic-Algorithm>`_
+   - `Greedy Algorithms <https://en.wikibooks.org/wiki/Algorithms/Greedy_Algorithms>`_
+   
 
 UniTime hakkında daha detaylı bilgiye aşağıdaki link üzerinden erişebilirsiniz:
 
