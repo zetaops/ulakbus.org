@@ -88,7 +88,7 @@ başlatabilirsiniz:
 
     vagrant up
 
-Başlayan makineya giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
+Başlayan makineye giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
 
 Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
 olmadığını kontrol edebilisiniz:
