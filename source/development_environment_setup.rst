@@ -143,11 +143,11 @@ Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları i
 
 ::
 
-    $ virtualenv ulakbusenv                                       # ulakbusenv python ortamı yarat
-    $ source ulakbusenv/bin/activate                              # python ortamını etkinleştir
-    $ cd ~/ulakbus                                                # ulakbus git deposuna gir
-    $ git pull                                                    # son değişiklikleri uzak depodan çek
-    $ pip install -r requirments.txt                              # ulakbus bagimliliklarini kur
+    $ virtualenv ulakbusenv                 # ulakbusenv python ortamı yarat
+    $ source ulakbusenv/bin/activate        # python ortamını etkinleştir
+    $ cd ~/ulakbus                          # ulakbus git deposuna gir
+    $ git pull                              # son değişiklikleri uzak depodan çek
+    $ pip install -r requirments.txt        # ulakbus bagimliliklarini kur
     $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
 
 
