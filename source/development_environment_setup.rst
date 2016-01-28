@@ -108,7 +108,7 @@ kısımları olmadan):
 
     vagrant up                         # vagrantbox başlat
     vagrant ssh                        # vagrantbox giriş
-    sudo su - ulakbus                  # ulakbus kullanıcısına geç ve home dizinine geç
+    sudo su - ulakbus                  # ulakbus kullanıcısına geçip home dizinine geç
     source ulakbusenv/bin/activate     # ulakbus environment etkinleştir
 
 
