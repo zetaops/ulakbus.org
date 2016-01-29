@@ -133,16 +133,16 @@ https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExam
             from ulakbus.models import Donem, Unit, Campus
             root_directory = os.path.dirname(os.path.abspath(__file__))
 
-            #Güncel akademik dönemi seç
+            # Güncel akademik dönemi seç
             term = Donem.objects.filter(guncel=True)[0]
 
-            #Unit modeli üzerinden üniversite seç
+            # Unit modeli üzerinden üniversite seç
             uni = Unit.objects.filter(parent_unit_no=0)[0].yoksis_no
 
-            #Unit modeli üzerinden bölümleri seç
+            # Unit modeli üzerinden bölümleri seç
             units = Unit.objects.filter(unit_type='Bölüm')
 
-            #Campus modeli üzerinden kampüs listesini al
+            # Campus modeli üzerinden kampüs listesini al
             campuses = Campus.objects.filter()
 
             doc_type = '<!DOCTYPE departments PUBLIC "-//UniTime//DTD University Course Timetabling/EN" "http://www.unitime.org/interface/Department.dtd">'
@@ -150,15 +150,16 @@ https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExam
             # XML ağacını oluştur (create XML tree)
             for campus in campuses:
                 if campus:
-                    root = etree.Element('departments', campus="%s" % uni, term="%s" % term.ad, \
+                    root = etree.Element('departments', campus="%s" % uni, term="%s" % term.ad,
                                          year="%s" % term.baslangic_tarihi.year)
                 for unit in units:
-                    etree.SubElement(root, 'department', externalId="%s" % unit.key, \
-                                     abbreviation="%s" % unit.yoksis_no, name="%s" % unit.name, \
+                    etree.SubElement(root, 'department', externalId="%s" % unit.key,
+                                     abbreviation="%s" % unit.yoksis_no, name="%s" % unit.name,
                                      deptCode="%s" % unit.yoksis_no, allowEvents="true")
 
             # Stringi düzgünleştir (string prettify)
-            s = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='UTF-8', doctype="%s" % doc_type)
+            s = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='UTF-8',
+                               doctype="%s" % doc_type)
 
             # Güncel tarih-saat tabanlı export klasörü yarat
             current_date = datetime.datetime.now()
