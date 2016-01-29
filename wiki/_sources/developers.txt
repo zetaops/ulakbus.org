@@ -18,3 +18,4 @@ Geliştiriciler
    yazilim_tasarim_analizi_belgesi.rst
    data_erisim_secimleri.rst
    standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.rst
+   unitime_entegrasyon.rst
