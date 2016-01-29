@@ -299,7 +299,10 @@ başlatabilirsiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>vagrant up
 </pre></div>
 </div>
-<p>Başlayan makineye giriş yapmak için <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> komutunu kullanabilirsiniz.</p>
+<p>Başlayan makineye giriş yapmak için şu komutu kullanabilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>vagrant ssh
+</pre></div>
+</div>
 <p>Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
 olmadığını kontrol edebilisiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo service redis-server status
@@ -363,6 +366,13 @@ ilgili veriler host makinesine alınmalıdır.</p>
 $ vagrant up
 </pre></div>
 </div>
+<p>Ayrıca mevcut box birden fazla sürüme sahip olabilir. <code class="docutils literal"><span class="pre">--box-version</span></code> ile yeni bir sürüm
+ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>$ vagrant box list                  # Vagrant için yüklü olan box listesi
+$ vagrant box remove &#8211;box-version 0.2.2 ulakbus   # ulakbus isimli box&#8217;ın 0.2.2 sürümünü kaldır</dd>
+</dl>
 </div>
 <div class="section" id="sonraki-adimlar">
 <h2>Sonraki Adımlar<a class="headerlink" href="#sonraki-adimlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>

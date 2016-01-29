@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.models.auth &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.models.auth</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.models.auth</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Auth Modülü</span>
+
+<span class="sd">Bu modül Ulakbüs uygulaması için authorization ile ilişkili data modellerini içerir.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span>
+<span class="kn">from</span> <span class="nn">passlib.hash</span> <span class="kn">import</span> <span class="n">pbkdf2_sha512</span>
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">LinkProxy</span>
+<span class="kn">from</span> <span class="nn">pyoko.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+
+<span class="kn">from</span> <span class="nn">zengine.auth.permissions</span> <span class="kn">import</span> <span class="n">get_all_permissions</span>
+<span class="kn">from</span> <span class="nn">zengine.dispatch.dispatcher</span> <span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span> <span class="nn">zengine.signals</span> <span class="kn">import</span> <span class="n">crud_post_save</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.cache</span> <span class="kn">import</span> <span class="n">Cache</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">zengine.lib.exceptions</span> <span class="kn">import</span> <span class="n">PermissionDenied</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">class</span> <span class="nc">PermissionDenied</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="User"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.User">[docs]</a><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;User modeli</span>
+
+<span class="sd">    User modeli Ulakbus temel kullanıcı modelidir. Temel kullanıcı</span>
+<span class="sd">    bilgilerini içerir. Ulakbus&#39;de işlem yapan/yapılan her kullanıcıya</span>
+<span class="sd">    ait bir ve tek kullanıcı olması zorunludur.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Username&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Password&quot;</span><span class="p">)</span>
+    <span class="n">avatar</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s2">&quot;Profile Photo&quot;</span><span class="p">,</span> <span class="n">random_name</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">surname</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Surname&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">superuser</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Super user&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="User.Meta"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.User.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Sistem&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Kullanıcı&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Kullanıcılar&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;surname&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="User.get_avatar_url"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.User.get_avatar_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_avatar_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Bu metot kullanıcıya ait avatar url&#39;ini üretir.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: kullanıcı avatar url</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">S3_PUBLIC_URL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatar</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;User </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+
+<div class="viewcode-block" id="User.set_password"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.User.set_password">[docs]</a>    <span class="k">def</span> <span class="nf">set_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_password</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Kullanıcı şifresini encrypt ederek set eder.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raw_password (str)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">pbkdf2_sha512</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">raw_password</span><span class="p">,</span> <span class="n">rounds</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                                              <span class="n">salt_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="User.check_password"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.User.check_password">[docs]</a>    <span class="k">def</span> <span class="nf">check_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_password</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verilen encrypt edilmemiş şifreyle kullanıcıya ait encrypt</span>
+<span class="sd">        edilmiş şifreyi karşılaştırır.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raw_password (str)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">             bool: Değerler aynı olması halinde True, değilse False</span>
+<span class="sd">                döner.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pbkdf2_sha512</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">raw_password</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="User.get_role"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.User.get_role">[docs]</a>    <span class="k">def</span> <span class="nf">get_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">role_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Kullanıcıya ait Role nesnesini getirir.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            role_id (int)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Role nesnesi</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">role_set</span><span class="o">.</span><span class="n">node_dict</span><span class="p">[</span><span class="n">role_id</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="Permission"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Permission">[docs]</a><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Permission modeli</span>
+
+<span class="sd">    Kullanıcı yetkilerinin tanımlandığı bilgilerin bulunguğu modeldir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kod Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Tanım&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Permission.Meta"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Permission.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Sistem&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Yetki&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Yetkiler&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AbstractRole"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AbstractRole">[docs]</a><span class="k">class</span> <span class="nc">AbstractRole</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;AbstractRole Modeli</span>
+
+<span class="sd">    Soyut Rol modeli yetkilerin gruplandığı temel role modelidir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;ID No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AbstractRole.Meta"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AbstractRole.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Sistem&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Soyut Rol&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Soyut Roller&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<div class="viewcode-block" id="AbstractRole.get_permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AbstractRole.get_permissions">[docs]</a>    <span class="k">def</span> <span class="nf">get_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Soyut role ait Permission nesnelerini bulur ve code değerlerini</span>
+<span class="sd">        döner.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: Permission code değerleri</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">code</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="AbstractRole.add_permission"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AbstractRole.add_permission">[docs]</a>    <span class="k">def</span> <span class="nf">add_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Soyut Role Permission nesnesi tanımlamayı sağlar.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            perm (object):</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">(</span><span class="n">permission</span><span class="o">=</span><span class="n">perm</span><span class="p">)</span>
+        <span class="n">PermissionCache</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AbstractRole.add_permission_by_name"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AbstractRole.add_permission_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">add_permission_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Soyut role Permission eklemek veya eklenebilecek Permission</span>
+<span class="sd">        nesnelerini verilen ``code`` parametresine göre listelemek olmak</span>
+<span class="sd">        üzere iki şekilde kullanılır.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            code (str): Permission nesnelerini filtre etmekte kullanılır</span>
+<span class="sd">            save (bool): True ise Permission ekler, False ise Permission</span>
+<span class="sd">                listesi döner.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: ``save`` False ise Permission listesi döner.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">save</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> | </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span>
+                    <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">code__contains</span><span class="o">=</span><span class="n">code</span><span class="p">)]</span>
+        <span class="n">PermissionCache</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">code__contains</span><span class="o">=</span><span class="n">code</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">(</span><span class="n">permission</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AbstractRole.Permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AbstractRole.Permissions">[docs]</a>    <span class="k">class</span> <span class="nc">Permissions</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">permission</span> <span class="o">=</span> <span class="n">Permission</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="Unit"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Unit">[docs]</a><span class="k">class</span> <span class="nc">Unit</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Unit modeli</span>
+
+<span class="sd">    Kullanıcılara rol tanımlarken kullanılan, kullanıcının hangı birimde</span>
+<span class="sd">    olduğunu taşıyan modeldir.</span>
+<span class="sd">    Akademik ve idari birimlerin özelliklerini taşır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">long_name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Uzun İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">yoksis_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Yoksis ID&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">unit_type</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Birim Tipi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parent_unit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Üst Birim ID&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">current_situation</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Guncel Durum&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Öğrenim Dili&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">learning_type</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Öğrenme Tipi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">osym_code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;ÖSYM Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">opening_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Açılış Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">learning_duration</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Öğrenme Süresi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">english_name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İngilizce Birim Adı.&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">quota</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Birim Kontenjan&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">city_code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Şehir Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">district_code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Semt Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">unit_group</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Birim Grup&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">foet_code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;FOET Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># yoksis KILAVUZ_KODU mu?</span>
+    <span class="n">is_academic</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Akademik&quot;</span><span class="p">)</span>
+    <span class="n">is_active</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Aktif&quot;</span><span class="p">)</span>
+    <span class="n">uid</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">LinkProxy</span><span class="p">(</span><span class="s1">&#39;Unit&#39;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Üst Birim&#39;</span><span class="p">,</span> <span class="n">reverse_name</span><span class="o">=</span><span class="s1">&#39;alt_birimler&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Unit.Meta"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Unit.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Sistem&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Unit&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Units&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;unit_type&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> - </span><span class="si">%s</span><span class="s1"> - </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">english_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">)</span></div>
+
+
+<span class="n">ROL_TIPI</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Personel&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Ogrenci&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Harici&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="PermissionCache"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.PermissionCache">[docs]</a><span class="k">class</span> <span class="nc">PermissionCache</span><span class="p">(</span><span class="n">Cache</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;PermissionCache sınıfı Kullanıcıya Permission nesnelerinin</span>
+<span class="sd">    kontrolünü hızlandırmak için yetkileri cache bellekte saklamak ve</span>
+<span class="sd">    gerektiğinde okumak için oluşturulmuştur.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">PREFIX</span> <span class="o">=</span> <span class="s1">&#39;PRM&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">role_id</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PermissionCache</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">role_id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Role"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role">[docs]</a><span class="k">class</span> <span class="nc">Role</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Role modeli</span>
+<span class="sd">    Kullanıcıların rol ile ilişkilendiği modeldir. Kullanıcıların birden</span>
+<span class="sd">    fazla rolü olabilir. Kullanıcıya atanmış Rol (Role) ve rolde</span>
+<span class="sd">    tanımlanmış Soyut Rol (AbstractRole) nesnelerindeki yetkiler bir</span>
+<span class="sd">    araya getirilerek kullanıcının yetkileri belirlenir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">abstract_role</span> <span class="o">=</span> <span class="n">AbstractRole</span><span class="p">()</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">()</span>
+    <span class="n">typ</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Rol Tipi&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">ROL_TIPI</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Rol Adı&quot;</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Role.Meta"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Sistem&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Rol&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Roller&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_staff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">typ</span> <span class="o">==</span> <span class="mi">1</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_student</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">typ</span> <span class="o">==</span> <span class="mi">2</span>
+
+<div class="viewcode-block" id="Role.get_user"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.get_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            object: user nesnesi</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Role </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Role.Permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.Permissions">[docs]</a>    <span class="k">class</span> <span class="nc">Permissions</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">permission</span> <span class="o">=</span> <span class="n">Permission</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">permission</span></div>
+
+<div class="viewcode-block" id="Role.get_db_permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.get_db_permissions">[docs]</a>    <span class="k">def</span> <span class="nf">get_db_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Role nesnesinin AbstractRole özelliğine ait yetkileri getirir.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: yetki listesi</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">code</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">abstract_role</span><span class="o">.</span><span class="n">get_permissions</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">abstract_role</span><span class="o">.</span><span class="n">key</span> <span class="k">else</span> <span class="p">[])</span></div>
+
+<div class="viewcode-block" id="Role._cache_permisisons"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role._cache_permisisons">[docs]</a>    <span class="k">def</span> <span class="nf">_cache_permisisons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pcache</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cache belleğe yetkileri yazar ve bu yetkileri döner.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            pcache: PermissionCache nesnesi</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: yetki listesi</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">perms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_db_permissions</span><span class="p">()</span>
+        <span class="n">pcache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">perms</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">perms</span></div>
+
+<div class="viewcode-block" id="Role.get_permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.get_permissions">[docs]</a>    <span class="k">def</span> <span class="nf">get_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Bellekteki Permission nesnelerini döner.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            object:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pcache</span> <span class="o">=</span> <span class="n">PermissionCache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pcache</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_permisisons</span><span class="p">(</span><span class="n">pcache</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Role.add_permission"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.add_permission">[docs]</a>    <span class="k">def</span> <span class="nf">add_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yeni Permission ekler ve bellekteki Role nesnesine ait</span>
+<span class="sd">        Permission nesnelerini siler.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            perm: Permission nesnesi</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">(</span><span class="n">permission</span><span class="o">=</span><span class="n">perm</span><span class="p">)</span>
+        <span class="n">PermissionCache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Role.add_permission_by_name"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.add_permission_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">add_permission_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Role nesnesine Permission eklemek veya eklenebilecek Permission</span>
+<span class="sd">        nesnelerini verilen ``code`` parametresine göre listelemek olmak</span>
+<span class="sd">        üzere iki şekilde kullanılır.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            code (str): Permission nesnelerini filtre etmekte kullanılır.</span>
+<span class="sd">            save (bool): True ise Permission ekler, False ise Permission</span>
+<span class="sd">                listesi döner.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: ``save`` False ise Permission listesi döner.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">save</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> | </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span>
+                    <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">code__contains</span><span class="o">=</span><span class="n">code</span><span class="p">)]</span>
+        <span class="n">PermissionCache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">code__contains</span><span class="o">=</span><span class="n">code</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Permissions</span><span class="p">(</span><span class="n">permission</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Role._make_name"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role._make_name">[docs]</a>    <span class="k">def</span> <span class="nf">_make_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Nesnenin soyut rolü veya bir kullanıcısı varsa soyut rol ismi ve</span>
+<span class="sd">        kullanıcı username&#39;ini birleştirerek bir name stringi oluşturur.</span>
+<span class="sd">        Bu iki özellik yok ise Role key&#39;ini kullanarak bir string değer</span>
+<span class="sd">        üretir.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">abstract_role</span><span class="o">.</span><span class="n">key</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> | </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abstract_role</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Role #</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="Role.pre_save"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.Role.pre_save">[docs]</a>    <span class="k">def</span> <span class="nf">pre_save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Kayıt edilmeden önce nesnenin adını ``_make_name()`` metodunu</span>
+<span class="sd">        çağırarak oluşturur.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_name</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="LimitedPermissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.LimitedPermissions">[docs]</a><span class="k">class</span> <span class="nc">LimitedPermissions</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;LimitedPermissions modeli</span>
+<span class="sd">    Bu modelde tutulan bilgilerle mevcut yetkilere sınırlandırmalar</span>
+<span class="sd">    getirilir.</span>
+
+<span class="sd">    - Başlangıç ve bitiş tarihine göre sınırlandırma uygulanan yetkiler</span>
+<span class="sd">    o tarih aralığında geçerli olur.</span>
+
+<span class="sd">    - Verilen IPList özelliğine göre bu IPList listesi içindeki</span>
+<span class="sd">    ip&#39;lerden gelen requestlere cevap verecek şekilde kısıtlanır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">restrictive</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Sınırlandırıcı&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">time_start</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">time_end</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LimitedPermissions.Meta"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.LimitedPermissions.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Sistem&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Sınırlandırılmış Yetki&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Sınırlandırılmış Yetkiler&quot;</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_end</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LimitedPermissions.IPList"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.LimitedPermissions.IPList">[docs]</a>    <span class="k">class</span> <span class="nc">IPList</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LimitedPermissions.Permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.LimitedPermissions.Permissions">[docs]</a>    <span class="k">class</span> <span class="nc">Permissions</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">permission</span> <span class="o">=</span> <span class="n">Permission</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LimitedPermissions.AbstractRoles"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.LimitedPermissions.AbstractRoles">[docs]</a>    <span class="k">class</span> <span class="nc">AbstractRoles</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">abstract_role</span> <span class="o">=</span> <span class="n">AbstractRole</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LimitedPermissions.Roles"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.LimitedPermissions.Roles">[docs]</a>    <span class="k">class</span> <span class="nc">Roles</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">role</span> <span class="o">=</span> <span class="n">Role</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="AuthBackend"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend">[docs]</a><span class="k">class</span> <span class="nc">AuthBackend</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;AuthBackend sınıfı Auth modulüne ait işlemleri gerçekleştirmek</span>
+<span class="sd">    için kullanılan bir dizi metodu içerir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">session</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">current</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perm_cache</span> <span class="o">=</span> <span class="bp">None</span>
+
+<div class="viewcode-block" id="AuthBackend.get_permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend.get_permissions">[docs]</a>    <span class="k">def</span> <span class="nf">get_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Bellekteki Permission nesnelerini döner.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            object:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">perm_cache</span> <span class="o">=</span> <span class="n">PermissionCache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;role_id&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">perm_cache</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_role</span><span class="p">()</span><span class="o">.</span><span class="n">get_permissions</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AuthBackend.has_permission"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend.has_permission">[docs]</a>    <span class="k">def</span> <span class="nf">has_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Verilen ``perm`` Permission nesnesinin rolde bulunup</span>
+<span class="sd">        bulunmadığını döner.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            perm:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># return True</span>
+        <span class="k">return</span> <span class="n">perm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_permissions</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AuthBackend.get_user"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend.get_user">[docs]</a>    <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Session&#39;da bir kullanıcı varsa sesion&#39;daki kullanıcıyı yoksa</span>
+<span class="sd">        boş bir kullanıcı nesnesi döner.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User nesnesi</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if &#39;user_data&#39; in self.session:</span>
+        <span class="c1">#     user = User()</span>
+        <span class="c1">#     user.set_data(self.session[&#39;user_data&#39;], from_db=True)</span>
+        <span class="c1">#     user.key = self.session[&#39;user_id&#39;]</span>
+        <span class="c1"># elif &#39;user_id&#39; in self.session:</span>
+        <span class="k">if</span> <span class="s1">&#39;user_id&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">:</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">user</span></div>
+
+<div class="viewcode-block" id="AuthBackend.set_user"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend.set_user">[docs]</a>    <span class="k">def</span> <span class="nf">set_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Kullanıcı datasını session&#39;a yazar.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            user: User nesnesi</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;user_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">clean_value</span><span class="p">()</span>
+
+        <span class="c1"># TODO: this should be remembered from previous login</span>
+        <span class="n">default_role</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">role_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">role</span>
+        <span class="c1"># self.session[&#39;role_data&#39;] = default_role.clean_value()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;role_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_role</span><span class="o">.</span><span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">default_role</span><span class="o">.</span><span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perm_cache</span> <span class="o">=</span> <span class="n">PermissionCache</span><span class="p">(</span><span class="n">default_role</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;permissions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_role</span><span class="o">.</span><span class="n">get_permissions</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AuthBackend.get_role"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend.get_role">[docs]</a>    <span class="k">def</span> <span class="nf">get_role</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;session&#39;da bir role_id varsa bu id&#39;deki Role nesnesini döner.</span>
+<span class="sd">        Yoksa session objesini siler ve PermissionDenied hatası verir.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: Role nesnesi</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            PermissionDenied:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if &#39;role_data&#39; in self.session:</span>
+        <span class="c1">#     role = Role()</span>
+        <span class="c1">#     role.set_data(self.session[&#39;role_data&#39;])</span>
+        <span class="c1"># if &#39;role_id&#39; in self.session:</span>
+        <span class="c1">#     role.key = self.session[&#39;role_id&#39;]</span>
+        <span class="c1"># return role</span>
+        <span class="k">if</span> <span class="s1">&#39;role_id&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Role</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;role_id&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO: admins should be informed about a user without a role</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">PermissionDenied</span><span class="p">(</span><span class="s2">&quot;Your don&#39;t have a </span><span class="se">\&quot;</span><span class="s2">Role</span><span class="se">\&quot;</span><span class="s2"> in this system&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AuthBackend.authenticate"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.AuthBackend.authenticate">[docs]</a>    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Kullanıcı adı ve şifresini kontrol eder ve eğer doğruysa</span>
+<span class="sd">        kullanıcı datasını session&#39;a yazar.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username:</span>
+<span class="sd">            password:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">is_login_ok</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_login_ok</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_user</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+            <span class="c1"># TODO: failed login attempts for a user should be counted</span>
+            <span class="c1"># for prevention of brute force attacks</span>
+
+        <span class="k">return</span> <span class="n">is_login_ok</span></div></div>
+
+
+<span class="c1"># invalidate permission cache on crud updates on Role and AbstractRole models</span>
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">crud_post_save</span><span class="p">)</span>
+<div class="viewcode-block" id="clear_perm_cache"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.clear_perm_cache">[docs]</a><span class="k">def</span> <span class="nf">clear_perm_cache</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Verilen sender nesnesine bağlı Permission nesnelerini cache</span>
+<span class="sd">    bellekten siler.</span>
+
+<span class="sd">    Eğer sender nesnesi bir AbstractRole ise PermissionCache&#39;i temizler.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sender:</span>
+<span class="sd">        *args:</span>
+<span class="sd">        **kwargs:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">sender</span><span class="o">.</span><span class="n">model_class</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;Role&#39;</span><span class="p">:</span>
+        <span class="n">PermissionCache</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">sender</span><span class="o">.</span><span class="n">model_class</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;AbstractRole&#39;</span><span class="p">:</span>
+        <span class="n">PermissionCache</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ulakbus_permissions"><a class="viewcode-back" href="../../../ulakbus.models.auth.html#ulakbus.models.auth.ulakbus_permissions">[docs]</a><span class="k">def</span> <span class="nf">ulakbus_permissions</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Bu metot Ulakbus&#39;e ait tüm yetkileri birleştirerek döner.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: Ulakbus&#39;e ait tüm yetkiler</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_perms</span> <span class="o">=</span> <span class="n">get_all_permissions</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">ulakbus.views.reports</span> <span class="kn">import</span> <span class="n">ReporterRegistry</span>
+    <span class="n">report_perms</span> <span class="o">=</span> <span class="n">ReporterRegistry</span><span class="o">.</span><span class="n">get_permissions</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">default_perms</span> <span class="o">+</span> <span class="n">report_perms</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1053 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.manage &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.manage</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.manage</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+
+<span class="kn">from</span> <span class="nn">zengine.management_commands</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="CreateUser"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.CreateUser">[docs]</a><span class="k">class</span> <span class="nc">CreateUser</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;create_user&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Creates a new user&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Login username&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Login password&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;abstract_role&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;BaseAbsRole&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Name of the AbstractRole&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;super&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;This is a super user&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;permission_query&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s2">&quot;code:crud* OR code:login* OR code:logout*&quot;</span><span class="p">,</span>
+         <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Permissions which will be returned from this query will be granted to the user. &#39;</span>
+                 <span class="s1">&#39;Defaults to: &quot;code:crud* OR code:login* OR code:logout*&quot;&#39;</span><span class="p">},</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="CreateUser.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.CreateUser.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">AbstractRole</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">Role</span><span class="p">,</span> <span class="n">Permission</span>
+        <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">username</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;User already exists!&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="n">abs_role</span><span class="p">,</span> <span class="n">new</span> <span class="o">=</span> <span class="n">AbstractRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">abstract_role</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">superuser</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">super</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">role</span> <span class="o">=</span> <span class="n">Role</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">abstract_role</span><span class="o">=</span><span class="n">abs_role</span><span class="p">)</span>
+        <span class="n">role</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">perm_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">perm</span> <span class="ow">in</span> <span class="n">Permission</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">permission_query</span><span class="p">):</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">Permissions</span><span class="p">(</span><span class="n">permission</span><span class="o">=</span><span class="n">perm</span><span class="p">)</span>
+            <span class="n">perm_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">perm</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">role</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">user_type</span> <span class="o">=</span> <span class="s1">&#39;super user&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">super</span> <span class="k">else</span> <span class="s1">&#39;user&#39;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;New </span><span class="si">%s</span><span class="s2"> created with these permissions: </span><span class="se">\n\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user_type</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">perm_list</span><span class="p">)))</span></div></div>
+
+
+<div class="viewcode-block" id="LoadFixture"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.LoadFixture">[docs]</a><span class="k">class</span> <span class="nc">LoadFixture</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;load_fixture&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Load fixtures from given json file or files in given directory and &#39;</span> \
+           <span class="s1">&#39;dumps into ulakbus_settings_fixtures bucket, overwriting data of all existing keys.&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Load fixture file or directory&#39;</span><span class="p">},</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="LoadFixture.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.LoadFixture.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">pyoko.db.connection</span> <span class="kn">import</span> <span class="n">client</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+
+        <span class="n">fixture_bucket</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">bucket_type</span><span class="p">(</span><span class="s1">&#39;catalog&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;ulakbus_settings_fixtures&#39;</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">path</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+            <span class="k">for</span> <span class="n">fixture_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;*.json&quot;</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">fixture_file</span><span class="p">,</span> <span class="n">fixture_bucket</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">fixture_bucket</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="LoadFixture.dump"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.LoadFixture.dump">[docs]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="n">fixture_file</span><span class="p">,</span> <span class="n">fixture_bucket</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fixture_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">json</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">fixtures</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">fix</span> <span class="ow">in</span> <span class="n">fixtures</span><span class="p">:</span>
+                        <span class="n">f</span> <span class="o">=</span> <span class="n">fixture_bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fix</span><span class="p">)</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">fixtures</span><span class="p">[</span><span class="n">fix</span><span class="p">]</span>
+                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> stored..&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fix</span><span class="p">,</span> <span class="n">fixtures</span><span class="p">[</span><span class="n">fix</span><span class="p">]))</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">store</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;please validate your json file: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file not found: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">fixture_file</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateBuildingList"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateBuildingList">[docs]</a><span class="k">class</span> <span class="nc">GenerateBuildingList</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;generate_buildings&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates fake Building model objects from Unit Faculties&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="GenerateBuildingList.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateBuildingList.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.building</span> <span class="kn">import</span> <span class="n">yeni_bina</span>
+        <span class="n">yeni_bina</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateRandomPersonel"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomPersonel">[docs]</a><span class="k">class</span> <span class="nc">GenerateRandomPersonel</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;random_personel&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Random Personel&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Amount of random personel&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="GenerateRandomPersonel.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomPersonel.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.personel</span> <span class="kn">import</span> <span class="n">yeni_personel</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+            <span class="n">yeni_personel</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateRandomOkutman"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomOkutman">[docs]</a><span class="k">class</span> <span class="nc">GenerateRandomOkutman</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;random_okutman&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Random Okutman From Personel Objects&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Amount of random okutman&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="GenerateRandomOkutman.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomOkutman.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.okutman</span> <span class="kn">import</span> <span class="n">yeni_okutman</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+            <span class="n">yeni_okutman</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateRandomHariciOkutman"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomHariciOkutman">[docs]</a><span class="k">class</span> <span class="nc">GenerateRandomHariciOkutman</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;random_harici_okutman&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Random Okutman From Personel Objects&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Amount of random okutman&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="GenerateRandomHariciOkutman.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomHariciOkutman.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.harici_okutman</span> <span class="kn">import</span> <span class="n">yeni_harici_okutman</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+            <span class="n">yeni_harici_okutman</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateRandomOogrenci"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomOogrenci">[docs]</a><span class="k">class</span> <span class="nc">GenerateRandomOogrenci</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;random_ogrenci&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Random Ogrenci Model Objects&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Amount of random ogrenci&#39;</span><span class="p">},</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="GenerateRandomOogrenci.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateRandomOogrenci.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.ogrenci</span> <span class="kn">import</span> <span class="n">yeni_ogrenci</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+            <span class="n">yeni_ogrenci</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateProgramList"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateProgramList">[docs]</a><span class="k">class</span> <span class="nc">GenerateProgramList</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;generate_programs&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Programs From Unit Model&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="GenerateProgramList.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateProgramList.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.program</span> <span class="kn">import</span> <span class="n">yeni_program</span>
+        <span class="n">yeni_program</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="GenerateDersList"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateDersList">[docs]</a><span class="k">class</span> <span class="nc">GenerateDersList</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;generate_ders&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates fake Ders model objects&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="GenerateDersList.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.GenerateDersList.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">tests.fake.ders</span> <span class="kn">import</span> <span class="n">yeni_ders</span>
+        <span class="n">yeni_ders</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="ExportRoomsToXml"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportRoomsToXml">[docs]</a><span class="k">class</span> <span class="nc">ExportRoomsToXml</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_rooms&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for rooms&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ExportRoomsToXml.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportRoomsToXml.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE buildingsRooms PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/BuildingRoom.dtd&quot;&gt;&#39;</span>
+
+        <span class="c1"># create XML</span>
+        <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">campus</span><span class="o">.</span><span class="n">building_set</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;buildingsRooms&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">building</span> <span class="ow">in</span> <span class="n">campus</span><span class="o">.</span><span class="n">building_set</span><span class="p">:</span>
+
+                    <span class="n">buildingelement</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;building&#39;</span><span class="p">,</span>
+                                                       <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                                       <span class="n">abbreviation</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+                                                       <span class="n">locationX</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">coordinate_x</span><span class="p">,</span>
+                                                       <span class="n">locationY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">coordinate_y</span><span class="p">,</span>
+                                                       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">room_set</span><span class="p">:</span>
+
+                        <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">room_set</span><span class="p">:</span>
+                            <span class="n">roomelement</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">buildingelement</span><span class="p">,</span> <span class="s1">&#39;room&#39;</span><span class="p">,</span>
+                                                           <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">room</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                                           <span class="n">locationX</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">coordinate_x</span><span class="p">,</span>
+                                                           <span class="n">locationY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">building</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">coordinate_y</span><span class="p">,</span>
+                                                           <span class="n">roomNumber</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">room</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+                                                           <span class="n">roomClassification</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">room</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">room_type</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+                                                           <span class="n">capacity</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">room</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">capacity</span><span class="p">,</span>
+                                                           <span class="n">instructional</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="n">room</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">RoomDepartments</span><span class="p">:</span>
+                                <span class="n">roommdepartments</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">roomelement</span><span class="p">,</span> <span class="s1">&#39;roomDepartments&#39;</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">department</span> <span class="ow">in</span> <span class="n">room</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">RoomDepartments</span><span class="p">:</span>
+                                    <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">roommdepartments</span><span class="p">,</span> <span class="s1">&#39;assigned&#39;</span><span class="p">,</span>
+                                                     <span class="n">departmentNumber</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">department</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                                     <span class="n">percent</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
+
+        <span class="c1"># pretty string</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/buildingRoomImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportSessionsToXml"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportSessionsToXml">[docs]</a><span class="k">class</span> <span class="nc">ExportSessionsToXml</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_sessions&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for academic sessions&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ExportSessionsToXml.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportSessionsToXml.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">sessions</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE session PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Session.dtd&quot;&gt;&#39;</span>
+
+        <span class="c1"># create XML</span>
+        <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">campus</span><span class="p">:</span>
+
+                <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">dateFormat</span><span class="o">=</span><span class="s2">&quot;M/d/y&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">sessions</span><span class="p">:</span>
+                    <span class="n">start_date</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y&quot;</span><span class="p">)</span>
+                    <span class="n">end_date</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">bitis_tarihi</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y&quot;</span><span class="p">)</span>
+                    <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;sessionDates&#39;</span><span class="p">,</span> <span class="n">beginDate</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">start_date</span><span class="p">,</span>
+                                     <span class="n">endDate</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">end_date</span><span class="p">,</span>
+                                     <span class="n">classesEnd</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">examBegin</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">start_date</span><span class="p">,</span>
+                                     <span class="n">eventBegin</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">eventEnd</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">end_date</span><span class="p">)</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/sessionImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportDepartmentsToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportDepartmentsToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportDepartmentsToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_departments&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for academic departments&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ExportDepartmentsToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportDepartmentsToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">unit_type</span><span class="o">=</span><span class="s1">&#39;Bölüm&#39;</span><span class="p">)</span>
+        <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">sessions</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE departments PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Department.dtd&quot;&gt;&#39;</span>
+
+        <span class="c1"># create XML</span>
+        <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">campus</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;departments&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                 <span class="n">abbreviation</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                 <span class="n">deptCode</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span> <span class="n">allowEvents</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/departmentImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportAcademicSubjectsToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportAcademicSubjectsToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportAcademicSubjectsToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_academic_subjects&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for academic subjects&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ExportAcademicSubjectsToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportAcademicSubjectsToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Campus</span><span class="p">,</span> <span class="n">Program</span><span class="p">,</span> <span class="n">Unit</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">unit_type</span><span class="o">=</span><span class="s1">&#39;Bölüm&#39;</span><span class="p">)</span>
+        <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">sessions</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE subjectAreas PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/SubjectArea.dtd&quot;&gt;&#39;</span>
+
+        <span class="c1"># create XML</span>
+        <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">campus</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;subjectAreas&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+                <span class="n">subunits</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">subunit</span> <span class="ow">in</span> <span class="n">subunits</span><span class="p">:</span>
+                    <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;subjectArea&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">subunit</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                     <span class="n">abbreviation</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">subunit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">subunit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                     <span class="n">department</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">subunit</span><span class="o">.</span><span class="n">parent_unit_no</span><span class="p">)</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/subjectAreaImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportStaffToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStaffToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportStaffToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_staff&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for staff&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ExportStaffToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStaffToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span><span class="p">,</span> <span class="n">Okutman</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">sessions</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">stafflist</span> <span class="o">=</span> <span class="n">Okutman</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE staff PUBLIC &quot;-//UniTime//UniTime Staff Import DTD/EN&quot; &quot;http://www.unitime.org/interface/Staff.dtd&quot;&gt;&#39;</span>
+
+        <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">campus</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;staff&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">staffmember</span> <span class="ow">in</span> <span class="n">stafflist</span><span class="p">:</span>
+                <span class="n">unvan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acadTitle</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">staffmember</span><span class="o">.</span><span class="n">unvan</span><span class="p">)</span>
+
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;staffMember&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">staffmember</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                 <span class="n">firstName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">staffmember</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">lastName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">staffmember</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span>
+                                 <span class="n">department</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">staffmember</span><span class="o">.</span><span class="n">birim_no</span><span class="p">,</span> <span class="n">acadTitle</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unvan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                 <span class="n">positionType</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unvan</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/staffImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ExportStaffToXML.acadTitle"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStaffToXML.acadTitle">[docs]</a>    <span class="k">def</span> <span class="nf">acadTitle</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Professor&quot;</span><span class="p">,</span> <span class="s2">&quot;Prof&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Associate Professor&quot;</span><span class="p">,</span> <span class="s2">&quot;Ass. Prof&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Research Assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;Res. Assist.&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Lecturer&quot;</span><span class="p">,</span> <span class="s2">&quot;Lect.&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="ExportStudentInfoToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStudentInfoToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportStudentInfoToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_student_info&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for student info&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+         <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Retrieve this amount of records from Solr in one time, defaults to 1000&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ExportStudentInfoToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStudentInfoToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">Unit</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE students PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Student.dtd&quot;&gt;&#39;</span>
+
+        <span class="c1"># FIX for default row size in pyoko filter</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">rounds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;students&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                             <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="c1"># FIX for default row size in pyoko filter</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rounds</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">():</span>
+                <span class="c1"># for student in students:</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                 <span class="n">firstName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                 <span class="n">lastName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span>
+                                 <span class="n">email</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">e_posta</span><span class="p">)</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+
+            <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+            <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+            <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/studentInfoImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bir Hata Oluştu ve XML Dosyası Yaratılamadı&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportCourseCatalogToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportCourseCatalogToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportCourseCatalogToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_course_catalog&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for course catalog&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+         <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Retrieve this amount of records from Solr in one time, defaults to 1000&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ExportCourseCatalogToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportCourseCatalogToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Ders</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE courseCatalog PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/CourseCatalog.dtd&quot;&gt;&#39;</span>
+
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">Ders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">rounds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;courseCatalog&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                             <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="c1"># FIX for default row size in pyoko filter</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rounds</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ders</span> <span class="ow">in</span> <span class="n">Ders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">():</span>
+                <span class="c1"># for student in students:</span>
+                <span class="n">derselement</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;course&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ders</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                               <span class="n">courseNumber</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ders</span><span class="o">.</span><span class="n">kod</span><span class="p">,</span>
+                                               <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ders</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                               <span class="n">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ders</span><span class="o">.</span><span class="n">ad</span><span class="p">)</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">derselement</span><span class="p">,</span> <span class="s1">&#39;courseCredit&#39;</span><span class="p">,</span> <span class="n">creditType</span><span class="o">=</span><span class="s2">&quot;collegiate&quot;</span><span class="p">,</span>
+                                 <span class="n">creditUnitType</span><span class="o">=</span><span class="s2">&quot;semesterHours&quot;</span><span class="p">,</span>
+                                 <span class="n">creditFormat</span><span class="o">=</span><span class="s2">&quot;fixedUnit&quot;</span><span class="p">,</span> <span class="n">fixedCredit</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ders</span><span class="o">.</span><span class="n">yerel_kredisi</span><span class="p">)</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+
+            <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+            <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+            <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/courseCatalogImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bir Hata Oluştu ve XML Dosyası Yaratılamadı&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportCurriculaToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportCurriculaToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportCurriculaToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_curricula&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for curricula&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="ExportCurriculaToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportCurriculaToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Ders</span><span class="p">,</span> <span class="n">Program</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+        <span class="n">program_list</span> <span class="o">=</span> <span class="n">Program</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        academicAreas Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">academic_area_doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE academicAreas PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/AcademicArea.dtd&quot;&gt;&#39;</span>
+        <span class="n">academic_classification_doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE academicClassifications PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/AcademicClassification.dtd&quot;&gt;&#39;</span>
+        <span class="n">pos_major_doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE posMajors PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/PosMajor.dtd&quot;&gt;&#39;</span>
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE curricula PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Curricula_3_2.dtd&quot;&gt;&#39;</span>
+
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="n">academic_area_root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;academicAreas&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                           <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">academic_area_root</span><span class="p">,</span> <span class="s1">&#39;academicArea&#39;</span><span class="p">,</span> <span class="n">abbreviation</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">)</span>
+
+        <span class="n">academic_area_string</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">academic_area_root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                              <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                              <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                                              <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">academic_area_doc_type</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/academicAreaImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">academic_area_string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Academic Area Import dosyası </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        academicClassifications Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">academic_classification_root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;academicClassifications&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span>
+                                                     <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">academic_classification_root</span><span class="p">,</span> <span class="s1">&#39;academicClassification&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;01&quot;</span><span class="p">,</span>
+                         <span class="n">code</span><span class="o">=</span><span class="s2">&quot;01&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;01&quot;</span><span class="p">)</span>
+        <span class="n">academic_classification_string</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">academic_classification_root</span><span class="p">,</span>
+                                                        <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                                        <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                                                        <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">academic_classification_doc_type</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/academicClassificationImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">academic_classification_string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span>
+            <span class="s2">&quot;Academic Classification Import dosyası </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        posMajors Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">pos_major_root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;posMajors&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                       <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">pos_major_root</span><span class="p">,</span> <span class="s1">&#39;posMajor&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;M1&quot;</span><span class="p">,</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> Major 1&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">academicArea</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+        <span class="n">pos_major_string</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">pos_major_root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                          <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                                          <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">academic_classification_doc_type</span><span class="p">)</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/posMajorImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pos_major_string</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Pos Major Import dosyası </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        curricula Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;curricula&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                             <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="c1"># major = etree.SubElement(curriculum, &#39;major&#39;, code=&#39;M3&#39;)</span>
+        <span class="k">for</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">program_list</span><span class="p">:</span>
+            <span class="n">ders_list</span> <span class="o">=</span> <span class="n">Ders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">program</span><span class="o">=</span><span class="n">program</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">ders_list</span><span class="p">:</span>
+                <span class="n">parent_yoksis_no</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">yoksis_no</span><span class="o">=</span><span class="n">program</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">)[</span>
+                    <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent_unit_no</span>
+                <span class="c1"># bolum = Unit.objects.filter(yoksis_no=parent_yoksis_no,unit_type=&#39;Bölüm&#39;)[0]</span>
+                <span class="n">curriculum</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;curriculum&#39;</span><span class="p">)</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">curriculum</span><span class="p">,</span> <span class="s1">&#39;academicArea&#39;</span><span class="p">,</span> <span class="n">abbreviation</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">curriculum</span><span class="p">,</span> <span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">parent_yoksis_no</span><span class="p">)</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">curriculum</span><span class="p">,</span> <span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;M1&quot;</span><span class="p">)</span>
+                <span class="n">classification</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">curriculum</span><span class="p">,</span> <span class="s1">&#39;classification&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;01&quot;</span><span class="p">,</span>
+                                                  <span class="n">enrollment</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">classification</span><span class="p">,</span> <span class="s1">&#39;academicClassification&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;01&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">program_ders</span> <span class="ow">in</span> <span class="n">Ders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">program</span><span class="o">=</span><span class="n">program</span><span class="p">):</span>
+                    <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">classification</span><span class="p">,</span> <span class="s1">&#39;course&#39;</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">program</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                     <span class="n">courseNbr</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">program_ders</span><span class="o">.</span><span class="n">kod</span><span class="p">)</span>
+        <span class="c1"># pretty string</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/curricula.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bir Hata Oluştu ve XML Dosyası Yaratılamadı&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ExportStudentEnrollmentsToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStudentEnrollmentsToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportStudentEnrollmentsToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_student_enrollments&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for student enrollments&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+         <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Retrieve this amount of records from Solr in one time, defaults to 1000&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ExportStudentEnrollmentsToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportStudentEnrollmentsToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Ders</span><span class="p">,</span> <span class="n">Program</span><span class="p">,</span> <span class="n">OgrenciProgram</span><span class="p">,</span> <span class="n">OgrenciDersi</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">student_enrollments_doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE studentEnrollments PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/StudentEnrollment.dtd&quot;&gt;&#39;</span>
+
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">rounds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        StudentEnrollments Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;studentEnrollments&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                 <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rounds</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">():</span>
+                    <span class="n">student_element</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;student&#39;</span><span class="p">,</span>
+                                                       <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                                       <span class="n">firstName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                                       <span class="n">lastName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span>
+                                                       <span class="n">email</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student</span><span class="o">.</span><span class="n">e_posta</span><span class="p">)</span>
+                    <span class="n">student_program_list</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="n">student</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">student_program_list</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">ders</span> <span class="ow">in</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci_program</span><span class="o">=</span><span class="n">program</span><span class="p">):</span>
+                            <span class="n">lecture</span> <span class="o">=</span> <span class="n">ders</span><span class="o">.</span><span class="n">ders</span>
+                            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">student_element</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">courseId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                             <span class="n">courseNumber</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">ders</span><span class="o">.</span><span class="n">kod</span><span class="p">,</span>
+                                             <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">ders</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                             <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Lec&quot;</span><span class="p">)</span>
+
+            <span class="c1"># pretty string</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                               <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student_enrollments_doc_type</span><span class="p">)</span>
+            <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+            <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+                <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/StudentEnrollments.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bir Hata Oluştu ve XML Dosyası Yaratılamadı&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span></div></div>
+
+
+<div class="viewcode-block" id="ExportClassesToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportClassesToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportClassesToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_classes&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for timetable&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+         <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Retrieve this amount of records from Solr in one time, defaults to 1000&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ExportClassesToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportClassesToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Sube</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">student_enrollments_doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE timetable PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/CourseTimetable.dtd&quot;&gt;&#39;</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        courseTimetableImport Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+            <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">donem</span><span class="o">=</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+            <span class="n">rounds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;timetable&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                 <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;insert&quot;</span><span class="p">,</span>
+                                 <span class="n">instructors</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+                                 <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">timeFormat</span><span class="o">=</span><span class="s2">&quot;HHmm&quot;</span><span class="p">,</span>
+                                 <span class="n">dateFormat</span><span class="o">=</span><span class="s2">&quot;yyyy/M/d&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rounds</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">sube</span> <span class="ow">in</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                        <span class="n">donem</span><span class="o">=</span><span class="n">term</span><span class="p">):</span>
+                    <span class="n">lecture</span> <span class="o">=</span> <span class="n">sube</span><span class="o">.</span><span class="n">ders</span>
+                    <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">sube</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">courseNbr</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">kod</span><span class="p">,</span>
+                                     <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Lec&quot;</span><span class="p">)</span>
+            <span class="c1"># pretty string</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                               <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">student_enrollments_doc_type</span><span class="p">)</span>
+            <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+            <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+                <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/courseTimetableImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bir Hata Oluştu ve XML Dosyası Yaratılamadı&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span></div></div>
+
+
+<div class="viewcode-block" id="ExportCorseOfferingsToXML"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportCorseOfferingsToXML">[docs]</a><span class="k">class</span> <span class="nc">ExportCorseOfferingsToXML</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;export_course_offerings&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Generates Unitime XML import file for timetable&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[</span>
+
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+         <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="s1">&#39;Retrieve this amount of records from Solr in one time, defaults to 1000&#39;</span><span class="p">},</span>
+
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ExportCorseOfferingsToXML.run"><a class="viewcode-back" href="../../ulakbus.manage.html#ulakbus.manage.ExportCorseOfferingsToXML.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Sube</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="n">course_offerings_doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE offerings PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/CourseOfferingExport.dtd&quot;&gt;&#39;</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        offerings Import File</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+            <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">donem</span><span class="o">=</span><span class="n">term</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+            <span class="n">rounds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;offerings&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                 <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;insert&quot;</span><span class="p">,</span>
+                                 <span class="n">incremental</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+                                 <span class="n">timeFormat</span><span class="o">=</span><span class="s2">&quot;HHmm&quot;</span><span class="p">,</span> <span class="n">dateFormat</span><span class="o">=</span><span class="s2">&quot;yyyy/M/d&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rounds</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">sube</span> <span class="ow">in</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                        <span class="n">donem</span><span class="o">=</span><span class="n">term</span><span class="p">):</span>
+                    <span class="n">lecture</span> <span class="o">=</span> <span class="n">sube</span><span class="o">.</span><span class="n">ders</span>
+                    <span class="n">offering_elem</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;offering&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">sube</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                                     <span class="n">offered</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+                    <span class="n">course_elem</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">offering_elem</span><span class="p">,</span> <span class="s1">&#39;course&#39;</span><span class="p">,</span>
+                                                   <span class="n">courseNbr</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">kod</span><span class="p">,</span>
+                                                   <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">lecture</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span>
+                                                   <span class="n">controlling</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+                    <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">course_elem</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">sube</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                                     <span class="n">limit</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">sube</span><span class="o">.</span><span class="n">kontenjan</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Rec&quot;</span><span class="p">)</span>
+
+            <span class="c1"># pretty string</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                               <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">course_offerings_doc_type</span><span class="p">)</span>
+            <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+            <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+                <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/courseOfferingsImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+                <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bir Hata Oluştu ve XML Dosyası Yaratılamadı&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span></div></div>
+
+
+<span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYOKO_SETTINGS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ulakbus.settings&#39;</span>
+<span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ZENGINE_SETTINGS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ulakbus.settings&#39;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">ManagementCommands</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

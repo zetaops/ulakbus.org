@@ -1,231 +1,373 @@
 
 
-<!doctype html>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus package &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
 
+  
+  
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>ulakbus package &mdash; Ulakbus API Documentation 0.0.4 belgelendirme çalışması</title>
-    
-    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.0.4',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/bizstyle.js"></script>
-    <link rel="top" title="Ulakbus API Documentation 0.0.4 belgelendirme çalışması" href="index.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!--[if lt IE 9]>
-    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="related">
-      <h3>Gezinti</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="Genel Dizin"
-             accesskey="I">dizin</a></li>
-        <li><a href="index.html">Ulakbus API Documentation 0.0.4 belgelendirme çalışması</a> &raquo;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="index.html">İçindekiler Tablosu</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">ulakbus package</a><ul>
-<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#ulakbus-manage-module">ulakbus.manage module</a></li>
-<li><a class="reference internal" href="#ulakbus-settings-module">ulakbus.settings module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
-</ul>
-</li>
-</ul>
+  
 
-  <h3>Bu Sayfa</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/ulakbus.txt"
-           rel="nofollow">Kaynağı Göster</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Hızlı Arama</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="index.html"/>
+        <link rel="next" title="ulakbus.lib package" href="ulakbus.lib.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
         </div>
       </div>
+    </nav>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>ulakbus package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ulakbus.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
-  <div class="section" id="ulakbus-package">
-<h1>ulakbus package<a class="headerlink" href="#ulakbus-package" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+  <div class="section" id="module-ulakbus">
+<span id="ulakbus-package"></span><h1>ulakbus package<a class="headerlink" href="#module-ulakbus" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ulakbus.lib.html">ulakbus.lib package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.lib.pdfdocument.html">ulakbus.lib.pdfdocument package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.lib.pdfdocument.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.lib.pdfdocument.html#ulakbus-lib-pdfdocument-document-module">ulakbus.lib.pdfdocument.document module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.lib.pdfdocument.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.lib.pdfdocument.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.lib.pdfdocument.document.html">ulakbus.lib.pdfdocument.document module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#ulakbus-lib-cache-module">ulakbus.lib.cache module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#ulakbus-lib-convert-module">ulakbus.lib.convert module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#ulakbus-lib-s3-file-manager-module">ulakbus.lib.s3_file_manager module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.lib.cache.html">ulakbus.lib.cache module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.lib.convert.html">ulakbus.lib.convert module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.lib.s3_file_manager.html">ulakbus.lib.s3_file_manager module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ulakbus.models.html">ulakbus.models package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#ulakbus-models-auth-module">ulakbus.models.auth module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#ulakbus-models-buildings-rooms-module">ulakbus.models.buildings_rooms module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#ulakbus-models-hitap-module">ulakbus.models.hitap module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#ulakbus-models-ogrenci-module">ulakbus.models.ogrenci module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#ulakbus-models-personel-module">ulakbus.models.personel module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ulakbus.models.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.auth.html">ulakbus.models.auth module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.buildings_rooms.html">ulakbus.models.buildings_rooms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.hitap.html">ulakbus.models.hitap module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.ogrenci.html">ulakbus.models.ogrenci module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.personel.html">ulakbus.models.personel module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ulakbus.services.html">ulakbus.services package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ulakbus.services.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.services.common.html">ulakbus.services.common package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#ulakbus-services-common-ip-address-module">ulakbus.services.common.ip_address module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#ulakbus-services-common-nvi-module">ulakbus.services.common.nvi module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#ulakbus-services-common-nvi-sts-module">ulakbus.services.common.nvi_sts module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#ulakbus-services-common-yoksis-module">ulakbus.services.common.yoksis module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.common.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.banka.html">ulakbus.services.common.banka module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.banka_borc.html">ulakbus.services.common.banka_borc module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.banka_odeme.html">ulakbus.services.common.banka_odeme module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.ip_address.html">ulakbus.services.common.ip_address module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.nvi.html">ulakbus.services.common.nvi module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.nvi_sts.html">ulakbus.services.common.nvi_sts module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.common.yoksis.html">ulakbus.services.common.yoksis module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.services.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.services.html#ulakbus-services-authentication-module">ulakbus.services.authentication module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.services.html#ulakbus-services-zato-wrapper-module">ulakbus.services.zato_wrapper module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.services.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.services.personel.html">ulakbus.services.personel package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.services.personel.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.services.personel.hitap.html">ulakbus.services.personel.hitap package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="ulakbus.services.personel.hitap.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hitap_sorgula.html">ulakbus.services.personel.hitap.hitap_sorgula module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hitap_sync.html">ulakbus.services.personel.hitap.hitap_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_acik_sure_getir.html">ulakbus.services.personel.hitap.hizmet_acik_sure_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_acik_sure_sync.html">ulakbus.services.personel.hitap.hizmet_acik_sure_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_askerlik_getir.html">ulakbus.services.personel.hitap.hizmet_askerlik_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_askerlik_sync.html">ulakbus.services.personel.hitap.hizmet_askerlik_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_birlestirme_getir.html">ulakbus.services.personel.hitap.hizmet_birlestirme_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_birlestirme_sync.html">ulakbus.services.personel.hitap.hizmet_birlestirme_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_borclanma_getir.html">ulakbus.services.personel.hitap.hizmet_borclanma_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_borclanma_sync.html">ulakbus.services.personel.hitap.hizmet_borclanma_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_cetveli_getir.html">ulakbus.services.personel.hitap.hizmet_cetveli_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_cetveli_sync.html">ulakbus.services.personel.hitap.hizmet_cetveli_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_ihs_getir.html">ulakbus.services.personel.hitap.hizmet_ihs_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_ihs_sync.html">ulakbus.services.personel.hitap.hizmet_ihs_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_getir.html">ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_sync.html">ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_kurs_getir.html">ulakbus.services.personel.hitap.hizmet_kurs_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_kurs_sync.html">ulakbus.services.personel.hitap.hizmet_kurs_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_mahkeme_getir.html">ulakbus.services.personel.hitap.hizmet_mahkeme_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_mahkeme_sync.html">ulakbus.services.personel.hitap.hizmet_mahkeme_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_nufus_getir.html">ulakbus.services.personel.hitap.hizmet_nufus_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_nufus_sync.html">ulakbus.services.personel.hitap.hizmet_nufus_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_okul_getir.html">ulakbus.services.personel.hitap.hizmet_okul_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_okul_sync.html">ulakbus.services.personel.hitap.hizmet_okul_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_tazminat_getir.html">ulakbus.services.personel.hitap.hizmet_tazminat_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_tazminat_sync.html">ulakbus.services.personel.hitap.hizmet_tazminat_sync module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_unvan_getir.html">ulakbus.services.personel.hitap.hizmet_unvan_getir module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="ulakbus.services.personel.hitap.hizmet_unvan_sync.html">ulakbus.services.personel.hitap.hizmet_unvan_sync module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.tasks.html#module-contents">Module contents</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ulakbus.services.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.services.authentication.html">ulakbus.services.authentication module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.services.zato_wrapper.html">ulakbus.services.zato_wrapper module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ulakbus.views.html">ulakbus.views package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.views.common.html">ulakbus.views.common package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.common.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.common.html#ulakbus-views-common-akademik-takvim-module">ulakbus.views.common.akademik_takvim module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.common.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.common.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.common.akademik_takvim.html">ulakbus.views.common.akademik_takvim module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.views.ders.html">ulakbus.views.ders package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ders.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ders.html#ulakbus-views-ders-ders-module">ulakbus.views.ders.ders module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ders.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ders.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.ders.ders.html">ulakbus.views.ders.ders module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.views.ogrenci.html">ulakbus.views.ogrenci package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ogrenci.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ogrenci.html#ulakbus-views-ogrenci-basari-durumu-module">ulakbus.views.ogrenci.basari_durumu module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ogrenci.html#ulakbus-views-ogrenci-ogrenci-module">ulakbus.views.ogrenci.ogrenci module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ogrenci.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.ogrenci.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.ogrenci.basari_durumu.html">ulakbus.views.ogrenci.basari_durumu module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.ogrenci.ogrenci.html">ulakbus.views.ogrenci.ogrenci module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.views.personel.html">ulakbus.views.personel package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-crud-hitap-module">ulakbus.views.personel.crud_hitap module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-izin-module">ulakbus.views.personel.izin module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-kadro-module">ulakbus.views.personel.kadro module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-kimlik-ve-iletisim-module">ulakbus.views.personel.kimlik_ve_iletisim module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-personel-test-module">ulakbus.views.personel.personel_test module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-ucretsiz-izin-module">ulakbus.views.personel.ucretsiz_izin module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#ulakbus-views-personel-yeni-ekle-module">ulakbus.views.personel.yeni_ekle module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.personel.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.crud_hitap.html">ulakbus.views.personel.crud_hitap module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.izin.html">ulakbus.views.personel.izin module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.kadro.html">ulakbus.views.personel.kadro module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.kimlik_ve_iletisim.html">ulakbus.views.personel.kimlik_ve_iletisim module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.personel_test.html">ulakbus.views.personel.personel_test module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.ucretsiz_izin.html">ulakbus.views.personel.ucretsiz_izin module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.personel.yeni_ekle.html">ulakbus.views.personel.yeni_ekle module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.views.reports.html">ulakbus.views.reports package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.reports.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.reports.html#ulakbus-views-reports-base-module">ulakbus.views.reports.base module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.reports.html#ulakbus-views-reports-ogrenci-module">ulakbus.views.reports.ogrenci module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.reports.html#ulakbus-views-reports-personel-module">ulakbus.views.reports.personel module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.reports.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ulakbus.views.reports.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.reports.base.html">ulakbus.views.reports.base module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.reports.ogrenci.html">ulakbus.views.reports.ogrenci module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ulakbus.views.reports.personel.html">ulakbus.views.reports.personel module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#ulakbus-views-dashboard-module">ulakbus.views.dashboard module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#ulakbus-views-system-module">ulakbus.views.system module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.views.dashboard.html">ulakbus.views.dashboard module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.views.system.html">ulakbus.views.system module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
 </div>
-<div class="section" id="ulakbus-manage-module">
-<h2>ulakbus.manage module<a class="headerlink" href="#ulakbus-manage-module" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-</div>
-<div class="section" id="ulakbus-settings-module">
-<h2>ulakbus.settings module<a class="headerlink" href="#ulakbus-settings-module" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-</div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 </div>
 </div>
 
 
+           </div>
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ulakbus.lib.html" class="btn btn-neutral float-right" title="ulakbus.lib package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Gezinti</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="Genel Dizin"
-             >dizin</a></li>
-        <li><a href="index.html">Ulakbus API Documentation 0.0.4 belgelendirme çalışması</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2015, Zetaops.
-      <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2 ile oluşturulmuştur.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

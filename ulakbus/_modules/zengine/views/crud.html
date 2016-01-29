@@ -1,0 +1,1076 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>zengine.views.crud &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>zengine.views.crud</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for zengine.views.crud</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module holds CrudView and related classes that helps building</span>
+<span class="sd">CRUDS (Create Read Update Delete Search) type of views.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">falcon</span>
+<span class="kn">import</span> <span class="nn">six</span>
+<span class="kn">from</span> <span class="nn">falcon</span> <span class="kn">import</span> <span class="n">HTTPNotFound</span>
+
+<span class="kn">from</span> <span class="nn">pyoko.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">pyoko.model</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">model_registry</span>
+<span class="kn">from</span> <span class="nn">zengine</span> <span class="kn">import</span> <span class="n">signals</span>
+<span class="kn">from</span> <span class="nn">zengine.auth.permissions</span> <span class="kn">import</span> <span class="n">NO_PERM_TASKS_TYPES</span>
+<span class="kn">from</span> <span class="nn">zengine.dispatch.dispatcher</span> <span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span> <span class="nn">zengine</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.cache</span> <span class="kn">import</span> <span class="n">Cache</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.utils</span> <span class="kn">import</span> <span class="n">date_to_solr</span>
+<span class="kn">from</span> <span class="nn">zengine.log</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">zengine.signals</span> <span class="kn">import</span> <span class="n">crud_post_save</span>
+<span class="kn">from</span> <span class="nn">zengine.views.base</span> <span class="kn">import</span> <span class="n">BaseView</span>
+
+
+
+<span class="k">class</span> <span class="nc">ListForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Holds list view form elements.</span>
+
+<span class="sd">    Used by CrudMeta metaclass to create distinct</span>
+<span class="sd">    copies for each subclass of CrudView.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">add</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Ekle&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ObjectForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Holds object add / edit form elements.</span>
+
+<span class="sd">    Used by CrudMeta metaclass to create distinct</span>
+<span class="sd">    copies for each subclass of CrudView.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">save_edit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save::add_edit_form&quot;</span><span class="p">)</span>
+    <span class="n">save_list</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Listele&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save::list&quot;</span><span class="p">)</span>
+    <span class="n">save_as_new_edit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Yeni Olarak Kaydet&quot;</span><span class="p">,</span>
+                                         <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save_as_new::add_edit_form&quot;</span><span class="p">)</span>
+    <span class="n">save_as_new_list</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Yeni Olarak Kaydet ve Listele&quot;</span><span class="p">,</span>
+                                         <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save_as_new::list&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">CrudMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Meta class that prepares CrudView&#39;s subclasses.</span>
+
+<span class="sd">    Handles passing of default &quot;Meta&quot; class attributes and</span>
+<span class="sd">    List/Object forms into subclasses.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_meta</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="c1"># for key, prop in attrs.items():</span>
+        <span class="c1">#     if hasattr(prop, &#39;view_method&#39;):</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;ListForm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;ListForm&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">ListForm</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ListForm</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;ObjectForm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;ObjectForm&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">ObjectForm</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ObjectForm</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;CrudView&#39;</span><span class="p">:</span>
+            <span class="n">CrudMeta</span><span class="o">.</span><span class="n">_meta</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">CrudMeta</span><span class="o">.</span><span class="n">registry</span><span class="p">[</span><span class="n">mcs</span><span class="o">.</span><span class="n">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">mcs</span>
+            <span class="k">if</span> <span class="s1">&#39;Meta&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Meta&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="n">CrudMeta</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">CrudMeta</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+        <span class="n">new_class</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">CrudMeta</span><span class="p">,</span> <span class="n">mcs</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_class</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_permissions</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+        <span class="n">perms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">kls_name</span><span class="p">,</span> <span class="n">kls</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">method_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_view&#39;</span><span class="p">):</span>
+                    <span class="n">perms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">kls_name</span><span class="p">,</span> <span class="n">method_name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">perms</span>
+
+
+<span class="k">def</span> <span class="nf">form_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for marking a method to work as a modifier for the form output.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (function): a filter method that takes form&#39;s</span>
+<span class="sd">         serialized output as the sole argument and changes</span>
+<span class="sd">         it in place as required.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This is a workaround till we decide and implement a</span>
+<span class="sd">         better method for fine grained form customizations.</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        @form_modifier</span>
+<span class="sd">        def foo(self, serialized_form):</span>
+<span class="sd">            if &#39;x&#39; in serialized_form[&#39;schema&#39;][&#39;properties&#39;]:</span>
+<span class="sd">                serialized_form[&#39;inline_edit&#39;] = [&#39;y&#39;, &#39;z&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: Implement a better method for form modifications.</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">form_modifier</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+
+<span class="k">def</span> <span class="nf">obj_filter</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for marking a method to work as a builder method for the object listings.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (function): a filter method that takes object instance and</span>
+<span class="sd">    result dictionary and modifies that result dict in place.</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        def foo(self, obj, result):</span>
+<span class="sd">            if obj.status &lt; self.CONFIRMED:</span>
+<span class="sd">                result[&#39;actions&#39;].append(</span>
+<span class="sd">                        {&#39;name&#39;: &#39;Confirm&#39;, &#39;cmd&#39;: &#39;confrim&#39;, &#39;show_as&#39;: &#39;button&#39;})</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">filter_method</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+
+<span class="k">def</span> <span class="nf">view_method</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for marking view methods to be used with dynamic</span>
+<span class="sd">    dispatcher :py:attr:`~zengine.views.crud.CrudView.call`.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Dynamic dispaching mainly used for auto-generated model</span>
+<span class="sd">        based CRUD views. In this mode, methods called according</span>
+<span class="sd">        to current &quot;cmd&quot;.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (function): A view method that will be called by</span>
+<span class="sd">         :py:attr:`~zengine.views.crud.CrudView.call`</span>
+<span class="sd">         dispatcher method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">view_method</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+
+<span class="k">def</span> <span class="nf">list_query</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    To manipulate list querysets</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (function): Query method to be chained. Takes and returns a queryset.</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        def foo(self, obj, result):</span>
+<span class="sd">            if obj.status &lt; self.CONFIRMED:</span>
+<span class="sd">                result[&#39;actions&#39;].append(</span>
+<span class="sd">                        {&#39;name&#39;: &#39;Confirm&#39;, &#39;cmd&#39;: &#39;confrim&#39;, &#39;show_as&#39;: &#39;button&#39;})</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">func</span><span class="o">.</span><span class="n">query_method</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+
+<span class="k">class</span> <span class="nc">SelectBoxCache</span><span class="p">(</span><span class="n">Cache</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cache object for queries that will be made to fill auto-complete</span>
+<span class="sd">    select boxes of relations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">PREFIX</span> <span class="o">=</span> <span class="s1">&#39;MDLST&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SelectBoxCache</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">crud_post_save</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">clear_model_list_cache</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Invalidate permission cache on crud updates on Role and AbstractRole models</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">SelectBoxCache</span><span class="o">.</span><span class="n">flush</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">model_class</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+
+
+
+<span class="nd">@six.add_metaclass</span><span class="p">(</span><span class="n">CrudMeta</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CrudView</span><span class="p">(</span><span class="n">BaseView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A base class for &quot;Create List Show Update Delete&quot; type of</span>
+<span class="sd">    views that works primarily on one model.</span>
+
+<span class="sd">    While it&#39;s possible to get model&#39;s name from client input</span>
+<span class="sd">    (`self.current.input[&#39;model&#39;]`) usually subclasses of</span>
+<span class="sd">    CrudView explicitly define the name of their primary model&#39;s</span>
+<span class="sd">    name in :class:`~zengine.views.crud.CrudView.Meta.model` Meta class variable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attributes of this class defines the client side and backend</span>
+<span class="sd">         behaviour of CrudView instances.</span>
+
+<span class="sd">        Attributes:</span>
+
+<span class="sd">            model (str): Name of the model to work on.</span>
+<span class="sd">             self.current.input[&#39;model&#39;] will be used if not defined.</span>
+<span class="sd">            object_actions ({}): A dict that will be passed to client</span>
+<span class="sd">             for each list item.</span>
+
+<span class="sd">                .. code-block:: python</span>
+
+<span class="sd">                    object_actions = {&#39;code_name_of_action&#39;:</span>
+<span class="sd">                        {&#39;name&#39;: &#39;&#39;, &#39;cmd&#39;: &#39;&#39;, &#39;mode&#39;: &#39;&#39;, &#39;show_as&#39;: &#39;&#39;},</span>
+<span class="sd">                    }</span>
+<span class="sd">                    &#39;&#39;&#39;</span>
+<span class="sd">                    name: Visible name of action, useless when &quot;show_as&quot; set to &quot;link&quot;.</span>
+
+<span class="sd">                    cmd: Command to be run. Should not be used in conjunction with &quot;wf&quot;.</span>
+
+<span class="sd">                    wf: Workflow to be run. Should not be used in conjunction with &quot;cmd&quot;.</span>
+
+<span class="sd">                    object_key: Defaults to &quot;object_id&quot;. To bypass automatic object fetching,</span>
+<span class="sd">                    override this with any value.</span>
+
+<span class="sd">                    show_as:</span>
+<span class="sd">                        &quot;button&quot;,</span>
+<span class="sd">                        &quot;context_menu&quot; appends to context_menu of the row</span>
+<span class="sd">                        &quot;group_action&quot;. appends to actions drop down menu</span>
+<span class="sd">                        &quot;link&quot; this option expects &quot;fields&quot; param with index numbers</span>
+<span class="sd">                        of fields to be shown  as links.</span>
+
+<span class="sd">                    mode:</span>
+<span class="sd">                       various values can be given to define how to run an activity</span>
+<span class="sd">                       normal: open in same window</span>
+<span class="sd">                       modal: open in modal window</span>
+<span class="sd">                       new: new browser window</span>
+<span class="sd">                    &#39;&#39;&#39;</span>
+<span class="sd">            init_view (str): Default view for dispatcher (call) mode.</span>
+<span class="sd">            allow_search (bool): Enables or disables search feature.</span>
+<span class="sd">            allow_filters (bool): Enables or disables filters.</span>
+<span class="sd">            allow_selection (bool): Enables or disables selection of items on object list.</span>
+<span class="sd">            objects_per_page (int): Number of items per object list page.</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">allow_search</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">init_view</span> <span class="o">=</span> <span class="s1">&#39;list&#39;</span>
+        <span class="n">allow_filters</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">allow_selection</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">objects_per_page</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;delete&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sil&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;show_as&#39;</span><span class="p">:</span> <span class="s1">&#39;button&#39;</span><span class="p">},</span>
+            <span class="s1">&#39;add_edit_form&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Düzenle&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;add_edit_form&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;show_as&#39;</span><span class="p">:</span> <span class="s1">&#39;button&#39;</span><span class="p">},</span>
+            <span class="s1">&#39;show&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">],</span> <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;show_as&#39;</span><span class="p">:</span> <span class="s1">&#39;link&#39;</span><span class="p">},</span>
+        <span class="p">}</span>
+
+    <span class="k">class</span> <span class="nc">ObjectForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+        <span class="n">save_edit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save::add_edit_form&quot;</span><span class="p">)</span>
+        <span class="n">save_list</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Listele&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save::list&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+            <span class="n">save_as_new_edit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Yeni Olarak Kaydet&quot;</span><span class="p">,</span>
+                                                 <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save_as_new::add_edit_form&quot;</span><span class="p">)</span>
+            <span class="n">save_as_new_list</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Yeni Olarak Kaydet ve Listele&quot;</span><span class="p">,</span>
+                                                 <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save_as_new::list&quot;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_METHODS</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">QUERY_METHODS</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FORM_MODIFIERS</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VIEW_METHODS</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CrudView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;cmd&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">init_view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_decorated_methods</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">current</span><span class="p">:</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_initial_object</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_object_form</span><span class="p">()</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calling </span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;reload_cmd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;allow_selection&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">allow_selection</span><span class="p">,</span>
+                <span class="s1">&#39;allow_search&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">allow_search</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">search_fields</span><span class="p">),</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_apply_form_modifiers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serialized_form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method will be called by self.form_out() method</span>
+<span class="sd">        with serialized form data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            serialized_form (dict): JSON serializable representation</span>
+<span class="sd">             of form data.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            This is a workaround till we decide and implement a</span>
+<span class="sd">             better method for fine grained form customizations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">serialized_form</span><span class="p">[</span><span class="s1">&#39;schema&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># this adds default directives for building</span>
+            <span class="c1"># add and list views of linked models</span>
+            <span class="k">if</span> <span class="n">prop</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;model&#39;</span><span class="p">:</span>
+                <span class="n">prop</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                    <span class="s1">&#39;add_cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;add_edit_form&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;list_cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;select_list&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;wf&#39;</span><span class="p">:</span> <span class="s1">&#39;crud&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="c1"># overriding widget type of Permissions ListNode</span>
+            <span class="k">if</span> <span class="n">field</span> <span class="o">==</span> <span class="s1">&#39;Permissions&#39;</span><span class="p">:</span>
+                <span class="n">prop</span><span class="p">[</span><span class="s1">&#39;widget&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;filter_interface&#39;</span>
+
+        <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">FORM_MODIFIERS</span><span class="p">:</span>
+            <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serialized_form</span><span class="p">)</span>
+
+    <span class="c1"># noinspection PyUnresolvedReferences</span>
+    <span class="k">def</span> <span class="nf">form_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_form</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Renders form. Applies form modifiers, then writes</span>
+<span class="sd">        result to response payload. If supplied, given form</span>
+<span class="sd">        object instance will be used instead of view&#39;s</span>
+<span class="sd">        default ObjectForm.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">             _form (:py:attr:`~zengine.forms.json_form.JsonForm`):</span>
+<span class="sd">              Form object to override `self.object_form`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">_form</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_form</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_form</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;grouping&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_form</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">grouping</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;constraints&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_form</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">constraints</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_form_modifiers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_client_cmd</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_decorated_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Collects decorated methods into their related lists.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: Move this to CrudMeta for decrease the overhead of init.</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__bases__</span><span class="p">:</span>
+            <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;view_method&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">VIEW_METHODS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;form_modifier&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FORM_MODIFIERS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;filter_method&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_METHODS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;query_method&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">QUERY_METHODS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method act as a method dispatcher for non-WF</span>
+<span class="sd">        based flow handling. Mainly used for auto-generated</span>
+<span class="sd">        CRUD views.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_for_permission</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VIEW_METHODS</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd</span><span class="p">](</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_cmd</span>
+
+    <span class="k">def</span> <span class="nf">check_for_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks permissions of auto-generated CRUD views.</span>
+
+<span class="sd">        Required permissions calculated according to</span>
+<span class="sd">        ``ModelName . self.cmd`` scheme.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">permission</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;CHECK CRUD PERM: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">permission</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_type</span> <span class="ow">in</span> <span class="n">NO_PERM_TASKS_TYPES</span> <span class="ow">or</span>
+                    <span class="n">permission</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">ANONYMOUS_WORKFLOWS</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="n">permission</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPForbidden</span><span class="p">(</span><span class="s2">&quot;Permission denied&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;You don&#39;t have required CRUD permission: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">permission</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_object_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an instance of :attr:`ObjectForm` and</span>
+<span class="sd">        assigns it to ``self.object_form``.</span>
+
+<span class="sd">        Can be overridden to easily replace the default</span>
+<span class="sd">        ObjectForm.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object_form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ObjectForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_model_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Looks for the default model of this view from</span>
+<span class="sd">        :py:attr:`Meta.model`. If it&#39;s not set, tries to get</span>
+<span class="sd">        model name from ``current.input[&#39;model&#39;]``.</span>
+
+<span class="sd">        Can be overridden to implement different model</span>
+<span class="sd">        selection mechanism.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :py:attr:`~pyoko.models.Model` class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">model</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">model</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">model</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">model_registry</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_initial_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an instance of default (or selected) model.</span>
+
+<span class="sd">        If an existing objects key found in</span>
+
+<span class="sd">        ``current.input[&#39;object_id&#39;]``</span>
+
+<span class="sd">        or</span>
+
+<span class="sd">        ``current.input[&#39;form&#39;][&#39;object_key&#39;]``</span>
+
+<span class="sd">        or</span>
+
+<span class="sd">        ``current.task_data[&#39;added_obj&#39;]``</span>
+
+<span class="sd">        then it will be retrieved from DB and assigned to ``self.object``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model_class</span><span class="p">()</span>
+        <span class="n">object_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;object_id&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">object_id</span> <span class="ow">and</span> <span class="s1">&#39;form&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">:</span>
+            <span class="n">object_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;object_key&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">object_id</span> <span class="ow">and</span> <span class="n">object_id</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deleted_obj&#39;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">object_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">deleted</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">HTTPNotFound</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">HTTPNotFound</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="s1">&#39;added_obj&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;added_obj&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_selected_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        An iterator for object instances of selected list items.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            :class:`Model&lt;pyoko:pyoko.model.Model&gt;` instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">itm_key</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">itm_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;selected_items&#39;</span><span class="p">]}</span>
+
+    <span class="k">def</span> <span class="nf">make_list_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets header row of object list.</span>
+
+<span class="sd">        First item of ``output[&#39;objects&#39;]`` list used as header.</span>
+<span class="sd">        If it&#39;s not defined to which fields to be used in object</span>
+<span class="sd">        listing, then no header is set and first item set to ``-1``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">list_fields</span><span class="p">:</span>
+            <span class="n">list_headers</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">list_fields</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">f</span><span class="p">)):</span>
+                    <span class="n">list_headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">list_headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">list_headers</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-1&#39;</span><span class="p">)</span>
+
+    <span class="nd">@list_query</span>
+    <span class="k">def</span> <span class="nf">_apply_list_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies client filters to object listing queryset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            queryset (:class:`QuerySet&lt;pyoko:pyoko.db.queryset.QuerySet&gt;`):</span>
+<span class="sd">                Object listing queryset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            queryset (:class:`QuerySet&lt;pyoko:pyoko.db.queryset.QuerySet&gt;`):</span>
+<span class="sd">                Object listing queryset.</span>
+<span class="sd">        Example:</span>
+
+<span class="sd">        .. code-block:: javascript</span>
+
+<span class="sd">            filters: {</span>
+<span class="sd">                ulke: {values: [&quot;1&quot;, &quot;2&quot;], type: &quot;check&quot;},</span>
+<span class="sd">                kurum_disi_gorev_baslama_tarihi: {</span>
+<span class="sd">                    values: [&quot;20.01.2016&quot;, null], type: &quot;date&quot;</span>
+<span class="sd">                    }</span>
+<span class="sd">                ulke: {values: [&quot;1&quot;, &quot;2&quot;], type: &quot;check&quot;}</span>
+<span class="sd">                }</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filters&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">allow_filters</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">filters</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="nb">filter</span> <span class="ow">in</span> <span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">filter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span>
+                    <span class="n">start</span> <span class="o">=</span> <span class="n">date_to_solr</span><span class="p">(</span><span class="nb">filter</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">end</span> <span class="o">=</span> <span class="n">date_to_solr</span><span class="p">(</span><span class="nb">filter</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__range&#39;</span> <span class="o">%</span> <span class="n">field</span><span class="p">:</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)})</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__in&#39;</span> <span class="o">%</span> <span class="n">field</span><span class="p">:</span> <span class="nb">filter</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]})</span>
+        <span class="k">return</span> <span class="n">queryset</span>
+
+    <span class="nd">@list_query</span>
+    <span class="k">def</span> <span class="nf">_apply_list_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies search queries to object listing queryset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query (:class:`QuerySet&lt;pyoko:pyoko.db.queryset.QuerySet&gt;`):</span>
+<span class="sd">             Object listing queryset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            queryset (:class:`QuerySet&lt;pyoko:pyoko.db.queryset.QuerySet&gt;`):</span>
+<span class="sd">                Object listing queryset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">search_fields</span> <span class="ow">and</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">allow_search</span> <span class="ow">and</span>
+             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">q</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">search_on</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">search_fields</span><span class="p">,</span> <span class="n">contains</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">query</span>
+
+    <span class="nd">@obj_filter</span>
+    <span class="k">def</span> <span class="nf">_get_list_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">list_fields</span>
+        <span class="k">if</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">list_fields</span><span class="p">:</span>
+                <span class="n">field</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+                    <span class="n">result</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get_humane_value</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">obj</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">_parse_object_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies registered (with ``@obj_filter`` decorator)</span>
+<span class="sd">        object filter methods</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            obj (:class:`Model&lt;pyoko:pyoko.model.Model&gt;`): Model instance</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Result dict that transforms into a row of object</span>
+<span class="sd">            listing.</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                {</span>
+<span class="sd">                      &quot;fields&quot;: [ # cell contents</span>
+<span class="sd">                        &quot;Title of the obj&quot;,</span>
+<span class="sd">                        &quot;Description of obj&quot;,</span>
+<span class="sd">                        &quot;06.01.2016&quot;</span>
+<span class="sd">                      ],</span>
+<span class="sd">                      &quot;actions&quot;: [ # per row actions</span>
+<span class="sd">                        {</span>
+<span class="sd">                          &quot;fields&quot;: [</span>
+<span class="sd">                            0 # cell indexes to be shown as link</span>
+<span class="sd">                          ],</span>
+<span class="sd">                          &quot;cmd&quot;: &quot;show&quot;,</span>
+<span class="sd">                          &quot;mode&quot;: &quot;normal&quot;,</span>
+<span class="sd">                          &quot;show_as&quot;: &quot;link&quot;</span>
+<span class="sd">                        },</span>
+<span class="sd">                        {</span>
+<span class="sd">                          &quot;cmd&quot;: &quot;add_edit_form&quot;,</span>
+<span class="sd">                          &quot;name&quot;: &quot;Edit&quot;,</span>
+<span class="sd">                          &quot;show_as&quot;: &quot;button&quot;,</span>
+<span class="sd">                          &quot;mode&quot;: &quot;normal&quot;</span>
+<span class="sd">                        },</span>
+<span class="sd">                        {</span>
+<span class="sd">                          &quot;cmd&quot;: &quot;delete&quot;,</span>
+<span class="sd">                          &quot;name&quot;: &quot;Delete&quot;,</span>
+<span class="sd">                          &quot;show_as&quot;: &quot;button&quot;,</span>
+<span class="sd">                          &quot;mode&quot;: &quot;normal&quot;</span>
+<span class="sd">                        }</span>
+<span class="sd">                      ],</span>
+<span class="sd">                      &quot;key&quot;: &quot;LbFDElbgINMaYA4meOHgMhkOFQc&quot;</span>
+<span class="sd">                    }</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">actions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">object_actions</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">perm</span><span class="p">,</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">object_actions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">permission</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">perm</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="n">permission</span><span class="p">):</span>
+                    <span class="n">actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="n">actions</span><span class="p">}</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">FILTER_METHODS</span><span class="p">:</span>
+            <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_apply_list_queries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies registered (with ``@list_query`` decorator)</span>
+<span class="sd">        list query methods.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            queryset (:class:`QuerySet&lt;pyoko:pyoko.db.queryset.QuerySet&gt;`):</span>
+<span class="sd">             Object listing queryset</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">QUERY_METHODS</span><span class="p">:</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">queryset</span>
+
+    <span class="nd">@obj_filter</span>
+    <span class="k">def</span> <span class="nf">_remove_just_deleted_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To compensate riak~solr sync delay, remove just deleted</span>
+<span class="sd">        object from from object list (if exists)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            obj (:class:`Model&lt;pyoko:pyoko.model.Model&gt;`): Model instance</span>
+<span class="sd">            result (dict): Result dict.</span>
+
+<span class="sd">                .. code-block:: python</span>
+
+<span class="sd">                    {</span>
+<span class="sd">                        &#39;key&#39;: obj.key,</span>
+<span class="sd">                        &#39;fields&#39;: [],</span>
+<span class="sd">                        &#39;actions&#39;: self.Meta.object_actions</span>
+<span class="sd">                    }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;deleted_obj&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span> <span class="ow">and</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;deleted_obj&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;deleted_obj&#39;</span><span class="p">]</span>
+            <span class="n">result</span><span class="p">[</span><span class="s1">&#39;exclude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">_add_just_created_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_added_key</span><span class="p">,</span> <span class="n">new_added_listed</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To compensate 1sec Riak~Solr sync delay, manually add</span>
+<span class="sd">        just created object to the object listing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            new_added_key (str): Key of just created object.</span>
+<span class="sd">            new_added_listed (bool): Is already listed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">new_added_key</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">new_added_listed</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">new_added_key</span><span class="p">)</span>
+            <span class="n">list_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_object_actions</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">&#39;exclude&#39;</span> <span class="ow">in</span> <span class="n">list_obj</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="n">deleted</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">list_obj</span><span class="p">)</span>
+
+    <span class="nd">@list_query</span>
+    <span class="k">def</span> <span class="nf">_handle_list_pagination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles pagination of object listings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query (:class:`QuerySet&lt;pyoko:pyoko.db.queryset.QuerySet&gt;`):</span>
+<span class="sd">                Object listing queryset.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_page</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">per_page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">objects_per_page</span>
+        <span class="n">total_objects</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">total_pages</span> <span class="o">=</span> <span class="n">total_objects</span> <span class="o">/</span> <span class="n">per_page</span> <span class="ow">or</span> <span class="mi">1</span>
+        <span class="c1"># add orphans to last page</span>
+        <span class="n">current_per_page</span> <span class="o">=</span> <span class="n">per_page</span> <span class="o">+</span> <span class="p">(</span>
+            <span class="n">total_objects</span> <span class="o">%</span> <span class="n">per_page</span> <span class="k">if</span> <span class="n">current_page</span> <span class="o">==</span> <span class="n">total_pages</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;pagination&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="n">current_page</span><span class="p">,</span>
+                                         <span class="n">total_pages</span><span class="o">=</span><span class="n">total_pages</span><span class="p">,</span>
+                                         <span class="n">total_objects</span><span class="o">=</span><span class="n">total_objects</span><span class="p">,</span>
+                                         <span class="n">per_page</span><span class="o">=</span><span class="n">current_per_page</span><span class="p">)</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">current_per_page</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="p">(</span><span class="n">current_page</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">per_page</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">query</span>
+
+    <span class="k">def</span> <span class="nf">display_list_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates and renders list filters according to</span>
+<span class="sd">        :attr:`model.Meta.list_filters&lt;pyoko:pyoko.model.Model.Meta.list_filters&gt;`.</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                class Foo(Model):</span>
+<span class="sd">                    class Meta:</span>
+<span class="sd">                        list_filters = [&#39;field_name&#39;, &#39;another_field_name&#39;]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">allow_filters</span> <span class="ow">and</span> <span class="n">model_class</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">list_filters</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;allow_filters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">flt</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">model_class</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">list_filters</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="n">field_name</span><span class="p">,</span>
+                 <span class="s1">&#39;verbose_name&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                 <span class="c1"># &#39;type&#39;: &#39;button&#39;</span>
+                 <span class="p">}</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="p">(</span><span class="n">fields</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">)):</span>
+                <span class="n">f</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;date&#39;</span>
+            <span class="k">elif</span> <span class="n">field</span><span class="o">.</span><span class="n">choices</span><span class="p">:</span>
+                <span class="n">f</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">v</span><span class="p">}</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">get_choices_for</span><span class="p">(</span><span class="n">field_name</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">}</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span>
+                               <span class="n">model_class</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">distinct_values_of</span><span class="p">(</span><span class="n">field_name</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+            <span class="n">flt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;list_filters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flt</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates object listings for the model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_list_queries</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_list_header</span><span class="p">()</span>
+        <span class="n">new_added_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;added_obj&#39;</span><span class="p">)</span>
+        <span class="n">new_added_listed</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_list_filters</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
+            <span class="n">new_added_listed</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">new_added_key</span>
+            <span class="n">list_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_object_actions</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="n">list_obj</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_obj</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">&#39;exclude&#39;</span> <span class="ow">in</span> <span class="n">list_obj</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="n">deleted</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">list_obj</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_just_created_object</span><span class="p">(</span><span class="n">new_added_key</span><span class="p">,</span> <span class="n">new_added_listed</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="s1">&#39;verbose_name_plural&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ListForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">new_added_key</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;added_obj&#39;</span><span class="p">]</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">reload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tells the client to reload it&#39;s current view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_client_cmd</span><span class="p">(</span><span class="s1">&#39;reload&#39;</span><span class="p">)</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tells the client to reset (restart) it&#39;s current workflow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_client_cmd</span><span class="p">(</span><span class="s1">&#39;reset&#39;</span><span class="p">)</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">select_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a simple object list for auto-complete dropdown</span>
+<span class="sd">        boxes.</span>
+
+<span class="sd">        By default it tries to return all items. But if number of</span>
+<span class="sd">        items is more than</span>
+<span class="sd">        :attr:`~zengine.settings.MAX_NUM_DROPDOWN_LINKED_MODELS`</span>
+<span class="sd">        then, it returns back ``[-1]`` which means &quot;Too many</span>
+<span class="sd">        items, please filter&quot;.</span>
+
+<span class="sd">        If queryset doesn&#39;t return any items, it returns back</span>
+<span class="sd">        ``[0]`` value.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            Output of this method will be cached with</span>
+<span class="sd">            :class:`SelectBoxCache` object.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_list_search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">num_of_rec</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">searched</span> <span class="o">=</span> <span class="s1">&#39;query&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">searched</span> <span class="ow">and</span> <span class="n">num_of_rec</span> <span class="o">&gt;</span> <span class="n">settings</span><span class="o">.</span><span class="n">MAX_NUM_DROPDOWN_LINKED_MODELS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">num_of_rec</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">search_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">cache</span> <span class="o">=</span> <span class="n">SelectBoxCache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_class</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">search_str</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="ow">or</span> <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                    <span class="p">[{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">obj</span><span class="p">)}</span>
+                     <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">object_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Writes current objects (``self.object``) text</span>
+<span class="sd">        representation to ``output[&#39;object_name&#39;]``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;object_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns details of the selected object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_client_cmd</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">)</span>
+        <span class="n">obj_form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">models</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+            <span class="n">list_nodes</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">_serialize</span><span class="p">(</span><span class="n">readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">obj_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">obj_form</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,)</span> <span class="ow">or</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Password&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;file&#39;</span> <span class="ow">and</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>  <span class="c1"># passing for now, needs client support</span>
+
+            <span class="n">obj_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_class</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">verbose_name</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;object_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj_data</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">list_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Simple view to combine :attr:`list()` and :attr:`form()` views.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">()</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">add_edit_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">()</span>
+        <span class="c1"># self.output[&#39;forms&#39;] = self.object_form.serialize()</span>
+        <span class="c1"># self.set_client_cmd(&#39;form&#39;)</span>
+
+    <span class="k">def</span> <span class="nf">set_form_data_to_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_form</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">])</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">save_as_new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;object_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
+
+    <span class="k">def</span> <span class="nf">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">crud_pre_save</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+        <span class="n">obj_is_new</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">crud_post_save</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_cmd</span> <span class="ow">and</span> <span class="n">obj_is_new</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;added_obj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_object</span><span class="p">()</span>
+
+    <span class="nd">@view_method</span>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># TODO: add confirmation dialog</span>
+        <span class="c1"># to overcome 1s riak-solr delay</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">crud_pre_delete</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;added_object&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;added_object&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;deleted_obj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
+        <span class="k">if</span> <span class="s1">&#39;object_id&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;object_id&#39;</span><span class="p">]</span>
+        <span class="n">object_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">crud_post_delete</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">object_data</span><span class="o">=</span><span class="n">object_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_client_cmd</span><span class="p">(</span><span class="s1">&#39;reload&#39;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
