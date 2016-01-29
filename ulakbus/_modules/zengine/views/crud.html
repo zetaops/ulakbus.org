@@ -447,7 +447,7 @@
 
 <span class="sd">        Note:</span>
 <span class="sd">            This is a workaround till we decide and implement a</span>
-<span class="sd">             better method for fine grained form customizations.</span>
+<span class="sd">            better method for fine grained form customizations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">serialized_form</span><span class="p">[</span><span class="s1">&#39;schema&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="c1"># this adds default directives for building</span>
@@ -962,16 +962,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;object_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj_data</span>
 
-    <span class="nd">@view_method</span>
-    <span class="k">def</span> <span class="nf">list_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Simple view to combine :attr:`list()` and :attr:`form()` views.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">()</span>
 
     <span class="nd">@view_method</span>
     <span class="k">def</span> <span class="nf">add_edit_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add edit form</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">()</span>
         <span class="c1"># self.output[&#39;forms&#39;] = self.object_form.serialize()</span>
         <span class="c1"># self.set_client_cmd(&#39;form&#39;)</span>
