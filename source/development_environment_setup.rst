@@ -88,7 +88,13 @@ başlatabilirsiniz:
 
     vagrant up
 
-Başlayan makineye giriş yapmak için ``vagrant ssh`` komutunu kullanabilirsiniz.
+
+Başlayan makineye giriş yapmak için şu komutu kullanabilirsiniz:
+
+::
+
+    vagrant ssh
+
 
 Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
 olmadığını kontrol edebilisiniz:
@@ -173,6 +179,13 @@ ilgili veriler host makinesine alınmalıdır.
     $ vagrant box destroy
     $ vagrant up
 
+
+Ayrıca mevcut box birden fazla sürüme sahip olabilir. ``--box-version`` ile yeni bir sürüm
+ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:
+
+::
+    $ vagrant box list                  # Vagrant için yüklü olan box listesi
+    $ vagrant box remove --box-version 0.2.2 ulakbus   # ulakbus isimli box'ın 0.2.2 sürümünü kaldır
 
 Sonraki Adımlar
 +++++++++++++++
