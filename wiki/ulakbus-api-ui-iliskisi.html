@@ -36,8 +36,8 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
-    <link rel="next" title="Ulakbus’e Katkıda Bulunmak" href="git_workflow.html" />
-    <link rel="prev" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
+    <link rel="next" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
+    <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -168,10 +168,10 @@
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
@@ -210,6 +210,8 @@
 </li>
 <li><a class="reference internal" href="#liste-sayfasi">Liste sayfası</a></li>
 <li><a class="reference internal" href="#detay-sayfasi">Detay sayfası</a></li>
+<li><a class="reference internal" href="#ui-menu-ve-diger-ogeler">UI Menu ve Diğer Öğeler</a></li>
+<li><a class="reference internal" href="#gelistirmeye-baslamak">Geliştirmeye Başlamak</a></li>
 </ul>
 </li>
 </ul>
@@ -217,11 +219,11 @@
 </ul>
 
   <h4>Önceki konu</h4>
-  <p class="topless"><a href="ulakbus_user_interface.html"
-                        title="önceki bölüm">Geliştirme Ortamı Kurulumu(Frontend)</a></p>
+  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
+                        title="önceki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
   <h4>Sonraki konu</h4>
-  <p class="topless"><a href="git_workflow.html"
-                        title="sonraki bölüm">Ulakbus&#8217;e Katkıda Bulunmak</a></p>
+  <p class="topless"><a href="yazilim_gelistirme_ve_test_dongusu.html"
+                        title="sonraki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -293,7 +295,7 @@
 <div class="line">Ulakbus kullanıcı arayüzü yapacağı işlemlerle ilgili komutları API&#8217;dan alacak şekilde kurgulanmıştır.</div>
 <div class="line">Kullanıcı arayüzü Ulakbus API tarafından kullanılan bir araç olarak düşünülebilir.</div>
 <div class="line">API o anda kullanıcının neler yapabileceğini, sayfa öğelerini, sayfa öğelerinin konumlandırılmalarını belirleyici veriyi arayüze sağlar ve arayüz bu veriye göre yorumlanır.</div>
-<div class="line">Kullanıcı arayüzünde bir semantik bulunmamaktadır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.</div>
+<div class="line">Kullanıcı arayüzü dummy bir uygulama olarak tasarlanmıştır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.</div>
 <div class="line"><br /></div>
 <div class="line">Ulakbus uygulaması iş akışı tabanlı bir uygulamadır. BPMN 2.0 standartlarını kullanır.</div>
 <div class="line">İş akış şemaları yani <em>workflow</em> lar bpmn formatında backend API&#8217;da oluşturulur.</div>
@@ -645,6 +647,9 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="ui-menu-ve-diger-ogeler">
+<h3>UI Menu ve Diğer Öğeler<a class="headerlink" href="#ui-menu-ve-diger-ogeler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <div class="line-block">
 <div class="line">Kullanıcı arayüzündeki menüler API tarafından dinamik olarak giriş yapan kullanıcının yetkileri baz alınarak oluşturulur.</div>
 <div class="line"><code class="docutils literal"><span class="pre">/menu</span></code> url&#8217;ine yapılan sorguda dönen <code class="docutils literal"><span class="pre">ogrenci</span></code>, <code class="docutils literal"><span class="pre">personel</span></code>, <code class="docutils literal"><span class="pre">other</span></code> anahtarlarındaki değerler kategorilerine göre ayıklanarak menüye eklenir.</div>
@@ -722,6 +727,13 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="gelistirmeye-baslamak">
+<h3>Geliştirmeye Başlamak<a class="headerlink" href="#gelistirmeye-baslamak" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Yukarıda anlatılan API-UI veri karşılıkları gözönünde bulundurularak geliştirme yapmaya başlayabilirsiniz.</div>
+<div class="line">Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız.</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -738,10 +750,10 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
