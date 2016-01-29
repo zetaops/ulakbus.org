@@ -12,7 +12,6 @@ API Belgeleri
    Ulakbus <http://www.ulakbus.org/ulakbus/ulakbus.html>
    Zengine <http://zengine.readthedocs.org/en/latest/>
    Pyoko <http://pyoko.readthedocs.org/en/latest/>
-   Tests <http://www.ulakbus.org/ulakbus/tests/tests.html>
 
 Ulakbus Wiki
 ============

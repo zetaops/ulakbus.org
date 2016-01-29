@@ -185,10 +185,10 @@
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Zato İpuçları</a><ul>
-<li><a class="reference internal" href="#enmasse">enmasse</a></li>
+<li><a class="reference internal" href="#zato-bilesenlerini-yeniden-baslatma">Zato Bileşenlerini Yeniden Başlatma</a></li>
 <li><a class="reference internal" href="#os-environ">os_environ</a></li>
 <li><a class="reference internal" href="#zato-extra-paths">zato_extra_paths</a></li>
-<li><a class="reference internal" href="#zato-bilesenlerini-yeniden-baslatma">Zato Bileşenlerini Yeniden Başlatma</a></li>
+<li><a class="reference internal" href="#enmasse">enmasse</a></li>
 </ul>
 </li>
 </ul>
@@ -229,10 +229,60 @@
             
   <div class="section" id="zato-ipuclari">
 <h1>Zato İpuçları<a class="headerlink" href="#zato-ipuclari" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="zato-bilesenlerini-yeniden-baslatma">
+<h2>Zato Bileşenlerini Yeniden Başlatma<a class="headerlink" href="#zato-bilesenlerini-yeniden-baslatma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Zato ile ilgili bileşenler <cite>/etc/zato/components-enabled/</cite> dizini altında bulunmaktadır.
+Zato yeniden başlatıldığında, bu bileşenler yeniden başlatılmış olurlar.
+Her bir bileşen istenirse diğerlerinden ayrı olarak da yeniden başlatılabilir.</p>
+<div class="section" id="ornek-kullanim">
+<h3>örnek kullanım<a class="headerlink" href="#ornek-kullanim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo service zato stop
+$ sudo service zato start
+veya
+$ sudo service zato restart
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="os-environ">
+<h2>os_environ<a class="headerlink" href="#os-environ" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Servislerin kullandığı çevre değişkenleri (environment variable) Zato tarafından erişilebilir olmalıdır.
+Bunun için sunucu yapılandırma dosyasında (<cite>/opt/zato/ulakbus/server1/config/repo/server.conf</cite>)
+os_environ bölümüne çevre değişkenleri eklenmelidir.</p>
+<div class="section" id="id1">
+<h3>örnek kullanım<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">os_environ</span><span class="p">]</span>
+<span class="n">HITAP_USER</span><span class="o">=</span><span class="s1">&#39;hitap_user_name&#39;</span>
+<span class="n">HITAP_PASS</span><span class="o">=</span><span class="s1">&#39;hitap_password&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="zato-extra-paths">
+<h2>zato_extra_paths<a class="headerlink" href="#zato-extra-paths" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Zato servisleri tarafından kullanılan modül ve kütüphaneler,
+Zato tarafından erişilebilir olmaları için <cite>~/zato_version/zato_extra_paths/</cite> dizini altında bulunmalıdır.
+İlgili modül ve kütüphaneler için bu dizin altında sembolik link verilebilir.</p>
+<div class="section" id="ornek">
+<h3>örnek<a class="headerlink" href="#ornek" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<a class="reference internal image-reference" href="_images/zato_extra_paths.png"><img alt="_images/zato_extra_paths.png" class="align-center" src="_images/zato_extra_paths.png" style="width: 882.0px; height: 378.0px;" /></a>
+<p>Geliştirilen servisleri Zato aracılığıyla kullanmak için, servis modüllerini
+<cite>/opt/zato/ulakbus/server1/pickup-dir/</cite> dizini altına kopyalamak gerekmektedir.
+Bu işlemi yapmadan önce çevre değişkenlerini (HITAP_USER, HITAP_PASS vb.) tanımladığınızdan emin olunuz.</p>
+</div>
+<div class="section" id="id2">
+<h3>örnek kullanım<a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo cp /app/ulakbus/ulakbus/services/personel/hitap/*.py /opt/zato/ulakbus/server1/pickup-dir/
+</pre></div>
+</div>
+<p>Bu işlemden sonra servisler için tanımlanmış kanalları (channels) ve giden bağlantıları (outgoing) içeren
+bir yapılandırma dosyası varsa bu dosya içeriye aktarılmalıdır.</p>
+</div>
+</div>
 <div class="section" id="enmasse">
 <h2>enmasse<a class="headerlink" href="#enmasse" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Zato servisleri için tanımlanmış kanalların (channels) ve giden bağlantıların (outgoing)
-bir konfigürasyon dosyasına çıkartılarak saklanmasını veya içeriye aktarılmasını sağlar.</p>
+bir yapılandırma dosyasına çıkartılarak saklanmasını veya içeriye aktarılmasını sağlar.</p>
 <div class="section" id="export">
 <h3>export<a class="headerlink" href="#export" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre>$ zato enmasse ../server1/ --input input1.json --export-local --export-odb
@@ -254,8 +304,8 @@ dışarıya aktarır.</li>
 <div class="highlight-python"><div class="highlight"><pre>$ zato enmasse ../server1/ --input zato-export-2015-06-30T08_56_22_628706.json --import --replace-odb-objects
 </pre></div>
 </div>
-<div class="section" id="id1">
-<h4>Argümanlar:<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id3">
+<h4>Argümanlar:<a class="headerlink" href="#id3" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>path</strong> Zato server dizinini belirtir.</li>
 <li><strong>&#8211;input</strong> İçeriye aktarılacak JSON dosyası. Bu dosya yukarıdaki örnekte olduğu gibi
@@ -263,45 +313,6 @@ Zato komut arayüzü üzerinden dışarıya aktarılmış olmalıdır.</li>
 <li><strong>&#8211;import &#8211;replace-odb-objects</strong> Nesneleri, dışarıya aktarılmış
 JSON dosyasından mevcut olanların üzerine yazılacak şekilde içeri aktarır.</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="os-environ">
-<h2>os_environ<a class="headerlink" href="#os-environ" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Servislerin kullandığı çevre değişkenleri (environment variable) Zato tarafından erişilebilir olmalıdır.
-Bunun için sunucu yapılandırma dosyasında (<cite>/opt/zato/ulakbus/server1/config/repo/server.conf</cite>)
-os_environ bölümüne çevre değişkenleri eklenebilir.</p>
-<div class="section" id="ornek-kullanim">
-<h3>örnek kullanım<a class="headerlink" href="#ornek-kullanim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">os_environ</span><span class="p">]</span>
-<span class="n">HITAP_USER</span><span class="o">=</span><span class="s1">&#39;hitap_user_name&#39;</span>
-<span class="n">HITAP_PASS</span><span class="o">=</span><span class="s1">&#39;hitap_password&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="zato-extra-paths">
-<h2>zato_extra_paths<a class="headerlink" href="#zato-extra-paths" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Zato servisleri tarafından kullanılan modül ve kütüphaneler,
-Zato tarafından erişilebilir olmaları için <cite>~/zato_version/zato_extra_paths/</cite> dizini altında bulunmalıdır.
-İlgili modül ve kütüphaneler için bu dizin altında sembolik link verilebilir.</p>
-<div class="section" id="ornek">
-<h3>örnek<a class="headerlink" href="#ornek" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<a class="reference internal image-reference" href="_images/zato_extra_paths.png"><img alt="_images/zato_extra_paths.png" class="align-center" src="_images/zato_extra_paths.png" style="width: 893.0px; height: 378.0px;" /></a>
-</div>
-</div>
-<div class="section" id="zato-bilesenlerini-yeniden-baslatma">
-<h2>Zato Bileşenlerini Yeniden Başlatma<a class="headerlink" href="#zato-bilesenlerini-yeniden-baslatma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Zato ile ilgili bileşenler <cite>/etc/zato/components-enabled/</cite> dizini altında bulunmaktadır.
-Zato yeniden başlatıldığında, bu bileşenler yeniden başlatılmış olurlar.
-Her bir bileşen istenirse diğerlerinden ayrı olarak da yeniden başlatılabilir.</p>
-<div class="section" id="id2">
-<h3>örnek kullanım<a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo service zato stop
-$ sudo service zato start
-veya
-$ sudo service zato restart
-</pre></div>
 </div>
 </div>
 </div>

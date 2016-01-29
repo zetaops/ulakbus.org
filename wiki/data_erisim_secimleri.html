@@ -191,11 +191,7 @@
 <li><a class="reference internal" href="#neden-write-once-kullanmiyoruz"><strong>Neden Write Once Kullanmıyoruz?</strong></a></li>
 <li><a class="reference internal" href="#neden-strong-consistency"><strong>Neden Strong Consistency?</strong></a></li>
 <li><a class="reference internal" href="#neyi-nasil-kullanacagiz"><strong>Neyi Nasıl Kullanacağız?</strong></a></li>
-<li><a class="reference internal" href="#caching"><strong>Caching?</strong></a></li>
-<li><a class="reference internal" href="#sorular"><strong>Sorular</strong></a></li>
-<li><a class="reference internal" href="#sorgular"><strong>Sorgular</strong></a></li>
-<li><a class="reference internal" href="#create-ve-update-islemleri"><strong>Create ve Update İşlemleri</strong></a></li>
-<li><a class="reference internal" href="#raporlar"><strong>Raporlar</strong></a></li>
+<li><a class="reference internal" href="#notlar"><strong>Notlar</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -236,18 +232,9 @@
             
   <div class="section" id="data-erisim-secimleri">
 <h1>Data Erişim Seçimleri<a class="headerlink" href="#data-erisim-secimleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<p>Sözlük</p>
-<p>Bucket</p>
-<p>Conflict</p>
-<p>Eventually Consistent</p>
-<p>Sibling</p>
-<p>Application = Uygulama</p>
-<p>Nested</p>
-<p>Entity</p>
-<p>RDBMS</p>
 <div class="section" id="neden-rdbms-kullanmiyoruz">
 <h2><strong>Neden RDBMS Kullanmıyoruz?</strong><a class="headerlink" href="#neden-rdbms-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Bu sebeple:</p>
+<p>Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Uygulama içinde kullanılacak Object Relational Mapping (ORM) <a class="footnote-reference" href="#id4" id="id1">[1]</a>  işlemleri için Pyoko adında bir kütüphane geliştirilmiştir. Bu sebeple:</p>
 </div>
 <div class="section" id="neden-eventually-consistent-kullanmiyoruz">
 <h2><strong>Neden Eventually Consistent Kullanmıyoruz?</strong><a class="headerlink" href="#neden-eventually-consistent-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -255,7 +242,7 @@
 <p>Oluşan conflictler birkaç yolla çözüme bağlanabiliyor.[2] Bu çözümlerin bir kısmı Riak tarafından otomatik olarak yapılabiliyor. Riak&#8217;ın sağladığı iki temel çözüm time-based ve last-write-wins şeklinde. Riak&#8217;ın internal çözümleri dışında uygulama katmanından bu çözümleri uygulamak da mümkün. Fakat aynı bucket üzerinde hem Riak internal hem de application taraflı çözümleri kullanamıyoruz. Bir bucketdaki conflictlerin nasıl çözüleceği bucket metadataları ile kontrol ediliyor. Riak internallar için allow_mult parametresi false olması gerekirken, uygulama taraflı çözümler için true olması gerekiyor.</p>
 <p>Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir bucket üzerinde birlikte kullanmak mümkün değil. Bizim durumumuzda bu tür conflictlerin uygulama katmanında</p>
 <p>çözüme bağlanması kaçınılmaz. Bu da birçok bucketta Riak&#8217;ın last-write-wins veya timestamp gibi çözümlerini kullanamayacağımız anlamına geliyor. Çünkü aynı verinin farklı kesitlerine farklı kullanıcılar erişiyor. Uygulama katmanında conflict resolution ise data layerında daha fazla complexity demek.</p>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a></p>
+<p><a href="#id2"><span class="problematic" id="id3">*</span></a><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a></p>
 </div>
 <div class="section" id="neden-data-type-kullanmiyoruz">
 <h2><strong>Neden Data Type Kullanmıyoruz?</strong><a class="headerlink" href="#neden-data-type-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -275,68 +262,20 @@
 <h2><strong>Neyi Nasıl Kullanacağız?</strong><a class="headerlink" href="#neyi-nasil-kullanacagiz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Log, temporary datalar hariç Strong Consistent bucketlar kullanacağız. Tek kopya üzerinde çalışacağız. Datayı yapabildiğimiz kadar flat hale getirip, solr indexleri için mümkün olduğunca az dynamic field içeren şemalar kullanacağız. Flat haline getirilmiş bucket arasında linkler ile relationlar kuracağız. Versiyonları ayrı bir Write Once Bucket’ta tutacağız. Bunlara bir pk ve date fieldları ekleyip bu iki field ı solr da indexleyeceğiz.</p>
 </div>
-<div class="section" id="caching">
-<h2><strong>Caching?</strong><a class="headerlink" href="#caching" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Redis nasıl kullanılacak?</li>
-<li>Okuma nasıl yapılacak?</li>
-<li>REDIS&#8217;ten Riak&#8217;a ve tersi akışta verinin bütünlüğü nasıl korunacak?</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="sorular">
-<h2><strong>Sorular</strong><a class="headerlink" href="#sorular" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.</li>
-<li>Verinin parçaları farklı bucket ve keylerde saklanacak. Biz hepsini veya bir kısmını ilgilendiren bir yazma/update işlemi yaptığımızda gereken tüm bucketlar dolaşılıp yazma işlemi tamamlanacak. Strong Consistency ile kazandığımız verinin bütünlüğü ve eşsizliği bu modelde tehlikeye girmiş olmuyor mu? Concurrent bağlantılarda henüz bizim zincirimizde sırası gelmemiş bir kayıt başka bir zincir tarafından biz yazmadan önce güncellenmiş ise bunu nasıl anlayacağız ya da bunun önüne nasıl geçeceğiz?</li>
-<li>Pyoko’nun kendi gelişim seyri içerisinde ortaya çıkacak bugünden öngörülemeyen geliştirme ihtiyacı  bir yana, flat bucketlar arasında relational bir yapı kurmacanın öngörülemeyen zorlukları / sorunlarını da göze alıyoruz. Bunun tek sebebi dynamic field kullanmamak mıdır? Öyleyse 1 milyon solr dökümana yol açacak kadar çok kayıt  içinde birçok dynamic field testi yapmaya değmez miydi?</li>
-<li>Aşağıdaki sorgu ve rapor örneklerinin nasıl yapılabileceği hakkında bugünden ne açıklıkla yanıtlar verebiliyoruz?</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="sorgular">
-<h2><strong>Sorgular</strong><a class="headerlink" href="#sorgular" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi</li>
-<li>Sosyal Bilimler Enstitüsü’nde 2010 - 2015 yılları arasında kademe cezası almış kadın personellerin listesi. (kademe cezası önceki yıla göre veya kademe farklarına göre bulunabilir.)</li>
-<li>Tıp fakültesinde, en az lise mezunu, kadro derecesi 7’den büyük, askerlik engeli bulunmayan personeller</li>
-<li>Bir öğrencinin seçmek istediği bir derse bağlı olan ön şartlı ders notu</li>
-<li>Bir dersin genel sınavına (final) girmeye hak kazanmış öğrencilerin listesi</li>
-<li>Belirli bir tarihe kadar sisteme not girmesi beklenen hocaların listesi. (Sınavın yapıldığı tarihi takiben max 15 gün, sonraki sınav tarihinden min 7 gün önce gibi sabit birkaç kural söz konusu.)</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="create-ve-update-islemleri">
-<h2><strong>Create ve Update İşlemleri</strong><a class="headerlink" href="#create-ve-update-islemleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Yeni öğrenci yarat</li>
-<li>Yeni personel yarat</li>
-<li>Öğrenci özlük bilgisi güncelle</li>
-<li>Okul lokasyon bilgisi güncelle</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="raporlar">
-<h2><strong>Raporlar</strong><a class="headerlink" href="#raporlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Fakülte, bölüm ve program başına beklenen harç miktarları</li>
-<li>Fakülte, bölüm ve program başına hocalara ödenecek beklenen ek ders ücretleri</li>
-<li>Bir akademik personelin danışmanlığını yaptığı öğrencilerin performansına dair son iki yılda aldığı not ortalaması</li>
-<li>Yıllara göre mezunların başarı ortalaması (Her programın mezuniyet için öğrencilerin tutturması gereken asgari bir program mezuniyet ortalaması değeri vardır. Öğrenciler bu değerin neresindedir?)</li>
-<li>Azami öğretim süresine gelmiş ve mezun olmayacak öğrencilerin listesi</li>
-</ul>
-</div></blockquote>
+<div class="section" id="notlar">
+<h2><strong>Notlar</strong><a class="headerlink" href="#notlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>1: If you are using Riak in an eventually consistent way, conflicts between object values on different nodes is unavoidable. Often, Riak can resolve these conflicts on its own internally if you use causal context, i.e. vector clocks or dotted version vectors, when updating objects.  Instructions on this can be found in the section.</p>
 <p><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a> 2.paragraf</p>
 <p>2:<a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/#Client-and-Server-side-Conflict-Resolution">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/#Client-and-Server-side-Conflict-Resolution</a></p>
 <p>3: <a class="reference external" href="http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats">http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats</a></p>
 <p>4: <a class="reference external" href="https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100">https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100</a></p>
 <p>5: <a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_index">https://en.wikipedia.org/wiki/Inverted_index</a></p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Object-relational_mapping">https://en.wikipedia.org/wiki/Object-relational_mapping</a></td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
