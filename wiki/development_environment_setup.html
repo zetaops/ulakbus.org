@@ -299,7 +299,7 @@ başlatabilirsiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>vagrant up
 </pre></div>
 </div>
-<p>Başlayan makineya giriş yapmak için <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> komutunu kullanabilirsiniz.</p>
+<p>Başlayan makineye giriş yapmak için <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> komutunu kullanabilirsiniz.</p>
 <p>Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
 olmadığını kontrol edebilisiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo service redis-server status
@@ -312,7 +312,7 @@ ortamınızı etkinleştirerek başlayabilirsiniz. En başından sırasıyla kom
 kısımları olmadan):</p>
 <div class="highlight-python"><div class="highlight"><pre>vagrant up                         # vagrantbox başlat
 vagrant ssh                        # vagrantbox giriş
-sudo su - ulakbus                  # ulakbus kullanıcısına geç ve home dizinine geç
+sudo su - ulakbus                  # ulakbus kullanıcısına geçip home dizinine geç
 source ulakbusenv/bin/activate     # ulakbus environment etkinleştir
 </pre></div>
 </div>
@@ -339,11 +339,11 @@ belgeden</a> öğrenebilirsiniz.</p>
 </pre></div>
 </div>
 <p>Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları izleyebilirsiniz:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ virtualenv ulakbusenv                                       # ulakbusenv python ortamı yarat
-$ source ulakbusenv/bin/activate                              # python ortamını etkinleştir
-$ cd ~/ulakbus                                                # ulakbus git deposuna gir
-$ git pull                                                    # son değişiklikleri uzak depodan çek
-$ pip install -r requirments.txt                              # ulakbus bagimliliklarini kur
+<div class="highlight-python"><div class="highlight"><pre>$ virtualenv ulakbusenv                 # ulakbusenv python ortamı yarat
+$ source ulakbusenv/bin/activate        # python ortamını etkinleştir
+$ cd ~/ulakbus                          # ulakbus git deposuna gir
+$ git pull                              # son değişiklikleri uzak depodan çek
+$ pip install -r requirments.txt        # ulakbus bagimliliklarini kur
 $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
 </pre></div>
 </div>

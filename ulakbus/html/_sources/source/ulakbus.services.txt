@@ -20,6 +20,14 @@ ulakbus.services.authentication module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.zato_url_paths module
+--------------------------------------
+
+.. automodule:: ulakbus.services.zato_url_paths
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.zato_wrapper module
 ------------------------------------
 
