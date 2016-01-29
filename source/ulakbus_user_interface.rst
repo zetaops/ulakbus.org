@@ -16,7 +16,7 @@ Geliştirme Ortamı Kurulumu(Frontend)
 2. Nodejs'yi indirin ve kurun.
 
     - https://nodejs.org/download/
-    - Kurulum için bu_ linkten faydalanabilirsiniz. 
+    - Debian, Ubuntu, FreeBSD vs diğer dağıtımlarda kurulum için nodejs_ sayfasından faydalanabilirsiniz. 
 
 3. Bower'ı kurunuz ``npm install bower``
 
@@ -28,7 +28,7 @@ Geliştirme Ortamı Kurulumu(Frontend)
 
     ``npm start``
 
-.. _bu: https://nodejs.org/en/download/package-manager/
+.. _nodejs: https://nodejs.org/en/download/package-manager/
 
 *Uygulamayı sunmak için başka http server kullanabilirsiniz.*
 

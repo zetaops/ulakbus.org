@@ -45,7 +45,7 @@ Genel
 | Ulakbus kullanıcı arayüzü yapacağı işlemlerle ilgili komutları API'dan alacak şekilde kurgulanmıştır.
 | Kullanıcı arayüzü Ulakbus API tarafından kullanılan bir araç olarak düşünülebilir.
 | API o anda kullanıcının neler yapabileceğini, sayfa öğelerini, sayfa öğelerinin konumlandırılmalarını belirleyici veriyi arayüze sağlar ve arayüz bu veriye göre yorumlanır.
-| Kullanıcı arayüzünde bir semantik bulunmamaktadır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.
+| Kullanıcı arayüzü dummy bir uygulama olarak tasarlanmıştır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.
 |
 | Ulakbus uygulaması iş akışı tabanlı bir uygulamadır. BPMN 2.0 standartlarını kullanır.
 | İş akış şemaları yani *workflow* lar bpmn formatında backend API'da oluşturulur.
@@ -381,7 +381,7 @@ Detay sayfasında gösterilmek istenen nesne anahtar değer olarak sıralanır.
     }
 
 UI Menu ve Diğer Öğeler
-=======================
+~~~~~~~~~~~~~~~~~~~~~~~
 
 | Kullanıcı arayüzündeki menüler API tarafından dinamik olarak giriş yapan kullanıcının yetkileri baz alınarak oluşturulur.
 | ``/menu`` url'ine yapılan sorguda dönen ``ogrenci``, ``personel``, ``other`` anahtarlarındaki değerler kategorilerine göre ayıklanarak menüye eklenir.
@@ -455,3 +455,9 @@ UI Menu ve Diğer Öğeler
             }
         ]
     }
+
+Geliştirmeye Başlamak
+~~~~~~~~~~~~~~~~~~~~~
+
+| Yukarıda anlatılan API-UI veri karşılıkları gözönünde bulundurularak geliştirme yapmaya başlayabilirsiniz.
+| Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız. 

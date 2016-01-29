@@ -60,7 +60,6 @@ Git Kurulumu
 ------------
     * Linux (Ubuntu):    sudo apt-get install git
     * MacOS X:           http://help.github.com/mac-git-installation/
-    * Windows:           http://help.github.com/win-git-installation/
 
 İlk kurulumun hemen arından git'e kendinizi tanıtmayı unutmayınız:
 
@@ -83,7 +82,7 @@ bulabilirsiniz: http://www.webdesignerdepot.com/2009/03/intro-to-git-for-web-des
 Branch Kullanmak
 ----------------
     * Branch kullanmayı alışkanlık haline getirin. Ana branch'e (master) doğrudan push etmeyin.
-    * Brnach adları eğer bir özellik geliştirmesi yapıyorsanız `feature/`, bir hata ile
+    * Branch adları eğer bir özellik geliştirmesi yapıyorsanız `feature/`, bir hata ile
       ilgileniyorsanız `bugfix/` ön ekini taşımalıdır: ``feature/yeni_ozellik`` veya
       ``bugfix/xyz_hatasi``
     * Branchlerinizi düzenli şekilde rebase ederek, temel branchlerdeki değişikliklerden
@@ -137,7 +136,7 @@ gözden geçirmek amacıyla kullanabilirsiniz.
     git diff upstream/master..master
     git checkout upstream/feature/yeni_ozellik
 
-gibi komutlar ile upstream kullanabilirsiniz.
+komutları ile upstream kullanabilirsiniz.
 
 Kod Yazma İpuçları
 ++++++++++++++++++
