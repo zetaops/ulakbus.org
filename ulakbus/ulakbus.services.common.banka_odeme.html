@@ -151,8 +151,197 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ulakbus-services-common-banka-odeme-module">
-<h1>ulakbus.services.common.banka_odeme module<a class="headerlink" href="#ulakbus-services-common-banka-odeme-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ulakbus.services.common.banka_odeme">
+<span id="ulakbus-services-common-banka-odeme-module"></span><h1>ulakbus.services.common.banka_odeme module<a class="headerlink" href="#module-ulakbus.services.common.banka_odeme" title="Permalink to this headline">¶</a></h1>
+<p>Banka Borç Ödeme</p>
+<p>Banka tarafından öğrencinin borçlarını ödemek için kullanılan Zato Servisi.</p>
+<p>Yetkilendirme için banka bilgileri,
+öğrenci borç ödemesinin gerçekleştirimi için öğrenci numarası ve ödeme bilgileri verilir.</p>
+<p>Elde edilen bilgilerle öğrencinin borç ödeme bilgisi sisteme kaydedilir.</p>
+<p class="rubric">Example</p>
+<p>Servise JSON nesnesi kullanılarak istek gönderilmesi:</p>
+<div class="highlight-json"><div class="highlight"><pre>$ curl http://localhost:11223/banka-borc-getir -d &#39;{
+    &quot;banka_kodu&quot;: &quot;kod&quot;,
+    &quot;bank_username&quot;: &quot;user&quot;,
+    &quot;bank_password&quot;: &quot;pass&quot;,
+    &quot;ogrenci_no&quot;:&quot;1234567890&quot;,
+    &quot;sube_kodu&quot;:&quot;sube&quot;,
+    &quot;kanal_kodu&quot;:&quot;kanal&quot;,
+    &quot;mesaj_no&quot;:&quot;mesaj&quot;,
+    &quot;ucret_turu&quot;:1,
+    &quot;tahakkuk_referans_no&quot;:&quot;tahakkuk&quot;,
+    &quot;tahsilat_referans_no&quot;:&quot;tahsilat&quot;,
+    &quot;odeme_timestamp&quot;:&quot;07122015123456&quot;,
+    &quot;odeme_tutari&quot;:214.0
+    }&#39;
+</pre></div>
+</div>
+<p>İsteğe dönen cevap:</p>
+<div class="highlight-json"><div class="highlight"><pre>$ {&quot;odeme_response&quot;: [{
+    &quot;tahakkuk_referans_no&quot;: &quot;tahakkuk&quot;,
+    &quot;odeme_timestamp&quot;: &quot;07122015123456&quot;,
+    &quot;odeme_tutari&quot;: &quot;214.0&quot;,
+    &quot;ucret_turu&quot;: 1,
+    &quot;tahsilat_referans_no&quot;: &quot;tahsilat&quot;,
+    &quot;bank_password&quot;: &quot;pass&quot;,
+    &quot;bank_username&quot;: &quot;user&quot;,
+    &quot;mesaj_no&quot;: &quot;mesaj&quot;,
+    &quot;sube_kodu&quot;: &quot;sube&quot;,
+    &quot;hata_mesaj&quot;: null,
+    &quot;ogrenci_no&quot;: &quot;1234567890&quot;,
+    &quot;banka_kodu&quot;: &quot;kod&quot;,
+    &quot;kanal_kodu&quot;: &quot;kanal&quot;,
+    &quot;mesaj_statusu&quot;: &quot;K&quot;
+    }
+]}
+</pre></div>
+</div>
+<p>Servise XML kullanılarak istek gönderilmesi:</p>
+<div class="highlight-xml"><div class="highlight"><pre>$ curl http://localhost:11223/banka-odeme.banka-borc-odeme
+    -H &quot;SOAPAction:banka-odeme.banka-borc-odeme&quot;
+    -d &#39;<span class="nt">&lt;soapenv:Envelope</span> <span class="na">xmlns:soapenv=</span><span class="s">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>
+        <span class="na">xmlns:zato=</span><span class="s">&quot;https://zato.io/ns/20130518&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;soapenv:Body&gt;</span>
+                <span class="nt">&lt;zato:odeme_request&gt;</span>
+                    <span class="nt">&lt;zato:banka_kodu&gt;</span>kod<span class="nt">&lt;/zato:banka_kodu&gt;</span>
+                    <span class="nt">&lt;zato:bank_username&gt;</span>user<span class="nt">&lt;/zato:bank_username&gt;</span>
+                    <span class="nt">&lt;zato:bank_password&gt;</span>pass<span class="nt">&lt;/zato:bank_password&gt;</span>
+                    <span class="nt">&lt;zato:ogrenci_no&gt;</span>1234567890<span class="nt">&lt;/zato:ogrenci_no&gt;</span>
+                    <span class="nt">&lt;zato:sube_kodu&gt;</span>sube<span class="nt">&lt;/zato:sube_kodu&gt;</span>
+                    <span class="nt">&lt;zato:kanal_kodu&gt;</span>kanal<span class="nt">&lt;/zato:kanal_kodu&gt;</span>
+                    <span class="nt">&lt;zato:mesaj_no&gt;</span>mesaj<span class="nt">&lt;/zato:mesaj_no&gt;</span>
+                    <span class="nt">&lt;zato:ucret_turu&gt;</span>1<span class="nt">&lt;/zato:ucret_turu&gt;</span>
+                    <span class="nt">&lt;zato:tahakkuk_referans_no&gt;</span>tahakkuk<span class="nt">&lt;/zato:tahakkuk_referans_no&gt;</span>
+                    <span class="nt">&lt;zato:tahsilat_referans_no&gt;</span>tahsilat<span class="nt">&lt;/zato:tahsilat_referans_no&gt;</span>
+                    <span class="nt">&lt;zato:odeme_timestamp&gt;</span>07122015123456<span class="nt">&lt;/zato:odeme_timestamp&gt;</span>
+                    <span class="nt">&lt;zato:odeme_tutari&gt;</span>214.0<span class="nt">&lt;/zato:odeme_tutari&gt;</span>
+                <span class="nt">&lt;/zato:odeme_request&gt;</span>
+            <span class="nt">&lt;/soapenv:Body&gt;</span>
+        <span class="nt">&lt;/soapenv:Envelope&gt;</span>&#39;
+</pre></div>
+</div>
+<p>İsteğe dönen cevap:</p>
+<div class="highlight-xml"><div class="highlight"><pre>$ <span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+    <span class="nt">&lt;soap:Envelope</span> <span class="na">xmlns:soap=</span><span class="s">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>
+    <span class="na">xmlns=</span><span class="s">&quot;https://zato.io/ns/20130518&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;soap:Body&gt;</span>
+        <span class="nt">&lt;odeme_response&gt;</span>
+            <span class="nt">&lt;zato_env&gt;</span>
+                <span class="nt">&lt;cid&gt;</span>K07C4A0D30PHBMBGX18BYAZBZRH7<span class="nt">&lt;/cid&gt;</span>
+                <span class="nt">&lt;result&gt;</span>ZATO_OK<span class="nt">&lt;/result&gt;</span>
+            <span class="nt">&lt;/zato_env&gt;</span>
+            <span class="nt">&lt;item_list</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;item&gt;</span>
+                    <span class="nt">&lt;mesaj_statusu&gt;</span>K<span class="nt">&lt;/mesaj_statusu&gt;</span>
+                    <span class="nt">&lt;hata_mesaj</span> <span class="na">xsi:nil=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;banka_kodu&gt;</span>kod<span class="nt">&lt;/banka_kodu&gt;</span>
+                    <span class="nt">&lt;sube_kodu&gt;</span>sube<span class="nt">&lt;/sube_kodu&gt;</span>
+                    <span class="nt">&lt;kanal_kodu&gt;</span>kanal<span class="nt">&lt;/kanal_kodu&gt;</span>
+                    <span class="nt">&lt;mesaj_no&gt;</span>mesaj<span class="nt">&lt;/mesaj_no&gt;</span>
+                    <span class="nt">&lt;bank_username&gt;</span>user<span class="nt">&lt;/bank_username&gt;</span>
+                    <span class="nt">&lt;bank_password&gt;</span>pass<span class="nt">&lt;/bank_password&gt;</span>
+                    <span class="nt">&lt;ogrenci_no&gt;</span>1234567890<span class="nt">&lt;/ogrenci_no&gt;</span>
+                    <span class="nt">&lt;ucret_turu&gt;</span>1<span class="nt">&lt;/ucret_turu&gt;</span>
+                    <span class="nt">&lt;tahakkuk_referans_no&gt;</span>tahakkuk<span class="nt">&lt;/tahakkuk_referans_no&gt;</span>
+                    <span class="nt">&lt;tahsilat_referans_no&gt;</span>tahsilat<span class="nt">&lt;/tahsilat_referans_no&gt;</span>
+                    <span class="nt">&lt;odeme_timestamp&gt;</span>07122015123456<span class="nt">&lt;/odeme_timestamp&gt;</span>
+                    <span class="nt">&lt;odeme_tutari&gt;</span>214.0<span class="nt">&lt;/odeme_tutari&gt;</span>
+                <span class="nt">&lt;/item&gt;</span>
+            <span class="nt">&lt;/item_list&gt;</span>
+        <span class="nt">&lt;/odeme_response&gt;</span>
+    <span class="nt">&lt;/soap:Body&gt;</span>
+<span class="nt">&lt;/soap:Envelope&gt;</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme">
+<em class="property">class </em><code class="descclassname">ulakbus.services.common.banka_odeme.</code><code class="descname">BankaBorcOdeme</code><a class="reference internal" href="_modules/ulakbus/services/common/banka_odeme.html#BankaBorcOdeme"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ulakbus.services.common.banka.html#ulakbus.services.common.banka.BankaService" title="ulakbus.services.common.banka.BankaService"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.services.common.banka.BankaService</span></code></a></p>
+<p>Banka servisinden kalıtılarak gerçekleştirilen Banka Borç Ödeme servisi</p>
+<dl class="class">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO">
+<em class="property">class </em><code class="descname">SimpleIO</code><a class="reference internal" href="_modules/ulakbus/services/common/banka_odeme.html#BankaBorcOdeme.SimpleIO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Servis girdilerinin ve çıktılarının belirlendiği yapı.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>SimpleIO sınıfında belirlenen özellikler,
+doğrudan yer aldığı servisin özellikleri olmaktadır.</p>
+<ul class="last simple">
+<li>odeme_request (str): Servise gelen isteğin (JSON, XML) ismi</li>
+<li>odeme_response (str): Servisten dönen veriyi içeren (payload)
+cevabın (JSON, XML) ismi</li>
+<li>mesaj_statusu (str): K (Kabul), R (Ret)</li>
+<li>hata_mesaji (str): Hata mesajı içeriği veya null</li>
+<li>banka_kodu (str): Üniversite tarafından bankaya verilen kod</li>
+<li>bank_username (str): Üniversite tarafından bankaya verilen kullanıcı adı</li>
+<li>bank_password (str): Üniversite tarafından bankaya verilen şifre</li>
+<li>sube_kodu (str): Bankaların şubeleri için hali hazırda kullandıkları kodlar</li>
+<li>kanal_kodu (str): G (Gişe), İ (İnternet), A (ATM), T (AloBanka) vb.</li>
+<li>mesaj_no (str): Banka tarafından üretilen kod.</li>
+<li>ogrenci_no (str): Borçları sorgulanan öğrencinin numarası</li>
+<li>ucret_turu (int): Borcun ne için ödeneceği</li>
+<li>tahakkuk_referans_no (str): Her tahakkuka verilen referans numarası</li>
+<li>tahsilat_referans_no (str): Banka tarafından verilen tahsilata ait referans no</li>
+<li>odeme_timestamp (str): DDMMYYYYHHMMSS formatında ödeme tarihi</li>
+<li>odeme_tutari (float): Banka tarafından tahsil edilen tutar</li>
+</ul>
+</div>
+<dl class="attribute">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.input_required">
+<code class="descname">input_required</code><em class="property"> = ('banka_kodu', 'sube_kodu', 'kanal_kodu', 'mesaj_no', 'bank_username', 'bank_password', 'ogrenci_no', 'ucret_turu', 'tahakkuk_referans_no', 'tahsilat_referans_no', 'odeme_timestamp', 'odeme_tutari')</em><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.input_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.output_required">
+<code class="descname">output_required</code><em class="property"> = ('banka_kodu', 'sube_kodu', 'kanal_kodu', 'mesaj_no', 'bank_username', 'bank_password', 'ogrenci_no', 'ucret_turu', 'tahakkuk_referans_no', 'tahsilat_referans_no', 'odeme_timestamp', 'odeme_tutari', 'mesaj_statusu', 'hata_mesaj')</em><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.output_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.request_elem">
+<code class="descname">request_elem</code><em class="property"> = 'odeme_request'</em><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.request_elem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.response_elem">
+<code class="descname">response_elem</code><em class="property"> = 'odeme_response'</em><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO.response_elem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.get_data">
+<code class="descclassname">BankaBorcOdeme.</code><code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/banka_odeme.html#BankaBorcOdeme.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Öğrencinin borç ödeme bilgilerini bankadan gelen bilgilere göre sisteme kaydeder.</p>
+<p>Öğrenci numarası ve borcuna ait tahakkuk referans numarasına göre,
+öğrencinin borcuna erişilir. Bankadan gelen ödeme bilgisine göre bu borca ait
+bir ödeme bilgisi oluşturulur.</p>
+<p>Öğrenci sistemde bulunamadıysa veya beklenmeyen bir hatayla karşılaşıldıysa
+cevap olarak hata mesajı döndürülür.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ObjectDoesNotExist</span></code> &#8211;
+Öğrenci numarası sistemde kayıtlı değildir.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">Exception</span></code> &#8211;
+Öğrencinin borç ödeme bilgisi kaydedilirken hatayla karşılaşılmıştır.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.banka_odeme.BankaBorcOdeme.handle">
+<code class="descclassname">BankaBorcOdeme.</code><code class="descname">handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/banka_odeme.html#BankaBorcOdeme.handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.banka_odeme.BankaBorcOdeme.handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Servis çağrıldığında tetiklenen metod.</p>
+<p>Yetkilendirme işleminin sonucuna göre servis çalışmaya devam eder.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

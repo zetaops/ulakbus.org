@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.services.common.nvi &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.services.common.nvi</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.services.common.nvi</h1><div class="highlight"><pre>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="kn">from</span> <span class="nn">zato.server.service</span> <span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">httplib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Ali Riza Keles&#39;</span>
+
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">logging</span>
+
+    <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPConnection</span><span class="o">.</span><span class="n">debuglevel</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="NVIService"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.NVIService">[docs]</a><span class="k">class</span> <span class="nc">NVIService</span><span class="p">(</span><span class="n">Service</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_action</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NVIService</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+<div class="viewcode-block" id="NVIService.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.NVIService.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nvi_sso_encrypted_data&#39;</span><span class="p">,</span> <span class="s1">&#39;nvi_sso_key_identifier_path&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;nvi_sso_digest_value&#39;</span><span class="p">,</span> <span class="s1">&#39;nvi_sso_signature&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;nvi_sso_created&#39;</span><span class="p">,</span> <span class="s1">&#39;nvi_sso_expire&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kvdb</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;k: </span><span class="si">%s</span><span class="s2">, v: </span><span class="si">%s</span><span class="s2">, type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">kvdb</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)})</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">invoke_sso_service</span><span class="p">()</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">requestx</span><span class="p">()</span>
+        <span class="n">response_xml</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_to_json</span><span class="p">(</span><span class="n">response_xml</span><span class="p">))}</span></div>
+
+<div class="viewcode-block" id="NVIService.invoke_sso_service"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.NVIService.invoke_sso_service">[docs]</a>    <span class="k">def</span> <span class="nf">invoke_sso_service</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s1">&#39;nvi-sts.sts-get-token&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+            <span class="c1"># self.logger.info(&quot;DDDDDDDDDDDDD: %s&quot; % result)</span>
+            <span class="c1"># if response[&#39;status&#39;] == &#39;ok&#39;:</span>
+            <span class="c1">#     for k, v in result.items():</span>
+            <span class="c1">#         self.sso_data.update({k, v})</span>
+
+<div class="viewcode-block" id="NVIService.request_xml"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.NVIService.request_xml">[docs]</a>    <span class="k">def</span> <span class="nf">request_xml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">request_xml</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        &lt;?xml version=&quot;1.0&quot;?&gt;&lt;s:Envelope xmlns:s=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:a=&quot;http://www.w3.org/2005/08/addressing&quot; xmlns:u=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;&gt;</span>
+<span class="s2">          &lt;s:Header&gt;</span>
+<span class="s2">            &lt;a:Action s:mustUnderstand=&quot;1&quot;&gt;http://kps.nvi.gov.tr</span><span class="si">%s</span><span class="s2">&lt;/a:Action&gt;</span>
+<span class="s2">            &lt;a:MessageID&gt;urn:uuid:</span><span class="si">%s</span><span class="s2">&lt;/a:MessageID&gt;</span>
+<span class="s2">            &lt;a:ReplyTo&gt;</span>
+<span class="s2">              &lt;a:Address&gt;http://www.w3.org/2005/08/addressing/anonymous&lt;/a:Address&gt;</span>
+<span class="s2">            &lt;/a:ReplyTo&gt;</span>
+<span class="s2">            &lt;a:To s:mustUnderstand=&quot;1&quot;&gt;https://kpsv2.nvi.gov.tr/Services/RoutingService.svc&lt;/a:To&gt;</span>
+<span class="s2">            &lt;o:Security s:mustUnderstand=&quot;1&quot; xmlns:o=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;&gt;</span>
+<span class="s2">              &lt;u:Timestamp u:Id=&quot;_0&quot;&gt;</span>
+<span class="s2">                &lt;u:Created&gt;</span><span class="si">%s</span><span class="s2">&lt;/u:Created&gt;</span>
+<span class="s2">                &lt;u:Expires&gt;</span><span class="si">%s</span><span class="s2">&lt;/u:Expires&gt;</span>
+<span class="s2">              &lt;/u:Timestamp&gt;</span><span class="si">%s</span><span class="s2">&lt;Signature xmlns=&quot;http://www.w3.org/2000/09/xmldsig#&quot;&gt;</span>
+<span class="s2">                &lt;SignedInfo&gt;</span>
+<span class="s2">                  &lt;CanonicalizationMethod Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;/&gt;</span>
+<span class="s2">                  &lt;SignatureMethod Algorithm=&quot;http://www.w3.org/2000/09/xmldsig#hmac-sha1&quot;/&gt;</span>
+<span class="s2">                  &lt;Reference URI=&quot;#_0&quot;&gt;</span>
+<span class="s2">                    &lt;Transforms&gt;</span>
+<span class="s2">                      &lt;Transform Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;/&gt;</span>
+<span class="s2">                    &lt;/Transforms&gt;</span>
+<span class="s2">                    &lt;DigestMethod Algorithm=&quot;http://www.w3.org/2000/09/xmldsig#sha1&quot;/&gt;</span>
+<span class="s2">                    &lt;DigestValue&gt;</span><span class="si">%s</span><span class="s2">&lt;/DigestValue&gt;</span>
+<span class="s2">                  &lt;/Reference&gt;</span>
+<span class="s2">                &lt;/SignedInfo&gt;</span>
+<span class="s2">                &lt;SignatureValue&gt;</span><span class="si">%s</span><span class="s2">&lt;/SignatureValue&gt;</span>
+<span class="s2">                &lt;KeyInfo&gt;</span>
+<span class="s2">                  &lt;o:SecurityTokenReference k:TokenType=&quot;http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV1.1&quot; xmlns:k=&quot;http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd&quot;&gt;</span>
+<span class="s2">                    &lt;o:KeyIdentifier ValueType=&quot;http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.0#SAMLAssertionID&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/o:KeyIdentifier&gt;</span>
+<span class="s2">                  &lt;/o:SecurityTokenReference&gt;</span>
+<span class="s2">                &lt;/KeyInfo&gt;</span>
+<span class="s2">              &lt;/Signature&gt;</span>
+<span class="s2">            &lt;/o:Security&gt;</span>
+<span class="s2">          &lt;/s:Header&gt;</span><span class="si">%s</span><span class="s2">&lt;/s:Envelope&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">service_action</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid1</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="p">[</span><span class="s1">&#39;nvi_sso_created&#39;</span><span class="p">],</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="p">[</span><span class="s1">&#39;nvi_sso_expire&#39;</span><span class="p">],</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="p">[</span><span class="s1">&#39;nvi_sso_encrypted_data&#39;</span><span class="p">],</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="p">[</span><span class="s1">&#39;nvi_sso_digest_value&#39;</span><span class="p">],</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="p">[</span><span class="s1">&#39;nvi_sso_signature&#39;</span><span class="p">],</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">sso_data</span><span class="p">[</span><span class="s1">&#39;nvi_sso_key_identifier_path&#39;</span><span class="p">],</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">request_xml</span></div>
+
+<div class="viewcode-block" id="NVIService.requestx"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.NVIService.requestx">[docs]</a>    <span class="k">def</span> <span class="nf">requestx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">request_xml</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_xml</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> rxml: </span><span class="si">%s</span><span class="s2"> </span><span class="se">\n\n\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request_xml</span><span class="p">)</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPConnection</span><span class="p">(</span><span class="s2">&quot;services.konya.edu.tr&quot;</span><span class="p">,</span> <span class="mi">3128</span><span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/soap+xml; charset=utf-8&quot;</span><span class="p">}</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;https://kpsv2.nvi.gov.tr/Services/RoutingService.svc&quot;</span><span class="p">,</span>
+                     <span class="n">request_xml</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="NVIService.xml_to_json"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.NVIService.xml_to_json">[docs]</a>    <span class="k">def</span> <span class="nf">xml_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response_xml</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">response_xml</span></div></div>
+
+
+<div class="viewcode-block" id="KisiSorgulaTCKimlikNo"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.KisiSorgulaTCKimlikNo">[docs]</a><span class="k">class</span> <span class="nc">KisiSorgulaTCKimlikNo</span><span class="p">(</span><span class="n">NVIService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NVI Kimlik Bilgileri Servisi</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="KisiSorgulaTCKimlikNo.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.KisiSorgulaTCKimlikNo.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tckn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_action</span> <span class="o">=</span> <span class="s2">&quot;/2011/01/01/KisiSorgulaTCKimlikNoServis/ListeleCoklu&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;env:Body xmlns:env=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ns1=&quot;http://kps.nvi.gov.tr/2011/01/01&quot;&gt;</span>
+<span class="s2">                  &lt;ns1:ListeleCoklu&gt;</span>
+<span class="s2">                      &lt;ns1:kriterListesi&gt;</span>
+<span class="s2">                          &lt;ns1:KisiSorgulaTCKimlikNoSorguKriteri&gt;</span>
+<span class="s2">                              &lt;ns1:TCKimlikNo type=&quot;xsd:long&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/ns1:TCKimlikNo&gt;</span>
+<span class="s2">                          &lt;/ns1:KisiSorgulaTCKimlikNoSorguKriteri&gt;</span>
+<span class="s2">                      &lt;/ns1:kriterListesi&gt;</span>
+<span class="s2">                  &lt;/ns1:ListeleCoklu&gt;</span>
+<span class="s2">            &lt;/env:Body&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">tckn</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KisiSorgulaTCKimlikNo</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="CuzdanSorgulaTCKimlikNo"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.CuzdanSorgulaTCKimlikNo">[docs]</a><span class="k">class</span> <span class="nc">CuzdanSorgulaTCKimlikNo</span><span class="p">(</span><span class="n">NVIService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NVI Kimlik Bilgileri Servisi</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CuzdanSorgulaTCKimlikNo.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.CuzdanSorgulaTCKimlikNo.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tckn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_action</span> <span class="o">=</span> <span class="s2">&quot;/2014/09/01/CuzdanSorgulaTCKimlikNoServis/ListeleCoklu&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;env:Body xmlns:env=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ns1=&quot;http://kps.nvi.gov.tr/2014/09/01&quot;&gt;</span>
+<span class="s2">                &lt;ns1:ListeleCoklu&gt;</span>
+<span class="s2">                    &lt;ns1:kriterListesi&gt;</span>
+<span class="s2">                        &lt;ns1:CuzdanSorgulaTCKimlikNoSorguKriteri&gt;</span>
+<span class="s2">                            &lt;ns1:CuzdanTur&gt;Cuzdan&lt;/ns1:CuzdanTur&gt;</span>
+<span class="s2">                            &lt;ns1:TCKimlikNo&gt;</span><span class="si">%s</span><span class="s2">&lt;/ns1:TCKimlikNo&gt;</span>
+<span class="s2">                        &lt;/ns1:CuzdanSorgulaTCKimlikNoSorguKriteri&gt;</span>
+<span class="s2">                    &lt;/ns1:kriterListesi&gt;</span>
+<span class="s2">                &lt;/ns1:ListeleCoklu&gt;</span>
+<span class="s2">            &lt;/env:Body&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">tckn</span></div></div>
+
+
+<div class="viewcode-block" id="YabanciKisiSorgula"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.YabanciKisiSorgula">[docs]</a><span class="k">class</span> <span class="nc">YabanciKisiSorgula</span><span class="p">(</span><span class="n">NVIService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NVI Kimlik Bilgileri Servisi</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="YabanciKisiSorgula.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.YabanciKisiSorgula.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tckn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_action</span> <span class="o">=</span> <span class="s2">&quot;/2013/06/01/YbKisiSorgulaYbKimlikNoServis/ListeleCoklu&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">              &lt;env:Body xmlns:env=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ns2=&quot;http://kps.nvi.gov.tr/2013/06/01&quot; xmlns:ns1=&quot;http://kps.nvi.gov.tr/2011/01/01&quot;&gt;</span>
+<span class="s2">                  &lt;ns2:ListeleCoklu&gt;</span>
+<span class="s2">                      &lt;ns2:kriterListesi&gt;</span>
+<span class="s2">                          &lt;ns1:YbKisiSorgulaYbKimlikNoSorguKriteri&gt;</span>
+<span class="s2">                              &lt;ns1:KimlikNo&gt;</span><span class="si">%s</span><span class="s2">&lt;/ns1:KimlikNo&gt;</span>
+<span class="s2">                          &lt;/ns1:YbKisiSorgulaYbKimlikNoSorguKriteri&gt;</span>
+<span class="s2">                      &lt;/ns2:kriterListesi&gt;</span>
+<span class="s2">                  &lt;/ns2:ListeleCoklu&gt;</span>
+<span class="s2">              &lt;/env:Body&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">tckn</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">YabanciKisiSorgula</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="AdresSorgula"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.AdresSorgula">[docs]</a><span class="k">class</span> <span class="nc">AdresSorgula</span><span class="p">(</span><span class="n">NVIService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adres Sorgulama</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AdresSorgula.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.AdresSorgula.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tckn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_action</span> <span class="o">=</span> <span class="s2">&quot;/2015/07/01/KimlikNoSorgulaAdresServis/Sorgula&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;env:Body xmlns:env=&quot;http://www.w3.org/2003/05/soap-envelope&quot;</span>
+<span class="s2">                xmlns:ns2=&quot;http://kps.nvi.gov.tr/2015/07/01&quot; xmlns:ns1=&quot;http://kps.nvi.gov.tr/2011/01/01&quot;&gt;</span>
+<span class="s2">                    &lt;ns2:Sorgula&gt;</span>
+<span class="s2">                        &lt;ns2:kriterListesi&gt;</span>
+<span class="s2">                            &lt;ns1:KimlikNoileAdresSorguKriteri&gt;</span>
+<span class="s2">                                &lt;ns1:KimlikNo&gt;</span><span class="si">%s</span><span class="s2">&lt;/ns1:KimlikNo&gt;</span>
+<span class="s2">                            &lt;/ns1:KimlikNoileAdresSorguKriteri&gt;</span>
+<span class="s2">                        &lt;/ns2:kriterListesi&gt;</span>
+<span class="s2">                    &lt;/ns2:Sorgula&gt;</span>
+<span class="s2">            &lt;/env:Body&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">tckn</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AdresSorgula</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="AileBireySorgula"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.AileBireySorgula">[docs]</a><span class="k">class</span> <span class="nc">AileBireySorgula</span><span class="p">(</span><span class="n">NVIService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aile Birey Sorgulama</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AileBireySorgula.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.nvi.html#ulakbus.services.common.nvi.AileBireySorgula.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tckn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_action</span> <span class="o">=</span> <span class="s2">&quot;/2011/01/01/AileListesiAraTCNoServis/Sorgula&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_xml_body</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;env:Body xmlns:env=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ns1=&quot;http://kps.nvi.gov.tr/2011/01/01&quot;&gt;</span>
+<span class="s2">                &lt;ns1:Sorgula&gt;</span>
+<span class="s2">                    &lt;ns1:kriterListesi&gt;</span>
+<span class="s2">                        &lt;ns1:AileListesiAraTCNoSorguKriteri&gt;</span>
+<span class="s2">                            &lt;ns1:KimlikNo&gt;</span><span class="si">%s</span><span class="s2">&lt;/ns1:KimlikNo&gt;</span>
+<span class="s2">                        &lt;/ns1:AileListesiAraTCNoSorguKriteri&gt;</span>
+<span class="s2">                    &lt;/ns1:kriterListesi&gt;</span>
+<span class="s2">                &lt;/ns1:Sorgula&gt;</span>
+<span class="s2">            &lt;/env:Body&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">tckn</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">AileBireySorgula</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle</span><span class="p">()</span></div></div>
+
+
+<span class="n">r</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+     <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">               &lt;s:Envelope xmlns:s=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:a=&quot;http://www.w3.org/2005/08/addressing&quot; xmlns:u=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;&gt;&lt;s:Header&gt;&lt;a:Action s:mustUnderstand=&quot;1&quot;&gt;http://kps.nvi.gov.tr/2011/01/01/KisiSorgulaTCKimlikNoServis/ListeleCokluResponse&lt;/a:Action&gt;&lt;a:RelatesTo&gt;urn:uuid:48076750-9cd9-11e5-ae6f-fa163e024963&lt;/a:RelatesTo&gt;&lt;o:Security s:mustUnderstand=&quot;1&quot; xmlns:o=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;&gt;&lt;u:Timestamp u:Id=&quot;_0&quot;&gt;&lt;u:Created&gt;2015-12-07T11:54:33.932Z&lt;/u:Created&gt;&lt;u:Expires&gt;2015-12-07T11:59:33.932Z&lt;/u:Expires&gt;&lt;/u:Timestamp&gt;&lt;/o:Security&gt;&lt;/s:Header&gt;&lt;s:Body&gt;&lt;ListeleCokluResponse xmlns=&quot;http://kps.nvi.gov.tr/2011/01/01&quot;&gt;&lt;ListeleCokluResult xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;HataBilgisi i:nil=&quot;true&quot;/&gt;&lt;SorguSonucu&gt;&lt;KisiBilgisi&gt;&lt;AnneTCKimlikNo i:nil=&quot;true&quot;/&gt;&lt;BabaTCKimlikNo i:nil=&quot;true&quot;/&gt;&lt;DogumYerKod&gt;1740&lt;/DogumYerKod&gt;&lt;DurumBilgisi&gt;&lt;Din i:nil=&quot;true&quot;/&gt;&lt;Durum&gt;&lt;Aciklama&gt;A</span><span class="se">\\</span><span class="s2">u00e7</span><span class="se">\\</span><span class="s2">u0131k&lt;/Aciklama&gt;&lt;Kod&gt;1&lt;/Kod&gt;&lt;/Durum&gt;&lt;MedeniHal&gt;&lt;Aciklama&gt;Evli&lt;/Aciklama&gt;&lt;Kod&gt;2&lt;/Kod&gt;&lt;/MedeniHal&gt;&lt;OlumTarih&gt;&lt;Ay i:nil=&quot;true&quot;/&gt;&lt;Gun i:nil=&quot;true&quot;/&gt;&lt;Yil i:nil=&quot;true&quot;/&gt;&lt;/OlumTarih&gt;&lt;/DurumBilgisi&gt;&lt;EsTCKimlikNo i:nil=&quot;true&quot;/&gt;&lt;HataBilgisi i:nil=&quot;true&quot;/&gt;&lt;KayitYeriBilgisi&gt;&lt;AileSiraNo&gt;35&lt;/AileSiraNo&gt;&lt;BireySiraNo&gt;56&lt;/BireySiraNo&gt;&lt;Cilt&gt;&lt;Aciklama&gt;BELPINAR&lt;/Aciklama&gt;&lt;Kod&gt;72&lt;/Kod&gt;&lt;/Cilt&gt;&lt;Il&gt;&lt;Aciklama&gt;Tokat&lt;/Aciklama&gt;&lt;Kod&gt;60&lt;/Kod&gt;&lt;/Il&gt;&lt;Ilce&gt;&lt;Aciklama&gt;Zile&lt;/Aciklama&gt;&lt;Kod&gt;1740&lt;/Kod&gt;&lt;/Ilce&gt;&lt;/KayitYeriBilgisi&gt;&lt;TCKimlikNo&gt;52231446850&lt;/TCKimlikNo&gt;&lt;TemelBilgisi&gt;&lt;Ad&gt;AL</span><span class="se">\\</span><span class="s2">u0130RIZA&lt;/Ad&gt;&lt;AnneAd&gt;NEJLA&lt;/AnneAd&gt;&lt;BabaAd&gt;AL</span><span class="se">\\</span><span class="s2">u0130&lt;/BabaAd&gt;&lt;Cinsiyet&gt;&lt;Aciklama&gt;Erkek&lt;/Aciklama&gt;&lt;Kod&gt;1&lt;/Kod&gt;&lt;/Cinsiyet&gt;&lt;DogumTarih&gt;&lt;Ay&gt;6&lt;/Ay&gt;&lt;Gun&gt;10&lt;/Gun&gt;&lt;Yil&gt;1981&lt;/Yil&gt;&lt;/DogumTarih&gt;&lt;DogumYer&gt;Z</span><span class="se">\\</span><span class="s2">u0130LE&lt;/DogumYer&gt;&lt;Soyad&gt;KELE</span><span class="se">\\</span><span class="s2">u015e&lt;/Soyad&gt;&lt;/TemelBilgisi&gt;&lt;/KisiBilgisi&gt;&lt;/SorguSonucu&gt;&lt;/ListeleCokluResult&gt;&lt;/ListeleCokluResponse&gt;&lt;/s:Body&gt;&lt;/s:Envelope&gt;</span>
+<span class="s2">               &quot;&quot;&quot;</span>
+     <span class="p">}</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

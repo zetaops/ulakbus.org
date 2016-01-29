@@ -150,8 +150,318 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tests-fake-ogrenci-program-module">
-<h1>tests.fake.ogrenci_program module<a class="headerlink" href="#tests-fake-ogrenci-program-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-tests.fake.ogrenci_program">
+<span id="tests-fake-ogrenci-program-module"></span><h1>tests.fake.ogrenci_program module<a class="headerlink" href="#module-tests.fake.ogrenci_program" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.fake_data">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">fake_data</code><span class="sig-paren">(</span><em>personel_say=20</em>, <em>okutman_say=10</em>, <em>program_say=5</em>, <em>ders_say=5</em>, <em>sube_say=3</em>, <em>sinav_say=2</em>, <em>ogrenci_say=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#fake_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.fake_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen verileri kullanarak
+yeni okutman, program, ders, şube, sınav, borc ve ders katılımı kayıtları
+oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>personel_say</strong> (<em>int</em>) &#8211; Personel sayısı</li>
+<li><strong>okutman_say</strong> (<em>int</em>) &#8211; Okutman sayısı</li>
+<li><strong>program_say</strong> (<em>int</em>) &#8211; Program sayısı</li>
+<li><strong>ders_say</strong> (<em>int</em>) &#8211; Ders sayısı</li>
+<li><strong>sube_say</strong> (<em>int</em>) &#8211; Şube sayısı</li>
+<li><strong>sinav_say</strong> (<em>int</em>) &#8211; Sınav sayısı</li>
+<li><strong>ogrenci_say</strong> (<em>int</em>) &#8211; Öğrenci sayısı</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_borc">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_borc</code><span class="sig-paren">(</span><em>ogrenci</em>, <em>donem</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_borc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_borc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen verileri
+kullanarak yeni borç kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ogrenci</strong> (<em>Ogrenci</em>) &#8211; Öğrenci nesnesi</li>
+<li><strong>donem</strong> (<em>Donem</em>) &#8211; Dönem nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni borç kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Borc</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_degerlendirme_notu">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_degerlendirme_notu</code><span class="sig-paren">(</span><em>sinav</em>, <em>ogrenci</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_degerlendirme_notu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_degerlendirme_notu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen verileri
+kullanarak yeni değerlendirme notu kaydı oluşturup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sinav</strong> (<em>Sinav</em>) &#8211; Sınav nesnesi</li>
+<li><strong>ogrenci</strong> (<em>Ogrenci</em>) &#8211; Öğrenci nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni değerlendirme notu kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DegerlendirmeNot</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_ders">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_ders</code><span class="sig-paren">(</span><em>program</em>, <em>personel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_ders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_ders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen veriyi
+kullanarak yeni ders kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>program</strong> (<em>Program</em>) &#8211; Program nesnesi</li>
+<li><strong>personel</strong> (<em>Personel</em>) &#8211; Personel nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni ders kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Ders</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_ders_katilimi">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_ders_katilimi</code><span class="sig-paren">(</span><em>sube</em>, <em>ogrenci</em>, <em>okutman</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_ders_katilimi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_ders_katilimi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen verileri
+kullanarak yeni ders katılım kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sube</strong> (<em>Sube</em>) &#8211; Şube</li>
+<li><strong>ogrenci</strong> (<em>Ogrenci</em>) &#8211; Öğrenci nesnesi</li>
+<li><strong>okutman</strong> (<em>Okutman</em>) &#8211; Okutman nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni ders katılım kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DersKatilimi</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_donem">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_donem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_donem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_donem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele veriler kullanarak yeni dönem kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Yeni dönem kaydı</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Donem</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_ogrenci">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_ogrenci</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_ogrenci"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_ogrenci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele veriler kullanarak yeni öğrenci kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Yeni öğrenci kaydı</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Ogrenci</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_ogrenci_dersi">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_ogrenci_dersi</code><span class="sig-paren">(</span><em>sube</em>, <em>ogrenci_program</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_ogrenci_dersi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_ogrenci_dersi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen verileri
+kullanarak öğrenci ders kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sube</strong> (<em>Sube</em>) &#8211; Şube nesnesi</li>
+<li><strong>ogrenci_program</strong> (<em>OgrenciProgram</em>) &#8211; Öğrenci Programı nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni öğrenci ders kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">OgrenciDersi</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_ogrenci_program">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_ogrenci_program</code><span class="sig-paren">(</span><em>ogrenci</em>, <em>program</em>, <em>personel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_ogrenci_program"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_ogrenci_program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen verileri
+kullanarak yeni öğrenci programı kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ogrenci</strong> (<em>Ogrenci</em>) &#8211; Öğrenci nesnesi</li>
+<li><strong>personel</strong> (<em>Personel</em>) &#8211; Personel nesnesi</li>
+<li><strong>program</strong> (<em>Program</em>) &#8211; Program nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni öğrenci program kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">OgrenciProgram</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_okutman">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_okutman</code><span class="sig-paren">(</span><em>personel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_okutman"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_okutman" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen veriyi kullanarak
+yeni okutman kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>personel</strong> (<em>Personel</em>) &#8211; Personel nesnesi</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Yeni okutman kaydı</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Okutman</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_personel">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_personel</code><span class="sig-paren">(</span><em>personel_turu=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_personel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_personel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen veriyi kullanarak
+yeni personel kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>personel_turu</strong> (<em>Personel</em>) &#8211; Personel türü</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Yeni personel kaydı</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Personel</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_program">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_program</code><span class="sig-paren">(</span><em>yoksis_program</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_program"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen veriyi
+kullanarak yeni program kaydı oluşturur ve kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>yoksis_program</strong> (<em>Unit</em>) &#8211; Yöksis programı</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Yeni program kaydı</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Program</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_sinav">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_sinav</code><span class="sig-paren">(</span><em>sube</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_sinav"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_sinav" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen veriyi
+kullanarak yeni sınav kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sube</strong> (<em>Sube</em>) &#8211; Şube nesnesi</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Yeni sınavı kaydı nesnesi</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Sinav</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.fake.ogrenci_program.yeni_sube">
+<code class="descclassname">tests.fake.ogrenci_program.</code><code class="descname">yeni_sube</code><span class="sig-paren">(</span><em>ders</em>, <em>okutman</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/fake/ogrenci_program.html#yeni_sube"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.fake.ogrenci_program.yeni_sube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rastgele verileri ve parametre olarak verilen veriyi
+kullanarak yeni şube kaydı oluştururup kaydeder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ders</strong> (<em>Ders</em>) &#8211; Ders nesnesi</li>
+<li><strong>okutman</strong> (<em>Okutman</em>) &#8211; Okutman nesnesi</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Yeni şube kaydı</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Sube</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 

@@ -151,8 +151,100 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ulakbus-services-common-yoksis-module">
-<h1>ulakbus.services.common.yoksis module<a class="headerlink" href="#ulakbus-services-common-yoksis-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ulakbus.services.common.yoksis">
+<span id="ulakbus-services-common-yoksis-module"></span><h1>ulakbus.services.common.yoksis module<a class="headerlink" href="#module-ulakbus.services.common.yoksis" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ulakbus.services.common.yoksis.BirimAgaci">
+<em class="property">class </em><code class="descclassname">ulakbus.services.common.yoksis.</code><code class="descname">BirimAgaci</code><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#BirimAgaci"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.BirimAgaci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ulakbus.services.common.yoksis.YOKSIS" title="ulakbus.services.common.yoksis.YOKSIS"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.services.common.yoksis.YOKSIS</span></code></a></p>
+<p>YOKSIS BirimAgaci Kaydet Servisi</p>
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.BirimAgaci.bir">
+<code class="descname">bir</code><span class="sig-paren">(</span><em>conn</em>, <em>root_unit</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#BirimAgaci.bir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.BirimAgaci.bir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.BirimAgaci.handle">
+<code class="descname">handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#BirimAgaci.handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.BirimAgaci.handle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.services.common.yoksis.BirimDetay">
+<em class="property">class </em><code class="descclassname">ulakbus.services.common.yoksis.</code><code class="descname">BirimDetay</code><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#BirimDetay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.BirimDetay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ulakbus.services.common.yoksis.YOKSIS" title="ulakbus.services.common.yoksis.YOKSIS"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.services.common.yoksis.YOKSIS</span></code></a></p>
+<p>YOKSIS Birim Detay Zato Servisi</p>
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.BirimDetay.handle">
+<code class="descname">handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#BirimDetay.handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.BirimDetay.handle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.services.common.yoksis.DumpAllUnitsToRiak">
+<em class="property">class </em><code class="descclassname">ulakbus.services.common.yoksis.</code><code class="descname">DumpAllUnitsToRiak</code><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#DumpAllUnitsToRiak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.DumpAllUnitsToRiak" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ulakbus.services.common.yoksis.BirimAgaci" title="ulakbus.services.common.yoksis.BirimAgaci"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.services.common.yoksis.BirimAgaci</span></code></a></p>
+<p>Dump All Units To Riak by root unit id. If scheduler&#8217;s self.request.raw_request is empty, then root_unit = 0
+This service runs every night at 03.14 am to sync yoksis data for all universities.</p>
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.DumpAllUnitsToRiak.handle">
+<code class="descname">handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#DumpAllUnitsToRiak.handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.DumpAllUnitsToRiak.handle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.services.common.yoksis.DumpUnitsToUlakbusUnitModel">
+<em class="property">class </em><code class="descclassname">ulakbus.services.common.yoksis.</code><code class="descname">DumpUnitsToUlakbusUnitModel</code><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#DumpUnitsToUlakbusUnitModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.DumpUnitsToUlakbusUnitModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ulakbus.services.common.yoksis.BirimAgaci" title="ulakbus.services.common.yoksis.BirimAgaci"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.services.common.yoksis.BirimAgaci</span></code></a></p>
+<p>Dump All Units To Ulakbus auth.Unit Model by UID.</p>
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.DumpUnitsToUlakbusUnitModel.birim_kaydet">
+<code class="descname">birim_kaydet</code><span class="sig-paren">(</span><em>birim_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#DumpUnitsToUlakbusUnitModel.birim_kaydet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.DumpUnitsToUlakbusUnitModel.birim_kaydet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.DumpUnitsToUlakbusUnitModel.handle">
+<code class="descname">handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#DumpUnitsToUlakbusUnitModel.handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.DumpUnitsToUlakbusUnitModel.handle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.services.common.yoksis.YOKSIS">
+<em class="property">class </em><code class="descclassname">ulakbus.services.common.yoksis.</code><code class="descname">YOKSIS</code><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#YOKSIS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.YOKSIS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zato.server.service.Service</span></code></p>
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.YOKSIS.birim_detaylari">
+<code class="descname">birim_detaylari</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#YOKSIS.birim_detaylari"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.YOKSIS.birim_detaylari" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.YOKSIS.birim_detaylari_utf8">
+<code class="descname">birim_detaylari_utf8</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#YOKSIS.birim_detaylari_utf8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.YOKSIS.birim_detaylari_utf8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.YOKSIS.birim_kaydet">
+<code class="descname">birim_kaydet</code><span class="sig-paren">(</span><em>birim_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#YOKSIS.birim_kaydet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.YOKSIS.birim_kaydet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ulakbus.services.common.yoksis.YOKSIS.connection">
+<em class="property">static </em><code class="descname">connection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#YOKSIS.connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.YOKSIS.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bu metod Zato suds proxy kullanimi icin patch yapilana kadar burada duracak.
+:return: suds client</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.services.common.yoksis.YOKSIS.get_birim_from_returned_tuple">
+<code class="descname">get_birim_from_returned_tuple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/services/common/yoksis.html#YOKSIS.get_birim_from_returned_tuple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.services.common.yoksis.YOKSIS.get_birim_from_returned_tuple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 
