@@ -185,7 +185,7 @@ ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:
 
 ::
 
-    $ vagrant box list                  # Vagrant için yüklü olan box listesi
+    $ vagrant box list                           # Vagrant için yüklü olan box listesi
     $ vagrant box remove --box-version 0.2.2 ulakbus   # ulakbus isimli box'ın 0.2.2 sürümünü kaldır
 
 Sonraki Adımlar
