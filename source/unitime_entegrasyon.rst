@@ -94,13 +94,13 @@ Modellerine ait verilerin Ulakbüs üzerinden UniTime'a aktarılması hedeflenme
 Verilerin aktarılmasının ardından hedeflenen işlevsellikler aşağıdaki kapsamdadır:
 
 1. **Güncel** akademik dönem boyunca verilecek olan ders programlarının takvimlendirilmesi
-  (ders programlarının varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).
+   (ders programlarının varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).
 2. **Güncel** akademik dönem boyunca yapılacak olan sınavların takvimlendirilmesi (sınavların
-  varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).
+   varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).
 3. **Unitime** üzerinde hesaplaması biten akademik ders takviminin Ulakbüs üzerinde bulunan
-  **DersProgrami** modeline kayıt edilmesi.
+   **DersProgrami** modeline kayıt edilmesi.
 4. **Unitime** üzerinde hesaplaması biten sınav takvimlerinin Ulakbüs üzerinde bulunan
-  **Sınav** modeline kayıt edilmesi.
+   **Sınav** modeline kayıt edilmesi.
 
     Önemli Not: Entegrasyon sırasında dışarıya aktarılan verinin, Ulakbüs üzerinde **güncel** olarak
     görünen akademik döneme ait olması hedeflenmiştir. Geçmiş dönemlere ait veriler dışarıya
