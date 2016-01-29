@@ -188,7 +188,7 @@
 <li><a class="reference internal" href="#unitime-nedir">UniTime Nedir?</a></li>
 <li><a class="reference internal" href="#kavram-semasi">Kavram Şeması</a></li>
 <li><a class="reference internal" href="#entegrasyon-yontemi">Entegrasyon Yöntemi</a></li>
-<li><a class="reference internal" href="#ornek-entegrasyon">Örnek Entegrasyon :</a></li>
+<li><a class="reference internal" href="#ornek-entegrasyon">Örnek Entegrasyon</a></li>
 </ul>
 </li>
 </ul>
@@ -231,9 +231,10 @@
 <h1>UniTime Entegrasyonları<a class="headerlink" href="#unitime-entegrasyonlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <div class="section" id="unitime-nedir">
 <h2>UniTime Nedir?<a class="headerlink" href="#unitime-nedir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>UniTime, bir araştırma sahası olan &#8220;akademik takvimleme problemleri&#8221;ni çözmek üzere geliştirilen, açık kaynaklı bir yazılım projesidir.
-Ulakbüs projesi kapsamında, bu alanda geliştirilmiş diğer projeler incelendiğinde, UniTime&#8217;ın daha kararlı bir proje olduğu ortaya çıkmıştır.
-Aşağıdaki listede, incelenen diğer projeler ve algoritmalar listelenmektedir :</p>
+<p>UniTime, bir araştırma sahası olan &#8220;akademik takvimleme problemleri&#8221;ni çözmek üzere geliştirilen,
+açık kaynaklı bir yazılım projesidir. Ulakbüs projesi kapsamında, bu alanda geliştirilmiş diğer
+projeler incelendiğinde, UniTime&#8217;ın daha kararlı bir proje olduğu ortaya çıkmıştır.</p>
+<p>Aşağıdaki listede, incelenen diğer projeler ve algoritmalar listelenmektedir:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://lalescu.ro/liviu/fet/">FET (Free Timetabling Software)</a></li>
@@ -247,8 +248,9 @@ Aşağıdaki listede, incelenen diğer projeler ve algoritmalar listelenmektedir
 </div>
 <div class="section" id="kavram-semasi">
 <h2>Kavram Şeması<a class="headerlink" href="#kavram-semasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>UniTime ve Ulakbüs yazılımı arasında veri akışını sağlayacak olan entegrasyonları yaparken, iki ayrı projenin farklı terminolojilerinden kaynaklanan bir harita dosyası ihtiyacı duyulmuştur.
-Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karşılıkları listelenmiştir:</p>
+<p>UniTime ve Ulakbüs yazılımı arasında veri akışını sağlayacak olan entegrasyonları yaparken, iki ayrı
+projenin farklı terminolojilerinden kaynaklanan bir harita dosyası ihtiyacı duyulmuştur.</p>
+<p>Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karşılıkları listelenmiştir:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="47%" />
@@ -325,8 +327,10 @@ Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karş�
 </div>
 <div class="section" id="entegrasyon-yontemi">
 <h2>Entegrasyon Yöntemi<a class="headerlink" href="#entegrasyon-yontemi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>UniTime ve Ulakbüs yazılımı arasında veri akışını sağlayacak olan entegrasyonları yaparken, UniTime projesinin veri giriş/çıkış (data export import) imkan sağlayan XML arabirimi (Data Exchanger) kullanılmıştır.
-UniTime projesi ile birlikte sunulan örnek Data Exchanger XML dosyalarına aşağıdaki adresten ulaşmanız mümkündür:</p>
+<p>UniTime ve Ulakbüs yazılımı arasında veri akışını sağlayacak olan entegrasyonları yaparken, UniTime
+projesinin veri giriş/çıkış (data export import) imkan sağlayan XML arabirimi (Data Exchanger)
+kullanılmıştır. UniTime projesi ile birlikte sunulan örnek Data Exchanger XML dosyalarına aşağıdaki
+adresten ulaşmanız mümkündür:</p>
 <p><a class="reference external" href="https://github.com/UniTime/unitime/tree/master/Documentation/Interfaces/Examples">https://github.com/UniTime/unitime/tree/master/Documentation/Interfaces/Examples</a></p>
 <p>Entegrasyon kapsamında,</p>
 <blockquote>
@@ -338,76 +342,87 @@ UniTime projesi ile birlikte sunulan örnek Data Exchanger XML dosyalarına aşa
 </div></blockquote>
 <p>Modellerine ait verilerin Ulakbüs üzerinden UniTime&#8217;a aktarılması hedeflenmektedir.</p>
 <p>Verilerin aktarılmasının ardından hedeflenen işlevsellikler aşağıdaki kapsamdadır:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Güncel</strong> akademik dönem boyunca verilecek olan ders programlarının takvimlendirilmesi
+(ders programlarının varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).</p>
+</li>
+<li><p class="first"><strong>Güncel</strong> akademik dönem boyunca yapılacak olan sınavların takvimlendirilmesi (sınavların
+varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).</p>
+</li>
+<li><p class="first"><strong>Unitime</strong> üzerinde hesaplaması biten akademik ders takviminin Ulakbüs üzerinde bulunan
+<strong>DersProgrami</strong> modeline kayıt edilmesi.</p>
+</li>
+<li><p class="first"><strong>Unitime</strong> üzerinde hesaplaması biten sınav takvimlerinin Ulakbüs üzerinde bulunan
+<strong>Sınav</strong> modeline kayıt edilmesi.</p>
 <blockquote>
-<div>1 - <strong>Güncel</strong> akademik dönem boyunca verilecek olan ders programlarının takvimlendirilmesi (ders programlarının varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).
-2 - <strong>Güncel</strong> akademik dönem boyunca yapılacak olan sınavların takvimlendirilmesi (sınavların varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).
-3 - <strong>Unitime</strong> üzerinde hesaplaması biten akademik ders takviminin Ulakbüs üzerinde bulunan <strong>DersProgrami</strong> modeline kayıt edilmesi.
-4 - <strong>Unitime</strong> üzerinde hesaplaması biten sınav takvimlerinin Ulakbüs üzerinde bulunan <strong>Sınav</strong> modeline kayıt edilmesi.</div></blockquote>
-<dl class="docutils">
-<dt>Önemli Not <span class="classifier-delimiter">:</span> <span class="classifier">Entegrasyon sırasında dışarıya aktarılan verinin, Ulakbüs üzerinde <strong>güncel</strong> olarak görünen akademik döneme ait olması hedeflenmiştir. Geçmiş dönemlere ait veriler dışarıya <strong>aktarılamaz</strong>.</span></dt>
-<dd>Geçmiş dönemlere ait verilerin dışarıya aktarıma kısıtlanmasının nedeni; bu dönemlere ait işlemlerin <strong>Ulakbüs</strong> tarafında yeni döneme (güncel akademik döneme) aktarılarak işlenmesidir.</dd>
-</dl>
+<div><p>Önemli Not: Entegrasyon sırasında dışarıya aktarılan verinin, Ulakbüs üzerinde <strong>güncel</strong> olarak
+görünen akademik döneme ait olması hedeflenmiştir. Geçmiş dönemlere ait veriler dışarıya
+<strong>aktarılamaz</strong>.</p>
+<p>Geçmiş dönemlere ait verilerin dışarıya aktarıma kısıtlanmasının nedeni; bu dönemlere ait
+işlemlerin <strong>Ulakbüs</strong> tarafında yeni döneme (güncel akademik döneme) aktarılarak işlenmesidir.</p>
+</div></blockquote>
+</li>
+</ol>
 </div>
 <div class="section" id="ornek-entegrasyon">
-<h2>Örnek Entegrasyon :<a class="headerlink" href="#ornek-entegrasyon" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Bu örnekte UniTime üzerinde <strong>Department</strong> olarak adlandırılan ve Ulakbüs üzerinde <strong>Bölüm</strong>&#8216;e denk düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağı bir fonksiyon örneklendirilmiştir. Örnek XML şemasına aşağıdaki adreten ulaşılabilir :</p>
+<h2>Örnek Entegrasyon<a class="headerlink" href="#ornek-entegrasyon" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu örnekte UniTime üzerinde <strong>Department</strong> olarak adlandırılan ve Ulakbüs üzerinde <strong>Bölüm</strong>&#8216;e denk
+düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağı bir fonksiyon
+örneklendirilmiştir. Örnek XML şemasına aşağıdaki adreten ulaşılabilir:</p>
 <p><a class="reference external" href="https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExamples%2FdepartmentImport.xml">https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExamples%2FdepartmentImport.xml</a></p>
-<dl class="docutils">
-<dt>class DepartmanAktar(Command):</dt>
-<dd><p class="first">CMD_NAME = &#8216;departman_aktar&#8217;
-HELP = &#8216;Akademik bölüm listesi için UniTime XML import dosyası oluşturur.&#8217;
-PARAMS = []</p>
-<dl class="last docutils">
-<dt>def run(self):</dt>
-<dd><p class="first">import os
-import datetime
-from lxml import etree
-from ulakbus.models import Donem, Unit, Campus
-root_directory = os.path.dirname(os.path.abspath(__file__))</p>
-<p>#Güncel akademik dönemi seç
-term = Donem.objects.filter(guncel=True)[0]</p>
-<p>#Unit modeli üzerinden üniversite seç
-uni = Unit.objects.filter(parent_unit_no=0)[0].yoksis_no</p>
-<p>#Unit modeli üzerinden bölümleri seç
-units = Unit.objects.filter(unit_type=&#8217;Bölüm&#8217;)</p>
-<p>#Campus modeli üzerinden kampüs listesini al
-campuses = Campus.objects.filter()</p>
-<p>doc_type = &#8216;&lt;!DOCTYPE departments PUBLIC &#8220;-//UniTime//DTD University Course Timetabling/EN&#8221; &#8220;<a class="reference external" href="http://www.unitime.org/interface/Department.dtd">http://www.unitime.org/interface/Department.dtd</a>&#8220;&gt;&#8217;</p>
-<p># XML ağacını oluştur (create XML tree)
-for campus in campuses:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>if campus:</dt>
-<dd><dl class="first last docutils">
-<dt>root = etree.Element(&#8216;departments&#8217;, campus=&#8221;%s&#8221; % uni, term=&#8221;%s&#8221; % term.ad, </dt>
-<dd>year=&#8221;%s&#8221; % term.baslangic_tarihi.year)</dd>
-</dl>
-</dd>
-<dt>for unit in units:</dt>
-<dd><dl class="first last docutils">
-<dt>etree.SubElement(root, &#8216;department&#8217;, externalId=&#8221;%s&#8221; % unit.key, </dt>
-<dd>abbreviation=&#8221;%s&#8221; % unit.yoksis_no, name=&#8221;%s&#8221; % unit.name, deptCode=&#8221;%s&#8221; % unit.yoksis_no, allowEvents=&#8221;true&#8221;)</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-<p># Stringi düzgünleştir (string prettify)
-s = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding=&#8217;UTF-8&#8217;, doctype=&#8221;%s&#8221; % doc_type)</p>
-<p># Güncel tarih-saat tabanlı export klasörü yarat
-current_date = datetime.datetime.now()
-directory_name = current_date.strftime(&#8216;%d_%m_%Y_%H_%M_%S&#8217;)
-export_directory = root_directory + &#8216;/bin/dphs/data_exchange/&#8217; + directory_name
-if not os.path.exists(export_directory):</p>
-<blockquote>
-<div>os.makedirs(export_directory)</div></blockquote>
-<p class="last"># Stringi dosyaya yazdır
-out_file = open(export_directory + &#8216;/departmentImport.xml&#8217;, &#8216;w+&#8217;)
-out_file.write(&#8220;%s&#8221; % s)
-print(&#8220;Dosya %s dizini altina kayit edilmistir&#8221; % export_directory)</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DepartmanAktar</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;departman_aktar&#39;</span>
+    <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Akademik bölüm listesi için UniTime XML import dosyası oluşturur.&#39;</span>
+    <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+        <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span>
+        <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+
+        <span class="c1"># Güncel akademik dönemi seç</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Unit modeli üzerinden üniversite seç</span>
+        <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
+
+        <span class="c1"># Unit modeli üzerinden bölümleri seç</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">unit_type</span><span class="o">=</span><span class="s1">&#39;Bölüm&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Campus modeli üzerinden kampüs listesini al</span>
+        <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+
+        <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE departments PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Department.dtd&quot;&gt;&#39;</span>
+
+        <span class="c1"># XML ağacını oluştur (create XML tree)</span>
+        <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">campus</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;departments&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+                <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                 <span class="n">abbreviation</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                 <span class="n">deptCode</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span> <span class="n">allowEvents</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Stringi düzgünleştir (string prettify)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                           <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
+
+        <span class="c1"># Güncel tarih-saat tabanlı export klasörü yarat</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+        <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
+
+        <span class="c1"># Stringi dosyaya yazdır</span>
+        <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/departmentImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+        <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
