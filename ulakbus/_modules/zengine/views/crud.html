@@ -219,6 +219,12 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_permissions</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates permissions for all CrudView based class methods.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of Permission objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">perms</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">kls_name</span><span class="p">,</span> <span class="n">kls</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -404,6 +410,9 @@
         <span class="p">}</span>
 
     <span class="k">class</span> <span class="nc">ObjectForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Default ObjectForm for CrudViews. Can be overridden.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">save_edit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save::add_edit_form&quot;</span><span class="p">)</span>
         <span class="n">save_list</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Listele&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save::list&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
@@ -973,16 +982,28 @@
         <span class="c1"># self.set_client_cmd(&#39;form&#39;)</span>
 
     <span class="k">def</span> <span class="nf">set_form_data_to_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the deserialization of incoming form data</span>
+<span class="sd">        into object instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_form</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">])</span>
 
     <span class="nd">@view_method</span>
     <span class="k">def</span> <span class="nf">save_as_new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves an existing record as a new one.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_object</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;object_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
 
     <span class="k">def</span> <span class="nf">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves object into DB.</span>
+<span class="sd">        Triggers pre_save and post_save signals.</span>
+<span class="sd">        Sets task_data[&#39;``added_obj``&#39;] if object is new.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">signals</span><span class="o">.</span><span class="n">crud_pre_save</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
         <span class="n">obj_is_new</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -992,11 +1013,19 @@
 
     <span class="nd">@view_method</span>
     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Object save view. Actual work done at other methods.</span>
+<span class="sd">        Can be overridden.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save_object</span><span class="p">()</span>
 
     <span class="nd">@view_method</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Object delete view.</span>
+<span class="sd">        Triggers pre_delete and post_delete signals.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO: add confirmation dialog</span>
         <span class="c1"># to overcome 1s riak-solr delay</span>
         <span class="n">signals</span><span class="o">.</span><span class="n">crud_pre_delete</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
