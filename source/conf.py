@@ -40,7 +40,14 @@ extensions = [
     'sphinxcontrib.plantuml',
     'sphinxcontrib.images',
     'sphinx.ext.viewcode',
+    'sphinx.ext.napoleon',
 ]
+
+napoleon_numpy_docstring = False
+# napoleon_include_private_with_doc = True
+napoleon_use_ivar = True
+napoleon_include_special_with_doc = True
+
 # images_config = {
 #     'override_image_directive': True,
 # }
