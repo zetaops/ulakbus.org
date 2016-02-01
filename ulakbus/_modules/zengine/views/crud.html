@@ -244,7 +244,7 @@
 
 <span class="sd">    Note:</span>
 <span class="sd">        This is a workaround till we decide and implement a</span>
-<span class="sd">         better method for fine grained form customizations.</span>
+<span class="sd">        better method for fine grained form customizations.</span>
 
 <span class="sd">    .. code-block:: python</span>
 
@@ -1001,7 +1001,9 @@
     <span class="k">def</span> <span class="nf">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Saves object into DB.</span>
+
 <span class="sd">        Triggers pre_save and post_save signals.</span>
+
 <span class="sd">        Sets task_data[&#39;``added_obj``&#39;] if object is new.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">signals</span><span class="o">.</span><span class="n">crud_pre_save</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
