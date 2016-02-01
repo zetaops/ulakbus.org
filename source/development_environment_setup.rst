@@ -20,7 +20,7 @@ Vagrant[1] box hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:
 ::
 
     mkdir ulakbus-devbox
-    cd ulakbus
+    cd ulakbus-devbox
     vagrant init zetaops/ulakbus
 
 
