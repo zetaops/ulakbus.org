@@ -172,3 +172,6 @@ https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExam
             out_file = open(export_directory + '/departmentImport.xml', 'w+')
             out_file.write("%s" % s)
             print("Dosya %s dizini altina kayit edilmistir" % export_directory)
+            
+ 
+ Oluşturulan XML dosyası, UniTime üzerinde **Administration** -> **Academic Sessions** -> **Data Exchange** menüsü ile ulaşabileceğiniz form aracığılığı ile sisteme import edilir.
