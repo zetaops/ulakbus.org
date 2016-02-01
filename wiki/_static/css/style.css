@@ -21,7 +21,8 @@ a:hover {
 }
 
 a.logo img {
-    width: 210px;
+    width: 130px;
+    margin-left: 5px;
 }
 
 ul.main-nav li a {
@@ -106,8 +107,8 @@ footer p {
 
 @media (min-width: 768px) {
     ul.main-nav li a {
-        height: 85px;
-        line-height: 55px;
+        /*height: 85px;*/
+        /*line-height: 55px;*/
     }
     .navbar-right {
 
