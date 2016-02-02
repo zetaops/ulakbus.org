@@ -268,6 +268,7 @@
 
 <span class="sd">    .. code-block:: python</span>
 
+<span class="sd">        @obj_filter</span>
 <span class="sd">        def foo(self, obj, result):</span>
 <span class="sd">            if obj.status &lt; self.CONFIRMED:</span>
 <span class="sd">                result[&#39;actions&#39;].append(</span>
@@ -305,10 +306,11 @@
 
 <span class="sd">    .. code-block:: python</span>
 
-<span class="sd">        def foo(self, obj, result):</span>
-<span class="sd">            if obj.status &lt; self.CONFIRMED:</span>
-<span class="sd">                result[&#39;actions&#39;].append(</span>
-<span class="sd">                        {&#39;name&#39;: &#39;Confirm&#39;, &#39;cmd&#39;: &#39;confrim&#39;, &#39;show_as&#39;: &#39;button&#39;})</span>
+<span class="sd">        @list_query</span>
+<span class="sd">        def foo(self, queryset):</span>
+<span class="sd">            queryset = queryset.filter(**{&#39;%s__in&#39; % field:</span>
+<span class="sd">                                        self.input[&#39;filter&#39;][&#39;values&#39;]})</span>
+<span class="sd">            return queryset</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">func</span><span class="o">.</span><span class="n">query_method</span> <span class="o">=</span> <span class="bp">True</span>
@@ -1010,7 +1012,7 @@
         <span class="n">obj_is_new</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">signals</span><span class="o">.</span><span class="n">crud_post_save</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_cmd</span> <span class="ow">and</span> <span class="n">obj_is_new</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_cmd</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;added_obj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">key</span>
 
     <span class="nd">@view_method</span>
