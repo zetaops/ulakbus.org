@@ -6,16 +6,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    
 
     <title>ULAKBUS</title>
 
-
+    
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
-
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -174,7 +174,7 @@
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -230,7 +230,7 @@
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
-
+            
   <div class="section" id="ulakbus-u-gelistirelim">
 <h1>Ulakbüs&#8217;ü Geliştirelim<a class="headerlink" href="#ulakbus-u-gelistirelim" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <p>Aşağıdaki adımları izleyerek Ulakbüs projesine öğrencilerin ön kayıt yaptırmasını ve sonrasında
@@ -254,37 +254,6 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 <div class="section" id="view-task-ve-model-dosyalarinin-konumlari">
 <h2>View, Task ve Model dosyalarının konumları<a class="headerlink" href="#view-task-ve-model-dosyalarinin-konumlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>View, task ve model modülleri, proje kök dizininde yer alan <code class="docutils literal"><span class="pre">views</span></code>, <code class="docutils literal"><span class="pre">tasks</span></code> ve <code class="docutils literal"><span class="pre">models</span></code>  dizinleri altında konumlanırlar.</p>
-<p class="plantuml">
-<img src="_images/plantuml-ccb3a0776ef20d37a9ecd166df9e472d64623ffb.png" alt="&#64;startsalt
-
-{
-{T
-+manage.py
-+settings.py
-+**models**
-++~__init__.py
-++ogrenci.py
-++personel.py
-++auth.py
-++hitap.py
-+**views**
-++~__init__.py
-++personel
-+++~__init__.py
-+++atama.py
-+++kadro.py
-++**ogrenci**
-+++~__init__.py
-+++on_kayit.py
-++dashboard.py
-++system.py
-+**tasks**
-++~__init__.py
-}
-}
-
-&#64;endsalt" />
-</p>
 </div>
 <div class="section" id="is-akislarinin-tasarlanmasi">
 <h2>İş akışlarının tasarlanması.<a class="headerlink" href="#is-akislarinin-tasarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -294,7 +263,7 @@ Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kul
 <p>BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.</p>
 <p>Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.</p>
 <a class=""
-               data-lightbox="group-f25b3810-071c-49a1-9058-940694cb76f8"
+               data-lightbox="group-40146dcb-80de-4e5d-908c-2ea63c2eabc2"
                href="_images/du_bpmn_onkayit.png"
                title=""
                data-title=""
@@ -306,7 +275,7 @@ Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kul
                 </a><p>Öğrenci (ogrenci) lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz.
 Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
 <a class=""
-               data-lightbox="group-f9a87ebd-5066-428c-bc25-731730540ffb"
+               data-lightbox="group-e856502c-838d-4b72-a6c2-a1b829b70e08"
                href="_images/du_bpmn_lane_properties.png"
                title=""
                data-title=""
@@ -316,29 +285,6 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
                      height="auto"
                      alt=""/>
                 </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
-<a data-lightbox="group-825d1194-fbae-46ab-ab51-7d7d00f94166"
-                   href="_images/du_bpmn_onkayit.png"
-                   class=""
-                   title=""
-                   data-title=""
-                   ><img src="_images/du_bpmn_onkayit.png"
-                    class=""
-                    width="100%"
-                    height="auto"
-                    alt=""/>
-                    </a><p>Öğrenci (ogrenci) lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz.
-Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
-<a data-lightbox="group-738792de-ef25-4168-a9d0-41638f9518a5"
-                   href="_images/du_bpmn_lane_properties.png"
-                   class=""
-                   title=""
-                   data-title=""
-                   ><img src="_images/du_bpmn_lane_properties.png"
-                    class=""
-                    width="100%"
-                    height="auto"
-                    alt=""/>
-                    </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
 <p><code class="docutils literal"><span class="pre">owners</span></code> parametresi tanımlandığı lane&#8217;in olası kullanıcılarını ifade etmek için kullanılır. İş akışı bir lane&#8217;den diğerine geçtiğinde, iş akışı motoru bu tanımlamanın işaret ettiği kullanıcılara bir ileti göndererek akışa katılmalarını sağlar.</p>
 <p>Örneğimizde advisor lane&#8217;ini işletecek kişinin student lane&#8217;ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bununla birlikte, bu alana birden fazla nesne döndürebilecek geçerli bir Python ifadesi girilmesi gerektiğinden, <strong>[student.ogrenci.danisman.personel]</strong> şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya <strong>User</strong> nesnesi olmalı ya da geriye ilgili user nesnesini döndüren bir <strong>get_user()</strong> metoduna sahip olmalıdırlar.</p>
 <p><code class="docutils literal"><span class="pre">permissions</span></code> parametresi virgülle ayrılmış şekilde yetki kodları kabul etmektedir. İlgili lane&#8217;i işletecek kullanıcının bu yetkilere sahip olması koşulu aranacaktır. Sistemde halihazırda tanımlı olmayan yetkiler burada doğrudan kullanılıp update_permissions komutu ile otomatik olarak yetki tablosuna eklenebilir. <code class="docutils literal"><span class="pre">::</span> <span class="pre">TODO</span> <span class="pre">::</span></code></p>
@@ -412,73 +358,6 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
                                     <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">adi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yil</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Yukarıda gösterdiğimiz &#8220;Önkayıy / Kayıt &#8221; akışı için  &#8220;ogrenci_kayit.py&#8221; gibi geçerli bir isimle models dizinine kaydedip,
-<code class="docutils literal"><span class="pre">models/__init__.py</span></code> içine import etmemiz yeterli olacaktır.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
-<span class="kn">from</span> <span class="nn">ogrenci</span> <span class="kn">import</span> <span class="n">Ogrenci</span>
-<span class="kn">from</span> <span class="nn">personel</span> <span class="kn">import</span> <span class="n">Personel</span>
-
-<span class="k">class</span> <span class="nc">OgrenciProgram</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">ogrenci_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Öğrenci Numarası&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">giris_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Giriş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">.%m.%Y&quot;</span><span class="p">)</span>
-    <span class="n">mezuniyet_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Mezuniyet Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">.%m.%Y&quot;</span><span class="p">)</span>
-    <span class="n">giris_puan_turu</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Puan Türü&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s">&quot;giris_puan_turleri&quot;</span><span class="p">)</span>
-    <span class="n">giris_puani</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s">&quot;Giriş Puani&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">aktif_donem</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Dönem&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">durum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Durum&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s">&quot;ogrenci_program_durumlar&quot;</span><span class="p">)</span>
-    <span class="n">basari_durumu</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Başarı Durumu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">ders_programi</span> <span class="o">=</span> <span class="n">DersProgrami</span><span class="p">()</span>
-    <span class="n">danisman</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
-    <span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
-    <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="p">()</span>
-
-
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">app</span> <span class="o">=</span> <span class="s">&#39;Ogrenci&#39;</span>
-        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&quot;Öğrenci Programı&quot;</span>
-        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&quot;Öğrenci Programları&quot;</span>
-
-    <span class="k">class</span> <span class="nc">Belgeler</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
-        <span class="n">tip</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Belge Tipi&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s">&quot;belge_tip&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">aciklama</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ek Açıklama&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">tamam</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Belge kontrol edildi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> - </span><span class="si">%s</span><span class="s"> / </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span>
-                                    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">adi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yil</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
 </div>
 <div class="section" id="puan-turu-ve-puan-bilgileri-ekrani">
 <h2>Puan Türü ve Puan Bilgileri Ekranı<a class="headerlink" href="#puan-turu-ve-puan-bilgileri-ekrani" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -504,37 +383,6 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
 <span class="k">class</span> <span class="nc">YerlestirmeBilgisi</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;OgrenciProgram&quot;</span>
-
-    <span class="k">def</span> <span class="nf">yerlestirme_bilgisi_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span><span class="p">,</span> <span class="n">durum</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">YerlestirmeBilgisiForm</span><span class="p">(</span><span class="n">ogrenci_program</span><span class="p">,</span> <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></div>
-<div class="section" id="puan-turu-ve-puan-bilgileri-ekrani">
-<h2>Puan Türü ve Puan Bilgileri Ekranı<a class="headerlink" href="#puan-turu-ve-puan-bilgileri-ekrani" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">YerlestirmeBilgisiForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;giris_puan_turu&quot;</span><span class="p">,</span> <span class="s">&quot;giris_puani&quot;</span><span class="p">]</span>
-
-    <span class="n">ileri_buton</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;İleri&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;save&quot;</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">YerlestirmeBilgisi</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&quot;OgrenciProgram&quot;</span>
 
     <span class="k">def</span> <span class="nf">yerlestirme_bilgisi_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
@@ -575,51 +423,6 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
 <span class="k">class</span> <span class="nc">OncekiEgitimBilgileri</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;OncekiEgitimBilgisi&quot;</span>
-
-    <span class="k">def</span> <span class="nf">onceki_egitim_bilgileri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-        <span class="n">onceki_egitim_bilgisi</span> <span class="o">=</span> <span class="n">OncekiEgitimBilgisi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">OncekiEgitimBilgileriForm</span><span class="p">(</span><span class="n">onceki_egitim_bilgisi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">kaydet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
-<div class="section" id="onceki-egitim-bilgileri-ekrani">
-<h2>Önceki Eğitim Bilgileri Ekranı<a class="headerlink" href="#onceki-egitim-bilgileri-ekrani" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">OncekiEgitimBilgileriForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;okul_adi&quot;</span><span class="p">,</span> <span class="s">&quot;diploma_notu&quot;</span><span class="p">,</span> <span class="s">&quot;mezuniyet_yili&quot;</span><span class="p">]</span>
-
-    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;save&quot;</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">OncekiEgitimBilgileri</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&quot;OncekiEgitimBilgisi&quot;</span>
 
     <span class="k">def</span> <span class="nf">onceki_egitim_bilgileri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
@@ -717,89 +520,6 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
         <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<div class="section" id="ogrenci-onkayit-ekrani">
-<h2>Öğrenci Önkayıt Ekranı<a class="headerlink" href="#ogrenci-onkayit-ekrani" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">OnKayitForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;kan_grubu&#39;</span><span class="p">,</span> <span class="s">&#39;baba_aylik_kazanc&#39;</span><span class="p">,</span> <span class="s">&#39;baba_ogrenim_durumu&#39;</span><span class="p">,</span> <span class="s">&#39;baba_meslek&#39;</span><span class="p">,</span>
-                   <span class="s">&#39;anne_ogrenim_durumu&#39;</span><span class="p">,</span> <span class="s">&#39;anne_meslek&#39;</span><span class="p">,</span> <span class="s">&#39;anne_aylik_kazanc&#39;</span><span class="p">,</span> <span class="s">&#39;masraf_sponsor&#39;</span><span class="p">,</span>
-                   <span class="s">&#39;emeklilik_durumu&#39;</span><span class="p">,</span> <span class="s">&#39;kiz_kardes_sayisi&#39;</span><span class="p">,</span> <span class="s">&#39;erkek_kardes_sayisi&#39;</span><span class="p">,</span>
-                   <span class="s">&#39;ogrenim_goren_kardes_sayisi&#39;</span><span class="p">,</span> <span class="s">&#39;burs_kredi_no&#39;</span><span class="p">,</span> <span class="s">&#39;aile_tel&#39;</span><span class="p">,</span> <span class="s">&#39;aile_gsm&#39;</span><span class="p">,</span>
-                   <span class="s">&#39;aile_adres&#39;</span><span class="p">,</span> <span class="s">&#39;ozur_durumu&#39;</span><span class="p">,</span> <span class="s">&#39;ozur_oran&#39;</span><span class="p">]</span>
-
-    <span class="n">kaydet_buton</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;kaydet&quot;</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">OnKayit</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&quot;Ogrenci&quot;</span>
-
-    <span class="k">def</span> <span class="nf">on_kayit_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">OnKayitForm</span><span class="p">(</span><span class="n">ogrenci</span><span class="p">,</span> <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></div>
-</div>
-<div class="section" id="belge-kayit-ekrani">
-<h2>Belge Kayıt Ekranı<a class="headerlink" href="#belge-kayit-ekrani" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">BelgeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Belgeler&quot;</span><span class="p">]</span>
-
-    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;save&quot;</span><span class="p">)</span>
-    <span class="n">onayla</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Ön Kayıt Onayla&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;onayla&quot;</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">KayitBelgeler</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&quot;OgrenciProgram&quot;</span>
-
-    <span class="k">def</span> <span class="nf">belge_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">BelgeForm</span><span class="p">(</span><span class="n">ogrenci_program</span><span class="p">,</span> <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">onayla</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span><span class="p">,</span> <span class="n">durum</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">durum</span> <span class="o">=</span> <span class="mi">2</span>
-        <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
 </div>
 </div>
 
@@ -822,7 +542,7 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
       </ul>
     </div>
     </div>
