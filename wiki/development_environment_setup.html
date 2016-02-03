@@ -37,7 +37,7 @@
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
-    <link rel="prev" title="Geliştiriciler" href="developers.html" />
+    <link rel="prev" title="Ulakbus’e Katkıda Bulunmak" href="git_workflow.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -171,7 +171,7 @@
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="developers.html" title="Geliştiriciler"
+          <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
@@ -184,22 +184,16 @@
             </a></p>
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Geliştirme Ortamı Kurulumu(Backend)</a><ul>
-<li><a class="reference internal" href="#vagrant"><strong>Vagrant</strong></a><ul>
-<li><a class="reference internal" href="#vagrant-nedir">Vagrant Nedir?</a></li>
-<li><a class="reference internal" href="#gelistirme-sanal-makinasinin-guncellenmesi">Geliştirme Sanal Makinasının Güncellenmesi</a></li>
-<li><a class="reference internal" href="#kontrol-edilmesi-gereken-servisler">Kontrol edilmesi gereken servisler</a></li>
-<li><a class="reference internal" href="#gelistirme-icin-editor-ayarlanmasi">Geliştirme İçin Editör Ayarlanması</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#elle-kurulum"><strong>Elle Kurulum</strong></a></li>
+<li><a class="reference internal" href="#">ULAKBUS Geliştirme Ortamının Kurulumu</a><ul>
+<li><a class="reference internal" href="#vagrant-box-guncellemek">Vagrant Box Güncellemek</a></li>
+<li><a class="reference internal" href="#sonraki-adimlar">Sonraki Adımlar</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Önceki konu</h4>
-  <p class="topless"><a href="developers.html"
-                        title="önceki bölüm">Geliştiriciler</a></p>
+  <p class="topless"><a href="git_workflow.html"
+                        title="önceki bölüm">Ulakbus&#8217;e Katkıda Bulunmak</a></p>
   <h4>Sonraki konu</h4>
   <p class="topless"><a href="ulakbus_user_interface.html"
                         title="sonraki bölüm">Geliştirme Ortamı Kurulumu(Frontend)</a></p>
@@ -231,302 +225,172 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="gelistirme-ortami-kurulumu-backend">
-<h1>Geliştirme Ortamı Kurulumu(Backend)<a class="headerlink" href="#gelistirme-ortami-kurulumu-backend" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<p>Kullanıcılar, kuruluma başlamadan önce Ubuntu işletim sistemini kullanmalıdır. Biz, işletim sistemi olarak Ubuntu 14.04 kullanıyoruz.</p>
-<div class="section" id="vagrant">
-<h2><strong>Vagrant</strong><a class="headerlink" href="#vagrant" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="section" id="vagrant-nedir">
-<h3>Vagrant Nedir?<a class="headerlink" href="#vagrant-nedir" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Vagrant&#8217;la ilgili başlıca bilgilere aşağıdaki linklerden ulaşabilirsiniz:</p>
-<p><a class="reference external" href="https://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time">https://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time</a></p>
-<p><a class="reference external" href="http://www.cyberciti.biz/cloud-computing/use-vagrant-to-create-small-virtual-lab-on-linux-osx/">http://www.cyberciti.biz/cloud-computing/use-vagrant-to-create-small-virtual-lab-on-linux-osx/</a></p>
-<p>Geliştiriciler için hazırladığımız vagrant box&#8217;ı kullanarak hızlıca kurulum yapabilirsiniz. Ulakbus&#8217;e ait tüm bileşenler box içinde bulunmaktadır. Ortamı kurabilmek için aşağıdaki komutları kullanabilirsiniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>mkdir ulakbus
-cd ulakbus
+  <div class="section" id="ulakbus-gelistirme-ortaminin-kurulumu">
+<h1>ULAKBUS Geliştirme Ortamının Kurulumu<a class="headerlink" href="#ulakbus-gelistirme-ortaminin-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Ulakbus için geliştirme ortamının kurulması aşağıdaki bileşenlerin herbirinin ayrı ayrı
+kurulup yapılandırılmasını kapsar:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Pythton Virtualenv</li>
+<li>Riak KV</li>
+<li>Zato ESB</li>
+<li>Redis</li>
+<li>Git CVS</li>
+</ul>
+</div></blockquote>
+<p>Bu servislerin elle kurulumu ve yapılandırılması yeni başlayanlar için biraz karmaşık
+gelebilir. Ayrıca biraz uzun bir süreçtir. Bu amaçla hızlı başlangıç için bir
+Vagrant[1] box hazırladık. Bunu indirip kullanmaya başlayabilirsiniz:</p>
+<p>[1] <a class="reference external" href="https://www.vagrantup.com/">https://www.vagrantup.com/</a></p>
+<div class="highlight-python"><div class="highlight"><pre>mkdir ulakbus-devbox
+cd ulakbus-devbox
 vagrant init zetaops/ulakbus
 </pre></div>
 </div>
-<p>Bu komutlar vagrantfile dosyası yaratır. Bu dosyayı açıp RAM&#8217;ı 2 GB yapmanızı öneririz. Ancak bu işlemle kendiniz uğraşmak istemiyorsanız aşağıdaki işlemi yapabilirsiniz:</p>
-<div class="highlight-python"><div class="highlight"><pre>wget https://raw.githubusercontent.com/zetaops/ulakbus-development-box/master/Vagrantfile.sample
+<dl class="docutils">
+<dt>Vagrant box(sanal makine, guest) temel olarak iki türlü kullanılabilir:</dt>
+<dd><ul class="first last simple">
+<li>Vagrant ile yaratılmış sanal makine içinde geliştirme</li>
+<li>Sanal makine servislerini kullanarak kendi makinenizde geliştirme</li>
+</ul>
+</dd>
+</dl>
+<p>Birincisinde backend sunucusu ve python ortamı box içindedir. Tüm geliştirme işlemleri
+box içinden yürütülür.</p>
+<p>İkinci kullanımda ise box sadece Riak, Redis ve Zato gibi servisler için kullanılır. Servis
+portları Vagrantfile konfigürasyonu ile host makine ile paylaşılır. Böylelikle box içinde
+çalışan servislere host makineden erişmek mümkün hale gelir.</p>
+<p>Python ortamı ise host makinede (kendi işletim sisteminiz üzerinde) bulunur. Bu hız
+ve üretkenlik açısından birincisine göre daha verimlidir. Eğer PyCharm gibi bir IDE
+kullanıyorsanız host makinede çalışmak, özellikle detaylı DEBUG için avantajlıdır.</p>
+<p>Git depolarınıza her durumda host makine üzerinden erişmenizi öneririz. Host makinedeki
+depolarınızı box ile paylaşarak ilgili dizinlere bağlayabilirsiniz. <code class="docutils literal"><span class="pre">`git</span> <span class="pre">pull`</span></code>
+<code class="docutils literal"><span class="pre">`git</span> <span class="pre">push`</span></code> gibi git operasyonları da bu durumda host makine üzerinden gerçekleştirilmelidir.</p>
+<blockquote>
+<div>Host makine üzerindeki bir git deposu üzerinde box içerisinden işlem yaptığınızda doğrulama,
+yetkilendirme hataları almanız olasıdır.</div></blockquote>
+<p>Hem git depolarının hem de portların nasıl paylaşılacağı aşağıda bağlantısı verilen örnek
+Vagrantfile icinde mevcuttur. Bu dosyada çok küçük değişiklikler yaparak istediğiniz gibi
+bir vagrant box (sanal makine, guest) elde edebilirsiniz. Örnek Vagrantfile:</p>
+<div class="highlight-python"><div class="highlight"><pre>https://raw.githubusercontent.com/zetaops/ulakbus.org/master/source/Vagrantfile.sample
 </pre></div>
 </div>
-<p>Bu komut bulunduğunuz dizine örnek bir Vagrantfile indirecektir. İhtiyaçlarınıza uygun şekilde düzenleyip kullanabilirsiniz.</p>
-<p>Vagrantfile&#8217;ı düzenledikten sonra:</p>
+<p>Yukarıdaki komutları kullanarak bir box oluşturduğunuzda ilgili dizin altına - örnekte
+<code class="docutils literal"><span class="pre">ulakbus-devbox</span></code> - bir Vagranfile yazılır. Bu dosyayı bir text düzenleme aracı ile açıp
+düzenleyebilirsiniz.</p>
+<p>Port yönlendirmek için Vagrantfile içinde aşağıdaki satırlara benzeyen bölümü bulup, istediğiniz
+portları ekleyip çıkarabilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre># config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080
+config.vm.network &quot;forwarded_port&quot;, guest: 9001, host: 9001
+</pre></div>
+</div>
+<p>Örnek dosyada hangi portun ne için kullanıldığı yorum satırları olarak eklenmiştir.</p>
+<p>Dizinleri paylaşmak için ise Vagrantfile içerisinde aşağıdakine benzeyen bölümleri bulup
+düzenleyebilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre># config.vm.synced_folder &quot;../data&quot;, &quot;/vagrant_data&quot;
+config.vm.synced_folder &quot;~/dev/zetaops/ulakbus&quot;, &quot;/app/ulakbus&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
+</pre></div>
+</div>
+<p>Bu satır host makinenizde kullanıcı dizininiz altında, dev/zetaops/ulakbus yolunda bulunan
+<code class="docutils literal"><span class="pre">ulakbus</span></code> dizinini box içerisinde /app/ulakbus yolunda bulunan <code class="docutils literal"><span class="pre">ulakbus</span></code> dizinine bağlar.
+Box içindeki dizinin sahibi ve grubunu <code class="docutils literal"><span class="pre">ulakbus</span></code> yapar.</p>
+<p>Gerekli düzenlemeleri yaptıktan sonra Vagrantbox <strong>oluşturduğunuz dizin içerisinde</strong> şu komut ile
+başlatabilirsiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>vagrant up
 </pre></div>
 </div>
-<p>komutuyla makinenizi başlatabilirsiniz.</p>
-<p>Bu işlem bitince <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> komutu ile geliştirme ortamına bağlanabilirsiniz.</p>
-<p><code class="docutils literal"><span class="pre">Eğer</span> <span class="pre">depolarınızı</span> <span class="pre">sanal</span> <span class="pre">makinaya</span> <span class="pre">mount</span> <span class="pre">ederek</span> <span class="pre">dışardan</span> <span class="pre">paylaşıyorsanız,</span> <span class="pre">git</span> <span class="pre">ile</span> <span class="pre">ilgili</span> <span class="pre">işlemleri</span> <span class="pre">ana</span> <span class="pre">makinada</span> <span class="pre">yapmanızı</span> <span class="pre">öneriyoruz.</span></code></p>
-<p>Bizim sunduğumuz Vagrantbox&#8217;ta, git depoları sanal makina içerisinde yer almaktadır. Git depolarının host makine
-üzerinde saklanması ve sanal makineye bağlanarak kullanılması, Vagrantbox&#8217;ın güncellenmesi, kaldırılması gibi işlemlerde
-veri kayıplarının önüne geçecektir.</p>
-<p>Yukarıda verilen örnek Vagrantfile içerisinde, kod depolarınızın sanal makineye bağlanmak üzere nasıl konfigüre
-edileceği bulunmaktadır. Kısaca</p>
-<div class="highlight-python"><div class="highlight"><pre># ulakbus
- config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus&quot;, &quot;/app/ulakbus&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
-
-# zengine
- config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/zengine&quot;, &quot;/app/zengine&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
-
-# pyoko
- config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/pyoko&quot;, &quot;/app/pyoko&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
-
-# ulakbus-ui
- config.vm.synced_folder &quot;/home/yerel_makinadaki_benim_adim/zetaops/repos/github/ulakbus-ui&quot;, &quot;/app/ulakbus-ui&quot;, owner: &quot;ulakbus&quot;, group: &quot;ulakbus&quot;
+<p>Başlayan makineye giriş yapmak için şu komutu kullanabilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>vagrant ssh
 </pre></div>
 </div>
-</div>
-<div class="section" id="gelistirme-sanal-makinasinin-guncellenmesi">
-<h3>Geliştirme Sanal Makinasının Güncellenmesi<a class="headerlink" href="#gelistirme-sanal-makinasinin-guncellenmesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<ul class="simple">
-<li>Ulakbus klasörü içine gidin. Klasörde Vagrantfile bulunduğundan emin olun.</li>
-<li>Sürüm kontrolü yapın</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre>vagrant box outdated
+<p>Giriş yaptıktan sonra servislerin başlayıp başlamadığını, bağlanan dizinlerin güncel olup
+olmadığını kontrol edebilisiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo service redis-server status
+sudo service riak ping
+sudo service zato status
 </pre></div>
 </div>
-<p>Eğer sanal makina sürümü eski ise aşağıdaki gibi bir mesaj alacaksınız.</p>
-<div class="highlight-python"><div class="highlight"><pre>A newer version of the box &#39;zetaops/ulakbus&#39; is available! You currently
-have version &#39;0.1.9&#39;. The latest is version &#39;0.2.2&#39;. Run
-`vagrant box update` to update.
+<p>Eğer geliştirme işlemlerini box içerisinde yapacaksanız, ulakbus kullanıcısına geçip python
+ortamınızı etkinleştirerek başlayabilirsiniz. En başından sırasıyla komutlar (# ile başlayan yorum
+kısımları olmadan):</p>
+<div class="highlight-python"><div class="highlight"><pre>vagrant up                         # vagrantbox başlat
+vagrant ssh                        # vagrantbox giriş
+sudo su - ulakbus                  # ulakbus kullanıcısına geçip home dizinine geç
+source ulakbusenv/bin/activate     # ulakbus environment etkinleştir
 </pre></div>
 </div>
-<p>Gene ulakbus klasörü içindeyken</p>
-<div class="highlight-python"><div class="highlight"><pre>vagrant box update
-</pre></div>
-</div>
-<p>komutu güncelleme işlemini yapacaktır.</p>
-</div>
-<div class="section" id="kontrol-edilmesi-gereken-servisler">
-<h3>Kontrol edilmesi gereken servisler<a class="headerlink" href="#kontrol-edilmesi-gereken-servisler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Vagrant sanal makinasına <code class="docutils literal"><span class="pre">`vagrant</span> <span class="pre">ssh`</span></code> ile bağlandıktan sonra, aşağıdaki servislerin çalıştığından emin olunuz.</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo su
-service redis-server status
-service riak ping
-service zato status
-</pre></div>
-</div>
-<p>ulakbus kullanıcısına ait klasör altında aşağıdaki alt klasörler yer almaktadır.</p>
-<div class="highlight-python"><div class="highlight"><pre>pyoko  pyokoenv  pyoko_postactivate  ulakbus  ulakbusenv  ulakbus_postactivate  ulakbus-ui  zengine  zengineenv  zengine_postactivate
-</pre></div>
-</div>
-<p>ulakbus projesi ile çalışmak için</p>
-<div class="highlight-python"><div class="highlight"><pre>source ulakbusenv/bin/activate
-</pre></div>
-</div>
-<p>Virtualenv aktif hale getiriniz.</p>
+<p>Bu komutun ardından komut satırı promptu değişecek ve şu hale gelecektir:</p>
 <div class="highlight-python"><div class="highlight"><pre>(ulakbusenv)ulakbus@ulakbus:~$
 </pre></div>
 </div>
-<p>yukarıdaki komut satırını gördüğünüzde virtualenv set edilmiş demektir. virtualenv hakkında detaylı bilgi için:</p>
+<p>Eğer deneyiminiz yoksa virtualenv ile ilgili şu bağlantılara bakabilirsiniz:
+virtualenv hakkında detaylı bilgi için:</p>
 <blockquote>
-<div><p><a class="reference external" href="http://istihza.com/forum/viewtopic.php?t=2164">http://istihza.com/forum/viewtopic.php?t=2164</a></p>
-<p><a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">http://docs.python-guide.org/en/latest/dev/virtualenvs/</a></p>
+<div><ul class="simple">
+<li><a class="reference external" href="http://istihza.com/forum/viewtopic.php?t=2164">http://istihza.com/forum/viewtopic.php?t=2164</a></li>
+<li><a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">http://docs.python-guide.org/en/latest/dev/virtualenvs/</a></li>
+</ul>
 </div></blockquote>
-<p>daha sonra <strong>ipython</strong> komutu ile konsolda çalışmalar yapabilirsiniz.</p>
-</div>
-<div class="section" id="gelistirme-icin-editor-ayarlanmasi">
-<h3>Geliştirme İçin Editör Ayarlanması<a class="headerlink" href="#gelistirme-icin-editor-ayarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Python ile geliştirme yaparkan değişik <a class="reference external" href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments">IDE&#8217;ler</a> kullanabilirsiniz. Ulakbüs geliştirmesi yaparken <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> kullanıyor ve şiddetle öneriyoruz.
-Öğrenciler ve AKK projeler için özel lisanslar sunan PyCharm sayesinde ücretsiz olarak kullanabilirsiniz.</p>
-</div>
-</div>
-<div class="section" id="elle-kurulum">
-<h2><strong>Elle Kurulum</strong><a class="headerlink" href="#elle-kurulum" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>İlk olarak bilgisayarınızı güncel hale getirin.</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get update
-sudo apt-get upgrade
+<p>Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek ve iş akışları
+izinlerini güncellemektir.</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python manage.py migrate --model all
 </pre></div>
 </div>
-<p>Riak için dosya limitini 65536 olarak değiştirin.</p>
-<p><code class="docutils literal"><span class="pre">ulimit</span> <span class="pre">-n</span></code> kalıcı olarak değiştirmek için;</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo vi /etc/security/limits.conf
+<p>Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları <a class="reference external" href="http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html">ilgili
+belgeden</a> öğrenebilirsiniz.</p>
+<div class="highlight-python"><div class="highlight"><pre>python manage.py update_permissions
 </pre></div>
 </div>
-<p>Ve aşağıdaki satırları dosyanın sonuna ekleyin.</p>
-<div class="highlight-python"><div class="highlight"><pre>* soft nofile 65536
-* hard nofile 65536
+<p>Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları izleyebilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ virtualenv ulakbusenv                 # ulakbusenv python ortamı yarat
+$ source ulakbusenv/bin/activate        # python ortamını etkinleştir
+$ cd ~/ulakbus                          # ulakbus git deposuna gir
+$ git pull                              # son değişiklikleri uzak depodan çek
+$ pip install -r requirments.txt        # ulakbus bagimliliklarini kur
+$ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
 </pre></div>
 </div>
-<p>Riak&#8217;ı ve bağımlılıklarını kurun.</p>
-<div class="highlight-python"><div class="highlight"><pre>#Önce Riak bağımlılıklarını kurunuz.
-
-apt-get install libssl-dev
-apt-get install libffi-dev
+<div class="section" id="vagrant-box-guncellemek">
+<h2>Vagrant Box Güncellemek<a class="headerlink" href="#vagrant-box-guncellemek" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Ulakbus aktif olarak geliştirilmeye devam etmektedir. Bu sebeple vagrantbox içinde kullanılan
+bileşenlerin sürümlerinin değişmesi, yenilerinin eklenmesi veya başka sebepler ile değişmektedir.
+Bu değişiklikleri <a class="reference external" href="https://atlas.hashicorp.com/zetaops/boxes/ulakbus">https://atlas.hashicorp.com/zetaops/boxes/ulakbus</a> adresinden takip edebilirsiniz.</p>
+<p>Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını güncellemelisiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ vagrant box outdated
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>#Ardından Java&#39;yı kurunuz.
-
-apt-add-repository ppa:webupd8team/java -y &amp;&amp; apt-get update
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-apt-get install -y oracle-java8-installer
+<p>Daha sonra mevcut box destroy edip yeniden init edebilirsiniz. Prensip olarak box içerisinde
+geliştirme süreçlerine ait herhangi bir veri <strong>bulunmamalıdır</strong>. Eğer varsa bu işlemden önce
+ilgili veriler host makinesine alınmalıdır.</p>
+<div class="highlight-python"><div class="highlight"><pre>$ vagrant box destroy
+$ vagrant up
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>#Riak kurulumu
-
-curl -s https://packagecloud.io/install/repositories/zetaops/riak/script.deb.sh |sudo bash
-apt-get install riak=2.1.1-1
+<p>Ayrıca mevcut box birden fazla sürüme sahip olabilir. <code class="docutils literal"><span class="pre">--box-version</span></code> ile yeni bir sürüm
+ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ vagrant box list                           # Vagrant için yüklü olan box listesi
+$ vagrant box remove --box-version 0.2.2 ulakbus   # ulakbus isimli box&#39;ın 0.2.2 sürümünü kaldır
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre># Aramayı aktifleştiriniz.
-
-sed -i &quot;s/search = off/search = on/&quot; /etc/riak/riak.conf
-</pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre># Riak servisini yeniden başlatın
-
-service riak restart
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre># Redis-Server&#39;ı kurunuz.
-
-apt-get install redis-server
-</pre></div>
-</div>
-<p>Zato için tüm gerekli kurulumları gerçekleştiriniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>apt-get install apt-transport-https
-curl -s https://zato.io/repo/zato-0CBD7F72.pgp.asc | sudo apt-key add -
-apt-add-repository https://zato.io/repo/stable/2.0/ubuntu
-apt-get update
-apt-get install zato
-</pre></div>
-</div>
-<p>Zato kurulumunun ardından, <em>zato</em> kullanıcısına geçiniz ve <em>ulakbus</em> adında bir dizin oluşturunuz.</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo su - zato
-mkdir ~/ulakbus
-</pre></div>
-</div>
-<p>Zato Cluster oluşturunuz. Aşağıdaki komut, Sertifika, Web-Admin, Load-Balancer ve Zato server kurulumunu gerçekleştirecektir.</p>
-<div class="highlight-python"><div class="highlight"><pre>zato quickstart create ~/ulakbus sqlite localhost 6379 --kvdb_password=&#39;&#39; --verbose
-</pre></div>
-</div>
-<p><code class="docutils literal"><span class="pre">~/ulakbus</span></code> klasörünün altına <em>pwzato.config</em> adında bir dosya oluşturunuz ve aşağıdaki script&#8217;i dosyanın içine yazınız.</p>
-<p>Bu script&#8217;i kullanmak için de <code class="docutils literal"><span class="pre">zato</span> <span class="pre">from-config</span> <span class="pre">~/ulakbus/pwzato.config</span></code> komutunu çalıştırıyor olmalısınız.</p>
-<div class="highlight-python"><div class="highlight"><pre>command=update_password
-path=/opt/zato/ulakbus/web-admin
-store_config=True
-username=admin
-password=ulakbus
-</pre></div>
-</div>
-<p>Zato servislerini başlatmak için tekrardan <em>root</em> kullanıcısına geçiniz.</p>
-<p>Zato bileşeni için sembolik bağlantı oluşturunuz.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">load</span><span class="o">-</span><span class="n">balancer</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">load</span><span class="o">-</span><span class="n">balancer</span>
-<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">server1</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">server1</span>
-<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">server2</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">server2</span>
-<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">admin</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">zato</span><span class="o">/</span><span class="n">components</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">web</span><span class="o">-</span><span class="n">admin</span>
-</pre></div>
-</div>
-<p>Ve Zato servisini başlatınız.</p>
-<div class="highlight-python"><div class="highlight"><pre>service zato start
-</pre></div>
-</div>
-<p>Ulakbus uygulaması için python virtual environment hazırlayınız.</p>
-<div class="highlight-python"><div class="highlight"><pre>apt-get install virtualenvwrapper
-</pre></div>
-</div>
-<p><em>app</em> adında bir dizin oluşturunuz ve <em>ulakbus</em> kullanıcısını <em>app</em> klasörü içine ekleyin.</p>
-<div class="highlight-python"><div class="highlight"><pre>mkdir /app
-/usr/sbin/useradd --home-dir /app --shell /bin/bash --comment &#39;ulakbus operations&#39; ulakbus
-</pre></div>
-</div>
-<p>Ulakbus kullanıcısına <em>app</em> klasörü için yetki verin ve ulakbus kullanıcısına geçiniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>chown ulakbus:ulakbus /app -Rf
-su ulakbus
-cd ~
-</pre></div>
-</div>
-<p>Virtual Environment yaratınız ve aktif ediniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>virtualenv --no-site-packages env
-source env/bin/activate
-</pre></div>
-</div>
-<p>pip yükseltin(güncelleyin) ve ipython kurulumunu gerçekleştirin.</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install --upgrade pip
-pip install ipython
-</pre></div>
-</div>
-<p>Pyoko&#8217;yu <a class="reference external" href="https://github.com/zetaops/pyoko.git">https://github.com/zetaops/pyoko.git</a> adresinden çekiniz ve gereksinimleri kurunuz.</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install riak
-pip install enum34
-pip install six
-
-pip install git+https://github.com/zetaops/pyoko.git
-</pre></div>
-</div>
-<p>Environment&#8217;a PYOKO_SETTINGS değişkeni ekleyiniz(<em>root</em> kullanıcısı iken)</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &quot;export PYOKO_SETTINGS=&#39;ulakbus.settings&#39;&quot; &gt;&gt; /etc/profile
-</pre></div>
-</div>
-<p>Ulakbus&#8217;u <a class="reference external" href="https://github.com/zetaops/pyoko.git">https://github.com/zetaops/pyoko.git</a> adresinden çekiniz ve gereksinimleri kurunuz.</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install falcon
-pip install beaker
-pip install redis
-pip install passlib
-pip install git+https://github.com/didip/beaker_extensions.git#egg=beaker_extensions
-pip install git+https://github.com/zetaops/SpiffWorkflow.git#egg=SpiffWorkflow
-pip install git+https://github.com/zetaops/zengine.git#egg=zengine
-
-git clone https://github.com/zetaops/ulakbus.git
-</pre></div>
-</div>
-<p>Ulakbus-ui&#8217;yi <a class="reference external" href="https://github.com/zetaops/pyoko.git">https://github.com/zetaops/pyoko.git</a> adresinden çekiniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/zetaops/ulakbus-ui.git
-</pre></div>
-</div>
-<p>Ulakbus&#8217;u PYTHONPATH&#8217;a ekleyiniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &#39;/app/ulakbus&#39; &gt;&gt; /app/env/lib/python2.7/site-packages/ulakbus.pth
-</pre></div>
-</div>
-<p>Google kütüphanesinin çalışması için &#8220;__init__.py&#8221; adında dosya oluşturunuz(<em>ulakbus</em> kullanıcısı iken)</p>
-<div class="highlight-python"><div class="highlight"><pre>touch /app/env/lib/python2.7/site-packages/google/__init__.py
-</pre></div>
-</div>
-<p>Pyoko için <em>solr_schema_template</em> &#8216;i indirin.(<em>ulakbus</em> kullanıcısı iken)</p>
-<div class="highlight-python"><div class="highlight"><pre>cd ~/env/local/lib/python2.7/site-packages/pyoko/db
-wget https://raw.githubusercontent.com/zetaops/pyoko/master/pyoko/db/solr_schema_template.xml
-</pre></div>
-</div>
-<p>Sembolik bağlantı oluşturunuz.(<em>zato</em> kullanıcısı iken)</p>
-<div class="highlight-python"><div class="highlight"><pre>ln -s /app/pyoko/pyoko /opt/zato/2.0.5/zato_extra_paths/
-ln -s /app/env/lib/python2.7/site-packages/riak /opt/zato/2.0.5/zato_extra_paths/
-ln -s /app/env/lib/python2.7/site-packages/riak_pb /opt/zato/2.0.5/zato_extra_paths/
-ln -s /app/env/lib/python2.7/site-packages/google /opt/zato/2.0.5/zato_extra_paths/
-ln -s /app/env/lib/python2.7/site-packages/passlib /opt/zato/2.0.5/zato_extra_paths/
-</pre></div>
-</div>
-<p>Bucket-type türünde modeller oluşturunuz ve aktif ediniz.(<em>root</em> kullanıcısı iken)</p>
-<div class="highlight-python"><div class="highlight"><pre>riak-admin bucket-type create models &#39;{&quot;props&quot;:{&quot;last_write_wins&quot;:true, &quot;allow_mult&quot;:false}}&#39;
-riak-admin bucket-type activate models
-</pre></div>
-</div>
-<p>Aşağıdaki komutlar yardımı ile şemaları güncelleyin.(<em>ulakbus</em> kullanıcısı iken)</p>
-<div class="highlight-python"><div class="highlight"><pre>source env/bin/activate
-cd ~/ulakbus/ulakbus
-python manage.py update_schema --bucket all
-</pre></div>
-</div>
-<p>Server&#8217;ı 8000(default) portunda çalıştırınız.</p>
-<div class="highlight-python"><div class="highlight"><pre>python runserver.py --help
-usage: manage.py [-h]
- {runserver,migrate,flush_model,update_permissions,create_user}
-  ...
-
-optional arguments:
--h, --help            show this help message and exit
-
-Possible commands:
-{runserver,migrate,flush_model,update_permissions,create_user}
-runserver           Run the development server
-migrate             Creates/Updates SOLR schemas for given model(s)
-flush_model         REALLY DELETES the contents of buckets
-update_permissions  Syncs permissions with DB
-create_user         Creates a new user
-</pre></div>
-</div>
-<p>Uygulamayı geliştirmeye devam etmek için <a class="reference external" href="http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html">http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html</a> sayfasına göz atabilirsiniz.</p>
+<div class="section" id="sonraki-adimlar">
+<h2>Sonraki Adımlar<a class="headerlink" href="#sonraki-adimlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Geliştirme ortamını başarıyla kurduktan sonra şu belgelerle devam edebilirsiniz:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html">Ulakbus Geliştirelim</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></li>
+</ul>
+</div></blockquote>
+<p>Ayrıca Git ve Github iş akışımız hakkında bilgi alabileceğiniz <a class="reference external" href="http://www.ulakbus.org/wiki/git_workflow.html">Ulakbus Depolarına Katkı
+Yapmak</a> belgemize göz atabilir, geliştirme
+sürecimizin aktif bir parçası olabilirsiniz.</p>
+<p>Eğer bir sorunla karşılaşırsanız, <a class="reference external" href="http://www.ulakbus.org/destek.html">destek sayfamızda</a> yer alan
+kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu
+<strong>açık ve sarih olarak</strong> bildirmeniz gerektiğini unutmayınız. &#8220;- Bu çalışmıyor&#8221; şeklindeki
+sorularınıza alabileceğiniz en iyi cevap <strong>sessizlik</strong> olacaktır.</p>
+<p>Nasıl soru sorulacağını <a class="reference external" href="http://belgeler.org/howto/smart-questions.html">akıllıca soru sorma yolları belgesinden</a> öğrenebilirsiniz.</p>
+<p>Kolay gelsin o/</p>
 </div>
 </div>
 
@@ -546,7 +410,7 @@ create_user         Creates a new user
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="developers.html" title="Geliştiriciler"
+          <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 

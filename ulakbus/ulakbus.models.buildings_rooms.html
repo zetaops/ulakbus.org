@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.models.buildings_rooms module &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="index.html"/>
+        <link rel="up" title="ulakbus.models package" href="ulakbus.models.html"/>
+        <link rel="next" title="ulakbus.models.hitap module" href="ulakbus.models.hitap.html"/>
+        <link rel="prev" title="ulakbus.models.auth module" href="ulakbus.models.auth.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ulakbus.models.html">ulakbus.models package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ulakbus.models.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.auth.html">ulakbus.models.auth module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">ulakbus.models.buildings_rooms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.hitap.html">ulakbus.models.hitap module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.ogrenci.html">ulakbus.models.ogrenci module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.personel.html">ulakbus.models.personel module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="ulakbus.models.html">ulakbus.models package</a> &raquo;</li>
+      
+    <li>ulakbus.models.buildings_rooms module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ulakbus.models.buildings_rooms.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ulakbus.models.buildings_rooms">
+<span id="ulakbus-models-buildings-rooms-module"></span><h1>ulakbus.models.buildings_rooms module<a class="headerlink" href="#module-ulakbus.models.buildings_rooms" title="Permalink to this headline">¶</a></h1>
+<p>Bina ve Oda Modülü</p>
+<p>Bu modül Ulakbus uygulaması için üniversite yerleşim modellerini içerir. Modellerin
+amacı Üniversitelere ait yerleşke, bina ve oda bilgilerinin ilişkileri ile birlikte saklanmasıdır.</p>
+<p>Campus, Building, RoomType, Room ve RoomFeature modellerinden oluşur.</p>
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Building">
+<em class="property">class </em><code class="descclassname">ulakbus.models.buildings_rooms.</code><code class="descname">Building</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Building"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Bina Modeli</p>
+<p>Universite kampuslerindeki binalara ait data modeli. Bina kod ve adının yanısıra
+koordinat bilgilerini içerir.</p>
+<p>Bina koordinatları lokasyon bazlı hesaplamalar için kullanılacaktır. Özellikle
+Unitime ile ders programı hazırlarken farklı lokasyonlar arası zaman hesaplamalarında
+kullanılmaktadır.</p>
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Building.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'building'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['code', 'name']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['code', 'name']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Bina'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Binalar'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.campus">
+<code class="descclassname">Building.</code><code class="descname">campus</code><em class="property"> = &lt;class 'ulakbus.models.buildings_rooms.Campus'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.campus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.code">
+<code class="descclassname">Building.</code><code class="descname">code</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.coordinate_x">
+<code class="descclassname">Building.</code><code class="descname">coordinate_x</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.coordinate_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.coordinate_y">
+<code class="descclassname">Building.</code><code class="descname">coordinate_y</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.coordinate_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.models.buildings_rooms.Building.coordinates">
+<code class="descclassname">Building.</code><code class="descname">coordinates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Building.coordinates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Koordinatlar</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">x ve y koordınatlarını birlikte döndürür.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.deleted">
+<code class="descclassname">Building.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.name">
+<code class="descclassname">Building.</code><code class="descname">name</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.objects">
+<code class="descclassname">Building.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.buildings_rooms.Building'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Building.timestamp">
+<code class="descclassname">Building.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Building.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Campus">
+<em class="property">class </em><code class="descclassname">ulakbus.models.buildings_rooms.</code><code class="descname">Campus</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Campus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Kampüs Modeli</p>
+<p>Üniversite kampüslerine ait data modeli. Kampus adı ve koordinat bilgilerini içerir.</p>
+<p>Kampüs koordinatları lokasyon bazlı hesaplamalar için kullanılacaktır. Özellikle
+Unitime ile ders programı hazırlarken farklı lokasyonlar arası zaman hesaplamalarında
+kullanılmaktadır.</p>
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Campus.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'campus'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['code', 'name']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['code', 'name']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Yerle\xc5\x9fke'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Yerle\xc5\x9fkeler'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.code">
+<code class="descclassname">Campus.</code><code class="descname">code</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.coordinate_x">
+<code class="descclassname">Campus.</code><code class="descname">coordinate_x</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.coordinate_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.coordinate_y">
+<code class="descclassname">Campus.</code><code class="descname">coordinate_y</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.coordinate_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.models.buildings_rooms.Campus.coordinates">
+<code class="descclassname">Campus.</code><code class="descname">coordinates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Campus.coordinates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Koordinatlar</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">x ve y koordinatlarını birlikte döndürür.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.deleted">
+<code class="descclassname">Campus.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.name">
+<code class="descclassname">Campus.</code><code class="descname">name</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.objects">
+<code class="descclassname">Campus.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.buildings_rooms.Campus'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Campus.timestamp">
+<code class="descclassname">Campus.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Campus.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Room">
+<em class="property">class </em><code class="descclassname">ulakbus.models.buildings_rooms.</code><code class="descname">Room</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Room"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Oda modeli</p>
+<p>Üniversitenin sahip olduğu odalara (sınıf, lab, amfi) ait data modelidir. Her odanın
+bir kodu bulunur.</p>
+<p>Odalar, binalara ve binalar aracılığıyla kampüslere bağlanır.</p>
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Room.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'room'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['code', 'name']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['code', 'name']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Oda'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Odalar'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Room.RoomDepartments">
+<em class="property">class </em><code class="descclassname">Room.</code><code class="descname">RoomDepartments</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#Room.RoomDepartments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.RoomDepartments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.listnode.ListNode</span></code></p>
+<p>Oda Departman ListNode</p>
+<p>Bu odayı kullanabilecek birimlerin listesi saklanır.</p>
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.Room.RoomDepartments.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.RoomDepartments.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.RoomDepartments.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'RoomDepartments'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.RoomDepartments.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.RoomDepartments.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'RoomDepartmentss'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.RoomDepartments.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.RoomDepartments.unit">
+<code class="descclassname">Room.RoomDepartments.</code><code class="descname">unit</code><em class="property"> = &lt;class 'ulakbus.models.auth.Unit'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.RoomDepartments.unit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.building">
+<code class="descclassname">Room.</code><code class="descname">building</code><em class="property"> = &lt;class 'ulakbus.models.buildings_rooms.Building'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.building" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.capacity">
+<code class="descclassname">Room.</code><code class="descname">capacity</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.capacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.code">
+<code class="descclassname">Room.</code><code class="descname">code</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.deleted">
+<code class="descclassname">Room.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.floor">
+<code class="descclassname">Room.</code><code class="descname">floor</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bina içerisindeki kat bilgisi</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.is_active">
+<code class="descclassname">Room.</code><code class="descname">is_active</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.is_active" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.name">
+<code class="descclassname">Room.</code><code class="descname">name</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.objects">
+<code class="descclassname">Room.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.buildings_rooms.Room'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.room_type">
+<code class="descclassname">Room.</code><code class="descname">room_type</code><em class="property"> = &lt;class 'ulakbus.models.buildings_rooms.RoomType'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.room_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.Room.timestamp">
+<code class="descclassname">Room.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.Room.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.RoomType">
+<em class="property">class </em><code class="descclassname">ulakbus.models.buildings_rooms.</code><code class="descname">RoomType</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#RoomType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Oda tipleri modeli</p>
+<p>Odalar sinif, amfi, salon, kimya laboratuvari vb tiplere ayrilirlar. Ilgili notlarla
+birlikte bu tipler RoomType modelinde tanimlanir.</p>
+<dl class="class">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/buildings_rooms.html#RoomType.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'room_type'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['type']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['type', 'notes']</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Oda Tipi'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Oda Tipleri'</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.deleted">
+<code class="descclassname">RoomType.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.notes">
+<code class="descclassname">RoomType.</code><code class="descname">notes</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Text'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.notes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.objects">
+<code class="descclassname">RoomType.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.buildings_rooms.RoomType'&gt;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.timestamp">
+<code class="descclassname">RoomType.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.buildings_rooms.RoomType.type">
+<code class="descclassname">RoomType.</code><code class="descname">type</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.buildings_rooms.RoomType.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ulakbus.models.hitap.html" class="btn btn-neutral float-right" title="ulakbus.models.hitap module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ulakbus.models.auth.html" class="btn btn-neutral" title="ulakbus.models.auth module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

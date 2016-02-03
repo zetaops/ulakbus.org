@@ -109,23 +109,12 @@ Modellerin tanımlanması.
 
 Yukarıda gösterdiğimiz "Öğrenci Ders Seçme" akışı için önceki bölümde ele aldığımız Student, Lecture ve Lecturer modellerini "lectures.py" gibi geçerli bir isimle models dizinine kaydedip, ``models/__init__.py`` içine import etmemiz yeterli olacaktır.
 
-.. literalinclude:: ../../ulakbus/ulakbus/models/lectures.py
-    :linenos:
-    :lines: 1, 6-
-
-
-.. literalinclude:: ../../ulakbus/ulakbus/models/__init__.py
-    :linenos:
-    :lines: 1, 6-
 
 
 JsonForm ile basit bir view hazırlayalım
 ***********************************************************************************
 
 
-.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/select.py
-    :linenos:
-    :lines: 1,7,8,11,12, 16-29
 
 
 Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.
@@ -136,16 +125,3 @@ Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanım�
 CrudView'ı genişletmek
 ***********************************************************************************
 
-.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/select.py
-    :linenos:
-    :lines: 1, 6-
-
-
-.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/student_review.py
-    :linenos:
-    :lines: 1, 6-
-
-
-.. literalinclude:: ../../ulakbus/ulakbus/views/lectures/advisor_review.py
-    :linenos:
-    :lines: 1, 6-

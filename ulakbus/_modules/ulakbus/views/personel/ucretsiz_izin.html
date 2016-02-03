@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.views.personel.ucretsiz_izin &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.views.personel.ucretsiz_izin</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.views.personel.ucretsiz_izin</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">obj_filter</span>
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.personel</span> <span class="kn">import</span> <span class="n">Personel</span><span class="p">,</span> <span class="n">UcretsizIzin</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.hitap</span> <span class="kn">import</span> <span class="n">HizmetKayitlari</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
+
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri">[docs]</a><span class="k">class</span> <span class="nc">UcretsizIzinIslemleri</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+<div class="viewcode-block" id="UcretsizIzinIslemleri.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="c1"># CrudViev icin kullanilacak temel Model</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;UcretsizIzin&#39;</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;donus_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;donus_tip&#39;</span><span class="p">]</span>
+
+        <span class="c1"># ozel bir eylem listesi hazirlayacagiz. bu sebeple listeyi bosaltiyoruz.</span>
+        <span class="c1"># kayit tipine bagli olarak ekleyecegimiz eylemleri .append() ile ekleyecegiz</span>
+        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="c1">#     # {&#39;fields&#39;: [0, ], &#39;cmd&#39;: &#39;show&#39;, &#39;mode&#39;: &#39;normal&#39;, &#39;show_as&#39;: &#39;link&#39;},</span>
+        <span class="p">]</span></div>
+
+    <span class="k">class</span> <span class="nc">ListForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+        <span class="n">btn</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Ücretsiz İzine Ayır&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="s2">&quot;izine_ayir&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span>  <span class="c1"># default</span>
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri.IzinForm"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.IzinForm">[docs]</a>    <span class="k">class</span> <span class="nc">IzinForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="UcretsizIzinIslemleri.IzinForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.IzinForm.Meta">[docs]</a>        <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+            <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">,</span> <span class="s1">&#39;baslangic_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;bitis_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;onay_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;personel&#39;</span><span class="p">]</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;İzine Ayır&quot;</span></div>
+
+        <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="s2">&quot;izine_ayir&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;izine_ayir&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri.DonusForm"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.DonusForm">[docs]</a>    <span class="k">class</span> <span class="nc">DonusForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="UcretsizIzinIslemleri.DonusForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.DonusForm.Meta">[docs]</a>        <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+            <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;donus_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;donus_tip&#39;</span><span class="p">]</span></div>
+
+        <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="s2">&quot;izin_donus&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;izin_donus&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri.goster"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.goster">[docs]</a>    <span class="k">def</span> <span class="nf">goster</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;id&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">:</span>
+            <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+
+            <span class="n">ucretsiz_izinler</span> <span class="o">=</span> <span class="n">UcretsizIzin</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">personel</span><span class="o">=</span><span class="n">personel</span><span class="p">)</span>
+            <span class="n">ucretsiz_izinde</span> <span class="o">=</span> <span class="bp">False</span>
+
+            <span class="k">for</span> <span class="n">izin</span> <span class="ow">in</span> <span class="n">ucretsiz_izinler</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">izin</span><span class="o">.</span><span class="n">donus_tarihi</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">izin</span><span class="o">.</span><span class="n">donus_tarihi</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="n">ucretsiz_izinde</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;izin_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">izin</span><span class="o">.</span><span class="n">key</span>
+                    <span class="k">break</span>
+
+            <span class="k">if</span> <span class="n">ucretsiz_izinde</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ListForm</span><span class="o">.</span><span class="n">btn</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Ücretsiz İzin Dönüşü&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;izin_donus&quot;</span><span class="p">,</span>
+                                                <span class="n">object_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;izin_id&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ListForm</span><span class="o">.</span><span class="n">btn</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Ücretsiz İzine Ayır&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;izine_ayir&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri.izine_ayir"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.izine_ayir">[docs]</a>    <span class="k">def</span> <span class="nf">izine_ayir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">IzinForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri.izin_donusu"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.izin_donusu">[docs]</a>    <span class="k">def</span> <span class="nf">izin_donusu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="n">UcretsizIzin</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;izin_id&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DonusForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="UcretsizIzinIslemleri.kontrol"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.kontrol">[docs]</a>    <span class="k">def</span> <span class="nf">kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;izine_ayir&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">baslangic_tarihi</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">bitis_tarihi</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;izne_ayir&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">hitap_kaydi</span> <span class="o">=</span> <span class="n">HizmetKayitlari</span><span class="p">()</span>
+                <span class="n">personel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">personel</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">personel</span> <span class="o">=</span> <span class="n">personel</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">tckn</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">tckn</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">baslangic_tarihi</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">gorev</span> <span class="o">=</span> <span class="s2">&quot;..&quot;</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">hizmet_sinifi</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">hizmet_sinifi</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">unvan_kod</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">kadro</span><span class="p">()</span><span class="o">.</span><span class="n">unvan_kod</span>
+
+                <span class="c1">## TODO: Sebep Kodları fixtures eklenecek</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">sebep_kod</span> <span class="o">=</span> <span class="mi">269</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">onay_tarihi</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;basarili&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1">## cmd=&quot;izin_donus&quot;</span>
+            <span class="n">hitap_kaydi</span> <span class="o">=</span> <span class="n">HizmetKayitlari</span><span class="p">()</span>
+            <span class="n">personel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">personel</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">personel</span> <span class="o">=</span> <span class="n">personel</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">tckn</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">tckn</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">donus_tarihi</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">gorev</span> <span class="o">=</span> <span class="s2">&quot;..&quot;</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">hizmet_sinifi</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">hizmet_sinifi</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">unvan_kod</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">kadro</span><span class="p">()</span><span class="o">.</span><span class="n">unvan_kod</span>
+
+            <span class="c1">## TODO: Sebep Kodları fixtures eklenecek, form içerisinden seçilecek</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">sebep_kod</span> <span class="o">=</span> <span class="mi">269</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">onay_tarihi</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">hitap_kaydi</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;basarili&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+    <span class="nd">@obj_filter</span>
+<div class="viewcode-block" id="UcretsizIzinIslemleri.donus_yapilmis_mi"><a class="viewcode-back" href="../../../../ulakbus.views.personel.ucretsiz_izin.html#ulakbus.views.personel.ucretsiz_izin.UcretsizIzinIslemleri.donus_yapilmis_mi">[docs]</a>    <span class="k">def</span> <span class="nf">donus_yapilmis_mi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">izin</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ücretsiz İzin Dönüşü yapılmış mı kontrol edilecek</span>
+<span class="sd">        Eğer izin dönüşü yapılmışsa Sil olmayacak</span>
+
+<span class="sd">        :param obj: Kadro instance</span>
+<span class="sd">        :param result: liste ogesi satiri</span>
+<span class="sd">        :return: liste ogesi</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">izin</span><span class="o">.</span><span class="n">donus_tarihi</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">izin</span><span class="o">.</span><span class="n">donus_tarihi</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sil&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="s1">&#39;show_as&#39;</span><span class="p">:</span> <span class="s1">&#39;button&#39;</span><span class="p">})</span>
+        <span class="k">return</span> <span class="n">result</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

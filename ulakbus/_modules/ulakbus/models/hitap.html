@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.models.hitap &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.models.hitap</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.models.hitap</h1><div class="highlight"><pre>
+<span class="c1"># -*- coding:utf-8 -*-</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="kn">from</span> <span class="nn">.personel</span> <span class="kn">import</span> <span class="n">Personel</span>
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">.auth</span> <span class="kn">import</span> <span class="n">Role</span>
+
+
+<div class="viewcode-block" id="NufusKayitlari"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.NufusKayitlari">[docs]</a><span class="k">class</span> <span class="nc">NufusKayitlari</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Sigortalının TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">soyad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Soyadı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ilk_soy_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Memuriyete Girişteki İlk Soyadı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">dogum_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Doğum Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">cinsiyet</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Cinsiyet&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">emekli_sicil_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Emekli Sicil No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">memuriyet_baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Memuriyete İlk Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                          <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kurum_sicil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kurum Sicili&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">maluliyet_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Malul Kod&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;maluliyet_kod&quot;</span><span class="p">)</span>
+    <span class="n">yetki_seviyesi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Yetki Seviyesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">aciklama</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Açıklama&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kuruma_baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kuruma Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">gorev_tarihi_6495</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Emeklilik Sonrası Göreve Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                   <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">emekli_sicil_6495</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;2. Emekli Sicil No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">durum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Durum&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sebep</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sebep&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">(</span><span class="n">one_to_one</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+    <span class="c1"># TODO: Personele gore unique olmali</span>
+
+<div class="viewcode-block" id="NufusKayitlari.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.NufusKayitlari.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Nüfus Bilgisi&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Nüfus Bilgileri&quot;</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">emekli_sicil_no</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetKurs"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetKurs">[docs]</a><span class="k">class</span> <span class="nc">HizmetKurs</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kursa Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurs_ogrenim_suresi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kurs Öğrenim Süresi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">mezuniyet_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Mezuniyet Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kurs_nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kurs Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;kurs_nevi&quot;</span><span class="p">)</span>
+    <span class="n">bolum_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Bölüm Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;bolum_adi&quot;</span><span class="p">)</span>  <span class="c1"># TODO: serviste karsiligi yok</span>
+    <span class="n">okul_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Okul Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;okul_adi&quot;</span><span class="p">)</span>  <span class="c1"># TODO: servisten gelen string</span>
+    <span class="n">ogrenim_yeri</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Öğrenim Yeri&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">denklik_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Denklik Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">denklik_okulu</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Denklik Okulu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">denklik_bolum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Denklik Bölüm&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetKurs.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetKurs.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Kurs&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Kurslar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kayit_no&#39;</span><span class="p">,</span> <span class="s1">&#39;bolum_ad&#39;</span><span class="p">,</span> <span class="s1">&#39;okul_ad&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">,</span> <span class="s1">&#39;okul_ad&#39;</span><span class="p">,</span> <span class="s1">&#39;bolum_ad&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kurs_nevi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bolum_ad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">okul_ad</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetOkul"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetOkul">[docs]</a><span class="k">class</span> <span class="nc">HizmetOkul</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ogrenim_durumu</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Öğrenim Durumu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;ogrenim_durumu&quot;</span><span class="p">)</span>
+    <span class="n">mezuniyet_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Mezuniyet Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">okul_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Okul Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">bolum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Bölüm&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ogrenim_yeri</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Öğrenim Yeri&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;ogrenim_yeri&quot;</span><span class="p">)</span>
+    <span class="n">denklik_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Denklik Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">denklik_okul</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Denklik Okul&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">denklik_bolum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Denklik Bölüm&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ogrenim_suresi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Öğrenim Süresi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">hazirlik</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Hazırlık&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;hazirlik_bilgisi&quot;</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetOkul.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetOkul.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Okul&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Okullar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;okul_ad&#39;</span><span class="p">,</span> <span class="s1">&#39;bolum&#39;</span><span class="p">,</span> <span class="s1">&#39;hazirlik&#39;</span><span class="p">,</span> <span class="s1">&#39;kayit_no&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;okul_ad&#39;</span><span class="p">,</span> <span class="s1">&#39;bolum&#39;</span><span class="p">,</span> <span class="s1">&#39;tckn&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bolum</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">okul_ad</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetMahkeme"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetMahkeme">[docs]</a><span class="k">class</span> <span class="nc">HizmetMahkeme</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">mahkeme_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Mahkeme Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sebep</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Mahkeme Sebebi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;mahkeme_sebep&quot;</span><span class="p">)</span>
+    <span class="n">karar_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Mahkeme Karar Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">karar_sayisi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Karar Sayısı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kesinlesme_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kesinleşme Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">asil_dogum_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Asıl Doğum Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">tashih_dogum_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Tashih Doğum Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">asil_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Asıl Ad&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tashih_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Tashih Ad&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">asil_soyad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Asıl Soyad&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tashih_soyad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Tashih Soyad&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">gecerli_dogum_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Geçerli Doğum Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">aciklama</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Açıklama&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">gun_sayisi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Gün Sayısı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetMahkeme.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetMahkeme.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Mahkeme&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Mahkemeler&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mahkeme_ad&#39;</span><span class="p">,</span> <span class="s1">&#39;karar_sayisi&#39;</span><span class="p">,</span> <span class="s1">&#39;aciklama&#39;</span><span class="p">,</span> <span class="s1">&#39;kurum_onay_tarihi&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kayit_no&#39;</span><span class="p">,</span> <span class="s1">&#39;mahkeme_ad&#39;</span><span class="p">,</span> <span class="s1">&#39;karar_sayisi&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mahkeme_ad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">karar_tarihi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aciklama</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetBirlestirme"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetBirlestirme">[docs]</a><span class="k">class</span> <span class="nc">HizmetBirlestirme</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sgk_nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;SGK Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;sgk_nevi&quot;</span><span class="p">)</span>
+    <span class="n">sgk_sicil_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;SGK Sicil No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sure</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Süre&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kamu_isyeri_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kamu İşyeri Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ozel_isyeri_ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Özel İşyeri Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">bag_kur_meslek</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Bağ-Kur Meslek&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ulke_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ülke Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">banka_sandik_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Banka Sandık Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;banka_kod&quot;</span><span class="p">)</span>
+    <span class="n">kidem_tazminat_odeme_durumu</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kıdem Tazminat Ödeme Durumu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                               <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;kidem_tazminat_odeme_durumu&quot;</span><span class="p">)</span>
+    <span class="n">ayrilma_nedeni</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Ayrılma Nedeni&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kha_durum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;KHA Durum&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;kha_durum&quot;</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetBirlestirme.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetBirlestirme.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Birleştirme&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Birleştirmeler&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sgk_sicil_no&#39;</span><span class="p">,</span> <span class="s1">&#39;baslama_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;bitis_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;kamu_isyeri_ad&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kayit_no&#39;</span><span class="p">,</span> <span class="s1">&#39;sgk_sicil_no&#39;</span><span class="p">,</span> <span class="s1">&#39;kamu_isyeri_ad&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sgk_nevi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetTazminat"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetTazminat">[docs]</a><span class="k">class</span> <span class="nc">HizmetTazminat</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">unvan_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ünvan Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">makam</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Makam&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">gorev</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Görev&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">temsil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Temsil&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tazminat_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Tazminat Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">tazminat_bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Tazminat Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kadrosuzluk</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kadrosuzluk&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetTazminat.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetTazminat.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Tazminat&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Tazminatlar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unvan_kod&#39;</span><span class="p">,</span> <span class="s1">&#39;makam&#39;</span><span class="p">,</span> <span class="s1">&#39;gorev&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;makam&#39;</span><span class="p">,</span> <span class="s1">&#39;gorev&#39;</span><span class="p">,</span> <span class="s1">&#39;temsil&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gorev</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tazminat_tarihi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetUnvan"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetUnvan">[docs]</a><span class="k">class</span> <span class="nc">HizmetUnvan</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Hizmet Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">unvan_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ünvan Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">unvan_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Ünvan Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">unvan_bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Ünvan Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">hizmet_sinifi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Hizmet Sınıfı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">asil_vekil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Asıl Vekil&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">atama_sekli</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Atama Sekli&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">fhz_orani</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s2">&quot;FHZ Oranı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetUnvan.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetUnvan.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Ünvan&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Ünvanlar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unvan_kod&#39;</span><span class="p">,</span> <span class="s1">&#39;hizmet_sinifi&#39;</span><span class="p">,</span> <span class="s1">&#39;kurum_onay_tarihi&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unvan_kod&#39;</span><span class="p">,</span> <span class="s1">&#39;hizmet_sinifi&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unvan_kod</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hizmet_sinifi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetAcikSure"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetAcikSure">[docs]</a><span class="k">class</span> <span class="nc">HizmetAcikSure</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">acik_sekil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Açığa Alınma Şekli&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;acik_sekli&quot;</span><span class="p">)</span>
+    <span class="n">iade_sekil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;İade Şekil&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">hizmet_durum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Hizmet Durumu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;hizmet_durumu&quot;</span><span class="p">)</span>
+    <span class="n">husus</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Husus&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;husus&quot;</span><span class="p">)</span>
+    <span class="n">husus_aciklama</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Husus Açıklaması&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">aciga_alinma_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Açığa Alınma Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">goreve_son_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Göreve Son Tarih&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">goreve_iade_istem_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Göreve İade İstem Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">goreve_iade_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Göreve İade Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">acik_aylik_bas_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Açık Aylık Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">acik_aylik_bit_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Açık Aylık Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">goreve_son_aylik_bas_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Göreve Sonlandırma Aylık Başlangıç Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                            <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">goreve_son_aylik_bit_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Göreve Sonlandırma Aylık Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                            <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">s_yonetim_kald_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Sıkı Yönetim Kaldırıldığı Tarih&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                      <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">aciktan_atanma_tarih</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Açıktan Atanma Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetAcikSure.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetAcikSure.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Açığa Alınma&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Açığa Alınmalar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;acik_sekil&#39;</span><span class="p">,</span> <span class="s1">&#39;aciga_alinma_tarih&#39;</span><span class="p">,</span> <span class="s1">&#39;kurum_onay_tarihi&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hizmet_durum&#39;</span><span class="p">,</span> <span class="s1">&#39;acik_sekil&#39;</span><span class="p">,</span> <span class="s1">&#39;aciga_alinma_tarih&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iade_sekil</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aciga_alinma_tarih</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetBorclanma"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetBorclanma">[docs]</a><span class="k">class</span> <span class="nc">HizmetBorclanma</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Ad&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">soyad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Soyad&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">emekli_sicil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Emekli Sicili&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">derece</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Derece&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kademe</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kademe&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ekgosterge</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ek Gösterge&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">gun_sayisi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Gün Sayısı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kanun_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kanun Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;kanun_kod&quot;</span><span class="p">)</span>
+    <span class="n">borc_nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Borç Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;borc_nevi&quot;</span><span class="p">)</span>
+    <span class="n">toplam_tutar</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s2">&quot;Toplam Tutar&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">odenen_miktar</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s2">&quot;Ödenen Miktar&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">calistigi_kurum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;çalıştığı Kurum&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">isyeri_il</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İşyeri İli&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">isyeri_ilce</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İşyeri İlçesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">borclanma_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Borçlanma Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">odeme_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Ödeme Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetBorclanma.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetBorclanma.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Borçlanma&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Borçlanmalar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ad&#39;</span><span class="p">,</span> <span class="s1">&#39;soyad&#39;</span><span class="p">,</span> <span class="s1">&#39;toplam_tutar&#39;</span><span class="p">,</span> <span class="s1">&#39;odenen_miktar&#39;</span><span class="p">,</span> <span class="s1">&#39;borclanma_tarihi&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">,</span> <span class="s1">&#39;ad&#39;</span><span class="p">,</span> <span class="s1">&#39;soyad&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">borc_nevi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">calistigi_kurum</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gun_sayisi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetIHS"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetIHS">[docs]</a><span class="k">class</span> <span class="nc">HizmetIHS</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">ihz_nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;İHZ Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetIHS.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetIHS.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;İtibari Hizmet Süresi&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;İtibari Hizmet Süreleri&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kayit_no&#39;</span><span class="p">,</span> <span class="s1">&#39;ihz_nevi&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">,</span> <span class="s1">&#39;ihz_nevi&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">baslama_tarihi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ihz_nevi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetIstisnaiIlgi"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetIstisnaiIlgi">[docs]</a><span class="k">class</span> <span class="nc">HizmetIstisnaiIlgi</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">gun_sayisi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Gün Sayısı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">istisnai_ilgi_nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;İstisnai İlgi Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kha_durum</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;KHA Durum&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;kha_durum&quot;</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetIstisnaiIlgi.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetIstisnaiIlgi.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;İstisnai İlgi&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;İstisnai İlgiler&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;baslama_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;bitis_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;istisnai_ilgi_nevi&#39;</span><span class="p">,</span> <span class="s1">&#39;kha_durum&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;istisnai_ilgi_nevi&#39;</span><span class="p">,</span> <span class="s1">&#39;kha_durum&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">istisnai_ilgi_nevi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kha_durum</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HizmetKayitlari"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetKayitlari">[docs]</a><span class="k">class</span> <span class="nc">HizmetKayitlari</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">gorev</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Görev&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">unvan_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Unvan Kod&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">yevmiye</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Yevmiye&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ucret</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Ücret&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">hizmet_sinifi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Hizmet Sınıfı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;hizmet_sinifi&quot;</span><span class="p">)</span>
+    <span class="n">kadro_derece</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kadro Derecesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">odeme_derece</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ödeme Derecesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">odeme_kademe</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ödeme Kademesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">odeme_ekgosterge</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Ödeme Ek Göstergesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kazanilmis_hak_ayligi_derece</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kazanılmış Hak Aylığı Derecesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kazanilmis_hak_ayligi_kademe</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kazanılmış Hak Aylığı Kademesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kazanilmis_hak_ayligi_ekgosterge</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kazanılmış Hak Aylığı Ek Göstergesi&quot;</span><span class="p">,</span>
+                                                     <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">emekli_derece</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Emekli Derecesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">emekli_kademe</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Emekli Kademe&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">emekli_ekgosterge</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Emekli Ek Göstergesi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sebep_kod</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sebep Kodu&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HizmetKayitlari.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HizmetKayitlari.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Kayıt&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Kayıtlar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unvan_kod&#39;</span><span class="p">,</span> <span class="s1">&#39;gorev&#39;</span><span class="p">,</span> <span class="s1">&#39;yevmiye&#39;</span><span class="p">,</span> <span class="s1">&#39;ucret&#39;</span><span class="p">,</span> <span class="s1">&#39;hizmet_sinifi&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unvan_kod&#39;</span><span class="p">,</span> <span class="s1">&#39;gorev&#39;</span><span class="p">,</span> <span class="s1">&#39;yevmiye&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unvan_kod</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hizmet_sinifi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gorev</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AskerlikKayitlari"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.AskerlikKayitlari">[docs]</a><span class="k">class</span> <span class="nc">AskerlikKayitlari</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">askerlik_nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Askerlik Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="s2">&quot;askerlik_nevi&quot;</span><span class="p">)</span>
+    <span class="n">baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kayit_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kayıt No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kita_baslama_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kıta Başlama Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">kita_bitis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kıta Bitiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">muafiyet_neden</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Muafiyet Neden&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sayilmayan_gun_sayisi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sayılmayan Gün Sayısı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sinif_okulu_sicil</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Sınıf Okulu Sicil&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">subayliktan_erlige_gecis_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Subaylıktan Erliğe Geçiş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                                 <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">subay_okulu_giris_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Subay Okulu Giriş Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">tckn</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;TC Kimlik No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tegmen_nasp_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Teğmen Nasp Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">gorev_yeri</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Görev Yeri&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">kurum_onay_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kurum Onay Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">astegmen_nasp_tarihi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Asteğmen Nasp Tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.%m.%Y&quot;</span><span class="p">)</span>
+    <span class="n">sync</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Senkronize&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">()</span>
+
+<div class="viewcode-block" id="AskerlikKayitlari.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.AskerlikKayitlari.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Kayıt&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Kayıtlar&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;askerlik_nevi&#39;</span><span class="p">,</span> <span class="s1">&#39;kita_baslama_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;gorev_yeri&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;askerlik_nevi&#39;</span><span class="p">,</span> <span class="s1">&#39;gorev_yeri&#39;</span><span class="p">,</span> <span class="s1">&#39;tckn&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">askerlik_nevi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kayit_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kita_baslama_tarihi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gorev_yeri</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HitapSebep"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HitapSebep">[docs]</a><span class="k">class</span> <span class="nc">HitapSebep</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">sebep_no</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sebep No&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Sebep Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">nevi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sebep Nevi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">zorunlu_alan</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Zorunlu ALan&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="HitapSebep.Meta"><a class="viewcode-back" href="../../../ulakbus.models.hitap.html#ulakbus.models.hitap.HitapSebep.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Hitap Sebep Kodu&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Hitap Sebep Kodları&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sebep_no&#39;</span><span class="p">,</span> <span class="s1">&#39;ad&#39;</span><span class="p">,</span> <span class="s1">&#39;nevi&#39;</span><span class="p">,</span> <span class="s1">&#39;zorunlu_alan&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sebep_no&#39;</span><span class="p">,</span> <span class="s1">&#39;ad&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> - </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sebep_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ad</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

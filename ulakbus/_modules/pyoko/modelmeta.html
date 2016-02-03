@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyoko.modelmeta &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>pyoko.modelmeta</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyoko.modelmeta</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">from</span> <span class="nn">pyoko.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">pyoko.db.queryset</span> <span class="kn">import</span> <span class="n">QuerySet</span>
+<span class="kn">from</span> <span class="nn">pyoko.lib.utils</span> <span class="kn">import</span> <span class="n">un_camel</span>
+<span class="kn">from</span> <span class="nn">pyoko.registry</span> <span class="kn">import</span> <span class="n">Registry</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">fields</span> <span class="k">as</span> <span class="n">field</span>
+
+<span class="n">model_registry</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">ModelMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Metaclass that process model classes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="n">base_model_class</span> <span class="o">=</span> <span class="n">bases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">class_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">base_model_class</span><span class="p">,</span> <span class="s1">&#39;_TYPE&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">class_type</span> <span class="o">==</span> <span class="s1">&#39;Model&#39;</span><span class="p">:</span>
+            <span class="n">mcs</span><span class="o">.</span><span class="n">process_models</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">base_model_class</span><span class="p">)</span>
+        <span class="c1"># if class_type == &#39;ListNode&#39;:</span>
+        <span class="c1">#     mcs.process_listnode(attrs, base_model_class)</span>
+        <span class="n">mcs</span><span class="o">.</span><span class="n">process_attributes_of_node</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">class_type</span><span class="p">)</span>
+        <span class="n">new_class</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">ModelMeta</span><span class="p">,</span> <span class="n">mcs</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_class</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mcs</span><span class="o">.</span><span class="n">__name__</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;ListNode&#39;</span><span class="p">):</span>
+            <span class="n">ModelMeta</span><span class="o">.</span><span class="n">process_objects</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mcs</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;Model&#39;</span><span class="p">:</span>
+            <span class="c1"># add models to model_registry</span>
+            <span class="n">mcs</span><span class="o">.</span><span class="n">objects</span> <span class="o">=</span> <span class="n">QuerySet</span><span class="p">(</span><span class="n">model_class</span><span class="o">=</span><span class="n">mcs</span><span class="p">)</span>
+            <span class="n">model_registry</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;bucket_name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mcs</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+                <span class="n">mcs</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">bucket_name</span> <span class="o">=</span> <span class="n">un_camel</span><span class="p">(</span><span class="n">mcs</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">process_attributes_of_node</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">node_name</span><span class="p">,</span> <span class="n">class_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        prepare the model fields, nodes and relations</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            node_name (str): name of the node we are currently processing</span>
+<span class="sd">            attrs (dict): attribute dict</span>
+<span class="sd">            class_type (str): Type of class.</span>
+<span class="sd">                Can be one of these: &#39;ListNode&#39;, &#39;Model&#39;, &#39;Node&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># print(&quot;Node: %s&quot; % node_name)</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_nodes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_linked_models&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_debug_linked_models&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_lazy_linked_models&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_fields&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># attrs[&#39;_many_to_models&#39;] = []</span>
+
+        <span class="c1"># iterating over attributes of the soon to be created class object.</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="c1"># if it&#39;s a class (not instance) and it&#39;s type is Node or ListNode</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="s1">&#39;__base__&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">__base__</span><span class="p">,</span> <span class="s1">&#39;_TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Node&#39;</span><span class="p">,</span>
+                                                                                     <span class="s1">&#39;ListNode&#39;</span><span class="p">]:</span>
+                <span class="c1"># converted pops to dict access to allow sphinx to</span>
+                <span class="c1"># properly documentate the models</span>
+                <span class="c1"># attrs[&#39;_nodes&#39;][key] = attrs.pop(key)</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_nodes&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># otherwise it should be a field or linked model</span>
+                <span class="n">attr_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="s1">&#39;_TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">attr_type</span> <span class="o">==</span> <span class="s1">&#39;Model&#39;</span><span class="p">:</span>
+                    <span class="c1"># lnk_mdl_ins = attrs.pop(key)</span>
+                    <span class="n">lnk_mdl_ins</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                    <span class="n">lnk</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s1">&#39;mdl&#39;</span><span class="p">:</span> <span class="n">lnk_mdl_ins</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span>
+                        <span class="s1">&#39;o2o&#39;</span><span class="p">:</span> <span class="n">lnk_mdl_ins</span><span class="o">.</span><span class="n">_is_one_to_one</span><span class="p">,</span>
+                        <span class="s1">&#39;m2m&#39;</span><span class="p">:</span> <span class="n">class_type</span> <span class="o">==</span> <span class="s1">&#39;ListNode&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;reverse&#39;</span><span class="p">:</span> <span class="n">lnk_mdl_ins</span><span class="o">.</span><span class="n">reverse_name</span><span class="p">,</span>
+                        <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="n">lnk_mdl_ins</span><span class="o">.</span><span class="n">verbose_name</span><span class="p">,</span>
+                        <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span>
+                        <span class="s1">&#39;is_set&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_linked_models&#39;</span><span class="p">][</span><span class="n">attr</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lnk</span><span class="p">)</span>
+                    <span class="n">debug_lnk</span> <span class="o">=</span> <span class="n">lnk</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">debug_lnk</span><span class="p">[</span><span class="s1">&#39;lnksrc&#39;</span><span class="p">]</span><span class="o">=</span> <span class="s1">&#39;process_attributes_of_node&#39;</span>
+                    <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_debug_linked_models&#39;</span><span class="p">][</span><span class="n">attr</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">debug_lnk</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">attr_type</span> <span class="o">==</span> <span class="s1">&#39;Field&#39;</span><span class="p">:</span>
+                    <span class="n">attr</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">key</span>
+                    <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_fields&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
+                <span class="k">elif</span> <span class="n">attr_type</span> <span class="o">==</span> <span class="s1">&#39;Link&#39;</span><span class="p">:</span>
+                    <span class="c1"># lzy_lnk = attrs.pop(key)</span>
+                    <span class="n">lzy_lnk</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                    <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_lazy_linked_models&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">node_name</span><span class="p">,</span>
+                                                              <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="n">lzy_lnk</span><span class="o">.</span><span class="n">link_to</span><span class="p">,</span>
+                                                              <span class="s1">&#39;o2o&#39;</span><span class="p">:</span> <span class="n">lzy_lnk</span><span class="o">.</span><span class="n">one_to_one</span><span class="p">,</span>
+                                                              <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="n">lzy_lnk</span><span class="o">.</span><span class="n">verbose_name</span><span class="p">,</span>
+                                                              <span class="s1">&#39;reverse&#39;</span><span class="p">:</span> <span class="n">lzy_lnk</span><span class="o">.</span><span class="n">reverse_name</span><span class="p">,</span>
+                                                              <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">})</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">process_models</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">base_model_class</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attach default fields and meta options to models</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">base_model_class</span><span class="o">.</span><span class="n">_DEFAULT_BASE_FIELDS</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;_instance_registry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">DEFAULT_META</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bucket_type&#39;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_BUCKET_TYPE</span><span class="p">,</span>
+                        <span class="s1">&#39;field_permissions&#39;</span><span class="p">:</span> <span class="p">{},</span>
+                        <span class="s1">&#39;app&#39;</span><span class="p">:</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;list_fields&#39;</span><span class="p">:</span> <span class="p">[],</span>
+                        <span class="s1">&#39;list_filters&#39;</span><span class="p">:</span> <span class="p">[],</span>
+                        <span class="s1">&#39;search_fields&#39;</span><span class="p">:</span> <span class="p">[],</span>
+                        <span class="p">}</span>
+        <span class="k">if</span> <span class="s1">&#39;Meta&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Meta&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="n">DEFAULT_META</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">DEFAULT_META</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="c1"># @staticmethod</span>
+    <span class="c1"># def process_listnode(attrs, base_model):</span>
+    <span class="c1">#     attrs[&#39;idx&#39;] = field.Id()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">process_objects</span><span class="p">(</span><span class="n">kls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies default Meta properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># first add a Meta object if not exists</span>
+        <span class="k">if</span> <span class="s1">&#39;Meta&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kls</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+            <span class="n">kls</span><span class="o">.</span><span class="n">Meta</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Meta&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="p">{})</span>
+        <span class="c1"># set verbose_name(s) if not already set</span>
+        <span class="k">if</span> <span class="s1">&#39;verbose_name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kls</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+            <span class="n">kls</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">verbose_name</span> <span class="o">=</span> <span class="n">kls</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="k">if</span> <span class="s1">&#39;verbose_name_plural&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kls</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+            <span class="n">kls</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">kls</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">verbose_name</span> <span class="o">+</span> <span class="s1">&#39;s&#39;</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

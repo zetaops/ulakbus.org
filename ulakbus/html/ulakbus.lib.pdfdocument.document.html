@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.lib.pdfdocument.document module &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="index.html"/>
+        <link rel="up" title="ulakbus.lib.pdfdocument package" href="ulakbus.lib.pdfdocument.html"/>
+        <link rel="next" title="ulakbus.lib.cache module" href="ulakbus.lib.cache.html"/>
+        <link rel="prev" title="ulakbus.lib.pdfdocument package" href="ulakbus.lib.pdfdocument.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="ulakbus.lib.html">ulakbus.lib package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ulakbus.lib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="ulakbus.lib.pdfdocument.html">ulakbus.lib.pdfdocument package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="ulakbus.lib.pdfdocument.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ulakbus.lib.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="ulakbus.lib.html">ulakbus.lib package</a> &raquo;</li>
+      
+          <li><a href="ulakbus.lib.pdfdocument.html">ulakbus.lib.pdfdocument package</a> &raquo;</li>
+      
+    <li>ulakbus.lib.pdfdocument.document module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ulakbus.lib.pdfdocument.document.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ulakbus.lib.pdfdocument.document">
+<span id="ulakbus-lib-pdfdocument-document-module"></span><h1>ulakbus.lib.pdfdocument.document module<a class="headerlink" href="#module-ulakbus.lib.pdfdocument.document" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ulakbus.lib.pdfdocument.document.BottomSpacer">
+<em class="property">class </em><code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">BottomSpacer</code><span class="sig-paren">(</span><em>width</em>, <em>height</em>, <em>isGlue=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#BottomSpacer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.BottomSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">reportlab.platypus.flowables.Spacer</span></code></p>
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.BottomSpacer.wrap">
+<code class="descname">wrap</code><span class="sig-paren">(</span><em>availWidth</em>, <em>availHeight</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#BottomSpacer.wrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.BottomSpacer.wrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.lib.pdfdocument.document.BottomTable">
+<em class="property">class </em><code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">BottomTable</code><span class="sig-paren">(</span><em>data</em>, <em>colWidths=None</em>, <em>rowHeights=None</em>, <em>style=None</em>, <em>repeatRows=0</em>, <em>repeatCols=0</em>, <em>splitByRow=1</em>, <em>emptyTableAction=None</em>, <em>ident=None</em>, <em>hAlign=None</em>, <em>vAlign=None</em>, <em>normalizedData=0</em>, <em>cellStyles=None</em>, <em>rowSplitRange=None</em>, <em>spaceBefore=None</em>, <em>spaceAfter=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#BottomTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.BottomTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">reportlab.platypus.tables.Table</span></code></p>
+<p>This table will automatically be moved to the bottom of the page using the
+BottomSpacer right before it.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.lib.pdfdocument.document.Empty">
+<em class="property">class </em><code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">Empty</code><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#Empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.Empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.lib.pdfdocument.document.MarkupParagraph">
+<code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">MarkupParagraph</code><span class="sig-paren">(</span><em>txt</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#MarkupParagraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.MarkupParagraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument">
+<em class="property">class </em><code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">PDFDocument</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.address">
+<code class="descname">address</code><span class="sig-paren">(</span><em>obj</em>, <em>prefix=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.address"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.address_head">
+<code class="descname">address_head</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.address_head"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.address_head" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.bottom_table">
+<code class="descname">bottom_table</code><span class="sig-paren">(</span><em>data</em>, <em>columns</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.bottom_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.bottom_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.confidential">
+<code class="descname">confidential</code><span class="sig-paren">(</span><em>canvas</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.confidential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.confidential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.draw_svg">
+<code class="descname">draw_svg</code><span class="sig-paren">(</span><em>canvas</em>, <em>path</em>, <em>xpos=0</em>, <em>ypos=0</em>, <em>xsize=None</em>, <em>ysize=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.draw_svg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.draw_svg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.draw_watermark">
+<code class="descname">draw_watermark</code><span class="sig-paren">(</span><em>canvas</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.draw_watermark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.draw_watermark" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.end_keeptogether">
+<code class="descname">end_keeptogether</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.end_keeptogether"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.end_keeptogether" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.generate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.generate_style">
+<code class="descname">generate_style</code><span class="sig-paren">(</span><em>font_name=None</em>, <em>font_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.generate_style"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.generate_style" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.h1">
+<code class="descname">h1</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.h1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.h1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.h2">
+<code class="descname">h2</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.h2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.h2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.h3">
+<code class="descname">h3</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.h3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.h3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.hr">
+<code class="descname">hr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.hr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.hr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.hr_mini">
+<code class="descname">hr_mini</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.hr_mini"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.hr_mini" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.init_confidential_report">
+<code class="descname">init_confidential_report</code><span class="sig-paren">(</span><em>page_fn=&lt;function dummy_stationery&gt;</em>, <em>page_fn_later=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.init_confidential_report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.init_confidential_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.init_letter">
+<code class="descname">init_letter</code><span class="sig-paren">(</span><em>page_fn=&lt;function dummy_stationery&gt;</em>, <em>page_fn_later=None</em>, <em>address_y=None</em>, <em>address_x=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.init_letter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.init_letter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.init_report">
+<code class="descname">init_report</code><span class="sig-paren">(</span><em>page_fn=&lt;function dummy_stationery&gt;</em>, <em>page_fn_later=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.init_report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.init_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.init_templates">
+<code class="descname">init_templates</code><span class="sig-paren">(</span><em>page_fn</em>, <em>page_fn_later=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.init_templates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.init_templates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.mini_html">
+<code class="descname">mini_html</code><span class="sig-paren">(</span><em>html</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.mini_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.mini_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a small subset of HTML into ReportLab paragraphs</p>
+<p>Requires lxml and BeautifulSoup.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.next_frame">
+<code class="descname">next_frame</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.next_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.next_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.p">
+<code class="descname">p</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.p_markup">
+<code class="descname">p_markup</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.p_markup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.p_markup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.page_index_string">
+<code class="descname">page_index_string</code><span class="sig-paren">(</span><em>current_page</em>, <em>total_pages</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.page_index_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.page_index_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.pagebreak">
+<code class="descname">pagebreak</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.pagebreak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.pagebreak" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.restart">
+<code class="descname">restart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.restart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.restart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.show_boundaries">
+<code class="descname">show_boundaries</code><em class="property"> = False</em><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.show_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.small">
+<code class="descname">small</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.small"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.small" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.smaller">
+<code class="descname">smaller</code><span class="sig-paren">(</span><em>text</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.smaller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.smaller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.spacer">
+<code class="descname">spacer</code><span class="sig-paren">(</span><em>height=17.00787401574803</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.spacer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.spacer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.start_keeptogether">
+<code class="descname">start_keeptogether</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.start_keeptogether"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.start_keeptogether" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.table">
+<code class="descname">table</code><span class="sig-paren">(</span><em>data</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.ul">
+<code class="descname">ul</code><span class="sig-paren">(</span><em>items</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.ul"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.ul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.PDFDocument.watermark">
+<code class="descname">watermark</code><span class="sig-paren">(</span><em>watermark=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#PDFDocument.watermark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.PDFDocument.watermark" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.lib.pdfdocument.document.Paragraph">
+<code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">Paragraph</code><span class="sig-paren">(</span><em>txt</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#Paragraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.Paragraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.lib.pdfdocument.document.ReportingDocTemplate">
+<em class="property">class </em><code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">ReportingDocTemplate</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#ReportingDocTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.ReportingDocTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">reportlab.platypus.doctemplate.BaseDocTemplate</span></code></p>
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.ReportingDocTemplate._allSatisfied">
+<code class="descname">_allSatisfied</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#ReportingDocTemplate._allSatisfied"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.ReportingDocTemplate._allSatisfied" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by multi-build - are all cross-references resolved?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.ReportingDocTemplate.afterFlowable">
+<code class="descname">afterFlowable</code><span class="sig-paren">(</span><em>flowable</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#ReportingDocTemplate.afterFlowable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.afterFlowable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index">
+<code class="descname">page_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#ReportingDocTemplate.page_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current page index as a tuple (current_page, total_pages)</p>
+<p>This is the ugliest thing I&#8217;ve done in the last two years.
+For this I&#8217;ll burn in programmer hell.</p>
+<p>At least it is contained here.</p>
+<p>(Determining the total number of pages in reportlab is a mess
+anyway...)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index_string">
+<code class="descname">page_index_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#ReportingDocTemplate.page_index_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.ReportingDocTemplate.page_index_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return page index string for the footer.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.lib.pdfdocument.document.RestartPageBreak">
+<em class="property">class </em><code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">RestartPageBreak</code><span class="sig-paren">(</span><em>nextTemplate=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#RestartPageBreak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.RestartPageBreak" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">reportlab.platypus.flowables.PageBreak</span></code></p>
+<p>Insert a page break and restart the page numbering.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.lib.pdfdocument.document.dummy_stationery">
+<code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">dummy_stationery</code><span class="sig-paren">(</span><em>c</em>, <em>doc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#dummy_stationery"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.dummy_stationery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.lib.pdfdocument.document.normalize">
+<code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">normalize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some layers of reportlab, PDF or font handling or whatever cannot handle
+german umlauts in decomposed form correctly. Normalize everything to
+NFKC.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.lib.pdfdocument.document.register_fonts_from_paths">
+<code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">register_fonts_from_paths</code><span class="sig-paren">(</span><em>regular</em>, <em>italic=None</em>, <em>bold=None</em>, <em>bolditalic=None</em>, <em>font_name='Reporting'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#register_fonts_from_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.register_fonts_from_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass paths to TTF files which should be used for the PDFDocument</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.lib.pdfdocument.document.sanitize">
+<code class="descclassname">ulakbus.lib.pdfdocument.document.</code><code class="descname">sanitize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/lib/pdfdocument/document.html#sanitize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.lib.pdfdocument.document.sanitize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ulakbus.lib.cache.html" class="btn btn-neutral float-right" title="ulakbus.lib.cache module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ulakbus.lib.pdfdocument.html" class="btn btn-neutral" title="ulakbus.lib.pdfdocument package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Zetaops.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

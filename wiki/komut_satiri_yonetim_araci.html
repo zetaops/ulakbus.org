@@ -1,0 +1,644 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>ULAKBUS</title>
+
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="ESB ve SOA ne anlama geliyor yani?" href="zato_doc.html" />
+    <link rel="prev" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="/img/favicon.ico">
+
+    <title>Ulakbüs</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
+
+            // If href missing, ignore
+            if (!href) return;
+
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
+
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
+
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
+
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
+
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
+
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+
+
+    <div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Temel Yönetim Komutları</a><ul>
+<li><a class="reference internal" href="#h-or-help">-h or &#8211;help</a></li>
+<li><a class="reference internal" href="#dump-data">dump_data</a></li>
+<li><a class="reference internal" href="#load-data">load_data</a></li>
+<li><a class="reference internal" href="#load-fixture">load_fixture</a></li>
+<li><a class="reference internal" href="#migrate">migrate</a></li>
+<li><a class="reference internal" href="#flush-model">flush_model</a></li>
+<li><a class="reference internal" href="#update-permissions">update_permissions</a></li>
+<li><a class="reference internal" href="#shell">shell</a></li>
+<li><a class="reference internal" href="#runsever">runsever</a></li>
+<li><a class="reference internal" href="#create-user">create_user</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#veri-uretecleri">Veri Üreteçleri</a><ul>
+<li><a class="reference internal" href="#random-personel">random_personel</a></li>
+<li><a class="reference internal" href="#random-harici-okutman">random_harici_okutman</a></li>
+<li><a class="reference internal" href="#random-ogrenci">random_ogrenci</a></li>
+<li><a class="reference internal" href="#random-okutman">random_okutman</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="yazilim_gelistirme_ve_test_dongusu.html"
+                        title="önceki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="zato_doc.html"
+                        title="sonraki bölüm">ESB ve SOA ne anlama geliyor yani?</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/komut_satiri_yonetim_araci.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="temel-yonetim-komutlari">
+<h1>Temel Yönetim Komutları<a class="headerlink" href="#temel-yonetim-komutlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Komut satırı yönetim aracı <code class="docutils literal"><span class="pre">manage.py</span></code> ile kullanıcı ekleme, veritabanı yedekleme,
+geliştirme sunucusu çalıştırma gibi birçok operasyon kolaylıkla yapılabilir.</p>
+<div class="section" id="h-or-help">
+<h2>-h or &#8211;help<a class="headerlink" href="#h-or-help" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yardım mesajını gösteririr ve çıkış yapar.</p>
+<div class="section" id="usage">
+<h3>usage<a class="headerlink" href="#usage" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py -h or $ ./manage.py -help
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dump-data">
+<h2>dump_data<a class="headerlink" href="#dump-data" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bütün modellere ait verileri standart çıktıya ya da belirtilen dosyaya yazar.</p>
+<div class="section" id="id1">
+<h3>usage<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py dump_data [-h] [--timeit] --model [MODEL] [--path [PATH]]
+                        [--type [{csv,json,json_tree,pretty}]]
+                        [--batch_size [BATCH_SIZE]]
+</pre></div>
+</div>
+<div class="section" id="zorunlu-olan-arguman">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#zorunlu-olan-arguman" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>model [MODEL]</strong> Dökümü alınacak modellerin isimleri yazılır. Bütün modellerin
+dökümü alınacaksa &#8216;all&#8217; yazılır.</li>
+</ul>
+</div>
+<div class="section" id="zorunlu-olmayan-argumanlar">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#zorunlu-olmayan-argumanlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul>
+<li><p class="first"><strong>-h,&#8211;help</strong>   Yardım mesajını gösteririr ve çıkış yapar.</p>
+</li>
+<li><p class="first"><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</p>
+</li>
+<li><p class="first"><strong>&#8211;path [PATH]</strong> Standart çıktı yerine, belirtilen dosyaya yazar.</p>
+</li>
+<li><p class="first"><strong>&#8211;type [{csv,json,json_tree,pretty}]</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><strong>csv:</strong> csv varsayılan formattır. Her satıra bir tane kayıt yazar. csv,
+diğerlerinden daha hızlıdır ve belleği daha verimli kullanır çünkü JSON
+encoding/decoding işlemlerini yapmaz.</li>
+<li><strong>json:</strong> Her bir kayıt için,  ayrı bir json string içeren bir döküman yazar.
+Dökümandaki her satır bir kayda ait json stringidir. json-tree&#8217;nin aksine,
+bellek kullanımı kayıt başına artmaz.</li>
+<li><strong>json_tree:</strong> Büyük veritabanlarında kullanmayın. Bütün dökümü tek bir
+JSON nesnesi olarak yazar.</li>
+<li><strong>pretty:</strong> Büyük veritabanlarında kullanmayın. json_tree&#8217;nin formatlanmış
+versiyonu.</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="load-data">
+<h2>load_data<a class="headerlink" href="#load-data" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Belirtilen dosyadan verileri okur ve modelleri doldurur.</p>
+<div class="section" id="id2">
+<h3>usage<a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py load_data [-h] [--timeit] --path [PATH] [--update]
+                        [--type [{csv,json,json_tree,pretty}]]
+                        [--batch_size [BATCH_SIZE]]
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id3" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;path [PATH]</strong> Veri dosyası ya da fixture dizininin yoludur. Bir dizinden veri
+yükleyeceği zaman, .js ve .csv uzantılı dosyaları kullanır.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id4" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul>
+<li><p class="first"><strong>-h,&#8211;help</strong>   Yardım mesajını gösteririr ve çıkış yapar.</p>
+</li>
+<li><p class="first"><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</p>
+</li>
+<li><p class="first"><strong>&#8211;update</strong>    Varolan kayıtların üzerine yazar.Objenin varlığını kontrol
+etmeyecek bu yüzden daha hızlı çalışacak.</p>
+</li>
+<li><p class="first"><strong>-batch_size [BATCH_SIZE]</strong> Solr&#8217;dan varsayılan miktardaki(1000) nesneleri
+tek seferde bulup getirir.</p>
+</li>
+<li><p class="first"><strong>&#8211;type [{csv,json,json_tree,pretty}]</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><strong>csv:</strong> csv varsayılan formattır. dump_data ile elde edilmiş veya geçerli
+bir csv dosyası olabilir.</li>
+<li><strong>json:</strong> dump_data ile elde edilmiş veya geçerli bir json dosyası olabilir.</li>
+<li><strong>json_tree:</strong> dump_data ile elde edilmiş veya geçerli bir json_tree dosyası
+olabilir.</li>
+<li><strong>pretty:</strong> dump_data ile elde edilmiş veya geçerli bir pretty json_tree
+dosyası olabilir.</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="load-fixture">
+<h2>load_fixture<a class="headerlink" href="#load-fixture" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Fixture&#8217;ları verilen json dosyasından ya da verilen dizindeki json dosyalarından yükler. Verileri,
+ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak doldurur.</p>
+<div class="section" id="id5">
+<h3>usage<a class="headerlink" href="#id5" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py load_fixture [-h] [--timeit] --path [PATH]
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id6" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;path [PATH]</strong> Fixture dosyasını ya da dizinini yükler.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id7" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="migrate">
+<h2>migrate<a class="headerlink" href="#migrate" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Verilen model ya da modeller için yeni SOLR şemaları üretir veya mevcutları günceller.</p>
+<div class="section" id="id8">
+<h3>usage<a class="headerlink" href="#id8" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py migrate [-h] [--timeit] --model [MODEL] [--threads [THREADS]]
+                      [--force]
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id9" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>model [MODEL]</strong> Dökümü alınacak model isimleridir. Bütün modellerin dökümü alınacaksa &#8216;all&#8217; yazılır.</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id10" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+<li><strong>&#8211;threads [THREADS]</strong> Threadler&#8217;in maksimum sayısıdır.Varsayılan deger 1&#8217;dir.</li>
+<li><strong>&#8211;force</strong> Şema yaratımını zorunlu kılar.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="flush-model">
+<h2>flush_model<a class="headerlink" href="#flush-model" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Modellere ait bucket&#8217;ların içeriğini siler.</p>
+<div class="section" id="id11">
+<h3>usage<a class="headerlink" href="#id11" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py flush_model [-h] [--timeit] --model [MODEL]
+</pre></div>
+</div>
+<div class="section" id="id12">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id12" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;model [MODEL]</strong> Silinecek olan model isimleridir. Bütün modelleri silmek için &#8216;all&#8217; yazılmalıdır.</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id13" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="update-permissions">
+<h2>update_permissions<a class="headerlink" href="#update-permissions" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>İzinleri veritabanı ile senkronize eder.</p>
+<div class="section" id="id14">
+<h3>usage<a class="headerlink" href="#id14" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py update_permissions [-h] [--timeit] [--dry]
+</pre></div>
+</div>
+<div class="section" id="id15">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id15" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>   Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</li>
+<li><strong>&#8211;dry</strong>       Degişiklik yapmaz sadece listeler.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="shell">
+<h2>shell<a class="headerlink" href="#shell" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>IPython shell&#8217;ini çalıştırır. Bu shell projeye ait tüm modelleri yükler ve kullanıma hazır
+hale getirir. Çalışma kolaylığı sağlar.</p>
+<div class="section" id="id16">
+<h3>usage<a class="headerlink" href="#id16" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell [-h] [--timeit] [--no_model]
+</pre></div>
+</div>
+<div class="section" id="id17">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id17" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>   Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</li>
+<li><strong>&#8211;no_model</strong>  Modelleri içe taşımaz(import).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="runsever">
+<h2>runsever<a class="headerlink" href="#runsever" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Geliştirme sunucusunu çalıştırır.</p>
+<div class="section" id="id18">
+<h3>usage<a class="headerlink" href="#id18" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py runserver [-h] [--timeit] [--addr [ADDR]] [--port [PORT]]
+</pre></div>
+</div>
+<div class="section" id="id19">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id19" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+<li><strong>&#8211;addr [ADDR]</strong> Sunucunun dinleyeceği adres. Varsayılan 127.0.0.1&#8217;dir.</li>
+<li><strong>&#8211;port [PORT]</strong> Sunucunun dinleyeceği port. Varsayılan 9001&#8217;dir.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="create-user">
+<h2>create_user<a class="headerlink" href="#create-user" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yeni kullanıcı yaratır.</p>
+<div class="section" id="id20">
+<h3>usage<a class="headerlink" href="#id20" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py create_user [-h] [--timeit] --username [USERNAME] --password
+                          [PASSWORD] [--abstract_role [ABSTRACT_ROLE]]
+                          [--super] [--permission_query [PERMISSION_QUERY]]
+</pre></div>
+</div>
+<div class="section" id="zorunlu-olan-argumanlar">
+<h4>Zorunlu olan argümanlar:<a class="headerlink" href="#zorunlu-olan-argumanlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;username [USERNAME]</strong>  Kullanıcı adı</li>
+<li><strong>&#8211;password [PASSWORD]</strong>  Şifre</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id21" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+<li><strong>[&#8211;abstract_role [ABSTRACT_ROLE]]</strong> AbstractRole</li>
+<li><strong>&#8211;super</strong> Süper kullanıcı</li>
+<li><strong>&#8211;permission_query [PERMISSION_QUERY]</strong> Bu sorgudan dönen izinler yenı eklenen kullanıcıya tanımlanır.
+Varsayılan: &#8220;code:crud* OR code:login* OR code:logout*&#8221;</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="veri-uretecleri">
+<h1>Veri Üreteçleri<a class="headerlink" href="#veri-uretecleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Aşağıda sıralanan komutlar geliştirme esnasında fake(uydurma) veriler üretmek amacıyla
+eklenmiştir.</p>
+<div class="section" id="random-personel">
+<h2>random_personel<a class="headerlink" href="#random-personel" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Rastgele Personel üretir.</p>
+<div class="section" id="id22">
+<h3>usage<a class="headerlink" href="#id22" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_personel [-h] [--timeit] --length [LENGTH]
+</pre></div>
+</div>
+<div class="section" id="id23">
+<h4>Zorunlu olan argümanlar:<a class="headerlink" href="#id23" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek personel sayısıdır.</li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id24" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="random-harici-okutman">
+<h2>random_harici_okutman<a class="headerlink" href="#random-harici-okutman" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Rastgele Harici Okutman üretir.</p>
+<div class="section" id="id25">
+<h3>usage<a class="headerlink" href="#id25" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_harici_okutman [-h] [--timeit] --length [LENGTH]
+</pre></div>
+</div>
+<div class="section" id="id26">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id26" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek okutmanın sayısıdır.</li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id27" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="random-ogrenci">
+<h2>random_ogrenci<a class="headerlink" href="#random-ogrenci" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Rastgele Ögrenci üretir.</p>
+<div class="section" id="id28">
+<h3>usage<a class="headerlink" href="#id28" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_ogrenci [-h] [--timeit] --length [LENGTH]
+</pre></div>
+</div>
+<div class="section" id="id29">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id29" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek öğrenci sayısıdır.</li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id30" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="random-okutman">
+<h2>random_okutman<a class="headerlink" href="#random-okutman" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Personel veya HariciOkutman modellerinden rastgele Okutman üretir.</p>
+<div class="section" id="id31">
+<h3>usage<a class="headerlink" href="#id31" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_okutman [-h] [--timeit] --length [LENGTH]
+</pre></div>
+</div>
+<div class="section" id="id32">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id32" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek okutmanın sayıdır.</li>
+</ul>
+</div>
+<div class="section" id="id33">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id33" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><strong>-h,&#8211;help</strong>   Yardım mesajını gösterir.</li>
+<li><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

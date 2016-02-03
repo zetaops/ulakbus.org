@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyoko.db.queryset &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>pyoko.db.queryset</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyoko.db.queryset</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">this module contains a base class for other db access classes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="c1"># noinspection PyCompatibility</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">riak.util</span> <span class="kn">import</span> <span class="n">bytes_to_str</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">urlopen</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">import</span> <span class="nn">six</span>
+<span class="kn">from</span> <span class="nn">pyoko.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">pyoko.db.connection</span> <span class="kn">import</span> <span class="n">client</span>
+<span class="kn">import</span> <span class="nn">riak</span>
+<span class="kn">from</span> <span class="nn">pyoko.exceptions</span> <span class="kn">import</span> <span class="n">MultipleObjectsReturned</span><span class="p">,</span> <span class="n">ObjectDoesNotExist</span><span class="p">,</span> <span class="n">PyokoError</span>
+<span class="kn">from</span> <span class="nn">..fields</span> <span class="kn">import</span> <span class="n">DATE_FORMAT</span><span class="p">,</span> <span class="n">DATE_TIME_FORMAT</span>
+<span class="c1"># from pyoko.lib.py2map import Dictomap</span>
+<span class="kn">from</span> <span class="nn">pyoko.lib.utils</span> <span class="kn">import</span> <span class="n">grayed</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="c1"># TODO: Add OR support</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">ReturnType</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;ReturnType&#39;</span><span class="p">,</span> <span class="s1">&#39;Solr Object Model&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># noinspection PyTypeChecker</span>
+<span class="k">class</span> <span class="nc">QuerySet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    QuerySet is a lazy data access layer for Riak.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">conf</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_context</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c1"># pass permission checks to genareted model instances</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pass_perm_checks</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span> <span class="o">=</span> <span class="n">riak</span><span class="o">.</span><span class="n">RiakBucket</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;row_size&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+                     <span class="s1">&#39;rtype&#39;</span><span class="p">:</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Model</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;client&#39;</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_clone</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">conf</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="s1">&#39;model_class&#39;</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_model</span><span class="p">(</span><span class="n">model_class</span><span class="o">=</span><span class="n">conf</span><span class="p">[</span><span class="s1">&#39;model_class&#39;</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_bucket</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">bucket_type</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="o">.</span><span class="n">_get_bucket_name</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_type</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># we convert new object data according to</span>
+        <span class="c1"># bucket datatype, eg: Dictomaping for &#39;map&#39; type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1"># self._solr_query = {}  # query parts, will be compiled before execution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solr_query</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># query parts, will be compiled before execution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;sort&#39;</span><span class="p">:</span> <span class="s1">&#39;timestamp desc&#39;</span><span class="p">}</span>  <span class="c1"># search parameters. eg: rows, fl, start, sort etc.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solr_locked</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># self.key = None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># caching riak result,</span>
+        <span class="c1"># for repeating iterations on same query</span>
+
+    <span class="c1"># ######## Development Methods  #########</span>
+
+    <span class="k">def</span> <span class="nf">_set_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">model</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">__class__</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">_context</span>
+        <span class="k">elif</span> <span class="n">model_class</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span> <span class="o">=</span> <span class="n">model_class</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_context</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;QuerySet should be called with a model instance or class&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">distinct_values_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+        <span class="c1"># FIXME: Add support for query filters</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://</span><span class="si">%s</span><span class="s1">:8093/internal_solr/</span><span class="si">%s</span><span class="s1">/select?q=-deleted</span><span class="si">%%</span><span class="s1">3ATrue&amp;wt=json&amp;facet=true&amp;facet.field=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">RIAK_SERVER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">bytes_to_str</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+        <span class="n">dct</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">fresult</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;facet_counts&#39;</span><span class="p">][</span><span class="s1">&#39;facet_fields&#39;</span><span class="p">][</span><span class="n">field</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fresult</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fresult</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="n">fresult</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">dct</span><span class="p">[</span><span class="n">fresult</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">fresult</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">dct</span>
+
+    <span class="k">def</span> <span class="nf">_clear_bucket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        only for development purposes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">get_keys</span><span class="p">():</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">i</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exec_query</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span><span class="p">[</span><span class="s1">&#39;docs&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Solr</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">doc</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="n">riak_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;_yz_rk&#39;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">_debug_db_queries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
+                        <span class="s1">&#39;KEY&#39;</span><span class="p">:</span> <span class="n">doc</span><span class="p">[</span><span class="s1">&#39;_yz_rk&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;BUCKET&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                        <span class="s1">&#39;TIME&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)})</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">riak_obj</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                    <span class="c1"># # TODO: remove this, if not occur on production</span>
+                    <span class="c1"># raise riak.RiakError(&quot;Empty object returned. &quot;</span>
+                    <span class="c1">#                 &quot;Possibly a Riak-Solr sync delay issue.&quot;)</span>
+                    <span class="k">continue</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_model</span><span class="p">(</span><span class="n">riak_obj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">riak_obj</span><span class="p">)</span>
+                       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Model</span> <span class="k">else</span> <span class="n">riak_obj</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="c1"># return len(self._solr_cache)</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">_get</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="c1"># start, stop, step = index.indices(len(self))</span>
+            <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">stop</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stop</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stop</span><span class="p">:</span>
+                <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="n">clone</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">clone</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;unlimited slicing not supported&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;index must be int or slice&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A deep copy method that doesn&#39;t populate caches</span>
+<span class="sd">        and shares Riak client and bucket</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;_riak_cache&#39;</span><span class="p">:</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;_solr_cache&#39;</span><span class="p">:</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;_solr_query&#39;</span><span class="p">:</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:]</span>
+            <span class="k">elif</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;current_context&#39;</span><span class="p">,</span> <span class="s1">&#39;bucket&#39;</span><span class="p">,</span> <span class="s1">&#39;_client&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;model_class&#39;</span><span class="p">)):</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">is_clone</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">compiled_query</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="nf">_set_bucket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        prepares bucket, sets index name</span>
+<span class="sd">        :param str type: bucket type</span>
+<span class="sd">        :param str name: bucket name</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;bucket_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;bucket_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">bucket_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;bucket_type&#39;</span><span class="p">]</span>
+                                               <span class="p">)</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;bucket_name&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;bucket_type&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;bucket_name&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_save_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        saves the model instance to riak</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if model:</span>
+        <span class="c1">#     self._model = model</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+            <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">clean_value</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">clean_value</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">clean_value</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+            <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">exist</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clean_value</span><span class="p">)</span><span class="o">.</span><span class="n">store</span><span class="p">()</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span>
+            <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_obj</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">clean_value</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">store</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">_debug_db_queries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
+                <span class="s1">&#39;KEY&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                <span class="s1">&#39;BUCKET&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                <span class="s1">&#39;SAVE_IS_NEW&#39;</span><span class="p">:</span> <span class="n">new_obj</span><span class="p">,</span>
+                <span class="s1">&#39;SERIALIZATION_TIME&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                <span class="s1">&#39;TIME&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        executes solr query if needed then returns first object according to</span>
+<span class="sd">        selected ReturnType (defaults to Model)</span>
+<span class="sd">        :return: pyoko.Model or riak.Object or solr document</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_exec_query</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Solr</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span><span class="p">[</span><span class="s1">&#39;docs&#39;</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="n">ObjectDoesNotExist</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span><span class="p">[</span><span class="s1">&#39;docs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;_yz_rk&#39;</span><span class="p">])]</span>
+            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">_debug_db_queries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
+                    <span class="s1">&#39;KEY&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span><span class="p">[</span><span class="s1">&#39;docs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;_yz_rk&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;BUCKET&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                    <span class="s1">&#39;TIME&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)})</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Model</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ObjectDoesNotExist</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">key</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Object</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_riak_cache</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span><span class="p">[</span><span class="s1">&#39;docs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_make_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">riak_obj</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a model instance with the given data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: Model data returned from DB.</span>
+<span class="sd">            riak_obj:</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            pyoko.Model object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No data returned from Riak</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_debug_data</span><span class="p">())</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_context</span><span class="p">,</span> <span class="n">_pass_perm_checks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pass_perm_checks</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">riak_obj</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="n">riak_obj</span> <span class="k">else</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">from_db</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_clone</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;QuerySet for </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[:</span><span class="mi">10</span><span class="p">]]</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">msg</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">raise</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;queryset: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_query</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
+        <span class="c1"># for f in filters:</span>
+        <span class="c1">#     if len(f) == 2:</span>
+        <span class="c1">#         f.append(False)  # mark as not escaped</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solr_query</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">f</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">filters</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies given query filters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **filters: Query filters as keyword arguments.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Self. Queryset object.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.filter(name=&#39;John&#39;) # same as .filter(name__exact=&#39;John&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.filter(age__gte=16, name__startswith=&#39;jo&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; # Assume u1 and u2 as related model instances.</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.filter(work_unit__in=[u1, u2], name__startswith=&#39;jo&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">_add_query</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">exclude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">filters</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies query filters for excluding matching records from result set.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **filters: Query filters as keyword arguments.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Self. Queryset object.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.exclude(age=None)</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.filter(name__startswith=&#39;jo&#39;).exclude(age__lte=16)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">exclude</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_or_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Looks up an object with the given kwargs, creating a new one if necessary.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            defaults (dict): Used when we create a new object. Must map to fields</span>
+<span class="sd">                of the model.</span>
+<span class="sd">            \*\*kwargs: Used both for filtering and new object creation.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A tuple of (object, created), where created is a boolean variable</span>
+<span class="sd">            specifies whether the object was newly created or not.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            In the following example, *code* and *name* fields are used to query the DB.</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                obj, is_new = Permission.objects.get_or_create({&#39;description&#39;: desc},</span>
+<span class="sd">                                                                code=code, name=name)</span>
+
+<span class="sd">            {description: desc} dict is just for new creations. If we can&#39;t find any</span>
+<span class="sd">            records by filtering on *code* and *name*, then we create a new object by</span>
+<span class="sd">            using all of the inputs.</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">existing</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clone</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">existing</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">count</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> objects returned for </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span>
+                                                        <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">existing</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">defaults</span> <span class="ow">or</span> <span class="p">{}</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(),</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ensures that only one result is returned from DB and raises an exception otherwise.</span>
+<span class="sd">        Can work in 3 different way.</span>
+
+<span class="sd">            - If no argument is given, only does &quot;ensuring about one and only object&quot; job.</span>
+<span class="sd">            - If key given as only argument, retrieves the object from DB.</span>
+<span class="sd">            - if query filters given, implicitly calls filter() method.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            MultipleObjectsReturned: If there is more than one (1) record is returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span><span class="p">:</span>
+            <span class="c1"># self.key = key</span>
+            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">clone</span><span class="o">.</span><span class="n">_riak_cache</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">_debug_db_queries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
+                    <span class="s1">&#39;KEY&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span>
+                    <span class="s1">&#39;BUCKET&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                    <span class="s1">&#39;TIME&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)})</span>
+        <span class="k">elif</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">clone</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">clone</span><span class="o">.</span><span class="n">_exec_query</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">clone</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> objects returned for </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">clone</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+                                                        <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">clone</span><span class="o">.</span><span class="n">_get</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">or_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">filters</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Works like &quot;filter&quot; but joins given filters with OR operator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **filters: Query filters as keyword arguments.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Self. Queryset object.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.or_filter(age__gte=16, name__startswith=&#39;jo&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">_add_query</span><span class="p">([(</span><span class="s2">&quot;OR_QRY&quot;</span><span class="p">,</span> <span class="n">filters</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">search_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for query on given fields.</span>
+
+<span class="sd">        Query modifier can be one of these:</span>
+<span class="sd">            # * exact</span>
+<span class="sd">            * contains</span>
+<span class="sd">            * startswith</span>
+<span class="sd">            * endswith</span>
+<span class="sd">            * range</span>
+<span class="sd">            * lte</span>
+<span class="sd">            * gte</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            \*fields (str): Field list to be searched on</span>
+<span class="sd">            \*\*query:  Search query. While it&#39;s implemented as \*\*kwargs</span>
+<span class="sd">             we only support one (first) keyword argument.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Self. Queryset object.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.search_on(&#39;name&#39;, &#39;surname&#39;, contains=&#39;john&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; Person.objects.search_on(&#39;name&#39;, &#39;surname&#39;, startswith=&#39;jo&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">search_type</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">parsed_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="n">search_type</span><span class="p">,</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">_escape_query</span><span class="p">(</span><span class="n">query</span><span class="p">[</span><span class="n">search_type</span><span class="p">]))</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">_add_query</span><span class="p">([(</span><span class="s2">&quot;OR_QRY&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">f</span><span class="p">,</span> <span class="n">parsed_query</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">]),</span> <span class="bp">True</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        counts by executing solr query with rows=0 parameter</span>
+<span class="sd">        :return:  number of objects matches to the query</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">_exec_query</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_exec_query</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">_solr_cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_found&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        add/update solr query parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_locked</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Query already executed, no changes can be made.&quot;</span>
+                            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_solr_query</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span><span class="p">)</span>
+                            <span class="p">)</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">_solr_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">_set_return_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+
+    <span class="k">def</span> <span class="nf">solr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set return type for raw solr docs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">_set_return_type</span><span class="p">(</span><span class="n">ReturnType</span><span class="o">.</span><span class="n">Solr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set return type as riak objects instead of pyoko models</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">_set_return_type</span><span class="p">(</span><span class="n">ReturnType</span><span class="o">.</span><span class="n">Object</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        make a raw query</span>
+<span class="sd">        :param str query: solr query</span>
+<span class="sd">        :param dict params: solr parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clone</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">clone</span><span class="o">.</span><span class="n">compiled_query</span> <span class="o">=</span> <span class="n">query</span>
+        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">clone</span><span class="o">.</span><span class="n">_solr_params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="k">return</span> <span class="n">clone</span>
+
+    <span class="k">def</span> <span class="nf">_escape_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">escaped</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Escapes query if it&#39;s not already escaped.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query: Query value.</span>
+<span class="sd">            escaped (bool): expresses if query already escaped or not.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Escaped query value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">escaped</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">query</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;||&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span> <span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">,</span> <span class="s1">&#39;[&#39;</span><span class="p">,</span> <span class="s1">&#39;]&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;~&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">]:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">query</span>
+
+    <span class="k">def</span> <span class="nf">_parse_query_modifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modifier</span><span class="p">,</span> <span class="n">query_value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parses query_value according to query_type</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            modifier (str): Type of query. Exact, contains, lte etc.</span>
+<span class="sd">            query_value: Value partition of the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Parsed query_value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;range&#39;</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">query_value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">&#39;*&#39;</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">query_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">&#39;*&#39;</span>
+            <span class="n">query_value</span> <span class="o">=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1"> TO </span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">query_value</span> <span class="o">=</span> <span class="n">query_value</span>
+            <span class="k">if</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;exact&#39;</span><span class="p">:</span>
+                <span class="n">query_value</span> <span class="o">=</span> <span class="n">query_value</span>
+            <span class="k">elif</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;contains&#39;</span><span class="p">:</span>
+                <span class="n">query_value</span> <span class="o">=</span> <span class="s2">&quot;*</span><span class="si">%s</span><span class="s2">*&quot;</span> <span class="o">%</span> <span class="n">query_value</span>
+            <span class="k">elif</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;startswith&#39;</span><span class="p">:</span>
+                <span class="n">query_value</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">*&quot;</span> <span class="o">%</span> <span class="n">query_value</span>
+            <span class="k">elif</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;endswith&#39;</span><span class="p">:</span>
+                <span class="n">query_value</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">*&quot;</span> <span class="o">%</span> <span class="n">query_value</span>
+            <span class="k">elif</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;lte&#39;</span><span class="p">:</span>
+                <span class="n">query_value</span> <span class="o">=</span> <span class="s1">&#39;[* TO </span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="n">query_value</span>
+            <span class="k">elif</span> <span class="n">modifier</span> <span class="o">==</span> <span class="s1">&#39;gte&#39;</span><span class="p">:</span>
+                <span class="n">query_value</span> <span class="o">=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1"> TO *]&#39;</span> <span class="o">%</span> <span class="n">query_value</span>
+        <span class="k">return</span> <span class="n">query_value</span>
+
+    <span class="k">def</span> <span class="nf">_parse_query_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Strips query modifier from key and call&#39;s the appropriate value modifier.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): Query key</span>
+<span class="sd">            val: Query value</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Parsed query key and value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__contains&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="s1">&#39;contains&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__range&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__startswith&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="s1">&#39;startswith&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__endswith&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="s1">&#39;endswith&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="c1"># lower than or equal</span>
+        <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__lte&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="s1">&#39;lte&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="c1"># greater than or equal</span>
+        <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__gte&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_modifier</span><span class="p">(</span><span class="s1">&#39;gte&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">_compile_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Builds SOLR query and stores it into self.compiled_query</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: This and all Riak/Solr targeted methods should be refactored</span>
+        <span class="c1"># into another class. http://pm.ulakbus.net/5049</span>
+
+        <span class="c1"># https://wiki.apache.org/solr/SolrQuerySyntax</span>
+        <span class="c1"># http://lucene.apache.org/core/2_9_4/queryparsersyntax.html</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">want_deleted</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">filtered_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_class</span><span class="o">.</span><span class="n">row_level_access</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_context</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">filtered_query</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solr_query</span> <span class="o">+=</span> <span class="n">filtered_query</span><span class="o">.</span><span class="n">_solr_query</span>
+        <span class="c1"># print(self._solr_query)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">is_escaped</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_query</span><span class="p">:</span>
+            <span class="c1"># querying on a linked model by model instance</span>
+            <span class="c1"># it should be a Model, not a Node!</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s1">&#39;_TYPE&#39;</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">key</span>
+                <span class="n">key</span> <span class="o">+=</span> <span class="s2">&quot;_id&quot;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">DATE_FORMAT</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">DATE_TIME_FORMAT</span><span class="p">)</span>
+            <span class="c1"># if it&#39;s not one of the expected objects, it should be a string</span>
+            <span class="c1"># if key == &quot;OR_QRY&quot; then join them with &quot;OR&quot; after escaping &amp; parsing</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;OR_QRY&#39;</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;NOKEY&#39;</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39; OR &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_key</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_escape_query</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">is_escaped</span><span class="p">))</span> <span class="k">for</span>
+                         <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+            <span class="c1"># __in query is same as OR_QRY but key stays same for all values</span>
+            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;__in&#39;</span><span class="p">):</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39; OR &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_escape_query</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">is_escaped</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;NOKEY&#39;</span>
+            <span class="c1"># val is None means we&#39;re searching for empty values</span>
+            <span class="k">elif</span> <span class="n">val</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;[* TO *]&#39;</span>
+            <span class="c1"># then at least be sure that val is properly escaped</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_escape_query</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">is_escaped</span><span class="p">)</span>
+
+            <span class="c1"># parse the query</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_query_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+            <span class="c1"># as long as not explicitly asked for,</span>
+            <span class="c1"># we filter out records with deleted flag</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;deleted&#39;</span><span class="p">:</span>
+                <span class="n">want_deleted</span> <span class="o">=</span> <span class="bp">True</span>
+
+            <span class="c1"># convert two underscores to dot notation</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+            <span class="c1"># NOKEY means we already combined key partition in to &quot;val&quot;</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;NOKEY&#39;</span><span class="p">:</span>
+                <span class="n">query</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">val</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">query</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+
+        <span class="c1"># filter out &quot;deleted&quot; fields if not user explicitly asked for</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">want_deleted</span><span class="p">:</span>
+            <span class="n">query</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-deleted:True&#39;</span><span class="p">)</span>
+        <span class="c1"># join everything with &quot;AND&quot;</span>
+        <span class="n">anded</span> <span class="o">=</span> <span class="s1">&#39; AND &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">joined_query</span> <span class="o">=</span> <span class="n">anded</span>
+        <span class="c1"># if query is empty, use &#39;*:*&#39; instead to get anything from db.</span>
+        <span class="k">if</span> <span class="n">joined_query</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">joined_query</span> <span class="o">=</span> <span class="s1">&#39;*:*&#39;</span>
+        <span class="c1"># if DEBUG is on and DEBUG_LEVEL set to a value higher than 5</span>
+        <span class="c1"># print query in to console.</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG_LEVEL</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;QRY =&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">joined_query</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span> <span class="o">=</span> <span class="n">joined_query</span>
+
+    <span class="k">def</span> <span class="nf">_process_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds default row size if it&#39;s not given in the query.</span>
+<span class="sd">        Converts param values into unicode strings.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Processed self._solr_params dict.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;rows&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;row_size&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span>
+
+    <span class="k">def</span> <span class="nf">_get_debug_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;                      ~=QUERY DEBUG=~                              &quot;</span>
+                <span class="o">+</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">({</span>
+            <span class="s1">&#39;QUERY&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span><span class="p">,</span>
+            <span class="s1">&#39;BUCKET&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+            <span class="s1">&#39;QUERY_PARAMS&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_params</span><span class="p">}))</span>
+
+    <span class="k">def</span> <span class="nf">_exec_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executes solr query if it hasn&#39;t already executed.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_clone</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;QuerySet cannot be directly used&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">[</span><span class="s1">&#39;rtype&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">ReturnType</span><span class="o">.</span><span class="n">Solr</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span>
+                    <span class="n">fl</span><span class="o">=</span><span class="s1">&#39;_yz_rk&#39;</span><span class="p">)</span>  <span class="c1"># we&#39;re going to riak, fetch only keys</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solr_locked</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_compile_query</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">solr_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_params</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_solr_cache</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span><span class="p">,</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                                                      <span class="o">**</span><span class="n">solr_params</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">_debug_db_queries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
+                        <span class="s1">&#39;QUERY&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_query</span><span class="p">,</span>
+                        <span class="s1">&#39;BUCKET&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                        <span class="s1">&#39;QUERY_PARAMS&#39;</span><span class="p">:</span> <span class="n">solr_params</span><span class="p">,</span>
+                        <span class="s1">&#39;TIME&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)})</span>
+            <span class="k">except</span> <span class="n">riak</span><span class="o">.</span><span class="n">RiakError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">err</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_debug_data</span><span class="p">()</span>
+                <span class="k">raise</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solr_locked</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

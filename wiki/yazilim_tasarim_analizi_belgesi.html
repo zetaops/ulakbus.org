@@ -37,7 +37,7 @@
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Data Erişim Seçimleri" href="data_erisim_secimleri.html" />
-    <link rel="prev" title="Git İş-Akışı" href="git_workflow.html" />
+    <link rel="prev" title="Zato İpuçları" href="zato_ipuclari.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -171,7 +171,7 @@
           <a href="data_erisim_secimleri.html" title="Data Erişim Seçimleri"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
+          <a href="zato_ipuclari.html" title="Zato İpuçları"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
@@ -276,8 +276,8 @@
 </ul>
 
   <h4>Önceki konu</h4>
-  <p class="topless"><a href="git_workflow.html"
-                        title="önceki bölüm">Git İş-Akışı</a></p>
+  <p class="topless"><a href="zato_ipuclari.html"
+                        title="önceki bölüm">Zato İpuçları</a></p>
   <h4>Sonraki konu</h4>
   <p class="topless"><a href="data_erisim_secimleri.html"
                         title="sonraki bölüm">Data Erişim Seçimleri</a></p>
@@ -316,7 +316,7 @@
 <div class="section" id="is-akisi-workflow-tabanli-uygulama">
 <h3><em>İş Akışı (Workflow) Tabanlı Uygulama</em><a class="headerlink" href="#is-akisi-workflow-tabanli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.</p>
-<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" /></a>
+<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" style="width: 1048.0px; height: 389.0px;" /></a>
 <p><em>Örnek İş Akış Şeması</em></p>
 <p>İş süreçleri yönetimi için, BPMN2 kural setine uyan Workflow Management yapısı seçilmiştir.   Python dünyasında WorkFlow Management ve BPMN desteği bulunan SpiffWorkFlow kütüphanesi geliştirilmeye açık en uygun aday olduğu için seçilmiştir.</p>
 <p>İş süreçlerinin görsel olarak oluşturulması için de Camunda Modeler seçilmiştir.</p>
@@ -605,7 +605,7 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 </div>
 <div class="section" id="genel-sistem-akis-semasi">
 <h3><em>Genel Sistem Akış Şeması:</em><a class="headerlink" href="#genel-sistem-akis-semasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<a class="reference internal image-reference" href="_images/genelsistemakssemas.png"><img alt="_images/genelsistemakssemas.png" class="align-center" src="_images/genelsistemakssemas.png" /></a>
+<a class="reference internal image-reference" href="_images/genelsistemakssemas.png"><img alt="_images/genelsistemakssemas.png" class="align-center" src="_images/genelsistemakssemas.png" style="width: 240.8px; height: 518.0px;" /></a>
 </div>
 <div class="section" id="modul-bilesenlerin-genel-gorunumu">
 <h3><em>Modül / Bileşenlerin Genel Görünümü:</em><a class="headerlink" href="#modul-bilesenlerin-genel-gorunumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -697,10 +697,10 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 </ul>
 <p>kod, api, kullanici, gelistirici, sistem yoneticisi dokumanlari yer alacaktir.</p>
 <p>Uygulamanın veri ve iş mantığının şu ana kadar planlanan yapısını gösteren class diagramlar aşağıda görülebilir.</p>
-<a class="reference internal image-reference" href="_images/pyoko.png"><img alt="_images/pyoko.png" class="align-center" src="_images/pyoko.png" /></a>
-<a class="reference internal image-reference" href="_images/spiffworkflow.png"><img alt="_images/spiffworkflow.png" class="align-center" src="_images/spiffworkflow.png" /></a>
-<a class="reference internal image-reference" href="_images/entitybasedmodeldiagram.png"><img alt="_images/entitybasedmodeldiagram.png" class="align-center" src="_images/entitybasedmodeldiagram.png" /></a>
-<a class="reference internal image-reference" href="_images/genericrequesttoresponseseqdiagram.png"><img alt="_images/genericrequesttoresponseseqdiagram.png" class="align-center" src="_images/genericrequesttoresponseseqdiagram.png" /></a>
+<a class="reference internal image-reference" href="_images/pyoko.png"><img alt="_images/pyoko.png" class="align-center" src="_images/pyoko.png" style="width: 252.0px; height: 630.0px;" /></a>
+<a class="reference internal image-reference" href="_images/spiffworkflow.png"><img alt="_images/spiffworkflow.png" class="align-center" src="_images/spiffworkflow.png" style="width: 280.7px; height: 627.2px;" /></a>
+<a class="reference internal image-reference" href="_images/entitybasedmodeldiagram.png"><img alt="_images/entitybasedmodeldiagram.png" class="align-center" src="_images/entitybasedmodeldiagram.png" style="width: 1346.0px; height: 1605.0px;" /></a>
+<a class="reference internal image-reference" href="_images/genericrequesttoresponseseqdiagram.png"><img alt="_images/genericrequesttoresponseseqdiagram.png" class="align-center" src="_images/genericrequesttoresponseseqdiagram.png" style="width: 1496.0px; height: 1124.0px;" /></a>
 </div>
 <div class="section" id="spiffworkflow-engine">
 <h3><strong>SpiffWorkflow Engine</strong><a class="headerlink" href="#spiffworkflow-engine" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -941,7 +941,7 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <div class="section" id="navigasyon-diagrami">
 <h3><em>Navigasyon Diagramı:</em><a class="headerlink" href="#navigasyon-diagrami" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Üniversite web uygulaması ve katmanlarını içerir.</p>
-<a class="reference internal image-reference" href="_images/webappkatmanlar.png"><img alt="_images/webappkatmanlar.png" class="align-center" src="_images/webappkatmanlar.png" /></a>
+<a class="reference internal image-reference" href="_images/webappkatmanlar.png"><img alt="_images/webappkatmanlar.png" class="align-center" src="_images/webappkatmanlar.png" style="width: 2500.0px; height: 241.0px;" /></a>
 </div>
 <div class="section" id="cevrimici-yardim-ve-rehberler">
 <h3><em>Çevrimiçi Yardım ve Rehberler:</em><a class="headerlink" href="#cevrimici-yardim-ve-rehberler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -950,9 +950,9 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <p>Kullanıcı sistemin bir noktasında sorunla karşılaştığında bağlamsal olarak derhal konuyla ilgili yardıma erişmesi için çevrimiçi yardım araçları kullanılır.</p>
 <p><a class="reference external" href="http://usablica.github.io/intro.js/">http://usablica.github.io/intro.js/</a></p>
 <p><em>Şekil: Kullanıcı Formları Request/Response Cycle Talep/Cevap Yaşam Döngüsü</em></p>
-<a class="reference internal image-reference" href="_images/kullaniciformlari.png"><img alt="_images/kullaniciformlari.png" class="align-center" src="_images/kullaniciformlari.png" /></a>
+<a class="reference internal image-reference" href="_images/kullaniciformlari.png"><img alt="_images/kullaniciformlari.png" class="align-center" src="_images/kullaniciformlari.png" style="width: 352.0px; height: 634.0px;" /></a>
 <p><em>Şekil: Kullanıcı Arayüz Bileşenleri  Request/Response Cycle Talep/Cevap Yaşam Döngüsü</em></p>
-<a class="reference internal image-reference" href="_images/kullancform2.png"><img alt="_images/kullancform2.png" class="align-center" src="_images/kullancform2.png" /></a>
+<a class="reference internal image-reference" href="_images/kullancform2.png"><img alt="_images/kullancform2.png" class="align-center" src="_images/kullancform2.png" style="width: 565.0px; height: 617.0px;" /></a>
 </div>
 </div>
 <div class="section" id="veri-tasarimi">
@@ -1128,7 +1128,7 @@ SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?</
           <a href="data_erisim_secimleri.html" title="Data Erişim Seçimleri"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
+          <a href="zato_ipuclari.html" title="Zato İpuçları"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 

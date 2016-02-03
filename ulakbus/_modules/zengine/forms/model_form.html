@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>zengine.forms.model_form &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>zengine.forms.model_form</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for zengine.forms.model_form</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">this module holds methods that responsible for form generation</span>
+<span class="sd">both from models or standalone forms</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pyoko.lib.utils</span> <span class="kn">import</span> <span class="n">un_camel_id</span>
+<span class="kn">from</span> <span class="nn">.fields</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="n">BYPASS_REQUIRED_FIELDS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;BYPASS_REQUIRED_FIELDS&#39;</span><span class="p">)</span>
+
+
+
+
+<span class="k">class</span> <span class="nc">FormMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="n">_meta</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;ModelForm&#39;</span><span class="p">:</span>
+            <span class="n">FormMeta</span><span class="o">.</span><span class="n">_meta</span> <span class="o">=</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;Meta&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Meta&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">FormMeta</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">FormMeta</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">__dict__</span><span class="p">:</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Meta&#39;</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">new_class</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMeta</span><span class="p">,</span> <span class="n">mcs</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_class</span>
+
+
+<span class="nd">@six.add_metaclass</span><span class="p">(</span><span class="n">FormMeta</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ModelForm</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Serializes / Deserializes pyoko models.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        ModelForm Meta class holds config data that modifies the behaviour of form objects.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            `~ModelForm.Meta.title` (str): Title text to be shown top of the form.</span>
+
+<span class="sd">            `~ModelForm.Meta.help_text` (str): Help text to be shown under the title.</span>
+
+<span class="sd">            `~ModelForm.Meta.customize_types` (dict): Override field types.</span>
+<span class="sd">                A dict that maps fields names with desired field types.</span>
+
+<span class="sd">                &gt;&gt;&gt; customize_types={&quot;user_password&quot;: &quot;password&quot;}</span>
+
+<span class="sd">            `~ModelForm.Meta.include` ([]): List of field names to be included.</span>
+<span class="sd">             If given, all other fields will be excluded.</span>
+
+<span class="sd">            `~ModelForm.Meta.exclude` ([]): List of field names to be excluded.</span>
+<span class="sd">             If given, all other fields will be included.</span>
+
+<span class="sd">            `~ModelForm.Meta.constraints` (dict): Form constraints to be enforced by</span>
+<span class="sd">             both client side and backend form processors.</span>
+
+<span class="sd">             See `Ulakbus-UI API`_ docs for possible constraints.</span>
+
+<span class="sd">             .. code-block:: python</span>
+
+<span class="sd">                constraints = [</span>
+<span class="sd">                            {</span>
+<span class="sd">                                &#39;cons&#39;: [{&#39;id&#39;: &#39;field2_id&#39;, &#39;cond&#39;: &#39;exists&#39;}],</span>
+<span class="sd">                                &#39;do&#39;: &#39;change_fields&#39;, &#39;fields&#39;: [{&#39;field2_id&#39;: None}]</span>
+<span class="sd">                            },</span>
+<span class="sd">                            {</span>
+<span class="sd">                                &#39;cons&#39;: [{&#39;id&#39;: &#39;field2_id&#39;, &#39;cond&#39;: &#39;exists&#39;}],</span>
+<span class="sd">                                &#39;do&#39;: &#39;change_fields&#39;, &#39;fields&#39;: [{&#39;field1_id&#39;: None}]</span>
+<span class="sd">                            }</span>
+<span class="sd">                        ]</span>
+
+<span class="sd">        .. _Ulakbus-UI API: http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">customize_types</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">help_text</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">grouping</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        .. note:: *include* and *exclude* does not support fields that placed in nodes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model: A pyoko model instance, may be empty</span>
+<span class="sd">            exclude ([]): list of fields to be excluded from serialization</span>
+<span class="sd">            include ([]): list of fields to be included into serialization</span>
+<span class="sd">            types (dict): override type of fields</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span> <span class="ow">or</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;nodes&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;list_nodes&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">readable</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ordered_fields</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span> <span class="o">=</span> <span class="n">exclude</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">exclude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">include</span> <span class="o">=</span> <span class="n">include</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">include</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">non_data_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;object_key&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">customize_types</span> <span class="o">=</span> <span class="n">types</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="s1">&#39;customize_types&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">help_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">help_text</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="s1">&#39;help_text&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">title</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_verbose_name</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_verbose_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="s1">&#39;verbose_name&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a model instance with given form data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (dict): Form data in key / value form.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Un-saved model instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># FIXME: investigate and integrate necessary security precautions on received data</span>
+        <span class="c1"># ie: received keys should  be defined in the form</span>
+        <span class="c1"># compare with output of self._serialize()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_fields</span><span class="p">()</span>
+        <span class="n">new_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+        <span class="n">new_instance</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">key</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_data_fields</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_id&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">val</span><span class="p">:</span>  <span class="c1"># linked model</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">linked_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_link</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">name</span><span class="p">)[</span><span class="s1">&#39;mdl&#39;</span><span class="p">]</span>
+                <span class="n">linked_model_instance</span> <span class="o">=</span> <span class="n">linked_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">linked_model_instance</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>  <span class="c1"># field</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">val</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_instance</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">File</span><span class="p">):</span>  <span class="c1"># File field</span>
+                <span class="n">_val</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;file_content&#39;</span><span class="p">],</span>
+                <span class="p">}</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">_val</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>  <span class="c1"># Node</span>
+                <span class="n">node</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">val</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># ListNode</span>
+                <span class="c1"># get the listnode instance from model</span>
+                <span class="n">list_node</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                <span class="c1"># clear out it&#39;s existing content</span>
+                <span class="n">list_node</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="c1"># fill with form input</span>
+                <span class="k">for</span> <span class="n">ln_item_data</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
+                    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ln_item_data</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_id&#39;</span><span class="p">):</span>  <span class="c1"># linked model in a ListNode</span>
+                            <span class="n">name</span> <span class="o">=</span> <span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                            <span class="n">kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">list_node</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ln_item_data</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">ln_item_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                    <span class="n">list_node</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_instance</span>
+
+    <span class="k">def</span> <span class="nf">_serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">readable</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts model/form data into a serialization ready dictionary format.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            readable (bool): creates human readable output.</span>
+<span class="sd">                *e.g.* Instead of raw values, uses get_field_name_display() when available.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of dicts.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                In [1]: from zengine.forms.model_form import ModelForm</span>
+
+<span class="sd">                In [2]: from zengine.models import User</span>
+
+<span class="sd">                In [3]: user = User.objects.get(username=&#39;test_user&#39;)</span>
+
+<span class="sd">                In [4]: ModelForm(user)._serialize()</span>
+<span class="sd">                Out[4]:</span>
+<span class="sd">                [{&#39;choices&#39;: None,</span>
+<span class="sd">                  &#39;default&#39;: None,</span>
+<span class="sd">                  &#39;kwargs&#39;: {},</span>
+<span class="sd">                  &#39;name&#39;: &#39;username&#39;,</span>
+<span class="sd">                  &#39;required&#39;: True,</span>
+<span class="sd">                  &#39;title&#39;: &#39;Username&#39;,</span>
+<span class="sd">                  &#39;type&#39;: &#39;string&#39;,</span>
+<span class="sd">                  &#39;value&#39;: &#39;test_user&#39;},</span>
+<span class="sd">                 {&#39;choices&#39;: None,</span>
+<span class="sd">                  &#39;default&#39;: None,</span>
+<span class="sd">                  &#39;kwargs&#39;: {},</span>
+<span class="sd">                  &#39;name&#39;: &#39;password&#39;,</span>
+<span class="sd">                  &#39;required&#39;: True,</span>
+<span class="sd">                  &#39;title&#39;: &#39;Password&#39;,</span>
+<span class="sd">                  &#39;type&#39;: &#39;string&#39;,</span>
+<span class="sd">                  &#39;value&#39;: &#39;$pbkdf2-sha512$10000$nTMGwBjDWCslpA$iRDbnITH...&#39;},</span>
+<span class="sd">                 {&#39;choices&#39;: None,</span>
+<span class="sd">                  &#39;default&#39;: False,</span>
+<span class="sd">                  &#39;kwargs&#39;: {},</span>
+<span class="sd">                  &#39;name&#39;: &#39;superuser&#39;,</span>
+<span class="sd">                  &#39;required&#39;: False,</span>
+<span class="sd">                  &#39;title&#39;: &#39;Super user&#39;,</span>
+<span class="sd">                  &#39;type&#39;: &#39;boolean&#39;,</span>
+<span class="sd">                  &#39;value&#39;: True}]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_fields</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">readable</span> <span class="o">=</span> <span class="n">readable</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_fields</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">:</span>  <span class="c1"># to allow additional fields</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_fields</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="c1"># TODO: all &quot;forms&quot; of world, unite!</span>
+                <span class="k">pass</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s1">&#39;models&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_models</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s1">&#39;list_nodes&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_nodes</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_filter_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns true if given name should be</span>
+<span class="sd">        filtered out from serialization.</span>
+
+<span class="sd">        :param name: field, node or model name.</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">include</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">include</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">_get_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">node_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_out</span><span class="p">(</span><span class="n">node_name</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">instance_node</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="n">node_name</span><span class="p">)</span>
+            <span class="n">node_type</span> <span class="o">=</span> <span class="n">instance_node</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__name__</span>
+            <span class="n">node_data</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">instance_node</span><span class="o">.</span><span class="n">_is_auto_created</span> <span class="ow">or</span>
+                    <span class="p">(</span><span class="n">node_type</span> <span class="o">==</span> <span class="s1">&#39;Node&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">])</span> <span class="ow">or</span>
+                    <span class="p">(</span><span class="n">node_type</span> <span class="o">==</span> <span class="s1">&#39;ListNode&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s1">&#39;list_nodes&#39;</span><span class="p">])):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">node_type</span> <span class="o">==</span> <span class="s1">&#39;Node&#39;</span><span class="p">:</span>
+                <span class="n">schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_schema</span><span class="p">(</span><span class="n">instance_node</span><span class="p">,</span> <span class="n">node_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">():</span>
+                    <span class="n">node_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_data</span><span class="p">([</span><span class="n">instance_node</span><span class="p">],</span> <span class="n">node_name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># ListNode</span>
+                <span class="c1"># to get schema of empty listnode we need to create an instance of it</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">instance_node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">instance_node</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">node_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_data</span><span class="p">(</span><span class="n">instance_node</span><span class="p">,</span> <span class="n">node_name</span><span class="p">)</span>
+                <span class="n">schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_schema</span><span class="p">(</span><span class="n">instance_node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">node_name</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">node_name</span><span class="p">,</span>
+                           <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">node_type</span><span class="p">,</span>
+                           <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">instance_node</span><span class="o">.</span><span class="n">get_verbose_name</span><span class="p">(),</span>
+                           <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="n">schema</span><span class="p">,</span>
+                           <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">node_data</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">node_data</span> <span class="ow">or</span> <span class="n">node_type</span> <span class="o">==</span> <span class="s1">&#39;ListNode&#39;</span>
+                           <span class="k">else</span> <span class="n">node_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                           <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                           <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                           <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">_get_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">lnk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_links</span><span class="p">(</span><span class="n">is_set</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_out</span><span class="p">(</span><span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">]):</span>
+                <span class="k">continue</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;mdl&#39;</span><span class="p">]</span>
+            <span class="n">model_instance</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">])</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">un_camel_id</span><span class="p">(</span><span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">]),</span>
+                           <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
+                           <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">model_instance</span><span class="o">.</span><span class="n">get_verbose_name</span><span class="p">(),</span>
+                           <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">model_instance</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                           <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="n">model_instance</span><span class="p">,</span>
+                                                      <span class="n">models</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                                      <span class="n">list_nodes</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                                      <span class="n">nodes</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">_serialize</span><span class="p">()</span>
+                                       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">is_in_db</span><span class="p">()</span> <span class="k">else</span> <span class="bp">None</span><span class="p">),</span>
+                           <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                           <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                           <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">_serialize_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">DATE_TIME_FORMAT</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">DATE_FORMAT</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">BaseField</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_get_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">model_obj</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">model_obj</span><span class="o">.</span><span class="n">_ordered_fields</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">Button</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+                            <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;deleted&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_out</span><span class="p">(</span><span class="n">name</span><span class="p">)):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readable</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">model_obj</span><span class="o">.</span><span class="n">get_humane_value</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialize_value</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">model_obj</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                           <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">customize_types</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
+                                                            <span class="n">field</span><span class="o">.</span><span class="n">solr_type</span><span class="p">),</span>
+                           <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">val</span><span class="p">,</span>
+                           <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="p">(</span><span class="bp">False</span> <span class="k">if</span> <span class="n">BYPASS_REQUIRED_FIELDS</span> <span class="ow">or</span>
+                                                 <span class="n">field</span><span class="o">.</span><span class="n">solr_type</span> <span class="ow">is</span> <span class="s1">&#39;boolean&#39;</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">required</span><span class="p">),</span>
+                           <span class="s1">&#39;choices&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="s1">&#39;choices&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
+                           <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">kwargs</span><span class="p">,</span>
+                           <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                           <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">()</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span>
+                                   <span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">)</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">,</span>
+                           <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">_node_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">parent_name</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># node_data = {&#39;models&#39;: [], &#39;fields&#39;: []}</span>
+        <span class="k">for</span> <span class="n">lnk</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">get_links</span><span class="p">():</span>
+            <span class="n">model_instance</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">])</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">un_camel_id</span><span class="p">(</span><span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">]),</span>
+                           <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="n">model_instance</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
+                           <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">model_instance</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">verbose_name</span><span class="p">,</span>
+                           <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,})</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">choices</span> <span class="o">=</span>  <span class="nb">getattr</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="s1">&#39;choices&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+            <span class="n">typ</span> <span class="o">=</span> <span class="s1">&#39;select&#39;</span> <span class="k">if</span> <span class="n">choices</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">customize_types</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">solr_type</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">typ</span><span class="p">,</span>
+                <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">required</span><span class="p">,</span>
+                <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">()</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">)</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">choices</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;titleMap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_choices</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+
+    <span class="nd">@lazy_property</span>
+    <span class="k">def</span> <span class="nf">catalog_data_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">get_object_from_path</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">CATALOG_DATA_MANAGER</span><span class="p">)</span>
+
+    <span class="n">_choices_cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">convert_choices</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">chc</span><span class="p">):</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">chc</span><span class="p">)</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">_choices_cache</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">chc</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_choices_cache</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span>
+
+
+    <span class="k">def</span> <span class="nf">get_choices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">choices</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">choices</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">choices</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">catalog_data_manager</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choices_cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">choices</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_choices</span><span class="p">(</span><span class="n">choices</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_node_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">parent_name</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">real_node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c1"># node_data = {&#39;models&#39;: [], &#39;fields&#39;: []}</span>
+            <span class="k">for</span> <span class="n">lnk</span> <span class="ow">in</span> <span class="n">real_node</span><span class="o">.</span><span class="n">get_links</span><span class="p">():</span>
+                <span class="n">model_instance</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">real_node</span><span class="p">,</span> <span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">])</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">un_camel_id</span><span class="p">(</span><span class="n">lnk</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">])]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">model_instance</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                                     <span class="s1">&#39;verbose_name&#39;</span><span class="p">:</span> <span class="n">model_instance</span><span class="o">.</span><span class="n">get_verbose_name</span><span class="p">(),</span>
+                                                     <span class="s1">&#39;unicode&#39;</span><span class="p">:</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">model_instance</span><span class="p">)</span>
+                                                     <span class="p">}</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">real_node</span><span class="o">.</span><span class="n">_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialize_value</span><span class="p">(</span><span class="n">real_node</span><span class="o">.</span><span class="n">_field_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

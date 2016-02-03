@@ -1,0 +1,1407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.views.ogrenci.ogrenci module &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="index.html"/>
+        <link rel="up" title="ulakbus.views.ogrenci package" href="ulakbus.views.ogrenci.html"/>
+        <link rel="next" title="ulakbus.views.personel package" href="ulakbus.views.personel.html"/>
+        <link rel="prev" title="ulakbus.views.ogrenci.basari_durumu module" href="ulakbus.views.ogrenci.basari_durumu.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ulakbus.views.html">ulakbus.views package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ulakbus.views.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.views.common.html">ulakbus.views.common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.views.ders.html">ulakbus.views.ders package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ulakbus.views.ogrenci.html">ulakbus.views.ogrenci package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="ulakbus.views.ogrenci.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.views.personel.html">ulakbus.views.personel package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.views.reports.html">ulakbus.views.reports package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="ulakbus.views.html">ulakbus.views package</a> &raquo;</li>
+      
+          <li><a href="ulakbus.views.ogrenci.html">ulakbus.views.ogrenci package</a> &raquo;</li>
+      
+    <li>ulakbus.views.ogrenci.ogrenci module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ulakbus.views.ogrenci.ogrenci.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ulakbus.views.ogrenci.ogrenci">
+<span id="ulakbus-views-ogrenci-ogrenci-module"></span><h1>ulakbus.views.ogrenci.ogrenci module<a class="headerlink" href="#module-ulakbus.views.ogrenci.ogrenci" title="Permalink to this headline">¶</a></h1>
+<p>Öğrencilerin Genel Bilgileri ile ilgili İş Akışlarına ait
+sınıf ve metotları içeren modüldür.</p>
+<p>Kimlik Bilgileri, İletişim Bilgileri ve Önceki Eğitim Bilgileri gibi
+iş akışlarının yürütülmesini sağlar.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri">
+<em class="property">class </em><code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">IletisimBilgileri</code><span class="sig-paren">(</span><em>current=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#IletisimBilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.CrudView</span></code></p>
+<p>İletişim Bilgileri İş Akışı</p>
+<p>İletişim Bilgileri iş akışı 3 adımdan oluşmaktadır.</p>
+<ul class="simple">
+<li>İletisim Bilgileri Formu</li>
+<li>KPS Adres Sorgulama</li>
+<li>Iletisim Bilgileri Kaydet</li>
+</ul>
+<p>Bu iş akışında kullanılan metotlar şu şekildedir.</p>
+<dl class="docutils">
+<dt>İletişim Bilgilerini Listele:</dt>
+<dd>CrudView list metodu kullanılmıştır. İletişim Bilgileri formunu
+listeler.</dd>
+<dt>KPS Adres Bilgilerini Getir:</dt>
+<dd><blockquote class="first">
+<div><p>Bu metot sayesinde öğrenciye ait yerleşim yeri bilgilerine merkezi
+Kimlik Paylaşım Sistemi üzerinden erişilir.</p>
+<p>Iletişim Bilgileri formundaki alanlar KPS&#8217;ten gelen bilgiler
+doğrultusunda doldurulur.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Kaydet:</dt>
+<dd>KPS&#8217;ten gelen bilgileri ya da yetkili kişinin öğrenciyle ilgili girdiği
+bilgileri kaydeder. Bu adım <code class="docutils literal"><span class="pre">CrudView.save()</span></code> metodunu kullanır.
+İş akışı bu adımdan sonra sona erer.</dd>
+</dl>
+<p>Bu sınıf <code class="docutils literal"><span class="pre">CrudView</span></code> extend edilerek hazırlanmıştır. Temel model <code class="docutils literal"><span class="pre">Ogrenci</span></code>
+modelidir. Meta.model bu amaçla kullanılmıştır.</p>
+<p class="last">Adımlar arası geçiş manuel yürütülmektedir.</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm">
+<em class="property">class </em><code class="descname">ListForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ListForm</span></code></p>
+<p>Holds list view form elements.</p>
+<p>Used by CrudMeta metaclass to create distinct
+copies for each subclass of CrudView.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.title`</code></dt>
+<dd><p><em>str</em></p>
+<p>Title text to be shown top of the form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
+<dd><p><em>str</em></p>
+<p>Help text to be shown under the title.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Override field types.
+A dict that maps fields names with desired field types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.include`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be included.
+If given, all other fields will be excluded.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be excluded.
+If given, all other fields will be included.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Form constraints to be enforced by
+both client side and backend form processors.</p>
+<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.include">
+<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.add">
+<code class="descclassname">IletisimBilgileri.ListForm.</code><code class="descname">add</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ListForm.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta">
+<em class="property">class </em><code class="descclassname">IletisimBilgileri.</code><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#IletisimBilgileri.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.allow_filters">
+<code class="descname">allow_filters</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.allow_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.allow_search">
+<code class="descname">allow_search</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.allow_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.allow_selection">
+<code class="descname">allow_selection</code><em class="property"> = False</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.allow_selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.init_view">
+<code class="descname">init_view</code><em class="property"> = 'list'</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.init_view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.model">
+<code class="descname">model</code><em class="property"> = 'Ogrenci'</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.object_actions">
+<code class="descname">object_actions</code><em class="property"> = {'add_edit_form': {'cmd': 'add_edit_form', 'name': 'D\xc3\xbczenle', 'show_as': 'button', 'mode': 'normal'}, 'show': {'fields': [0], 'cmd': 'show', 'mode': 'normal', 'show_as': 'link'}, 'delete': {'cmd': 'delete', 'name': 'Sil', 'show_as': 'button', 'mode': 'normal'}}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.object_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.objects_per_page">
+<code class="descname">objects_per_page</code><em class="property"> = 10</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.Meta.objects_per_page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm">
+<em class="property">class </em><code class="descclassname">IletisimBilgileri.</code><code class="descname">ObjectForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ObjectForm</span></code></p>
+<p>Holds object add / edit form elements.</p>
+<p>Used by CrudMeta metaclass to create distinct
+copies for each subclass of CrudView.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.title`</code></dt>
+<dd><p><em>str</em></p>
+<p>Title text to be shown top of the form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
+<dd><p><em>str</em></p>
+<p>Help text to be shown under the title.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Override field types.
+A dict that maps fields names with desired field types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.include`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be included.
+If given, all other fields will be excluded.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be excluded.
+If given, all other fields will be included.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Form constraints to be enforced by
+both client side and backend form processors.</p>
+<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.include">
+<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_as_new_edit">
+<code class="descclassname">IletisimBilgileri.ObjectForm.</code><code class="descname">save_as_new_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_as_new_edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_as_new_list">
+<code class="descclassname">IletisimBilgileri.ObjectForm.</code><code class="descname">save_as_new_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_as_new_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_edit">
+<code class="descclassname">IletisimBilgileri.ObjectForm.</code><code class="descname">save_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_list">
+<code class="descclassname">IletisimBilgileri.ObjectForm.</code><code class="descname">save_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.ObjectForm.save_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.iletisim_bilgileri">
+<code class="descclassname">IletisimBilgileri.</code><code class="descname">iletisim_bilgileri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#IletisimBilgileri.iletisim_bilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.iletisim_bilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>İletişim Bilgileri Formu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.kps_sorgula">
+<code class="descclassname">IletisimBilgileri.</code><code class="descname">kps_sorgula</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#IletisimBilgileri.kps_sorgula"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileri.kps_sorgula" title="Permalink to this definition">¶</a></dt>
+<dd><p>KPS Sorgulama</p>
+<p>Zato wrapper metodlarıyla KPS servisine bağlanır, servisten dönen
+değerlerle nesneyi doldurup kaydeder.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm">
+<em class="property">class </em><code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">IletisimBilgileriForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#IletisimBilgileriForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.forms.json_form.JsonForm</span></code></p>
+<p><code class="docutils literal"><span class="pre">İletişimBilgileri</span></code> sınıfı için form olarak kullanılacaktır. Form,
+include listesinde, aşağıda tanımlı alanlara sahiptir.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#IletisimBilgileriForm.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.include">
+<code class="descname">include</code><em class="property"> = ['ikamet_il', 'ikamet_ilce', 'ikamet_adresi', 'adres2', 'posta_kodu', 'e_posta', 'e_posta2', 'tel_no', 'gsm']</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.kaydet">
+<code class="descclassname">IletisimBilgileriForm.</code><code class="descname">kaydet</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.kaydet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.kps_sorgula">
+<code class="descclassname">IletisimBilgileriForm.</code><code class="descname">kps_sorgula</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.kps_sorgula" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri">
+<em class="property">class </em><code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">KimlikBilgileri</code><span class="sig-paren">(</span><em>current=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#KimlikBilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.CrudView</span></code></p>
+<p>Kimlik Bilgileri İş Akışı</p>
+<p>Kimlik Bilgileri iş akışı 3 adımdan olusmaktadır.</p>
+<ul class="simple">
+<li>Kimlik Bilgileri Formu</li>
+<li>Mernis Kimlik Sorgulama</li>
+<li>Kimlik Bilgileri Kaydet</li>
+</ul>
+<p>Bu iş akışımda kullanılan metotlar şu şekildedir:</p>
+<dl class="docutils">
+<dt>Kimlik Bilgilerini Listele:</dt>
+<dd>CrudView list metodu kullanılmıştır.Kimlik Bilgileri formunu
+listeler.</dd>
+<dt>Mernis&#8217;ten Kimlik Bilgilerini Getir:</dt>
+<dd>MERNİS, merkezi nüfus idare sisteminin kısa proje adıdır. Bu metot sayesinde
+öğrenciye ait kimlik bilgilerine MERNİS&#8217;ten erişilir. KimlikBilgileriForm&#8217;undaki
+alanlar MERNİS&#8217;ten gelen bilgiler doğrultusunda doldurulur.</dd>
+<dt>Kaydet:</dt>
+<dd>MERNİS&#8217;ten gelen bilgileri ve yetkili kişinin öğrenciyle girdiği bilgileri
+kaydeder. Bu adım <code class="docutils literal"><span class="pre">CrudView.save()</span></code> metodunu kullanır. İş akışı bu adımdan
+sonra sona erer.</dd>
+</dl>
+<p>Bu sınıf <code class="docutils literal"><span class="pre">CrudView</span></code> extend edilerek hazırlanmıştır. Temel model <code class="docutils literal"><span class="pre">Ogrenci</span></code>
+modelidir. Meta.model bu amaçla kullanılmıştır.</p>
+<p>Adımlar arası geçiş manuel yürütülmektedir.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm">
+<em class="property">class </em><code class="descname">ListForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ListForm</span></code></p>
+<p>Holds list view form elements.</p>
+<p>Used by CrudMeta metaclass to create distinct
+copies for each subclass of CrudView.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.title`</code></dt>
+<dd><p><em>str</em></p>
+<p>Title text to be shown top of the form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
+<dd><p><em>str</em></p>
+<p>Help text to be shown under the title.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Override field types.
+A dict that maps fields names with desired field types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.include`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be included.
+If given, all other fields will be excluded.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be excluded.
+If given, all other fields will be included.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Form constraints to be enforced by
+both client side and backend form processors.</p>
+<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.include">
+<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.add">
+<code class="descclassname">KimlikBilgileri.ListForm.</code><code class="descname">add</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ListForm.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta">
+<em class="property">class </em><code class="descclassname">KimlikBilgileri.</code><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#KimlikBilgileri.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.allow_filters">
+<code class="descname">allow_filters</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.allow_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.allow_search">
+<code class="descname">allow_search</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.allow_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.allow_selection">
+<code class="descname">allow_selection</code><em class="property"> = False</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.allow_selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.init_view">
+<code class="descname">init_view</code><em class="property"> = 'list'</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.init_view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.model">
+<code class="descname">model</code><em class="property"> = 'Ogrenci'</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.object_actions">
+<code class="descname">object_actions</code><em class="property"> = {'add_edit_form': {'cmd': 'add_edit_form', 'name': 'D\xc3\xbczenle', 'show_as': 'button', 'mode': 'normal'}, 'show': {'fields': [0], 'cmd': 'show', 'mode': 'normal', 'show_as': 'link'}, 'delete': {'cmd': 'delete', 'name': 'Sil', 'show_as': 'button', 'mode': 'normal'}}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.object_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.objects_per_page">
+<code class="descname">objects_per_page</code><em class="property"> = 10</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.Meta.objects_per_page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm">
+<em class="property">class </em><code class="descclassname">KimlikBilgileri.</code><code class="descname">ObjectForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ObjectForm</span></code></p>
+<p>Holds object add / edit form elements.</p>
+<p>Used by CrudMeta metaclass to create distinct
+copies for each subclass of CrudView.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.title`</code></dt>
+<dd><p><em>str</em></p>
+<p>Title text to be shown top of the form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
+<dd><p><em>str</em></p>
+<p>Help text to be shown under the title.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Override field types.
+A dict that maps fields names with desired field types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.include`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be included.
+If given, all other fields will be excluded.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be excluded.
+If given, all other fields will be included.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Form constraints to be enforced by
+both client side and backend form processors.</p>
+<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.include">
+<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_as_new_edit">
+<code class="descclassname">KimlikBilgileri.ObjectForm.</code><code class="descname">save_as_new_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_as_new_edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_as_new_list">
+<code class="descclassname">KimlikBilgileri.ObjectForm.</code><code class="descname">save_as_new_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_as_new_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_edit">
+<code class="descclassname">KimlikBilgileri.ObjectForm.</code><code class="descname">save_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_list">
+<code class="descclassname">KimlikBilgileri.ObjectForm.</code><code class="descname">save_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.ObjectForm.save_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.kimlik_bilgileri">
+<code class="descclassname">KimlikBilgileri.</code><code class="descname">kimlik_bilgileri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#KimlikBilgileri.kimlik_bilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.kimlik_bilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kimlik Bilgileri Formu</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.mernis_sorgula">
+<code class="descclassname">KimlikBilgileri.</code><code class="descname">mernis_sorgula</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#KimlikBilgileri.mernis_sorgula"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileri.mernis_sorgula" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mernis Sorgulama</p>
+<p>Zato wrapper metodlarıyla Mernis servisine bağlanır, servisten dönen
+değerlerle nesneyi doldurup kaydeder.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm">
+<em class="property">class </em><code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">KimlikBilgileriForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#KimlikBilgileriForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.forms.json_form.JsonForm</span></code></p>
+<p><code class="docutils literal"><span class="pre">KimlikBilgileri</span></code> sınıfı için form olarak kullanılacaktır. Form,
+include listesinde, aşağıda tanımlı alanlara sahiptir.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#KimlikBilgileriForm.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.include">
+<code class="descname">include</code><em class="property"> = ['tckn', 'ad', 'soyad', 'cinsiyet', 'dogum_tarihi', 'dogum_yeri', 'uyruk', 'medeni_hali', 'baba_adi', 'ana_adi', 'cuzdan_seri', 'cuzdan_seri_no', 'kayitli_oldugu_il', 'kayitli_oldugu_ilce', 'kayitli_oldugu_mahalle_koy', 'kayitli_oldugu_cilt_no', 'kayitli_oldugu_aile_s\xc4\xb1ra_no', 'kayitli_oldugu_sira_no', 'kimlik_cuzdani_verildigi_yer', 'kimlik_cuzdani_verilis_nedeni', 'kimlik_cuzdani_kayit_no', 'kimlik_cuzdani_verilis_tarihi']</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.kaydet">
+<code class="descclassname">KimlikBilgileriForm.</code><code class="descname">kaydet</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.kaydet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.mernis_sorgula">
+<code class="descclassname">KimlikBilgileriForm.</code><code class="descname">mernis_sorgula</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm.mernis_sorgula" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri">
+<em class="property">class </em><code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">OncekiEgitimBilgileri</code><span class="sig-paren">(</span><em>current=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#OncekiEgitimBilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.CrudView</span></code></p>
+<p>Önceki Eğitim Bilgileri İş Akışı</p>
+<p>Önceki Eğitim Bilgileri iş akışı 2 adımdan oluşmaktadır.</p>
+<ul class="simple">
+<li>Önceki Eğitim Bilgileri Formu</li>
+<li>Önceki Eğitim Bilgilerini Kaydet</li>
+</ul>
+<p>Bu iş akışında  kullanılan metotlar şu şekildedir:</p>
+<dl class="docutils">
+<dt>Önceki Eğitim Bilgileri Formunu Listele:</dt>
+<dd>CrudView list metodu kullanılmıştır. Önceki Eğitim Bilgileri formunu listeler.</dd>
+<dt>Kaydet:</dt>
+<dd>Girilen önceki eğitim bilgilerini kaydeder. Bu adım <code class="docutils literal"><span class="pre">CrudView.save()</span></code> metodunu kullanır.
+İş akışı bu adımdan sonra sona erer.</dd>
+</dl>
+<p>Bu sınıf <code class="docutils literal"><span class="pre">CrudView</span></code> extend edilerek hazırlanmıştır. Temel model <code class="docutils literal"><span class="pre">OncekiEgitimBilgisi</span></code>
+modelidir. Meta.model bu amaçla kullanılmıştır.</p>
+<p>Adımlar arası geçiş manuel yürütülmektedir.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm">
+<em class="property">class </em><code class="descname">ListForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ListForm</span></code></p>
+<p>Holds list view form elements.</p>
+<p>Used by CrudMeta metaclass to create distinct
+copies for each subclass of CrudView.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.title`</code></dt>
+<dd><p><em>str</em></p>
+<p>Title text to be shown top of the form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
+<dd><p><em>str</em></p>
+<p>Help text to be shown under the title.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Override field types.
+A dict that maps fields names with desired field types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.include`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be included.
+If given, all other fields will be excluded.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be excluded.
+If given, all other fields will be included.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Form constraints to be enforced by
+both client side and backend form processors.</p>
+<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.include">
+<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.add">
+<code class="descclassname">OncekiEgitimBilgileri.ListForm.</code><code class="descname">add</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ListForm.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta">
+<em class="property">class </em><code class="descclassname">OncekiEgitimBilgileri.</code><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#OncekiEgitimBilgileri.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.allow_filters">
+<code class="descname">allow_filters</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.allow_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.allow_search">
+<code class="descname">allow_search</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.allow_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.allow_selection">
+<code class="descname">allow_selection</code><em class="property"> = False</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.allow_selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.init_view">
+<code class="descname">init_view</code><em class="property"> = 'list'</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.init_view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.model">
+<code class="descname">model</code><em class="property"> = 'OncekiEgitimBilgisi'</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.object_actions">
+<code class="descname">object_actions</code><em class="property"> = {'add_edit_form': {'cmd': 'add_edit_form', 'name': 'D\xc3\xbczenle', 'show_as': 'button', 'mode': 'normal'}, 'show': {'fields': [0], 'cmd': 'show', 'mode': 'normal', 'show_as': 'link'}, 'delete': {'cmd': 'delete', 'name': 'Sil', 'show_as': 'button', 'mode': 'normal'}}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.object_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.objects_per_page">
+<code class="descname">objects_per_page</code><em class="property"> = 10</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.Meta.objects_per_page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm">
+<em class="property">class </em><code class="descclassname">OncekiEgitimBilgileri.</code><code class="descname">ObjectForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ObjectForm</span></code></p>
+<p>Holds object add / edit form elements.</p>
+<p>Used by CrudMeta metaclass to create distinct
+copies for each subclass of CrudView.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.title`</code></dt>
+<dd><p><em>str</em></p>
+<p>Title text to be shown top of the form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
+<dd><p><em>str</em></p>
+<p>Help text to be shown under the title.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Override field types.
+A dict that maps fields names with desired field types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.include`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be included.
+If given, all other fields will be excluded.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
+<dd><p><em>[]</em></p>
+<p>List of field names to be excluded.
+If given, all other fields will be included.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
+<dd><p><em>dict</em></p>
+<p>Form constraints to be enforced by
+both client side and backend form processors.</p>
+<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
+                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.include">
+<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_as_new_edit">
+<code class="descclassname">OncekiEgitimBilgileri.ObjectForm.</code><code class="descname">save_as_new_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_as_new_edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_as_new_list">
+<code class="descclassname">OncekiEgitimBilgileri.ObjectForm.</code><code class="descname">save_as_new_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_as_new_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_edit">
+<code class="descclassname">OncekiEgitimBilgileri.ObjectForm.</code><code class="descname">save_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_edit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_list">
+<code class="descclassname">OncekiEgitimBilgileri.ObjectForm.</code><code class="descname">save_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.ObjectForm.save_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.onceki_egitim_bilgileri">
+<code class="descclassname">OncekiEgitimBilgileri.</code><code class="descname">onceki_egitim_bilgileri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#OncekiEgitimBilgileri.onceki_egitim_bilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileri.onceki_egitim_bilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Önceki Eğitim Bilgileri Formu</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm">
+<em class="property">class </em><code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">OncekiEgitimBilgileriForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#OncekiEgitimBilgileriForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.forms.json_form.JsonForm</span></code></p>
+<p><code class="docutils literal"><span class="pre">OncekiEgitimBilgileri</span></code> sınıfı  için object form olarak kullanılacaktır. Form,
+include listesinde, aşağıda tanımlı alanlara sahiptir.</p>
+<dl class="class">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#OncekiEgitimBilgileriForm.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.constraints">
+<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.customize_types">
+<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.grouping">
+<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.help_text">
+<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.include">
+<code class="descname">include</code><em class="property"> = ['okul_adi', 'diploma_notu', 'mezuniyet_yili']</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.include" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.Meta.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.kaydet">
+<code class="descclassname">OncekiEgitimBilgileriForm.</code><code class="descname">kaydet</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.OncekiEgitimBilgileriForm.kaydet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ulakbus.views.ogrenci.ogrenci.ogrenci_bilgileri">
+<code class="descclassname">ulakbus.views.ogrenci.ogrenci.</code><code class="descname">ogrenci_bilgileri</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/ogrenci/ogrenci.html#ogrenci_bilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.ogrenci.ogrenci.ogrenci_bilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Öğrenci Genel Bilgileri</p>
+<p>Öğrenci Genel Bilgileri, öğrencilerin kendi bilgilerini görüntüledikleri
+tek adımlık bir iş akışıdır.</p>
+<p>Bu metod tek adımlık bilgi ekranı hazırlar.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ulakbus.views.personel.html" class="btn btn-neutral float-right" title="ulakbus.views.personel package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ulakbus.views.ogrenci.basari_durumu.html" class="btn btn-neutral" title="ulakbus.views.ogrenci.basari_durumu module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

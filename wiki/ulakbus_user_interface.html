@@ -36,8 +36,8 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
-    <link rel="next" title="Git İş-Akışı" href="git_workflow.html" />
-    <link rel="prev" title="Geliştirme Ortamı Kurulumu(Backend)" href="development_environment_setup.html" />
+    <link rel="next" title="Ulakbüs’ü Geliştirelim" href="ulakbusu-gelistirmek.html" />
+    <link rel="prev" title="ULAKBUS Geliştirme Ortamının Kurulumu" href="development_environment_setup.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -168,10 +168,10 @@
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
+          <a href="ulakbusu-gelistirmek.html" title="Ulakbüs’ü Geliştirelim"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="development_environment_setup.html" title="Geliştirme Ortamı Kurulumu(Backend)"
+          <a href="development_environment_setup.html" title="ULAKBUS Geliştirme Ortamının Kurulumu"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
@@ -185,13 +185,13 @@
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Geliştirme Ortamı Kurulumu(Frontend)</a><ul>
-<li><a class="reference internal" href="#get-ready-for-development"><strong>Get Ready For Development</strong></a></li>
-<li><a class="reference internal" href="#development-cycle"><strong>Development Cycle</strong></a></li>
-<li><a class="reference internal" href="#deneme"><strong>Deneme</strong></a></li>
+<li><a class="reference internal" href="#gelistirme-ortaminin-hazirlanmasi"><strong>Geliştirme Ortamının Hazırlanması</strong></a></li>
+<li><a class="reference internal" href="#gelistirme-dongusu"><strong>Geliştirme Döngüsü</strong></a></li>
+<li><a class="reference internal" href="#test"><strong>Test</strong></a></li>
 <li><a class="reference internal" href="#prensipler"><strong>Prensipler</strong></a><ul>
 <li><a class="reference internal" href="#git"><strong>Git:</strong></a></li>
 <li><a class="reference internal" href="#kod"><strong>Kod:</strong></a></li>
-<li><a class="reference internal" href="#test"><strong>Test:</strong></a></li>
+<li><a class="reference internal" href="#id1"><strong>Test:</strong></a></li>
 <li><a class="reference internal" href="#okunmasi-gerekenler"><strong>Okunması Gerekenler:</strong></a></li>
 </ul>
 </li>
@@ -201,10 +201,10 @@
 
   <h4>Önceki konu</h4>
   <p class="topless"><a href="development_environment_setup.html"
-                        title="önceki bölüm">Geliştirme Ortamı Kurulumu(Backend)</a></p>
+                        title="önceki bölüm">ULAKBUS Geliştirme Ortamının Kurulumu</a></p>
   <h4>Sonraki konu</h4>
-  <p class="topless"><a href="git_workflow.html"
-                        title="sonraki bölüm">Git İş-Akışı</a></p>
+  <p class="topless"><a href="ulakbusu-gelistirmek.html"
+                        title="sonraki bölüm">Ulakbüs&#8217;ü Geliştirelim</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -235,8 +235,8 @@
             
   <div class="section" id="gelistirme-ortami-kurulumu-frontend">
 <h1>Geliştirme Ortamı Kurulumu(Frontend)<a class="headerlink" href="#gelistirme-ortami-kurulumu-frontend" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<div class="section" id="get-ready-for-development">
-<h2><strong>Get Ready For Development</strong><a class="headerlink" href="#get-ready-for-development" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="gelistirme-ortaminin-hazirlanmasi">
+<h2><strong>Geliştirme Ortamının Hazırlanması</strong><a class="headerlink" href="#gelistirme-ortaminin-hazirlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <ol class="arabic">
 <li><p class="first"><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:zetaops/ulakbus-ui.git</span></code> reposunu indirin.</p>
 <blockquote>
@@ -251,6 +251,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="https://nodejs.org/download/">https://nodejs.org/download/</a></li>
+<li>Debian, Ubuntu, FreeBSD vs diğer dağıtımlarda kurulum için <a class="reference external" href="https://nodejs.org/en/download/package-manager/">nodejs</a> sayfasından faydalanabilirsiniz.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -268,11 +269,11 @@
 </ol>
 <p><em>Uygulamayı sunmak için başka http server kullanabilirsiniz.</em></p>
 </div>
-<div class="section" id="development-cycle">
-<h2><strong>Development Cycle</strong><a class="headerlink" href="#development-cycle" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="gelistirme-dongusu">
+<h2><strong>Geliştirme Döngüsü</strong><a class="headerlink" href="#gelistirme-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şu an gerekli repo&#8217;ya sahipsiniz, npm ve bower kurulumunu gerçekleştirdiniz ve geliştirmeye başladınız.</p>
 <p>Daha ileri programlama teknikleri kullanımları için, <a class="reference external" href="http://www.extremeprogramming.org/introduction.html">http://www.extremeprogramming.org/introduction.html</a> sitesinde gösterilen geliştirme döngülerini takip etmenizi öneririz.</p>
-<a class="reference internal image-reference" href="_images/planning_feedback_loops.png"><img alt="_images/planning_feedback_loops.png" class="align-center" src="_images/planning_feedback_loops.png" /></a>
+<a class="reference internal image-reference" href="_images/planning_feedback_loops.png"><img alt="_images/planning_feedback_loops.png" class="align-center" src="_images/planning_feedback_loops.png" style="width: 640.0px; height: 588.0px;" /></a>
 <p>Kodlarken aşağıdaki adımları izleyiniz.</p>
 <ul class="simple">
 <li>Yeni bir tane branch oluşturun. Örnek olarak(e.g: search_func)</li>
@@ -285,8 +286,8 @@
 <li>Şimdi push yapabilirsiniz <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">&lt;branch&gt;</span></code></li>
 </ul>
 </div>
-<div class="section" id="deneme">
-<h2><strong>Deneme</strong><a class="headerlink" href="#deneme" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="test">
+<h2><strong>Test</strong><a class="headerlink" href="#test" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>~/_test.js dosyaları, Jasmine içindeki birim test dosyalarıdır , çalıştırmak için aşağıdaki komutları çalıştırabilirsiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>npm test
 </pre></div>
@@ -316,8 +317,8 @@
 <li>Değişken isimleri ve nesneleri açıklayıcı şekilde olmalıdır.</li>
 </ul>
 </div>
-<div class="section" id="test">
-<h3><strong>Test:</strong><a class="headerlink" href="#test" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="id1">
+<h3><strong>Test:</strong><a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Daha etkili testler yazmak için <a class="reference external" href="http://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/">http://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/</a> sitesinden yardım alabilirsiniz.</p>
 <p>Testler olabildiğince kodunuzu kapsamalı.</p>
 </div>
@@ -347,10 +348,10 @@
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="git_workflow.html" title="Git İş-Akışı"
+          <a href="ulakbusu-gelistirmek.html" title="Ulakbüs’ü Geliştirelim"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="development_environment_setup.html" title="Geliştirme Ortamı Kurulumu(Backend)"
+          <a href="development_environment_setup.html" title="ULAKBUS Geliştirme Ortamının Kurulumu"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 

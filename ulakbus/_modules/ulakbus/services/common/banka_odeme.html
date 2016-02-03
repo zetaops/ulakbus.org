@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.services.common.banka_odeme &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.services.common.banka_odeme</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.services.common.banka_odeme</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="sd">&quot;&quot;&quot;Banka Borç Ödeme</span>
+
+<span class="sd">Banka tarafından öğrencinin borçlarını ödemek için kullanılan Zato Servisi.</span>
+
+<span class="sd">Yetkilendirme için banka bilgileri,</span>
+<span class="sd">öğrenci borç ödemesinin gerçekleştirimi için öğrenci numarası ve ödeme bilgileri verilir.</span>
+
+<span class="sd">Elde edilen bilgilerle öğrencinin borç ödeme bilgisi sisteme kaydedilir.</span>
+
+<span class="sd">Example:</span>
+
+<span class="sd">    Servise JSON nesnesi kullanılarak istek gönderilmesi:</span>
+
+<span class="sd">    .. code-block:: json</span>
+
+<span class="sd">        $ curl http://localhost:11223/banka-borc-getir -d &#39;{</span>
+<span class="sd">            &quot;banka_kodu&quot;: &quot;kod&quot;,</span>
+<span class="sd">            &quot;bank_username&quot;: &quot;user&quot;,</span>
+<span class="sd">            &quot;bank_password&quot;: &quot;pass&quot;,</span>
+<span class="sd">            &quot;ogrenci_no&quot;:&quot;1234567890&quot;,</span>
+<span class="sd">            &quot;sube_kodu&quot;:&quot;sube&quot;,</span>
+<span class="sd">            &quot;kanal_kodu&quot;:&quot;kanal&quot;,</span>
+<span class="sd">            &quot;mesaj_no&quot;:&quot;mesaj&quot;,</span>
+<span class="sd">            &quot;ucret_turu&quot;:1,</span>
+<span class="sd">            &quot;tahakkuk_referans_no&quot;:&quot;tahakkuk&quot;,</span>
+<span class="sd">            &quot;tahsilat_referans_no&quot;:&quot;tahsilat&quot;,</span>
+<span class="sd">            &quot;odeme_timestamp&quot;:&quot;07122015123456&quot;,</span>
+<span class="sd">            &quot;odeme_tutari&quot;:214.0</span>
+<span class="sd">            }&#39;</span>
+
+
+<span class="sd">    İsteğe dönen cevap:</span>
+
+<span class="sd">    .. code-block:: json</span>
+
+<span class="sd">        $ {&quot;odeme_response&quot;: [{</span>
+<span class="sd">            &quot;tahakkuk_referans_no&quot;: &quot;tahakkuk&quot;,</span>
+<span class="sd">            &quot;odeme_timestamp&quot;: &quot;07122015123456&quot;,</span>
+<span class="sd">            &quot;odeme_tutari&quot;: &quot;214.0&quot;,</span>
+<span class="sd">            &quot;ucret_turu&quot;: 1,</span>
+<span class="sd">            &quot;tahsilat_referans_no&quot;: &quot;tahsilat&quot;,</span>
+<span class="sd">            &quot;bank_password&quot;: &quot;pass&quot;,</span>
+<span class="sd">            &quot;bank_username&quot;: &quot;user&quot;,</span>
+<span class="sd">            &quot;mesaj_no&quot;: &quot;mesaj&quot;,</span>
+<span class="sd">            &quot;sube_kodu&quot;: &quot;sube&quot;,</span>
+<span class="sd">            &quot;hata_mesaj&quot;: null,</span>
+<span class="sd">            &quot;ogrenci_no&quot;: &quot;1234567890&quot;,</span>
+<span class="sd">            &quot;banka_kodu&quot;: &quot;kod&quot;,</span>
+<span class="sd">            &quot;kanal_kodu&quot;: &quot;kanal&quot;,</span>
+<span class="sd">            &quot;mesaj_statusu&quot;: &quot;K&quot;</span>
+<span class="sd">            }</span>
+<span class="sd">        ]}</span>
+
+
+<span class="sd">    Servise XML kullanılarak istek gönderilmesi:</span>
+
+<span class="sd">    .. code-block:: xml</span>
+
+<span class="sd">        $ curl http://localhost:11223/banka-odeme.banka-borc-odeme</span>
+<span class="sd">            -H &quot;SOAPAction:banka-odeme.banka-borc-odeme&quot;</span>
+<span class="sd">            -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>
+<span class="sd">                xmlns:zato=&quot;https://zato.io/ns/20130518&quot;&gt;</span>
+<span class="sd">                    &lt;soapenv:Body&gt;</span>
+<span class="sd">                        &lt;zato:odeme_request&gt;</span>
+<span class="sd">                            &lt;zato:banka_kodu&gt;kod&lt;/zato:banka_kodu&gt;</span>
+<span class="sd">                            &lt;zato:bank_username&gt;user&lt;/zato:bank_username&gt;</span>
+<span class="sd">                            &lt;zato:bank_password&gt;pass&lt;/zato:bank_password&gt;</span>
+<span class="sd">                            &lt;zato:ogrenci_no&gt;1234567890&lt;/zato:ogrenci_no&gt;</span>
+<span class="sd">                            &lt;zato:sube_kodu&gt;sube&lt;/zato:sube_kodu&gt;</span>
+<span class="sd">                            &lt;zato:kanal_kodu&gt;kanal&lt;/zato:kanal_kodu&gt;</span>
+<span class="sd">                            &lt;zato:mesaj_no&gt;mesaj&lt;/zato:mesaj_no&gt;</span>
+<span class="sd">                            &lt;zato:ucret_turu&gt;1&lt;/zato:ucret_turu&gt;</span>
+<span class="sd">                            &lt;zato:tahakkuk_referans_no&gt;tahakkuk&lt;/zato:tahakkuk_referans_no&gt;</span>
+<span class="sd">                            &lt;zato:tahsilat_referans_no&gt;tahsilat&lt;/zato:tahsilat_referans_no&gt;</span>
+<span class="sd">                            &lt;zato:odeme_timestamp&gt;07122015123456&lt;/zato:odeme_timestamp&gt;</span>
+<span class="sd">                            &lt;zato:odeme_tutari&gt;214.0&lt;/zato:odeme_tutari&gt;</span>
+<span class="sd">                        &lt;/zato:odeme_request&gt;</span>
+<span class="sd">                    &lt;/soapenv:Body&gt;</span>
+<span class="sd">                &lt;/soapenv:Envelope&gt;&#39;</span>
+
+
+<span class="sd">    İsteğe dönen cevap:</span>
+
+<span class="sd">    .. code-block:: xml</span>
+
+<span class="sd">        $ &lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="sd">            &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>
+<span class="sd">            xmlns=&quot;https://zato.io/ns/20130518&quot;&gt;</span>
+<span class="sd">            &lt;soap:Body&gt;</span>
+<span class="sd">                &lt;odeme_response&gt;</span>
+<span class="sd">                    &lt;zato_env&gt;</span>
+<span class="sd">                        &lt;cid&gt;K07C4A0D30PHBMBGX18BYAZBZRH7&lt;/cid&gt;</span>
+<span class="sd">                        &lt;result&gt;ZATO_OK&lt;/result&gt;</span>
+<span class="sd">                    &lt;/zato_env&gt;</span>
+<span class="sd">                    &lt;item_list xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;</span>
+<span class="sd">                        &lt;item&gt;</span>
+<span class="sd">                            &lt;mesaj_statusu&gt;K&lt;/mesaj_statusu&gt;</span>
+<span class="sd">                            &lt;hata_mesaj xsi:nil=&quot;true&quot;/&gt;</span>
+<span class="sd">                            &lt;banka_kodu&gt;kod&lt;/banka_kodu&gt;</span>
+<span class="sd">                            &lt;sube_kodu&gt;sube&lt;/sube_kodu&gt;</span>
+<span class="sd">                            &lt;kanal_kodu&gt;kanal&lt;/kanal_kodu&gt;</span>
+<span class="sd">                            &lt;mesaj_no&gt;mesaj&lt;/mesaj_no&gt;</span>
+<span class="sd">                            &lt;bank_username&gt;user&lt;/bank_username&gt;</span>
+<span class="sd">                            &lt;bank_password&gt;pass&lt;/bank_password&gt;</span>
+<span class="sd">                            &lt;ogrenci_no&gt;1234567890&lt;/ogrenci_no&gt;</span>
+<span class="sd">                            &lt;ucret_turu&gt;1&lt;/ucret_turu&gt;</span>
+<span class="sd">                            &lt;tahakkuk_referans_no&gt;tahakkuk&lt;/tahakkuk_referans_no&gt;</span>
+<span class="sd">                            &lt;tahsilat_referans_no&gt;tahsilat&lt;/tahsilat_referans_no&gt;</span>
+<span class="sd">                            &lt;odeme_timestamp&gt;07122015123456&lt;/odeme_timestamp&gt;</span>
+<span class="sd">                            &lt;odeme_tutari&gt;214.0&lt;/odeme_tutari&gt;</span>
+<span class="sd">                        &lt;/item&gt;</span>
+<span class="sd">                    &lt;/item_list&gt;</span>
+<span class="sd">                &lt;/odeme_response&gt;</span>
+<span class="sd">            &lt;/soap:Body&gt;</span>
+<span class="sd">        &lt;/soap:Envelope&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ulakbus.services.common.banka</span> <span class="kn">import</span> <span class="n">BankaService</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.ogrenci</span> <span class="kn">import</span> <span class="n">OgrenciProgram</span><span class="p">,</span> <span class="n">Borc</span><span class="p">,</span> <span class="n">Odeme</span>
+<span class="kn">from</span> <span class="nn">pyoko.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<div class="viewcode-block" id="BankaBorcOdeme"><a class="viewcode-back" href="../../../../ulakbus.services.common.banka_odeme.html#ulakbus.services.common.banka_odeme.BankaBorcOdeme">[docs]</a><span class="k">class</span> <span class="nc">BankaBorcOdeme</span><span class="p">(</span><span class="n">BankaService</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Banka servisinden kalıtılarak gerçekleştirilen Banka Borç Ödeme servisi</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BankaBorcOdeme</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BankaBorcOdeme.SimpleIO"><a class="viewcode-back" href="../../../../ulakbus.services.common.banka_odeme.html#ulakbus.services.common.banka_odeme.BankaBorcOdeme.SimpleIO">[docs]</a>    <span class="k">class</span> <span class="nc">SimpleIO</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Servis girdilerinin ve çıktılarının belirlendiği yapı.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            SimpleIO sınıfında belirlenen özellikler,</span>
+<span class="sd">            doğrudan yer aldığı servisin özellikleri olmaktadır.</span>
+
+<span class="sd">            - odeme_request (str): Servise gelen isteğin (JSON, XML) ismi</span>
+<span class="sd">            - odeme_response (str): Servisten dönen veriyi içeren (payload)</span>
+<span class="sd">              cevabın (JSON, XML) ismi</span>
+<span class="sd">            - mesaj_statusu (str): K (Kabul), R (Ret)</span>
+<span class="sd">            - hata_mesaji (str): Hata mesajı içeriği veya null</span>
+<span class="sd">            - banka_kodu (str): Üniversite tarafından bankaya verilen kod</span>
+<span class="sd">            - bank_username (str): Üniversite tarafından bankaya verilen kullanıcı adı</span>
+<span class="sd">            - bank_password (str): Üniversite tarafından bankaya verilen şifre</span>
+<span class="sd">            - sube_kodu (str): Bankaların şubeleri için hali hazırda kullandıkları kodlar</span>
+<span class="sd">            - kanal_kodu (str): G (Gişe), İ (İnternet), A (ATM), T (AloBanka) vb.</span>
+<span class="sd">            - mesaj_no (str): Banka tarafından üretilen kod.</span>
+<span class="sd">            - ogrenci_no (str): Borçları sorgulanan öğrencinin numarası</span>
+<span class="sd">            - ucret_turu (int): Borcun ne için ödeneceği</span>
+<span class="sd">            - tahakkuk_referans_no (str): Her tahakkuka verilen referans numarası</span>
+<span class="sd">            - tahsilat_referans_no (str): Banka tarafından verilen tahsilata ait referans no</span>
+<span class="sd">            - odeme_timestamp (str): DDMMYYYYHHMMSS formatında ödeme tarihi</span>
+<span class="sd">            - odeme_tutari (float): Banka tarafından tahsil edilen tutar</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">request_elem</span> <span class="o">=</span> <span class="s1">&#39;odeme_request&#39;</span>
+        <span class="n">response_elem</span> <span class="o">=</span> <span class="s1">&#39;odeme_response&#39;</span>
+        <span class="n">input_required</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;banka_kodu&#39;</span><span class="p">,</span> <span class="s1">&#39;sube_kodu&#39;</span><span class="p">,</span> <span class="s1">&#39;kanal_kodu&#39;</span><span class="p">,</span> <span class="s1">&#39;mesaj_no&#39;</span><span class="p">,</span> <span class="s1">&#39;bank_username&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;bank_password&#39;</span><span class="p">,</span> <span class="s1">&#39;ogrenci_no&#39;</span><span class="p">,</span> <span class="s1">&#39;ucret_turu&#39;</span><span class="p">,</span> <span class="s1">&#39;tahakkuk_referans_no&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;tahsilat_referans_no&#39;</span><span class="p">,</span> <span class="s1">&#39;odeme_timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;odeme_tutari&#39;</span><span class="p">)</span>
+        <span class="n">output_required</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;banka_kodu&#39;</span><span class="p">,</span> <span class="s1">&#39;sube_kodu&#39;</span><span class="p">,</span> <span class="s1">&#39;kanal_kodu&#39;</span><span class="p">,</span> <span class="s1">&#39;mesaj_no&#39;</span><span class="p">,</span> <span class="s1">&#39;bank_username&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;bank_password&#39;</span><span class="p">,</span> <span class="s1">&#39;ogrenci_no&#39;</span><span class="p">,</span> <span class="s1">&#39;ucret_turu&#39;</span><span class="p">,</span> <span class="s1">&#39;tahakkuk_referans_no&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;tahsilat_referans_no&#39;</span><span class="p">,</span> <span class="s1">&#39;odeme_timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;odeme_tutari&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;mesaj_statusu&#39;</span><span class="p">,</span> <span class="s1">&#39;hata_mesaj&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BankaBorcOdeme.handle"><a class="viewcode-back" href="../../../../ulakbus.services.common.banka_odeme.html#ulakbus.services.common.banka_odeme.BankaBorcOdeme.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Servis çağrıldığında tetiklenen metod.</span>
+
+<span class="sd">        Yetkilendirme işleminin sonucuna göre servis çalışmaya devam eder.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">BankaBorcOdeme</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BankaBorcOdeme.get_data"><a class="viewcode-back" href="../../../../ulakbus.services.common.banka_odeme.html#ulakbus.services.common.banka_odeme.BankaBorcOdeme.get_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Öğrencinin borç ödeme bilgilerini bankadan gelen bilgilere göre sisteme kaydeder.</span>
+
+<span class="sd">        Öğrenci numarası ve borcuna ait tahakkuk referans numarasına göre,</span>
+<span class="sd">        öğrencinin borcuna erişilir. Bankadan gelen ödeme bilgisine göre bu borca ait</span>
+<span class="sd">        bir ödeme bilgisi oluşturulur.</span>
+
+<span class="sd">        Öğrenci sistemde bulunamadıysa veya beklenmeyen bir hatayla karşılaşıldıysa</span>
+<span class="sd">        cevap olarak hata mesajı döndürülür.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ObjectDoesNotExist: Öğrenci numarası sistemde kayıtlı değildir.</span>
+<span class="sd">            Exception: Öğrencinin borç ödeme bilgisi kaydedilirken hatayla karşılaşılmıştır.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">BankaBorcOdeme</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+
+        <span class="n">inp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">input</span>
+        <span class="n">mesaj_statusu</span> <span class="o">=</span> <span class="s2">&quot;R&quot;</span>
+        <span class="n">hata_mesaj</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ogrenci_no</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">ogrenci_no</span>
+            <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci_no</span><span class="o">=</span><span class="n">ogrenci_no</span><span class="p">)</span><span class="o">.</span><span class="n">ogrenci</span>
+
+            <span class="c1"># her borcun referans numarasi olarak &#39;tahakkuk_referans_no&#39; kullanilir</span>
+            <span class="n">borc</span> <span class="o">=</span> <span class="n">Borc</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="n">ogrenci</span><span class="p">,</span>
+                                       <span class="n">tahakkuk_referans_no</span><span class="o">=</span><span class="n">inp</span><span class="o">.</span><span class="n">tahakkuk_referans_no</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">odeme</span> <span class="o">=</span> <span class="n">Odeme</span><span class="p">()</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">miktar</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">odeme_tutari</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">para_birimi</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># TL</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">aciklama</span> <span class="o">=</span> <span class="n">borc</span><span class="o">.</span><span class="n">aciklama</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">odeme_sekli</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Banka</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">odeme_tarihi</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">odeme_timestamp</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">%m%Y%H%M%S&quot;</span><span class="p">)</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">borc</span> <span class="o">=</span> <span class="n">borc</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">banka</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">banka</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">banka_sube_kodu</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">sube_kodu</span><span class="p">)</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">banka_kanal_kodu</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">kanal_kodu</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">banka_kanal_kodu</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">kanal_kodu</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">tahsilat_referans_no</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">tahsilat_referans_no</span>
+            <span class="n">odeme</span><span class="o">.</span><span class="n">donem</span> <span class="o">=</span> <span class="n">borc</span><span class="o">.</span><span class="n">donem</span>
+
+            <span class="n">odeme</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">mesaj_statusu</span> <span class="o">=</span> <span class="s2">&quot;K&quot;</span>
+            <span class="n">hata_mesaj</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">except</span> <span class="n">ObjectDoesNotExist</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Ogrenci numarasi bulunamadi.&#39;</span><span class="p">)</span>
+            <span class="n">mesaj_statusu</span> <span class="o">=</span> <span class="s2">&quot;R&quot;</span>
+            <span class="n">hata_mesaj</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci numarasi bulunamadi!&quot;</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Odeme kaydedilirken hata olustu.&quot;</span><span class="p">)</span>
+            <span class="n">mesaj_statusu</span> <span class="o">=</span> <span class="s2">&quot;R&quot;</span>
+            <span class="n">hata_mesaj</span> <span class="o">=</span> <span class="s2">&quot;Odeme kaydedilirken hata olustu!&quot;</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">odeme_response</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;banka_kodu&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">banka_kodu</span><span class="p">,</span>
+                <span class="s1">&#39;sube_kodu&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">sube_kodu</span><span class="p">,</span>
+                <span class="s1">&#39;kanal_kodu&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">kanal_kodu</span><span class="p">,</span>
+                <span class="s1">&#39;mesaj_no&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">mesaj_no</span><span class="p">,</span>
+                <span class="s1">&#39;bank_username&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">bank_username</span><span class="p">,</span>
+                <span class="s1">&#39;bank_password&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">bank_password</span><span class="p">,</span>
+                <span class="s1">&#39;mesaj_statusu&#39;</span><span class="p">:</span> <span class="n">mesaj_statusu</span><span class="p">,</span>
+                <span class="s1">&#39;ogrenci_no&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">ogrenci_no</span><span class="p">,</span>
+                <span class="s1">&#39;ucret_turu&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">ucret_turu</span><span class="p">,</span>
+                <span class="s1">&#39;tahakkuk_referans_no&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">tahakkuk_referans_no</span><span class="p">,</span>
+                <span class="s1">&#39;tahsilat_referans_no&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">tahsilat_referans_no</span><span class="p">,</span>
+                <span class="s1">&#39;odeme_timestamp&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">odeme_timestamp</span><span class="p">,</span>
+                <span class="s1">&#39;odeme_tutari&#39;</span><span class="p">:</span> <span class="n">inp</span><span class="o">.</span><span class="n">odeme_tutari</span><span class="p">,</span>
+                <span class="s1">&#39;hata_mesaj&#39;</span><span class="p">:</span> <span class="n">hata_mesaj</span>
+            <span class="p">}</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Odeme bilgisi: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">odeme_response</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">odeme_response</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

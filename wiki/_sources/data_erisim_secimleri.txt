@@ -2,29 +2,12 @@
 Data Erişim Seçimleri
 +++++++++++++++++++++
 
-Sözlük
-
-Bucket
-
-Conflict
-
-Eventually Consistent
-
-Sibling
-
-Application = Uygulama
-
-Nested
-
-Entity
-
-RDBMS
 
 ==============================
 **Neden RDBMS Kullanmıyoruz?**
 ==============================
 
-Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Bu sebeple:
+Bu uygulamada ortaya çıkan entity yapıları, geleneksel rdbms çözümlemeleri ile ele alınamayacak kadar karmaşık yapılardır. Bu artan verinin RDBMS ile dağıtık olarak yönetilebilmesi çok fazla problemle uğraşmak anlamına gelmektedir. Uygulama içinde kullanılacak Object Relational Mapping (ORM) [1]_  işlemleri için Pyoko adında bir kütüphane geliştirilmiştir. Bu sebeple:
 
 ==============================================
 **Neden Eventually Consistent Kullanmıyoruz?**
@@ -68,67 +51,9 @@ Riak Strong Consistency modunda conflictlere izin vermez. Veri tüm nodelarda e�
 
 Log, temporary datalar hariç Strong Consistent bucketlar kullanacağız. Tek kopya üzerinde çalışacağız. Datayı yapabildiğimiz kadar flat hale getirip, solr indexleri için mümkün olduğunca az dynamic field içeren şemalar kullanacağız. Flat haline getirilmiş bucket arasında linkler ile relationlar kuracağız. Versiyonları ayrı bir Write Once Bucket’ta tutacağız. Bunlara bir pk ve date fieldları ekleyip bu iki field ı solr da indexleyeceğiz.
 
-============
-**Caching?**
-============
-
- * Redis nasıl kullanılacak?
- * Okuma nasıl yapılacak?
- * REDIS'ten Riak'a ve tersi akışta verinin bütünlüğü nasıl korunacak?
-
-===========
-**Sorular**
-===========
-
- * Relationlar, Pyoko tarafından kurulacak. Biz her bir bucket içinde, hiç ilgilenmeyeceğimiz riak key karşısına koyduğumuz rowlar -nested json values, as flat as possible- içinde relation keyleri ekleyeceğiz.
-
- * Verinin parçaları farklı bucket ve keylerde saklanacak. Biz hepsini veya bir kısmını ilgilendiren bir yazma/update işlemi yaptığımızda gereken tüm bucketlar dolaşılıp yazma işlemi tamamlanacak. Strong Consistency ile kazandığımız verinin bütünlüğü ve eşsizliği bu modelde tehlikeye girmiş olmuyor mu? Concurrent bağlantılarda henüz bizim zincirimizde sırası gelmemiş bir kayıt başka bir zincir tarafından biz yazmadan önce güncellenmiş ise bunu nasıl anlayacağız ya da bunun önüne nasıl geçeceğiz?
-
- * Pyoko’nun kendi gelişim seyri içerisinde ortaya çıkacak bugünden öngörülemeyen geliştirme ihtiyacı  bir yana, flat bucketlar arasında relational bir yapı kurmacanın öngörülemeyen zorlukları / sorunlarını da göze alıyoruz. Bunun tek sebebi dynamic field kullanmamak mıdır? Öyleyse 1 milyon solr dökümana yol açacak kadar çok kayıt  içinde birçok dynamic field testi yapmaya değmez miydi?
-
- * Aşağıdaki sorgu ve rapor örneklerinin nasıl yapılabileceği hakkında bugünden ne açıklıkla yanıtlar verebiliyoruz?
-
-============
-**Sorgular**
-============
-
- * Bilgisayar Mühendisliği 1. sınıfta Math101 dersinin 2. dönem 2. vizesinden 60 - 80 almış öğrencilerin listesi
-
- * Sosyal Bilimler Enstitüsü’nde 2010 - 2015 yılları arasında kademe cezası almış kadın personellerin listesi. (kademe cezası önceki yıla göre veya kademe farklarına göre bulunabilir.)
-
- * Tıp fakültesinde, en az lise mezunu, kadro derecesi 7’den büyük, askerlik engeli bulunmayan personeller
-
- * Bir öğrencinin seçmek istediği bir derse bağlı olan ön şartlı ders notu
-
- * Bir dersin genel sınavına (final) girmeye hak kazanmış öğrencilerin listesi
-
- * Belirli bir tarihe kadar sisteme not girmesi beklenen hocaların listesi. (Sınavın yapıldığı tarihi takiben max 15 gün, sonraki sınav tarihinden min 7 gün önce gibi sabit birkaç kural söz konusu.)
-
-==============================
-**Create ve Update İşlemleri**
-==============================
-
- - Yeni öğrenci yarat
-
- - Yeni personel yarat
-
- - Öğrenci özlük bilgisi güncelle
-
- - Okul lokasyon bilgisi güncelle
-
-============
-**Raporlar**
-============
-
- - Fakülte, bölüm ve program başına beklenen harç miktarları
-
- - Fakülte, bölüm ve program başına hocalara ödenecek beklenen ek ders ücretleri
-
- - Bir akademik personelin danışmanlığını yaptığı öğrencilerin performansına dair son iki yılda aldığı not ortalaması
-
- - Yıllara göre mezunların başarı ortalaması (Her programın mezuniyet için öğrencilerin tutturması gereken asgari bir program mezuniyet ortalaması değeri vardır. Öğrenciler bu değerin neresindedir?)
-
- - Azami öğretim süresine gelmiş ve mezun olmayacak öğrencilerin listesi
+============================
+**Notlar**
+============================
 
 1: If you are using Riak in an eventually consistent way, conflicts between object values on different nodes is unavoidable. Often, Riak can resolve these conflicts on its own internally if you use causal context, i.e. vector clocks or dotted version vectors, when updating objects.  Instructions on this can be found in the section.
 
@@ -141,3 +66,5 @@ http://docs.basho.com/riak/latest/dev/using/conflict-resolution/ 2.paragraf
 4: https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100
 
 5: https://en.wikipedia.org/wiki/Inverted_index
+
+.. [1] https://en.wikipedia.org/wiki/Object-relational_mapping

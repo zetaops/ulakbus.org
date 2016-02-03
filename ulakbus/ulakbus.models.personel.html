@@ -1,0 +1,1436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.models.personel module &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="index.html"/>
+        <link rel="up" title="ulakbus.models package" href="ulakbus.models.html"/>
+        <link rel="next" title="ulakbus.services package" href="ulakbus.services.html"/>
+        <link rel="prev" title="ulakbus.models.ogrenci module" href="ulakbus.models.ogrenci.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ulakbus.models.html">ulakbus.models package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ulakbus.models.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.auth.html">ulakbus.models.auth module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.buildings_rooms.html">ulakbus.models.buildings_rooms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.hitap.html">ulakbus.models.hitap module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ulakbus.models.ogrenci.html">ulakbus.models.ogrenci module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">ulakbus.models.personel module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="ulakbus.models.html">ulakbus.models package</a> &raquo;</li>
+      
+    <li>ulakbus.models.personel module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ulakbus.models.personel.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ulakbus.models.personel">
+<span id="ulakbus-models-personel-module"></span><h1>ulakbus.models.personel module<a class="headerlink" href="#module-ulakbus.models.personel" title="Permalink to this headline">¶</a></h1>
+<p>Personel Modülü</p>
+<p>Bu modül Ulakbüs uygulaması için personel modelini ve  personel ile ilişkili modelleri içerir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.AdresBilgileri">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">AdresBilgileri</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#AdresBilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Adres Bilgileri Modeli</p>
+<p>Personele ait adres bilgilerini içeren modeldir.</p>
+<p>Personelin birden fazla adresi olabilir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#AdresBilgileri.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'adres_bilgileri'</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Adres Bilgisi'</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Adres Bilgileri'</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.ad">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">ad</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.ad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.adres">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">adres</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.adres" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.deleted">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.il">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">il</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.il" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.ilce">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">ilce</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.ilce" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.objects">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.AdresBilgileri'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.personel">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">personel</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.personel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.AdresBilgileri.timestamp">
+<code class="descclassname">AdresBilgileri.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.AdresBilgileri.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.Atama">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">Atama</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Atama"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Atama" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Atama Modeli</p>
+<p>Personelin atama bilgilerini içeren modeldir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.Atama.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#Atama.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.app">
+<code class="descname">app</code><em class="property"> = 'Personel'</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'atama'</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['personel_tip', 'hizmet_sinif', 'gorev_suresi_baslama', 'ibraz_tarihi', 'durum']</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['personel_tip', 'hizmet_sinif', 'statu']</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Atama'</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Atamalar'</em><a class="headerlink" href="#ulakbus.models.personel.Atama.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.atama_aciklama">
+<code class="descclassname">Atama.</code><code class="descname">atama_aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.atama_aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.deleted">
+<code class="descclassname">Atama.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.durum">
+<code class="descclassname">Atama.</code><code class="descname">durum</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.durum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.gorev_suresi_baslama">
+<code class="descclassname">Atama.</code><code class="descname">gorev_suresi_baslama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.gorev_suresi_baslama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.gorev_suresi_bitis">
+<code class="descclassname">Atama.</code><code class="descname">gorev_suresi_bitis</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.gorev_suresi_bitis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.goreve_baslama_aciklama">
+<code class="descclassname">Atama.</code><code class="descname">goreve_baslama_aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.goreve_baslama_aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.goreve_baslama_tarihi">
+<code class="descclassname">Atama.</code><code class="descname">goreve_baslama_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.goreve_baslama_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.hizmet_sinif">
+<code class="descclassname">Atama.</code><code class="descname">hizmet_sinif</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.hizmet_sinif" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.ibraz_tarihi">
+<code class="descclassname">Atama.</code><code class="descname">ibraz_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.ibraz_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.kadro">
+<code class="descclassname">Atama.</code><code class="descname">kadro</code><em class="property"> = &lt;class 'ulakbus.models.personel.Kadro'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.kadro" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.kadro_derece">
+<code class="descclassname">Atama.</code><code class="descname">kadro_derece</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.kadro_derece" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.kadro_unvan">
+<code class="descclassname">Atama.</code><code class="descname">kadro_unvan</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.kadro_unvan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.kurum_sicil_no">
+<code class="descclassname">Atama.</code><code class="descname">kurum_sicil_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.kurum_sicil_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.mecburi_hizmet_suresi">
+<code class="descclassname">Atama.</code><code class="descname">mecburi_hizmet_suresi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.mecburi_hizmet_suresi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.nereden">
+<code class="descclassname">Atama.</code><code class="descname">nereden</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.nereden" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.objects">
+<code class="descclassname">Atama.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.Atama'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.personel">
+<code class="descclassname">Atama.</code><code class="descname">personel</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.personel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="ulakbus.models.personel.Atama.personel_guncel_atama">
+<em class="property">classmethod </em><code class="descclassname">Atama.</code><code class="descname">personel_guncel_atama</code><span class="sig-paren">(</span><em>personel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Atama.personel_guncel_atama"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Atama.personel_guncel_atama" title="Permalink to this definition">¶</a></dt>
+<dd><p>Personelin goreve_baslama_tarihi ne göre son atama kaydını döndürür.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Atama örneği (instance)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.personel_tip">
+<code class="descclassname">Atama.</code><code class="descname">personel_tip</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.personel_tip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.statu">
+<code class="descclassname">Atama.</code><code class="descname">statu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.statu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Atama.timestamp">
+<code class="descclassname">Atama.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Atama.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.Izin">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">Izin</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Izin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Izin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>İzin Modeli</p>
+<p>Personelin ücretli izin bilgilerini içeren modeldir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.Izin.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#Izin.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.app">
+<code class="descname">app</code><em class="property"> = 'Personel'</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'izin'</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['tip', 'baslangic', 'bitis', 'onay', 'telefon']</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['tip', 'baslangic', 'onay']</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = '\xc4\xb0zin'</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = '\xc4\xb0zinler'</em><a class="headerlink" href="#ulakbus.models.personel.Izin.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.adres">
+<code class="descclassname">Izin.</code><code class="descname">adres</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.adres" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.baslangic">
+<code class="descclassname">Izin.</code><code class="descname">baslangic</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.baslangic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.bitis">
+<code class="descclassname">Izin.</code><code class="descname">bitis</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.bitis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.deleted">
+<code class="descclassname">Izin.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.objects">
+<code class="descclassname">Izin.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.Izin'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.onay">
+<code class="descclassname">Izin.</code><code class="descname">onay</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.onay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.personel">
+<code class="descclassname">Izin.</code><code class="descname">personel</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.personel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.telefon">
+<code class="descclassname">Izin.</code><code class="descname">telefon</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.telefon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.timestamp">
+<code class="descclassname">Izin.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.tip">
+<code class="descclassname">Izin.</code><code class="descname">tip</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.tip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Izin.vekil">
+<code class="descclassname">Izin.</code><code class="descname">vekil</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Izin.vekil" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.Kadro">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">Kadro</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Kadro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Kadro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Kadro Modeli</p>
+<p>Kurum için ayrılmış Kadro bilgilerine modeldir.</p>
+<p>Kadrolar 4 halde bulunabilirler: SAKLI, IZINLI, DOLU ve BOŞ</p>
+<blockquote>
+<div><ul class="simple">
+<li>SAKLI: Saklı kadro, atama yapılmaya müsadesi olmayan, etkinlik onayı alınmamış
+fakat kurum için ayrılmış potansiyel kadroyu tanımlar.</li>
+<li>IZINLI: Henüz atama yapılmamış, fakat etkinlik onayı alınmış kadroyu tanımlar.</li>
+<li>DOLU: Bir personel tarafından işgal edilmiş bir kadroyu tanımlar. Ataması yapılmıştır.</li>
+<li>BOŞ: Çeşitli sebepler ile DOLU iken boşaltılmış kadroyu tanınmlar.</li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">unvan</span></code> ve <code class="docutils literal"><span class="pre">unvan_kod</span></code> karşıt alanlardır. Birisi varken diğeri mevcut olamaz.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.Kadro.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#Kadro.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.app">
+<code class="descname">app</code><em class="property"> = 'Personel'</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'kadro'</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['durum', 'unvan', 'aciklama']</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = ['durum']</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['unvan', 'derece']</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Kadro'</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Kadrolar'</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.aciklama">
+<code class="descclassname">Kadro.</code><code class="descname">aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.birim">
+<code class="descclassname">Kadro.</code><code class="descname">birim</code><em class="property"> = &lt;class 'ulakbus.models.auth.Unit'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.birim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.deleted">
+<code class="descclassname">Kadro.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.derece">
+<code class="descclassname">Kadro.</code><code class="descname">derece</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.derece" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.durum">
+<code class="descclassname">Kadro.</code><code class="descname">durum</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.durum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.kadro_no">
+<code class="descclassname">Kadro.</code><code class="descname">kadro_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.kadro_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.objects">
+<code class="descclassname">Kadro.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.Kadro'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.timestamp">
+<code class="descclassname">Kadro.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.unvan">
+<code class="descclassname">Kadro.</code><code class="descname">unvan</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.unvan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Kadro.unvan_kod">
+<code class="descclassname">Kadro.</code><code class="descname">unvan_kod</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Kadro.unvan_kod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">KurumDisiGorevlendirmeBilgileri</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#KurumDisiGorevlendirmeBilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Kurum Dışı Görevlendirme Bilgileri Modeli</p>
+<p>Personelin bağlı olduğu kurumun dışındaki görev bilgilerine ait modeldir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#KurumDisiGorevlendirmeBilgileri.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'kurum_disi_gorevlendirme_bilgileri'</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.form_grouping">
+<code class="descname">form_grouping</code><em class="property"> = [{'layout': '4', 'groups': [{'items': ['gorev_tipi', 'kurum_disi_gorev_baslama_tarihi', 'kurum_disi_gorev_bitis_tarihi', 'ulke', 'aciklama'], 'group_title': 'Gorev', 'collapse': False}]}, {'layout': '2', 'groups': [{'items': ['resmi_yazi_sayi', 'resmi_yazi_tarih'], 'group_title': 'Resmi Yazi', 'collapse': False}, {'items': ['maas', 'yevmiye', 'yolluk'], 'collapse': False}]}]</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.form_grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['ulke', 'gorev_tipi', 'kurum_disi_gorev_baslama_tarihi']</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = ['ulke', 'gorev_tipi', 'kurum_disi_gorev_baslama_tarihi']</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['aciklama']</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Kurum D\xc4\xb1\xc5\x9f\xc4\xb1 G\xc3\xb6revlendirme'</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Kurum D\xc4\xb1\xc5\x9f\xc4\xb1 G\xc3\xb6revlendirmeler'</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.aciklama">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Text'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.deleted">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.gorev_tipi">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">gorev_tipi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.gorev_tipi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.kurum_disi_gorev_baslama_tarihi">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">kurum_disi_gorev_baslama_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.kurum_disi_gorev_baslama_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.kurum_disi_gorev_bitis_tarihi">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">kurum_disi_gorev_bitis_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.kurum_disi_gorev_bitis_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.maas">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">maas</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.maas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.objects">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.personel">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">personel</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.personel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.resmi_yazi_sayi">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">resmi_yazi_sayi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.resmi_yazi_sayi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.resmi_yazi_tarih">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">resmi_yazi_tarih</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.resmi_yazi_tarih" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.timestamp">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.ulke">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">ulke</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.ulke" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.yevmiye">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">yevmiye</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.yevmiye" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.yolluk">
+<code class="descclassname">KurumDisiGorevlendirmeBilgileri.</code><code class="descname">yolluk</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumDisiGorevlendirmeBilgileri.yolluk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">KurumIciGorevlendirmeBilgileri</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#KurumIciGorevlendirmeBilgileri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Kurum İçi Görevlendirme Bilgileri Modeli</p>
+<p>Personelin, kurum içi görevlendirme bilgilerine ait modeldir.</p>
+<p>Görevlendirme bir birim ile ilişkili olmalıdır.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#KurumIciGorevlendirmeBilgileri.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">form_grouping</span></code> kullanıcı arayüzeyinde formun temel yerleşim planını belirler.</p>
+<p>Layout grid (toplam 12 sütun) içerisindeki değerdir.</p>
+<p>Her bir <code class="docutils literal"><span class="pre">layout</span></code> içinde birden fazla form grubu yer alabilir: <code class="docutils literal"><span class="pre">groups</span></code></p>
+<p>Her bir grup, grup başlığı <code class="docutils literal"><span class="pre">group_title</span></code>, form öğeleri <code class="docutils literal"><span class="pre">items</span></code> ve bu grubun
+açılır kapanır olup olmadığını belirten boolen bir değerden <code class="docutils literal"><span class="pre">collapse</span></code> oluşur.</p>
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.app">
+<code class="descname">app</code><em class="property"> = 'main'</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'kurum_ici_gorevlendirme_bilgileri'</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.form_grouping">
+<code class="descname">form_grouping</code><em class="property"> = [{'layout': '4', 'groups': [{'items': ['gorev_tipi', 'kurum_ici_gorev_baslama_tarihi', 'kurum_ici_gorev_bitis_tarihi', 'birim', 'aciklama'], 'group_title': 'Gorev', 'collapse': False}]}, {'layout': '2', 'groups': [{'items': ['resmi_yazi_sayi', 'resmi_yazi_tarih'], 'group_title': 'Resmi Yazi', 'collapse': False}]}]</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.form_grouping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Kurum \xc4\xb0\xc3\xa7i G\xc3\xb6revlendirme'</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Kurum \xc4\xb0\xc3\xa7i G\xc3\xb6revlendirmeler'</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.aciklama">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.birim">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">birim</code><em class="property"> = &lt;class 'ulakbus.models.auth.Unit'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.birim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.deleted">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.gorev_tipi">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">gorev_tipi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.gorev_tipi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.kurum_ici_gorev_baslama_tarihi">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">kurum_ici_gorev_baslama_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.kurum_ici_gorev_baslama_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.kurum_ici_gorev_bitis_tarihi">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">kurum_ici_gorev_bitis_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.kurum_ici_gorev_bitis_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.objects">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.KurumIciGorevlendirmeBilgileri'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.personel">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">personel</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.personel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.resmi_yazi_sayi">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">resmi_yazi_sayi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.resmi_yazi_sayi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.resmi_yazi_tarih">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">resmi_yazi_tarih</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.resmi_yazi_tarih" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.timestamp">
+<code class="descclassname">KurumIciGorevlendirmeBilgileri.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.KurumIciGorevlendirmeBilgileri.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.Personel">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">Personel</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Personel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Personel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Personel Modeli</p>
+<p>Personelin özlük ve iletişim bilgilerini içerir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.Personel.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#Personel.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.app">
+<code class="descname">app</code><em class="property"> = 'Personel'</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'personel'</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['ad', 'soyad', 'tckn', 'durum']</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['ad', 'soyad', 'cep_telefonu', 'tckn']</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Personel'</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Personeller'</em><a class="headerlink" href="#ulakbus.models.personel.Personel.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.ad">
+<code class="descclassname">Personel.</code><code class="descname">ad</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.ad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.adres_2">
+<code class="descclassname">Personel.</code><code class="descname">adres_2</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.adres_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.adres_2_posta_kodu">
+<code class="descclassname">Personel.</code><code class="descname">adres_2_posta_kodu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.adres_2_posta_kodu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.ana_adi">
+<code class="descclassname">Personel.</code><code class="descname">ana_adi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.ana_adi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.baba_adi">
+<code class="descclassname">Personel.</code><code class="descname">baba_adi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.baba_adi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.birim">
+<code class="descclassname">Personel.</code><code class="descname">birim</code><em class="property"> = &lt;class 'ulakbus.models.auth.Unit'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.birim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.biyografi">
+<code class="descclassname">Personel.</code><code class="descname">biyografi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Text'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.biyografi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.cep_telefonu">
+<code class="descclassname">Personel.</code><code class="descname">cep_telefonu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.cep_telefonu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.cinsiyet">
+<code class="descclassname">Personel.</code><code class="descname">cinsiyet</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.cinsiyet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.cuzdan_seri">
+<code class="descclassname">Personel.</code><code class="descname">cuzdan_seri</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.cuzdan_seri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.cuzdan_seri_no">
+<code class="descclassname">Personel.</code><code class="descname">cuzdan_seri_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.cuzdan_seri_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.deleted">
+<code class="descclassname">Personel.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.dogum_tarihi">
+<code class="descclassname">Personel.</code><code class="descname">dogum_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.dogum_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.dogum_yeri">
+<code class="descclassname">Personel.</code><code class="descname">dogum_yeri</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.dogum_yeri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.models.personel.Personel.durum">
+<code class="descclassname">Personel.</code><code class="descname">durum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Personel.durum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Personel.durum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.e_posta">
+<code class="descclassname">Personel.</code><code class="descname">e_posta</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.e_posta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.e_posta_2">
+<code class="descclassname">Personel.</code><code class="descname">e_posta_2</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.e_posta_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.e_posta_3">
+<code class="descclassname">Personel.</code><code class="descname">e_posta_3</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.e_posta_3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.ehliyet">
+<code class="descclassname">Personel.</code><code class="descname">ehliyet</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.ehliyet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.engel_derecesi">
+<code class="descclassname">Personel.</code><code class="descname">engel_derecesi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.engel_derecesi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.engel_grubu">
+<code class="descclassname">Personel.</code><code class="descname">engel_grubu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.engel_grubu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.engel_orani">
+<code class="descclassname">Personel.</code><code class="descname">engel_orani</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.engel_orani" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.engelli_durumu">
+<code class="descclassname">Personel.</code><code class="descname">engelli_durumu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.engelli_durumu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.hizmet_sinifi">
+<code class="descclassname">Personel.</code><code class="descname">hizmet_sinifi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.hizmet_sinifi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.ikamet_adresi">
+<code class="descclassname">Personel.</code><code class="descname">ikamet_adresi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.ikamet_adresi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.ikamet_il">
+<code class="descclassname">Personel.</code><code class="descname">ikamet_il</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.ikamet_il" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.ikamet_ilce">
+<code class="descclassname">Personel.</code><code class="descname">ikamet_ilce</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.ikamet_ilce" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ulakbus.models.personel.Personel.kadro">
+<code class="descclassname">Personel.</code><code class="descname">kadro</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#Personel.kadro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.Personel.kadro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kadro</p>
+<p>Personelin atama bilgilerinden kadrosuna erişir.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Kadro örneği (instance)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kan_grubu">
+<code class="descclassname">Personel.</code><code class="descname">kan_grubu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kan_grubu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kayitli_oldugu_aile_sira_no">
+<code class="descclassname">Personel.</code><code class="descname">kayitli_oldugu_aile_sira_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kayitli_oldugu_aile_sira_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kayitli_oldugu_cilt_no">
+<code class="descclassname">Personel.</code><code class="descname">kayitli_oldugu_cilt_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kayitli_oldugu_cilt_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kayitli_oldugu_il">
+<code class="descclassname">Personel.</code><code class="descname">kayitli_oldugu_il</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kayitli_oldugu_il" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kayitli_oldugu_ilce">
+<code class="descclassname">Personel.</code><code class="descname">kayitli_oldugu_ilce</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kayitli_oldugu_ilce" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kayitli_oldugu_mahalle_koy">
+<code class="descclassname">Personel.</code><code class="descname">kayitli_oldugu_mahalle_koy</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kayitli_oldugu_mahalle_koy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kayitli_oldugu_sira_no">
+<code class="descclassname">Personel.</code><code class="descname">kayitli_oldugu_sira_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kayitli_oldugu_sira_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kimlik_cuzdani_kayit_no">
+<code class="descclassname">Personel.</code><code class="descname">kimlik_cuzdani_kayit_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kimlik_cuzdani_kayit_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kimlik_cuzdani_verildigi_yer">
+<code class="descclassname">Personel.</code><code class="descname">kimlik_cuzdani_verildigi_yer</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kimlik_cuzdani_verildigi_yer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kimlik_cuzdani_verilis_nedeni">
+<code class="descclassname">Personel.</code><code class="descname">kimlik_cuzdani_verilis_nedeni</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kimlik_cuzdani_verilis_nedeni" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.kimlik_cuzdani_verilis_tarihi">
+<code class="descclassname">Personel.</code><code class="descname">kimlik_cuzdani_verilis_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.kimlik_cuzdani_verilis_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.medeni_hali">
+<code class="descclassname">Personel.</code><code class="descname">medeni_hali</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.medeni_hali" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.notlar">
+<code class="descclassname">Personel.</code><code class="descname">notlar</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Text'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.notlar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.objects">
+<code class="descclassname">Personel.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.oda_no">
+<code class="descclassname">Personel.</code><code class="descname">oda_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.oda_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.oda_tel_no">
+<code class="descclassname">Personel.</code><code class="descname">oda_tel_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.oda_tel_no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.personel_turu">
+<code class="descclassname">Personel.</code><code class="descname">personel_turu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.personel_turu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.projeler">
+<code class="descclassname">Personel.</code><code class="descname">projeler</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.projeler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.soyad">
+<code class="descclassname">Personel.</code><code class="descname">soyad</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.soyad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.tckn">
+<code class="descclassname">Personel.</code><code class="descname">tckn</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.tckn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.timestamp">
+<code class="descclassname">Personel.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.unvan">
+<code class="descclassname">Personel.</code><code class="descname">unvan</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.unvan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.user">
+<code class="descclassname">Personel.</code><code class="descname">user</code><em class="property"> = &lt;class 'ulakbus.models.auth.User'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.uyruk">
+<code class="descclassname">Personel.</code><code class="descname">uyruk</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.uyruk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.verdigi_dersler">
+<code class="descclassname">Personel.</code><code class="descname">verdigi_dersler</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.verdigi_dersler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.web_sitesi">
+<code class="descclassname">Personel.</code><code class="descname">web_sitesi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.web_sitesi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.Personel.yayinlar">
+<code class="descclassname">Personel.</code><code class="descname">yayinlar</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.Personel.yayinlar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ulakbus.models.personel.UcretsizIzin">
+<em class="property">class </em><code class="descclassname">ulakbus.models.personel.</code><code class="descname">UcretsizIzin</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/personel.html#UcretsizIzin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Ücretsiz izin Modeli</p>
+<p>Personelin ücretsiz izin bilgilerini içeren modeldir.</p>
+<dl class="class">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/personel.html#UcretsizIzin.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.app">
+<code class="descname">app</code><em class="property"> = 'Personel'</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'ucretsiz_izin'</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['tip', 'baslangic_tarihi', 'bitis_tarihi', 'donus_tarihi']</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['tip', 'onay_tarihi']</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = '\xc3\x9ccretsiz \xc4\xb0zin'</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = '\xc3\x9ccretsiz \xc4\xb0zinler'</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.baslangic_tarihi">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">baslangic_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.baslangic_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.bitis_tarihi">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">bitis_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.bitis_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.deleted">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.donus_tarihi">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">donus_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.donus_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.donus_tip">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">donus_tip</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.donus_tip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.objects">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.personel.UcretsizIzin'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.onay_tarihi">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">onay_tarihi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Date'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.onay_tarihi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.personel">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">personel</code><em class="property"> = &lt;class 'ulakbus.models.personel.Personel'&gt;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.personel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.timestamp">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.personel.UcretsizIzin.tip">
+<code class="descclassname">UcretsizIzin.</code><code class="descname">tip</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.personel.UcretsizIzin.tip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ulakbus.services.html" class="btn btn-neutral float-right" title="ulakbus.services package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ulakbus.models.ogrenci.html" class="btn btn-neutral" title="ulakbus.models.ogrenci module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

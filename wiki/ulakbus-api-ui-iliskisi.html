@@ -1,0 +1,776 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>ULAKBUS</title>
+
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
+    <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="/img/favicon.ico">
+
+    <title>Ulakbüs</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
+
+            // If href missing, ignore
+            if (!href) return;
+
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
+
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
+
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
+
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
+
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
+
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+
+
+    <div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ULAKBUS UI&#8211;API İlişkisi</a><ul>
+<li><a class="reference internal" href="#id1">ULAKBUS UI&#8211;API İlişkisi</a><ul>
+<li><a class="reference internal" href="#ui-nasil-baslar">UI Nasıl Başlar?</a></li>
+<li><a class="reference internal" href="#veri-ui-iliskisi">Veri - UI ilişkisi</a></li>
+<li><a class="reference internal" href="#genel">Genel</a><ul>
+<li><a class="reference internal" href="#client-cmd">client_cmd</a></li>
+<li><a class="reference internal" href="#reload-cmd">reload_cmd</a></li>
+<li><a class="reference internal" href="#token">token</a></li>
+<li><a class="reference internal" href="#meta">meta</a></li>
+<li><a class="reference internal" href="#debug-queries">_debug_queries</a></li>
+<li><a class="reference internal" href="#is-login">is_login</a><ul>
+<li><a class="reference internal" href="#ulakbus-ui-sayfa-tipleri">Ulakbüs UI Sayfa Tipleri</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#form-sayfasi">Form sayfası</a><ul>
+<li><a class="reference internal" href="#form">form</a></li>
+<li><a class="reference internal" href="#schema">schema</a></li>
+<li><a class="reference internal" href="#model">model</a></li>
+<li><a class="reference internal" href="#grouping">grouping</a></li>
+<li><a class="reference internal" href="#constraints">constraints</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#liste-sayfasi">Liste sayfası</a></li>
+<li><a class="reference internal" href="#detay-sayfasi">Detay sayfası</a></li>
+<li><a class="reference internal" href="#ui-menu-ve-diger-ogeler">UI Menu ve Diğer Öğeler</a></li>
+<li><a class="reference internal" href="#gelistirmeye-baslamak">Geliştirmeye Başlamak</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
+                        title="önceki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="yazilim_gelistirme_ve_test_dongusu.html"
+                        title="sonraki bölüm">Yazılım Geliştirme ve Test Döngüsü</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ulakbus-api-ui-iliskisi.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ulakbus-ui-api-iliskisi">
+<h1>ULAKBUS UI&#8211;API İlişkisi<a class="headerlink" href="#ulakbus-ui-api-iliskisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="id1">
+<h2>ULAKBUS UI&#8211;API İlişkisi<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="line-block">
+<div class="line">Bu belge <strong>Ulakbus UI ve API</strong> bileşenlerinin etkileşimini göstermek için hazırlanmıştır.</div>
+<div class="line">API kullanılarak hazırlanan view, model ve jenerik fonksiyonlarda hangi tip verinin kullanıcı arayüzünde nasıl gösterildiğini bu belgede bulabilirsiniz.</div>
+</div>
+<div class="section" id="ui-nasil-baslar">
+<h3>UI Nasıl Başlar?<a class="headerlink" href="#ui-nasil-baslar" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Ulakbus kullanıcı arayüzü tek sayfalı bir tarayıcı uygulamasıdır.</div>
+<div class="line">Sayfadaki data dinamik olarak <cite>Ulakbus API</cite> tarafından sağlanır ve arayüzde işlenir.</div>
+<div class="line">Veri sunucu tarafında render edilmez, yani bir html dosyasına işlenerek gönderilmez.</div>
+<div class="line"><br /></div>
+<div class="line">Bu iş için <a class="reference external" href="https://angularjs.org">angularjs</a> tercih edilmiştir.</div>
+<div class="line"><br /></div>
+<div class="line">UI sunucudan istendiğinde bağımlı olduğu statik dosyalar edinildikten sonra <code class="docutils literal"><span class="pre">app.js</span></code> dosyasının yorumlanmasıyla başlar. Bu dosyada <code class="docutils literal"><span class="pre">ulakbus</span></code> modülü başlatılır.</div>
+<div class="line">AngularJS <a class="reference external" href="https://docs.angularjs.org/guide/di">DI</a> (dependency injection) modeline göre bağımlılıklar işlenir.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal"><span class="pre">app_routes.js</span></code> dosyasında uygulamanın sayfaları ve kullanacakları controller&#8217;lar ve template&#8217;leri düzenlenmiştir.</div>
+<div class="line">Bu dosyaya göre istenen sayfa ilgili template ve controller ile yorumlanır.</div>
+<div class="line"><br /></div>
+<div class="line">CRUD işlemleri <code class="docutils literal"><span class="pre">crud_controller.js</span></code> dosyasında tanımlanan CRUDListFormCtrl isimli controller ve <code class="docutils literal"><span class="pre">form_service.js</span></code> dosyasında tanımlanan form_service isimli servisle gerçekleştirilir.</div>
+<div class="line"><br /></div>
+<div class="line">Kullanıcı arayüzü başlatıldığında ilk olarak API&#8217;dan menu sorgusu çekilir.</div>
+<div class="line">Bunun nedeni giriş yapan kullanıcı bilgilerinin de bu sorguda dönmesidir.</div>
+<div class="line">Eğer http-401 hata kodu dönerse kullanıcı girişi yapılmamış anlamına gelir ve UI login sayfasına yönlendirir.</div>
+</div>
+</div>
+<div class="section" id="veri-ui-iliskisi">
+<h3>Veri - UI ilişkisi<a class="headerlink" href="#veri-ui-iliskisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Kullanıcı arayüzü veriyi API&#8217;a yaptığı rest sorgular üzerinden alır ve gönderir. Veriyle doğrudan ilişkisi yoktur.</div>
+<div class="line">Bir kullanıcı giriş yaptığında onun erişebileceği veriler Ulakbus API&#8217;da düzenlenip kullanıcı arayüzüne sunulur.</div>
+</div>
+</div>
+<div class="section" id="genel">
+<h3>Genel<a class="headerlink" href="#genel" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Ulakbus kullanıcı arayüzü yapacağı işlemlerle ilgili komutları API&#8217;dan alacak şekilde kurgulanmıştır.</div>
+<div class="line">Kullanıcı arayüzü Ulakbus API tarafından kullanılan bir araç olarak düşünülebilir.</div>
+<div class="line">API o anda kullanıcının neler yapabileceğini, sayfa öğelerini, sayfa öğelerinin konumlandırılmalarını belirleyici veriyi arayüze sağlar ve arayüz bu veriye göre yorumlanır.</div>
+<div class="line">Kullanıcı arayüzü dummy bir uygulama olarak tasarlanmıştır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.</div>
+<div class="line"><br /></div>
+<div class="line">Ulakbus uygulaması iş akışı tabanlı bir uygulamadır. BPMN 2.0 standartlarını kullanır.</div>
+<div class="line">İş akış şemaları yani <em>workflow</em> lar bpmn formatında backend API&#8217;da oluşturulur.</div>
+<div class="line">Bu iş akış şemaları kendilerine ait model ve view metotlarını kullanarak tanımlanan işi belirlenen adımlarla gerçekleştirirler.</div>
+<div class="line"><br /></div>
+<div class="line">İş akışının arayüzde akışa uygun şekilde gerçekleştirilmesi için kullanılacak anahtar-değerler ( <em>key-value</em> ) API</div>
+<div class="line">tarafından <code class="docutils literal"><span class="pre">response</span></code> nesnesinde arayüze gönderilir ve arayüz tarafından yorumlanır.</div>
+<div class="line"><br /></div>
+<div class="line">API&#8217;ın <code class="docutils literal"><span class="pre">Response</span></code> nesnesinde sayfaların yorumladığı datanın (<code class="docutils literal"><span class="pre">forms</span></code>, <code class="docutils literal"><span class="pre">objects</span></code>, <code class="docutils literal"><span class="pre">object</span></code>) dışında kullanıcı arayüzünü şekillendiren, işlev ekleyen bazı anahtarlar bulunmaktadır.</div>
+<div class="line">Bunlar aşağıdaki örnekte sıralanmıştır;</div>
+</div>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;client_cmd&quot;</span><span class="p">:[</span><span class="s2">&quot;form&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;reload_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;zxcv4321&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;allow_search&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;allow_selection&quot;</span><span class="p">:</span><span class="n">false</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;_debug_queries&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">:</span><span class="mf">1453289218.893847</span><span class="p">,</span>
+            <span class="s2">&quot;BUCKET&quot;</span><span class="p">:</span><span class="s2">&quot;models_user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;KEY&quot;</span><span class="p">:</span><span class="s2">&quot;7890yuhjk&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TIME&quot;</span><span class="p">:</span><span class="mf">0.00275</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="client-cmd">
+<h4>client_cmd<a class="headerlink" href="#client-cmd" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">client_cmd</span></code> anahtarı arayüzün yapması istenen komutu taşır. Bu komutlar şunları kapsar; <strong>list</strong>, <strong>form</strong>, <strong>show</strong>, <strong>reload</strong>, <strong>reset</strong>.</div>
+</div>
+<ul class="simple">
+<li><strong>form</strong> gönderilen datanın <cite>forms</cite> nesnesi taşıdığı ve kullanıcı arayüzünün bunu form olarak yorumlaması gerektiği durumlarda kullanılır.</li>
+<li><strong>list</strong> sayfada listelenmesi istenen bir data olduğunda kullanılır. Bu data <em>table</em> olarak listelenir.</li>
+<li><strong>show</strong> komutu sayfada detay bilgileriyle gösterilmek istenen bır data olduğunda kullanılır.</li>
+<li><strong>reload</strong> komutu sayfada gösterilen datada bir değişiklik olduğu ve datanın API&#8217;dan yeniden istenmesi gerektiği durumlarda kullanılır.</li>
+<li><strong>reset</strong> komutu datanın ek parametreler olmadan yeniden çekilmesi için kullanılır.</li>
+</ul>
+<div class="line-block">
+<div class="line">Bu komutlar oluşturulan workflow&#8217;ların ilgili adımlarında kullanılarak arayüzün istenen şekilde davranması için gereklidir.</div>
+</div>
+<blockquote>
+<div><strong>form</strong>, <strong>list</strong> ve <strong>show</strong> komutları birer liste öğesi olarak bir arada gönderilebilir.</div></blockquote>
+</div>
+<div class="section" id="reload-cmd">
+<h4>reload_cmd<a class="headerlink" href="#reload-cmd" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">reload_cmd</span></code> anahtarı <code class="docutils literal"><span class="pre">&quot;client_cmd&quot;:</span> <span class="pre">&quot;reload&quot;</span></code> olması durumunda arayüzün backend API&#8217;dan isteyeceği komutu taşır.</div>
+<div class="line">UI post datası içinde <code class="docutils literal"><span class="pre">cmd</span></code> anahtarında bu değeri gönderir.</div>
+</div>
+</div>
+<div class="section" id="token">
+<h4>token<a class="headerlink" href="#token" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">token</span></code> anahtarında iş akış şemasının ( <em>workflow</em> ) redis&#8217;te tutulan token değeri vardır.</div>
+<div class="line">İş akışı tamamlanmadığı sürece bu token <cite>request</cite> nesnesinde API&#8217;a gönderilir.</div>
+</div>
+</div>
+<div class="section" id="meta">
+<h4>meta<a class="headerlink" href="#meta" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">meta</span></code> anahtarında arayüzde istenen yapılandırmalar yer alır. Boolean değer taşırlar. Bunlar şunlardır;</div>
+</div>
+<ul class="simple">
+<li><strong>allow_search</strong> Listeleme ekranında arama kutusunun gösterilmesi için kullanılır.</li>
+<li><strong>allow_selection</strong> Listeleme ekranında tablonun solunda selectBox yer alması için kullanılır.</li>
+<li><strong>allow_sort</strong> Listeleme ekranındaki sıralama özelliği için kullanılır.</li>
+<li><strong>allow_filter</strong> Listelenen datanın filtrelemesi için kullanılır.</li>
+<li><strong>allow_actions</strong> ListNode tipinde listelenen data için en sağdaki işlemler kolonunun gösterilmesi için kullanılır.</li>
+</ul>
+</div>
+<div class="section" id="debug-queries">
+<h4>_debug_queries<a class="headerlink" href="#debug-queries" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">_debug_queries</span></code> anahtarı geliştiriciler için yardımcı bir anahtardır.</div>
+<div class="line">Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır.</div>
+<div class="line">Aktif olması için API ortamında çevre değişkeni DEBUG=1 olarak set edilmelidir.</div>
+</div>
+</div>
+<div class="section" id="is-login">
+<h4>is_login<a class="headerlink" href="#is-login" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">is_login</span></code> anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır.</div>
+<div class="line">Bu anahtar <em>false</em> değer taşıdığında arayüz login sayfasına yönlendirir.</div>
+</div>
+<div class="section" id="ulakbus-ui-sayfa-tipleri">
+<h5>Ulakbüs UI Sayfa Tipleri<a class="headerlink" href="#ulakbus-ui-sayfa-tipleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
+<div class="line-block">
+<div class="line">Ulakbüs kullanıcı arayüzünde sunulan temel içerik türleri şunlardır;</div>
+</div>
+<ul class="simple">
+<li>Form sayfası - <cite>Ekleme ve düzenleme işlemleri</cite></li>
+<li>Liste sayfası - <cite>Listeleme, arama, filtreleme ve silme işlemleri</cite></li>
+<li>Detay sayfası - <cite>Tek nesne detay ve rapor ekranları</cite></li>
+</ul>
+<div class="line-block">
+<div class="line">Bu içerik türleri API&#8217;ın iş akışlarında sunduğu temel içerik türleridir.</div>
+<div class="line">Bu içerik türlerinin kullanıcı arayüzünde doğru biçimde yorumlanması için <code class="docutils literal"><span class="pre">response</span></code> nesnesinde gönderilecek anahtar değerler belirlenmiştir.</div>
+<div class="line">Bu anahtarlar aşağıdaki tablodaki gibidir;</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">İçerik türü</th>
+<th class="head">Anahtar</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Form</td>
+<td><code class="docutils literal"><span class="pre">forms</span></code></td>
+</tr>
+<tr class="row-odd"><td>Liste</td>
+<td><code class="docutils literal"><span class="pre">objects</span></code></td>
+</tr>
+<tr class="row-even"><td>Detay</td>
+<td><code class="docutils literal"><span class="pre">object</span></code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div>Bu sayfa tipleri <code class="docutils literal"><span class="pre">response</span></code> nesnesinde aynı anda yer alırlarsa
+yukarıdan aşağıya doğru detay &gt; form &gt; liste olacak şekilde aynı
+sayfada yorumlanırlar.</div></blockquote>
+<p>Her sayfaya ait alt özellikler ilgili başlık altında anlatılacaktır.</p>
+</div>
+</div>
+</div>
+<div class="section" id="form-sayfasi">
+<h3>Form sayfası<a class="headerlink" href="#form-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Ulakbus UI form işlemlerini gerçekleştirmek için <a class="reference external" href="https://github.com/Textalk/angular-schema-form">angular-schema-form</a> extend edilmiştir.</div>
+<div class="line">Kullanılan form nesneleri angular-schema-form&#8217;un beklediği formatta olmalı ya da değilse extend edilerek <cite>custom type</cite> yaratılmalıdır.</div>
+</div>
+<p>Örnek bir <code class="docutils literal"><span class="pre">forms</span></code> nesnesi aşağıdaki gibidir:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;forms&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;constraints&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:{</span> <span class="s2">&quot;ad&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span> <span class="s2">&quot;soyad&quot;</span><span class="p">:</span><span class="n">null</span> <span class="p">},</span>
+        <span class="s2">&quot;grouping&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;form&quot;</span><span class="p">:[</span>
+            <span class="p">{</span> <span class="s2">&quot;helpvalue&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;help&quot;</span> <span class="p">},</span>
+            <span class="s2">&quot;ad&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;soyad&quot;</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;titleMap&quot;</span><span class="p">:[</span>
+                    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Bay&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Bayan&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="mi">2</span> <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;cinsiyet&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Cinsiyet&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;e_posta&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dogum_tarihi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;save_edit&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nufus_kayitlari_id&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;schema&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:[</span> <span class="s2">&quot;ad&quot;</span><span class="p">,</span> <span class="s2">&quot;soyad&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;ad&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Adı&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;soyad&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Soyadı&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;e_posta&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;E-Posta&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;save_edit&quot;</span><span class="p">:{</span> <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;save::add_edit_form&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Kaydet&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;nufus_kayitlari_id&quot;</span><span class="p">:{</span>
+                    <span class="s2">&quot;list_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;select_list&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Nüfus Bilgileri&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;add_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;model_name&quot;</span><span class="p">:</span><span class="s2">&quot;NufusKayitlari&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;dogum_tarihi&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Doğum Tarihi&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;cinsiyet&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Cinsiyet&quot;</span> <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Personel&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">forms</span></code> anahtarı aşağıdaki öğelerden oluşmaktadır;</p>
+<div class="section" id="form">
+<h4>form<a class="headerlink" href="#form" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Bu anahtar altında formda gösterilmesi istenen inputlar bir liste halinde yer alır.</p>
+</div>
+<div class="section" id="schema">
+<h4>schema<a class="headerlink" href="#schema" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">schema</span></code> anahtarının alt özellikleri vardır. Bunlardan <code class="docutils literal"><span class="pre">required</span></code> bir liste halinde doldurulması gerekli alanları gösterir.</div>
+<div class="line"><code class="docutils literal"><span class="pre">properties</span></code> anahtarında <code class="docutils literal"><span class="pre">form</span></code> anahtarında belirtilen alanların özelliklerinin yer aldığı anahtardır.</div>
+</div>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;e_posta&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;E-Posta&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">type</span></code> alanında inputun tipi ve <code class="docutils literal"><span class="pre">title</span></code> alanında bu inputun başlığı yer alır.</div>
+</div>
+<blockquote>
+<div><p>İlişkisel veri tipleri olan ListNode, Node ve Model için bu anahtarlarda <code class="docutils literal"><span class="pre">wf</span></code>, <code class="docutils literal"><span class="pre">add_cmd</span></code>, <code class="docutils literal"><span class="pre">list_cmd</span></code>, <code class="docutils literal"><span class="pre">model_name</span></code> değerleri bulunmaktadır.
+Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
+<p>Formlarda birden fazla buton değişik işleri yapabilsin diye bu input alanlarına <code class="docutils literal"><span class="pre">cmd</span></code> değeri eklenmiştir. Bu değer form submit edilirken <code class="docutils literal"><span class="pre">cmd</span></code> anahtarında API&#8217;a gönderilir.</p>
+<p>Ek işlevsellik isteyen alanlar için (<cite>Node, ListNode, Model, select, file, submit, date, text_general</cite>, etc.) template&#8217;ler oluşturulmuştur.</p>
+</div></blockquote>
+</div>
+<div class="section" id="model">
+<h4>model<a class="headerlink" href="#model" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line">Bu anahtarda form alanlarının değerleri tutulmaktadır.</div>
+<div class="line">Düzenlenecek form için bu anahtardaki değerler dolu olarak döner ve inputlara atanır.</div>
+<div class="line">Boş değer dönmesi o anahtar için daha önceden bir kayıt yapılmadığını gösterir.</div>
+</div>
+</div>
+<div class="section" id="grouping">
+<h4>grouping<a class="headerlink" href="#grouping" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="line-block">
+<div class="line">Form inputlarının sayfa yerleşimlerini düzenleyebilmek için eklenmiş bir özelliktir.</div>
+<div class="line">Grid sistem baz alınarak gruplanan elemanlara alan değerleri atanır. <code class="docutils literal"><span class="pre">layout</span></code> değeri 12 birimlik alanda kaç birim olarak yer alacağını gösterir.</div>
+<div class="line">Aşağıda bu özelliğin bir örneği görülebilir:</div>
+</div>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;grouping&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;group_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Gorev&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gorev_tipi&quot;</span><span class="p">,</span> <span class="s2">&quot;birim&quot;</span><span class="p">,</span> <span class="s2">&quot;aciklama&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;layout&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;collapse&quot;</span><span class="p">:</span> <span class="n">false</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constraints">
+<h4>constraints<a class="headerlink" href="#constraints" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Form inputlarının birbirlerine göre bağımlılıklarının denetlendiği ve düzenlendiği anahtardır. Geliştirme aşamasındadır.</p>
+</div>
+</div>
+<div class="section" id="liste-sayfasi">
+<h3>Liste sayfası<a class="headerlink" href="#liste-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Liste sayfasında kaydedilen öğeler listelenir.</p>
+<ul>
+<li><p class="first">Listelenecek öğeler <code class="docutils literal"><span class="pre">objects</span></code> anahtarında döner. Dönen listede ilk nesne listenin başlık değerlerini oluşturur.</p>
+</li>
+<li><p class="first">İkinci nesneden itibaren <code class="docutils literal"><span class="pre">fields</span></code> anahtarında liste halinde aynı sırayla ilk nesnedeki başlıkların karşılığı değerler yer almaktadır.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">actions</span></code> anahtarında o satır için gerçekleştirilebilecek işlemler yer almaktadır. İşlemlerin gösterim şekilleri <code class="docutils literal"><span class="pre">show_as</span></code> anahtarında gönderilir.</p>
+</li>
+<li><p class="first">İşlemler varsayılan olarak satırın sonundaki işlemler alanında gösterilir.</p>
+</li>
+<li><p class="first">Eğer satırdaki bir hücreye uygulanması isteniyorsa hangi alana uygulanacağı bir liste içinde işlem nesnesinin <code class="docutils literal"><span class="pre">fields</span></code> anahtarında belitrilir.</p>
+</li>
+<li><p class="first">Gerçekleştirilecek işlemin ne olacağı işlemin <code class="docutils literal"><span class="pre">cmd</span></code> anahtarında yer alır. <code class="docutils literal"><span class="pre">mode</span></code> anahtarı <cite>normal</cite> (varsayılan), <cite>new</cite> (yeni sayfada) ve <cite>modal</cite> (bir modal içinde) değerlerini alabilir.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">pagination</span></code> anahtarında sayfalama uygulandıysa sayfa başına kaç nesne olduğu <code class="docutils literal"><span class="pre">per_page</span></code>, toplam nesne sayısı <code class="docutils literal"><span class="pre">total_objects</span></code>, toplam sayfa sayısı <code class="docutils literal"><span class="pre">total_pages</span></code>, ve o an hangi sayfada olunduğu <code class="docutils literal"><span class="pre">page</span></code> bilgisi yer alır.</p>
+<blockquote>
+<div><p>Liste sayfasıyla birlikte gönderilen <code class="docutils literal"><span class="pre">&quot;forms&quot;</span></code> anahtarında o sayfada ayrıca form işlemlerinin yapılması sağlanmaktadır. Aşağıdaki örnekte o anki modele yeni bir kayıt eklemek için forms anahtarının kullanıldığı görülmektedir.</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;forms&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;constraints&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:{</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span> <span class="n">null</span> <span class="p">},</span>
+        <span class="s2">&quot;grouping&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;form&quot;</span><span class="p">:[</span> <span class="s2">&quot;add&quot;</span> <span class="p">],</span>
+        <span class="s2">&quot;schema&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:[</span> <span class="s2">&quot;add&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;add&quot;</span><span class="p">:{</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Ekle&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Personeller&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;pagination&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;per_page&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;total_objects&quot;</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span>
+        <span class="s2">&quot;total_pages&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span><span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;objects&quot;</span><span class="p">:[</span>
+        <span class="p">[</span> <span class="s2">&quot;Adı&quot;</span><span class="p">,</span> <span class="s2">&quot;Soyadı&quot;</span><span class="p">,</span> <span class="s2">&quot;TC No&quot;</span><span class="p">,</span> <span class="s2">&quot;Durum&quot;</span> <span class="p">],</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;fields&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Işık&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Ülker&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;19189958696&quot;</span><span class="p">,</span>
+                <span class="n">null</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;actions&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;fields&quot;</span><span class="p">:[</span>
+                        <span class="mi">0</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;show&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;show_as&quot;</span><span class="p">:</span><span class="s2">&quot;link&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Düzenle&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;show_as&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;normal&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Sil&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;show_as&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;normal&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;1234qwer&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="detay-sayfasi">
+<h3>Detay sayfası<a class="headerlink" href="#detay-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Detay sayfasında gösterilmek istenen nesne anahtar değer olarak sıralanır.
+Örnekte bir kişi kaydının anahtar değerleri görülmektedir.</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;object&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;Cep Telefonu&quot;</span><span class="p">:</span><span class="s2">&quot;+90 (259) 6925396&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Cinsiyet&quot;</span><span class="p">:</span><span class="s2">&quot;Erkek&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Soyadı&quot;</span><span class="p">:</span><span class="s2">&quot;Arsoy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TC No&quot;</span><span class="p">:</span><span class="s2">&quot;63488661696&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Adı&quot;</span><span class="p">:</span><span class="s2">&quot;Kutun&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Doğum Tarihi&quot;</span><span class="p">:</span><span class="s2">&quot;03.04.1969&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;E-Posta&quot;</span><span class="p">:</span><span class="s2">&quot;daslan@arsoy.com&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ui-menu-ve-diger-ogeler">
+<h3>UI Menu ve Diğer Öğeler<a class="headerlink" href="#ui-menu-ve-diger-ogeler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Kullanıcı arayüzündeki menüler API tarafından dinamik olarak giriş yapan kullanıcının yetkileri baz alınarak oluşturulur.</div>
+<div class="line"><code class="docutils literal"><span class="pre">/menu</span></code> url&#8217;ine yapılan sorguda dönen <code class="docutils literal"><span class="pre">ogrenci</span></code>, <code class="docutils literal"><span class="pre">personel</span></code>, <code class="docutils literal"><span class="pre">other</span></code> anahtarlarındaki değerler kategorilerine göre ayıklanarak menüye eklenir.</div>
+</div>
+<ul class="simple">
+<li>Ulakbus için iki ana işlem yapılacak kullanıcı tipi bulunmaktadır. Bunlar personel ve öğrencidir. Bu anahtarların sorguda dönme durumuna göre yönetim panelinde öğrenci ve personel arama inputları görüntülenir.</li>
+<li><code class="docutils literal"><span class="pre">quick_menu</span></code> anahtarında dönen menu nesneleri yönetim panelinde hızlı erişim için yer alır.</li>
+</ul>
+<div class="line-block">
+<div class="line">Menu sorgusunda ayrıca <code class="docutils literal"><span class="pre">settings</span></code> ve <code class="docutils literal"><span class="pre">current_user</span></code> anahtarları dönmektedir.</div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">settings</span></code> anahtarı API tarafından kullanıcı arayüzü konfigürasyonu için kullanılacak değerleri içerir. Şu anda static url path bu ayarlarda yer almaktadır.</li>
+<li><code class="docutils literal"><span class="pre">current_user</span></code> anahtarında giriş yapan kullanıcı bilgileri, rolleri, o anda hangi rolde işlem yaptığı ve kullanıcı avatarı yer almaktadır.</li>
+</ul>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;ogrenci&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Seçime Uygun Görevler&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Devam Durumu&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;DersKatilimi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;ogrenci_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;personel&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Seçime Uygun Görevler&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Kimlik ve Iletisim Bilgileri&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;Personel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;object_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;kimlik_ve_iletisim_bilgileri&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;static_url&quot;</span><span class="p">:</span><span class="s2">&quot;http://ulakbus.3s.ulakbus.net/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;other&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Genel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Personeller&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;Personel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;other_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;current_user&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;test_user&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_staff&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;surname&quot;</span><span class="p">:</span><span class="s2">&quot;Stallman&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;roles&quot;</span><span class="p">:[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;Role BaseAbsRole | test_user&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;Role W.C. Hero test_user&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;BaseAbsRole&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_student&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;avatar&quot;</span><span class="p">:</span><span class="s2">&quot;http://ulakbus.3s.ulakbus.net/abcd.jpg&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;quick_menu&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Genel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Programlar&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;Program&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;other_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gelistirmeye-baslamak">
+<h3>Geliştirmeye Başlamak<a class="headerlink" href="#gelistirmeye-baslamak" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="line-block">
+<div class="line">Yukarıda anlatılan API-UI veri karşılıkları gözönünde bulundurularak geliştirme yapmaya başlayabilirsiniz.</div>
+<div class="line">Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız.</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

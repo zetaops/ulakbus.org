@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.models.buildings_rooms &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.models.buildings_rooms</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.models.buildings_rooms</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="sd">&quot;&quot;&quot;Bina ve Oda Modülü</span>
+
+<span class="sd">Bu modül Ulakbus uygulaması için üniversite yerleşim modellerini içerir. Modellerin</span>
+<span class="sd">amacı Üniversitelere ait yerleşke, bina ve oda bilgilerinin ilişkileri ile birlikte saklanmasıdır.</span>
+
+<span class="sd">Campus, Building, RoomType, Room ve RoomFeature modellerinden oluşur.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">field</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Unit</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Ali Riza Keles&#39;</span>
+
+
+<div class="viewcode-block" id="Campus"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Campus">[docs]</a><span class="k">class</span> <span class="nc">Campus</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Kampüs Modeli</span>
+
+<span class="sd">    Üniversite kampüslerine ait data modeli. Kampus adı ve koordinat bilgilerini içerir.</span>
+
+<span class="sd">    Kampüs koordinatları lokasyon bazlı hesaplamalar için kullanılacaktır. Özellikle</span>
+<span class="sd">    Unitime ile ders programı hazırlarken farklı lokasyonlar arası zaman hesaplamalarında</span>
+<span class="sd">    kullanılmaktadır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kod&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">coordinate_x</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;X Koordinatı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">coordinate_y</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Y Koordinatı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Campus.Meta"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Campus.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Yerleşke&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Yerleşkeler&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">())</span>
+
+<div class="viewcode-block" id="Campus.coordinates"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Campus.coordinates">[docs]</a>    <span class="k">def</span> <span class="nf">coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Koordinatlar</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            x ve y koordinatlarını birlikte döndürür.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinate_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_y</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Building"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Building">[docs]</a><span class="k">class</span> <span class="nc">Building</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bina Modeli</span>
+
+<span class="sd">    Universite kampuslerindeki binalara ait data modeli. Bina kod ve adının yanısıra</span>
+<span class="sd">    koordinat bilgilerini içerir.</span>
+
+<span class="sd">    Bina koordinatları lokasyon bazlı hesaplamalar için kullanılacaktır. Özellikle</span>
+<span class="sd">    Unitime ile ders programı hazırlarken farklı lokasyonlar arası zaman hesaplamalarında</span>
+<span class="sd">    kullanılmaktadır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kod&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">coordinate_x</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;X Koordinatı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">coordinate_y</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Y Koordinatı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">campus</span> <span class="o">=</span> <span class="n">Campus</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Building.Meta"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Building.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Bina&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Binalar&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">campus</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Building.coordinates"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Building.coordinates">[docs]</a>    <span class="k">def</span> <span class="nf">coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;Koordinatlar</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            x ve y koordınatlarını birlikte döndürür.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinate_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_y</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="RoomType"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.RoomType">[docs]</a><span class="k">class</span> <span class="nc">RoomType</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Oda tipleri modeli</span>
+
+<span class="sd">    Odalar sinif, amfi, salon, kimya laboratuvari vb tiplere ayrilirlar. Ilgili notlarla</span>
+<span class="sd">    birlikte bu tipler RoomType modelinde tanimlanir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Oda Tipi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">notes</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Notlar&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RoomType.Meta"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.RoomType.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Oda Tipi&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Oda Tipleri&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;notes&#39;</span><span class="p">]</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span></div>
+
+
+<div class="viewcode-block" id="Room"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Room">[docs]</a><span class="k">class</span> <span class="nc">Room</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Oda modeli</span>
+
+<span class="sd">    Üniversitenin sahip olduğu odalara (sınıf, lab, amfi) ait data modelidir. Her odanın</span>
+<span class="sd">    bir kodu bulunur.</span>
+
+<span class="sd">    Odalar, binalara ve binalar aracılığıyla kampüslere bağlanır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">code</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kod&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;İsim&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">room_type</span> <span class="o">=</span> <span class="n">RoomType</span><span class="p">(</span><span class="s2">&quot;Oda Tipi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c1">#: Bina içerisindeki kat bilgisi</span>
+    <span class="n">floor</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Kat&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">capacity</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kapasite&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">building</span> <span class="o">=</span> <span class="n">Building</span><span class="p">()</span>
+
+    <span class="n">is_active</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Aktif&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Room.Meta"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Room.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Oda&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Odalar&quot;</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Room.RoomDepartments"><a class="viewcode-back" href="../../../ulakbus.models.buildings_rooms.html#ulakbus.models.buildings_rooms.Room.RoomDepartments">[docs]</a>    <span class="k">class</span> <span class="nc">RoomDepartments</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Oda Departman ListNode</span>
+
+<span class="sd">        Bu odayı kullanabilecek birimlerin listesi saklanır.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

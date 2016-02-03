@@ -1,0 +1,468 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>ULAKBUS</title>
+
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
+    <link rel="up" title="Geliştiriciler" href="developers.html" />
+    <link rel="next" title="Sistem Operatörleri" href="devops.html" />
+    <link rel="prev" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi" href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="/img/favicon.ico">
+
+    <title>Ulakbüs</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
+
+            // If href missing, ignore
+            if (!href) return;
+
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
+
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
+
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
+
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
+
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
+
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+
+
+    <div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="devops.html" title="Sistem Operatörleri"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">UniTime Entegrasyonları</a><ul>
+<li><a class="reference internal" href="#unitime-nedir">UniTime Nedir?</a></li>
+<li><a class="reference internal" href="#kavram-semasi">Kavram Şeması</a></li>
+<li><a class="reference internal" href="#entegrasyon-yontemi">Entegrasyon Yöntemi</a></li>
+<li><a class="reference internal" href="#ornek-entegrasyon">Örnek Entegrasyon</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html"
+                        title="önceki bölüm">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="devops.html"
+                        title="sonraki bölüm">Sistem Operatörleri</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/unitime_entegrasyon.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Git" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="unitime-entegrasyonlari">
+<h1>UniTime Entegrasyonları<a class="headerlink" href="#unitime-entegrasyonlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="unitime-nedir">
+<h2>UniTime Nedir?<a class="headerlink" href="#unitime-nedir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>UniTime, bir araştırma sahası olan &#8220;akademik takvimleme problemleri&#8221;ni çözmek üzere geliştirilen,
+açık kaynaklı bir yazılım projesidir. Ulakbüs projesi kapsamında, bu alanda geliştirilmiş diğer
+projeler incelendiğinde, UniTime&#8217;ın daha kararlı bir proje olduğu ortaya çıkmıştır.</p>
+<p>Aşağıdaki listede, incelenen diğer projeler ve algoritmalar listelenmektedir:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://lalescu.ro/liviu/fet/">FET (Free Timetabling Software)</a></li>
+<li><a class="reference external" href="http://http://www.optaplanner.org">OptaPlanner</a></li>
+<li><a class="reference external" href="http://www.codeproject.com/Articles/23111/Making-a-Class-Schedule-Using-a-Genetic-Algorithm">Making a Class Schedule Using a Genetic Algorithm</a></li>
+<li><a class="reference external" href="https://en.wikibooks.org/wiki/Algorithms/Greedy_Algorithms">Greedy Algorithms</a></li>
+</ul>
+</div></blockquote>
+<p>UniTime hakkında daha detaylı bilgiye aşağıdaki link üzerinden erişebilirsiniz:</p>
+<p><a class="reference external" href="http://www.unitime.org">http://www.unitime.org</a></p>
+</div>
+<div class="section" id="kavram-semasi">
+<h2>Kavram Şeması<a class="headerlink" href="#kavram-semasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>UniTime ve Ulakbüs yazılımı arasında veri akışını sağlayacak olan entegrasyonları yaparken, iki ayrı
+projenin farklı terminolojilerinden kaynaklanan bir harita dosyası ihtiyacı duyulmuştur.</p>
+<p>Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karşılıkları listelenmiştir:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Ulakbüs</th>
+<th class="head">UniTime</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Building</td>
+<td>Building</td>
+</tr>
+<tr class="row-odd"><td>Campus</td>
+<td>Campus</td>
+</tr>
+<tr class="row-even"><td>Ders</td>
+<td>Course</td>
+</tr>
+<tr class="row-odd"><td>Donem</td>
+<td>Academic Session</td>
+</tr>
+<tr class="row-even"><td>Okutman</td>
+<td>Instructors</td>
+</tr>
+<tr class="row-odd"><td>Ogrenci</td>
+<td>Student</td>
+</tr>
+<tr class="row-even"><td>Personel</td>
+<td>Staff</td>
+</tr>
+<tr class="row-odd"><td>Program</td>
+<td>Subject Area</td>
+</tr>
+<tr class="row-even"><td>Room</td>
+<td>Room</td>
+</tr>
+<tr class="row-odd"><td>RoomType</td>
+<td>Room Type</td>
+</tr>
+<tr class="row-even"><td>Sinav</td>
+<td>Exam</td>
+</tr>
+<tr class="row-odd"><td>Unit (unit_type=&#8221;Bölüm&#8221;)</td>
+<td>Department</td>
+</tr>
+<tr class="row-even"><td>?</td>
+<td>Classes</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Academic Classifications</td>
+</tr>
+<tr class="row-even"><td>?</td>
+<td>Academic Areas</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Majors</td>
+</tr>
+<tr class="row-even"><td>?</td>
+<td>Minors</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Student Accommodations</td>
+</tr>
+<tr class="row-even"><td>?</td>
+<td>Curriculum Projection Rules</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Last-like Enrollments</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="entegrasyon-yontemi">
+<h2>Entegrasyon Yöntemi<a class="headerlink" href="#entegrasyon-yontemi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>UniTime ve Ulakbüs yazılımı arasında veri akışını sağlayacak olan entegrasyonları yaparken, UniTime
+projesinin veri giriş/çıkış (data export import) imkan sağlayan XML arabirimi (Data Exchanger)
+kullanılmıştır. UniTime projesi ile birlikte sunulan örnek Data Exchanger XML dosyalarına aşağıdaki
+adresten ulaşmanız mümkündür:</p>
+<p><a class="reference external" href="https://github.com/UniTime/unitime/tree/master/Documentation/Interfaces/Examples">https://github.com/UniTime/unitime/tree/master/Documentation/Interfaces/Examples</a></p>
+<p>Entegrasyon kapsamında,</p>
+<blockquote>
+<div><ul class="simple">
+<li>Akademik Dönem, Kampüs, Bina, Oda</li>
+<li>Okutman, Öğrenci, Personel</li>
+<li>Bölüm, Program, Ders, Öğrenci</li>
+</ul>
+</div></blockquote>
+<p>Modellerine ait verilerin Ulakbüs üzerinden UniTime&#8217;a aktarılması hedeflenmektedir.</p>
+<p>Verilerin aktarılmasının ardından hedeflenen işlevsellikler aşağıdaki kapsamdadır:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Güncel</strong> akademik dönem boyunca verilecek olan ders programlarının takvimlendirilmesi
+(ders programlarının varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).</p>
+</li>
+<li><p class="first"><strong>Güncel</strong> akademik dönem boyunca yapılacak olan sınavların takvimlendirilmesi (sınavların
+varolan dersliklere ve tarih - saatlere dağılımının hesaplanması).</p>
+</li>
+<li><p class="first"><strong>Unitime</strong> üzerinde hesaplaması biten akademik ders takviminin Ulakbüs üzerinde bulunan
+<strong>DersProgrami</strong> modeline kayıt edilmesi.</p>
+</li>
+<li><p class="first"><strong>Unitime</strong> üzerinde hesaplaması biten sınav takvimlerinin Ulakbüs üzerinde bulunan
+<strong>Sınav</strong> modeline kayıt edilmesi.</p>
+<blockquote>
+<div><p>Önemli Not: Entegrasyon sırasında dışarıya aktarılan verinin, Ulakbüs üzerinde <strong>güncel</strong> olarak
+görünen akademik döneme ait olması hedeflenmiştir. Geçmiş dönemlere ait veriler dışarıya
+<strong>aktarılamaz</strong>.</p>
+<p>Geçmiş dönemlere ait verilerin dışarıya aktarıma kısıtlanmasının nedeni; bu dönemlere ait
+işlemlerin <strong>Ulakbüs</strong> tarafında yeni döneme (güncel akademik döneme) aktarılarak işlenmesidir.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="ornek-entegrasyon">
+<h2>Örnek Entegrasyon<a class="headerlink" href="#ornek-entegrasyon" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu örnekte UniTime üzerinde <strong>Department</strong> olarak adlandırılan ve Ulakbüs üzerinde <strong>Bölüm</strong>&#8216;e denk
+düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağı bir fonksiyon
+örneklendirilmiştir. Örnek XML şemasına aşağıdaki adreten ulaşılabilir:</p>
+<p><a class="reference external" href="https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExamples%2FdepartmentImport.xml">https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExamples%2FdepartmentImport.xml</a></p>
+<div class="highlight-python"><div class="highlight"><pre>   class DepartmanAktar(Command):
+       CMD_NAME = &#39;departman_aktar&#39;
+       HELP = &#39;Akademik bölüm listesi için UniTime XML import dosyası oluşturur.&#39;
+       PARAMS = []
+
+       def run(self):
+           import os
+           import datetime
+           from lxml import etree
+           from ulakbus.models import Donem, Unit, Campus
+           root_directory = os.path.dirname(os.path.abspath(__file__))
+
+           # Güncel akademik dönemi seç
+           term = Donem.objects.filter(guncel=True)[0]
+
+           # Unit modeli üzerinden üniversite seç
+           uni = Unit.objects.filter(parent_unit_no=0)[0].yoksis_no
+
+           # Unit modeli üzerinden bölümleri seç
+           units = Unit.objects.filter(unit_type=&#39;Bölüm&#39;)
+
+           # Campus modeli üzerinden kampüs listesini al
+           campuses = Campus.objects.filter()
+
+           doc_type = &#39;&lt;!DOCTYPE departments PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Department.dtd&quot;&gt;&#39;
+
+           # XML ağacını oluştur (create XML tree)
+           for campus in campuses:
+               if campus:
+                   root = etree.Element(&#39;departments&#39;, campus=&quot;%s&quot; % uni, term=&quot;%s&quot; % term.ad,
+                                        year=&quot;%s&quot; % term.baslangic_tarihi.year)
+               for unit in units:
+                   etree.SubElement(root, &#39;department&#39;, externalId=&quot;%s&quot; % unit.key,
+                                    abbreviation=&quot;%s&quot; % unit.yoksis_no, name=&quot;%s&quot; % unit.name,
+                                    deptCode=&quot;%s&quot; % unit.yoksis_no, allowEvents=&quot;true&quot;)
+
+           # Stringi düzgünleştir (string prettify)
+           s = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding=&#39;UTF-8&#39;,
+                              doctype=&quot;%s&quot; % doc_type)
+
+           # Güncel tarih-saat tabanlı export klasörü yarat
+           current_date = datetime.datetime.now()
+           directory_name = current_date.strftime(&#39;%d_%m_%Y_%H_%M_%S&#39;)
+           export_directory = root_directory + &#39;/bin/dphs/data_exchange/&#39; + directory_name
+           if not os.path.exists(export_directory):
+               os.makedirs(export_directory)
+
+           # Stringi dosyaya yazdır
+           out_file = open(export_directory + &#39;/departmentImport.xml&#39;, &#39;w+&#39;)
+           out_file.write(&quot;%s&quot; % s)
+           print(&quot;Dosya %s dizini altina kayit edilmistir&quot; % export_directory)
+
+
+Oluşturulan XML dosyası, UniTime üzerinde **Administration** -&gt; **Academic Sessions** -&gt; **Data Exchange** menüsü ile ulaşabileceğiniz form aracığılığı ile sisteme import edilir.
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="devops.html" title="Sistem Operatörleri"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015, <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

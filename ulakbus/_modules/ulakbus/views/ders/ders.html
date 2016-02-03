@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.views.ders.ders &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.views.ders.ders</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.views.ders.ders</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;Ders Modülü</span>
+
+<span class="sd">İlgili İş Akışlarına ait sınıf ve metotları içeren modüldür.</span>
+
+<span class="sd">Ders Ekle ve Ders Şubelendirme iş akışlarının yürütülmesini sağlar.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">ListNode</span>
+<span class="kn">from</span> <span class="nn">zengine</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">form_modifier</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.ogrenci</span> <span class="kn">import</span> <span class="n">Program</span><span class="p">,</span> <span class="n">Okutman</span><span class="p">,</span> <span class="n">DegerlendirmeNot</span><span class="p">,</span> <span class="n">Ders</span><span class="p">,</span> <span class="n">Sube</span><span class="p">,</span> <span class="n">Sinav</span><span class="p">,</span> <span class="n">OgrenciDersi</span><span class="p">,</span> <span class="n">Donem</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.ogrenci</span> <span class="kn">import</span> <span class="n">DegerlendirmeNot</span><span class="p">,</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">OgrenciProgram</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+
+<div class="viewcode-block" id="prepare_choices_for_model"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.prepare_choices_for_model">[docs]</a><span class="k">def</span> <span class="nf">prepare_choices_for_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Model için Seçenekler Hazırla</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: Model</span>
+<span class="sd">        **kwargs: Keyword argümanları</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Keyword argümanlara göre filtrelenmiş modelin,</span>
+<span class="sd">        key ve __unicode__ method değerlerini</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">[(</span><span class="n">m</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">())</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span></div>
+
+
+<div class="viewcode-block" id="okutman_choices"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.okutman_choices">[docs]</a><span class="k">def</span> <span class="nf">okutman_choices</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Okutman Seçenekleri</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        prepare_choices_for_model methodundan dönen değerleri dictionary</span>
+<span class="sd">        formatında</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">prepare_choices_for_model</span><span class="p">(</span><span class="n">Okutman</span><span class="p">)]</span></div>
+
+
+<div class="viewcode-block" id="ProgramBilgisiForm"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.ProgramBilgisiForm">[docs]</a><span class="k">class</span> <span class="nc">ProgramBilgisiForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``DersEkle`` sınıfı için form olarak kullanılacaktır. Form,</span>
+<span class="sd">    include listesinde, aşağıda tanımlı alana sahiptir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProgramBilgisiForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.ProgramBilgisiForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;program&#39;</span><span class="p">]</span></div>
+
+    <span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Seç&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;program_sec&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DersBilgileriForm"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersBilgileriForm">[docs]</a><span class="k">class</span> <span class="nc">DersBilgileriForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``DersEkle`` sınıfı için form olarak kullanılacaktır. Form,</span>
+<span class="sd">    include listesinde, aşağıda tanımlı alanlara sahiptir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DersBilgileriForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersBilgileriForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ad&#39;</span><span class="p">,</span> <span class="s1">&#39;kod&#39;</span><span class="p">,</span> <span class="s1">&#39;tanim&#39;</span><span class="p">,</span> <span class="s1">&#39;aciklama&#39;</span><span class="p">,</span> <span class="s1">&#39;onkosul&#39;</span><span class="p">,</span> <span class="s1">&#39;uygulama_saati&#39;</span><span class="p">,</span> <span class="s1">&#39;teori_saati&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ects_kredisi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;yerel_kredisi&#39;</span><span class="p">,</span> <span class="s1">&#39;zorunlu&#39;</span><span class="p">,</span> <span class="s1">&#39;ders_dili&#39;</span><span class="p">,</span> <span class="s1">&#39;ders_turu&#39;</span><span class="p">,</span> <span class="s1">&#39;ders_amaci&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ogrenme_ciktilari&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ders_icerigi&#39;</span><span class="p">,</span> <span class="s1">&#39;ders_kategorisi&#39;</span><span class="p">,</span> <span class="s1">&#39;ders_kaynaklari&#39;</span><span class="p">,</span> <span class="s1">&#39;ders_mufredati&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;verilis_bicimi&#39;</span><span class="p">,</span> <span class="s1">&#39;donem&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ders_koordinatoru&#39;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;kaydet&quot;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
+    <span class="n">kaydet_yeni_kayit</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet/Yeni Kayıt Ekle&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;kaydet&quot;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DersEkle"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersEkle">[docs]</a><span class="k">class</span> <span class="nc">DersEkle</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Ders Ekle İş Akışı</span>
+
+<span class="sd">    Ders Ekle, aşağıda tanımlı iş akışı adımlarını yürütür.</span>
+
+<span class="sd">    - Program Formunu Listele</span>
+<span class="sd">    - Program Seç</span>
+<span class="sd">    - Ders Bilgilerini Gir</span>
+<span class="sd">    - Kaydet</span>
+<span class="sd">    - Kaydet/Yeni Kayıt Ekle</span>
+
+<span class="sd">     Bu iş akışında kullanılan metotlar şu şekildedir:</span>
+
+<span class="sd">     Program Formunu Listele:</span>
+<span class="sd">        CrudView list metodu kullanılmıştır. Bu metot default olarak</span>
+<span class="sd">        tanımlanmıştır. Program Bilgisi formunu listeler.</span>
+
+<span class="sd">     Seç:</span>
+<span class="sd">        Kayıtlı programlardan birini seçer.</span>
+
+<span class="sd">     Ders Bilgilerini Gir:</span>
+<span class="sd">        Ders Bilgileri formundaki alanlar doldurulur.</span>
+
+<span class="sd">     Kaydet/Yeni Kayıt Ekle:</span>
+<span class="sd">        Seçilen programı için  girilen ders bilgilerini kaydeder.</span>
+<span class="sd">        Bu adımdan sonra iş akışı sona erer.</span>
+
+<span class="sd">     Bu sınıf ``CrudView`` extend edilerek hazırlanmıştır. Temel model</span>
+<span class="sd">     ``Ders`` modelidir. Meta.model bu amaçla kullanılmıştır.</span>
+
+<span class="sd">     Adımlar arası geçiş manuel yürütülmektedir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DersEkle.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersEkle.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;Ders&quot;</span></div>
+
+<div class="viewcode-block" id="DersEkle.program_sec"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersEkle.program_sec">[docs]</a>    <span class="k">def</span> <span class="nf">program_sec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Program Seçimi&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;program_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">key</span></div>
+
+<div class="viewcode-block" id="DersEkle.kaydet"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersEkle.kaydet">[docs]</a>    <span class="k">def</span> <span class="nf">kaydet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;program_id&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_object</span><span class="p">()</span></div>
+        <span class="c1"># self.current.task_data[&#39;next&#39;] = self.current.input[&#39;next&#39;]</span>
+
+<div class="viewcode-block" id="DersEkle.ders_bilgileri"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersEkle.ders_bilgileri">[docs]</a>    <span class="k">def</span> <span class="nf">ders_bilgileri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ders Bilgileri Formu&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">DersBilgileriForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="DersEkle.program_bilgisi"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersEkle.program_bilgisi">[docs]</a>    <span class="k">def</span> <span class="nf">program_bilgisi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Program Bilgisi Formu&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">ProgramBilgisiForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="SecimForm"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.SecimForm">[docs]</a><span class="k">class</span> <span class="nc">SecimForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ``DersSubelendirme`` sınıfı için form olarak kullanılacaktır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Sec&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;ders_sec&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProgramForm"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.ProgramForm">[docs]</a><span class="k">class</span> <span class="nc">ProgramForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``DersSubelendirme`` sınıfı için form olarak kullanılacaktır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Sec&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;ders_sec&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SubelendirmeForm"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.SubelendirmeForm">[docs]</a><span class="k">class</span> <span class="nc">SubelendirmeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``DersSubelendirme`` sınıfı için form olarak kullanılacaktır.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">kaydet_ders</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Ders Seçim Ekranına Dön&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;subelendirme_kaydet&quot;</span><span class="p">,</span>
+                                <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;ders_okutman_formu&quot;</span><span class="p">)</span>
+    <span class="n">program_sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Program Seçim Ekranına Dön&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;subelendirme_kaydet&quot;</span><span class="p">,</span>
+                                <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;program_sec&quot;</span><span class="p">)</span>
+    <span class="n">bilgi_ver</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Tamamla ve Hocaları Bilgilendir&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;subelendirme_kaydet&quot;</span><span class="p">,</span>
+                              <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;bilgi_ver&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SubelendirmeForm.Subeler"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.SubelendirmeForm.Subeler">[docs]</a>    <span class="k">class</span> <span class="nc">Subeler</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">ad</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;Sube Adi&#39;</span><span class="p">)</span>
+        <span class="n">kontenjan</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;Sube Kontenjani&#39;</span><span class="p">)</span>
+        <span class="n">dis_kontenjan</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;Sube Dis Kontenjani&#39;</span><span class="p">)</span>
+        <span class="n">okutman</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;Okutman&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">okutman_choices</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="NotGirisForm"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisForm">[docs]</a><span class="k">class</span> <span class="nc">NotGirisForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="NotGirisForm.Ogrenciler"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisForm.Ogrenciler">[docs]</a>    <span class="k">class</span> <span class="nc">Ogrenciler</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">ogrenci_no</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;No&#39;</span><span class="p">)</span>
+        <span class="n">ad_soyad</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;Ad Soyad&#39;</span><span class="p">)</span>
+        <span class="n">degerlendirme</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;Not&#39;</span><span class="p">)</span>
+        <span class="n">aciklama</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;Aciklama&#39;</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;KKKKey&#39;</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DersSubelendirme"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme">[docs]</a><span class="k">class</span> <span class="nc">DersSubelendirme</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Ders Şubelendirme İş Akışı</span>
+
+<span class="sd">     Ders Şubelendirme, aşağıda tanımlı iş akışı adımlarını yürütür.</span>
+
+<span class="sd">     - Program Formunu Listele</span>
+<span class="sd">     - Program Seç</span>
+<span class="sd">     - Ders Şubelendir</span>
+<span class="sd">     - Şube Formunu Listele</span>
+<span class="sd">     - Kaydet ve Ders Seçim Ekranına Dön</span>
+<span class="sd">     - Kaydet ve Program Seçim Ekranına Dön</span>
+<span class="sd">     - Tamamla ve Hocaları Bilgilendir</span>
+
+<span class="sd">    Bu iş akışında kullanılan metotlar şu şekildedir:</span>
+
+<span class="sd">    Program  Formunu Listele:</span>
+<span class="sd">        CrudView list metodu kullanılmıştır.Bu metot default olarak</span>
+<span class="sd">        tanımlanmıştır. Program formunu listeler.</span>
+
+<span class="sd">    Seç:</span>
+<span class="sd">        Kayıtlı programlardan birini seçer. Seçilen program kayıtlı</span>
+<span class="sd">        dersleri döndürür.</span>
+
+<span class="sd">    Şubelendir:</span>
+<span class="sd">        Şubelendirelecek ders seçilir.</span>
+
+<span class="sd">    Şube Formunu Listele:</span>
+<span class="sd">        Şubelenmiş dersin şube detaylarını gösterir, seçilen dersi</span>
+<span class="sd">        şubelendirir.</span>
+
+<span class="sd">    Kaydet ve Ders Seçim Ekranına Dön:</span>
+<span class="sd">        Şubelendirilmiş dersi kaydeder ve ders seçim ekranından geri</span>
+<span class="sd">        döner. İş akışına ders seçim ekranından devam eder.</span>
+
+<span class="sd">    Kaydet ve Program Seçim Ekranına Dön:</span>
+<span class="sd">        Şubelendirilmiş dersi kaydeder ve program seçim  ekranına geri</span>
+<span class="sd">        döner. İş akışı Program formundan devam eder.</span>
+
+<span class="sd">    Tamamla ve Hocaları Bilgilendir:</span>
+<span class="sd">         Şubelendirilmiş dersin hocalarına, şube ve ders bilgileri</span>
+<span class="sd">         aktarılır. Bu adımdan sonra iş akışı sona eriyor.</span>
+
+<span class="sd">    Bu sınıf ``CrudView`` extend edilerek hazırlanmıştır. Temel model</span>
+<span class="sd">    ``Sube`` modelidir. Meta.model bu amaçla kullanılmıştır.</span>
+
+<span class="sd">    Adımlar arası geçiş manuel yürütülmektedir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DersSubelendirme.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;Sube&quot;</span></div>
+
+<div class="viewcode-block" id="DersSubelendirme.program_sec"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme.program_sec">[docs]</a>    <span class="k">def</span> <span class="nf">program_sec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Program Seçim Adımı</span>
+
+<span class="sd">        Programlar veritabanından çekilip, açılır menu içine</span>
+<span class="sd">        doldurulur.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">ProgramForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+        <span class="n">choices</span> <span class="o">=</span> <span class="n">prepare_choices_for_model</span><span class="p">(</span><span class="n">Program</span><span class="p">)</span>
+        <span class="n">_form</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DersSubelendirme.ders_sec"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme.ders_sec">[docs]</a>    <span class="k">def</span> <span class="nf">ders_sec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ders Seç Adımı</span>
+
+<span class="sd">        Seçilen programa bağlı dersler, eğer daha önce şubelendirme</span>
+<span class="sd">        yapıldıysa şube listesiyle birlikte ekrana getirilir.</span>
+
+<span class="sd">        Formun herbir satırı ders ve şubeleri ile birlikte, ilgili</span>
+<span class="sd">        ders için şubelendirme formuna bağlı bir butondan oluşur.</span>
+
+<span class="sd">        Şubelendirme butonunun ``object_key`` i ``sube`` olarak</span>
+<span class="sd">        tanımlanmıştır. Sonraki adımda bu key yardımıyla şube formu,</span>
+<span class="sd">        ekrana getirilir. ``ders_okutman_formu`` metodu içinde şu</span>
+<span class="sd">        şekilde kullanılmıştır::</span>
+
+<span class="sd">            ders = Ders.objects.get(key=self.current.input[&#39;sube&#39;])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_client_cmd</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Dersler&#39;</span><span class="p">],</span> <span class="p">]</span>
+
+        <span class="k">if</span> <span class="s1">&#39;program&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;program&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;program&#39;</span><span class="p">]</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;program&#39;</span><span class="p">])</span>
+        <span class="n">dersler</span> <span class="o">=</span> <span class="n">Ders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">program</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+        <span class="c1"># dersler = Ders.objects.filter()</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dersler</span><span class="p">:</span>
+            <span class="n">ders</span> <span class="o">=</span> <span class="s2">&quot;{} - {} ({} ECTS)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">kod</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">ects_kredisi</span><span class="p">)</span>
+            <span class="n">subeler</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">sube</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">subeler</span><span class="p">:</span>
+                <span class="n">sube</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;sube_ad&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                        <span class="s2">&quot;okutman_ad&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                        <span class="s2">&quot;okutman_soyad&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span>
+                        <span class="s2">&quot;okutman_unvan&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">unvan</span><span class="p">,</span>
+                        <span class="s2">&quot;kontenjan&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">kontenjan</span><span class="p">,</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+
+            <span class="n">ders_subeleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{okutman_unvan} {okutman_ad}&quot;</span>
+                             <span class="s2">&quot;{okutman_soyad}, Sube:{sube_ad} Kontenjan{kontenjan} </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">sb</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">sb</span> <span class="ow">in</span> <span class="n">sube</span><span class="p">]</span>
+
+            <span class="n">item</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;{} </span><span class="se">\n</span><span class="s2"> {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ders</span><span class="p">,</span> <span class="n">ders_subeleri</span><span class="p">),</span> <span class="p">],</span>
+                <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Subelendir&#39;</span><span class="p">,</span> <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s1">&#39;ders_okutman_formu&#39;</span><span class="p">,</span> <span class="s1">&#39;show_as&#39;</span><span class="p">:</span> <span class="s1">&#39;button&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;object_key&#39;</span><span class="p">:</span> <span class="s1">&#39;sube&#39;</span><span class="p">},</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">key</span>
+            <span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DersSubelendirme.ders_okutman_formu"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme.ders_okutman_formu">[docs]</a>    <span class="k">def</span> <span class="nf">ders_okutman_formu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ders Okutman Formu</span>
+
+<span class="sd">        Şubelendirme için seçilen dersin, şube bilgileri formunu oluşturur.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># subelendirme icin secilen dersi getir</span>
+        <span class="n">ders</span> <span class="o">=</span> <span class="n">Ders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;sube&#39;</span><span class="p">])</span>
+        <span class="c1"># sonraki adimlar icin task data icine koy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;ders_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ders</span><span class="o">.</span><span class="n">key</span>
+
+        <span class="c1"># formu olusturmaya basla</span>
+        <span class="n">subelendirme_form</span> <span class="o">=</span> <span class="n">SubelendirmeForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span>
+                                             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> / </span><span class="si">%s</span><span class="s1"> dersi icin subelendirme&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                                                 <span class="n">ders</span><span class="o">.</span><span class="n">donem</span><span class="p">,</span> <span class="n">ders</span><span class="p">))</span>
+        <span class="c1"># formun sube listesini olustur</span>
+        <span class="n">subeler</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders</span><span class="o">=</span><span class="n">ders</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">sube</span> <span class="ow">in</span> <span class="n">subeler</span><span class="p">:</span>
+            <span class="n">subelendirme_form</span><span class="o">.</span><span class="n">Subeler</span><span class="p">(</span><span class="n">ad</span><span class="o">=</span><span class="n">sube</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">kontenjan</span><span class="o">=</span><span class="n">sube</span><span class="o">.</span><span class="n">kontenjan</span><span class="p">,</span>
+                                      <span class="n">dis_kontenjan</span><span class="o">=</span><span class="n">sube</span><span class="o">.</span><span class="n">dis_kontenjan</span><span class="p">,</span>
+                                      <span class="n">okutman</span><span class="o">=</span><span class="n">sube</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">subelendirme_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DersSubelendirme.subelendirme_kaydet"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme.subelendirme_kaydet">[docs]</a>    <span class="k">def</span> <span class="nf">subelendirme_kaydet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Şubelendirme Kaydet</span>
+
+<span class="sd">        Şubelendirme formundan gelen dataları kaydeder.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">sb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;Subeler&#39;</span><span class="p">]</span>
+        <span class="n">ders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;ders_key&#39;</span><span class="p">]</span>
+        <span class="n">mevcut_subeler</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="n">ders</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sb</span><span class="p">:</span>
+            <span class="n">okutman</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;okutman&#39;</span><span class="p">]</span>
+            <span class="n">sube</span><span class="p">,</span> <span class="n">is_new</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">okutman_id</span><span class="o">=</span><span class="n">okutman</span><span class="p">,</span> <span class="n">ders_id</span><span class="o">=</span><span class="n">ders</span><span class="p">)</span>
+            <span class="c1"># mevcut_subelerden cikar</span>
+            <span class="n">mevcut_subeler</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">mevcut_subeler</span><span class="p">)</span> <span class="o">-</span> <span class="p">{</span><span class="n">sube</span><span class="p">})</span>
+            <span class="n">sube</span><span class="o">.</span><span class="n">kontenjan</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;kontenjan&#39;</span><span class="p">]</span>
+            <span class="n">sube</span><span class="o">.</span><span class="n">dis_kontenjan</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;dis_kontenjan&#39;</span><span class="p">]</span>
+            <span class="n">sube</span><span class="o">.</span><span class="n">ad</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;ad&#39;</span><span class="p">]</span>
+            <span class="n">sube</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="c1"># mevcut subelerde kalanlari sil</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">mevcut_subeler</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DersSubelendirme.bilgi_ver"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.DersSubelendirme.bilgi_ver">[docs]</a>    <span class="k">def</span> <span class="nf">bilgi_ver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Bilgi ver</span>
+
+<span class="sd">        Şubelendirme bilgileri ilgili okutmanlara iletilir.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">sbs</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;ders_key&#39;</span><span class="p">])</span>
+        <span class="n">okutmanlar</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">__unicode__</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sbs</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s1">&#39;Mesaj Iletildi&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s1">&#39;Şubelendirme Bilgileri şu hocalara iletildi: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">okutmanlar</span><span class="p">)}</span></div></div>
+
+
+<div class="viewcode-block" id="NotGirisi"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi">[docs]</a><span class="k">class</span> <span class="nc">NotGirisi</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Okutman Not Girişi</span>
+
+<span class="sd">    Okutmanların Sınavlara ait öğrenci notlarını sisteme girebilmesini</span>
+<span class="sd">    sağlayan workflowa ait metdodları barındıran sınıftır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NotGirisi.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;DegerlendirmeNot&quot;</span></div>
+
+<div class="viewcode-block" id="NotGirisi.ders_secim"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.ders_secim">[docs]</a>    <span class="k">def</span> <span class="nf">ders_secim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Not Girişi Ders Seçimi</span>
+
+<span class="sd">        Okutmanın kendisine ait şubelerin listelendiği seçim adımına</span>
+<span class="sd">        ait olan metot.</span>
+
+<span class="sd">        Bu method seçilen şubeyi bir sonraki workflow adımı olan ve</span>
+<span class="sd">        ``sinav_sec`` methodu ile elde edilen sınav seçim adımına</span>
+<span class="sd">        aktarmaktadır.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Ders Seçim Formu&quot;</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">subeler</span> <span class="o">=</span> <span class="n">Sube</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">okutman_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_okutman_key</span><span class="p">)</span>
+        <span class="n">_form</span><span class="o">.</span><span class="n">sube</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sube Seçiniz&quot;</span><span class="p">,</span>
+                                    <span class="n">choices</span><span class="o">=</span><span class="n">prepare_choices_for_model</span><span class="p">(</span><span class="n">Sube</span><span class="p">,</span> <span class="n">okutman_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_okutman_key</span><span class="p">))</span>
+        <span class="n">_form</span><span class="o">.</span><span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Seç&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;Ders Şubesi Seçin&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NotGirisi.sinav_sec"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.sinav_sec">[docs]</a>    <span class="k">def</span> <span class="nf">sinav_sec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Not Girişi Sınav Seç</span>
+
+<span class="sd">        Okutmanın, seçilen şubeye ait sınavları görebildiği ve sınav</span>
+<span class="sd">        seçimi yapabildiği adıma ait olan method.</span>
+
+<span class="sd">        Seçilen şube, ``ders_secim`` methodu içinde tanımlanmış olan</span>
+<span class="sd">        ``JsonForm`` tarafından iletilmekte ve bu method içerisinde</span>
+<span class="sd">        aşağıdaki şekilde elde edilmektedir::</span>
+
+<span class="sd">            sube_key = self.current.input[&#39;form&#39;][&#39;sube&#39;]</span>
+
+<span class="sd">        Sinavlar, bir önceki şube seçim adımında seçilmiş olan şubeye</span>
+<span class="sd">        ait olacak şekilde filtrelenmektedir::</span>
+
+<span class="sd">            _form.sinav=fields.Integer(&quot;Sınav Seçiniz&quot;,</span>
+<span class="sd">              choices=prepare_choices_for_model(Sinav, sube_id=sube_key))</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sınav Seçim Formu&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sube_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;sube&#39;</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">sube_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sube&quot;</span><span class="p">]</span>
+
+        <span class="n">_form</span><span class="o">.</span><span class="n">sinav</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Sınav Seçiniz&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">prepare_choices_for_model</span><span class="p">(</span><span class="n">Sinav</span><span class="p">,</span> <span class="n">sube_id</span><span class="o">=</span><span class="n">sube_key</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sube&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sube_key</span>
+        <span class="n">_form</span><span class="o">.</span><span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Seç&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;Sınav Seçin&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NotGirisi.sinav_kontrol"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.sinav_kontrol">[docs]</a>    <span class="k">def</span> <span class="nf">sinav_kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Seçilen sınava ait notların onaylanmış (teslim edilmiş) olup</span>
+<span class="sd">        olmadığını kontrol eden method.</span>
+
+<span class="sd">        Bu method ile task_data içerisine seçili sınavın onay durumu</span>
+<span class="sd">        aşağıdaki şekilde tanımlanmaktadır::</span>
+
+<span class="sd">            self.current.task_data[&#39;sinav_degerlendirme&#39;] = sinav.degerlendirme</span>
+
+<span class="sd">        Bu tanımlama ile, BMPN dosyası üzerinde tanımladığmız XOR kapısı</span>
+<span class="sd">        sayesinde notları onaylanmış (teslim edilmiş) sınavlara ait</span>
+<span class="sd">        notlar bir önizleme ekranında görüntülenrek, tekrar işlenmesi</span>
+<span class="sd">        ve değiştirilmesi engellenmektedir.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">sinav_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;sinav&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;sinav_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sinav_key</span>
+        <span class="n">sinav</span> <span class="o">=</span> <span class="n">Sinav</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav_key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;sinav_degerlendirme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sinav</span><span class="o">.</span><span class="n">degerlendirme</span></div>
+
+<div class="viewcode-block" id="NotGirisi.not_girisi"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.not_girisi">[docs]</a>    <span class="k">def</span> <span class="nf">not_girisi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Seçilen sınava ait notların sisteme girilmesini sağlayan method.</span>
+<span class="sd">        Bu method hem ``sinav_kontrol`` hem de ``not_kontrol`` methodu</span>
+<span class="sd">        üzerinden gelen yönlendirmeleri karşılamaktadır.</span>
+
+<span class="sd">        ``not_kontrol`` methodu (not kontrol adımı), okutmanın girdiği</span>
+<span class="sd">        notları değiştirme ihtiyacı göz önünde bulundurularak</span>
+<span class="sd">        geliştirilmiştir.</span>
+
+<span class="sd">        Not kontrol adımı üzerinden gelen yönlendirmelerde güncel not</span>
+<span class="sd">        verisini elde edebilmek için ``task_data`` altında notlar</span>
+<span class="sd">        tanımına bakılmaktadır. Bu tanım ``not_kontrol`` methodu</span>
+<span class="sd">        içerisinde yapıldığı, için bu veriyi barındıran bütün</span>
+<span class="sd">        yönlendirmelerin bu adımdan yapıldığı bilinmektedir.</span>
+
+<span class="sd">        Bu tanımın bulunmadığı yönlendirmelerde ise, notlar</span>
+<span class="sd">        veritabanı üzerinden sorgulanarak listelenmektedir.</span>
+
+<span class="sd">        Bu methodun barındırdığı ``NotGirisForm`` adlı form ise</span>
+<span class="sd">        ``not_form_inline_edit`` adlı form modifier ile</span>
+<span class="sd">        ``degerlendirme`` ve ``aciklama`` alanlarına inline edit</span>
+<span class="sd">        özelliği kazandırılmaktadır.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">NotGirisForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Not Giriş Formu&quot;</span><span class="p">)</span>
+        <span class="n">sinav_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;sinav_key&#39;</span><span class="p">]</span>
+        <span class="n">sube_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sube&quot;</span><span class="p">]</span>
+        <span class="n">sinav</span> <span class="o">=</span> <span class="n">Sinav</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav_key</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ogrenciler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;notlar&quot;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">ogr</span> <span class="ow">in</span> <span class="n">ogrenciler</span><span class="p">:</span>
+                <span class="n">_form</span><span class="o">.</span><span class="n">Ogrenciler</span><span class="p">(</span><span class="n">ad_soyad</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;ad_soyad&#39;</span><span class="p">]),</span>
+                                 <span class="n">ogrenci_no</span><span class="o">=</span><span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;ogrenci_no&#39;</span><span class="p">],</span> <span class="n">degerlendirme</span><span class="o">=</span><span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;degerlendirme&#39;</span><span class="p">],</span>
+                                 <span class="n">aciklama</span><span class="o">=</span><span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;aciklama&#39;</span><span class="p">],</span>
+                                 <span class="n">key</span><span class="o">=</span><span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">])</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">ogrenciler</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="n">sube_key</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">ogr</span> <span class="ow">in</span> <span class="n">ogrenciler</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span> <span class="c1"># Öğrencinin bu sınava ait daha önceden kayıtlı notu var mı?</span>
+                    <span class="n">degerlendirme</span> <span class="o">=</span> <span class="n">DegerlendirmeNot</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="n">sinav</span><span class="p">,</span> <span class="n">ogrenci</span><span class="o">=</span><span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span>
+                    <span class="n">puan</span> <span class="o">=</span> <span class="n">degerlendirme</span><span class="o">.</span><span class="n">puan</span>
+                    <span class="n">aciklama</span> <span class="o">=</span> <span class="n">degerlendirme</span><span class="o">.</span><span class="n">aciklama</span>
+                    <span class="n">degerlendirme_key</span> <span class="o">=</span> <span class="n">degerlendirme</span><span class="o">.</span><span class="n">key</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">puan</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">aciklama</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                    <span class="n">degerlendirme_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+                <span class="n">_form</span><span class="o">.</span><span class="n">Ogrenciler</span><span class="p">(</span><span class="n">ad_soyad</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span><span class="p">),</span>
+                                 <span class="n">ogrenci_no</span><span class="o">=</span><span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci_no</span><span class="p">,</span> <span class="n">degerlendirme</span><span class="o">=</span><span class="n">puan</span><span class="p">,</span> <span class="n">aciklama</span><span class="o">=</span><span class="n">aciklama</span><span class="p">,</span>
+                                 <span class="n">key</span><span class="o">=</span><span class="n">degerlendirme_key</span><span class="p">)</span>
+
+        <span class="n">_form</span><span class="o">.</span><span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Önizleme&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;not_kontrol&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;allow_actions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span></div>
+
+<div class="viewcode-block" id="NotGirisi.not_kontrol"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.not_kontrol">[docs]</a>    <span class="k">def</span> <span class="nf">not_kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Okutmanların girmiş olduğu öğrenci notlarının listelenmesini</span>
+<span class="sd">        sağlayan method.</span>
+
+<span class="sd">        Bu method hem ``sinav_kontrol`` methodu hem de ``not_girisi``</span>
+<span class="sd">        methodları üzerinden yapılan yönlendirmeleri karşılar. Eğer</span>
+<span class="sd">        seçilen sınava ait notlar onaylanmış (teslim edilmiş) ise</span>
+<span class="sd">        ``not_giris`` methoduna başlı olan not giriş adımı atlanarak bu</span>
+<span class="sd">        adıma yönlendirme yapılmaktadır. Bu durumda notlar, veritabanı</span>
+<span class="sd">        üzerinden alınarak listelenirken, ``not_girisi`` adımından gelen</span>
+<span class="sd">        yönlendirmelerde form ile birlikte gönderilen veriler</span>
+<span class="sd">        listelenmektedir.</span>
+
+<span class="sd">        ``sinav_kontrol`` methodu ile yapılan yönlendirmelerde notlar</span>
+<span class="sd">        üzerinde herhangi bir güncelleme, değişiklik yapılamayacağı için</span>
+<span class="sd">        bu operasyonlara ait form düğmeleri gösterilmemekte ve okutmana</span>
+<span class="sd">        bu dersler üzerinde bir değişiklik yapamayacağını bildiren bir</span>
+<span class="sd">        mesaj kutusu gösterilmektedir.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Not Önizleme Ekranı&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>  <span class="c1"># Eğer istek sinav_kontrol aşamasından yönlendirilmemişse öğrenci notları için formdan gelen veriyi kullan</span>
+            <span class="n">ogrenci_notlar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;notlar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogrenci_notlar</span>
+
+            <span class="n">notlar</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ogr</span> <span class="ow">in</span> <span class="n">ogrenci_notlar</span><span class="p">:</span>
+                <span class="n">ogrnot</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Öğrenci No&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;ogrenci_no&#39;</span><span class="p">]</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Adı Soyadı&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;ad_soyad&#39;</span><span class="p">]</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Değerlendirme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;degerlendirme&#39;</span><span class="p">]</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Açıklama&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="p">[</span><span class="s1">&#39;aciklama&#39;</span><span class="p">]</span>
+                <span class="n">notlar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ogrnot</span><span class="p">)</span>
+
+        <span class="k">except</span><span class="p">:</span>  <span class="c1"># Eğer istek sinav_kontrol aşamasından yönlendirilmişse notlar için veritabanı kayıtlarını kullan</span>
+            <span class="n">sinav_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;sinav_key&#39;</span><span class="p">]</span>
+            <span class="n">sube_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sube&quot;</span><span class="p">]</span>
+            <span class="n">sinav</span> <span class="o">=</span> <span class="n">Sinav</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav_key</span><span class="p">)</span>
+            <span class="n">ogrenciler</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="n">sube_key</span><span class="p">)</span>
+            <span class="n">notlar</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">ogr</span> <span class="ow">in</span> <span class="n">ogrenciler</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>  <span class="c1"># Öğrencinin bu sınava ait daha önceden kayıtlı notu var mı?</span>
+                    <span class="n">degerlendirme</span> <span class="o">=</span> <span class="n">DegerlendirmeNot</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="n">sinav</span><span class="p">,</span> <span class="n">ogrenci</span><span class="o">=</span><span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span>
+                    <span class="n">puan</span> <span class="o">=</span> <span class="n">degerlendirme</span><span class="o">.</span><span class="n">puan</span>
+                    <span class="n">aciklama</span> <span class="o">=</span> <span class="n">degerlendirme</span><span class="o">.</span><span class="n">aciklama</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">puan</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">aciklama</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+                <span class="n">ogrnot</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">({})</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Öğrenci No&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci_no</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Adı Soyadı&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">ogr</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span><span class="p">)</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Değerlendirme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">puan</span>
+                <span class="n">ogrnot</span><span class="p">[</span><span class="s1">&#39;Açıklama&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aciklama</span>
+                <span class="n">notlar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ogrnot</span><span class="p">)</span>
+
+        <span class="c1"># Eğer notlar okutman tarından onaylanmışsa (teslim edilmişse) uyarı göster</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;sinav_degerlendirme&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s1">&#39;Notlar Onaylandı&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s1">&#39;Bu derse ait notlar onaylanmış olduğu için içeriği değiştirilemez.&#39;</span>
+
+            <span class="p">}</span>
+            <span class="n">_form</span><span class="o">.</span><span class="n">ders_secim</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Ders Seçim Ekranına Dön&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;ders_sec&quot;</span><span class="p">,</span>
+                                                     <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;ders_secim_adimina_don&quot;</span><span class="p">)</span>
+            <span class="n">_form</span><span class="o">.</span><span class="n">sinav_secim</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Sınav Seçim Ekranına Dön&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;sinav_sec&quot;</span><span class="p">,</span>
+                                                      <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;sinav_secim_adimina_don&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Eğer notlar hala onaylanmamışsa (teslim edilmemişse) form düğmelerini göster</span>
+
+            <span class="n">_form</span><span class="o">.</span><span class="n">not_onay</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Sınav Notlarını Onaylıyorum (Bu işlem geri alınamaz!)&quot;</span><span class="p">)</span>
+            <span class="n">_form</span><span class="o">.</span><span class="n">not_duzenle</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Notları Düzenle&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;not_girisi&quot;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;not_giris_formuna_don&quot;</span><span class="p">)</span>
+            <span class="n">_form</span><span class="o">.</span><span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;not_kaydet&quot;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
+            <span class="n">_form</span><span class="o">.</span><span class="n">kaydet_ve_ders_sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Ders Seçim Ekranına Dön&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;ders_sec&quot;</span><span class="p">,</span>
+                                                     <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;ders_adimina_don&quot;</span><span class="p">)</span>
+            <span class="n">_form</span><span class="o">.</span><span class="n">kaydet_ve_sinav_sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet ve Sınav Seçim Ekranına Dön&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;sinav_sec&quot;</span><span class="p">,</span>
+                                                      <span class="n">flow</span><span class="o">=</span><span class="s2">&quot;sinav_adimina_don&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table-multiRow&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="n">notlar</span><span class="p">,</span>
+            <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="bp">False</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NotGirisi.not_kaydet"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.not_kaydet">[docs]</a>    <span class="k">def</span> <span class="nf">not_kaydet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Okutmanın girmiş olduğu notların veritabanına kaydedilmesini</span>
+<span class="sd">        sağlayan method.</span>
+
+<span class="sd">        Bu method, önceden girilmiş olan notları veritabanı üzerinde</span>
+<span class="sd">        güncellerken, key verisi olmayan not girişleri için veritabanı</span>
+<span class="sd">        üzerinde yeni bir kayıt açmaktadır.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">sinav_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sinav_key&quot;</span><span class="p">]</span>
+        <span class="n">sube_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sube&quot;</span><span class="p">]</span>
+
+        <span class="n">sinav</span> <span class="o">=</span> <span class="n">Sinav</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav_key</span><span class="p">)</span>
+        <span class="n">ders</span> <span class="o">=</span> <span class="n">sinav</span><span class="o">.</span><span class="n">ders</span>
+
+        <span class="k">for</span> <span class="n">ogrenci_not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;notlar&quot;</span><span class="p">]:</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ogr_data</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci_no</span><span class="o">=</span><span class="n">ogrenci_not</span><span class="p">[</span><span class="s1">&#39;ogrenci_no&#39;</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">ogrenci_not</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]:</span> <span class="c1"># Önceden girilmiş bir kayıt mı?</span>
+                    <span class="n">ogr_not</span> <span class="o">=</span> <span class="n">DegerlendirmeNot</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci_not</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ogr_not</span> <span class="o">=</span> <span class="n">DegerlendirmeNot</span><span class="p">()</span>
+
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">puan</span> <span class="o">=</span> <span class="n">ogrenci_not</span><span class="p">[</span><span class="s1">&#39;degerlendirme&#39;</span><span class="p">]</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">aciklama</span> <span class="o">=</span> <span class="n">ogrenci_not</span><span class="p">[</span><span class="s1">&#39;aciklama&#39;</span><span class="p">]</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">ogrenci_no</span> <span class="o">=</span> <span class="n">ogrenci_not</span><span class="p">[</span><span class="s1">&#39;ogrenci_no&#39;</span><span class="p">]</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">donem</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">yil</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">ogretim_elemani</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_okutman_name_surname</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">ders</span> <span class="o">=</span> <span class="n">ders</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">sinav</span> <span class="o">=</span> <span class="n">sinav</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogr_data</span><span class="o">.</span><span class="n">ogrenci</span>
+                <span class="n">ogr_not</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="c1"># Okutman notları onayladığını (teslim ettiğini) bildirmişse</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;not_onay&#39;</span><span class="p">]:</span>
+            <span class="n">sinav</span><span class="o">.</span><span class="n">degerlendirme</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">sinav</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="NotGirisi.kayit_bilgisi_ver"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.kayit_bilgisi_ver">[docs]</a>    <span class="k">def</span> <span class="nf">kayit_bilgisi_ver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="n">sinav_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s2">&quot;sinav_key&quot;</span><span class="p">]</span>
+        <span class="n">sinav</span> <span class="o">=</span> <span class="n">Sinav</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sinav_key</span><span class="p">)</span>
+        <span class="n">sinav_tarihi</span> <span class="o">=</span> <span class="n">sinav</span><span class="o">.</span><span class="n">tarih</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s1">&#39;Notlar Kaydedildi&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> dersine ait </span><span class="si">%s</span><span class="s1"> tarihli sınav notları kaydedildi&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sinav</span><span class="o">.</span><span class="n">ders</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="n">sinav_tarihi</span><span class="p">)}</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_okutman_key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Harici okutman ve okutman kayıt key&#39;lerinin ayrımını sağlayan method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">key</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">key</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">harici_okutman</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">key</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_okutman_name_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Harici okutman ve okutman ad,soyad ayrımını sağlayan method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">soyad</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">key</span> <span class="k">else</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">harici_okutman</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">harici_okutman</span><span class="o">.</span><span class="n">soyad</span><span class="p">)</span>
+
+    <span class="nd">@form_modifier</span>
+<div class="viewcode-block" id="NotGirisi.not_form_inline_edit"><a class="viewcode-back" href="../../../../ulakbus.views.ders.ders.html#ulakbus.views.ders.ders.NotGirisi.not_form_inline_edit">[docs]</a>    <span class="k">def</span> <span class="nf">not_form_inline_edit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serialized_form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;NotGirisForm&#39;da degerlendirme ve aciklama alanlarına inline edit özelliği sağlayan method.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;Ogrenciler&#39;</span> <span class="ow">in</span> <span class="n">serialized_form</span><span class="p">[</span><span class="s1">&#39;schema&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
+            <span class="n">serialized_form</span><span class="p">[</span><span class="s1">&#39;inline_edit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;degerlendirme&#39;</span><span class="p">,</span> <span class="s1">&#39;aciklama&#39;</span><span class="p">]</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

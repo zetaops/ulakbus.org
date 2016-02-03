@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.views.personel.kimlik_ve_iletisim &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.views.personel.kimlik_ve_iletisim</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.views.personel.kimlik_ve_iletisim</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="c1"># Copyright (C) 2015 ZetaOps Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is licensed under the GNU General Public License v3</span>
+<span class="c1"># (GPLv3).  See LICENSE.txt for details.</span>
+
+<span class="sd">&quot;&quot;&quot;Personellerin  Kimlik ve İletişim  Bilgileri  İş Akışına ait</span>
+<span class="sd">sınıf ve metotları içeren modüldür.</span>
+
+<span class="sd">Kimlik ve İletişim Bilgileri iş akışının yürütülmesini sağlar.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">fields</span>
+
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span>
+<span class="kn">from</span> <span class="nn">ulakbus.services.zato_wrapper</span> <span class="kn">import</span> <span class="n">MernisKimlikBilgileriGetir</span>
+<span class="kn">from</span> <span class="nn">ulakbus.services.zato_wrapper</span> <span class="kn">import</span> <span class="n">KPSAdresBilgileriGetir</span>
+
+
+<div class="viewcode-block" id="KimlikBilgileriForm"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikBilgileriForm">[docs]</a><span class="k">class</span> <span class="nc">KimlikBilgileriForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``KimlikIletişim`` sınıfı için form olarak kullanılacaktır. Form,</span>
+<span class="sd">    include listesinde, aşağıda tanımlı alanlara sahiptir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="KimlikBilgileriForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikBilgileriForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tckn&#39;</span><span class="p">,</span> <span class="s1">&#39;ad&#39;</span><span class="p">,</span> <span class="s1">&#39;soyad&#39;</span><span class="p">,</span> <span class="s1">&#39;cinsiyet&#39;</span><span class="p">,</span> <span class="s1">&#39;uyruk&#39;</span><span class="p">,</span> <span class="s1">&#39;medeni_hali&#39;</span><span class="p">,</span> <span class="s1">&#39;cuzdan_seri&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;cuzdan_seri_no&#39;</span><span class="p">,</span> <span class="s1">&#39;baba_adi&#39;</span><span class="p">,</span> <span class="s1">&#39;ana_adi&#39;</span><span class="p">,</span> <span class="s1">&#39;dogum_tarihi&#39;</span><span class="p">,</span> <span class="s1">&#39;dogum_tarihi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;dogum_yeri&#39;</span><span class="p">,</span> <span class="s1">&#39;medeni_hali&#39;</span><span class="p">,</span> <span class="s1">&#39;kayitli_oldugu_il&#39;</span><span class="p">,</span> <span class="s1">&#39;kayitli_oldugu_ilce&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;kayitli_oldugu_mahalle_koy&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;kayitli_oldugu_cilt_no&#39;</span><span class="p">,</span> <span class="s1">&#39;kayitli_oldugu_aile_sira_no&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;kayitli_oldugu_sira_no&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;kimlik_cuzdani_verildigi_yer&#39;</span><span class="p">,</span> <span class="s1">&#39;kimlik_cuzdani_verilis_nedeni&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;kimlik_cuzdani_kayit_no&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;kimlik_cuzdani_verilis_tarihi&#39;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span>
+    <span class="n">mernis</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Mernis&#39;ten Kimlik Bilgileri Getir&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;mernis_kimlik_sorgula&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="IletisimBilgileriForm"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.IletisimBilgileriForm">[docs]</a><span class="k">class</span> <span class="nc">IletisimBilgileriForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``KimlikIletisim`` sınıfı için form olarak kullanılacaktır. Form,</span>
+<span class="sd">    include listesinde, aşağıda tanımlı alanlara sahiptir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IletisimBilgileriForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.IletisimBilgileriForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ikamet_adresi&#39;</span><span class="p">,</span> <span class="s1">&#39;ikamet_il&#39;</span><span class="p">,</span> <span class="s1">&#39;ikamet_ilce&#39;</span><span class="p">,</span> <span class="s1">&#39;adres_2&#39;</span><span class="p">,</span> <span class="s1">&#39;adres_2_posta_kodu&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;oda_no&#39;</span><span class="p">,</span> <span class="s1">&#39;oda_tel_no&#39;</span><span class="p">,</span> <span class="s1">&#39;cep_telefonu&#39;</span><span class="p">,</span> <span class="s1">&#39;e_posta&#39;</span><span class="p">,</span> <span class="s1">&#39;e_posta_2&#39;</span><span class="p">,</span> <span class="s1">&#39;e_posta_3&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;web_sitesi&#39;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span>
+    <span class="n">kps</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;KPS&#39;den Adres Bilgileri Getir&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;kps_adres_sorgula&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DigerBilgilerForm"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.DigerBilgilerForm">[docs]</a><span class="k">class</span> <span class="nc">DigerBilgilerForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``KimlikIletisim`` sınıfı için form olarak kullanılacaktır. Form,</span>
+<span class="sd">    include listesinde, aşağıda tanımlı alanlara sahiptir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DigerBilgilerForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.DigerBilgilerForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yayinlar&#39;</span><span class="p">,</span> <span class="s1">&#39;projeler&#39;</span><span class="p">,</span> <span class="s1">&#39;verdigi_dersler&#39;</span><span class="p">,</span> <span class="s1">&#39;kan_grubu&#39;</span><span class="p">,</span> <span class="s1">&#39;ehliyet&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;unvan&#39;</span><span class="p">,</span> <span class="s1">&#39;biyografi&#39;</span><span class="p">,</span> <span class="s1">&#39;notlar&#39;</span><span class="p">,</span> <span class="s1">&#39;engelli_durumu&#39;</span><span class="p">,</span> <span class="s1">&#39;engel_grubu&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;engel_derecesi&#39;</span><span class="p">,</span> <span class="s1">&#39;engel_orani&#39;</span><span class="p">,</span> <span class="s1">&#39;personel_turu&#39;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KimlikIletisim"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim">[docs]</a><span class="k">class</span> <span class="nc">KimlikIletisim</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Kimlik ve İletişim Bilgileri İş Akışı</span>
+
+<span class="sd">    Kimlik ve İletişim Bilgileri, aşağıda tanımlı iş akışı adımlarını yürütür:</span>
+
+<span class="sd">        - Kimlik Bilgileri Formu</span>
+<span class="sd">        - Mernis Kimlik Sorgulama</span>
+<span class="sd">        - Kimlik Bilgileri Kaydet</span>
+<span class="sd">        - İletişim Bilgileri Formu</span>
+<span class="sd">        - KPS Adres Sorgulama</span>
+<span class="sd">        - Iletişim Bilgileri Kaydet</span>
+<span class="sd">        - Diğer Bilgiler Formu</span>
+<span class="sd">        - Diğer Bilgileri Kaydet</span>
+
+<span class="sd">    Bu iş akışında kullanılan metotlar şu şekildedir:</span>
+
+<span class="sd">    Kimlik Bilgilerini Formunu Listele:</span>
+<span class="sd">       CrudView list metodu kullanılmıştır. Bu metot default olarak tanımlanmıştır.</span>
+<span class="sd">       Kimlik Bilgileri formunu listeler.</span>
+
+<span class="sd">    Mernis&#39;ten Kimlik Bilgileri Getir:</span>
+<span class="sd">       MERNİS, merkezi nüfus idare sisteminin kısa proje adıdır. Bu metot sayesinde</span>
+<span class="sd">       personele ait kimlik bilgilerine MERNİS&#39;ten erişilir. Kimlik Bilgileri formundaki</span>
+<span class="sd">       alanlar MERNİS&#39;ten gelen bilgiler doğrultusunda doldurulur.</span>
+
+<span class="sd">    Kaydet:</span>
+<span class="sd">       MERNİS&#39;ten gelen bilgileri ve yetkili kişinin personelle girdiği bilgileri</span>
+<span class="sd">       kaydeder. Bu adım ``CrudView.save()`` metodunu kullanır.</span>
+
+<span class="sd">    İletişim Bilgilerini Formunu Listele:</span>
+<span class="sd">       CrudView list metodu kullanılmıştır.Bu metot default olarak tanımlanmıştır.</span>
+<span class="sd">       İletişim Bilgileri formunu listeler.</span>
+
+<span class="sd">    KPS&#39;den Adres Bilgileri Getir:</span>
+<span class="sd">       Bu metot sayesinde personele ait yerleşim yeri bilgilerine kamu kurumları</span>
+<span class="sd">       tarafından erişilir. İletişim Bilgileri formundaki alanlar</span>
+<span class="sd">       KPS&#39;ten gelen bilgiler doğrultusunda doldurulur.</span>
+
+<span class="sd">    Kaydet:</span>
+<span class="sd">       KPS&#39;ten gelen bilgileri ya da yetkili kişinin personelle ilgili girdiği</span>
+<span class="sd">       bilgileri kaydeder. Bu adım ``CrudView.save()`` metodunu kullanır.</span>
+
+<span class="sd">    Diğer Bilgiler Formu:</span>
+<span class="sd">       CrudView list metodu kullanılmıştır.Bu metot default olarak tanımlanmıştır.</span>
+<span class="sd">       Diğer Bilgiler formunu listeler.</span>
+
+<span class="sd">    Kaydet:</span>
+<span class="sd">       Yetkili kişinin personelle ilgili girdiği bilgileri kaydeder.</span>
+<span class="sd">       İş akışı adımdan sonra sona eriyor.</span>
+
+<span class="sd">    Bu sınıf ``CrudView`` extend edilerek hazırlanmıştır. Temel model ``Personel``</span>
+<span class="sd">    modelidir. Meta.model bu amaçla kullanılmıştır.</span>
+
+<span class="sd">    Adımlar arası geçiş manuel yürütülmektedir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="KimlikIletisim.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Personel&#39;</span></div>
+
+<div class="viewcode-block" id="KimlikIletisim.mernis_kimlik_sorgula"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim.mernis_kimlik_sorgula">[docs]</a>    <span class="k">def</span> <span class="nf">mernis_kimlik_sorgula</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Mernis Sorgulama</span>
+
+<span class="sd">        Zato wrapper metodlarıyla Mernis servisine bağlanır, servisten dönen</span>
+<span class="sd">        değerlerle nesneyi doldurup kaydeder.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">MernisKimlikBilgileriGetir</span><span class="p">(</span><span class="n">tckn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">tckn</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">zs</span><span class="o">.</span><span class="n">zato_request</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="KimlikIletisim.kps_adres_sorgula"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim.kps_adres_sorgula">[docs]</a>    <span class="k">def</span> <span class="nf">kps_adres_sorgula</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;KPS Sorgulama</span>
+
+<span class="sd">        Zato wrapper metodlarıyla KPS servisine bağlanır, servisten dönen</span>
+<span class="sd">        değerlerle nesneyi doldurup kaydeder.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">KPSAdresBilgileriGetir</span><span class="p">(</span><span class="n">tckn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">tckn</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">zs</span><span class="o">.</span><span class="n">zato_request</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="KimlikIletisim.kimlik_bilgileri"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim.kimlik_bilgileri">[docs]</a>    <span class="k">def</span> <span class="nf">kimlik_bilgileri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Kimlik Bilgileri Formu&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">KimlikBilgileriForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="KimlikIletisim.iletisim_bilgileri"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim.iletisim_bilgileri">[docs]</a>    <span class="k">def</span> <span class="nf">iletisim_bilgileri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;İletişim Bilgileri Formu&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">IletisimBilgileriForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="KimlikIletisim.diger_bilgiler"><a class="viewcode-back" href="../../../../ulakbus.views.personel.kimlik_ve_iletisim.html#ulakbus.views.personel.kimlik_ve_iletisim.KimlikIletisim.diger_bilgiler">[docs]</a>    <span class="k">def</span> <span class="nf">diger_bilgiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Diğer Bilgiler Formu&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">DigerBilgilerForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -36,8 +36,8 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
-    <link rel="next" title="ESB ve SOA ne anlama geliyor yani?" href="zato_doc.html" />
-    <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
+    <link rel="next" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
+    <link rel="prev" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -168,10 +168,10 @@
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
-          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+          <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
@@ -197,11 +197,11 @@
 </ul>
 
   <h4>Önceki konu</h4>
-  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
-                        title="önceki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
+  <p class="topless"><a href="ulakbus_user_interface.html"
+                        title="önceki bölüm">Geliştirme Ortamı Kurulumu(Frontend)</a></p>
   <h4>Sonraki konu</h4>
-  <p class="topless"><a href="zato_doc.html"
-                        title="sonraki bölüm"><strong>ESB ve SOA ne anlama geliyor yani?</strong></a></p>
+  <p class="topless"><a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html"
+                        title="sonraki bölüm">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a></p>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
@@ -253,68 +253,34 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 <div class="section" id="view-task-ve-model-dosyalarinin-konumlari">
 <h2>View, Task ve Model dosyalarının konumları<a class="headerlink" href="#view-task-ve-model-dosyalarinin-konumlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>View, task ve model modülleri, proje kök dizininde yer alan <code class="docutils literal"><span class="pre">views</span></code>, <code class="docutils literal"><span class="pre">tasks</span></code> ve <code class="docutils literal"><span class="pre">models</span></code>  dizinleri altında konumlanırlar.</p>
-<p class="plantuml">
-<img src="_images/plantuml-d92f24074b4f65b7f26c0fe807ae3e1ddc180de8.png" alt="&#64;startsalt
-
-{
-{T
-+manage.py
-+settings.py
-+**models**
-++~__init__.py
-++ogrenci.py
-++personel.py
-++auth.py
-++hitap.py
-+**views**
-++~__init__.py
-++personel
-+++~__init__.py
-+++atama.py
-+++kadro.py
-++**lectures**
-+++~__init__.py
-+++select.py
-+++student_review.py
-+++advisor_review.py
-++auth.py
-++dashboard.py
-++system.py
-+**tasks**
-++~__init__.py
-}
-}
-
-&#64;endsalt" />
-</p>
 </div>
 <div class="section" id="is-akislarinin-tasarlanmasi">
 <h2>İş akışlarının tasarlanması.<a class="headerlink" href="#is-akislarinin-tasarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Ulakbüs projesinin üzerine inşa edildiği ZEngine frameworkü BPMN 2.0 standardıyla tanımlanmış olan iş akışı ögelerinin uygulama işlevselliği için elzem olan kısımlarını desteklemektedir. Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kullanacağımız ögelerin başında gelmektedir.</p>
 <p>BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.</p>
 <p>Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.</p>
-<a data-lightbox="group-f156f9d1-b625-4bf1-8ed8-c8d967600b62"
-                   href="_images/du_bpmn_lecture_selection.png"
-                   class=""
-                   title=""
-                   data-title=""
-                   ><img src="_images/du_bpmn_lecture_selection.png"
-                    class=""
-                    width="100%"
-                    height="auto"
-                    alt=""/>
-                    </a><p>Advisor lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
-<a data-lightbox="group-99609d43-1f62-43f3-9121-83afc72c7d85"
-                   href="_images/du_bpmn_lane_properties.png"
-                   class=""
-                   title=""
-                   data-title=""
-                   ><img src="_images/du_bpmn_lane_properties.png"
-                    class=""
-                    width="100%"
-                    height="auto"
-                    alt=""/>
-                    </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
+<a class=""
+               data-lightbox="group-2bbd65c8-68ba-4c2c-a6b3-42240db5b6c1"
+               href="_images/du_bpmn_lecture_selection.png"
+               title=""
+               data-title=""
+               ><img src="_images/du_bpmn_lecture_selection.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt=""/>
+                </a><p>Advisor lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz. Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
+<a class=""
+               data-lightbox="group-050f2bd7-b4ae-4a2f-b940-ae57918fb17a"
+               href="_images/du_bpmn_lane_properties.png"
+               title=""
+               data-title=""
+               ><img src="_images/du_bpmn_lane_properties.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt=""/>
+                </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
 <p><code class="docutils literal"><span class="pre">owners</span></code> parametresi tanımlandığı lane&#8217;in olası kullanıcılarını ifade etmek için kullanılır. İş akışı bir lane&#8217;den diğerine geçtiğinde, iş akışı motoru bu tanımlamanın işaret ettiği kullanıcılara bir ileti göndererek akışa katılmalarını sağlar.</p>
 <p>Örneğimizde advisor lane&#8217;ini işletecek kişinin student lane&#8217;ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bununla birlikte, bu alana birden fazla nesne döndürebilecek geçerli bir Python ifadesi girilmesi gerektiğinden, <strong>[student.ogrenci.danisman.personel]</strong> şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya <strong>User</strong> nesnesi olmalı ya da geriye ilgili user nesnesini döndüren bir <strong>get_user()</strong> metoduna sahip olmalıdırlar.</p>
 <p><code class="docutils literal"><span class="pre">permissions</span></code> parametresi virgülle ayrılmış şekilde yetki kodları kabul etmektedir. İlgili lane&#8217;i işletecek kullanıcının bu yetkilere sahip olması koşulu aranacaktır. Sistemde halihazırda tanımlı olmayan yetkiler burada doğrudan kullanılıp update_permissions komutu ile otomatik olarak yetki tablosuna eklenebilir. <code class="docutils literal"><span class="pre">::</span> <span class="pre">TODO</span> <span class="pre">::</span></code></p>
@@ -322,361 +288,15 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 <div class="section" id="modellerin-tanimlanmasi">
 <h2>Modellerin tanımlanması.<a class="headerlink" href="#modellerin-tanimlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Yukarıda gösterdiğimiz &#8220;Öğrenci Ders Seçme&#8221; akışı için önceki bölümde ele aldığımız Student, Lecture ve Lecturer modellerini &#8220;lectures.py&#8221; gibi geçerli bir isimle models dizinine kaydedip, <code class="docutils literal"><span class="pre">models/__init__.py</span></code> içine import etmemiz yeterli olacaktır.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
-<span class="c">#</span>
-<span class="c"># This file is licensed under the GNU General Public License v3</span>
-<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
-
-<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">field</span>
-<span class="kn">from</span> <span class="nn">.ogrenci</span> <span class="kn">import</span> <span class="n">Ogrenci</span>
-
-
-<span class="k">class</span> <span class="nc">Lecture</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">ad</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">kredi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Kredisi&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">donem</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Dönem&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">LectureSelection</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">ders</span> <span class="o">=</span> <span class="n">Lecture</span><span class="p">()</span>
-    <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="p">()</span>
-    <span class="n">onaylandi</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
-<span class="c">#</span>
-<span class="c"># This file is licensed under the GNU General Public License v3</span>
-<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
-
-<span class="kn">from</span> <span class="nn">.personel</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.auth</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ogrenci</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.hitap</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.lectures</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</td></tr></table></div>
 </div>
 <div class="section" id="jsonform-ile-basit-bir-view-hazirlayalim">
 <h2>JsonForm ile basit bir view hazırlayalım<a class="headerlink" href="#jsonform-ile-basit-bir-view-hazirlayalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="highlight"><pre># -*-  coding: utf-8 -*-
-# This file is licensed under the GNU General Public License v3
-# (GPLv3).  See LICENSE.txt for details.
-from pyoko import form
-from zengine.lib.forms import JsonForm
-
-class HosgeldinizForm(JsonForm):
-    class Meta:
-        title = &#39;Ders Seçimine Hoşgeldiniz&#39;
-        help_text = &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod &quot; \
-                    &quot;tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,&quot;
-
-    start = form.Button(&quot;Başla&quot;)
-
-
-def hosgeldiniz(current):
-    borclar = []
-    for b in current.role.ogrenci.borc_set:
-        if not b.borc.odeme_tarihi:
-</pre></div>
-</td></tr></table></div>
 </div>
 <div class="section" id="ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi">
 <h2>Ekleme, görüntüleme, düzenleme ve silme işlemleri için CrudView kullanımı.<a class="headerlink" href="#ekleme-goruntuleme-duzenleme-ve-silme-islemleri-icin-crudview-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 </div>
 <div class="section" id="crudview-i-genisletmek">
 <h2>CrudView&#8217;ı genişletmek<a class="headerlink" href="#crudview-i-genisletmek" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
-<span class="c">#</span>
-<span class="c"># This file is licensed under the GNU General Public License v3</span>
-<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
-
-
-<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
-<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
-<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">view_method</span><span class="p">,</span> <span class="n">list_query</span><span class="p">,</span> <span class="n">obj_filter</span>
-<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">LectureSelection</span>
-
-
-<span class="k">class</span> <span class="nc">HosgeldinizForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s">&#39;Ders Seçimine Hoşgeldiniz&#39;</span>
-        <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod &quot;</span> \
-                    <span class="s">&quot;tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,&quot;</span>
-
-    <span class="n">start</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Başla&quot;</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">hosgeldiniz</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
-    <span class="n">borclar</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">current</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">borc_set</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">b</span><span class="o">.</span><span class="n">borc</span><span class="o">.</span><span class="n">odeme_tarihi</span><span class="p">:</span>
-            <span class="n">borclar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">borclar</span><span class="p">:</span>
-        <span class="n">current</span><span class="o">.</span><span class="n">msg_box</span><span class="p">(</span><span class="s">&quot;Ödenmemiş borcunuz olduğundan ders seçimi yapılamıyor&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;Borcunuz Var&quot;</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s">&#39;error&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HosgeldinizForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
-        <span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;borcu_yok&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
-
-
-<span class="k">class</span> <span class="nc">SelectLecturesView</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&#39;Lecture&#39;</span>
-        <span class="n">dispatch</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">class</span> <span class="nc">CrudForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
-        <span class="n">save_list</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Seçimi Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;save_selection&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SelectLecturesView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">ogrenci</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">preselection</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">key</span>
-
-    <span class="nd">@list_query</span>
-    <span class="k">def</span> <span class="nf">available_lectures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">donem</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">aktif_donem</span><span class="p">)</span>
-
-    <span class="nd">@obj_filter</span>
-    <span class="k">def</span> <span class="nf">preselected_lectures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">result_dict</span><span class="p">):</span>
-        <span class="n">result_dict</span><span class="p">[</span><span class="s">&#39;selected&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preselection</span>
-
-    <span class="nd">@view_method</span>
-    <span class="k">def</span> <span class="nf">save_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">itm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_selected_objects</span><span class="p">():</span>
-            <span class="n">LectureSelection</span><span class="p">(</span><span class="n">ders</span><span class="o">=</span><span class="n">itm</span><span class="p">,</span> <span class="n">ogrenci</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
-<span class="c">#</span>
-<span class="c"># This file is licensed under the GNU General Public License v3</span>
-<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
-<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
-<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
-<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">list_query</span>
-
-
-<span class="k">class</span> <span class="nc">StudentSelectionReview</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&#39;LectureSelection&#39;</span>
-        <span class="n">dispatch</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">class</span> <span class="nc">CrudForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
-        <span class="n">confirm</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Onayla&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;ders_secimi_tamam&quot;</span><span class="p">)</span>
-        <span class="n">continue_selection</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Seçime Devam Et&quot;</span><span class="p">)</span>
-
-    <span class="nd">@list_query</span>
-    <span class="k">def</span> <span class="nf">students_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">ogrenci</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*-  coding: utf-8 -*-</span>
-<span class="c">#</span>
-<span class="c"># This file is licensed under the GNU General Public License v3</span>
-<span class="c"># (GPLv3).  See LICENSE.txt for details.</span>
-<span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">form</span>
-<span class="kn">from</span> <span class="nn">zengine.lib.forms</span> <span class="kn">import</span> <span class="n">JsonForm</span>
-<span class="kn">from</span> <span class="nn">zengine.notifications</span> <span class="kn">import</span> <span class="n">Notify</span>
-<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span><span class="p">,</span> <span class="n">view_method</span>
-<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">list_query</span>
-
-<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">Ogrenci</span>
-
-
-<span class="k">class</span> <span class="nc">AdvisorSelectionReview</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="s">&#39;LectureSelection&#39;</span>
-        <span class="n">dispatch</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="n">object_actions</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">class</span> <span class="nc">CrudForm</span><span class="p">(</span><span class="n">JsonForm</span><span class="p">):</span>
-        <span class="n">confirm</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Onayla&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s">&quot;ders_secimi_tamam&quot;</span><span class="p">)</span>
-        <span class="n">continue_selection</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;Reddet&quot;</span><span class="p">)</span>
-
-    <span class="nd">@list_query</span>
-    <span class="k">def</span> <span class="nf">students_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">])</span>
-
-    <span class="c"># @view_method</span>
-    <span class="k">def</span> <span class="nf">set_student_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;lane_change_msg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;Ders seçimlerinizi gözden geçirin&#39;</span><span class="p">,</span>
-            <span class="s">&#39;body&#39;</span><span class="p">:</span> <span class="s">&#39;Danışmanınız bazı dersleriniziz değişmesi gerektiğini düşünüyor. &#39;</span>
-                    <span class="s">&#39;Aşağıdaki bağlantıya tıklayarak ders seçim ekranınızı görüntüleyebilirsiniz.&#39;</span><span class="p">,</span>
-        <span class="p">}</span>
-
-    <span class="k">def</span> <span class="nf">send_success_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s">&#39;ogrenci_id&#39;</span><span class="p">])</span>
-        <span class="n">Notify</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">rol</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">set_message</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Ders seçimleriniz onaylandı&quot;</span><span class="p">,</span>
-                                             <span class="n">msg</span><span class="o">=</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
 </div>
 </div>
 
@@ -693,10 +313,10 @@ def hosgeldiniz(current):
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
+          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              >sonraki</a> |</li>
         <li class="right" >
-          <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
+          <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
