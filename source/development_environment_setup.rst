@@ -164,19 +164,26 @@ bileşenlerin sürümlerinin değişmesi, yenilerinin eklenmesi veya başka sebe
 Bu değişiklikleri https://atlas.hashicorp.com/zetaops/boxes/ulakbus adresinden takip edebilirsiniz.
 
 Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını güncellemelisiniz:
+Bunun için önce Vagrantfile bulunan dizine geçiniz. Bu dizinde
 
 ::
 
     $ vagrant box outdated
 
+Komutunu çalıştırıp mevcut box eski mi değil mi kontrol edin. Daha sonra mevcut box destroy edip
+yeniden init edebilirsiniz.
 
-Daha sonra mevcut box destroy edip yeniden init edebilirsiniz. Prensip olarak box içerisinde
-geliştirme süreçlerine ait herhangi bir veri **bulunmamalıdır**. Eğer varsa bu işlemden önce
-ilgili veriler host makinesine alınmalıdır.
+.. Attention:: Prensip olarak box içerisinde geliştirme süreçlerine ait herhangi bir veri **bulunmamalıdır**.
+   Eğer varsa bu işlemden önce ilgili veriler host makinesine alınmalıdır.
 
 ::
 
     $ vagrant box destroy
+    $ vagrant update
+
+İşlem bitince
+::
+
     $ vagrant up
 
 
@@ -186,7 +193,8 @@ ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:
 ::
 
     $ vagrant box list                           # Vagrant için yüklü olan box listesi
-    $ vagrant box remove --box-version 0.2.2 ulakbus   # ulakbus isimli box'ın 0.2.2 sürümünü kaldır
+    $ vagrant box remove --box-version 0.1.9 zetaops/ulakbus   # ulakbus isimli box'ın
+    0.1.9 sürümünü kaldırır.
 
 Sonraki Adımlar
 +++++++++++++++
