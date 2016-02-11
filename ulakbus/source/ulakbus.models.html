@@ -4326,12 +4326,14 @@ takip koddur.</p>
 <em class="property">class </em><code class="descclassname">ulakbus.models.ogrenci.</code><code class="descname">DegerlendirmeNot</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/models/ogrenci.html#DegerlendirmeNot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.DegerlendirmeNot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
 <p>Değerlendirme Notu Modeli</p>
-<p>Ders değerlendirmeleri (sınavlar, sunum, proje, odev vb.) için okutmanlar tarafından verilen
-notların saklandığı data modelidir.</p>
-<p>Temel ilişki Sınav ve Öğrenci modeli ile kurulmuştur. Değerlendirme bilgisi puan alanında saklanır.</p>
+<p>Ders değerlendirmeleri (sınavlar, sunum, proje, odev vb.) için okutmanlar
+tarafından verilen notların saklandığı data modelidir.</p>
+<p>Temel ilişki Sınav ve Öğrenci modeli ile kurulmuştur. Değerlendirme
+bilgisi puan alanında saklanır.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Ders, öğretim elemeanı, yıl ve donem, alanları arama kolaylığı açısından saklanmaktadır.</p>
+<p class="last">Ders, öğretim elemeanı, yıl ve donem, alanları arama kolaylığı
+açısından saklanmaktadır.</p>
 </div>
 <dl class="class">
 <dt id="ulakbus.models.ogrenci.DegerlendirmeNot.Meta">
@@ -5543,13 +5545,63 @@ edilen ödemelerin saklandığı data modelidir.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.aile_adres">
+<code class="descclassname">Ogrenci.</code><code class="descname">aile_adres</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.aile_adres" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.aile_gsm">
+<code class="descclassname">Ogrenci.</code><code class="descname">aile_gsm</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.aile_gsm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.aile_tel">
+<code class="descclassname">Ogrenci.</code><code class="descname">aile_tel</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.aile_tel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.ana_adi">
 <code class="descclassname">Ogrenci.</code><code class="descname">ana_adi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.ana_adi" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.anne_aylik_kazanc">
+<code class="descclassname">Ogrenci.</code><code class="descname">anne_aylik_kazanc</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.anne_aylik_kazanc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.anne_meslek">
+<code class="descclassname">Ogrenci.</code><code class="descname">anne_meslek</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.anne_meslek" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.anne_ogrenim_durumu">
+<code class="descclassname">Ogrenci.</code><code class="descname">anne_ogrenim_durumu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.anne_ogrenim_durumu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.baba_adi">
 <code class="descclassname">Ogrenci.</code><code class="descname">baba_adi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.baba_adi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.baba_aylik_kazanc">
+<code class="descclassname">Ogrenci.</code><code class="descname">baba_aylik_kazanc</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.baba_aylik_kazanc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.baba_meslek">
+<code class="descclassname">Ogrenci.</code><code class="descname">baba_meslek</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.baba_meslek" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.baba_ogrenim_durumu">
+<code class="descclassname">Ogrenci.</code><code class="descname">baba_ogrenim_durumu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.baba_ogrenim_durumu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.burs_kredi_no">
+<code class="descclassname">Ogrenci.</code><code class="descname">burs_kredi_no</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.burs_kredi_no" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5595,6 +5647,16 @@ edilen ödemelerin saklandığı data modelidir.</p>
 <dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.ehliyet">
 <code class="descclassname">Ogrenci.</code><code class="descname">ehliyet</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.ehliyet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.emeklilik_durumu">
+<code class="descclassname">Ogrenci.</code><code class="descname">emeklilik_durumu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.emeklilik_durumu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.erkek_kardes_sayisi">
+<code class="descclassname">Ogrenci.</code><code class="descname">erkek_kardes_sayisi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.erkek_kardes_sayisi" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5673,6 +5735,16 @@ edilen ödemelerin saklandığı data modelidir.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.kiz_kardes_sayisi">
+<code class="descclassname">Ogrenci.</code><code class="descname">kiz_kardes_sayisi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.kiz_kardes_sayisi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.masraf_sponsor">
+<code class="descclassname">Ogrenci.</code><code class="descname">masraf_sponsor</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.masraf_sponsor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.medeni_hali">
 <code class="descclassname">Ogrenci.</code><code class="descname">medeni_hali</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.medeni_hali" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -5680,6 +5752,21 @@ edilen ödemelerin saklandığı data modelidir.</p>
 <dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.objects">
 <code class="descclassname">Ogrenci.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.ogrenci.Ogrenci'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.ogrenim_goren_kardes_sayisi">
+<code class="descclassname">Ogrenci.</code><code class="descname">ogrenim_goren_kardes_sayisi</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.ogrenim_goren_kardes_sayisi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.ozur_durumu">
+<code class="descclassname">Ogrenci.</code><code class="descname">ozur_durumu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.ozur_durumu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.Ogrenci.ozur_oran">
+<code class="descclassname">Ogrenci.</code><code class="descname">ozur_oran</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.ozur_oran" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5710,8 +5797,7 @@ edilen ödemelerin saklandığı data modelidir.</p>
 <dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.user">
 <code class="descclassname">Ogrenci.</code><code class="descname">user</code><em class="property"> = &lt;class 'ulakbus.models.auth.User'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.Ogrenci.user" title="Permalink to this definition">¶</a></dt>
-<dd><p>İlişki[model]: Kullanıcı Model&#8217;ine, bire bir ilişki tipi</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="ulakbus.models.ogrenci.Ogrenci.uyruk">
@@ -5838,8 +5924,45 @@ derslerinden faydalanabilir.</p>
 <a class="reference external" href="http://www.ulakbus.org/wiki/standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html#basari-hesaplama">http://www.ulakbus.org/wiki/standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html#basari-hesaplama</a></p>
 <p>Öğrencinin ilgili programdaki danışman bilgisi de burada saklanır.</p>
 <dl class="class">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler">
+<em class="property">class </em><code class="descname">Belgeler</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/models/ogrenci.html#OgrenciProgram.Belgeler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.listnode.ListNode</span></code></p>
+<dl class="class">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Belgeler'</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'Belgelers'</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler.aciklama">
+<code class="descclassname">OgrenciProgram.Belgeler.</code><code class="descname">aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler.aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler.tamam">
+<code class="descclassname">OgrenciProgram.Belgeler.</code><code class="descname">tamam</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler.tamam" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.Belgeler.tip">
+<code class="descclassname">OgrenciProgram.Belgeler.</code><code class="descname">tip</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Belgeler.tip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="ulakbus.models.ogrenci.OgrenciProgram.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="../_modules/ulakbus/models/ogrenci.html#OgrenciProgram.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Meta" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">OgrenciProgram.</code><code class="descname">Meta</code><a class="reference internal" href="../_modules/ulakbus/models/ogrenci.html#OgrenciProgram.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Meta" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="ulakbus.models.ogrenci.OgrenciProgram.Meta.app">
 <code class="descname">app</code><em class="property"> = 'Ogrenci'</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.Meta.app" title="Permalink to this definition">¶</a></dt>
@@ -5910,6 +6033,21 @@ derslerinden faydalanabilir.</p>
 <dl class="attribute">
 <dt id="ulakbus.models.ogrenci.OgrenciProgram.ders_programi">
 <code class="descclassname">OgrenciProgram.</code><code class="descname">ders_programi</code><em class="property"> = &lt;class 'ulakbus.models.ogrenci.DersProgrami'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.ders_programi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.durum">
+<code class="descclassname">OgrenciProgram.</code><code class="descname">durum</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.durum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.giris_puan_turu">
+<code class="descclassname">OgrenciProgram.</code><code class="descname">giris_puan_turu</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Integer'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.giris_puan_turu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.OgrenciProgram.giris_puani">
+<code class="descclassname">OgrenciProgram.</code><code class="descname">giris_puani</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Float'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.OgrenciProgram.giris_puani" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">

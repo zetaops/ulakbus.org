@@ -20,6 +20,14 @@ ulakbus.views.ogrenci.ogrenci module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.views.ogrenci.on_kayit module
+-------------------------------------
+
+.. automodule:: ulakbus.views.ogrenci.on_kayit
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

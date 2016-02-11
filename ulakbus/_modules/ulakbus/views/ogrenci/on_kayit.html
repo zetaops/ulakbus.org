@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ulakbus.views.ogrenci.on_kayit &mdash; Ulakbus API Documentation 0.6.6 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../ulakbus.html" class="icon icon-home"> Ulakbus API Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.lib.html">ulakbus.lib package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.models.html">ulakbus.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.services.html">ulakbus.services package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.tasks.html">ulakbus.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.views.html">ulakbus.views package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.manage.html">ulakbus.manage module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ulakbus.settings.html">ulakbus.settings module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../ulakbus.html">Ulakbus API Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../ulakbus.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ulakbus.views.ogrenci.on_kayit</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ulakbus.views.ogrenci.on_kayit</h1><div class="highlight"><pre>
+<span class="c1"># -*-  coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">zengine</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">zengine.forms</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.ogrenci</span> <span class="kn">import</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">OgrenciProgram</span><span class="p">,</span> <span class="n">OncekiEgitimBilgisi</span>
+
+
+<div class="viewcode-block" id="YerlestirmeBilgisiForm"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.YerlestirmeBilgisiForm">[docs]</a><span class="k">class</span> <span class="nc">YerlestirmeBilgisiForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="YerlestirmeBilgisiForm.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.YerlestirmeBilgisiForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;giris_puan_turu&quot;</span><span class="p">,</span> <span class="s2">&quot;giris_puani&quot;</span><span class="p">]</span></div>
+
+    <span class="n">ileri_buton</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;İleri&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="YerlestirmeBilgisi"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.YerlestirmeBilgisi">[docs]</a><span class="k">class</span> <span class="nc">YerlestirmeBilgisi</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+<div class="viewcode-block" id="YerlestirmeBilgisi.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.YerlestirmeBilgisi.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;OgrenciProgram&quot;</span></div>
+
+<div class="viewcode-block" id="YerlestirmeBilgisi.yerlestirme_bilgisi_form"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.YerlestirmeBilgisi.yerlestirme_bilgisi_form">[docs]</a>    <span class="k">def</span> <span class="nf">yerlestirme_bilgisi_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="n">ogrenci</span><span class="p">,</span> <span class="n">durum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">YerlestirmeBilgisiForm</span><span class="p">(</span><span class="n">ogrenci_program</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="OncekiEgitimBilgileriForm"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OncekiEgitimBilgileriForm">[docs]</a><span class="k">class</span> <span class="nc">OncekiEgitimBilgileriForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="OncekiEgitimBilgileriForm.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OncekiEgitimBilgileriForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;okul_adi&quot;</span><span class="p">,</span> <span class="s2">&quot;diploma_notu&quot;</span><span class="p">,</span> <span class="s2">&quot;mezuniyet_yili&quot;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OncekiEgitimBilgileri"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OncekiEgitimBilgileri">[docs]</a><span class="k">class</span> <span class="nc">OncekiEgitimBilgileri</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+<div class="viewcode-block" id="OncekiEgitimBilgileri.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OncekiEgitimBilgileri.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;OncekiEgitimBilgisi&quot;</span></div>
+
+<div class="viewcode-block" id="OncekiEgitimBilgileri.onceki_egitim_bilgileri"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OncekiEgitimBilgileri.onceki_egitim_bilgileri">[docs]</a>    <span class="k">def</span> <span class="nf">onceki_egitim_bilgileri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">onceki_egitim_bilgisi</span> <span class="o">=</span> <span class="n">OncekiEgitimBilgisi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="n">ogrenci</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">OncekiEgitimBilgileriForm</span><span class="p">(</span><span class="n">onceki_egitim_bilgisi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="OncekiEgitimBilgileri.kaydet"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OncekiEgitimBilgileri.kaydet">[docs]</a>    <span class="k">def</span> <span class="nf">kaydet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_form_data_to_object</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">ogrenci</span> <span class="o">=</span> <span class="n">ogrenci</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="OnKayitForm"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OnKayitForm">[docs]</a><span class="k">class</span> <span class="nc">OnKayitForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="OnKayitForm.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OnKayitForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Kişisel Bilgiler&quot;</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kan_grubu&#39;</span><span class="p">,</span> <span class="s1">&#39;baba_aylik_kazanc&#39;</span><span class="p">,</span> <span class="s1">&#39;baba_ogrenim_durumu&#39;</span><span class="p">,</span> <span class="s1">&#39;baba_meslek&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;anne_ogrenim_durumu&#39;</span><span class="p">,</span> <span class="s1">&#39;anne_meslek&#39;</span><span class="p">,</span> <span class="s1">&#39;anne_aylik_kazanc&#39;</span><span class="p">,</span> <span class="s1">&#39;masraf_sponsor&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;emeklilik_durumu&#39;</span><span class="p">,</span> <span class="s1">&#39;kiz_kardes_sayisi&#39;</span><span class="p">,</span> <span class="s1">&#39;erkek_kardes_sayisi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ogrenim_goren_kardes_sayisi&#39;</span><span class="p">,</span> <span class="s1">&#39;burs_kredi_no&#39;</span><span class="p">,</span> <span class="s1">&#39;aile_tel&#39;</span><span class="p">,</span> <span class="s1">&#39;aile_gsm&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;aile_adres&#39;</span><span class="p">,</span> <span class="s1">&#39;ozur_durumu&#39;</span><span class="p">,</span> <span class="s1">&#39;ozur_oran&#39;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet_buton</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;kaydet&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OnKayit"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OnKayit">[docs]</a><span class="k">class</span> <span class="nc">OnKayit</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+<div class="viewcode-block" id="OnKayit.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OnKayit.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span></div>
+
+<div class="viewcode-block" id="OnKayit.on_kayit_form"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.OnKayit.on_kayit_form">[docs]</a>    <span class="k">def</span> <span class="nf">on_kayit_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">OnKayitForm</span><span class="p">(</span><span class="n">ogrenci</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="BelgeForm"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.BelgeForm">[docs]</a><span class="k">class</span> <span class="nc">BelgeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+<div class="viewcode-block" id="BelgeForm.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.BelgeForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Belgeler&quot;</span><span class="p">]</span></div>
+
+    <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span>
+    <span class="n">onayla</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Ön Kayıt Onayla&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;onayla&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KayitBelgeler"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.KayitBelgeler">[docs]</a><span class="k">class</span> <span class="nc">KayitBelgeler</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+<div class="viewcode-block" id="KayitBelgeler.Meta"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.KayitBelgeler.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;OgrenciProgram&quot;</span></div>
+
+<div class="viewcode-block" id="KayitBelgeler.belge_form"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.KayitBelgeler.belge_form">[docs]</a>    <span class="k">def</span> <span class="nf">belge_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="n">ogrenci</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">BelgeForm</span><span class="p">(</span><span class="n">ogrenci_program</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="KayitBelgeler.onayla"><a class="viewcode-back" href="../../../../source/ulakbus.views.ogrenci.html#ulakbus.views.ogrenci.on_kayit.KayitBelgeler.onayla">[docs]</a>    <span class="k">def</span> <span class="nf">onayla</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci</span><span class="o">=</span><span class="n">ogrenci</span><span class="p">,</span> <span class="n">durum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">durum</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Tübitak Ulakbim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
