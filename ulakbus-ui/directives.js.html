@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>Ulakbus UI</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cayman.min.css">
+    <link rel="stylesheet" href="css/prism.min.css">
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/docs.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Mr. Doc</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>Ulakbus UI</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="app.js.html">app.js</a></li>
+            <li><a href="auth_controller.js.html">auth_controller.js</a></li>
+            <li><a href="auth_service.js.html">auth_service.js</a></li>
+            <li><a href="crud_controller.js.html">crud_controller.js</a></li>
+            <li class="active"><a href="directives.js.html">directives.js</a></li>
+            <li><a href="form_service.js.html">form_service.js</a></li>
+            <li><a href="interceptors.js.html">interceptors.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#groupNotifications"><i class="alert alert-info"></i><span>groupNotifications</span></a>
+              </li>
+              <li><a href="#getNotifications"><i class="alert alert-info"></i><span>getNotifications</span></a>
+              </li>
+              <li><a href="#markAsRead"><i class="alert alert-info"></i><span>markAsRead</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="description"></div>
+          <pre><code class="language-javascript">angular.module('ulakbus')</code></pre>
+          <div class="description"><p>logout directive provides a button with click event. When triggered it post to &#39;/logout&#39; path of the API.</p></div>
+          <pre><code class="language-javascript">.directive('logout', function ($http, $location, RESTURL) {
+    return {
+        link: function ($scope, $element, $rootScope) {
+            $element.on('click', function () {
+                $http.post(RESTURL.url + 'logout', {}).then(function () {
+                    $rootScope.loggedInUser = false;
+                    $location.path(&quot;/login&quot;);
+                });
+            });
+        }
+    };
+})</code></pre>
+          <div class="description"><p>This directive is responsible to get and show notification. It calls API&#39;s /notify path with given interval and broadcasts <code>notifications</code> application-wide.<br />There are 4 types of notifications:<br />1: tasks, 2: messages, 3: announcements, 4: recents</p><ul>
+<li>Notifications can be disabled in /dev/settings page</li>
+</ul>
+</div>
+          <pre><code class="language-javascript">.directive('headerNotification', function ($http, $rootScope, $cookies, $interval, RESTURL) {
+    return {
+        templateUrl: 'shared/templates/directives/header-notification.html',
+        restrict: 'E',
+        replace: true,
+        link: function ($scope) {</code></pre>
+          <section id="groupNotifications">
+            <h1>groupNotifications</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>$scope.groupNotifications()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>notifications</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Group notifications</p></div>
+          <pre><code class="language-javascript">$scope.groupNotifications = function (notifications) {
+    // notification categories:
+    // 1: tasks, 2: messages, 3: announcements, 4: recents
+    $scope.notifications = {1: [], 2: [], 3: [], 4: []};
+
+    angular.forEach(notifications, function (value, key) {
+        $scope.notifications[value.type].push(value);
+    });
+};</code></pre>
+          <section id="getNotifications">
+            <h1>getNotifications</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>$scope.getNotifications()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Get notifications from API&#39;s /notify path and group it then broadcast &quot;notifications&quot; object.<br />{ignoreLoadingBar: true} is telling loading bar not work on this particular request.</p></div>
+          <pre><code class="language-javascript">$scope.getNotifications = function () {
+    // ignore loading bar here
+    $http.get(RESTURL.url + &quot;notify&quot;, {ignoreLoadingBar: true}).success(function (data) {
+        $scope.groupNotifications(data.notifications);
+        $rootScope.$broadcast(&quot;notifications&quot;, $scope.notifications);
+    });
+};
+
+$scope.getNotifications();
+
+// check notifications every 5 seconds
+$interval(function () {
+    if ($cookies.get(&quot;notificate&quot;) == &quot;on&quot;) {
+        $scope.getNotifications();
+    }
+}, 5000);</code></pre>
+          <section id="markAsRead">
+            <h1>markAsRead</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>$scope.markAsRead()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>items</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>When clicked mark the notification as read.</p></div>
+          <pre><code class="language-javascript">$scope.markAsRead = function (items) {
+    $http.post(RESTURL.url + &quot;notify&quot;, {ignoreLoadingBar: true, read: [items]})
+        .success(function (data) {
+            $scope.groupNotifications(data.notifications);
+            $rootScope.$broadcast(&quot;notifications&quot;, $scope.notifications);
+        });
+};
+
+// if markasread triggered outside the directive
+$scope.$on(&quot;markasread&quot;, function (event, data) {
+    $scope.markAsRead(data);
+});
+            }
+        };
+    })</code></pre>
+          <div class="description"><p>This directive provides reusable search form application-wide. When search form submitted and response returns, it broadcasts the result with key <code>updateObjects</code>.</p></div>
+          <pre><code class="language-javascript">.directive('searchDirective', function (Generator, $log, $rootScope) {
+    return {
+        templateUrl: 'shared/templates/directives/search.html',
+        restrict: 'E',
+        replace: true,
+        link: function ($scope) {
+            $scope.searchForm = [{key: 'searchbox', htmlClass: &quot;pull-left&quot;}, {
+                type: &quot;submit&quot;,
+                title: &quot;Ara&quot;,
+                style: &quot;btn-info&quot;,
+                htmlClass: &quot;pull-left&quot;
+            }];
+            $scope.searchSchema = {
+                type: &quot;object&quot;,
+                properties: {
+                    searchbox: {
+                        type: &quot;string&quot;,
+                        minLength: 2,
+                        title: &quot;Ara&quot;,
+                        &quot;x-schema-form&quot;: {placeholder: &quot;Arama kriteri giriniz...&quot;}
+                    }
+                },
+                required: []
+            };
+            $scope.searchModel = {searchbox: ''};
+
+            $scope.searchSubmit = function (form) {
+                $scope.$broadcast('schemaFormValidate');
+                if (form.$valid) {
+                    var searchparams = {
+                        url: $scope.wf,
+                        token: $scope.$parent.token,
+                        object_id: $scope.$parent.object_id,
+                        form_params: {
+                            model: $scope.$parent.form_params.model,
+                            cmd: $scope.$parent.reload_cmd,
+                            flow: $scope.$parent.form_params.flow,
+                            query: $scope.searchModel.searchbox
+                        }
+                    };
+
+                    Generator.submit(searchparams).success(function (data) {
+                        // update objects item of page scope
+                        $rootScope.$broadcast('updateObjects', data.objects);
+                    });
+                }
+            };
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Sort directive is responsible to post sorting params to API and process the response to the screen.</p></div>
+          <pre><code class="language-javascript">.directive('sortDirective', function (Generator, $log) {
+    return {
+        templateUrl: 'shared/templates/directives/sort.html',
+        restrict: 'E',
+        replace: true,
+        link: function ($scope) {
+
+            // titleMap will be list
+            $scope.titleMap = [{value: &quot;artan&quot;, name: &quot;Artan&quot;}, {value: &quot;azalan&quot;, name: &quot;Azalan&quot;}];
+            $scope.sortForm = [
+                {key: 'sortbox', htmlClass: &quot;pull-left&quot;, type: &quot;select&quot;, titleMap: $scope.titleMap},
+                {type: &quot;submit&quot;, title: &quot;Sırala&quot;, htmlClass: &quot;pull-left&quot;}];
+            $scope.sortSchema = {
+                type: &quot;object&quot;,
+                properties: {
+                    sortbox: {
+                        type: &quot;select&quot;,
+                        title: &quot;Sırala&quot;
+                    }
+                },
+                required: ['sortbox']
+            };
+            $scope.sortModel = {sortbox: ''};
+
+            $scope.sortSubmit = function (form) {
+                $scope.$broadcast('schemaFormValidate');
+                if (form.$valid) {
+                    var sortparams = {
+                        url: $scope.wf,
+                        token: $scope.$parent.token,
+                        object_id: $scope.$parent.object_id,
+                        form_params: {
+                            model: $scope.$parent.form_params.model,
+                            cmd: $scope.$parent.reload_cmd,
+                            flow: $scope.$parent.form_params.flow,
+                            param: 'sort',
+                            id: $scope.sortModel.sortbox
+                        }
+                    };
+
+                    Generator.submit(sortparams);
+                }
+            }
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Toggle collapses sidebar menu when clicked menu button</p></div>
+          <pre><code class="language-javascript">.directive('collapseMenu', function ($timeout, $window, $cookies) {
+    return {
+        templateUrl: 'shared/templates/directives/menuCollapse.html',
+        restrict: 'E',
+        replace: true,
+        scope: {},
+        controller: function ($scope, $rootScope) {
+            $rootScope.collapsed = false;
+            $rootScope.sidebarPinned = $cookies.get('sidebarPinned') || 0;
+
+            $scope.collapseToggle = function () {
+                if ($window.innerWidth &gt; '768') {
+                    if ($rootScope.collapsed === false) {
+                        jQuery(&quot;.sidebar&quot;).css(&quot;width&quot;, &quot;62px&quot;);
+                        jQuery(&quot;.manager-view&quot;).css(&quot;width&quot;, &quot;calc(100% - 62px)&quot;);
+                        $rootScope.collapsed = true;
+                        $rootScope.sidebarPinned = 0;
+                        $cookies.put('sidebarPinned', 0);
+                    } else {
+                        jQuery(&quot;span.menu-text, span.arrow, .sidebar footer&quot;).fadeIn(400);
+                        jQuery(&quot;.sidebar&quot;).css(&quot;width&quot;, &quot;250px&quot;);
+                        jQuery(&quot;.manager-view&quot;).css(&quot;width&quot;, &quot;calc(100% - 250px)&quot;);
+                        $rootScope.collapsed = false;
+                        $rootScope.sidebarPinned = 1;
+                        $cookies.put('sidebarPinned', 1);
+                    }
+                }
+            };
+
+            $timeout(function () {
+                if ($cookies.get('sidebarPinned') === &quot;0&quot;) {
+                    $scope.collapseToggle();
+                }
+            });
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Contains breadcrumb elements and loading animation</p></div>
+          <pre><code class="language-javascript">.directive('headerSubMenu', function ($location) {
+    return {
+        templateUrl: 'shared/templates/directives/header-sub-menu.html',
+        restrict: 'E',
+        replace: true,
+        link: function ($scope) {
+            $scope.style = 'width:calc(100% - 300px);';
+            $scope.$on('$routeChangeStart', function () {
+                $scope.style = $location.path() === '/dashboard' ? 'width:calc(100% - 300px);' : 'width:%100 !important;';
+            });
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Produces breadcrumb with related links</p></div>
+          <pre><code class="language-javascript">.directive('headerBreadcrumb', function ($location) {
+    return {
+        templateUrl: 'shared/templates/directives/header-breadcrumb.html',
+        restrict: 'E',
+        replace: false,
+        link: function ($scope) {
+            $scope.goBack = function () {
+                $location.state();
+            }
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Selected user on which the current job done is hold in this directive.</p></div>
+          <pre><code class="language-javascript">.directive('selectedUser', function ($http, RESTURL) {
+    return {
+        templateUrl: 'shared/templates/directives/selected-user.html',
+        restrict: 'E',
+        replace: true,
+        link: function ($scope, $rootScope) {
+            $scope.$on('selectedUser', function ($event, data) {
+                $scope.selectedUser = data;
+                $scope.dynamicPopover = {
+                    content: '',
+                    name: data.name,
+                    tcno: data.tcno,
+                    key: data.key,
+                    templateUrl: 'shared/templates/directives/selectedUserPopover.html',
+                    title: 'İşlem Yapılan Kişi'
+                };
+            });
+            $scope.$on('selectedUserTrigger', function ($event, data) {
+                var postToApi = {model: 'Personel', cmd: 'show', id: data[1]};
+                //postToApi[data[0]]=data[1];
+                $http.get(RESTURL.url + 'ara/personel/' + data[1]).success(
+                    function (data) {
+                    }
+                );
+            })
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Changes breadcrumb when an item selected consists of menu items of related user or transaction controller communicates with dashboard controller to shape menu items and authz.</p></div>
+          <pre><code class="language-javascript">.directive('sidebar', ['$location', function () {
+    return {
+        templateUrl: 'shared/templates/directives/sidebar.html',
+        restrict: 'E',
+        replace: true,
+        scope: {},
+        controller: function ($scope, $rootScope, $cookies, $route, $http, RESTURL, $log, $location, $window, $timeout) {
+            $scope.prepareMenu = function (menuItems) {
+                var newMenuItems = {};
+                angular.forEach(menuItems, function (value, key) {
+                    angular.forEach(value, function (v, k) {
+                        newMenuItems[k] = v;
+                    });
+                });
+                return newMenuItems;
+            };
+
+            var sidebarmenu = $('#side-menu');
+            //var sidebarUserMenu = $('#side-user-menu');
+            sidebarmenu.metisMenu();
+            $http.get(RESTURL.url + 'menu/')
+                .success(function (data) {
+                    $scope.allMenuItems = angular.copy(data);
+
+                    // regroup menu items based on their category
+                    function reGroupMenuItems(items, baseCategory) {
+                        var newItems = {};
+                        angular.forEach(items, function (value, key) {
+                            newItems[value.kategori] = newItems[value.kategori] || [];
+                            value['baseCategory'] = baseCategory;
+                            newItems[value.kategori].push(value);
+                        });
+                        return newItems;
+                    }
+
+                    angular.forEach($scope.allMenuItems, function (value, key) {
+                        if (key !== 'current_user' &amp;&amp; key !== 'settings') {
+                            $scope.allMenuItems[key] = reGroupMenuItems(value, key);
+                        }
+                    });
+
+                    // quick menus to dashboard via rootscope
+
+                    $rootScope.quick_menu = reGroupMenuItems(data.quick_menu, 'quick_menus');
+                    $rootScope.quick_menu = data.quick_menu;
+                    delete data.quick_menu;
+                    $log.debug('quick menu', $rootScope.quick_menu);
+
+                    // broadcast for authorized menu items, consume in dashboard to show search inputs and/or
+                    // related items
+                    $rootScope.$broadcast(&quot;authz&quot;, data);
+                    $rootScope.searchInputs = data;
+
+                    $rootScope.current_user = data.current_user;
+                    if (data.ogrenci || data.personel) {
+                        $rootScope.current_user.can_search = true;
+                    }
+                    $rootScope.settings = data.settings;
+
+                    $scope.menuItems = $scope.prepareMenu({other: $scope.allMenuItems.other});
+
+                    // if selecteduser on cookie then add related part to the menu
+
+                    //if ($cookies.get(&quot;selectedUserType&quot;)) {
+                    //    $scope.menuItems[$cookies.get(&quot;selectedUserType&quot;)] = $scope.allMenuItems[$cookies.get(&quot;selectedUserType&quot;)];
+                    //}
+
+                    $timeout(function () {
+                        sidebarmenu.metisMenu();
+                        //sidebarUserMenu.metisMenu();
+                    });
+                });
+
+            // changing menu items by listening for broadcast
+
+            $scope.$on(&quot;menuitems&quot;, function (event, data) {
+                var menu = {};
+                menu[data] = $scope.allMenuItems[data];
+                $rootScope.$broadcast(&quot;usermenuitems&quot;, $scope.prepareMenu(menu));
+                //$timeout(function () {
+                //    sidebarmenu.metisMenu();
+                //    sidebarUserMenu.metisMenu();
+                //});
+            });
+
+            $scope.$on('selectedUser', function ($event, data) {
+                $scope.selectedUser = data;
+            });
+
+            $scope.deselectUser = function () {
+                delete $scope.selectedUser;
+                delete $scope.selectedMenuItems;
+            };
+
+            $scope.openSidebar = function () {
+                if ($window.innerWidth &gt; '768') {
+                    if ($rootScope.sidebarPinned === 0) {
+                        jQuery(&quot;span.menu-text, span.arrow, .sidebar footer, #side-menu&quot;).fadeIn(400);
+                        jQuery(&quot;.sidebar&quot;).css(&quot;width&quot;, &quot;250px&quot;);
+                        jQuery(&quot;.manager-view&quot;).css(&quot;width&quot;, &quot;calc(100% - 250px)&quot;);
+                        $rootScope.collapsed = false;
+                    }
+                }
+            };
+
+            $scope.closeSidebar = function () {
+                if ($window.innerWidth &gt; '768') {
+                    if ($rootScope.sidebarPinned === 0) {
+                        jQuery(&quot;.sidebar&quot;).css(&quot;width&quot;, &quot;62px&quot;);
+                        jQuery(&quot;.manager-view&quot;).css(&quot;width&quot;, &quot;calc(100% - 62px)&quot;);
+                        $rootScope.collapsed = true;
+                    }
+                }
+            };
+
+            $rootScope.$watch(function ($rootScope) {
+                    return $rootScope.section;
+                },
+                function (newindex, oldindex) {
+                    if (newindex &gt; -1) {
+                        $scope.menuItems = [$scope.allMenuItems[newindex]];
+                        $scope.collapseVar = 0;
+                    }
+                });
+
+            $scope.selectedMenu = $location.path();
+            $scope.collapseVar = 0;
+            $scope.multiCollapseVar = 0;
+
+            $scope.check = function (x) {
+
+                if (x === $scope.collapseVar) {
+                    $scope.collapseVar = 0;
+                } else {
+                    $scope.collapseVar = x;
+                }
+
+            };
+
+            // breadcrumb function changes breadcrumb items and itemlist must be list
+            $scope.breadcrumb = function (itemlist, $event) {
+                $rootScope.breadcrumblinks = itemlist;
+            };
+
+            $scope.multiCheck = function (y) {
+
+                if (y === $scope.multiCollapseVar) {
+                    $scope.multiCollapseVar = 0;
+                } else {
+                    $scope.multiCollapseVar = y;
+                }
+            };
+        }
+    };
+}])</code></pre>
+          <div class="description"><p>placeholder</p></div>
+          <pre><code class="language-javascript">.directive('rightSidebar', ['$location', function () {
+    return {
+        templateUrl: 'shared/templates/directives/right-sidebar.html',
+        restrict: 'E',
+        replace: true,
+        scope: {},
+        controller: function ($scope, $rootScope, $cookies, $route, $http, RESTURL, $log, $location, $window, $timeout) {
+            var sidebarUserMenu = $('#side-user-menu');
+            sidebarUserMenu.metisMenu();
+
+            $scope.$on(&quot;usermenuitems&quot;, function (event, data) {
+                $scope.selectedMenuItems = data;
+                $timeout(function () {
+                    sidebarUserMenu.metisMenu();
+                });
+                jQuery(&quot;.right-sidebar&quot;).css(&quot;width&quot;, &quot;300px&quot;);
+                jQuery(&quot;.manager-view-inner&quot;).css(&quot;width&quot;, &quot;calc(100% - 300px)&quot;);
+            });
+
+            $scope.$on('selectedUser', function ($event, data) {
+                $scope.selectedUser = data;
+            });
+
+            $scope.deselectUser = function () {
+                jQuery(&quot;.right-sidebar&quot;).css(&quot;width&quot;, &quot;0px&quot;);
+                jQuery(&quot;.manager-view-inner&quot;).css(&quot;width&quot;, &quot;&quot;);
+                delete $scope.selectedUser;
+                delete $scope.selectedMenuItems;
+            };
+
+            $rootScope.$watch(function ($rootScope) {
+                    return $rootScope.section;
+                },
+                function (newindex, oldindex) {
+                    if (newindex &gt; -1) {
+                        $scope.menuItems = [$scope.allMenuItems[newindex]];
+                        $scope.collapseVar = 0;
+                    }
+                });
+
+            $scope.selectedMenu = $location.path();
+            $scope.collapseVar = 0;
+            $scope.multiCollapseVar = 0;
+
+            $scope.check = function (x) {
+                if (x === $scope.collapseVar) {
+                    $scope.collapseVar = 0;
+                } else {
+                    $scope.collapseVar = x;
+                }
+            };
+
+            $scope.multiCheck = function (y) {
+                if (y === $scope.multiCollapseVar) {
+                    $scope.multiCollapseVar = 0;
+                } else {
+                    $scope.multiCollapseVar = y;
+                }
+            };
+        }
+    }
+}])</code></pre>
+          <div class="description"><p>Statistical data directive.</p></div>
+          <pre><code class="language-javascript">.directive('stats', function () {
+    return {
+        templateUrl: 'shared/templates/directives/stats.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+            'model': '=',
+            'comments': '@',
+            'number': '@',
+            'name': '@',
+            'colour': '@',
+            'details': '@',
+            'type': '@',
+            'goto': '@'
+        }
+
+    };
+})</code></pre>
+          <div class="description"><p>Holds notifications template with related rootscope items.</p></div>
+          <pre><code class="language-javascript">.directive('notifications', function () {
+    return {
+        templateUrl: 'shared/templates/directives/notifications.html',
+        restrict: 'E',
+        replace: true
+    };
+})</code></pre>
+          <div class="description"><p>Holds msgbox template with related rootscope items.</p></div>
+          <pre><code class="language-javascript">.directive('msgbox', function () {
+    return {
+        templateUrl: 'shared/templates/directives/msgbox.html',
+        restrict: 'E',
+        replace: false
+    };
+})</code></pre>
+          <div class="description"><p>Triggers when <code>alertBox</code> broadcasted with alert data..</p></div>
+          <pre><code class="language-javascript">.directive('alertBox', function ($timeout) {
+    return {
+        templateUrl: 'shared/templates/directives/alert.html',
+        restrict: 'E',
+        replace: true,
+        link: function ($scope) {
+            $scope.$on('alertBox', function ($event, data) {
+                $timeout(function () {
+                    delete $scope.alerts;
+                }, 5000);
+                $scope.alerts = [data];
+            });
+        }
+    };
+})</code></pre>
+          <div class="description"><p>unused for now</p></div>
+          <pre><code class="language-javascript">.directive('sidebarSearch', function () {
+    return {
+        templateUrl: 'shared/templates/directives/sidebar-search.html',
+        restrict: 'E',
+        replace: true,
+        scope: {},
+        controller: function ($scope) {
+            $scope.selectedMenu = 'home';
+        }
+    };
+})</code></pre>
+          <div class="description"><p>Fileread directive is responsible for reading uploaded file and replace it to related model item.</p></div>
+          <pre><code class="language-javascript">.directive(&quot;fileread&quot;, function ($timeout) {
+    return {
+        scope: {
+            fileread: &quot;=&quot;
+        },
+        link: function (scope, element, attributes) {
+            element.bind(&quot;change&quot;, function (changeEvent) {
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = loadEvent.target.result;
+                    });
+                    $timeout(function () {
+                        scope.$parent.model[changeEvent.target.name] = {
+                            file_name: changeEvent.target.files[0].name,
+                            file_content: scope.$parent.model[changeEvent.target.name]
+                        }
+                        document.querySelector('#image-preview').src = URL.createObjectURL(changeEvent.target.files[0]);
+                    });
+                }
+                reader.readAsDataURL(changeEvent.target.files[0]);
+            });
+        }
+    }
+});</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with <a href="https://github.com/mr-doc/mr-doc">Mr. Doc </a> created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau </a></p>
+        <p>Mr. Doc is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a> and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="js/twitter-widget.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-transition.min.js"></script>
+    <script src="js/bootstrap-scrollspy.min.js"></script>
+    <script src="js/bootstrap-dropdown.min.js"></script>
+    <script src="js/bootstrap-collapse.min.js"></script>
+    <script src="js/bootstrap-affix.min.js"></script>
+    <script src="js/prism.min.js"></script>
+    <script src="js/index.min.js"></script>
+  </body>
+</html>

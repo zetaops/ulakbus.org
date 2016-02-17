@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>Ulakbus UI</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cayman.min.css">
+    <link rel="stylesheet" href="css/prism.min.css">
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/docs.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Mr. Doc</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>Ulakbus UI</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="app.js.html">app.js</a></li>
+            <li><a href="auth_controller.js.html">auth_controller.js</a></li>
+            <li class="active"><a href="auth_service.js.html">auth_service.js</a></li>
+            <li><a href="crud_controller.js.html">crud_controller.js</a></li>
+            <li><a href="directives.js.html">directives.js</a></li>
+            <li><a href="form_service.js.html">form_service.js</a></li>
+            <li><a href="interceptors.js.html">interceptors.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#login"><i class="alert alert-info"></i><span>login</span></a>
+              </li>
+              <li><a href="#logout"><i class="alert alert-info"></i><span>logout</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="description"></div>
+          <pre><code class="language-javascript">&quot;use strict&quot;;
+
+angular.module('ulakbus.auth')</code></pre>
+          <div class="description"><p>provides generic functions for authorization process.</p></div>
+          <pre><code class="language-javascript">.factory('AuthService', function ($http, $rootScope, $location, $log, Generator, RESTURL) {
+    var authService = {};</code></pre>
+          <section id="login">
+            <h1>login</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>authService.login()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>url</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>credentials</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>login function post credentials to API and handles login. If login req returns success then interceptor will redirects to related path.</p></div>
+          <pre><code class="language-javascript">authService.login = function (url, credentials) {
+    credentials['cmd'] = &quot;do&quot;;
+    return $http
+        .post(RESTURL.url + url, credentials)
+        .success(function (data, status, headers, config) {
+            //$window.sessionStorage.token = data.token;
+
+            $rootScope.loggedInUser = true;
+        })
+        .error(function (data, status, headers, config) {
+            // Handle login errors here
+            data.title = &quot;İşlem başarısız oldu. Lütfen girdiğiniz bilgileri kontrol ediniz.&quot;
+            return data;
+        });
+};</code></pre>
+          <section id="logout">
+            <h1>logout</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>authService.logout()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>logout function posts logout request to API and redirects to login path</p></div>
+          <pre><code class="language-javascript">authService.logout = function () {
+    $log.debug(&quot;logout&quot;);
+    return $http.post(RESTURL.url + 'logout', {}).success(function (data) {
+        $rootScope.loggedInUser = false;
+        $log.debug(&quot;loggedout&quot;);
+        $location.path(&quot;/login&quot;);
+    });
+};
+
+return authService;
+    });</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with <a href="https://github.com/mr-doc/mr-doc">Mr. Doc </a> created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau </a></p>
+        <p>Mr. Doc is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a> and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="js/twitter-widget.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-transition.min.js"></script>
+    <script src="js/bootstrap-scrollspy.min.js"></script>
+    <script src="js/bootstrap-dropdown.min.js"></script>
+    <script src="js/bootstrap-collapse.min.js"></script>
+    <script src="js/bootstrap-affix.min.js"></script>
+    <script src="js/prism.min.js"></script>
+    <script src="js/index.min.js"></script>
+  </body>
+</html>
