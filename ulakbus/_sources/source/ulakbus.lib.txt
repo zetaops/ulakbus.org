@@ -27,6 +27,14 @@ ulakbus.lib.convert module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.lib.fake module
+-----------------------
+
+.. automodule:: ulakbus.lib.fake
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.lib.s3_file_manager module
 ----------------------------------
 

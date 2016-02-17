@@ -538,20 +538,7 @@ Py.test, standard “assert” ifadesinin testin başarılı olup olmadığını
 </div>
 <div class="section" id="test-sunuculari-ve-gelistirme-test-dongusu">
 <h3><em>Test Sunucuları ve Geliştirme Test Döngüsü:</em><a class="headerlink" href="#test-sunuculari-ve-gelistirme-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Her iş (issue) kendi geliştirme branchinde minik commitler ile geliştirilir. Bu branchlere yapılan pushlar buildbot u tetikleyip, kurulum ve yayınlama aşamasını başlatır. Bu branchten elde edilen kod diğer kütüphaneler ile birlikte biraraya getirilip kurulum işlemi yapılır ve gerekli testler çalıştırılır. Testleri geçen kaynak kod ve uygulama, geliştiricinin erişebileceği bir porttan yayınlanır.</p>
-<p>branch issue/58 → push → buildbot run tests → branch deployed at port 9091</p>
-<p>branch issue/59 → push → buildbot run tests → branch deployed at port 9092</p>
-<p>branch issue/60 → push → buildbot run tests → branch deployed at port 9010</p>
-<p>Sonuca kavuşturulan işler (issues) elle master branch ile birleştirilir (merge). Masterdaki bu değişiklik geliştirme aşamasındaki gibi buildbot u tetikler. Kurulum ve yayınlama işlemi bu branche karşı yapılır. Yayınlama sabit bir porttan yapılır (8080).</p>
-<p>Bunun yanısıra gecelik derlenmiş kod (nightly builds) da master branchlerden gerkçekleşir ve aynı portta yayınlanır.</p>
-<p>master → manual merge → buildbot run tests → master deployed at 8080</p>
-<p>master → automatic buildbot nightly build (backend + UI ) → master deployed at 8080</p>
-<p>Master Merge ve Nightly Builds işlemleri sırasında şu bileşenler biraraya getirilir:</p>
-<ol class="arabic simple">
-<li>final git master repo status</li>
-<li>application artefacts (xml files, json files, binary files, zip files, config files, certs)</li>
-<li>db schema migration file</li>
-</ol>
+<p>Her iş (issue) kendi geliştirme branchinde geliştirilir ve yapılan değişiklikler küçük parçalar halinde commit edilir. Git flow esas alınarak yapılan git iş akışı sonunda <cite>develop</cite> branchiyle birleştirilir ve uzak repoya gönerilir. <cite>develop</cite> branch&#8217;ine yapılan pushlar buildbot&#8217;u tetikler ve test, kurulum ve yayınlama aşamasını başlatır. <cite>develop</cite> branch&#8217;indeki son değişiklikler sürekli olarak <a class="reference external" href="http://nightly.ulakbus.net">nightly</a> kurulum adresinden erişilebilir.</p>
 </div>
 <div class="section" id="yayina-alma-production">
 <h3><em>Yayına Alma (Production):</em><a class="headerlink" href="#yayina-alma-production" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
