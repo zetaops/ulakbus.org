@@ -156,7 +156,9 @@
 <span class="kn">from</span> <span class="nn">zengine.views.crud</span> <span class="kn">import</span> <span class="n">CrudView</span>
 <span class="kn">from</span> <span class="nn">ulakbus.services.zato_wrapper</span> <span class="kn">import</span> <span class="n">MernisKimlikBilgileriGetir</span>
 <span class="kn">from</span> <span class="nn">ulakbus.services.zato_wrapper</span> <span class="kn">import</span> <span class="n">KPSAdresBilgileriGetir</span>
-<span class="kn">from</span> <span class="nn">ulakbus.models.ogrenci</span> <span class="kn">import</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">OgrenciProgram</span><span class="p">,</span> <span class="n">Program</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.ogrenci</span> <span class="kn">import</span> <span class="n">Ogrenci</span><span class="p">,</span> <span class="n">OgrenciProgram</span><span class="p">,</span> <span class="n">Program</span><span class="p">,</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">DonemDanisman</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models.personel</span> <span class="kn">import</span> <span class="n">Personel</span>
+<span class="kn">from</span> <span class="nn">ulakbus.views.ders.ders</span> <span class="kn">import</span> <span class="n">prepare_choices_for_model</span>
 
 
 <div class="viewcode-block" id="KimlikBilgileriForm"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.KimlikBilgileriForm">[docs]</a><span class="k">class</span> <span class="nc">KimlikBilgileriForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
@@ -242,7 +244,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="IletisimBilgileriForm.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.IletisimBilgileriForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ikamet_il&quot;</span><span class="p">,</span> <span class="s2">&quot;ikamet_ilce&quot;</span><span class="p">,</span> <span class="s2">&quot;ikamet_adresi&quot;</span><span class="p">,</span><span class="s2">&quot;adres2&quot;</span><span class="p">,</span> <span class="s2">&quot;posta_kodu&quot;</span><span class="p">,</span> <span class="s2">&quot;e_posta&quot;</span><span class="p">,</span><span class="s2">&quot;e_posta2&quot;</span><span class="p">,</span> <span class="s2">&quot;tel_no&quot;</span><span class="p">,</span><span class="s2">&quot;gsm&quot;</span><span class="p">]</span></div>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ikamet_il&quot;</span><span class="p">,</span> <span class="s2">&quot;ikamet_ilce&quot;</span><span class="p">,</span> <span class="s2">&quot;ikamet_adresi&quot;</span><span class="p">,</span> <span class="s2">&quot;adres2&quot;</span><span class="p">,</span> <span class="s2">&quot;posta_kodu&quot;</span><span class="p">,</span> <span class="s2">&quot;e_posta&quot;</span><span class="p">,</span> <span class="s2">&quot;e_posta2&quot;</span><span class="p">,</span> <span class="s2">&quot;tel_no&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;gsm&quot;</span><span class="p">]</span></div>
 
     <span class="n">kaydet</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">)</span>
     <span class="n">kps_sorgula</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;KPS Sorgula&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;kps_sorgula&quot;</span><span class="p">)</span></div>
@@ -392,6 +395,90 @@
             <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="n">iletisim_bilgileri</span>
         <span class="p">}</span>
     <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ProgramSecimForm"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.ProgramSecimForm">[docs]</a><span class="k">class</span> <span class="nc">ProgramSecimForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``DanismanAtama`` sınıfı için form olarak kullanılacaktır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Seç&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DanismanSecimForm"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanSecimForm">[docs]</a><span class="k">class</span> <span class="nc">DanismanSecimForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">JsonForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ``DanismanAtama`` sınıfı için form olarak kullanılacaktır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sec</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Kaydet&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DanismanAtama"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanAtama">[docs]</a><span class="k">class</span> <span class="nc">DanismanAtama</span><span class="p">(</span><span class="n">CrudView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Danışman Atama</span>
+
+<span class="sd">    Öğrencilere danışman atamalarının yapılmasını sağlayan workflowa ait</span>
+<span class="sd">    metdodları barındıran sınıftır.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DanismanAtama.Meta"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanAtama.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;OgrenciProgram&quot;</span></div>
+
+<div class="viewcode-block" id="DanismanAtama.program_sec"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanAtama.program_sec">[docs]</a>    <span class="k">def</span> <span class="nf">program_sec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Program Seçim Adımı</span>
+
+<span class="sd">        Programlar veritabanından çekilip, açılır menu içine</span>
+<span class="sd">        doldurulur.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">guncel_donem</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ogrenci_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;ogrenci_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogrenci_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;donem_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">guncel_donem</span><span class="o">.</span><span class="n">key</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">ProgramSecimForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Öğrenci Programı Seçiniz&quot;</span><span class="p">)</span>
+        <span class="n">_choices</span> <span class="o">=</span> <span class="n">prepare_choices_for_model</span><span class="p">(</span><span class="n">OgrenciProgram</span><span class="p">,</span> <span class="n">ogrenci_id</span><span class="o">=</span><span class="n">ogrenci_id</span><span class="p">)</span>
+        <span class="n">_form</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">_choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DanismanAtama.danisman_sec"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanAtama.danisman_sec">[docs]</a>    <span class="k">def</span> <span class="nf">danisman_sec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">program_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;program&#39;</span><span class="p">]</span>
+        <span class="n">donem_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;donem_id&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;program_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">program_id</span>
+
+        <span class="n">program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">program_id</span><span class="p">)</span>
+
+        <span class="n">_form</span> <span class="o">=</span> <span class="n">DanismanSecimForm</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Danışman Seçiniz&quot;</span><span class="p">)</span>
+        <span class="n">_choices</span> <span class="o">=</span> <span class="n">prepare_choices_for_model</span><span class="p">(</span><span class="n">DonemDanisman</span><span class="p">,</span> <span class="n">donem_id</span><span class="o">=</span><span class="n">donem_id</span><span class="p">,</span> <span class="n">bolum_id</span><span class="o">=</span><span class="n">program</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">bolum</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">_form</span><span class="o">.</span><span class="n">donem_danisman</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">_choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_out</span><span class="p">(</span><span class="n">_form</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DanismanAtama.danisman_kaydet"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanAtama.danisman_kaydet">[docs]</a>    <span class="k">def</span> <span class="nf">danisman_kaydet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">program_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;program_id&#39;</span><span class="p">]</span>
+        <span class="n">donem_danisman_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">][</span><span class="s1">&#39;donem_danisman&#39;</span><span class="p">]</span>
+
+        <span class="n">o</span> <span class="o">=</span> <span class="n">DonemDanisman</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">donem_danisman_id</span><span class="p">)</span>
+        <span class="n">personel</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">okutman</span><span class="o">.</span><span class="n">personel</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;personel_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">personel</span><span class="o">.</span><span class="n">key</span>
+
+        <span class="n">ogrenci_program</span> <span class="o">=</span> <span class="n">OgrenciProgram</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">program_id</span><span class="p">)</span>
+        <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">danisman</span> <span class="o">=</span> <span class="n">personel</span>
+        <span class="n">ogrenci_program</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DanismanAtama.kayit_bilgisi_ver"><a class="viewcode-back" href="../../../../ulakbus.views.ogrenci.ogrenci.html#ulakbus.views.ogrenci.ogrenci.DanismanAtama.kayit_bilgisi_ver">[docs]</a>    <span class="k">def</span> <span class="nf">kayit_bilgisi_ver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ogrenci_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;ogrenci_id&#39;</span><span class="p">]</span>
+        <span class="n">personel_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">task_data</span><span class="p">[</span><span class="s1">&#39;personel_id&#39;</span><span class="p">]</span>
+
+        <span class="n">ogrenci</span> <span class="o">=</span> <span class="n">Ogrenci</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ogrenci_id</span><span class="p">)</span>
+        <span class="n">personel</span> <span class="o">=</span> <span class="n">Personel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">personel_id</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s1">&#39;Danışman Ataması Yapıldı&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> adlı öğrenciye </span><span class="si">%s</span><span class="s1"> adlı personel danışman olarak atandı&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ogrenci</span><span class="p">,</span> <span class="n">personel</span><span class="p">)</span>
+        <span class="p">}</span></div></div>
 </pre></div>
 
            </div>

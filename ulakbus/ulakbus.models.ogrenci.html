@@ -1260,6 +1260,100 @@ verilecek yüzdelik bir ifadeyle katılım durumu alanında saklanır.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="ulakbus.models.ogrenci.DonemDanisman">
+<em class="property">class </em><code class="descclassname">ulakbus.models.ogrenci.</code><code class="descname">DonemDanisman</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/ogrenci.html#DonemDanisman"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>
+<p>Dönem Danışmanları Modeli</p>
+<p>Dönem, Bölüm ve Program bazlı olarak öğrencilere danışman atanabilecek olan öğretim elemanlarının
+saklandığı data modelidir.</p>
+<dl class="class">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/ulakbus/models/ogrenci.html#DonemDanisman.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.app">
+<code class="descname">app</code><em class="property"> = 'Ogrenci'</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.bucket_name">
+<code class="descname">bucket_name</code><em class="property"> = 'donem_danisman'</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.bucket_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.bucket_type">
+<code class="descname">bucket_type</code><em class="property"> = 'models'</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.bucket_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.field_permissions">
+<code class="descname">field_permissions</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.field_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.list_fields">
+<code class="descname">list_fields</code><em class="property"> = ['program', 'okutman', 'bolum', 'donem']</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.list_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.list_filters">
+<code class="descname">list_filters</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.list_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ['aciklama']</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'D\xc3\xb6nem Dan\xc4\xb1\xc5\x9fman'</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.Meta.verbose_name_plural">
+<code class="descname">verbose_name_plural</code><em class="property"> = 'D\xc3\xb6nem Dan\xc4\xb1\xc5\x9fmanlar\xc4\xb1'</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.Meta.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.aciklama">
+<code class="descclassname">DonemDanisman.</code><code class="descname">aciklama</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.String'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.aciklama" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.bolum">
+<code class="descclassname">DonemDanisman.</code><code class="descname">bolum</code><em class="property"> = &lt;class 'ulakbus.models.auth.Unit'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.bolum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.deleted">
+<code class="descclassname">DonemDanisman.</code><code class="descname">deleted</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.Boolean'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.donem">
+<code class="descclassname">DonemDanisman.</code><code class="descname">donem</code><em class="property"> = &lt;class 'ulakbus.models.ogrenci.Donem'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.donem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.objects">
+<code class="descclassname">DonemDanisman.</code><code class="descname">objects</code><em class="property"> = QuerySet for &lt;class 'ulakbus.models.ogrenci.DonemDanisman'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.okutman">
+<code class="descclassname">DonemDanisman.</code><code class="descname">okutman</code><em class="property"> = &lt;class 'ulakbus.models.ogrenci.Okutman'&gt;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.okutman" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ulakbus.models.ogrenci.DonemDanisman.timestamp">
+<code class="descclassname">DonemDanisman.</code><code class="descname">timestamp</code><em class="property"> = u&quot;&lt;class 'pyoko.fields.TimeStamp'&gt;&quot;</em><a class="headerlink" href="#ulakbus.models.ogrenci.DonemDanisman.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="ulakbus.models.ogrenci.HariciOkutman">
 <em class="property">class </em><code class="descclassname">ulakbus.models.ogrenci.</code><code class="descname">HariciOkutman</code><span class="sig-paren">(</span><em>context=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/models/ogrenci.html#HariciOkutman"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.models.ogrenci.HariciOkutman" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyoko.model.Model</span></code></p>

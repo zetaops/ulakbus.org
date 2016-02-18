@@ -990,6 +990,29 @@
 
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">birim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">yil</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DonemDanisman"><a class="viewcode-back" href="../../../ulakbus.models.ogrenci.html#ulakbus.models.ogrenci.DonemDanisman">[docs]</a><span class="k">class</span> <span class="nc">DonemDanisman</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dönem Danışmanları Modeli</span>
+
+<span class="sd">    Dönem, Bölüm ve Program bazlı olarak öğrencilere danışman atanabilecek olan öğretim elemanlarının</span>
+<span class="sd">    saklandığı data modelidir.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">donem</span> <span class="o">=</span> <span class="n">Donem</span><span class="p">()</span>
+    <span class="n">okutman</span> <span class="o">=</span> <span class="n">Okutman</span><span class="p">()</span>
+    <span class="n">bolum</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">()</span>
+    <span class="n">aciklama</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Açıklama&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DonemDanisman.Meta"><a class="viewcode-back" href="../../../ulakbus.models.ogrenci.html#ulakbus.models.ogrenci.DonemDanisman.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Ogrenci&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Dönem Danışman&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Dönem Danışmanları&quot;</span>
+        <span class="n">list_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;program&#39;</span><span class="p">,</span> <span class="s1">&#39;okutman&#39;</span><span class="p">,</span> <span class="s1">&#39;bolum&#39;</span><span class="p">,</span> <span class="s1">&#39;donem&#39;</span><span class="p">]</span>
+        <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aciklama&#39;</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bolum</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">okutman</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
