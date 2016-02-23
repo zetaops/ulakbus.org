@@ -4,6 +4,14 @@ ulakbus.views.ders package
 Submodules
 ----------
 
+ulakbus.views.ders.danisman module
+----------------------------------
+
+.. automodule:: ulakbus.views.ders.danisman
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.views.ders.ders module
 ------------------------------
 
