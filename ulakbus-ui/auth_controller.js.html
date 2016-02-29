@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>Ulakbus UI</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cayman.min.css">
+    <link rel="stylesheet" href="css/prism.min.css">
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/docs.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Mr. Doc</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>Ulakbus UI</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="app.js.html">app.js</a></li>
+            <li class="active"><a href="auth_controller.js.html">auth_controller.js</a></li>
+            <li><a href="auth_service.js.html">auth_service.js</a></li>
+            <li><a href="crud_controller.js.html">crud_controller.js</a></li>
+            <li><a href="directives.js.html">directives.js</a></li>
+            <li><a href="form_service.js.html">form_service.js</a></li>
+            <li><a href="interceptors.js.html">interceptors.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="description"></div>
+          <pre><code class="language-javascript">'use strict';</code></pre>
+          <div class="description"><p>ulakbus.auth module handles authorization process of ulakbus-ui.</p></div>
+          <pre><code class="language-javascript">angular.module('ulakbus.auth', ['ngRoute', 'ngCookies'])</code></pre>
+          <div class="description"><p>LoginCtrl responsible to handle login process.<br> Using &#39;ulakbus.formService.get_form&#39; function generates the login form and post it to the API with input datas.</p></div>
+          <pre><code class="language-javascript">.controller('LoginCtrl', function ($scope, $q, $timeout, $routeParams, $rootScope, $log, Generator, AuthService) {
+    $scope.url = 'login';
+    $scope.form_params = {};
+    $scope.form_params['clear_wf'] = 1;
+    Generator.get_form($scope).then(function (data) {
+        $scope.form = [
+            {key: &quot;username&quot;, type: &quot;string&quot;, title: &quot;Kullanıcı Adı&quot;},
+            {key: &quot;password&quot;, type: &quot;password&quot;, title: &quot;Şifre&quot;},
+            {type: 'submit', title: 'Giriş Yap'}
+        ];
+    });
+    $scope.loggingIn = false;
+    $scope.onSubmit = function (form) {
+        $scope.$broadcast('schemaFormValidate');
+        if (form.$valid) {
+            $scope.loggingIn = true;
+            $rootScope.loginAttempt = 1;
+            Generator.button_switch(false);
+            AuthService.login($scope.url, $scope.model)
+                .error(function (data) {
+                    $scope.message = data.title;
+                    $scope.loggingIn = false;
+                })
+                .then(function () {
+                    $scope.loggingIn = false;
+                    Generator.button_switch(false);
+                })
+        }
+        else {
+            $log.debug(&quot;not valid&quot;);
+        }
+    };
+    $log.debug('login attempt: ', $rootScope.loginAttempt);
+
+});</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with <a href="https://github.com/mr-doc/mr-doc">Mr. Doc </a> created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau </a></p>
+        <p>Mr. Doc is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a> and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="js/twitter-widget.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-transition.min.js"></script>
+    <script src="js/bootstrap-scrollspy.min.js"></script>
+    <script src="js/bootstrap-dropdown.min.js"></script>
+    <script src="js/bootstrap-collapse.min.js"></script>
+    <script src="js/bootstrap-affix.min.js"></script>
+    <script src="js/prism.min.js"></script>
+    <script src="js/index.min.js"></script>
+  </body>
+</html>

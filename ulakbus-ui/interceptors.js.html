@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>Ulakbus UI</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cayman.min.css">
+    <link rel="stylesheet" href="css/prism.min.css">
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/docs.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Mr. Doc</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>Ulakbus UI</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="app.js.html">app.js</a></li>
+            <li><a href="auth_controller.js.html">auth_controller.js</a></li>
+            <li><a href="auth_service.js.html">auth_service.js</a></li>
+            <li><a href="crud_controller.js.html">crud_controller.js</a></li>
+            <li><a href="directives.js.html">directives.js</a></li>
+            <li><a href="form_service.js.html">form_service.js</a></li>
+            <li class="active"><a href="interceptors.js.html">interceptors.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="description"></div>
+          <pre><code class="language-javascript">angular.module('ulakbus')
+    .config(['$httpProvider', function ($httpProvider) {</code></pre>
+          <div class="description"><p>The http interceptor for all requests and responses to check and config payload and response objects.</p><ul>
+<li>To prevent OPTIONS preflight request change header Content-Type to <code>text/plain</code>.</li>
+<li>4xx - 5xx errors are handled in response objects.</li>
+<li><code>_debug_queries</code> is helper object for development purposes to see how long the queries lasts.<br />They are shown in /debug/list&#39; page.</li>
+<li>API returns <code>is_login</code> key to check if current user is authenticated. Interceptor checks and if not logged<br />in redirects to login page.</li>
+</ul>
+</div>
+          <pre><code class="language-javascript">$httpProvider.interceptors.push(function ($q, $rootScope, $location, $timeout, $log) {
+    return {
+        'request': function (config) {
+            if (config.method === &quot;POST&quot;) {
+                // to prevent OPTIONS preflight request
+                config.headers[&quot;Content-Type&quot;] = &quot;text/plain&quot;;
+            }
+            return config;
+        },
+        'response': function (response) {
+            //Will only be called for HTTP up to 300
+
+            if (response.data._debug_queries) {
+                if (response.data._debug_queries.length &gt; 0) {
+                    $rootScope.debug_queries = $rootScope.debug_queries || [];
+                    $rootScope.debug_queries.push({
+                        &quot;url&quot;: response.config.url,
+                        &quot;queries&quot;: response.data._debug_queries
+                    });
+                }
+            }
+
+            if (response.data.is_login === false) {
+                $rootScope.loggedInUser = response.data.is_login;
+                $location.path(&quot;/login&quot;);
+            }
+            if (response.data.is_login === true) {
+                $rootScope.loggedInUser = true;
+                $rootScope.loginAttempt = 1; // this needs for popup errors
+                if ($location.path() === &quot;/login&quot;) {
+                    $location.path(&quot;/dashboard&quot;);
+                }
+            }
+
+            // if (response.data.client_cmd) {
+            //$location.path(response.data.screen);
+            // }
+            return response;
+        },
+        'responseError': function (rejection) {
+
+            var errorModal = function () {
+                if ($rootScope.loginAttempt === 0) {
+                    $log.debug('not logged in, no alert message triggered');
+                    return;
+                }
+                var codefield = &quot;&quot;;
+                if (rejection.data.error) {
+                    codefield = '&lt;p&gt;&lt;pre&gt;' +
+                        rejection.data.error +
+                        '&lt;/pre&gt;&lt;/p&gt;';
+                }
+
+                $('&lt;div class=&quot;modal&quot;&gt;' +
+                    '&lt;div class=&quot;modal-dialog&quot; style=&quot;width:100%;&quot; role=&quot;document&quot;&gt;' +
+                    '&lt;div class=&quot;modal-content&quot;&gt;' +
+                    '&lt;div class=&quot;modal-header&quot;&gt;' +
+                    '&lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span' +
+                    ' aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;' +
+                    '&lt;h4 class=&quot;modal-title&quot; id=&quot;exampleModalLabel&quot;&gt;' +
+                    rejection.status + rejection.data.title +
+                    '&lt;/h4&gt;' +
+                    '&lt;/div&gt;' +
+                    '&lt;div class=&quot;modal-body&quot;&gt;' +
+                    '&lt;div class=&quot;alert alert-danger&quot;&gt;' +
+                    '&lt;strong&gt;' +
+                    rejection.data.description +
+                    '&lt;/strong&gt;' +
+                    codefield +
+                    '&lt;/div&gt;' +
+                    '&lt;/div&gt;' +
+                    '&lt;div class=&quot;modal-footer&quot;&gt;' +
+                    '&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Kapat&lt;/button&gt;' +
+                    '&lt;/div&gt;' +
+                    '&lt;/div&gt;' +
+                    '&lt;/div&gt;' +
+                    '&lt;/div&gt;').modal();
+                try {
+                    $('pre:not(.hljs)').each(function (i, block) {
+                        hljs.highlightBlock(block);
+                    });
+                }
+                catch (e) {
+                    $log.debug('Exception: ', e.message);
+                }
+            };
+
+            if (rejection.status === -1) {
+                rejection.status = 'Sunucu hatası'
+                rejection.data = {
+                    title: &quot;&quot;, description: 'Sunucu bağlantısında bir hata oluştu.' +
+                    'Lütfen yetkili personelle iletişime geçiniz.'
+                };
+                $rootScope.$broadcast('alertBox', {
+                    title: rejection.status,
+                    msg: rejection.data.description,
+                    type: 'error'
+                });
+            }
+
+            if (rejection.status === 400) {
+                $location.reload();
+            }
+            if (rejection.status === 401) {
+                $location.path('/login');
+                if ($location.path() === &quot;/login&quot;) {
+                    $log.debug(&quot;show errors on login form&quot;);
+                }
+            }
+            if (rejection.status === 403) {
+                if (rejection.data.is_login === true) {
+                    $rootScope.loggedInUser = true;
+                    if ($location.path() === &quot;/login&quot;) {
+                        $location.path(&quot;/dashboard&quot;);
+                    }
+                }
+                //errorModal();
+            }
+            $rootScope.$broadcast('show_notifications', rejection.data);
+
+            if (rejection.status === 404) {
+                errorModal();
+            }
+            if (rejection.status === 500) {
+                errorModal();
+            }
+            return $q.reject(rejection);
+        }
+    };
+});
+    }]);</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with <a href="https://github.com/mr-doc/mr-doc">Mr. Doc </a> created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau </a></p>
+        <p>Mr. Doc is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a> and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="js/twitter-widget.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-transition.min.js"></script>
+    <script src="js/bootstrap-scrollspy.min.js"></script>
+    <script src="js/bootstrap-dropdown.min.js"></script>
+    <script src="js/bootstrap-collapse.min.js"></script>
+    <script src="js/bootstrap-affix.min.js"></script>
+    <script src="js/prism.min.js"></script>
+    <script src="js/index.min.js"></script>
+  </body>
+</html>
