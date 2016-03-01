@@ -38,6 +38,13 @@ Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karş�
 +--------------------------+-----------------------------+
 | Ders                     | Course                      |
 +--------------------------+-----------------------------+
+| Cogunlukla bir Ders      | Instructional Offering      |
+| nesnesine denk gelir     |                             |
++--------------------------+-----------------------------+
+| Egitimin organizasyonu   | Configuration               |
+| (sadece teori,           |                             |
+| teori ve uygulama, vb)   |                             |
++--------------------------+-----------------------------+
 | Donem                    | Academic Session            |
 +--------------------------+-----------------------------+
 | Okutman                  | Instructors                 |
@@ -56,7 +63,13 @@ Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karş�
 +--------------------------+-----------------------------+
 | Unit (unit_type="Bölüm") | Department                  |
 +--------------------------+-----------------------------+
-| ?                        | Classes                     |
+| Sube                     | Classes                     |
+| Ders icin biraraya       |                             |
+| gelmis ogrenci toplulugu |                             |
+|                          |                             |
+| Ders programinda         |                             |
+| zamanlanacak nesneler    |                             |
+| Subelerdir               |                             |
 +--------------------------+-----------------------------+
 | ?                        | Academic Classifications    |
 +--------------------------+-----------------------------+
@@ -72,6 +85,7 @@ Aşağıdaki tabloda Ulakbus modellerinin UniTime projesindeki kavramlara karş�
 +--------------------------+-----------------------------+
 | ?                        | Last-like Enrollments       |
 +--------------------------+-----------------------------+
+
 
 Entegrasyon Yöntemi
 +++++++++++++++++++
