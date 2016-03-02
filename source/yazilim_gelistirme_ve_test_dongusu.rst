@@ -465,14 +465,14 @@ bir önceki eğitim kaydı oluşturarak kaydeder.
 Selenium hakkında daha fazla bilgi almak için `<http://www.seleniumhq.org/docs/>`_
 
 
-----------------------------
-*Arka Uç(Backend) Testleri:*
-----------------------------
+**************************
+Arka Uç(Backend) Testleri:
+**************************
 Ulakbus projesinin arka uç kısmı sunucuya gönderilen istek(request), sunucudan dönen cevap(response) tabanlı test edilmektedir.
 
 Test edilecek iş akışına başlamadan önce veritabanı boşaltılır, iş akışı için gerekli olan veriler yüklenir.
 
-İş akışına ait test şu şekilde işler;
+İş akışına ait test şu şekilde işler:
 
 - Sunucuya istek yapılır, sunucudan dönen cevapta belli koşullar aranır ve aranan koşulların olmaması durumunda
   ``AssertionError`` verir.
@@ -480,6 +480,8 @@ Test edilecek iş akışına başlamadan önce veritabanı boşaltılır, iş ak
 - Sunucudan dönen cevaptaki nesnelerin değerleri ve nesnelerin sayısı ile veritabanından çekilen nesnelerin değerileri ve
   nesnelerin sayıları karşılaştırılır.
 
+
+**Arka Uç Test Örneği**
 
 ::
 
