@@ -75,7 +75,8 @@ Genel
                 "TIME":0.00275
             }
         ],
-        "is_login":true
+        "is_login":true,
+        "notify": "ornek bildirim text"
     }
 
 client_cmd
@@ -116,6 +117,7 @@ meta
 - **allow_sort** Listeleme ekranındaki sıralama özelliği için kullanılır.
 - **allow_filter** Listelenen datanın filtrelemesi için kullanılır.
 - **allow_actions** ListNode tipinde listelenen data için en sağdaki işlemler kolonunun gösterilmesi için kullanılır.
+- **translate_widget** Katalod verilerin düzenleneceği ekran için oluşturulan widget'dır. Aynı zamanda çeviri işlemleri için kullanılacaktır. Boolean tipinde değer alır.
 
 _debug_queries
 ^^^^^^^^^^^^^^
@@ -129,6 +131,11 @@ is_login
 
 | ``is_login`` anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır.
 | Bu anahtar *false* değer taşıdığında arayüz login sayfasına yönlendirir.
+
+notify
+^^^^^^
+
+| ``notify`` anahtarı ile gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.
 
 
 Ulakbüs UI Sayfa Tipleri
@@ -246,6 +253,23 @@ schema
     Formlarda birden fazla buton değişik işleri yapabilsin diye bu input alanlarına ``cmd`` değeri eklenmiştir. Bu değer form submit edilirken ``cmd`` anahtarında API'a gönderilir.
 
     Ek işlevsellik isteyen alanlar için (`Node, ListNode, Model, select, file, submit, date, text_general`, etc.) template'ler oluşturulmuştur.
+
+    Field tipleri şunlar olabilir:
+
+    - ``button``
+    - ``submit``
+    - ``file``
+    - ``select``
+    - ``date``
+    - ``int``
+    - ``boolean``
+    - ``string``
+    - ``typeahead``
+    - ``text_general``
+    - ``float``
+    - ``model``
+    - ``Node``
+    - ``ListNode
 
 model
 ^^^^^
