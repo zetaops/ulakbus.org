@@ -138,6 +138,13 @@ izinlerini güncellemektir.
 
     $ python manage.py migrate --model all
 
+
+Fixtur yukle
+
+::
+
+    $ python manage.py load_fixture --path fixtures/
+    
 Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları `ilgili
 belgeden <http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html>`_ öğrenebilirsiniz.
 
