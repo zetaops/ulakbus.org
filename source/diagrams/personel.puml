@@ -1,0 +1,282 @@
+@startuml
+
+skinparam classAttributeFontName Monospaced
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #D8D8D8
+skinparam packageBorderColor #BDBDBD
+skinparam classArrowColor #0B615E
+skinparam shadowing false
+
+'skinparam monochrome true
+'skinparam nodesep 100
+'skinparam ranksep 100
+'note "All <color:black><b> (M)odels</b></color> extends <b>pyoko.Model</b> class" as N #orchid
+title
+<size:24>Entity Based Model Diagram</size>
+( All Models extends <b>pyoko.Model</b> class )
+endtitle
+'legend left
+'n..*     n or more instances
+'n..m    Min n, Max m instances
+'endlegend
+
+
+' field_name            field_type     null blank
+'                                      _ = True
+'                                      * * = False
+
+
+package auth{
+
+class User <<(M,orchid)>>{
+
+username                   String
+password                   String
+avatar                     File
+name                       String
+surname                    String
+superuser                  Boolean
+
+}
+
+class Permission <<(M,orchid)>> {
+name                      String
+code                      String
+description               String
+
+}
+
+class AbstractRole <<(M,orchid)>> {
+id              Int
+name            String
+--
+**Permissions(ListNode)**
+|_ permission                              Permission()
+
+}
+
+class Unit  <<(M,orchid)>> {
+name                   String
+long_name              String
+yoksis_no              Int
+unit_type              String
+parent_unit_no         Int
+current_situation      String
+language               String
+learning_type          String
+osym_code              String
+opening_date           Date
+learning_duration      Int
+english_name           String
+quota                  Int
+city_code              Int
+district_code          Int
+unit_group             Int
+foet_code              Int
+is_academic            Boolean
+is_active              Boolean
+uid                    Int
+--
+parent                 Unit()
+
+}
+
+class Role <<(M,orchid)>> {
+typ                    Int
+name                   String
+--
+abstract_role          AbstractRole()
+user                   User()
+unit                   Unit()
+--
+**Permissions(ListNode)**
+|_ permission                              Permission()
+
+}
+
+class LimitedPermissions <<(M,orchid)>> {
+restrictive                 Boolean
+time_start                  String
+time_end                    String
+--
+**Permissions(ListNode)**
+|_ permission                              Permission()
+--
+**IPList(ListNode)**
+|_ ip                                      String
+--
+**AbstractRole(ListNode)**
+|_ abstract_role                           AbstractRole()
+--
+**Roles(ListNode)**
+|_ role                                    Role()
+
+}
+
+}
+
+
+class Personel <<(M,orchid)>>{
+tckn                              String
+ad                                String
+soyad                             String
+cinsiyet                          Int
+uyruk                             String
+ikamet_adresi                     String
+ikamet_il                         String
+ikamet_ilce                       String
+adres_2                           String
+adres_2_posta_kodu                String
+oda_no                            String
+oda_tel_no                        String
+cep_telefonu                      String
+e_posta                           String
+e_posta_2                         String
+e_posta_3                         String
+web_sitesi                        String
+yayinlar                          String
+projeler                          String
+kan_grubu                         String
+ehliyet                           String
+verdigi_dersler                   String
+unvan                             Int
+biyografi                         Text
+notlar                            Text
+engelli_durumu                    String
+engel_grubu                       String
+engel_derecesi                    String
+engel_orani                       Int
+personel_turu                     Int
+cuzdan_seri                       String
+cuzdan_seri_no                    String
+baba_adi                          String
+ana_adi                           String
+dogum_tarihi                      String
+dogum_yeri                        String
+medeni_hali                       Int
+kayitli_oldugu_il                 String
+kayitli_oldugu_ilce               String
+kayitli_oldugu_mahalle_koy        String
+kayitli_oldugu_cilt_no            String
+kayitli_oldugu_aile_sira_no       String
+kayitli_oldugu_sira_no            String
+kimlik_cuzdani_verildigi_yer      String
+kimlik_cuzdani_verilis_nedeni     String
+kimlik_cuzdani_kayit_no           String
+kimlik_cuzdani_verilis_tarihi     String
+hizmet_sinifi                     Int
+--
+birim                             Unit()
+user                              User()
+
+}
+
+class AdresBilgileri <<(M,orchid)>> {
+ad                                String
+adres                             String
+ilce                              String
+il                                String
+--
+personel                          Personel()
+
+}
+
+class KurumIciGorevlendirmeBilgileri <<(M,orchid)>> {
+gorev_tipi                          String
+kurum_ici_gorev_baslama_tarihi      Date
+kurum_ici_gorev_bitis_tarihi        Date
+aciklama                            String
+resmi_yazi_sayi                     String
+resmi_yazi_tarih                    String
+--
+personel                            Personel()
+birim                               Unit()
+
+}
+
+class KurumDisiGorevlendirmeBilgileri <<(M,orchid)>> {
+gorev_tipi                           Int
+kurum_disi_gorev_baslama_tarihi      Date
+kurum_disi_gorev_bitis_tarihi        Date
+aciklama                             Text
+resmi_yazi_sayi                      String
+resmi_yazi_tarih                     Date
+maas                                 Boolean
+yevmiye                              Boolean
+yolluk                               Boolean
+ulke                                 Int
+---
+personel = Personel()
+
+}
+
+class Kadro <<(M,orchid)>>{
+kadro_no                            Int
+unvan                               Int
+derece                              Int
+durum                               Int
+aciklama                            String
+unvan_kod                           Int
+--
+birim                               Unit()
+
+}
+
+class Izin <<(M,orchid)>>{
+tip                                 Int
+baslangic                           Date
+bitis                               Date
+onay                                Date
+adres                               String
+telefon                             String
+--
+personel                            Personel()
+vekil                               Personel()
+
+}
+
+class UcretsizIzin<<(M,orchid)>>{
+tip                                 Int
+baslangic_tarihi                    Date
+bitis_tarihi                        Date
+donus_tarihi                        Date
+onay_tarihi                         Date
+--
+personel                            Personel()
+
+}
+
+class Atama <<(M,orchid)>>{
+kurum_sicil_no                     String
+personel_tip                       Int
+hizmet_sinif                       Int
+statu                              Int
+gorev_suresi_baslama               Date
+gorev_suresi_bitis                 Date
+goreve_baslama_tarihi              Date
+ibraz_tarihi                       Date
+durum                              Int
+mecburi_hizmet                     Date
+nereden                            Int
+atama_aciklama                     String
+goreve_baslama_aciklama            String
+kadro_unvan                        Int
+kadro_derece                       Int
+--
+kadro                              Kadro()
+personel                           Personel()
+
+}
+
+Personel "1" -- "0..*" AdresBilgileri
+Personel "1" -- "0..*" KurumIciGorevlendirmeBilgileri
+Personel "1" -- "0..*" KurumDisiGorevlendirmeBilgileri
+Personel "1" -- "0..*" Izin
+Personel "1" -- "0..*" UcretsizIzin
+Personel "1" -- "0..*" Atama
+Personel "1" -- "1" User
+Kadro    "1" -- "0..*" Atama
+Unit     "1" -- "0..*" Kadro
+
+
+@enduml

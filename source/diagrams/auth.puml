@@ -1,0 +1,124 @@
+@startuml
+
+skinparam classAttributeFontName Monospaced
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #D8D8D8
+skinparam packageBorderColor #BDBDBD
+skinparam classArrowColor #0B615E
+skinparam shadowing false
+
+'skinparam monochrome true
+'skinparam nodesep 100
+'skinparam ranksep 100
+'note "All <color:black><b> (M)odels</b></color> extends <b>pyoko.Model</b> class" as N #orchid
+title
+<size:24>Entity Based Model Diagram</size>
+( All Models extends <b>pyoko.Model</b> class )
+endtitle
+'legend left
+'n..*     n or more instances
+'n..m    Min n, Max m instances
+'endlegend
+
+
+' field_name            field_type     null blank
+'                                      _ = True
+'                                      * * = False
+
+
+class User <<(M,orchid)>>{
+
+username                   String
+password                   String
+avatar                     File
+name                       String
+surname                    String
+superuser                  Boolean
+
+}
+
+class Permission <<(M,orchid)>> {
+name                      String
+code                      String
+description               String
+
+}
+
+class AbstractRole <<(M,orchid)>> {
+id              Int
+name            String
+--
+**Permissions(ListNode)**
+|_ permission                              Permission()
+
+}
+
+class Unit  <<(M,orchid)>> {
+name                   String
+long_name              String
+yoksis_no              Int
+unit_type              String
+parent_unit_no         Int
+current_situation      String
+language               String
+learning_type          String
+osym_code              String
+opening_date           Date
+learning_duration      Int
+english_name           String
+quota                  Int
+city_code              Int
+district_code          Int
+unit_group             Int
+foet_code              Int
+is_academic            Boolean
+is_active              Boolean
+uid                    Int
+--
+parent                 Unit()
+
+}
+
+class Role <<(M,orchid)>> {
+typ                    Int
+name                   String
+--
+abstract_role          AbstractRole()
+user                   User()
+unit                   Unit()
+--
+**Permissions(ListNode)**
+|_ permission                              Permission()
+
+}
+
+class LimitedPermissions <<(M,orchid)>> {
+restrictive                 Boolean
+time_start                  String
+time_end                    String
+--
+**Permissions(ListNode)**
+|_ permission                              Permission()
+--
+**IPList(ListNode)**
+|_ ip                                      String
+--
+**AbstractRole(ListNode)**
+|_ abstract_role                           AbstractRole()
+--
+**Roles(ListNode)**
+|_ role                                    Role()
+
+}
+
+AbstractRole  "0..*" -- "0..*" Permission
+Role          "1" -- "0..*" User
+Role          "1" -- "0..*" AbstractRole
+Role          "1" -- "0..*" Unit
+Unit          "0..*" -- "0..*" AbstractRole
+
+Limited Permission  "0..*" -- "0..*" Role
+Limited Permission  "0..*" -- "0..*" Permission
+Limited Permission  "0..*" -- "0..*" AbstractRole
+
+@enduml

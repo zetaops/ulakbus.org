@@ -25,66 +25,48 @@ endtitle
 '                                      _ = True
 '                                      * * = False
 
-
-
-package auth{
-
-class Kullanici <<(M,orchid)>>{
-|_ id                  Int
-|_ **IdentityInfo(Model)**
-   |_  tckno           string
-   |_  name            string
-   |_  surname         string
-   |_  birth_date      Date
-   |_  birth_place     Date
-   |_  neighborhood    string
-   |_  father_name     String
-   |_  mother_name     String
-   |_  gender          String
-   |_  marital_status  String
-   |_  town_code       Int
-   |_  city            Int
-   |_  blood_type      String
-   |_  former_surname  String
-|_ **ContactInfo(Model)**
-   |_  home_phone      String
-   |_  work_phone      String
-   |_  mobile_phone    String
-   |_  address_pri     String
-   |_  address_sec     String
-   |_  postal_code     Int
-   |_  primary_email   String
-   |_  secondary_email String
-   |_  website         String
+class NufusKayitlari <<(M,orchid)>> {
+tckn                       String
+ad                         String
+soyad                      String
+ilk_soy_ad                 String
+dogum_tarihi               Date
+cinsiyet                   String
+emekli_sicil_no            Int
+memuriyet_baslama_tarihi   Date
+kurum_sicil                String
+maluliyet_kod              Int
+yetki_seviyesi             String
+aciklama                   String
+kuruma_baslama_tarihi      Date
+gorev_tarihi_6495          Date
+emekli_sicil_6495          Int
+durum                      Boolean
+sebep                      Int
+sync                       Int
 --
+personel = Personel(one_to_one=True)
+
 }
 
 
-class Yetki<<(M,orchid)>>{
-name            String
-code            String
-}
-}
-
-package hitap{
-
-class HizmetKurs <<(M,orchid)>>{
+class HizmetKurs <<(M,orchid)>> {
 tckn                    String   * *
 kayit_no                String
 kurs_ogrenim_suresi     Int      * *
 mezuniyet_tarihi        Date     * *
-kurs_nevi               String   * *
-bolum_ad                String   * *
-okul_ad                 String   * *
+kurs_nevi               Int      * *
+bolum_ad                Int      * *
+okul_ad                 Int   * *
 ogrenim_yeri            String
 denklik_tarihi          Date
 denklik_okulu           String
 denklik_bolum           String
 kurum_onay_tarihi       Date     * *
+sync                    Int
 --
 personel       Personel()    * *
 
---
 }
 
 class HizmetOkul <<(M,orchid)>>{
@@ -94,15 +76,17 @@ ogrenim_durumu          Int      * *
 mezuniyet_tarihi        Date     * *
 okul_ad                 String
 bolum                   String
-ogrenim_yer             String
+ogrenim_yeri            Int
 denklik_tarihi          Date
 denklik_okul            String
 denklik_bolum           String
 ogrenim_suresi          Int      * *
-hazirlik                Boolean  * *
+hazirlik                Int      * *
 kurum_onay_tarihi       Date     * *
+sync                    Int
 --
 personel       Personel()    * *
+
 }
 
 
@@ -124,8 +108,10 @@ gecerli_dogum_tarihi    Date
 aciklama                String
 gun_sayisi              Int
 kurum_onay_tarihi       Date     * *
+sync                    Int
 --
 personel       Personel()    * *
+
 }
 
 class HizmetBirlestirme <<(M,orchid)>>{
@@ -136,17 +122,19 @@ sgk_sicil_no                  String   * *
 baslama_tarihi                Date     * *
 bitis_tarihi                  Date     * *
 sure                          Int      * *
-kamuİsyeri_ad                 String
+kamu_isyeri_ad                String
 ozel_isyeri_ad                String
 bag_kur_meslek                String
 ulke_kod                      Int
 banka_sandık_kod              Int
 kıdem_tazminat_odeme_durumu   String
 ayrilma_nedeni                String
-kha_durum                     String
+kha_durum                     Int
 kurum_onay_tarihi             Date     * *
+sync                          Int
 --
 personel       Personel()    * *
+
 }
 
 class HizmetTazminat <<(M,orchid)>>{
@@ -160,8 +148,10 @@ tazminat_tarihi         Date     * *
 tazminat_bitis_tarihi   Date
 kadrosuzluk             Int
 kurum_onay_tarihi       Date     * *
+sync                    Int
 --
 personel       Personel()    * *
+
 }
 
 class HizmetUnvan <<(M,orchid)>>{
@@ -175,17 +165,19 @@ asil_vekil              String   * *
 atama_sekli             String   * *
 kurum_onay_tarihi       Date     * *
 fhz_orani               Float
+sync                    Int
 --
 personel       Personel()    * *
+
 }
 
 class HizmetAcikSure <<(M,orchid)>>{
 tckn                          String   * *
 kayit_no                      String
 acik_sekil                    Int      * *
-durum                         Int      * *
+iade_sekil                    Int
 hizmet_durum                  Int      * *
-husus                         String   * *
+husus                         Int      * *
 aciga_alinma_tarih            Date
 goreve_son_tarih              Date
 goreve_iade_istem_tarih       Date
@@ -197,8 +189,10 @@ goreve_son_aylik_bit_tarih    Date
 s_yonetim_kald_tarih          Date
 aciktan_atanma_tarih          Date
 kurum_onay_tarihi             Date     * *
+sync                          Int
 --
 personel       Personel()    * *
+
 }
 
 class HizmetBorclanma <<(M,orchid)>>{
@@ -223,17 +217,22 @@ isyeri_ilce          String   * *
 borclanma_tarihi     Date
 odeme_tarihi         Date
 kurum_onay_tarihi    Date     * *
+sync                 Int
 --
 personel       Personel()    * *
+
 }
+
 class HizmetIHS <<(M,orchid)>>{
 tckn                 String   * *
 kayit_no             String
 baslama_tarihi       Date     * *
 bitis_tarihi         Date     * *
 ihz_nevi             Int      * *
+sync                 Int
 --
 personel       Personel()    * *
+
 }
 
 class HizmetIstisnaiIlgi <<(M,orchid)>>{
@@ -243,10 +242,12 @@ baslama_tarihi       Date     * *
 bitis_tarihi         Date     * *
 gun_sayisi           Int      * *
 istisnai_ilgi_nevi   Int      * *
-kha_durum            String   * *
+kha_durum            Int      * *
 kurum_onay_tarihi    Date     * *
+sync                 Int
 --
 personel       Personel()    * *
+
 }
 
 
@@ -259,7 +260,7 @@ gorev                               String   * *
 unvan_kod                           Int      * *
 yevmiye                             String
 ucret                               String
-hizmet_sinifi                       String   * *
+hizmet_sinifi                       Int      * *
 kadro_derece                        Int      * *
 odeme_derece                        Int      * *
 odeme_kademe                        Int      * *
@@ -272,15 +273,13 @@ emekli_kademe                       Int      * *
 emekli_ekgosterge                   Int      * *
 sebep_kod                           Int      * *
 kurum_onay_tarihi                   Date     * *
+sync                                Int
 --
 personel             **Personel()**
-}
-
-
-
 
 }
-class AskerlikKayitlari <<(M,orchid)>>{
+
+class AskerlikKayitlari <<(M,orchid)>> {
 askerlik_nevi                    Int      * *
 baslama_tarihi                   Date
 bitis_tarihi                     Date
@@ -297,169 +296,32 @@ tegmen_nasp_tarihi               Date
 gorev_yeri                       String
 kurum_onay_tarihi                Date     * *
 astegmen_nasp_tarihi             Date
+sync                             Int
 --
 personel                         **Personel()**
-}
-
-
-class Birim<<(M,orchid)>>{
-type        String
-name        String
-parent      **Birim()**
---
-}
-
-class Personel <<(M,orchid)>>{
-tckn                  String
-ad                    String  * *
-soyad                 String  * *
-dogum_tarihi          Date
-dogum_yeri            String  * *
-cep_telefonu          String  * *
-uyruk                 String
-medeni_hali           String
-ikamet_adresi         String
-oda_no                Int     * *
-oda_tel_no            String  * *
-e_posta               String  * *
-web_sitesi            String
-yayinlar              String  * *
-projeler              String
-kan_grubu             String
-ehliyet               String
-akademik_yayinlari    String  * *
-verdigi_dersler       String  * *
-unvan                 String  * *
---
-**NufusKayitlari(Node)**
-|_ tckn                       String  * *
-|_ ad                         String  * *
-|_ soyad                      String  * *
-|_ ilk_soy_ad                 String
-|_ dogum_tarihi               Date    * *
-|_ cinsiyet                   String  * *
-|_ emekli_sicil_no            Int     * *
-|_ emekli_giris_tarih         Date    * *
-|_ memuriyet_baslama_tarihi   Date    * *
-|_ kurum_sicil                String  * *
-|_ maluliyet_kod              String  * *
-|_ yetki_seviyesi             String  * *
-|_ aciklama                   String
-|_ kuruma_baslama_tarihi      Date
-|_ gorev_tarihi6495           Date
-|_ emekli_sicil6495           Int
-|_ durum                      Boolean * *
-|_ sebep                      Int     * *
-}
-
-class Atama <<(M,orchid)>>{
-kurum_sicil_no             String   * *
-personel_tip               Int      * *
-hizmet_sinif               Int      * *
-statu                      Int      * *
-gorev_suresi_baslama       Date     * *
-gorev_suresi_bitis         Date     * *
-goreve_baslama_tarihi      Date     * *
-ibraz_tarihi               Date     * *
-durum                      Int      * *
-mecburi_hizmet_suresi      Date
-nereden                    Int
-atama_aciklama             String
-goreve_baslama_aciklama    String
-kadro_unvan                Int      * *
-kadro_derece               Int      * *
---
-kadro                      Kadro()  * *
-}
-
-class Kadro <<(M,orchid)>>{
-durum                Int          * *
-unvan                Int          * *
-derece               Int          * *
---
-rol                  Rol()
-aciklama             String
 
 }
 
+class HitapSebep <<(M,orchid)>> {
+sebep_no                         Int
+ad                               String
+nevi                             Int
+zorunlu_alan                     String
 
-class SoyutRol<<(M,orchid)>>{
-Yetkiler(ListNode)
-|_permission    **Yetkiler()**
-id              Int
-name            String
---
 }
 
-
-class Izin<<(M,orchid)>>{
-tip            Int            * *
-baslangic      Date           * *
-bitis          Date           * *
-onay           Date           * *
-adres          String         * *
-telefon        String         * *
---
-personel       Personel()    * *
-vekil          Personel()    * *
-}
-
-class UcretsizIzin<<(M,orchid)>>{
-tip            Int            * *
-baslangic      Date           * *
-bitis          Date           * *
-onay           Date           * *
-**Donus(Node)**
-donus_sebep    Int            * _
-ise_baslama    Date           * _
-
-
---
-personel       Personel()    * *
-vekil          Personel()    * *
-}
-
-class Rol<<(M,orchid)>>{
-soyut_rol   **SoyutRol()**    * *
-kullanici            **Kullanici()**
-birim            **Birim()**  * *
-Yetkiler(ListNode)
-|_permission    **Yetkiler()**
-active          Boolean
-baslangic_tarihi      Date
-bitis_tarihi        Date
---
-}
-
-
-Personel "1" -- "0..*" UcretsizIzin
-Personel "1" -- "0..*" UcretsizIzin
-Personel "1" -- "0..*" AskerlikKayitlari
-Personel "1" -- "0..*" HizmetKayitlari
+Personel "1" -- "1" NufusKayitlari
 Personel "1" -- "0..*" HizmetKurs
 Personel "1" -- "0..*" HizmetOkul
-Personel "1" -- "0..*" HizmetTazminat
 Personel "1" -- "0..*" HizmetMahkeme
-Personel "1" -- "0..*" HizmetUnvan
-Personel "1" -- "0..*" HizmetBorclanma
 Personel "1" -- "0..*" HizmetBirlestirme
-Personel "1" -- "0..*" HizmetIHS
+Personel "1" -- "0..*" HizmetTazminat
+Personel "1" -- "0..*" HizmetUnvan
 Personel "1" -- "0..*" HizmetAcikSure
+Personel "1" -- "0..*" AskerlikKayitlari
+Personel "1" -- "0..*" HizmetBorclanma
+Personel "1" -- "0..*" HizmetIHS
 Personel "1" -- "0..*" HizmetIstisnaiIlgi
-Personel "1" -- "0..*" Atama
-
-
-Birim "0..*" -- "1" Atama
-Birim "0..*" -- "1" Rol
-Birim "0..1" --o "0..*" Birim
-Kullanici "0..*" o-- "1" Rol
-
-Rol "1" --o "0..*" SoyutRol
-SoyutRol "0..*" o-- "0..*" Yetki
-Rol "0..*" o-- "0..*" Yetki
-
-
-Kullanici "1" -- "1" Personel
-Birim "0..*" o-- "1..*" Location
+Personel "1" -- "0..*" HizmetKayitlari
 
 @enduml

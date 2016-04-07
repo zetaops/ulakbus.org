@@ -1,0 +1,74 @@
+@startuml
+
+skinparam classAttributeFontName Monospaced
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #D8D8D8
+skinparam packageBorderColor #BDBDBD
+skinparam classArrowColor #0B615E
+skinparam shadowing false
+
+'skinparam monochrome true
+'skinparam nodesep 100
+'skinparam ranksep 100
+'note "All <color:black><b> (M)odels</b></color> extend
+title
+<size:24>Entity Based Model Diagram</size>
+( All Models extends <b>pyoko.Model</b> class )
+endtitle
+'legend left
+'n..*     n or more instances
+'n..m    Min n, Max m instances
+'endlegend
+
+
+' field_name            field_type     null blank
+'                                      _ = True
+'                                      * * = False
+
+
+
+class Campus  <<(M,orchid)>> {
+code            String
+name            String
+coordinate_x    String
+coordinate_y    String
+
+}
+
+class Building  <<(M,orchid)>> {
+code            String
+name            String
+coordinate_x    String
+coordinate_y    String
+--
+campus          Campus()
+
+}
+
+class RoomType <<(M,orchid)>> {
+type           String
+notes          Text
+
+}
+
+class Room  <<(M,orchid)>> {
+code           String
+name           String
+floor          String
+capacity       Int
+--
+room_type      RoomType()
+building       Building()
+is_active      Boolean
+--
+RoomDepartments(ListNode)
+|_unit                          Unit()
+
+}
+
+Campus   "1" -- "0..*" Building
+RoomType "1" -- "0..*" Room
+Building "1" -- "0..*" Room
+Building "0..*" -- "0..*" Room
+
+@enduml
