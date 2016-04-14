@@ -307,6 +307,176 @@ Veri erişim katmanı (DAL) olarak görev yapacak olan Pyoko kütüphanesi için
 
 Sistemin tüm işlevlerinin üzerine inşa edileceği BPMN iş akışları, verilen girdilerle beklenen davranışı gösterip göstermediğine karşı test edilecektirler. Böylece iş akışları üzerinde yapılacak güncellemelerin, amaçlanan dışında yan etkilere neden olmadığından emin olunması sağlanacaktır.
 
+Ulakbus projesinin iş akışları sunucuya gönderilen istek(request), sunucudan dönen cevap(response) tabanlı test edilmektedir.
+
+Test edilecek iş akışına başlamadan önce veritabanı boşaltılır, iş akışı için gerekli olan veriler yüklenir.
+
+İş akışına ait test şu şekilde işler:
+
+- Sunucuya istek yapılır, sunucudan dönen cevapta belli koşullar aranır ve aranan koşulların olmaması durumunda
+  ``AssertionError`` verir.
+
+- Sunucudan dönen cevaptaki nesnelerin değerleri ve nesnelerin sayısı ile veritabanından çekilen nesnelerin değerileri ve
+  nesnelerin sayıları karşılaştırılır.
+
+
+**İş Akışı Test Örneği**
+
+::
+
+  import time
+  from pyoko.manage import FlushDB, LoadData
+  from ulakbus.models import OgrenciDersi
+  from zengine.lib.test_utils import *
+
+
+  class TestCase(BaseTestCase):
+    """
+    Bu sınıf ``BaseTestCase`` extend edilerek hazırlanmıştır.
+
+    """
+
+    def test_setup(self):
+        """
+        Okutman not girişi iş akışı test edilmeden önce veritabanı boşaltılır,
+        belirtilen dosyadaki veriler veritabanına yüklenir.
+
+        """
+
+        import sys
+        if '-k-nosetup' in sys.argv:
+            return
+
+        # Bütün kayıtlar db'den silinir.
+        FlushDB(model='all').run()
+        # Belirtilen dosyadaki kayıtları ekler.
+        LoadData(path=os.path.join(os.path.expanduser('~'),
+                                   'ulakbus/tests/fixtures/okutman_not_girisi.csv')).run()
+
+    def test_okutman_not_girisi(self):
+        """
+        Okutman not girişi iş akışının ilk iki adımında ders şubesi ve sınav seçilir.
+
+        Seçilen ders ve seçilen sınav ait notlar okutman tarafından onaylanmışsa;
+
+        Dönen cevapta ``Notlar Onaylandı`` başlığı olup olmadığını test eder.
+
+
+        ``Notlar Onaylandı`` başlığı var ise;
+
+        Seçilen ders şubesine ait derslere kayıtlı öğrencilerin ad, soyad bilgisi ile
+        sunucudan dönen öğrenci kayıt listesinin ad, soyad bilgisinin eşitliği test edilir.
+
+        Kullanıcı, ders seçim ya da sınav seçim ekranına dönerek sınav ve ders
+        seçebilir.
+
+
+        ``Önizleme`` başlığı var ise;
+
+        Seçilen ders ve seçilen sınav ait notlar okutman tarafından onaylanmamıştır.
+
+        Seçilen ders şubesine ait derslere kayıtlı öğrencilerin ad, soyad bilgisi ile
+        sunucudan dönen öğrenci kayıt listesinin ad, soyad bilgisinin  eşitliği test edilir.
+
+        Notlar düzenlenebilir, onaylanabilir, ders seçim ekranına ya da sınav seçim
+        ekranına dönülebilir.
+
+        Notlar onaylandıktan sonra dönen cevapta hocalara bilgilendirme mesajı içeren
+        ``Notlar Kaydedildi`` olup olmadığını test eder.
+
+        Ders onaylanmadan önceki öğrenci sayısı ile ders onaylandıktan sonraki
+        öğrenci sayısının eşitliği test edilir.
+
+        İş akışı tekrar başlatılıp onaylanan ders  ve onaylanan sınav tekrardan seçilir
+        ve gelen mesaj başlığında `Notlar Kaydedildi`` olup olmadığını test eder.
+
+        """
+
+        # Okutman kullanıcısı seçilir.
+        usr = User(super_context).objects.get('Bkhc7dupquiIFPmOSKuO0kXJC8q')
+        time.sleep(1)
+
+        # Kullanıcıya login yaptırılır.
+        self.prepare_client('/okutman_not_girisi', user=usr)
+        self.client.post()
+
+        # Ders şubesi seçilir.
+        self.client.post(cmd='Ders Şubesi Seçin',
+                         form=dict(sube='S7z8bvdNCBFSd9iCvQrb7O1pQ75', sec=1))
+        # Seçilen şubeye ait sınav seçilir.
+        resp = self.client.post(cmd='Sınav Seçin',
+                                form=dict(sinav='7isfBEsi96AVDZdp2o33mQoWemJ', sec=1))
+
+        assert resp.json['msgbox']['title'] == 'Notlar Onaylandı'
+
+        # Veritabanından çekilen öğrenci bilgisi ile sıunucudan gelen öğrenci bilgisi
+        # karşılaştırılarak test edilir.
+        for i in range(0, len(resp.json['object']['fields'])):
+            ogrenci_ders = OgrenciDersi.objects.filter(ders_id='S7z8bvdNCBFSd9iCvQrb7O1pQ75')
+            ogrenci_ad = ogrenci_ders[i].ogrenci_program.ogrenci.ad + ' ' + ogrenci_ders[
+                i].ogrenci_program.ogrenci.soyad
+            assert ogrenci_ad == resp.json['object']['fields'][i][u'Adı Soyadı']
+
+        # Ders seçim ekranına geri döner
+        self.client.post(cmd='ders_sec',
+                         form=dict(sinav_secim='null', ders_secim=1),
+                         flow='ders_secim_adimina_don')
+        # Ders şubesi seçilir.
+        self.client.post(cmd='Ders Şubesi Seçin',
+                         form=dict(sube='PRGgozMfVXSrAqyO2aMnjS6aBQo', sec=1))
+        # Sınav seçilir.
+        resp = self.client.post(cmd='Sınav Seçin',
+                                form=dict(sinav='IvXH1cqyYoHznv0iRV4FjLvXWwz', sec=1))
+
+        # Dersler okutman tarafından onaylanmamışsa;
+        assert resp.json['forms']['schema']['properties']['kaydet']['title'] == 'Önizleme'
+        assert 'inline_edit' in resp.json['forms']
+
+        # Veritabanından çekilen öğrenci bilgisi ile sıunucudan gelen öğrenci bilgisi
+        # karşılaştırılarak test edilir.
+        for i in range(0, len(resp.json['forms']['model']['Ogrenciler'])):
+            ogrenci_ders = OgrenciDersi.objects.filter(ders_id='PRGgozMfVXSrAqyO2aMnjS6aBQo')
+            ogrenci_ad = ogrenci_ders[i].ogrenci_program.ogrenci.ad + ' ' + ogrenci_ders[
+                i].ogrenci_program.ogrenci.soyad
+            assert ogrenci_ad == resp.json['forms']['model']['Ogrenciler'][i][u'ad_soyad']
+
+        # Öğrencilerin sayısı.
+        num_of_ogrenci = len(resp.json['forms']['model']['Ogrenciler'])
+
+        # Kayıtlar önizlenir.
+        self.client.post(cmd='not_kontrol',
+                         form=dict(Ogrenciler=resp.json['forms']['model']['Ogrenciler'], kaydet=1))
+
+        # Sınav notları onaylanıp kaydedilir.
+        # İş akışı bu adımdan sonra sona erer.
+        resp = self.client.post(cmd='not_kaydet',
+                                flow='end',
+                                form=dict(kaydet_ve_sinav_sec='null', kaydet=1,
+                                          kaydet_ve_ders_sec='null',
+                                          not_duzenle='null', not_onay='null'))
+
+        assert resp.json['msgbox']['title'] == 'Notlar Kaydedildi'
+
+        # İş akışı tekrardan başlatılır.
+        resp = self.client.set_path('/okutman_not_girisi')
+        self.client.post()
+
+        # Ders şubesi seçilir.
+        self.client.post(cmd='Ders Şubesi Seçin',
+                         form=dict(sube='PRGgozMfVXSrAqyO2aMnjS6aBQo', sec=1))
+
+        # Sınav seçilir.
+        resp = self.client.post(cmd='Sınav Seçin',
+                                form=dict(sinav='IvXH1cqyYoHznv0iRV4FjLvXWwz', sec=1))
+
+        assert num_of_ogrenci == len(resp.json['object']['fields'])
+        assert resp.json['msgbox']['title'] == 'Notlar Onaylandı'
+
+
+
+
+
+
 ---------------------
 *Benchmark Testleri:*
 ---------------------
@@ -357,35 +527,26 @@ MINOR sürümler çıktıkça, buildbot taglenmiş sürümdeki depoları product
 **Kullanıcı Arayüzü Testleri**
 ------------------------------
 
+Kullanıcı Arayüz Testlerı üç başlıkta yapılır:
+- Bileşen (Birim) Testleri
+- Kabul (E2E) Testleri
+- Manuel Testler
+
 Kullanıcı Arayüzü AngularJS ile Model-View-Controller (MVC) yapısı ile programlanacaktır. Modül yapısı aşağıdaki örnekte olduğu gibidir:
 
+   app/
+     dashboard/
 
-+-----------------------------------------------------------------------------------------------+
-|                                                                                               |
-| app/                                                                                          |
-|                                                                                               |
-|     dashboard/                                                                                |
-|                                                                                               |
-|       dashboard.html (template)                                                               |
-|                                                                                               |
-|       dashboard.js (Controller ve Model tanımlarının olduğu dosya)                            |
-|                                                                                               |
-|       dashboard.test.js (Testlerin yazıldığı dosya)                                           |
-|                                                                                               |
-|       … (diğer modüller)                                                                      |
-|                                                                                               |
-|       app.css (stil dosyası)                                                                  |
-|                                                                                               |
-|       app.js (Uygulamanın tanımlandığı yapılandırıldığı dosya)                                |
-|                                                                                               |
-|    karma.conf.js (testlerin çalışma zamanı yapılandırmalarını içeren dosya)                   |
-|                                                                                               |
-|    e2e-tests/                                                                                 |
-|                                                                                               |
-|       #protractor.conf.js (e2e testlerini çalıştıran protractor yapılandırma dosyası)         |
-|       #scenarios.js (e2e test senaryolarının bulunduğu dosya)                                 |
-|                                                                                               |
-+-----------------------------------------------------------------------------------------------+
+       dashboard.html (template)
+       dashboard.js (Controller ve Model tanımlarının olduğu dosya)
+       dashboard.test.js (Testlerin yazıldığı dosya)
+
+       … (diğer modüller)
+
+       app.css (stil dosyası)
+       app.js (Uygulamanın tanımlandığı yapılandırıldığı dosya)
+   karma.conf.js (testlerin çalışma zamanı yapılandırmalarını içeren dosya)
+
 
 ---------------------------
 *Bileşen (Birim) Testleri:*
@@ -394,81 +555,83 @@ Kullanıcı Arayüzü AngularJS ile Model-View-Controller (MVC) yapısı ile pro
 Uygulamada \*.test.js dosyaları modüllerin Unit testlerinin barındığı dosyalardır. Unit testler Jasmine test uygulama çatısı kullanılarak yazılır.
 Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki gibidir:
 
-+------------------------------------------------------------------+
-|describe('zaerp.login module', function () {                      |
-|                                                                  |
-|   beforeEach(module('zaerp.login'));                             |
-|                                                                  |
-|   describe('login controller', function () {                     |
-|                                                                  |
-|         it('should have a login controller', inject(function (){ |
-|                                                                  |
-| expect('zaerp.login.LoginCtrl').toBeDefined();                   |
-|                                                                  |
-|     }));                                                         |
-|                                                                  |
-|   });                                                            |
-|                                                                  |
-| });                                                              |
-+------------------------------------------------------------------+
+.. code-block:: javascript
+
+   describe('zaerp.login module', function () {
+
+      beforeEach(module('zaerp.login'));
+
+      describe('login controller', function () {
+
+            it('should have a login controller', inject(function (){
+
+    expect('zaerp.login.LoginCtrl').toBeDefined();
+
+        }));
+
+      });
+
+    });
+
 
 Bu test örneğinde “login controller”ının tanımlanmış olması gerekliliği test edilmektedir.
 Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile çalıştırılır. Bunun için yukarıda açıkladığımız yapıda da görüleceği gibi “karma.conf.js” ismiyle bir yapılandırma dosyası bulunmaktadır. Karma yapılandırma örneği aşağıdaki gibidir:
 
+.. code-block:: javascript
 
-+-----------------------------------------------------------------------------+
-|module.exports = function (config) {                                         |
-|                                                                             |
-|    config.set({                                                             |
-|                                                                             |
-|        basePath: './',                                                      |
-|                                                                             |
-|         files: [                                                            |
-|                                                                             |
-|            'app/bower_components/angular/angular.js',                       |
-|                                                                             |
-|            'app/bower_components/angular-route/angular-route.js',           |
-|                                                                             |
-|            'app/bower_components/angular-mocks/angular-mocks.js',           |
-|                                                                             |
-|            'app/app.js',                                                    |
-|                                                                             |
-|            'app/components/\*\*/\*.js',                                     |
-|                                                                             |
-|            'app/login/\*.js',                                               |
-|                                                                             |
-|        ],                                                                   |
-|                                                                             |
-|        autoWatch: true,                                                     |
-|                                                                             |
-|        frameworks: ['jasmine'],                                             |
-|                                                                             |
-|        browsers: ['ChromeCanary'],                                          |
-|                                                                             |
-|        plugins: [                                                           |
-|                                                                             |
-|            'karma-chrome-launcher',                                         |
-|                                                                             |
-|            'karma-firefox-launcher',                                        |
-|                                                                             |
-|            'karma-jasmine',                                                 |
-|                                                                             |
-|            'karma-junit-reporter'                                           |
-|                                                                             |
-|        ],                                                                   |
-|                                                                             |
-|        junitReporter: {                                                     |
-|                                                                             |
-|            outputFile: 'test_out/unit.xml',                                 |
-|                                                                             |
-|            suite: 'unit'                                                    |
-|                                                                             |
-|        }                                                                    |
-|                                                                             |
-|    });                                                                      |
-|                                                                             |
-|};                                                                           |
-+-----------------------------------------------------------------------------+
+   module.exports = function (config) {
+
+       config.set({
+
+           basePath: './',
+
+            files: [
+
+               'app/bower_components/angular/angular.js',
+
+               'app/bower_components/angular-route/angular-route.js',
+
+               'app/bower_components/angular-mocks/angular-mocks.js',
+
+               'app/app.js',
+
+               'app/components/\*\*/\*.js',
+
+               'app/login/\*.js',
+
+           ],
+
+           autoWatch: true,
+
+           frameworks: ['jasmine'],
+
+           browsers: ['ChromeCanary'],
+
+           plugins: [
+
+               'karma-chrome-launcher',
+
+               'karma-firefox-launcher',
+
+
+               'karma-jasmine',
+
+               'karma-junit-reporter'
+
+           ],
+
+           junitReporter: {
+
+               outputFile: 'test_out/unit.xml',
+
+               suite: 'unit'
+
+           }
+
+       });
+
+   };
+
 
 
 Bu yapılandırmada test dosyalarının hangileri olduğu ve testlerin çalışması için uygulama bağımlılıkları (dependencies) “files” anahtarında, hangi test uygulama çatısı kullanılacağı “frameworks” anahtarında, hangi tarayıcının kullanılacağı “browsers” anahtarında ve eklentiler “plugins” anahtarında belirtilmektedir.
@@ -490,68 +653,112 @@ Birim testlerinin kodun ne kadarını kapsadığı yine karma ile incelenecektir
 *Kabul Testleri:*
 -----------------
 
-Kabul testleri e2e-tests dizini altındaki “scenarios.js” dosyasına yazılır. Testler Jasmine test uygulama çatısı ile yazılacaktır. Örnek bir test senaryosu aşağıdaki gibidir:
+Ulakbus projesinin kabul testleri **Selenium** kullanılarak test edilir.
+Selenium, tarayıcı tabanlı uygulamaları otomatikleşirmek için kullanan açık kaynak kodlu bir test framework'tür.
 
 
-+------------------------------------------------------------------------------+
-|describe('dashboard', function () {                                           |
-|                                                                              |
-|       beforeEach(function () {                                               |
-|                                                                              |
-|              browser.get('index.html#/dashboard');                           |
-|                                                                              |
-|       });                                                                    |
-|                                                                              |
-|       it('should redirect to login if not logged in', function (){           |
-|                                                                              |
-|                expect(element.all(by.css('[ng-view] h1')).first().getText()).|
-|                                                                              |
-|                     toMatch(/Zaerp Login Form/);                             |
-|                                                                              |
-|        });                                                                   |
-|                                                                              |
-|});                                                                           |
-+------------------------------------------------------------------------------+
+***************
+Neden Selenium?
+***************
 
 
-Yukarıdaki örnekte tarayıcı uygulamanın “dashboard” sayfasını çağırmakta eğer giriş yapılmamışsa “login” sayfasına yönlendirmesi beklenmektedir.
+- Açık kaynak.
+- Birçok programalama dilini destekler.
+- Birden fazla tarayıcı ve platform ile uyumludur.
+- Testlerin paralel çalışmasına imkan verir.
+- İnsan kaynaklı hataları azaltarak testin doğruluğunu artırır.
+- Geniş bir kullanıcı tabanına ve yardım topluluklarına sahiptir.
 
-Bu testler Protractor ile çalıştırılır. Protractor, Selenium web-driver’larını angularJS ile kullanmak için özelleştirmeler barındıran bir çözümdür. Örnek yapılandırma dosyası aşağıdaki gibidir:
+.. image:: http://cdn2.softwaretestinghelp.com/wp-content/qa/uploads/2014/10/Selenium-intro-1-new.jpg
 
-
-+--------------------------------------------------------------------+
-|exports.config = {                                                  |
-|                                                                    |
-|   allScriptsTimeout: 11000,                                        |
-|                                                                    |
-|   specs: [                                                         |
-|                                                                    |
-|      '\*.js'                                                       |
-|                                                                    |
-|   ],                                                               |
-|                                                                    |
-|   capabilities: {                                                  |
-|                                                                    |
-|     'browserName': 'chrome'                                        |
-|                                                                    |
-|   },                                                               |
-|                                                                    |
-|   baseUrl: 'http://localhost:8000/',                               |
-|                                                                    |
-|   framework: 'jasmine',                                            |
-|                                                                    |
-|   jasmineNodeOpts: {                                               |
-|                                                                    |
-|   defaultTimeoutInterval: 30000                                    |
-|                                                                    |
-|  }                                                                 |
-|                                                                    |
-|};                                                                  |
-+--------------------------------------------------------------------+
+***********************
+Selenium Test Örnekleri
+***********************
 
 
+Document Object Model içinde username ve password tanımlı id alanlarına kullanıcı adı ve kullanıcı şifresi değerleri gönderilerek kullanıcı giriş yapar.
 
-Bu yapılandırma dosyasında testlerin çalıştırılacağı tarayıcı (browserName), url (baseUrl), uygulama çatısı (framework) timeout süreleri gibi özellikler yapılandırılır. Kabul testleri kök dizinde “protractor e2e-tests/protractor.conf.js” komutu ile çalıştırılır.
+::
+
+   from selenium import webdriver
+   from selenium.webdriver.support.ui import WebDriverWait
+   from selenium.webdriver.support import expected_conditions as EC
+   from selenium.webdriver.common.by import By
+
+   class Logging(object):
+       # Yeni bir Firefox penceresi açar.
+       driver = webdriver.Firefox()
+       # Belirtilen adresindeki sayfayı yükler.
+       driver.get('http://nightly.ulakbus.net/#/dashboard')
+       # Document Object Model'in yüklenmesi bekler.
+       driver.implicitly_wait(10)
+
+       def do_login(self):
+           email_field = self.driver.find_element_by_id("username")
+           # Kullanıcı adı alanına 'test_user' yollar.
+           email_field.send_keys("test_user")
+           password_field = self.driver.find_element_by_id("password")
+           # Sifre alanına '123' yolluyor.
+           password_field.send_keys("123")
+           # Giriş tuşuna tıklar.
+           self.driver.find_element_by_css_selector('.btn').click()
+           # Panel tusunu gorene kadar kullanıcının login olmasını 25 saniye bekler.
+           WebDriverWait(self.driver, 25).until(
+           EC.element_to_be_clickable((By.CSS_SELECTOR, '#side-menu > li:nth-child(1) > a:nth-child(1)')))
+
+Kullanıcı giriş yaptıktan sonra gerekli ayarlar yapılır.
+
+::
+
+  from test_login import Logging
+
+  class Settings(Logging):
+      def do_settings(self):
+          # Kullanıcıya giriş yapar.
+          self.do_login()
+          self.driver.find_element_by_css_selector('li.dropdown:nth-child(4) > a:nth-child(1)').click()
+          # Ayarlar(dev)'e tıklar.
+          self.driver.find_element_by_css_selector('.dropdown-menu > li:nth-child(4) > a:nth-child(1)').click()
+          # Backend Url'ye değer gönderir.
+          self.driver.find_element_by_css_selector('.form-control').send_keys('https://test.ulakbus.net/')
+          # Kaydet'e tıklar.
+          self.driver.find_element_by_css_selector('button.btn:nth-child(2)').click()
+
+
+Gerekli ayarlar yapıldıktan sonra Önceki Eğitim Bilgilerine tıklar ve tanımlı alanlara değerler yollayarak yeni
+bir önceki eğitim kaydı oluşturarak kaydeder.
+::
+
+  from test_settings import Settings
+
+  class TestCase(Settings):
+      def test_sidebar(self):
+        # Ayarları yapar.
+        self.do_settings()
+        # Genel'e tıklar.
+        self.driver.find_element_by_css_selector(
+            'li.ng-binding:nth-child(3) > a:nth-child(1) > span:nth-child(2)').click()
+        # Önceki Eğitim Bilgilerine tıklar.
+        self.driver.find_element_by_css_selector('ul.in:nth-child(2) > li:nth-child(6) > a:nth-child(1)').click()
+        # Backend ayarları değiştirildiği için kullanıcının tekrar giriş yapması gerekir.
+        self.do_login()
+        # Genel'e tıklar.
+        self.driver.find_element_by_css_selector(
+            'li.ng-binding:nth-child(3) > a:nth-child(1) > span:nth-child(2)').click()
+        # Önceki Eğitim Bilgilerine tıklar.
+        self.driver.find_element_by_css_selector('ul.in:nth-child(2) > li:nth-child(6) > a:nth-child(1)').click()
+        # Mezun Oldugu Okul'a değer yollar.
+        self.driver.find_element_by_css_selector('#okul_adi').send_keys('Anadolu Lisesi')
+        # Diploma Notu'na değer yollar.
+        self.driver.find_element_by_css_selector('#diploma_notu').send_keys('76')
+        # Mezuniyet Yılı'na değer yollar.
+        self.driver.find_element_by_css_selector('#mezuniyet_yili').send_keys('2008')
+        # Kaydet'e tıklar.
+        self.driver.find_element_by_css_selector('.btn-danger').click()
+
+
+
+Selenium hakkında daha fazla bilgi almak için `<http://www.seleniumhq.org/docs/>`_
 
 -----------------
 *Manuel Testler:*
