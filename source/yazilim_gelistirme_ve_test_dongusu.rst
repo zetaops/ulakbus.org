@@ -305,8 +305,8 @@ Veri erişim katmanı (DAL) olarak görev yapacak olan Pyoko kütüphanesi için
 *İş Akışı (Workflow) Testleri:*
 -------------------------------
 
-Sistemin tüm işlevlerinin üzerine inşa edileceği BPMN iş akışları, verilen girdilerle beklenen davranışı gösterip göstermediğine karşı test edilecektirler.
-Böylece iş akışları üzerinde yapılacak güncellemelerin, amaçlanan dışında yan etkilere neden olmadığından emin olunması sağlanacaktır.
+Sistemin tüm işlevlerinin üzerine inşa edileceği BPMN iş akışları, verilen girdilerle beklenen davranışı gösterip göstermediğine karşı test edilecektirler. Böylece iş akışları üzerinde yapılacak güncellemelerin, amaçlanan dışında yan etkilere neden olmadığından emin olunması sağlanacaktır.
+
 Ulakbus projesinin iş akışları sunucuya gönderilen istek(request), sunucudan dönen cevap(response) tabanlı test edilmektedir.
 
 Test edilecek iş akışına başlamadan önce veritabanı boşaltılır, iş akışı için gerekli olan veriler yüklenir.
@@ -527,7 +527,133 @@ MINOR sürümler çıktıkça, buildbot taglenmiş sürümdeki depoları product
 **Kullanıcı Arayüzü Testleri**
 ------------------------------
 
-Ulakbus projesinin kullanıcı arayüzü **Selenium** kullanılarak test edilir.
+Kullanıcı Arayüz Testlerı üç başlıkta yapılır:
+- Bileşen (Birim) Testleri
+- Kabul (E2E) Testleri
+- Manuel Testler
+
+Kullanıcı Arayüzü AngularJS ile Model-View-Controller (MVC) yapısı ile programlanacaktır. Modül yapısı aşağıdaki örnekte olduğu gibidir:
+
+   app/
+     dashboard/
+
+       dashboard.html (template)
+       dashboard.js (Controller ve Model tanımlarının olduğu dosya)
+       dashboard.test.js (Testlerin yazıldığı dosya)
+
+       … (diğer modüller)
+
+       app.css (stil dosyası)
+       app.js (Uygulamanın tanımlandığı yapılandırıldığı dosya)
+   karma.conf.js (testlerin çalışma zamanı yapılandırmalarını içeren dosya)
+
+
+---------------------------
+*Bileşen (Birim) Testleri:*
+---------------------------
+
+Uygulamada \*.test.js dosyaları modüllerin Unit testlerinin barındığı dosyalardır. Unit testler Jasmine test uygulama çatısı kullanılarak yazılır.
+Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki gibidir:
+
+.. code-block:: javascript
+
+   describe('zaerp.login module', function () {
+
+      beforeEach(module('zaerp.login'));
+
+      describe('login controller', function () {
+
+            it('should have a login controller', inject(function (){
+
+    expect('zaerp.login.LoginCtrl').toBeDefined();
+
+        }));
+
+      });
+
+    });
+
+
+Bu test örneğinde “login controller”ının tanımlanmış olması gerekliliği test edilmektedir.
+Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile çalıştırılır. Bunun için yukarıda açıkladığımız yapıda da görüleceği gibi “karma.conf.js” ismiyle bir yapılandırma dosyası bulunmaktadır. Karma yapılandırma örneği aşağıdaki gibidir:
+
+.. code-block:: javascript
+
+   module.exports = function (config) {
+
+       config.set({
+
+           basePath: './',
+
+            files: [
+
+               'app/bower_components/angular/angular.js',
+
+               'app/bower_components/angular-route/angular-route.js',
+
+               'app/bower_components/angular-mocks/angular-mocks.js',
+
+               'app/app.js',
+
+               'app/components/\*\*/\*.js',
+
+               'app/login/\*.js',
+
+           ],
+
+           autoWatch: true,
+
+           frameworks: ['jasmine'],
+
+           browsers: ['ChromeCanary'],
+
+           plugins: [
+
+               'karma-chrome-launcher',
+
+               'karma-firefox-launcher',
+
+
+               'karma-jasmine',
+
+               'karma-junit-reporter'
+
+           ],
+
+           junitReporter: {
+
+               outputFile: 'test_out/unit.xml',
+
+               suite: 'unit'
+
+           }
+
+       });
+
+   };
+
+
+
+Bu yapılandırmada test dosyalarının hangileri olduğu ve testlerin çalışması için uygulama bağımlılıkları (dependencies) “files” anahtarında, hangi test uygulama çatısı kullanılacağı “frameworks” anahtarında, hangi tarayıcının kullanılacağı “browsers” anahtarında ve eklentiler “plugins” anahtarında belirtilmektedir.
+
+Unit testler nodejs kullanılarak uygulama kök dizininde “npm test” komutuyla çalıştırılır. Örnek bir test çıktısı aşağıdaki gibidir:
+
+INFO [watcher]: Changed file "zetaops/ng-zaerp/app/login/login_test.js".
+Chrome 45.0.2412 (Mac OS X 10.10.3): Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)
+
+Bu çıktıdan 8 test senaryosunun başarıyla geçtiği görülmektedir (Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)).
+
+Birim testlerinin kodun ne kadarını kapsadığı yine karma ile incelenecektir. Karma testler çalıştıktan sonra coverage/ dizini altında bir html dosyası oluşturarak kod kapsama oranını yayınlar. Örnek html çıktı sayfası şu şekildedir:
+
+.. image:: _static/codecoverage.png
+   :scale: 100 %
+   :align: center
+
+-----------------
+*Kabul Testleri:*
+-----------------
+
+Ulakbus projesinin kabul testleri **Selenium** kullanılarak test edilir.
 Selenium, tarayıcı tabanlı uygulamaları otomatikleşirmek için kullanan açık kaynak kodlu bir test framework'tür.
 
 
@@ -633,173 +759,6 @@ bir önceki eğitim kaydı oluşturarak kaydeder.
 
 
 Selenium hakkında daha fazla bilgi almak için `<http://www.seleniumhq.org/docs/>`_
-
-
----------------------------
-*Bileşen (Birim) Testleri:*
----------------------------
-
-Uygulamada \*.test.js dosyaları modüllerin Unit testlerinin barındığı dosyalardır. Unit testler Jasmine test uygulama çatısı kullanılarak yazılır.
-Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki gibidir:
-
-+------------------------------------------------------------------+
-|describe('zaerp.login module', function () {                      |
-|                                                                  |
-|   beforeEach(module('zaerp.login'));                             |
-|                                                                  |
-|   describe('login controller', function () {                     |
-|                                                                  |
-|         it('should have a login controller', inject(function (){ |
-|                                                                  |
-| expect('zaerp.login.LoginCtrl').toBeDefined();                   |
-|                                                                  |
-|     }));                                                         |
-|                                                                  |
-|   });                                                            |
-|                                                                  |
-| });                                                              |
-+------------------------------------------------------------------+
-
-Bu test örneğinde “login controller”ının tanımlanmış olması gerekliliği test edilmektedir.
-Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile çalıştırılır. Bunun için yukarıda açıkladığımız yapıda da görüleceği gibi “karma.conf.js” ismiyle bir yapılandırma dosyası bulunmaktadır. Karma yapılandırma örneği aşağıdaki gibidir:
-
-
-+-----------------------------------------------------------------------------+
-|module.exports = function (config) {                                         |
-|                                                                             |
-|    config.set({                                                             |
-|                                                                             |
-|        basePath: './',                                                      |
-|                                                                             |
-|         files: [                                                            |
-|                                                                             |
-|            'app/bower_components/angular/angular.js',                       |
-|                                                                             |
-|            'app/bower_components/angular-route/angular-route.js',           |
-|                                                                             |
-|            'app/bower_components/angular-mocks/angular-mocks.js',           |
-|                                                                             |
-|            'app/app.js',                                                    |
-|                                                                             |
-|            'app/components/\*\*/\*.js',                                     |
-|                                                                             |
-|            'app/login/\*.js',                                               |
-|                                                                             |
-|        ],                                                                   |
-|                                                                             |
-|        autoWatch: true,                                                     |
-|                                                                             |
-|        frameworks: ['jasmine'],                                             |
-|                                                                             |
-|        browsers: ['ChromeCanary'],                                          |
-|                                                                             |
-|        plugins: [                                                           |
-|                                                                             |
-|            'karma-chrome-launcher',                                         |
-|                                                                             |
-|            'karma-firefox-launcher',                                        |
-|                                                                             |
-|            'karma-jasmine',                                                 |
-|                                                                             |
-|            'karma-junit-reporter'                                           |
-|                                                                             |
-|        ],                                                                   |
-|                                                                             |
-|        junitReporter: {                                                     |
-|                                                                             |
-|            outputFile: 'test_out/unit.xml',                                 |
-|                                                                             |
-|            suite: 'unit'                                                    |
-|                                                                             |
-|        }                                                                    |
-|                                                                             |
-|    });                                                                      |
-|                                                                             |
-|};                                                                           |
-+-----------------------------------------------------------------------------+
-
-
-Bu yapılandırmada test dosyalarının hangileri olduğu ve testlerin çalışması için uygulama bağımlılıkları (dependencies) “files” anahtarında, hangi test uygulama çatısı kullanılacağı “frameworks” anahtarında, hangi tarayıcının kullanılacağı “browsers” anahtarında ve eklentiler “plugins” anahtarında belirtilmektedir.
-
-Unit testler nodejs kullanılarak uygulama kök dizininde “npm test” komutuyla çalıştırılır. Örnek bir test çıktısı aşağıdaki gibidir:
-
-INFO [watcher]: Changed file "zetaops/ng-zaerp/app/login/login_test.js".
-Chrome 45.0.2412 (Mac OS X 10.10.3): Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)
-
-Bu çıktıdan 8 test senaryosunun başarıyla geçtiği görülmektedir (Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)).
-
-Birim testlerinin kodun ne kadarını kapsadığı yine karma ile incelenecektir. Karma testler çalıştıktan sonra coverage/ dizini altında bir html dosyası oluşturarak kod kapsama oranını yayınlar. Örnek html çıktı sayfası şu şekildedir:
-
-.. image:: _static/codecoverage.png
-   :scale: 100 %
-   :align: center
-
------------------
-*Kabul Testleri:*
------------------
-
-Kabul testleri e2e-tests dizini altındaki “scenarios.js” dosyasına yazılır. Testler Jasmine test uygulama çatısı ile yazılacaktır. Örnek bir test senaryosu aşağıdaki gibidir:
-
-
-+------------------------------------------------------------------------------+
-|describe('dashboard', function () {                                           |
-|                                                                              |
-|       beforeEach(function () {                                               |
-|                                                                              |
-|              browser.get('index.html#/dashboard');                           |
-|                                                                              |
-|       });                                                                    |
-|                                                                              |
-|       it('should redirect to login if not logged in', function (){           |
-|                                                                              |
-|                expect(element.all(by.css('[ng-view] h1')).first().getText()).|
-|                                                                              |
-|                     toMatch(/Zaerp Login Form/);                             |
-|                                                                              |
-|        });                                                                   |
-|                                                                              |
-|});                                                                           |
-+------------------------------------------------------------------------------+
-
-
-Yukarıdaki örnekte tarayıcı uygulamanın “dashboard” sayfasını çağırmakta eğer giriş yapılmamışsa “login” sayfasına yönlendirmesi beklenmektedir.
-
-Bu testler Protractor ile çalıştırılır. Protractor, Selenium web-driver’larını angularJS ile kullanmak için özelleştirmeler barındıran bir çözümdür. Örnek yapılandırma dosyası aşağıdaki gibidir:
-
-
-+--------------------------------------------------------------------+
-|exports.config = {                                                  |
-|                                                                    |
-|   allScriptsTimeout: 11000,                                        |
-|                                                                    |
-|   specs: [                                                         |
-|                                                                    |
-|      '\*.js'                                                       |
-|                                                                    |
-|   ],                                                               |
-|                                                                    |
-|   capabilities: {                                                  |
-|                                                                    |
-|     'browserName': 'chrome'                                        |
-|                                                                    |
-|   },                                                               |
-|                                                                    |
-|   baseUrl: 'http://localhost:8000/',                               |
-|                                                                    |
-|   framework: 'jasmine',                                            |
-|                                                                    |
-|   jasmineNodeOpts: {                                               |
-|                                                                    |
-|   defaultTimeoutInterval: 30000                                    |
-|                                                                    |
-|  }                                                                 |
-|                                                                    |
-|};                                                                  |
-+--------------------------------------------------------------------+
-
-
-
-Bu yapılandırma dosyasında testlerin çalıştırılacağı tarayıcı (browserName), url (baseUrl), uygulama çatısı (framework) timeout süreleri gibi özellikler yapılandırılır. Kabul testleri kök dizinde “protractor e2e-tests/protractor.conf.js” komutu ile çalıştırılır.
 
 -----------------
 *Manuel Testler:*
