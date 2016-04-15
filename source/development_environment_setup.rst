@@ -131,8 +131,8 @@ virtualenv hakkında detaylı bilgi için:
    * http://istihza.com/forum/viewtopic.php?t=2164
    * http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek,belirtilen dosyadan fixture dosyalarını yüklemek ve iş akışları
-izinlerini güncellemektir.
+Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek, belirtilen dizinden
+fixture dosyalarını yüklemek ve iş akışları izinlerini güncellemektir.
 
 ::
 
@@ -141,7 +141,7 @@ izinlerini güncellemektir.
 
 ::
 
-   python manage.py load_fixture --path fixtures
+    $ python manage.py load_fixture --path fixtures/
 
 Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları `ilgili
 belgeden <http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html>`_ öğrenebilirsiniz.
@@ -159,7 +159,8 @@ Eğer geliştirmeyi kendi makinenizde yapmayı tercih ederseniz şu adımları i
     $ cd ~/ulakbus                          # ulakbus git deposuna gir
     $ git pull                              # son değişiklikleri uzak depodan çek
     $ pip install -r requirments.txt        # ulakbus bagimliliklarini kur
-    $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
+    # ulakbus python kutuphane dizinine ekle
+    $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/
 
 
 Vagrant Box Güncellemek
@@ -178,8 +179,8 @@ Bunun için önce Vagrantfile bulunan dizine geçiniz. Bu dizinde
 Komutunu çalıştırıp mevcut box eski mi değil mi kontrol edin. Daha sonra mevcut box destroy edip
 yeniden init edebilirsiniz.
 
-.. Attention:: Prensip olarak box içerisinde geliştirme süreçlerine ait herhangi bir veri **bulunmamalıdır**.
-   Eğer varsa bu işlemden önce ilgili veriler host makinesine alınmalıdır.
+.. Dikkat:: Prensip olarak box içerisinde geliştirme süreçlerine ait herhangi bir veri
+   **bulunmamalıdır**. Eğer varsa bu işlemden önce ilgili veriler host makinesine alınmalıdır.
 
 ::
 
@@ -198,8 +199,7 @@ ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:
 ::
 
     $ vagrant box list                           # Vagrant için yüklü olan box listesi
-    $ vagrant box remove --box-version 0.1.9 zetaops/ulakbus   # ulakbus isimli box'ın
-    0.1.9 sürümünü kaldırır.
+    $ vagrant box remove --box-version 0.1.9 zetaops/ulakbus   # ulakbus isimli box'ın 0.1.9 sürümünü kaldırır.
 
 Sonraki Adımlar
 +++++++++++++++
