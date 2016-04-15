@@ -131,20 +131,25 @@ virtualenv hakkında detaylı bilgi için:
    * http://istihza.com/forum/viewtopic.php?t=2164
    * http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek ve iş akışları
-izinlerini güncellemektir.
+Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek, belirtilen dizinden
+fixture dosyalarını yüklemek ve iş akışları izinlerini güncellemektir.
+
+Solr şemalarını guncelle (migration)
 
 ::
 
     $ python manage.py migrate --model all
 
 
-Fixtur yukle
+
+
+Fixtures yükle
 
 ::
 
     $ python manage.py load_fixture --path fixtures/
     
+
 Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları `ilgili
 belgeden <http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html>`_ öğrenebilirsiniz.
 
