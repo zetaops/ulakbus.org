@@ -6,16 +6,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
 
     <title>ULAKBUS</title>
 
-    
+
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -24,6 +24,7 @@
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
+
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -174,7 +175,7 @@
           <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
              accesskey="P">önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li>
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -224,7 +225,7 @@
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
-            
+
   <div class="section" id="ulakbus-gelistirme-ortaminin-kurulumu">
 <h1>ULAKBUS Geliştirme Ortamının Kurulumu<a class="headerlink" href="#ulakbus-gelistirme-ortaminin-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <p>Ulakbus için geliştirme ortamının kurulması aşağıdaki bileşenlerin herbirinin ayrı ayrı
@@ -331,9 +332,12 @@ virtualenv hakkında detaylı bilgi için:</p>
 <li><a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">http://docs.python-guide.org/en/latest/dev/virtualenvs/</a></li>
 </ul>
 </div></blockquote>
-<p>Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek ve iş akışları
+<p>Bu işlemlerin ardından ilk adım, modellerin db şemalarını senkronize etmek,fixtures dosyalarını yüklemek ve  iş akışları
 izinlerini güncellemektir.</p>
 <div class="highlight-python"><div class="highlight"><pre>$ python manage.py migrate --model all
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>$ python manage.py load_fixture --path fixtures/
 </pre></div>
 </div>
 <p>Bu işlem uzun sürebilir. Komut satırı yönetim aracı hakkında detayları <a class="reference external" href="http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html">ilgili
@@ -347,7 +351,8 @@ $ source ulakbusenv/bin/activate        # python ortamını etkinleştir
 $ cd ~/ulakbus                          # ulakbus git deposuna gir
 $ git pull                              # son değişiklikleri uzak depodan çek
 $ pip install -r requirments.txt        # ulakbus bagimliliklarini kur
-$ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python kutuphane dizinine ekle
+# ulakbus python kutuphane dizinine ekle
+$ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/
 </pre></div>
 </div>
 <div class="section" id="vagrant-box-guncellemek">
@@ -355,21 +360,25 @@ $ ln -s ~/ulakbus ~/ulakbusenv/lib/python2.7/site-packages/   # ulakbus python k
 <p>Ulakbus aktif olarak geliştirilmeye devam etmektedir. Bu sebeple vagrantbox içinde kullanılan
 bileşenlerin sürümlerinin değişmesi, yenilerinin eklenmesi veya başka sebepler ile değişmektedir.
 Bu değişiklikleri <a class="reference external" href="https://atlas.hashicorp.com/zetaops/boxes/ulakbus">https://atlas.hashicorp.com/zetaops/boxes/ulakbus</a> adresinden takip edebilirsiniz.</p>
-<p>Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını güncellemelisiniz:</p>
+<p>Vagrantbox güncellemek isterseniz öncelikle indirdiğiniz box imajını güncellemelisiniz:
+Bunun için önce Vagrantfile bulunan dizine geçiniz. Bu dizinde</p>
 <div class="highlight-python"><div class="highlight"><pre>$ vagrant box outdated
 </pre></div>
 </div>
-<p>Daha sonra mevcut box destroy edip yeniden init edebilirsiniz. Prensip olarak box içerisinde
-geliştirme süreçlerine ait herhangi bir veri <strong>bulunmamalıdır</strong>. Eğer varsa bu işlemden önce
-ilgili veriler host makinesine alınmalıdır.</p>
+<p>Komutunu çalıştırıp mevcut box eski mi değil mi kontrol edin. Daha sonra mevcut box destroy edip
+yeniden init edebilirsiniz.</p>
 <div class="highlight-python"><div class="highlight"><pre>$ vagrant box destroy
-$ vagrant up
+$ vagrant update
+</pre></div>
+</div>
+<p>İşlem bitince</p>
+<div class="highlight-python"><div class="highlight"><pre>$ vagrant up
 </pre></div>
 </div>
 <p>Ayrıca mevcut box birden fazla sürüme sahip olabilir. <code class="docutils literal"><span class="pre">--box-version</span></code> ile yeni bir sürüm
 ekleyebilir veya mevcut sürümleri kaldırabilirsiniz:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ vagrant box list                           # Vagrant için yüklü olan box listesi
-$ vagrant box remove --box-version 0.2.2 ulakbus   # ulakbus isimli box&#39;ın 0.2.2 sürümünü kaldır
+$ vagrant box remove --box-version 0.1.9 zetaops/ulakbus   # ulakbus isimli box&#39;ın 0.1.9 sürümünü kaldırır.
 </pre></div>
 </div>
 </div>
@@ -413,7 +422,7 @@ sorularınıza alabileceğiniz en iyi cevap <strong>sessizlik</strong> olacaktı
           <a href="git_workflow.html" title="Ulakbus’e Katkıda Bulunmak"
              >önceki</a> |</li>
         <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li>
       </ul>
     </div>
     </div>
