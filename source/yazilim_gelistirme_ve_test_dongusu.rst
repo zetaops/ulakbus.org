@@ -311,17 +311,17 @@ Ulakbus projesinin iş akışları sunucuya gönderilen istek(request), sunucuda
 
 Test için gerekli veriyi toplamak için;
 
-1- Ulakbus.net'e gidilir.
-2- Ayarlar(Dev) tıklanır, Backend Url'ye http://127.0.0.1:9001/ yazılıp kaydedilir ya da adres satırına
-   ``ulakbus.net?backendurl=http://localhost:9001/`` yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.
-3- İlgili iş akışının çalışabilmesi için veritabanında verilerin gerekli verilerin yüklü olması gerekir.
-4- Adres satırına 127.0.0.1/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.
-5- Tekrardan Ulakbus.net'e gidilir ve giriş yapılır.
-6- Test edilecek iş akışı başlatılır,yazılan teste uygun şekilde iş akışı adımlarına tıklanır.
-7- Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1/session_fixture komutu yazılıp
-   enter tuşuna basılır.
-8- Toplanan veriler iş akışı testinin adının ``test_`` sonraki adıyla aynı olacak şekilde tests/fixtures dizinine
-   .csv uzanstısıyla kaydedilir.
+* Ulakbus.net'e gidilir.
+* Ayarlar(Dev) tıklanır, Backend Url'ye http://127.0.0.1:9001/ yazılıp kaydedilir ya da adres satırına
+  ulakbus.net?backendurl=http://localhost:9001/ yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.
+* İlgili iş akışının çalışabilmesi için veritabanında verilerin gerekli verilerin yüklü olması gerekir.
+* Adres satırına 127.0.0.1/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.
+* Tekrardan Ulakbus.net'e gidilir ve giriş yapılır.
+* Test edilecek iş akışı başlatılır,yazılan teste uygun şekilde iş akışı adımlarına tıklanır.
+* Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1/session_fixture komutu yazılıp
+  enter tuşuna basılır.
+* Toplanan veriler iş akışı testinin adının test_ sonraki adıyla aynı olacak şekilde tests/fixtures dizinine
+  .csv uzanstısıyla kaydedilir.
 
 İş akışına testi  başlamadan önce  veritabanı boşaltılır, iş akışı testi için oluşturulmuş veriler yüklenir.
 
