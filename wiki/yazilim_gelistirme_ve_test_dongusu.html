@@ -523,12 +523,12 @@ Py.test, standard “assert” ifadesinin testin başarılı olup olmadığını
 <ul class="simple">
 <li>Ulakbus.net&#8217;e gidilir.</li>
 <li>Ayarlar(Dev) tıklanır, Backend Url&#8217;ye <a class="reference external" href="http://127.0.0.1:9001/">http://127.0.0.1:9001/</a> yazılıp kaydedilir ya da adres satırına
-ulakbus.net?backendurl=http://localhost:9001/ yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.</li>
+ulakbus.net?backendurl=http://127.0.0.1:9001/ yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.</li>
 <li>İlgili iş akışının çalışabilmesi için veritabanında verilerin gerekli verilerin yüklü olması gerekir.</li>
-<li>Adres satırına 127.0.0.1/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.</li>
+<li>Adres satırına 127.0.0.1:9001/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.</li>
 <li>Tekrardan Ulakbus.net&#8217;e gidilir ve giriş yapılır.</li>
 <li>Test edilecek iş akışı başlatılır,yazılan teste uygun şekilde iş akışı adımlarına tıklanır.</li>
-<li>Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1/session_fixture komutu yazılıp
+<li>Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1:9001/session_fixture komutu yazılıp
 enter tuşuna basılır.</li>
 <li>Toplanan veriler iş akışı testinin adının <a href="#id2"><span class="problematic" id="id3">test_</span></a> sonraki adıyla aynı olacak şekilde tests/fixtures dizinine
 .csv uzanstısıyla kaydedilir.</li>
