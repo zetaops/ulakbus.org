@@ -257,19 +257,235 @@ schema
     Field tipleri şunlar olabilir:
 
     - ``button``
-    - ``submit``
+
+    .. code:: json
+
+        {
+            "form": [ "ornekbutton" ],
+            "schema": {
+                properties: {
+                    ornekbutton: {
+                        type:   "button"
+                        title:  (string) Field Başlığı,
+                        style:  (string) Butonun alacağı class'lar,
+                        cmd:    (string) Butonun cmd'si,
+                        flow:   (string) Butonun flow'u
+                        wf:     (string) Butonun yönlendirdiği workflow,
+                        form_validate: (boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu
+                    }
+                }
+            }
+        }
+
+    - ``submit`` : butonla aynı yapıdadır. Tek farkı basıldığı anda submit işlemi gerçekleştirir. "type" özelligi "submit" olarak belirtilmelidir.
     - ``file``
-    - ``select``
+
+    .. code:: json
+
+        {
+            "form": [ "ornekdosya" ],
+            "schema": {
+                properties: {
+                    ornekdosya: {
+                        title:  (string) Field Başlığı,
+                        type: "file"
+                    }
+                }
+            }
+        }
+
+    - ``select`` Kucuk capli secimler icin ideal field. TitleMap(secimler) statik olarak gonderilebilir.
+
+    .. code:: json
+
+        {
+            "form": [ 'ornekselect'],
+            "schema": {
+                properties: {
+                    "ornekselect":{
+                        "type":"select",
+                        "title":(string) Alan Basligi,
+                        "titleMap":[
+                            { "name":"Bay", "value":1 },
+                            { "name":"Bayan", "value":2 }
+                        ]
+                    }
+                }
+            }
+        }
+
+    - ``confirm``: Onaylama mesaj kutusu acan buton görevi görür.
+
+    .. code:: json
+
+        {
+            "form": [ "ornekconfirm" ],
+            "schema": {
+                properties: {
+                    ornekconfirm: {
+                        title: (string) Buton ve Pencere kutusu Basligi,
+                        style:"btn-success",
+                        type:'confirm',
+                        confirm_message: (string) Onaylama Mesaji,
+                        buttons: [
+                            {   text: (string) Buton basligi , cmd:(string) Buton cmd'si, style: "btn-warning"}
+                        ],
+                        readonly:"true",
+                        form_validate: (boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu
+                    }
+                }
+            }
+        }
+
+
+
     - ``date``
+
+    .. code:: json
+
+        {
+            "form": [ "ornekdate" ],
+            "schema": {
+                properties: {
+                    ornekdate: {
+                        title:  (string) Field Başlığı,
+                        type: "date"
+                    }
+                }
+            }
+        }
+
+
     - ``int``
+
+    .. code:: json
+
+        {
+            "form": [ "ornekint" ],
+            "schema": {
+                properties: {
+                    ornekint: {
+                        title:  (string) Field Başlığı,
+                        type: "int"
+                    }
+                }
+            }
+        }
+
+
     - ``boolean``
+
+    .. code:: json
+
+        {
+            "form": [ "ornekbool" ],
+            "schema": {
+                properties: {
+                    ornekbool: {
+                        title: (string) Field Başlığı,
+                        type: "boolean"
+                    }
+                }
+            }
+        }
+
+
     - ``string``
-    - ``typeahead``
-    - ``text_general``
-    - ``float``
-    - ``model``
-    - ``Node``
-    - ``ListNode
+
+    .. code:: json
+
+        {
+            "form": [ "ornekstring" ],
+            "schema": {
+                properties: {
+                    ornekbool: {
+                        title:  (string) Field Başlığı,
+                        type: "boolean"
+                    }
+                }
+            }
+        }
+
+    - ``typeahead`` select'in daha fazla veri tasiyan cinsidir. Yazilani filtreleyek, sunucu tarafindaki verilerle TitleMap(secimler)'i olusturur.
+
+    .. code:: json
+
+        {
+            "form": [ "ornektypeahead" ],
+            "schema": {
+                properties: {
+                    ornektypeahead: {
+                        title:  (string) Field Başlığı,
+                        titleMap : [
+                        {name: (string) Secimin Adi, value: (int) Secimin degeri }
+                        ]
+                        type: "typeahead"
+                    }
+                }
+            }
+        }
+
+    - ``text_general`` paragraf yazimi icin kullanilir.
+
+    .. code:: json
+
+        {
+            "form": [ "ornektext_general" ],
+            "schema": {
+                properties: {
+                    ornektext_general: {
+                        title:  (string) Field Başlığı,
+                        type: "text_general"
+                    }
+                }
+            }
+        }
+
+    - ``float``: int ile aynı yapıdadır. "type" özelligi "float" olarak belirtilmelidir.
+
+
+    - ``model``: gelismis select field'laridir. Genelde degisken listeli secimler icin kullanilir. Listeleme ve ekleme sirasinda kendisine verilen cmd'leri kullanir.
+
+    .. code:: json
+
+        {
+            "form": [ "ornekmodel" ],
+            "schema": {
+                properties: {
+                    ornekmodel: {
+                        model_name: (string) Model ismi,
+                        title:  (string) Field Başlığı,
+                        type: "model"
+                        wf: (string) Modelin sahip oldugu workflow,
+                        list_cmd: (string) Listeleme aninda calisan cmd,
+                        add_cmd: (string) Ekleme aninda calisan cmd
+                    }
+                }
+            }
+        }
+
+    - ``ListNode``: model'in Array seklinde calisan versiyonudur. Birden fazla model elemani secmeye yarar.
+
+    .. code:: json
+
+        {
+            "form": [ "ornekListNode" ],
+            "schema": {
+                properties: {
+                    ornekListNode: {
+                        schema: Bu sema, ekleme butonuna tiklandiginda acilacak pencerenin icindeki form elemanlarinin semasidir. Asagida bir tane model objesiyle orneklendirilmistir.
+                        [{
+                            model_name: (string) Modelin "+" tusuna basildiginda gosterilen model,
+                            name:(string) Modelin ismi,
+                            title: (string) Formun basligi,
+                            type: "model"
+                        }],
+                        title: (string) ListNode Basligi,
+                        type: "ListNode",
+                    }
+                }
+            }
+        }
 
 model
 ^^^^^
@@ -484,4 +700,4 @@ Geliştirmeye Başlamak
 ~~~~~~~~~~~~~~~~~~~~~
 
 | Yukarıda anlatılan API-UI veri karşılıkları gözönünde bulundurularak geliştirme yapmaya başlayabilirsiniz.
-| Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız. 
+| Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız.
