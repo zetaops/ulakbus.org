@@ -29,15 +29,15 @@ boundary "Int. HA Proxy" as ihp
 database "Riak" as riak
 
 
-brw -> ehp: HTTP conenction (login request)
-ehp -> tor : HTTP conenction (login request)
+brw -> ehp: HTTP connection (login request)
+ehp -> tor : HTTP connection (login request)
 
 note over tor : if login successful: \n   <b>upgrade to websocket</b>
-ehp <- tor : HTTP conenction (login response)
-brw <- ehp: HTTP conenction (login response)
+ehp <- tor : HTTP connection (login response)
+brw <- ehp: HTTP connection (login response)
 
-brw -> ehp: Websocket conenction
-ehp -> tor : Websocket conenction
+brw -> ehp: Websocket connection
+ehp -> tor : Websocket connection
 
 tor -> rmq: enqueue request \n to "inbound" exchange
 
