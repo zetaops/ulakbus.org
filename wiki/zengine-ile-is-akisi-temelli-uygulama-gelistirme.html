@@ -294,22 +294,22 @@
 19</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyoko</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">field</span>
 
 <span class="k">class</span> <span class="nc">Lecturer</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Lecture</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">credit</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s2">&quot;Kredisi&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Ders adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">credit</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s">&quot;Kredisi&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">join_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s2">&quot;Kayıt tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">join_date</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&quot;Kayıt tarihi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">advisor</span> <span class="o">=</span> <span class="n">Lecturer</span><span class="p">()</span>
 
     <span class="k">class</span> <span class="nc">Lectures</span><span class="p">(</span><span class="n">ListNode</span><span class="p">):</span>
         <span class="n">lecture</span> <span class="o">=</span> <span class="n">Lecture</span><span class="p">()</span>
-        <span class="n">confirmed</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">confirmed</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s">&quot;Onaylandı&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>Bu modeller üzerinde kayıt ekleme, sorgulama, silme, güncelleme işlemlerinin
@@ -327,8 +327,8 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
 5
 6</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">first_login</span><span class="p">:</span>
-        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;msg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Welcome </span><span class="si">%s</span><span class="s2">, Thank you for registering &quot;</span>
-                                 <span class="s2">&quot;to our site.&quot;</span> <span class="o">%</span> <span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&quot;msg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;Welcome </span><span class="si">%s</span><span class="s">, Thank you for registering &quot;</span>
+                                 <span class="s">&quot;to our site.&quot;</span> <span class="o">%</span> <span class="n">current</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
         <span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">first_login</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
@@ -358,6 +358,28 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
 <p class="first admonition-title">Not</p>
 <p class="last">ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.</p>
 </div>
+<p class="plantuml">
+<img src="_images/plantuml-054299ce34d98edbef80bfa6d3d463b4d751cd2b.png" alt="skinparam classBackgroundColor #ffffff
+skinparam shadowing false
+
+class LimitedPermissions {
+restrictive     Boolean(False)
+time_start      String
+time_end        String
+--
+**IPList(ListNode)**
+|_ ip           String
+}
+User &quot;1&quot; -- &quot;1&quot; Student
+User &quot;1&quot; -- &quot;1&quot; Employee
+User &quot;0..*&quot; o-- &quot;1&quot; Role
+Role &quot;1&quot; --o &quot;0..*&quot; AbstractRole
+AbstractRole &quot;0..*&quot; o-- &quot;0..*&quot; Permission
+Role &quot;0..*&quot; o-- &quot;0..*&quot; Permission
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Permission
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Role
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; AbstractRole" />
+</p>
 <p>Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.</p>
 <p>AbstractRole nesnesi &#8220;Tıp Fakültesi Öğrenci İşleri Müdürü&#8221; gibi belirli bir makamı temsil ederken, Role nesnesi ise AbstractRole&#8217;ün bir kullanıcı ile ilişkilendirilmesi sonucu bu makamı fiilen işgal eden bir kişiyi ifade etmektedir.</p>
 <p>Permission nesnesinin hem Role ile hem de AbstractRole ile ManyToMany tipinde ilişkili olması sayesinde, bir kullanıcıya sahip olduğu makamın getirdiği standart yetkilere ek yetkilerin tanıması da mümkün olabilmektedir.</p>
@@ -389,12 +411,12 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">row_level_access</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">objects</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">current</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="s2">&quot;access_to_other_sections&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">current</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="s">&quot;access_to_other_sections&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="n">current</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">section</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">field_permissions</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;can_see_private_data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">]</span>
+            <span class="s">&#39;can_see_private_data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;phone&#39;</span><span class="p">,</span> <span class="s">&#39;address&#39;</span><span class="p">]</span>
         <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -407,9 +429,9 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
 4
 5</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">show_person_list</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">Person</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">():</span>
-        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;person_list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                                              <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
-                                              <span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">phone</span><span class="p">})</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;person_list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                              <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                              <span class="s">&#39;phone&#39;</span><span class="p">:</span> <span class="n">person</span><span class="o">.</span><span class="n">phone</span><span class="p">})</span>
 </pre></div>
 </td></tr></table></div>
 </div>

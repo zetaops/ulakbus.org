@@ -228,8 +228,8 @@
 <li><a class="reference internal" href="#zengine"><strong>ZEngine</strong></a></li>
 <li><a class="reference internal" href="#kural-motoru-rule-engine"><strong>Kural Motoru (Rule Engine)</strong></a></li>
 <li><a class="reference internal" href="#zato-servisleri"><strong>Zato Servisleri</strong></a></li>
-<li><a class="reference internal" href="#falcon-wsgi-framework"><strong>Falcon WSGI Framework</strong></a></li>
-<li><a class="reference internal" href="#gunicorn-wsgi-server"><strong>Gunicorn WSGI Server</strong></a></li>
+<li><a class="reference internal" href="#tornado-web-sunucusu"><strong>Tornado Web Sunucusu</strong></a></li>
+<li><a class="reference internal" href="#rabbitmq"><strong>RabbitMQ</strong></a></li>
 <li><a class="reference internal" href="#raporlama-ve-analiz"><strong>Raporlama ve Analiz</strong></a></li>
 <li><a class="reference internal" href="#kullanici-arayuz-bilesenleri"><strong>Kullanıcı Arayüz Bileşenleri</strong></a></li>
 <li><a class="reference internal" href="#kullanici-arayuz-tasariminda-uyulacak-kurallar-ve-ilkeler"><em>Kullanıcı arayüz tasarımında uyulacak kurallar ve ilkeler:</em></a></li>
@@ -316,7 +316,7 @@
 <div class="section" id="is-akisi-workflow-tabanli-uygulama">
 <h3><em>İş Akışı (Workflow) Tabanlı Uygulama</em><a class="headerlink" href="#is-akisi-workflow-tabanli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.</p>
-<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" style="width: 1048.0px; height: 389.0px;" /></a>
+<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" /></a>
 <p><em>Örnek İş Akış Şeması</em></p>
 <p>İş süreçleri yönetimi için, BPMN2 kural setine uyan Workflow Management yapısı seçilmiştir.   Python dünyasında WorkFlow Management ve BPMN desteği bulunan SpiffWorkFlow kütüphanesi geliştirilmeye açık en uygun aday olduğu için seçilmiştir.</p>
 <p>İş süreçlerinin görsel olarak oluşturulması için de Camunda Modeler seçilmiştir.</p>
@@ -605,7 +605,7 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 </div>
 <div class="section" id="genel-sistem-akis-semasi">
 <h3><em>Genel Sistem Akış Şeması:</em><a class="headerlink" href="#genel-sistem-akis-semasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<a class="reference internal image-reference" href="_images/genelsistemakssemas.png"><img alt="_images/genelsistemakssemas.png" class="align-center" src="_images/genelsistemakssemas.png" style="width: 240.8px; height: 518.0px;" /></a>
+<a class="reference internal image-reference" href="_images/genelsistemakssemas.png"><img alt="_images/genelsistemakssemas.png" class="align-center" src="_images/genelsistemakssemas.png" /></a>
 </div>
 <div class="section" id="modul-bilesenlerin-genel-gorunumu">
 <h3><em>Modül / Bileşenlerin Genel Görünümü:</em><a class="headerlink" href="#modul-bilesenlerin-genel-gorunumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -615,7 +615,7 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 <div><ul>
 <li><dl class="first docutils">
 <dt>zdispatch</dt>
-<dd><p class="first last">requestleri karsilayip ilgili is akislarina yonlendiren falcon web çatısı dosyalari yer alacaktir.</p>
+<dd><p class="first last">requestleri karsilayip ilgili is akislarina yonlendiren tornado web çatısı dosyalari yer alacaktir.</p>
 </dd>
 </dl>
 </li>
@@ -697,10 +697,10 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 </ul>
 <p>kod, api, kullanici, gelistirici, sistem yoneticisi dokumanlari yer alacaktir.</p>
 <p>Uygulamanın veri ve iş mantığının şu ana kadar planlanan yapısını gösteren class diagramlar aşağıda görülebilir.</p>
-<a class="reference internal image-reference" href="_images/pyoko.png"><img alt="_images/pyoko.png" class="align-center" src="_images/pyoko.png" style="width: 252.0px; height: 630.0px;" /></a>
-<a class="reference internal image-reference" href="_images/spiffworkflow.png"><img alt="_images/spiffworkflow.png" class="align-center" src="_images/spiffworkflow.png" style="width: 280.7px; height: 627.2px;" /></a>
-<a class="reference internal image-reference" href="_images/entitybasedmodeldiagram.png"><img alt="_images/entitybasedmodeldiagram.png" class="align-center" src="_images/entitybasedmodeldiagram.png" style="width: 1346.0px; height: 1605.0px;" /></a>
-<a class="reference internal image-reference" href="_images/genericrequesttoresponseseqdiagram.png"><img alt="_images/genericrequesttoresponseseqdiagram.png" class="align-center" src="_images/genericrequesttoresponseseqdiagram.png" style="width: 1496.0px; height: 1124.0px;" /></a>
+<a class="reference internal image-reference" href="_images/pyoko.png"><img alt="_images/pyoko.png" class="align-center" src="_images/pyoko.png" /></a>
+<a class="reference internal image-reference" href="_images/spiffworkflow.png"><img alt="_images/spiffworkflow.png" class="align-center" src="_images/spiffworkflow.png" /></a>
+<a class="reference internal image-reference" href="_images/entitybasedmodeldiagram.png"><img alt="_images/entitybasedmodeldiagram.png" class="align-center" src="_images/entitybasedmodeldiagram.png" /></a>
+<a class="reference internal image-reference" href="_images/genericrequesttoresponseseqdiagram.png"><img alt="_images/genericrequesttoresponseseqdiagram.png" class="align-center" src="_images/genericrequesttoresponseseqdiagram.png" /></a>
 </div>
 <div class="section" id="spiffworkflow-engine">
 <h3><strong>SpiffWorkflow Engine</strong><a class="headerlink" href="#spiffworkflow-engine" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -723,13 +723,13 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <h3><strong>Zato Servisleri</strong><a class="headerlink" href="#zato-servisleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>SOAP, REST, JSON, XML, CSV, PB gibi farklı protokol ve veri tipleriyle konuşan servislerin dönüşümü Zato ESB üzerinde yapılacaktır. Harici istemciler ve farklı modüller tarafından ihtiyaç duyulan işlevsellikler Zato ESB üzerinde çalışan mikro servisler olarak sunulacaktır. Uygulamanın hizmet sağlayıcı olduğu her durumda REST stili kullanılacaktır.</p>
 </div>
-<div class="section" id="falcon-wsgi-framework">
-<h3><strong>Falcon WSGI Framework</strong><a class="headerlink" href="#falcon-wsgi-framework" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Çok hafif ve hızlı bir web çatısı olan Falcon, WSGI sunucusundan gelen requestleri Zengine’e aktarmak için kullanılacaktır. Kullanıcı oturumları tarayıcı çerezleri ve Redis tabanlı olarak bu katmanda yönetilecektir.</p>
+<div class="section" id="tornado-web-sunucusu">
+<h3><strong>Tornado Web Sunucusu</strong><a class="headerlink" href="#tornado-web-sunucusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Tornado, non-blocking network I/O, long polling, WebSockets yeteneklerini içeren bir web sunucusudur. Bu sayede sunucudan kullanıcıya tek yönlü veri iletimi yapan http protokolü yerine, kullanıcı ile sunucu arasında iki yönlü veri iletimi (Push, Pull) mümkün olmaktadır.</p>
 </div>
-<div class="section" id="gunicorn-wsgi-server">
-<h3><strong>Gunicorn WSGI Server</strong><a class="headerlink" href="#gunicorn-wsgi-server" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir web sunucusudur.</p>
+<div class="section" id="rabbitmq">
+<h3><strong>RabbitMQ</strong><a class="headerlink" href="#rabbitmq" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>RabbitMQ AMQP (Advanced Message Queue Protocol) protokolünü destekleyen bir mesaj yönetimi uygulamasıdır.</p>
 </div>
 <div class="section" id="raporlama-ve-analiz">
 <h3><strong>Raporlama ve Analiz</strong><a class="headerlink" href="#raporlama-ve-analiz" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -941,7 +941,7 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <div class="section" id="navigasyon-diagrami">
 <h3><em>Navigasyon Diagramı:</em><a class="headerlink" href="#navigasyon-diagrami" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Üniversite web uygulaması ve katmanlarını içerir.</p>
-<a class="reference internal image-reference" href="_images/webappkatmanlar.png"><img alt="_images/webappkatmanlar.png" class="align-center" src="_images/webappkatmanlar.png" style="width: 2500.0px; height: 241.0px;" /></a>
+<a class="reference internal image-reference" href="_images/webappkatmanlar.png"><img alt="_images/webappkatmanlar.png" class="align-center" src="_images/webappkatmanlar.png" /></a>
 </div>
 <div class="section" id="cevrimici-yardim-ve-rehberler">
 <h3><em>Çevrimiçi Yardım ve Rehberler:</em><a class="headerlink" href="#cevrimici-yardim-ve-rehberler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -950,9 +950,9 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 <p>Kullanıcı sistemin bir noktasında sorunla karşılaştığında bağlamsal olarak derhal konuyla ilgili yardıma erişmesi için çevrimiçi yardım araçları kullanılır.</p>
 <p><a class="reference external" href="http://usablica.github.io/intro.js/">http://usablica.github.io/intro.js/</a></p>
 <p><em>Şekil: Kullanıcı Formları Request/Response Cycle Talep/Cevap Yaşam Döngüsü</em></p>
-<a class="reference internal image-reference" href="_images/kullaniciformlari.png"><img alt="_images/kullaniciformlari.png" class="align-center" src="_images/kullaniciformlari.png" style="width: 352.0px; height: 634.0px;" /></a>
+<a class="reference internal image-reference" href="_images/kullaniciformlari.png"><img alt="_images/kullaniciformlari.png" class="align-center" src="_images/kullaniciformlari.png" /></a>
 <p><em>Şekil: Kullanıcı Arayüz Bileşenleri  Request/Response Cycle Talep/Cevap Yaşam Döngüsü</em></p>
-<a class="reference internal image-reference" href="_images/kullancform2.png"><img alt="_images/kullancform2.png" class="align-center" src="_images/kullancform2.png" style="width: 565.0px; height: 617.0px;" /></a>
+<a class="reference internal image-reference" href="_images/kullancform2.png"><img alt="_images/kullancform2.png" class="align-center" src="_images/kullancform2.png" /></a>
 </div>
 </div>
 <div class="section" id="veri-tasarimi">
@@ -1087,15 +1087,6 @@ Student(context).all()</div></blockquote>
 <div class="section" id="yetki-devri">
 <h3><strong>Yetki Devri</strong><a class="headerlink" href="#yetki-devri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Rol veya role ait bazı yetkiler farklı kullanıcılara devredilebilirler. Devredilen yetkiler tek tek iş akışı adımları veya bir rolün sahip olduğu tüm yetkiler şeklinde belirlenebilir. Yetki devri belirli sürelidir. Yetki devredilen kullanıcı için geçici bir rol tanımlanır. Kullanıcı bu geçici rol ile kendi rolü arasında geçiş yaparak ilgili görevleri yerine getirebilir.</p>
-<p>Notes:
-İncelenecek diğer konular aşağıdadır.</p>
-<p><a class="reference external" href="http://www.simplecloud.info/">http://www.simplecloud.info/</a>
-<a class="reference external" href="https://github.com/concordusapps/python-scim">https://github.com/concordusapps/python-scim</a>
-<a class="reference external" href="https://www.openhub.net/p/gripped">https://www.openhub.net/p/gripped</a>
-<a class="reference external" href="http://wiki.openid.net/w/page/12995226/Run%20your%20own%20identity%20server">http://wiki.openid.net/w/page/12995226/Run%20your%20own%20identity%20server</a>
-<a class="reference external" href="https://pypi.python.org/pypi/authentic2/2.0.1">https://pypi.python.org/pypi/authentic2/2.0.1</a></p>
-<p>OAUTH 2 buna nasıl yaklaşacağız?
-SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?</p>
 </div>
 </div>
 <div class="section" id="test-dongusu">
