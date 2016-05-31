@@ -3,7 +3,7 @@ skinparam componentStyle uml2
 skinparam Interface{
 BackgroundColor #a0c4ef
 BorderColor #b0c4de
-shadowing false
+shadowing torse
 }
 skinparam Cloud{
 FontSize 18
@@ -24,8 +24,7 @@ cloud "External HAProxy" {
 interface " " as eha
 interface " " as eha_static
 }
-[Gunicorn] as gun
-[Falcon] as fal
+[Tornado] as tor
 [Zengine] as zen
 [SpiffWorflow] as wfe
 [ZAERP Modules] as zaerp
@@ -42,9 +41,8 @@ interface " " as iha_z
 
 
 brw -d-> eha
-eha -d-> gun
-gun -d-> fal
-fal -d-> zen
+eha -d-> tor
+tor -d-> zen
 zen -d-> wfe
 wfe -d-> zaerp
 zaerp -d-> red
