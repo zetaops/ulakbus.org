@@ -269,7 +269,7 @@ schema
                         "title": "(string) Field Başlığı",
                         "style": "(string) Butonun alacağı class'lar",
                         "cmd": "(string) Butonun cmd'si",
-                        "flow": "(string) Butonun flow'u"
+                        "flow": "(string) Butonun flow'u",
                         "wf": "(string) Butonun yönlendirdiği workflow",
                         "form_validate": (boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu"
                     }
@@ -285,7 +285,7 @@ schema
         {
             "form": [ "ornekdosya" ],
             "schema": {
-                properties: {
+                "properties": {
                     "ornekdosya": {
                         "title": "(string) Field Başlığı",
                         "type": "file"
@@ -299,7 +299,7 @@ schema
     .. code:: json
 
         {
-            "form": [ 'ornekselect'],
+            "form": [ "ornekselect" ],
             "schema": {
                 "properties": {
                     "ornekselect":{
@@ -415,7 +415,7 @@ schema
             "schema": {
                 "properties": {
                     "ornektypeahead": {
-                        "title":  (string) Field Başlığı,
+                        "title": "(string) Field Başlığı",
                         "titleMap" : [
                             {
                                 "name": "(string) Secimin Adi",
@@ -438,7 +438,7 @@ schema
         {
             "form": [ "ornektext_general" ],
             "schema": {
-                "properties: {
+                "properties": {
                     "ornektext_general": {
                         "title": "(string) Field Başlığı",
                         "type": "text_general"
@@ -461,7 +461,7 @@ schema
                     "ornekmodel": {
                         "model_name": "(string) Model ismi",
                         "title":  "(string) Field Başlığı",
-                        "type": "model"
+                        "type": "model",
                         "wf": "(string) Modelin sahip oldugu workflow",
                         "list_cmd": "(string) Listeleme aninda calisan cmd",
                         "add_cmd": "(string) Ekleme aninda calisan cmd"
@@ -483,7 +483,7 @@ schema
                             {
                                 "name": "(string) ListNode ismi",
                                 "title": "(string) ListNode başlığı",
-                                "type": "model"
+                                "type": "model",
                                 // type model ise model ismi de gonderilir
                                 "model_name": "(string) Model ismi"
                         }],
