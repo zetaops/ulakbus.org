@@ -265,7 +265,7 @@ schema
             "schema": {
                 "properties": {
                     "ornekbutton": {
-                        "type": "button"
+                        "type": "button",
                         "title": "(string) Field Başlığı",
                         "style": "(string) Butonun alacağı class'lar",
                         "cmd": "(string) Butonun cmd'si",
@@ -286,9 +286,9 @@ schema
             "form": [ "ornekdosya" ],
             "schema": {
                 properties: {
-                    ornekdosya: {
-                        title:  (string) Field Başlığı,
-                        type: "file"
+                    "ornekdosya": {
+                        "title": "(string) Field Başlığı",
+                        "type": "file"
                     }
                 }
             }
