@@ -263,15 +263,15 @@ schema
         {
             "form": [ "ornekbutton" ],
             "schema": {
-                properties: {
-                    ornekbutton: {
-                        type:   "button"
-                        title:  (string) Field Başlığı,
-                        style:  (string) Butonun alacağı class'lar,
-                        cmd:    (string) Butonun cmd'si,
-                        flow:   (string) Butonun flow'u
-                        wf:     (string) Butonun yönlendirdiği workflow,
-                        form_validate: (boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu
+                "properties": {
+                    "ornekbutton": {
+                        "type": "button"
+                        "title": "(string) Field Başlığı",
+                        "style": "(string) Butonun alacağı class'lar",
+                        "cmd": "(string) Butonun cmd'si",
+                        "flow": "(string) Butonun flow'u"
+                        "wf": "(string) Butonun yönlendirdiği workflow",
+                        "form_validate": (boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu"
                     }
                 }
             }
@@ -294,17 +294,17 @@ schema
             }
         }
 
-    - ``select`` Kucuk capli secimler icin ideal field. TitleMap(secimler) statik olarak gonderilebilir.
+    - ``select`` Kucuk capli secimler icin kullanılan field tipidir. TitleMap(secimler) statik olarak gonderilmelidir.
 
     .. code:: json
 
         {
             "form": [ 'ornekselect'],
             "schema": {
-                properties: {
+                "properties": {
                     "ornekselect":{
                         "type":"select",
-                        "title":(string) Alan Basligi,
+                        "title":"(string) Alan Basligi",
                         "titleMap":[
                             { "name":"Bay", "value":1 },
                             { "name":"Bayan", "value":2 }
@@ -321,17 +321,17 @@ schema
         {
             "form": [ "ornekconfirm" ],
             "schema": {
-                properties: {
-                    ornekconfirm: {
-                        title: (string) Buton ve Pencere kutusu Basligi,
-                        style:"btn-success",
-                        type:'confirm',
-                        confirm_message: (string) Onaylama Mesaji,
-                        buttons: [
-                            {   text: (string) Buton basligi , cmd:(string) Buton cmd'si, style: "btn-warning"}
+                "properties": {
+                    "ornekconfirm": {
+                        "title": "(string) Buton ve Pencere kutusu Basligi",
+                        "style": "btn-success",
+                        "type":" confirm",
+                        "confirm_message": "(string) Onaylama Mesaji",
+                        "buttons": [
+                            { "text": "(string) Buton basligi", "cmd": "(string) Buton cmd'si", "style": "btn-warning"}
                         ],
-                        readonly:"true",
-                        form_validate: (boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu
+                        "readonly": "true",
+                        "form_validate": "(boolean) Buton basıldığında gecerlilik kontrolünün calışma durumu"
                     }
                 }
             }
@@ -339,149 +339,156 @@ schema
 
 
 
-    - ``date``
+    - ``date``: Tarih değeri alan field tipleri için kullanılır.
 
     .. code:: json
 
         {
             "form": [ "ornekdate" ],
             "schema": {
-                properties: {
-                    ornekdate: {
-                        title:  (string) Field Başlığı,
-                        type: "date"
+                "properties": {
+                    "ornekdate": {
+                        "title": "(string) Field Başlığı",
+                        "type": "date"
                     }
                 }
             }
         }
 
 
-    - ``int``
+    - ``int``: Integer tipinde değer alan field'lar için kullanılır.
 
     .. code:: json
 
         {
             "form": [ "ornekint" ],
             "schema": {
-                properties: {
-                    ornekint: {
-                        title:  (string) Field Başlığı,
-                        type: "int"
+                "properties": {
+                    "ornekint": {
+                        "title": "(string) Field Başlığı",
+                        "type": "int"
                     }
                 }
             }
         }
 
 
-    - ``boolean``
+    - ``boolean``: Mantıksal değer alan (true/false) field tipleri için kullanılır.
 
     .. code:: json
 
         {
             "form": [ "ornekbool" ],
             "schema": {
-                properties: {
-                    ornekbool: {
-                        title: (string) Field Başlığı,
-                        type: "boolean"
+                "properties": {
+                    "ornekbool": {
+                        "title": "(string) Field Başlığı",
+                        "type": "boolean"
                     }
                 }
             }
         }
 
 
-    - ``string``
+    - ``string``: String tipinde değer alan field tipleri için kullanılır.
 
     .. code:: json
 
         {
             "form": [ "ornekstring" ],
             "schema": {
-                properties: {
-                    ornekbool: {
-                        title:  (string) Field Başlığı,
-                        type: "boolean"
+                "properties": {
+                    "ornekbool": {
+                        "title":  "(string) Field Başlığı",
+                        "type": "boolean"
                     }
                 }
             }
         }
 
-    - ``typeahead`` select'in daha fazla veri tasiyan cinsidir. Yazilani filtreleyek, sunucu tarafindaki verilerle TitleMap(secimler)'i olusturur.
+    - ``typeahead``: İki tip widget ile kullanılır: ``custom`` ve ``default``. ``default`` için widget anahtarı gondermeye gerek yoktur. ``custom`` için properties altında ``widget`` ve ``view`` keyleri beklenir.
 
     .. code:: json
 
         {
             "form": [ "ornektypeahead" ],
             "schema": {
-                properties: {
-                    ornektypeahead: {
-                        title:  (string) Field Başlığı,
-                        titleMap : [
-                        {name: (string) Secimin Adi, value: (int) Secimin degeri }
+                "properties": {
+                    "ornektypeahead": {
+                        "title":  (string) Field Başlığı,
+                        "titleMap" : [
+                            {
+                                "name": "(string) Secimin Adi",
+                                "value": "(int) Secimin degeri"
+                            }
                         ]
-                        type: "typeahead"
+                        "type": "typeahead",
+                        // custom search widget kullanımı için aşağıdakiler gönderilir
+                        "widget": "custom",
+                        "view": "customSeachView"
                     }
                 }
             }
         }
 
-    - ``text_general`` paragraf yazimi icin kullanilir.
+    - ``text_general``: Textarea tipinde bir field kullanılmak istendiğinde type olarak text_general gönderilir.
 
     .. code:: json
 
         {
             "form": [ "ornektext_general" ],
             "schema": {
-                properties: {
-                    ornektext_general: {
-                        title:  (string) Field Başlığı,
-                        type: "text_general"
+                "properties: {
+                    "ornektext_general": {
+                        "title": "(string) Field Başlığı",
+                        "type": "text_general"
                     }
                 }
             }
         }
 
-    - ``float``: int ile aynı yapıdadır. "type" özelligi "float" olarak belirtilmelidir.
+    - ``float``: Float tipindeki numerik değerler için kullanılacak field tipidir. "type" özelligi "float" olarak belirtilmelidir.
+    
 
-
-    - ``model``: gelismis select field'laridir. Genelde degisken listeli secimler icin kullanilir. Listeleme ve ekleme sirasinda kendisine verilen cmd'leri kullanir.
+    - ``model``: Model tipindeki field'lar için kullanılır. Model tipi Pyoko ORM içinde ilişkili modeller için tanımlanmıştır.
 
     .. code:: json
 
         {
             "form": [ "ornekmodel" ],
             "schema": {
-                properties: {
-                    ornekmodel: {
-                        model_name: (string) Model ismi,
-                        title:  (string) Field Başlığı,
-                        type: "model"
-                        wf: (string) Modelin sahip oldugu workflow,
-                        list_cmd: (string) Listeleme aninda calisan cmd,
-                        add_cmd: (string) Ekleme aninda calisan cmd
+                "properties": {
+                    "ornekmodel": {
+                        "model_name": "(string) Model ismi",
+                        "title":  "(string) Field Başlığı",
+                        "type": "model"
+                        "wf": "(string) Modelin sahip oldugu workflow",
+                        "list_cmd": "(string) Listeleme aninda calisan cmd",
+                        "add_cmd": "(string) Ekleme aninda calisan cmd"
                     }
                 }
             }
         }
 
-    - ``ListNode``: model'in Array seklinde calisan versiyonudur. Birden fazla model elemani secmeye yarar.
+    - ``ListNode``: Node içinde tanımlanan elemanları (field'ları) birden fazla değer alabilen ve bu değerleri bir liste halinde tutan model tipidir. Aşağıdaki şekilde belirtilirler.
 
     .. code:: json
 
         {
             "form": [ "ornekListNode" ],
             "schema": {
-                properties: {
-                    ornekListNode: {
-                        schema: Bu sema, ekleme butonuna tiklandiginda acilacak pencerenin icindeki form elemanlarinin semasidir. Asagida bir tane model objesiyle orneklendirilmistir.
-                        [{
-                            model_name: (string) Modelin "+" tusuna basildiginda gosterilen model,
-                            name:(string) Modelin ismi,
-                            title: (string) Formun basligi,
-                            type: "model"
+                "properties": {
+                    "ornekListNode": {
+                        "schema": [
+                            {
+                                "name": "(string) ListNode ismi",
+                                "title": "(string) ListNode başlığı",
+                                "type": "model"
+                                // type model ise model ismi de gonderilir
+                                "model_name": "(string) Model ismi"
                         }],
-                        title: (string) ListNode Basligi,
-                        type: "ListNode",
+                        "title": "(string) ListNode Basligi",
+                        "type": "ListNode",
                     }
                 }
             }
