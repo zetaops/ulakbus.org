@@ -307,6 +307,66 @@ Zorunlu olmayan argümanlar:
   Varsayılan: "code:crud* OR code:login* OR code:logout*"
 
 
+generate_diagrams
++++++++++++++++++
+
+Modellerden PlantUML diyagramları oluşturur.
+
+-----
+usage
+-----
+::
+
+   $ ./ manage.py generate_diagrams [-h] [--timeit] [--daemonize]
+                                    [--model [MODEL]] [--path [PATH]]
+                                    [--split [{no,app,model}]]
+
+
+Zorunlu olmayan argümanlar:
+---------------------------
+
+- **-h,--help**   Yardım mesajını gösteririr ve çıkış yapar.
+
+- **--timeit**    İşlemin süresini ölçer.
+
+- **model [MODEL]** Diyagramı çizilecek modellerin adı buraya
+  yazılarak seçilir. Tüm diyagramları seçmek için 'all'
+  girilebilir. Eğer bu seçenek verilmediyse tüm modeller için diyagram
+  oluşturulur.
+
+- **--path [PATH]** Standart çıktı yerine, belirtilen dosyaya
+  yazar. Eğer 'split' seçeneği 'app' veya 'model' seçilirse 'path'
+  verilmesi zorunludur.
+
+- **--split [{no,app,model}]**
+
+           1.  **no:** Tüm modelleri tek bir diyagrama yerleştirir ve
+               standart çıktıya ya da tek bir dosyaya yazar.
+
+           2.  **app:** Modelleri, Metaclasslarındaki 'app' alanına
+               göre gruplayarak ayrı dosyalara yazar. Bu seçenek
+               seçilirse 'path' seçeneğiyle bir dosya adı
+               verilmelidir. Dosyaları 'path' seçeneğindeki isim ve
+               'app' isimleri ile kaydeder, örneğin '--path
+               diagrams.puml' seçildiyse dosyaları 'diagrams.app.puml'
+               şeklinde kaydeder.
+
+           3.  **model:** Modellerin her birini ayrı dosyalara
+               yazar. Bu seçenek seçilirse 'path' seçeneğiyle bir
+               dosya adı verilmelidir. Dosyaları 'path' seçeneğindeki
+               isim, 'app' isimleri ve model ismi ile
+               kaydeder. Örneğin '--path diagrams.puml' seçildiyse
+               dosyaları 'diagrams.app.model.puml' şeklinde kaydeder.
+
+
+Bu komut ile oluşturulan diyagramlar PlantUML'in çizim sınırlarını
+aşabilir. Oluşan diyagramların çizilirken yarım kalması durumunda
+PlantUML'e bir çevre değişkeni verilerek diyagramları çizmesi
+sağlanabilir:
+
+::
+
+   $ env PLANTUML_LIMIT_SIZE=8192 plantuml my-diagram.puml
 
 +++++++++++++++
 Veri Üreteçleri
