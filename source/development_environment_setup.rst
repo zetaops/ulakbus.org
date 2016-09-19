@@ -15,6 +15,7 @@ kurulup yapılandırılmasını kapsar:
     * Zato ESB
     * Redis
     * Git CVS
+    * RabbitMQ
 
 Bu servislerin elle kurulumu ve yapılandırılması yeni başlayanlar için biraz karmaşık
 gelebilir. Ayrıca biraz uzun bir süreçtir. Bu amaçla hızlı başlangıç için bir
