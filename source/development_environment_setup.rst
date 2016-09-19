@@ -2,6 +2,11 @@
 ULAKBUS Geliştirme Ortamının Kurulumu
 +++++++++++++++++++++++++++++++++++++
 
+
+DİKKAT, BU BELGE SÜREKLİ OLARAK GÜNCELLENMEKTEDİR.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 Ulakbus için geliştirme ortamının kurulması aşağıdaki bileşenlerin herbirinin ayrı ayrı
 kurulup yapılandırılmasını kapsar:
 
