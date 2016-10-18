@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="ULAKBUS Geliştirme Ortamının Kurulumu" href="development_environment_setup.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="developers.html" title="Geliştiriciler"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -214,14 +216,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -294,8 +293,8 @@ Ulakbus projesine katkı yaparken sizlere yardımcı olacak aşağıdaki ipuçla
 </ul>
 </div></blockquote>
 <p>İlk kurulumun hemen arından git&#8217;e kendinizi tanıtmayı unutmayınız:</p>
-<div class="highlight-python"><div class="highlight"><pre>git config --global user.name &quot;Emo Coder&quot;
-git config --global user.email &quot;emo@zetaops.io&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;Emo Coder&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;emo@zetaops.io&quot;</span>
 </pre></div>
 </div>
 <dl class="docutils">
@@ -359,15 +358,15 @@ zetaops/ulakbusGH-145 şeklinde referanslar veriniz.</li>
 <h3>Upstream Depo Eklemek<a class="headerlink" href="#upstream-depo-eklemek" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Fork ettiğiniz Ulakbus deposunu kendi git deponuzun <code class="docutils literal"><span class="pre">upstream</span></code> deposu olarak tanımlamak, ana depodaki
 değişikliklere istenildiğinde daha kolay erişebilmek için faydalı olabilir. Örneğin:</p>
-<div class="highlight-python"><div class="highlight"><pre>git remote add upstream https://github.com/zetaops/ulakbus.git
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">zetaops</span><span class="o">/</span><span class="n">ulakbus</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>Kendi remote deponuza origin adiyla, ulakbus depolarına da upstream adıyla erişebilirsiniz. Upstream
 branchleri kendi branchlerinizi rebase etmek, kod karşılaştırması yapmak, yeni geliştirilen özellikleri
 gözden geçirmek amacıyla kullanabilirsiniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>git rebase upstream/master
-git diff upstream/master..master
-git checkout upstream/feature/yeni_ozellik
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">master</span>
+<span class="n">git</span> <span class="n">diff</span> <span class="n">upstream</span><span class="o">/</span><span class="n">master</span><span class="o">..</span><span class="n">master</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">upstream</span><span class="o">/</span><span class="n">feature</span><span class="o">/</span><span class="n">yeni_ozellik</span>
 </pre></div>
 </div>
 <p>komutları ile upstream kullanabilirsiniz.</p>
@@ -407,8 +406,8 @@ adresinde bulunmaktadır.</li>
         <li class="right" >
           <a href="developers.html" title="Geliştiriciler"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

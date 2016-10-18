@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Yazılım Tasarım Analizi Belgesi" href="yazilim_tasarim_analizi_belgesi.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -209,14 +211,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -236,7 +235,7 @@ Zato yeniden başlatıldığında, bu bileşenler yeniden başlatılmış olurla
 Her bir bileşen istenirse diğerlerinden ayrı olarak da yeniden başlatılabilir.</p>
 <div class="section" id="ornek-kullanim">
 <h3>örnek kullanım<a class="headerlink" href="#ornek-kullanim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo service zato stop
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo service zato stop
 $ sudo service zato start
 veya
 $ sudo service zato restart
@@ -251,9 +250,9 @@ Bunun için sunucu yapılandırma dosyasında (<cite>/opt/zato/ulakbus/server1/c
 os_environ bölümüne çevre değişkenleri eklenmelidir.</p>
 <div class="section" id="id1">
 <h3>örnek kullanım<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">os_environ</span><span class="p">]</span>
-<span class="n">HITAP_USER</span><span class="o">=</span><span class="s">&#39;hitap_user_name&#39;</span>
-<span class="n">HITAP_PASS</span><span class="o">=</span><span class="s">&#39;hitap_password&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">os_environ</span><span class="p">]</span>
+<span class="n">HITAP_USER</span><span class="o">=</span><span class="s1">&#39;hitap_user_name&#39;</span>
+<span class="n">HITAP_PASS</span><span class="o">=</span><span class="s1">&#39;hitap_password&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -265,14 +264,14 @@ Zato tarafından erişilebilir olmaları için <cite>~/zato_version/zato_extra_p
 İlgili modül ve kütüphaneler için bu dizin altında sembolik link verilebilir.</p>
 <div class="section" id="ornek">
 <h3>örnek<a class="headerlink" href="#ornek" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<a class="reference internal image-reference" href="_images/zato_extra_paths.png"><img alt="_images/zato_extra_paths.png" class="align-center" src="_images/zato_extra_paths.png" /></a>
+<a class="reference internal image-reference" href="_images/zato_extra_paths.png"><img alt="_images/zato_extra_paths.png" class="align-center" src="_images/zato_extra_paths.png" style="width: 882.0px; height: 378.0px;" /></a>
 <p>Geliştirilen servisleri Zato aracılığıyla kullanmak için, servis modüllerini
 <cite>/opt/zato/ulakbus/server1/pickup-dir/</cite> dizini altına kopyalamak gerekmektedir.
 Bu işlemi yapmadan önce çevre değişkenlerini (HITAP_USER, HITAP_PASS vb.) tanımladığınızdan emin olunuz.</p>
 </div>
 <div class="section" id="id2">
 <h3>örnek kullanım<a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo cp /app/ulakbus/ulakbus/services/personel/hitap/*.py /opt/zato/ulakbus/server1/pickup-dir/
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo cp /app/ulakbus/ulakbus/services/personel/hitap/*.py /opt/zato/ulakbus/server1/pickup-dir/
 </pre></div>
 </div>
 <p>Bu işlemden sonra servisler için tanımlanmış kanalları (channels) ve giden bağlantıları (outgoing) içeren
@@ -285,7 +284,7 @@ bir yapılandırma dosyası varsa bu dosya içeriye aktarılmalıdır.</p>
 bir yapılandırma dosyasına çıkartılarak saklanmasını veya içeriye aktarılmasını sağlar.</p>
 <div class="section" id="export">
 <h3>export<a class="headerlink" href="#export" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ zato enmasse ../server1/ --input input1.json --export-local --export-odb
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ zato enmasse ../server1/ --input input1.json --export-local --export-odb
 </pre></div>
 </div>
 <div class="section" id="argumanlar">
@@ -301,7 +300,7 @@ dışarıya aktarır.</li>
 </div>
 <div class="section" id="import">
 <h3>import<a class="headerlink" href="#import" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ zato enmasse ../server1/ --input zato-export-2015-06-30T08_56_22_628706.json --import --replace-odb-objects
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ zato enmasse ../server1/ --input zato-export-2015-06-30T08_56_22_628706.json --import --replace-odb-objects
 </pre></div>
 </div>
 <div class="section" id="id3">
@@ -336,8 +335,8 @@ JSON dosyasından mevcut olanların üzerine yazılacak şekilde içeri aktarır
         <li class="right" >
           <a href="zato_doc.html" title="ESB ve SOA ne anlama geliyor yani?"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

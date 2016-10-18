@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Temel Yönetim Komutları" href="komut_satiri_yonetim_araci.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="ulakbus-api-ui-iliskisi.html" title="ULAKBUS UI–API İlişkisi"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -246,14 +248,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -269,7 +268,7 @@
 <div class="section" id="yazilim-gelistirme-modeli">
 <h2><strong>Yazılım Geliştirme Modeli</strong><a class="headerlink" href="#yazilim-gelistirme-modeli" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Yazılım geliştirme modeli döngüsel artımlı (iterative and incremental) modele bağlı <a class="reference external" href="http://www.extremeprogramming.org">XP</a> olacaktır. Şekil 1’de gösterilmektedir.</p>
-<a class="reference internal image-reference" href="_images/xp_gelistirme_semasi.png"><img alt="_images/xp_gelistirme_semasi.png" class="align-center" src="_images/xp_gelistirme_semasi.png" /></a>
+<a class="reference internal image-reference" href="_images/xp_gelistirme_semasi.png"><img alt="_images/xp_gelistirme_semasi.png" class="align-center" src="_images/xp_gelistirme_semasi.png" style="width: 630.0px; height: 271.0px;" /></a>
 <p><em>Şekil 1 - XP geliştirme şeması</em></p>
 <div class="section" id="gelistirme-ve-test-dongusu">
 <h3><strong>Geliştirme ve Test Döngüsü</strong><a class="headerlink" href="#gelistirme-ve-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -542,10 +541,10 @@ enter tuşuna basılır.</li>
 nesnelerin sayıları karşılaştırılır.</li>
 </ul>
 <p><strong>İş Akışı Test Örneği</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">pyoko.manage</span> <span class="kn">import</span> <span class="n">FlushDB</span><span class="p">,</span> <span class="n">LoadData</span>
-<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="kn">import</span> <span class="n">OgrenciDersi</span>
-<span class="kn">from</span> <span class="nn">zengine.lib.test_utils</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pyoko.manage</span> <span class="k">import</span> <span class="n">FlushDB</span><span class="p">,</span> <span class="n">LoadData</span>
+<span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="k">import</span> <span class="n">OgrenciDersi</span>
+<span class="kn">from</span> <span class="nn">zengine.lib.test_utils</span> <span class="k">import</span> <span class="o">*</span>
 
 
 <span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
@@ -562,14 +561,14 @@ nesnelerin sayıları karşılaştırılır.</li>
 <span class="sd">      &quot;&quot;&quot;</span>
 
       <span class="kn">import</span> <span class="nn">sys</span>
-      <span class="k">if</span> <span class="s">&#39;-k-nosetup&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">:</span>
+      <span class="k">if</span> <span class="s1">&#39;-k-nosetup&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">:</span>
           <span class="k">return</span>
 
-      <span class="c"># Bütün kayıtlar db&#39;den silinir.</span>
-      <span class="n">FlushDB</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-      <span class="c"># Belirtilen dosyadaki kayıtları ekler.</span>
-      <span class="n">LoadData</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&#39;~&#39;</span><span class="p">),</span>
-                                 <span class="s">&#39;ulakbus/tests/fixtures/okutman_not_girisi.csv&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+      <span class="c1"># Bütün kayıtlar db&#39;den silinir.</span>
+      <span class="n">FlushDB</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+      <span class="c1"># Belirtilen dosyadaki kayıtları ekler.</span>
+      <span class="n">LoadData</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span>
+                                 <span class="s1">&#39;ulakbus/tests/fixtures/okutman_not_girisi.csv&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
   <span class="k">def</span> <span class="nf">test_okutman_not_girisi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
@@ -610,85 +609,85 @@ nesnelerin sayıları karşılaştırılır.</li>
 
 <span class="sd">      &quot;&quot;&quot;</span>
 
-      <span class="c"># Okutman kullanıcısı seçilir.</span>
-      <span class="n">usr</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">super_context</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;Bkhc7dupquiIFPmOSKuO0kXJC8q&#39;</span><span class="p">)</span>
+      <span class="c1"># Okutman kullanıcısı seçilir.</span>
+      <span class="n">usr</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">super_context</span><span class="p">)</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Bkhc7dupquiIFPmOSKuO0kXJC8q&#39;</span><span class="p">)</span>
       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-      <span class="c"># Kullanıcıya login yaptırılır.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">prepare_client</span><span class="p">(</span><span class="s">&#39;/okutman_not_girisi&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">usr</span><span class="p">)</span>
+      <span class="c1"># Kullanıcıya login yaptırılır.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">prepare_client</span><span class="p">(</span><span class="s1">&#39;/okutman_not_girisi&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">usr</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">()</span>
 
-      <span class="c"># Ders şubesi seçilir.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;Ders Şubesi Seçin&#39;</span><span class="p">,</span>
-                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sube</span><span class="o">=</span><span class="s">&#39;S7z8bvdNCBFSd9iCvQrb7O1pQ75&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-      <span class="c"># Seçilen şubeye ait sınav seçilir.</span>
-      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;Sınav Seçin&#39;</span><span class="p">,</span>
-                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="s">&#39;7isfBEsi96AVDZdp2o33mQoWemJ&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Ders şubesi seçilir.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;Ders Şubesi Seçin&#39;</span><span class="p">,</span>
+                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sube</span><span class="o">=</span><span class="s1">&#39;S7z8bvdNCBFSd9iCvQrb7O1pQ75&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Seçilen şubeye ait sınav seçilir.</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;Sınav Seçin&#39;</span><span class="p">,</span>
+                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="s1">&#39;7isfBEsi96AVDZdp2o33mQoWemJ&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;msgbox&#39;</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Notlar Onaylandı&#39;</span>
+      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Notlar Onaylandı&#39;</span>
 
-      <span class="c"># Veritabanından çekilen öğrenci bilgisi ile sıunucudan gelen öğrenci bilgisi</span>
-      <span class="c"># karşılaştırılarak test edilir.</span>
-      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;object&#39;</span><span class="p">][</span><span class="s">&#39;fields&#39;</span><span class="p">])):</span>
-          <span class="n">ogrenci_ders</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="s">&#39;S7z8bvdNCBFSd9iCvQrb7O1pQ75&#39;</span><span class="p">)</span>
-          <span class="n">ogrenci_ad</span> <span class="o">=</span> <span class="n">ogrenci_ders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ogrenci_ders</span><span class="p">[</span>
+      <span class="c1"># Veritabanından çekilen öğrenci bilgisi ile sıunucudan gelen öğrenci bilgisi</span>
+      <span class="c1"># karşılaştırılarak test edilir.</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">])):</span>
+          <span class="n">ogrenci_ders</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="s1">&#39;S7z8bvdNCBFSd9iCvQrb7O1pQ75&#39;</span><span class="p">)</span>
+          <span class="n">ogrenci_ad</span> <span class="o">=</span> <span class="n">ogrenci_ders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">ogrenci_ders</span><span class="p">[</span>
               <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span>
-          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;object&#39;</span><span class="p">][</span><span class="s">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">u&#39;Adı Soyadı&#39;</span><span class="p">]</span>
+          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">u&#39;Adı Soyadı&#39;</span><span class="p">]</span>
 
-      <span class="c"># Ders seçim ekranına geri döner</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;ders_sec&#39;</span><span class="p">,</span>
-                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav_secim</span><span class="o">=</span><span class="s">&#39;null&#39;</span><span class="p">,</span> <span class="n">ders_secim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-                       <span class="n">flow</span><span class="o">=</span><span class="s">&#39;ders_secim_adimina_don&#39;</span><span class="p">)</span>
-      <span class="c"># Ders şubesi seçilir.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;Ders Şubesi Seçin&#39;</span><span class="p">,</span>
-                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sube</span><span class="o">=</span><span class="s">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-      <span class="c"># Sınav seçilir.</span>
-      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;Sınav Seçin&#39;</span><span class="p">,</span>
-                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="s">&#39;IvXH1cqyYoHznv0iRV4FjLvXWwz&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Ders seçim ekranına geri döner</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;ders_sec&#39;</span><span class="p">,</span>
+                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav_secim</span><span class="o">=</span><span class="s1">&#39;null&#39;</span><span class="p">,</span> <span class="n">ders_secim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                       <span class="n">flow</span><span class="o">=</span><span class="s1">&#39;ders_secim_adimina_don&#39;</span><span class="p">)</span>
+      <span class="c1"># Ders şubesi seçilir.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;Ders Şubesi Seçin&#39;</span><span class="p">,</span>
+                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sube</span><span class="o">=</span><span class="s1">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Sınav seçilir.</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;Sınav Seçin&#39;</span><span class="p">,</span>
+                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="s1">&#39;IvXH1cqyYoHznv0iRV4FjLvXWwz&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-      <span class="c"># Dersler okutman tarafından onaylanmamışsa;</span>
-      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">][</span><span class="s">&#39;schema&#39;</span><span class="p">][</span><span class="s">&#39;properties&#39;</span><span class="p">][</span><span class="s">&#39;kaydet&#39;</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Önizleme&#39;</span>
-      <span class="k">assert</span> <span class="s">&#39;inline_edit&#39;</span> <span class="ow">in</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">]</span>
+      <span class="c1"># Dersler okutman tarafından onaylanmamışsa;</span>
+      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;schema&#39;</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;kaydet&#39;</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Önizleme&#39;</span>
+      <span class="k">assert</span> <span class="s1">&#39;inline_edit&#39;</span> <span class="ow">in</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">]</span>
 
-      <span class="c"># Veritabanından çekilen öğrenci bilgisi ile sıunucudan gelen öğrenci bilgisi</span>
-      <span class="c"># karşılaştırılarak test edilir.</span>
-      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">][</span><span class="s">&#39;model&#39;</span><span class="p">][</span><span class="s">&#39;Ogrenciler&#39;</span><span class="p">])):</span>
-          <span class="n">ogrenci_ders</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="s">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">)</span>
-          <span class="n">ogrenci_ad</span> <span class="o">=</span> <span class="n">ogrenci_ders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ogrenci_ders</span><span class="p">[</span>
+      <span class="c1"># Veritabanından çekilen öğrenci bilgisi ile sıunucudan gelen öğrenci bilgisi</span>
+      <span class="c1"># karşılaştırılarak test edilir.</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">])):</span>
+          <span class="n">ogrenci_ders</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="s1">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">)</span>
+          <span class="n">ogrenci_ad</span> <span class="o">=</span> <span class="n">ogrenci_ders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">ogrenci_ders</span><span class="p">[</span>
               <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span>
-          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">][</span><span class="s">&#39;model&#39;</span><span class="p">][</span><span class="s">&#39;Ogrenciler&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">u&#39;ad_soyad&#39;</span><span class="p">]</span>
+          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">u&#39;ad_soyad&#39;</span><span class="p">]</span>
 
-      <span class="c"># Öğrencilerin sayısı.</span>
-      <span class="n">num_of_ogrenci</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">][</span><span class="s">&#39;model&#39;</span><span class="p">][</span><span class="s">&#39;Ogrenciler&#39;</span><span class="p">])</span>
+      <span class="c1"># Öğrencilerin sayısı.</span>
+      <span class="n">num_of_ogrenci</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">])</span>
 
-      <span class="c"># Kayıtlar önizlenir.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;not_kontrol&#39;</span><span class="p">,</span>
-                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">Ogrenciler</span><span class="o">=</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;forms&#39;</span><span class="p">][</span><span class="s">&#39;model&#39;</span><span class="p">][</span><span class="s">&#39;Ogrenciler&#39;</span><span class="p">],</span> <span class="n">kaydet</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Kayıtlar önizlenir.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;not_kontrol&#39;</span><span class="p">,</span>
+                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">Ogrenciler</span><span class="o">=</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">],</span> <span class="n">kaydet</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-      <span class="c"># Sınav notları onaylanıp kaydedilir.</span>
-      <span class="c"># İş akışı bu adımdan sonra sona erer.</span>
-      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;not_kaydet&#39;</span><span class="p">,</span>
-                              <span class="n">flow</span><span class="o">=</span><span class="s">&#39;end&#39;</span><span class="p">,</span>
-                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">kaydet_ve_sinav_sec</span><span class="o">=</span><span class="s">&#39;null&#39;</span><span class="p">,</span> <span class="n">kaydet</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                        <span class="n">kaydet_ve_ders_sec</span><span class="o">=</span><span class="s">&#39;null&#39;</span><span class="p">,</span>
-                                        <span class="n">not_duzenle</span><span class="o">=</span><span class="s">&#39;null&#39;</span><span class="p">,</span> <span class="n">not_onay</span><span class="o">=</span><span class="s">&#39;null&#39;</span><span class="p">))</span>
+      <span class="c1"># Sınav notları onaylanıp kaydedilir.</span>
+      <span class="c1"># İş akışı bu adımdan sonra sona erer.</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;not_kaydet&#39;</span><span class="p">,</span>
+                              <span class="n">flow</span><span class="o">=</span><span class="s1">&#39;end&#39;</span><span class="p">,</span>
+                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">kaydet_ve_sinav_sec</span><span class="o">=</span><span class="s1">&#39;null&#39;</span><span class="p">,</span> <span class="n">kaydet</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="n">kaydet_ve_ders_sec</span><span class="o">=</span><span class="s1">&#39;null&#39;</span><span class="p">,</span>
+                                        <span class="n">not_duzenle</span><span class="o">=</span><span class="s1">&#39;null&#39;</span><span class="p">,</span> <span class="n">not_onay</span><span class="o">=</span><span class="s1">&#39;null&#39;</span><span class="p">))</span>
 
-      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;msgbox&#39;</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Notlar Kaydedildi&#39;</span>
+      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Notlar Kaydedildi&#39;</span>
 
-      <span class="c"># İş akışı tekrardan başlatılır.</span>
-      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">set_path</span><span class="p">(</span><span class="s">&#39;/okutman_not_girisi&#39;</span><span class="p">)</span>
+      <span class="c1"># İş akışı tekrardan başlatılır.</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">set_path</span><span class="p">(</span><span class="s1">&#39;/okutman_not_girisi&#39;</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">()</span>
 
-      <span class="c"># Ders şubesi seçilir.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;Ders Şubesi Seçin&#39;</span><span class="p">,</span>
-                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sube</span><span class="o">=</span><span class="s">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Ders şubesi seçilir.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;Ders Şubesi Seçin&#39;</span><span class="p">,</span>
+                       <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sube</span><span class="o">=</span><span class="s1">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-      <span class="c"># Sınav seçilir.</span>
-      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s">&#39;Sınav Seçin&#39;</span><span class="p">,</span>
-                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="s">&#39;IvXH1cqyYoHznv0iRV4FjLvXWwz&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Sınav seçilir.</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;Sınav Seçin&#39;</span><span class="p">,</span>
+                              <span class="n">form</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sinav</span><span class="o">=</span><span class="s1">&#39;IvXH1cqyYoHznv0iRV4FjLvXWwz&#39;</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-      <span class="k">assert</span> <span class="n">num_of_ogrenci</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;object&#39;</span><span class="p">][</span><span class="s">&#39;fields&#39;</span><span class="p">])</span>
-      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s">&#39;msgbox&#39;</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Notlar Onaylandı&#39;</span>
+      <span class="k">assert</span> <span class="n">num_of_ogrenci</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">])</span>
+      <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;msgbox&#39;</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Notlar Onaylandı&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -751,7 +750,7 @@ app.js (Uygulamanın tanımlandığı yapılandırıldığı dosya)</p>
 <h3><em>Bileşen (Birim) Testleri:</em><a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Uygulamada *.test.js dosyaları modüllerin Unit testlerinin barındığı dosyalardır. Unit testler Jasmine test uygulama çatısı kullanılarak yazılır.
 Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki gibidir:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;zaerp.login module&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;zaerp.login module&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 
    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;zaerp.login&#39;</span><span class="p">));</span>
 
@@ -770,7 +769,7 @@ Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki g
 </div>
 <p>Bu test örneğinde “login controller”ının tanımlanmış olması gerekliliği test edilmektedir.
 Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile çalıştırılır. Bunun için yukarıda açıkladığımız yapıda da görüleceği gibi “karma.conf.js” ismiyle bir yapılandırma dosyası bulunmaktadır. Karma yapılandırma örneği aşağıdaki gibidir:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
 
@@ -830,7 +829,7 @@ Kullanıcı arayüzü unit testleri karma test yürütücüsü (test runner) ile
 Chrome 45.0.2412 (Mac OS X 10.10.3): Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)</p>
 <p>Bu çıktıdan 8 test senaryosunun başarıyla geçtiği görülmektedir (Executed 8 of 8 SUCCESS (0.409 secs / 0.063 secs)).</p>
 <p>Birim testlerinin kodun ne kadarını kapsadığı yine karma ile incelenecektir. Karma testler çalıştıktan sonra coverage/ dizini altında bir html dosyası oluşturarak kod kapsama oranını yayınlar. Örnek html çıktı sayfası şu şekildedir:</p>
-<a class="reference internal image-reference" href="_images/codecoverage.png"><img alt="_images/codecoverage.png" class="align-center" src="_images/codecoverage.png" /></a>
+<a class="reference internal image-reference" href="_images/codecoverage.png"><img alt="_images/codecoverage.png" class="align-center" src="_images/codecoverage.png" style="width: 2158.0px; height: 630.0px;" /></a>
 </div>
 <div class="section" id="kabul-testleri">
 <h3><em>Kabul Testleri:</em><a class="headerlink" href="#kabul-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -851,77 +850,77 @@ Selenium, tarayıcı tabanlı uygulamaları otomatikleşirmek için kullanan aç
 <div class="section" id="selenium-test-ornekleri">
 <h4>Selenium Test Örnekleri<a class="headerlink" href="#selenium-test-ornekleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <p>Document Object Model içinde username ve password tanımlı id alanlarına kullanıcı adı ve kullanıcı şifresi değerleri gönderilerek kullanıcı giriş yapar.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
-<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="k">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="k">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="k">import</span> <span class="n">By</span>
 
 <span class="k">class</span> <span class="nc">Logging</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="c"># Yeni bir Firefox penceresi açar.</span>
+    <span class="c1"># Yeni bir Firefox penceresi açar.</span>
     <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
-    <span class="c"># Belirtilen adresindeki sayfayı yükler.</span>
-    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;http://nightly.ulakbus.net/#/dashboard&#39;</span><span class="p">)</span>
-    <span class="c"># Document Object Model&#39;in yüklenmesi bekler.</span>
+    <span class="c1"># Belirtilen adresindeki sayfayı yükler.</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://nightly.ulakbus.net/#/dashboard&#39;</span><span class="p">)</span>
+    <span class="c1"># Document Object Model&#39;in yüklenmesi bekler.</span>
     <span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">do_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">email_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">)</span>
-        <span class="c"># Kullanıcı adı alanına &#39;test_user&#39; yollar.</span>
-        <span class="n">email_field</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">&quot;test_user&quot;</span><span class="p">)</span>
-        <span class="n">password_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">)</span>
-        <span class="c"># Sifre alanına &#39;123&#39; yolluyor.</span>
-        <span class="n">password_field</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">)</span>
-        <span class="c"># Giriş tuşuna tıklar.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;.btn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="c"># Panel tusunu gorene kadar kullanıcının login olmasını 25 saniye bekler.</span>
+        <span class="n">email_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">)</span>
+        <span class="c1"># Kullanıcı adı alanına &#39;test_user&#39; yollar.</span>
+        <span class="n">email_field</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;test_user&quot;</span><span class="p">)</span>
+        <span class="n">password_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
+        <span class="c1"># Sifre alanına &#39;123&#39; yolluyor.</span>
+        <span class="n">password_field</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
+        <span class="c1"># Giriş tuşuna tıklar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="c1"># Panel tusunu gorene kadar kullanıcının login olmasını 25 saniye bekler.</span>
         <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s">&#39;#side-menu &gt; li:nth-child(1) &gt; a:nth-child(1)&#39;</span><span class="p">)))</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;#side-menu &gt; li:nth-child(1) &gt; a:nth-child(1)&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>Kullanıcı giriş yaptıktan sonra gerekli ayarlar yapılır.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">test_login</span> <span class="kn">import</span> <span class="n">Logging</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">test_login</span> <span class="k">import</span> <span class="n">Logging</span>
 
 <span class="k">class</span> <span class="nc">Settings</span><span class="p">(</span><span class="n">Logging</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c"># Kullanıcıya giriş yapar.</span>
+        <span class="c1"># Kullanıcıya giriş yapar.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">do_login</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;li.dropdown:nth-child(4) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="c"># Ayarlar(dev)&#39;e tıklar.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;.dropdown-menu &gt; li:nth-child(4) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="c"># Backend Url&#39;ye değer gönderir.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;.form-control&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">&#39;https://test.ulakbus.net/&#39;</span><span class="p">)</span>
-        <span class="c"># Kaydet&#39;e tıklar.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;button.btn:nth-child(2)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;li.dropdown:nth-child(4) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="c1"># Ayarlar(dev)&#39;e tıklar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;.dropdown-menu &gt; li:nth-child(4) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="c1"># Backend Url&#39;ye değer gönderir.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;.form-control&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;https://test.ulakbus.net/&#39;</span><span class="p">)</span>
+        <span class="c1"># Kaydet&#39;e tıklar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;button.btn:nth-child(2)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Gerekli ayarlar yapıldıktan sonra Önceki Eğitim Bilgilerine tıklar ve tanımlı alanlara değerler yollayarak yeni
 bir önceki eğitim kaydı oluşturarak kaydeder.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">test_settings</span> <span class="kn">import</span> <span class="n">Settings</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">test_settings</span> <span class="k">import</span> <span class="n">Settings</span>
 
 <span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">Settings</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">test_sidebar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="c"># Ayarları yapar.</span>
+      <span class="c1"># Ayarları yapar.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">do_settings</span><span class="p">()</span>
-      <span class="c"># Genel&#39;e tıklar.</span>
+      <span class="c1"># Genel&#39;e tıklar.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span>
-          <span class="s">&#39;li.ng-binding:nth-child(3) &gt; a:nth-child(1) &gt; span:nth-child(2)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-      <span class="c"># Önceki Eğitim Bilgilerine tıklar.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;ul.in:nth-child(2) &gt; li:nth-child(6) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-      <span class="c"># Backend ayarları değiştirildiği için kullanıcının tekrar giriş yapması gerekir.</span>
+          <span class="s1">&#39;li.ng-binding:nth-child(3) &gt; a:nth-child(1) &gt; span:nth-child(2)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+      <span class="c1"># Önceki Eğitim Bilgilerine tıklar.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;ul.in:nth-child(2) &gt; li:nth-child(6) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+      <span class="c1"># Backend ayarları değiştirildiği için kullanıcının tekrar giriş yapması gerekir.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">do_login</span><span class="p">()</span>
-      <span class="c"># Genel&#39;e tıklar.</span>
+      <span class="c1"># Genel&#39;e tıklar.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span>
-          <span class="s">&#39;li.ng-binding:nth-child(3) &gt; a:nth-child(1) &gt; span:nth-child(2)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-      <span class="c"># Önceki Eğitim Bilgilerine tıklar.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;ul.in:nth-child(2) &gt; li:nth-child(6) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-      <span class="c"># Mezun Oldugu Okul&#39;a değer yollar.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;#okul_adi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">&#39;Anadolu Lisesi&#39;</span><span class="p">)</span>
-      <span class="c"># Diploma Notu&#39;na değer yollar.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;#diploma_notu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">&#39;76&#39;</span><span class="p">)</span>
-      <span class="c"># Mezuniyet Yılı&#39;na değer yollar.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;#mezuniyet_yili&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">&#39;2008&#39;</span><span class="p">)</span>
-      <span class="c"># Kaydet&#39;e tıklar.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s">&#39;.btn-danger&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+          <span class="s1">&#39;li.ng-binding:nth-child(3) &gt; a:nth-child(1) &gt; span:nth-child(2)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+      <span class="c1"># Önceki Eğitim Bilgilerine tıklar.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;ul.in:nth-child(2) &gt; li:nth-child(6) &gt; a:nth-child(1)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+      <span class="c1"># Mezun Oldugu Okul&#39;a değer yollar.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;#okul_adi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;Anadolu Lisesi&#39;</span><span class="p">)</span>
+      <span class="c1"># Diploma Notu&#39;na değer yollar.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;#diploma_notu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;76&#39;</span><span class="p">)</span>
+      <span class="c1"># Mezuniyet Yılı&#39;na değer yollar.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;#mezuniyet_yili&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;2008&#39;</span><span class="p">)</span>
+      <span class="c1"># Kaydet&#39;e tıklar.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;.btn-danger&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Selenium hakkında daha fazla bilgi almak için <a class="reference external" href="http://www.seleniumhq.org/docs/">http://www.seleniumhq.org/docs/</a></p>
@@ -1084,8 +1083,8 @@ bir önceki eğitim kaydı oluşturarak kaydeder.</p>
         <li class="right" >
           <a href="ulakbus-api-ui-iliskisi.html" title="ULAKBUS UI–API İlişkisi"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

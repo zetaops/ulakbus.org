@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Sistem Operatörleri" href="devops.html" />
     <link rel="next" title="Kullanıcılar" href="users.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="devops.html" title="Sistem Operatörleri"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="devops.html" accesskey="U">Sistem Operatörleri</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="devops.html" accesskey="U">Sistem Operatörleri</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -210,14 +212,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -241,46 +240,46 @@ Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir:</p>
 <h2>Ön Hazırlıklar<a class="headerlink" href="#on-hazirliklar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Öncelikle her bir makinenin hostname ve IP adreslerinin düzgün şekilde ayarlandığından emin olalım. Bizim örneğimizde
 IP adresleri ve hostnamelerin şu şekilde olduğu kabul edilmiştir.</p>
-<div class="highlight-python"><div class="highlight"><pre>10.0.0.10    node1.example.org
-10.0.0.11    node2.example.org
-10.0.0.12    node3.example.org
-10.0.0.13    node4.example.org
-10.0.0.14    node5.example.org
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.10</span>    <span class="n">node1</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="mf">10.0</span><span class="o">.</span><span class="mf">0.11</span>    <span class="n">node2</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="mf">10.0</span><span class="o">.</span><span class="mf">0.12</span>    <span class="n">node3</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="mf">10.0</span><span class="o">.</span><span class="mf">0.13</span>    <span class="n">node4</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="mf">10.0</span><span class="o">.</span><span class="mf">0.14</span>    <span class="n">node5</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
 </pre></div>
 </div>
 <p>Hostname ayarlamak için</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># sudo hostnamectl set-hostname node1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># sudo hostnamectl set-hostname node1</span>
 </pre></div>
 </div>
 <p>komutunu kullanabilirsiniz.</p>
 <p>Fully qualified domain name için de /etc/hosts dosyasına aşağıdaki gibi bir girdiyi eklememiz gerekmektedir.</p>
-<div class="highlight-python"><div class="highlight"><pre># sudo vim /etc/hosts
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># sudo vim /etc/hosts</span>
 
-...
-10.0.0.10   node1.example.org   node1
+<span class="o">...</span>
+<span class="mf">10.0</span><span class="o">.</span><span class="mf">0.10</span>   <span class="n">node1</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>   <span class="n">node1</span>
 </pre></div>
 </div>
 <p>İlgili değişikliği yaptıktan sonra</p>
-<div class="highlight-python"><div class="highlight"><pre>$ hostname -f
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ hostname -f
 </pre></div>
 </div>
 <p>çıktısınının <code class="docutils literal"><span class="pre">node1.example.org</span></code> şeklinde alan adı ve hostname ile birlikte olduğundan emin oluyoruz.</p>
 <p>Bu işlemleri yaptıktan sonra eğer sisteminizde yoksa bazı yardımcı paketlerin kurulması gereklidir:</p>
-<div class="highlight-python"><div class="highlight"><pre>apt-get install -y curl wget
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">curl</span> <span class="n">wget</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="java-kurulumu">
 <h2>Java Kurulumu<a class="headerlink" href="#java-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Riak Search için java gerekmektedir. Aşağıdaki komutlarla sistemimize Java kuruyoruz.</p>
-<div class="highlight-python"><div class="highlight"><pre>apt-get update -qq &amp;&amp; apt-get install -y software-properties-common &amp;&amp; \
-     apt-add-repository ppa:webupd8team/java -y &amp;&amp; apt-get update -qq &amp;&amp; \
-     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections &amp;&amp; \
-     apt-get install -y oracle-java8-installer
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">-</span><span class="n">qq</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span> <span class="o">&amp;&amp;</span> \
+     <span class="n">apt</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">webupd8team</span><span class="o">/</span><span class="n">java</span> <span class="o">-</span><span class="n">y</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">-</span><span class="n">qq</span> <span class="o">&amp;&amp;</span> \
+     <span class="n">echo</span> <span class="n">oracle</span><span class="o">-</span><span class="n">java8</span><span class="o">-</span><span class="n">installer</span> <span class="n">shared</span><span class="o">/</span><span class="n">accepted</span><span class="o">-</span><span class="n">oracle</span><span class="o">-</span><span class="n">license</span><span class="o">-</span><span class="n">v1</span><span class="o">-</span><span class="mi">1</span> <span class="n">select</span> <span class="n">true</span> <span class="o">|</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">debconf</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">selections</span> <span class="o">&amp;&amp;</span> \
+     <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">oracle</span><span class="o">-</span><span class="n">java8</span><span class="o">-</span><span class="n">installer</span>
 </pre></div>
 </div>
 <p>Kurulumu aşağıdaki komut ile doğrulayabiliriz:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ java -version
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ java -version
 java version &quot;1.8.0_60&quot;
 Java(TM) SE Runtime Environment (build 1.8.0_60-b27)
 Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
@@ -292,32 +291,32 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
 <p>Riak kurulumu birkaç yol ile yapılabilir. Kaynak kod derlemek bunlardan birisidir. Fakat bu pek pratik değildir. Biz
 kaynak koddan kendimiz derleyerek elde ettiğimiz deb paketlerini kullanacağız. Packagecloud.io da tuttuğumuz paketleri
 sisteminize yüklemek için</p>
-<div class="highlight-python"><div class="highlight"><pre>$ curl -s https://packagecloud.io/install/repositories/zetaops/riak/script.deb.sh | sudo bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -s https://packagecloud.io/install/repositories/zetaops/riak/script.deb.sh | sudo bash
 $ apt-get install -y riak
 </pre></div>
 </div>
 <p>komutlarını kullanabilirsiniz.</p>
 <p>Riak&#8217;ın düzgün çalışabilmesi için dosya limitlerini değiştirmemiz gerekmektedir. Bunu kalıcı şekilde yapmak için</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &#39;* soft nofile 65536&#39; &gt;&gt;   /etc/security/limits.conf
-echo &#39;* hard nofile 65536&#39; &gt;&gt;   /etc/security/limits.conf
-echo &quot;session required        pam_limits.so&quot; &gt;&gt; /etc/pam.d/common-session-noninteractive
-echo &quot;session required        pam_limits.so&quot; &gt;&gt; /etc/pam.d/common-session
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;* soft nofile 65536&#39;</span> <span class="o">&gt;&gt;</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">limits</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">echo</span> <span class="s1">&#39;* hard nofile 65536&#39;</span> <span class="o">&gt;&gt;</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">limits</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">echo</span> <span class="s2">&quot;session required        pam_limits.so&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pam</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">common</span><span class="o">-</span><span class="n">session</span><span class="o">-</span><span class="n">noninteractive</span>
+<span class="n">echo</span> <span class="s2">&quot;session required        pam_limits.so&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pam</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">common</span><span class="o">-</span><span class="n">session</span>
 </pre></div>
 </div>
 <p>komutlarını kullanabilirsiniz.</p>
 <p>Riak kurulumunu</p>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo riak-admin status
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo riak-admin status
 Node is not running!
 </pre></div>
 </div>
 <p>komutuyla doğrulayabilirsiniz.</p>
 <p>Paketlerin kurulumunun ardından riak servisi başlamayabilir. Bu durumda yukarıdaki gibi <code class="docutils literal"><span class="pre">Node</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">running!</span></code> çıktısı
 alırsınız. Servisi başlatmak için</p>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo service riak start
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo service riak start
 </pre></div>
 </div>
 <p>komutunu kullanabilirsiniz. Bu komut hiçbir çıktı üretmeyebilir. Servisin başladığından emin olmak için yeniden</p>
-<div class="highlight-python"><div class="highlight"><pre>$ riak-admin status
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ riak-admin status
 1-minute stats for &#39;riak@127.0.0.1&#39;
 -------------------------------------------
 connected_nodes : []
@@ -339,25 +338,25 @@ ayarlar ayrı bir belgede ele alınacaktır. Başlangıç için bu düzenlemeler
 eski tip konfigürasyon dosyaları olan advanaced.config ve app.config dosyaları ile yapılır. Riak başlama esnasında bu
 dosyalara bakıp validasyon yapar ve tek bir nihayi konfigürasyon üretir. Dolayısı ile bu dosyalarda yapılacak her
 değişikliğin ardından riak servisi yeniden başlatılmalıdır.</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo service riak restart
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">riak</span> <span class="n">restart</span>
 </pre></div>
 </div>
 <p>komutuyla Ubuntu üzerinde Riak servisini yeniden başlatabilirsiniz.</p>
 <p>Konfigürasyon için ilk adım nodename değiştirmektir. riak.conf içindeki <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;127.0.0.1</span></code> değerini <code class="docutils literal"><span class="pre">nodename</span> <span class="pre">=</span> <span class="pre">riak&#64;10.0.0.10</span></code> şeklinde makine IP adresi ile değiştirmek gerekir. Bunu bir editör yardımı ile
 yapabilirsiniz. Ya da basitçe aşağıdaki komut ile de ilgili değişikliği yapabilirsiniz.</p>
-<div class="highlight-python"><div class="highlight"><pre>sed -i.bak &quot;s/riak@127.0.0.1/riak@10.0.0.10/&quot; /etc/riak/riak.conf
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span><span class="o">.</span><span class="n">bak</span> <span class="s2">&quot;s/riak@127.0.0.1/riak@10.0.0.10/&quot;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">riak</span><span class="o">/</span><span class="n">riak</span><span class="o">.</span><span class="n">conf</span>
 </pre></div>
 </div>
 <p>Riak servislerinin bağlandığı IP adreslerini de düzenlememiz gerekmektedir. Farklı bir hosttan haproxy ile erişeceğimiz
 bu servislerin bağlandığı IP adresleri host makinenin IP adresi 10.0.0.10 veya 0.0.0.0 şeklinde ayarlanabilir. Bu amaçla
 riak.conf dosyasındaki</p>
-<div class="highlight-python"><div class="highlight"><pre>listener.http.internal = 127.0.0.1:8098
-listener.protobuf.internal = 0.0.0.0:8087
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">listener</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">internal</span> <span class="o">=</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8098</span>
+<span class="n">listener</span><span class="o">.</span><span class="n">protobuf</span><span class="o">.</span><span class="n">internal</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">8087</span>
 </pre></div>
 </div>
 <p>değerleri</p>
-<div class="highlight-python"><div class="highlight"><pre>listener.http.internal = 10.0.0.10:8098
-listener.protobuf.internal = 10.0.0.10:8087
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">listener</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">internal</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">8098</span>
+<span class="n">listener</span><span class="o">.</span><span class="n">protobuf</span><span class="o">.</span><span class="n">internal</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">8087</span>
 </pre></div>
 </div>
 <p>şeklinde değiştirilmelidir.</p>
@@ -370,54 +369,54 @@ listener.protobuf.internal = 10.0.0.10:8087
 <p>5 node düzgün bir şekilde yapılandırıldıktan sonra Riak nodelar cluster olmak için hazırdır. Cluster oluşturmak için bir
 node seçilmeli ve diğer nodelardan bu node&#8217;a clustera katılma isteği gönderilmelidir.</p>
 <p>Birinci node&#8217;u (10.0.0.10) seçtiğimizi varsayarsak diğer nodelarda sırayla</p>
-<div class="highlight-python"><div class="highlight"><pre>riak-admin cluster join riak@10.0.0.10
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">riak</span><span class="o">-</span><span class="n">admin</span> <span class="n">cluster</span> <span class="n">join</span> <span class="n">riak</span><span class="nd">@10</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">10</span>
 </pre></div>
 </div>
 <p>komutu çalıştırılır.</p>
 <p>Diğer 4 node&#8217;da bu komut sırayla çalıştırılır. Cluster&#8217;a katılma talebi başarıyla gerçekleştiyse şöyle bir mesaj ile
 karşılaşırız:</p>
-<div class="highlight-python"><div class="highlight"><pre>Success: staged join request for &#39;riak@10.0.0.11&#39; to &#39;riak@10.0.0.10&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Success</span><span class="p">:</span> <span class="n">staged</span> <span class="n">join</span> <span class="n">request</span> <span class="k">for</span> <span class="s1">&#39;riak@10.0.0.11&#39;</span> <span class="n">to</span> <span class="s1">&#39;riak@10.0.0.10&#39;</span>
 </pre></div>
 </div>
 <p>Bütün nodlarda başarıyla cluster katılım talebini yaptıktan sonra, herhangi bir node&#8217;da sırasıyla şu komutlar
 çalıştırılarak yeni cluster değişiklikleri uygulanır:</p>
-<div class="highlight-python"><div class="highlight"><pre>riak-admin cluster plan
-riak-admin cluster commit
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">riak</span><span class="o">-</span><span class="n">admin</span> <span class="n">cluster</span> <span class="n">plan</span>
+<span class="n">riak</span><span class="o">-</span><span class="n">admin</span> <span class="n">cluster</span> <span class="n">commit</span>
 </pre></div>
 </div>
 <p>Birinci komut cluster ile ilgili yeni değişiklikleri bize gösterir. Bu komutun çıktısı aşağıdaki gibidir:</p>
-<div class="highlight-python"><div class="highlight"><pre>=============================== Staged Changes ================================
-Action         Nodes(s)
--------------------------------------------------------------------------------
-join           &#39;riak@10.0.0.10&#39;
-join           &#39;riak@10.0.0.10&#39;
-join           &#39;riak@10.0.0.10&#39;
-join           &#39;riak@10.0.0.10&#39;
--------------------------------------------------------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">===============================</span> <span class="n">Staged</span> <span class="n">Changes</span> <span class="o">================================</span>
+<span class="n">Action</span>         <span class="n">Nodes</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="o">-------------------------------------------------------------------------------</span>
+<span class="n">join</span>           <span class="s1">&#39;riak@10.0.0.10&#39;</span>
+<span class="n">join</span>           <span class="s1">&#39;riak@10.0.0.10&#39;</span>
+<span class="n">join</span>           <span class="s1">&#39;riak@10.0.0.10&#39;</span>
+<span class="n">join</span>           <span class="s1">&#39;riak@10.0.0.10&#39;</span>
+<span class="o">-------------------------------------------------------------------------------</span>
 
 
-NOTE: Applying these changes will result in 1 cluster transition
+<span class="n">NOTE</span><span class="p">:</span> <span class="n">Applying</span> <span class="n">these</span> <span class="n">changes</span> <span class="n">will</span> <span class="n">result</span> <span class="ow">in</span> <span class="mi">1</span> <span class="n">cluster</span> <span class="n">transition</span>
 
-###############################################################################
-                         After cluster transition 1/1
-###############################################################################
+<span class="c1">###############################################################################</span>
+                         <span class="n">After</span> <span class="n">cluster</span> <span class="n">transition</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>
+<span class="c1">###############################################################################</span>
 
-================================= Membership ==================================
-Status     Ring    Pending    Node
--------------------------------------------------------------------------------
-valid     100.0%     20.3%    &#39;riak@10.0.0.10&#39;
-valid       0.0%     20.3%    &#39;riak@10.0.0.11&#39;
-valid       0.0%     20.3%    &#39;riak@10.0.0.12&#39;
-valid       0.0%     20.3%    &#39;riak@10.0.0.13&#39;
-valid       0.0%     18.8%    &#39;riak@10.0.0.14&#39;
--------------------------------------------------------------------------------
-Valid:5 / Leaving:0 / Exiting:0 / Joining:0 / Down:0
+<span class="o">=================================</span> <span class="n">Membership</span> <span class="o">==================================</span>
+<span class="n">Status</span>     <span class="n">Ring</span>    <span class="n">Pending</span>    <span class="n">Node</span>
+<span class="o">-------------------------------------------------------------------------------</span>
+<span class="n">valid</span>     <span class="mf">100.0</span><span class="o">%</span>     <span class="mf">20.3</span><span class="o">%</span>    <span class="s1">&#39;riak@10.0.0.10&#39;</span>
+<span class="n">valid</span>       <span class="mf">0.0</span><span class="o">%</span>     <span class="mf">20.3</span><span class="o">%</span>    <span class="s1">&#39;riak@10.0.0.11&#39;</span>
+<span class="n">valid</span>       <span class="mf">0.0</span><span class="o">%</span>     <span class="mf">20.3</span><span class="o">%</span>    <span class="s1">&#39;riak@10.0.0.12&#39;</span>
+<span class="n">valid</span>       <span class="mf">0.0</span><span class="o">%</span>     <span class="mf">20.3</span><span class="o">%</span>    <span class="s1">&#39;riak@10.0.0.13&#39;</span>
+<span class="n">valid</span>       <span class="mf">0.0</span><span class="o">%</span>     <span class="mf">18.8</span><span class="o">%</span>    <span class="s1">&#39;riak@10.0.0.14&#39;</span>
+<span class="o">-------------------------------------------------------------------------------</span>
+<span class="n">Valid</span><span class="p">:</span><span class="mi">5</span> <span class="o">/</span> <span class="n">Leaving</span><span class="p">:</span><span class="mi">0</span> <span class="o">/</span> <span class="n">Exiting</span><span class="p">:</span><span class="mi">0</span> <span class="o">/</span> <span class="n">Joining</span><span class="p">:</span><span class="mi">0</span> <span class="o">/</span> <span class="n">Down</span><span class="p">:</span><span class="mi">0</span>
 
-Transfers resulting from cluster changes: 51
-  12 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.11&#39;
-  13 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.12&#39;
-  13 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.13&#39;
-  13 transfers from &#39;riak@10.0.0.10&#39; to &#39;riak@10.0.0.14&#39;
+<span class="n">Transfers</span> <span class="n">resulting</span> <span class="kn">from</span> <span class="nn">cluster</span> <span class="n">changes</span><span class="p">:</span> <span class="mi">51</span>
+  <span class="mi">12</span> <span class="n">transfers</span> <span class="kn">from</span> <span class="s1">&#39;riak@10.0.0.10&#39;</span> <span class="n">to</span> <span class="s1">&#39;riak@10.0.0.11&#39;</span>
+  <span class="mi">13</span> <span class="n">transfers</span> <span class="kn">from</span> <span class="s1">&#39;riak@10.0.0.10&#39;</span> <span class="n">to</span> <span class="s1">&#39;riak@10.0.0.12&#39;</span>
+  <span class="mi">13</span> <span class="n">transfers</span> <span class="kn">from</span> <span class="s1">&#39;riak@10.0.0.10&#39;</span> <span class="n">to</span> <span class="s1">&#39;riak@10.0.0.13&#39;</span>
+  <span class="mi">13</span> <span class="n">transfers</span> <span class="kn">from</span> <span class="s1">&#39;riak@10.0.0.10&#39;</span> <span class="n">to</span> <span class="s1">&#39;riak@10.0.0.14&#39;</span>
 </pre></div>
 </div>
 <p>Bu tablolar bize cluster değişikliğinin ardından ring dağılımını ve clusterin yeni üyelerini gösterir.</p>
@@ -443,8 +442,8 @@ Transfers resulting from cluster changes: 51
         <li class="right" >
           <a href="devops.html" title="Sistem Operatörleri"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="devops.html" >Sistem Operatörleri</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="devops.html" >Sistem Operatörleri</a> &#187;</li> 
       </ul>
     </div>
     </div>
