@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Zato İpuçları" href="zato_ipuclari.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="komut_satiri_yonetim_araci.html" title="Temel Yönetim Komutları"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -213,14 +215,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -233,9 +232,9 @@
             
   <div class="section" id="esb-ve-soa-ne-anlama-geliyor-yani">
 <h1>ESB ve SOA ne anlama geliyor yani?<a class="headerlink" href="#esb-ve-soa-ne-anlama-geliyor-yani" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre>Sistemlerin sistemini düşünmek hakkında harika bir özet olmuş.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Sistemlerin</span> <span class="n">sistemini</span> <span class="n">düşünmek</span> <span class="n">hakkında</span> <span class="n">harika</span> <span class="n">bir</span> <span class="n">özet</span> <span class="n">olmuş</span><span class="o">.</span>
 
-Nick Coghlan, Core Python Geliştiricisi
+<span class="n">Nick</span> <span class="n">Coghlan</span><span class="p">,</span> <span class="n">Core</span> <span class="n">Python</span> <span class="n">Geliştiricisi</span>
 </pre></div>
 </div>
 <p>Aşağıdaki dillerde okuyabilirsiniz. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-ca.html">Català</a>, <a class="reference external" href="https://zato.io/docs/intro/esb-soa-de.html">Deutsch</a>, <a class="reference external" href="https://zato.io/docs/intro/esb-soa-fr.html">Français</a>, <a class="reference external" href="https://zato.io/docs/intro/esb-soa-pt.html">Português</a>, <a class="reference external" href="https://zato.io/docs/intro/esb-soa-ru.html">ру́сский</a> <a class="reference external" href="https://zato.io/docs/intro/esb-soa.html">İngilizce</a> ve <a class="reference external" href="https://zato.io/docs/intro/esb-soa-cn.html">中文</a>.</p>
@@ -263,7 +262,7 @@ Nick Coghlan, Core Python Geliştiricisi
 <p><strong>Bu ayrı mimarilerin birbiriyle doğrudan konuşmasına izin vermeyeceksiniz.</strong> Bu, zaten başa çıkılması zor olan mimarilerin her birinin, kendi içinde ölçekli çalışabilmesini sağlayabilmek için temel bir ilkedir.</p>
 <p>Aşağıdaki çizimde, sistemin yaptığı her bir servis çağrısı değişik boyut ve stilde belirtilmiştir.</p>
 <div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="_images/mess1.png"><img alt="_images/mess1.png" src="_images/mess1.png" /></a>
+<a class="reference internal image-reference" href="_images/mess1.png"><img alt="_images/mess1.png" src="_images/mess1.png" style="width: 290.0px; height: 207.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Lütfen dikkat ediniz, daha üst seviye süreçleri bu çizimde göstermedik bile. Mesela App1, App6’nın daha önce verdiği cevaba göre App2 veya App3 ya da App5’i çağırır ve böylece App4 daha sonra App2 tarafından üretilen veriyi alır ve fakat sadece App1 veri çekmeye izin veriyorsa ;_;</p>
@@ -272,7 +271,7 @@ Nick Coghlan, Core Python Geliştiricisi
 <p>Bu arayüzleri nasıl birbirinden ayıracağız? Yeni sürümü nasıl planlayabilirsiniz? Her biri değişik ekipler, satıcılar veya bölümler tarafından yönetilen uygulamaların güncellemelerini ya da sürüm indirimlerini nasıl koordine edeceksiniz? Üstelik işin başındaki ekibin yarısı çoktan işten ayrılmışken?</p>
 <p>Eğer 6 değişik uygulamayla başa çıkabileceğinizi düşünüyorsanız, 30 taneye ne dersiniz?</p>
 <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="_images/mess2.png"><img alt="_images/mess2.png" src="_images/mess2.png" /></a>
+<a class="reference internal image-reference" href="_images/mess2.png"><img alt="_images/mess2.png" src="_images/mess2.png" style="width: 480.0px; height: 505.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Peki 400 ayrı uygulama ile başa çıkabilir misiniz? Ya 2000? Her bir uygulamanın 10 sunucu gerektiren tekil bir ortamda koştuğunu ve bu 20K’lık sistemin parçalarının kıtalara dağıtık olduğunu ve arada her türlü teknik ve kültürel sınırlar olduğunu, üstelik sistemin her bir parçasının hiç bir kesinti olmadan son derece geveze bir şekilde, diğer parçalarla sürekli olarak durmadan mesaj alıp verdiğini? (Bu durumun çizimini paylaşmayacağız korkmayın)</p>
@@ -469,7 +468,7 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
 <h2>ESB üzerinde SOA ile servis yaratmak<a class="headerlink" href="#esb-uzerinde-soa-ile-servis-yaratmak" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi sistemlerin asla doğrudan bilgi alışverişi yapmadığını ve bir servisin ne olduğunu anladığınıza göre ESB’den faydalanmaya başlayabilirsiniz.</p>
 <div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="_images/esb-ok.png"><img alt="_images/esb-ok.png" src="_images/esb-ok.png" /></a>
+<a class="reference internal image-reference" href="_images/esb-ok.png"><img alt="_images/esb-ok.png" src="_images/esb-ok.png" style="width: 414.0px; height: 336.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>Tümleşik sistemlerde servisleri çağırmak ve kullanmak, artık Kurumsal Veri Yolu’nun (ESB) işine dönüşüyor. Bu şekilde, genellikle KVY kullanarak sadece bir arayüz ve bir erişim metodu yazmak yeterli oluyor.</p>
@@ -490,7 +489,7 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
 <p>Servis odaklı uygulama (SOA) konseptini mahvetmenin en kolay yolu KVY hizmetini açıp ondan sonra olayların kendiliğinden düzelmesini beklemek olabilir. Hala harika bir fikir olmasına rağmen, sadece KVY sistemini kurmakla çok büyük bir kazanım sahibi olamazsınız maalesef.</p>
 <p>En iyi halde, aşağıdaki diyagramdaki gibi bazı şeyleri halı altına süpürmek, size hiç bir şey kazandırmayacaktır.</p>
 <div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="_images/esb-mess.png"><img alt="_images/esb-mess.png" src="_images/esb-mess.png" /></a>
+<a class="reference internal image-reference" href="_images/esb-mess.png"><img alt="_images/esb-mess.png" src="_images/esb-mess.png" style="width: 545.0px; height: 378.0px;" /></a>
 <p class="caption"><span class="caption-text">Resimler şu adresten alınmıştır. <a class="reference external" href="https://zato.io/docs/intro/esb-soa-tr.html">https://zato.io/docs/intro/esb-soa-tr.html</a></span></p>
 </div>
 <p>IT ekibiniz ondan tiksinecek, yönetim ise önce bu yeni gelen çocuğa tolerans gösterecek ancak daha sonra KVY iyice alay konusu olacak. “Ney ney, sihirli değnek değil mi, Hahahaha”.</p>
@@ -555,8 +554,8 @@ Eğer son 50 yıl civarında programlama ile uğraştıysanız, kendi uygulaman�
         <li class="right" >
           <a href="komut_satiri_yonetim_araci.html" title="Temel Yönetim Komutları"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

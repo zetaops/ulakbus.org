@@ -12,6 +12,22 @@ ulakbus.views.common.akademik_takvim module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.views.common.guncel_donem_degistirme module
+---------------------------------------------------
+
+.. automodule:: ulakbus.views.common.guncel_donem_degistirme
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.yeni_donem_olusturma module
+------------------------------------------------
+
+.. automodule:: ulakbus.views.common.yeni_donem_olusturma
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

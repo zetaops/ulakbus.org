@@ -4,10 +4,34 @@ ulakbus.views.personel package
 Submodules
 ----------
 
+ulakbus.views.personel.atama module
+-----------------------------------
+
+.. automodule:: ulakbus.views.personel.atama
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.views.personel.crud_hitap module
 ----------------------------------------
 
 .. automodule:: ulakbus.views.personel.crud_hitap
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.personel.gorevlendirme module
+-------------------------------------------
+
+.. automodule:: ulakbus.views.personel.gorevlendirme
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.personel.hizmet_cetveli module
+--------------------------------------------
+
+.. automodule:: ulakbus.views.personel.hizmet_cetveli
     :members:
     :undoc-members:
     :show-inheritance:
@@ -52,10 +76,10 @@ ulakbus.views.personel.ucretsiz_izin module
     :undoc-members:
     :show-inheritance:
 
-ulakbus.views.personel.yeni_ekle module
----------------------------------------
+ulakbus.views.personel.yeni_personel module
+-------------------------------------------
 
-.. automodule:: ulakbus.views.personel.yeni_ekle
+.. automodule:: ulakbus.views.personel.yeni_personel
     :members:
     :undoc-members:
     :show-inheritance:

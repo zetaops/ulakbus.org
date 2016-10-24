@@ -1,6 +1,13 @@
 ulakbus.models package
 ======================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    ulakbus.models.hitap
+
 Submodules
 ----------
 
@@ -20,10 +27,18 @@ ulakbus.models.buildings_rooms module
     :undoc-members:
     :show-inheritance:
 
-ulakbus.models.hitap module
----------------------------
+ulakbus.models.ders_sinav_programi module
+-----------------------------------------
 
-.. automodule:: ulakbus.models.hitap
+.. automodule:: ulakbus.models.ders_sinav_programi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.models.form module
+--------------------------
+
+.. automodule:: ulakbus.models.form
     :members:
     :undoc-members:
     :show-inheritance:

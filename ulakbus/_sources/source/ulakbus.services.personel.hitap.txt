@@ -4,6 +4,38 @@ ulakbus.services.personel.hitap package
 Submodules
 ----------
 
+ulakbus.services.personel.hitap.hitap_ekle module
+-------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hitap_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hitap_guncelle module
+-----------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hitap_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hitap_helper module
+---------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hitap_helper
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hitap_sil module
+------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hitap_sil
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hitap_sorgula module
 ----------------------------------------------------
 
@@ -20,10 +52,34 @@ ulakbus.services.personel.hitap.hitap_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_acik_sure_ekle module
+------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_acik_sure_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_acik_sure_getir module
 -------------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_acik_sure_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_acik_sure_guncelle module
+----------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_acik_sure_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_acik_sure_sil module
+-----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_acik_sure_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -36,10 +92,34 @@ ulakbus.services.personel.hitap.hizmet_acik_sure_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_askerlik_ekle module
+-----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_askerlik_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_askerlik_getir module
 ------------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_askerlik_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_askerlik_guncelle module
+---------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_askerlik_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_askerlik_sil module
+----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_askerlik_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -52,10 +132,34 @@ ulakbus.services.personel.hitap.hizmet_askerlik_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_birlestirme_ekle module
+--------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_birlestirme_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_birlestirme_getir module
 ---------------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_birlestirme_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_birlestirme_guncelle module
+------------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_birlestirme_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_birlestirme_sil module
+-------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_birlestirme_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -68,10 +172,34 @@ ulakbus.services.personel.hitap.hizmet_birlestirme_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_borclanma_ekle module
+------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_borclanma_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_borclanma_getir module
 -------------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_borclanma_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_borclanma_guncelle module
+----------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_borclanma_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_borclanma_sil module
+-----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_borclanma_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -84,10 +212,34 @@ ulakbus.services.personel.hitap.hizmet_borclanma_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_cetveli_ekle module
+----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_cetveli_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_cetveli_getir module
 -----------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_cetveli_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_cetveli_guncelle module
+--------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_cetveli_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_cetveli_sil module
+---------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_cetveli_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -100,10 +252,34 @@ ulakbus.services.personel.hitap.hizmet_cetveli_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_ihs_ekle module
+------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_ihs_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_ihs_getir module
 -------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_ihs_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_ihs_guncelle module
+----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_ihs_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_ihs_sil module
+-----------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_ihs_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -116,10 +292,34 @@ ulakbus.services.personel.hitap.hizmet_ihs_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_ekle module
+----------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_getir module
 -----------------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_guncelle module
+--------------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_sil module
+---------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -132,10 +332,34 @@ ulakbus.services.personel.hitap.hizmet_istisnai_ilgi_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_kurs_ekle module
+-------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_kurs_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_kurs_getir module
 --------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_kurs_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_kurs_guncelle module
+-----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_kurs_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_kurs_sil module
+------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_kurs_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -148,10 +372,34 @@ ulakbus.services.personel.hitap.hizmet_kurs_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_mahkeme_ekle module
+----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_mahkeme_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_mahkeme_getir module
 -----------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_mahkeme_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_mahkeme_guncelle module
+--------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_mahkeme_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_mahkeme_sil module
+---------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_mahkeme_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -164,10 +412,26 @@ ulakbus.services.personel.hitap.hizmet_mahkeme_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_nufus_ekle module
+--------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_nufus_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_nufus_getir module
 ---------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_nufus_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_nufus_guncelle module
+------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_nufus_guncelle
     :members:
     :undoc-members:
     :show-inheritance:
@@ -180,10 +444,34 @@ ulakbus.services.personel.hitap.hizmet_nufus_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_okul_ekle module
+-------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_okul_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_okul_getir module
 --------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_okul_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_okul_guncelle module
+-----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_okul_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_okul_sil module
+------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_okul_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -196,10 +484,34 @@ ulakbus.services.personel.hitap.hizmet_okul_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_tazminat_ekle module
+-----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_tazminat_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_tazminat_getir module
 ------------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_tazminat_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_tazminat_guncelle module
+---------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_tazminat_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_tazminat_sil module
+----------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_tazminat_sil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -212,10 +524,34 @@ ulakbus.services.personel.hitap.hizmet_tazminat_sync module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.personel.hitap.hizmet_unvan_ekle module
+--------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_unvan_ekle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.personel.hitap.hizmet_unvan_getir module
 ---------------------------------------------------------
 
 .. automodule:: ulakbus.services.personel.hitap.hizmet_unvan_getir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_unvan_guncelle module
+------------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_unvan_guncelle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.personel.hitap.hizmet_unvan_sil module
+-------------------------------------------------------
+
+.. automodule:: ulakbus.services.personel.hitap.hizmet_unvan_sil
     :members:
     :undoc-members:
     :show-inheritance:

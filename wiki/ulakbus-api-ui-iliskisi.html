@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -235,14 +237,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -308,24 +307,24 @@
 <div class="line">API&#8217;ın <code class="docutils literal"><span class="pre">Response</span></code> nesnesinde sayfaların yorumladığı datanın (<code class="docutils literal"><span class="pre">forms</span></code>, <code class="docutils literal"><span class="pre">objects</span></code>, <code class="docutils literal"><span class="pre">object</span></code>) dışında kullanıcı arayüzünü şekillendiren, işlev ekleyen bazı anahtarlar bulunmaktadır.</div>
 <div class="line">Bunlar aşağıdaki örnekte sıralanmıştır;</div>
 </div>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;client_cmd&quot;</span><span class="p">:[</span><span class="s">&quot;form&quot;</span><span class="p">],</span>
-    <span class="s">&quot;reload_cmd&quot;</span><span class="p">:</span><span class="s">&quot;add_edit_form&quot;</span><span class="p">,</span>
-    <span class="s">&quot;token&quot;</span><span class="p">:</span><span class="s">&quot;zxcv4321&quot;</span><span class="p">,</span>
-    <span class="s">&quot;meta&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;allow_search&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-        <span class="s">&quot;allow_selection&quot;</span><span class="p">:</span><span class="n">false</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;client_cmd&quot;</span><span class="p">:[</span><span class="s2">&quot;form&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;reload_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;zxcv4321&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;allow_search&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;allow_selection&quot;</span><span class="p">:</span><span class="n">false</span>
     <span class="p">},</span>
-    <span class="s">&quot;_debug_queries&quot;</span><span class="p">:[</span>
+    <span class="s2">&quot;_debug_queries&quot;</span><span class="p">:[</span>
         <span class="p">{</span>
-            <span class="s">&quot;TIMESTAMP&quot;</span><span class="p">:</span><span class="mf">1453289218.893847</span><span class="p">,</span>
-            <span class="s">&quot;BUCKET&quot;</span><span class="p">:</span><span class="s">&quot;models_user&quot;</span><span class="p">,</span>
-            <span class="s">&quot;KEY&quot;</span><span class="p">:</span><span class="s">&quot;7890yuhjk&quot;</span><span class="p">,</span>
-            <span class="s">&quot;TIME&quot;</span><span class="p">:</span><span class="mf">0.00275</span>
+            <span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">:</span><span class="mf">1453289218.893847</span><span class="p">,</span>
+            <span class="s2">&quot;BUCKET&quot;</span><span class="p">:</span><span class="s2">&quot;models_user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;KEY&quot;</span><span class="p">:</span><span class="s2">&quot;7890yuhjk&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TIME&quot;</span><span class="p">:</span><span class="mf">0.00275</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-    <span class="s">&quot;notify&quot;</span><span class="p">:</span> <span class="s">&quot;ornek bildirim text&quot;</span>
+    <span class="s2">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;notify&quot;</span><span class="p">:</span> <span class="s2">&quot;ornek bildirim text&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -447,49 +446,49 @@ sayfada yorumlanırlar.</div></blockquote>
 <div class="line">Kullanılan form nesneleri angular-schema-form&#8217;un beklediği formatta olmalı ya da değilse extend edilerek <cite>custom type</cite> yaratılmalıdır.</div>
 </div>
 <p>Örnek bir <code class="docutils literal"><span class="pre">forms</span></code> nesnesi aşağıdaki gibidir:</p>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;forms&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;constraints&quot;</span><span class="p">:{},</span>
-        <span class="s">&quot;model&quot;</span><span class="p">:{</span> <span class="s">&quot;ad&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span> <span class="s">&quot;soyad&quot;</span><span class="p">:</span><span class="n">null</span> <span class="p">},</span>
-        <span class="s">&quot;grouping&quot;</span><span class="p">:{},</span>
-        <span class="s">&quot;form&quot;</span><span class="p">:[</span>
-            <span class="p">{</span> <span class="s">&quot;helpvalue&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;help&quot;</span> <span class="p">},</span>
-            <span class="s">&quot;ad&quot;</span><span class="p">,</span>
-            <span class="s">&quot;soyad&quot;</span><span class="p">,</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;forms&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;constraints&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:{</span> <span class="s2">&quot;ad&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span> <span class="s2">&quot;soyad&quot;</span><span class="p">:</span><span class="n">null</span> <span class="p">},</span>
+        <span class="s2">&quot;grouping&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;form&quot;</span><span class="p">:[</span>
+            <span class="p">{</span> <span class="s2">&quot;helpvalue&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;help&quot;</span> <span class="p">},</span>
+            <span class="s2">&quot;ad&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;soyad&quot;</span><span class="p">,</span>
             <span class="p">{</span>
-                <span class="s">&quot;titleMap&quot;</span><span class="p">:[</span>
-                    <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Bay&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span>
-                    <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Bayan&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="mi">2</span> <span class="p">}</span>
+                <span class="s2">&quot;titleMap&quot;</span><span class="p">:[</span>
+                    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Bay&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Bayan&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="mi">2</span> <span class="p">}</span>
                 <span class="p">],</span>
-                <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;select&quot;</span><span class="p">,</span>
-                <span class="s">&quot;key&quot;</span><span class="p">:</span><span class="s">&quot;cinsiyet&quot;</span><span class="p">,</span>
-                <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Cinsiyet&quot;</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;cinsiyet&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Cinsiyet&quot;</span>
             <span class="p">},</span>
-            <span class="s">&quot;e_posta&quot;</span><span class="p">,</span>
-            <span class="s">&quot;dogum_tarihi&quot;</span><span class="p">,</span>
-            <span class="s">&quot;save_edit&quot;</span><span class="p">,</span>
-            <span class="s">&quot;nufus_kayitlari_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;e_posta&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dogum_tarihi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;save_edit&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nufus_kayitlari_id&quot;</span><span class="p">,</span>
         <span class="p">],</span>
-        <span class="s">&quot;schema&quot;</span><span class="p">:{</span>
-            <span class="s">&quot;required&quot;</span><span class="p">:[</span> <span class="s">&quot;ad&quot;</span><span class="p">,</span> <span class="s">&quot;soyad&quot;</span> <span class="p">],</span>
-            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;object&quot;</span><span class="p">,</span>
-            <span class="s">&quot;properties&quot;</span><span class="p">:{</span>
-                <span class="s">&quot;ad&quot;</span><span class="p">:{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;string&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Adı&quot;</span> <span class="p">},</span>
-                <span class="s">&quot;soyad&quot;</span><span class="p">:{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;string&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Soyadı&quot;</span> <span class="p">},</span>
-                <span class="s">&quot;e_posta&quot;</span><span class="p">:{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;string&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;E-Posta&quot;</span> <span class="p">},</span>
-                <span class="s">&quot;save_edit&quot;</span><span class="p">:{</span> <span class="s">&quot;cmd&quot;</span><span class="p">:</span><span class="s">&quot;save::add_edit_form&quot;</span><span class="p">,</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;button&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Kaydet&quot;</span> <span class="p">},</span>
-                <span class="s">&quot;nufus_kayitlari_id&quot;</span><span class="p">:{</span>
-                    <span class="s">&quot;list_cmd&quot;</span><span class="p">:</span><span class="s">&quot;select_list&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Nüfus Bilgileri&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;wf&quot;</span><span class="p">:</span><span class="s">&quot;crud&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;add_cmd&quot;</span><span class="p">:</span><span class="s">&quot;add_edit_form&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;model&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;model_name&quot;</span><span class="p">:</span><span class="s">&quot;NufusKayitlari&quot;</span>
+        <span class="s2">&quot;schema&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:[</span> <span class="s2">&quot;ad&quot;</span><span class="p">,</span> <span class="s2">&quot;soyad&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;ad&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Adı&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;soyad&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Soyadı&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;e_posta&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;E-Posta&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;save_edit&quot;</span><span class="p">:{</span> <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;save::add_edit_form&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Kaydet&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;nufus_kayitlari_id&quot;</span><span class="p">:{</span>
+                    <span class="s2">&quot;list_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;select_list&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Nüfus Bilgileri&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;add_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;model_name&quot;</span><span class="p">:</span><span class="s2">&quot;NufusKayitlari&quot;</span>
                 <span class="p">},</span>
-                <span class="s">&quot;dogum_tarihi&quot;</span><span class="p">:{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;date&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Doğum Tarihi&quot;</span> <span class="p">},</span>
-                <span class="s">&quot;cinsiyet&quot;</span><span class="p">:{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;select&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Cinsiyet&quot;</span> <span class="p">}</span>
+                <span class="s2">&quot;dogum_tarihi&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Doğum Tarihi&quot;</span> <span class="p">},</span>
+                <span class="s2">&quot;cinsiyet&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Cinsiyet&quot;</span> <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Personel&quot;</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Personel&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -506,8 +505,8 @@ sayfada yorumlanırlar.</div></blockquote>
 <div class="line"><code class="docutils literal"><span class="pre">schema</span></code> anahtarının alt özellikleri vardır. Bunlardan <code class="docutils literal"><span class="pre">required</span></code> bir liste halinde doldurulması gerekli alanları gösterir.</div>
 <div class="line"><code class="docutils literal"><span class="pre">properties</span></code> anahtarında <code class="docutils literal"><span class="pre">form</span></code> anahtarında belirtilen alanların özelliklerinin yer aldığı anahtardır.</div>
 </div>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;e_posta&quot;</span><span class="p">:{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;string&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;E-Posta&quot;</span> <span class="p">}</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;e_posta&quot;</span><span class="p">:{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;E-Posta&quot;</span> <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -553,13 +552,13 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 <div class="line">Grid sistem baz alınarak gruplanan elemanlara alan değerleri atanır. <code class="docutils literal"><span class="pre">layout</span></code> değeri 12 birimlik alanda kaç birim olarak yer alacağını gösterir.</div>
 <div class="line">Aşağıda bu özelliğin bir örneği görülebilir:</div>
 </div>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;grouping&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;grouping&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s">&quot;group_title&quot;</span><span class="p">:</span> <span class="s">&quot;Gorev&quot;</span><span class="p">,</span>
-            <span class="s">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;gorev_tipi&quot;</span><span class="p">,</span> <span class="s">&quot;birim&quot;</span><span class="p">,</span> <span class="s">&quot;aciklama&quot;</span><span class="p">],</span>
-            <span class="s">&quot;layout&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span><span class="p">,</span>
-            <span class="s">&quot;collapse&quot;</span><span class="p">:</span> <span class="n">false</span>
+            <span class="s2">&quot;group_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Gorev&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gorev_tipi&quot;</span><span class="p">,</span> <span class="s2">&quot;birim&quot;</span><span class="p">,</span> <span class="s2">&quot;aciklama&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;layout&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;collapse&quot;</span><span class="p">:</span> <span class="n">false</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -593,63 +592,63 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 </div></blockquote>
 </li>
 </ul>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;forms&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;constraints&quot;</span><span class="p">:{},</span>
-        <span class="s">&quot;model&quot;</span><span class="p">:{</span> <span class="s">&quot;add&quot;</span><span class="p">:</span> <span class="n">null</span> <span class="p">},</span>
-        <span class="s">&quot;grouping&quot;</span><span class="p">:{},</span>
-        <span class="s">&quot;form&quot;</span><span class="p">:[</span> <span class="s">&quot;add&quot;</span> <span class="p">],</span>
-        <span class="s">&quot;schema&quot;</span><span class="p">:{</span>
-            <span class="s">&quot;required&quot;</span><span class="p">:[</span> <span class="s">&quot;add&quot;</span> <span class="p">],</span>
-            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;object&quot;</span><span class="p">,</span>
-            <span class="s">&quot;properties&quot;</span><span class="p">:{</span>
-                <span class="s">&quot;add&quot;</span><span class="p">:{</span>
-                    <span class="s">&quot;cmd&quot;</span><span class="p">:</span><span class="s">&quot;add_edit_form&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;button&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Ekle&quot;</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;forms&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;constraints&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:{</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span> <span class="n">null</span> <span class="p">},</span>
+        <span class="s2">&quot;grouping&quot;</span><span class="p">:{},</span>
+        <span class="s2">&quot;form&quot;</span><span class="p">:[</span> <span class="s2">&quot;add&quot;</span> <span class="p">],</span>
+        <span class="s2">&quot;schema&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:[</span> <span class="s2">&quot;add&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;add&quot;</span><span class="p">:{</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Ekle&quot;</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;Personeller&quot;</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Personeller&quot;</span>
         <span class="p">}</span>
     <span class="p">},</span>
-    <span class="s">&quot;pagination&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;per_page&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span>
-        <span class="s">&quot;total_objects&quot;</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span>
-        <span class="s">&quot;total_pages&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
-        <span class="s">&quot;page&quot;</span><span class="p">:</span><span class="mi">1</span>
+    <span class="s2">&quot;pagination&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;per_page&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;total_objects&quot;</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span>
+        <span class="s2">&quot;total_pages&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span><span class="mi">1</span>
     <span class="p">},</span>
-    <span class="s">&quot;objects&quot;</span><span class="p">:[</span>
-        <span class="p">[</span> <span class="s">&quot;Adı&quot;</span><span class="p">,</span> <span class="s">&quot;Soyadı&quot;</span><span class="p">,</span> <span class="s">&quot;TC No&quot;</span><span class="p">,</span> <span class="s">&quot;Durum&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;objects&quot;</span><span class="p">:[</span>
+        <span class="p">[</span> <span class="s2">&quot;Adı&quot;</span><span class="p">,</span> <span class="s2">&quot;Soyadı&quot;</span><span class="p">,</span> <span class="s2">&quot;TC No&quot;</span><span class="p">,</span> <span class="s2">&quot;Durum&quot;</span> <span class="p">],</span>
         <span class="p">{</span>
-            <span class="s">&quot;fields&quot;</span><span class="p">:[</span>
-                <span class="s">&quot;Işık&quot;</span><span class="p">,</span>
-                <span class="s">&quot;Ülker&quot;</span><span class="p">,</span>
-                <span class="s">&quot;19189958696&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fields&quot;</span><span class="p">:[</span>
+                <span class="s2">&quot;Işık&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Ülker&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;19189958696&quot;</span><span class="p">,</span>
                 <span class="n">null</span>
             <span class="p">],</span>
-            <span class="s">&quot;actions&quot;</span><span class="p">:[</span>
+            <span class="s2">&quot;actions&quot;</span><span class="p">:[</span>
                 <span class="p">{</span>
-                    <span class="s">&quot;fields&quot;</span><span class="p">:[</span>
+                    <span class="s2">&quot;fields&quot;</span><span class="p">:[</span>
                         <span class="mi">0</span>
                     <span class="p">],</span>
-                    <span class="s">&quot;cmd&quot;</span><span class="p">:</span><span class="s">&quot;show&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;mode&quot;</span><span class="p">:</span><span class="s">&quot;normal&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;show_as&quot;</span><span class="p">:</span><span class="s">&quot;link&quot;</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;show&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;show_as&quot;</span><span class="p">:</span><span class="s2">&quot;link&quot;</span>
                 <span class="p">},</span>
                 <span class="p">{</span>
-                    <span class="s">&quot;cmd&quot;</span><span class="p">:</span><span class="s">&quot;add_edit_form&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Düzenle&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;show_as&quot;</span><span class="p">:</span><span class="s">&quot;button&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;mode&quot;</span><span class="p">:</span><span class="s">&quot;normal&quot;</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Düzenle&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;show_as&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;normal&quot;</span>
                 <span class="p">},</span>
                 <span class="p">{</span>
-                    <span class="s">&quot;cmd&quot;</span><span class="p">:</span><span class="s">&quot;delete&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Sil&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;show_as&quot;</span><span class="p">:</span><span class="s">&quot;button&quot;</span><span class="p">,</span>
-                    <span class="s">&quot;mode&quot;</span><span class="p">:</span><span class="s">&quot;normal&quot;</span>
+                    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span><span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Sil&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;show_as&quot;</span><span class="p">:</span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;normal&quot;</span>
                 <span class="p">}</span>
             <span class="p">],</span>
-            <span class="s">&quot;key&quot;</span><span class="p">:</span><span class="s">&quot;1234qwer&quot;</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;1234qwer&quot;</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -660,15 +659,15 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 <h3>Detay sayfası<a class="headerlink" href="#detay-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Detay sayfasında gösterilmek istenen nesne anahtar değer olarak sıralanır.
 Örnekte bir kişi kaydının anahtar değerleri görülmektedir.</p>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;object&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;Cep Telefonu&quot;</span><span class="p">:</span><span class="s">&quot;+90 (259) 6925396&quot;</span><span class="p">,</span>
-        <span class="s">&quot;Cinsiyet&quot;</span><span class="p">:</span><span class="s">&quot;Erkek&quot;</span><span class="p">,</span>
-        <span class="s">&quot;Soyadı&quot;</span><span class="p">:</span><span class="s">&quot;Arsoy&quot;</span><span class="p">,</span>
-        <span class="s">&quot;TC No&quot;</span><span class="p">:</span><span class="s">&quot;63488661696&quot;</span><span class="p">,</span>
-        <span class="s">&quot;Adı&quot;</span><span class="p">:</span><span class="s">&quot;Kutun&quot;</span><span class="p">,</span>
-        <span class="s">&quot;Doğum Tarihi&quot;</span><span class="p">:</span><span class="s">&quot;03.04.1969&quot;</span><span class="p">,</span>
-        <span class="s">&quot;E-Posta&quot;</span><span class="p">:</span><span class="s">&quot;daslan@arsoy.com&quot;</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;object&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;Cep Telefonu&quot;</span><span class="p">:</span><span class="s2">&quot;+90 (259) 6925396&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Cinsiyet&quot;</span><span class="p">:</span><span class="s2">&quot;Erkek&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Soyadı&quot;</span><span class="p">:</span><span class="s2">&quot;Arsoy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TC No&quot;</span><span class="p">:</span><span class="s2">&quot;63488661696&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Adı&quot;</span><span class="p">:</span><span class="s2">&quot;Kutun&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Doğum Tarihi&quot;</span><span class="p">:</span><span class="s2">&quot;03.04.1969&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;E-Posta&quot;</span><span class="p">:</span><span class="s2">&quot;daslan@arsoy.com&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -691,62 +690,62 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 <li><code class="docutils literal"><span class="pre">settings</span></code> anahtarı API tarafından kullanıcı arayüzü konfigürasyonu için kullanılacak değerleri içerir. Şu anda static url path bu ayarlarda yer almaktadır.</li>
 <li><code class="docutils literal"><span class="pre">current_user</span></code> anahtarında giriş yapan kullanıcı bilgileri, rolleri, o anda hangi rolde işlem yaptığı ve kullanıcı avatarı yer almaktadır.</li>
 </ul>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;ogrenci&quot;</span><span class="p">:[</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;ogrenci&quot;</span><span class="p">:[</span>
         <span class="p">{</span>
-            <span class="s">&quot;kategori&quot;</span><span class="p">:</span><span class="s">&quot;Seçime Uygun Görevler&quot;</span><span class="p">,</span>
-            <span class="s">&quot;text&quot;</span><span class="p">:</span><span class="s">&quot;Devam Durumu&quot;</span><span class="p">,</span>
-            <span class="s">&quot;model&quot;</span><span class="p">:</span><span class="s">&quot;DersKatilimi&quot;</span><span class="p">,</span>
-            <span class="s">&quot;param&quot;</span><span class="p">:</span><span class="s">&quot;ogrenci_id&quot;</span><span class="p">,</span>
-            <span class="s">&quot;wf&quot;</span><span class="p">:</span><span class="s">&quot;crud&quot;</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Seçime Uygun Görevler&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Devam Durumu&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;DersKatilimi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;ogrenci_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s">&quot;personel&quot;</span><span class="p">:[</span>
+    <span class="s2">&quot;personel&quot;</span><span class="p">:[</span>
         <span class="p">{</span>
-            <span class="s">&quot;kategori&quot;</span><span class="p">:</span><span class="s">&quot;Seçime Uygun Görevler&quot;</span><span class="p">,</span>
-            <span class="s">&quot;text&quot;</span><span class="p">:</span><span class="s">&quot;Kimlik ve Iletisim Bilgileri&quot;</span><span class="p">,</span>
-            <span class="s">&quot;model&quot;</span><span class="p">:</span><span class="s">&quot;Personel&quot;</span><span class="p">,</span>
-            <span class="s">&quot;param&quot;</span><span class="p">:</span><span class="s">&quot;object_id&quot;</span><span class="p">,</span>
-            <span class="s">&quot;wf&quot;</span><span class="p">:</span><span class="s">&quot;kimlik_ve_iletisim_bilgileri&quot;</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Seçime Uygun Görevler&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Kimlik ve Iletisim Bilgileri&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;Personel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;object_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;kimlik_ve_iletisim_bilgileri&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s">&quot;settings&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;static_url&quot;</span><span class="p">:</span><span class="s">&quot;http://ulakbus.3s.ulakbus.net/&quot;</span>
+    <span class="s2">&quot;settings&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;static_url&quot;</span><span class="p">:</span><span class="s2">&quot;http://ulakbus.3s.ulakbus.net/&quot;</span>
     <span class="p">},</span>
-    <span class="s">&quot;other&quot;</span><span class="p">:[</span>
+    <span class="s2">&quot;other&quot;</span><span class="p">:[</span>
         <span class="p">{</span>
-            <span class="s">&quot;kategori&quot;</span><span class="p">:</span><span class="s">&quot;Genel&quot;</span><span class="p">,</span>
-            <span class="s">&quot;text&quot;</span><span class="p">:</span><span class="s">&quot;Personeller&quot;</span><span class="p">,</span>
-            <span class="s">&quot;model&quot;</span><span class="p">:</span><span class="s">&quot;Personel&quot;</span><span class="p">,</span>
-            <span class="s">&quot;param&quot;</span><span class="p">:</span><span class="s">&quot;other_id&quot;</span><span class="p">,</span>
-            <span class="s">&quot;wf&quot;</span><span class="p">:</span><span class="s">&quot;crud&quot;</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Genel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Personeller&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;Personel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;other_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s">&quot;current_user&quot;</span><span class="p">:{</span>
-        <span class="s">&quot;username&quot;</span><span class="p">:</span><span class="s">&quot;test_user&quot;</span><span class="p">,</span>
-        <span class="s">&quot;is_staff&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-        <span class="s">&quot;surname&quot;</span><span class="p">:</span><span class="s">&quot;Stallman&quot;</span><span class="p">,</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Richard&quot;</span><span class="p">,</span>
-        <span class="s">&quot;roles&quot;</span><span class="p">:[</span>
+    <span class="s2">&quot;current_user&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;test_user&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_staff&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;surname&quot;</span><span class="p">:</span><span class="s2">&quot;Stallman&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;roles&quot;</span><span class="p">:[</span>
             <span class="p">{</span>
-                <span class="s">&quot;role&quot;</span><span class="p">:</span><span class="s">&quot;Role BaseAbsRole | test_user&quot;</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;Role BaseAbsRole | test_user&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s">&quot;role&quot;</span><span class="p">:</span><span class="s">&quot;Role W.C. Hero test_user&quot;</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;Role W.C. Hero test_user&quot;</span>
             <span class="p">}</span>
         <span class="p">],</span>
-        <span class="s">&quot;role&quot;</span><span class="p">:</span><span class="s">&quot;BaseAbsRole&quot;</span><span class="p">,</span>
-        <span class="s">&quot;is_student&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
-        <span class="s">&quot;avatar&quot;</span><span class="p">:</span><span class="s">&quot;http://ulakbus.3s.ulakbus.net/abcd.jpg&quot;</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;BaseAbsRole&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_student&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;avatar&quot;</span><span class="p">:</span><span class="s2">&quot;http://ulakbus.3s.ulakbus.net/abcd.jpg&quot;</span>
     <span class="p">},</span>
-    <span class="s">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-    <span class="s">&quot;quick_menu&quot;</span><span class="p">:[</span>
+    <span class="s2">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;quick_menu&quot;</span><span class="p">:[</span>
         <span class="p">{</span>
-            <span class="s">&quot;kategori&quot;</span><span class="p">:</span><span class="s">&quot;Genel&quot;</span><span class="p">,</span>
-            <span class="s">&quot;text&quot;</span><span class="p">:</span><span class="s">&quot;Programlar&quot;</span><span class="p">,</span>
-            <span class="s">&quot;model&quot;</span><span class="p">:</span><span class="s">&quot;Program&quot;</span><span class="p">,</span>
-            <span class="s">&quot;param&quot;</span><span class="p">:</span><span class="s">&quot;other_id&quot;</span><span class="p">,</span>
-            <span class="s">&quot;wf&quot;</span><span class="p">:</span><span class="s">&quot;crud&quot;</span>
+            <span class="s2">&quot;kategori&quot;</span><span class="p">:</span><span class="s2">&quot;Genel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;Programlar&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;Program&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;other_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wf&quot;</span><span class="p">:</span><span class="s2">&quot;crud&quot;</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -781,8 +780,8 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
         <li class="right" >
           <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

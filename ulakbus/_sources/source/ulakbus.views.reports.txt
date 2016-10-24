@@ -12,10 +12,26 @@ ulakbus.views.reports.base module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.views.reports.ders_ucreti_hesaplama module
+--------------------------------------------------
+
+.. automodule:: ulakbus.views.reports.ders_ucreti_hesaplama
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.views.reports.ogrenci module
 ------------------------------------
 
 .. automodule:: ulakbus.views.reports.ogrenci
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.reports.okutman_ders_ucreti_goruntuleme module
+------------------------------------------------------------
+
+.. automodule:: ulakbus.views.reports.okutman_ders_ucreti_goruntuleme
     :members:
     :undoc-members:
     :show-inheritance:

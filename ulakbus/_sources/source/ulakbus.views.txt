@@ -8,9 +8,11 @@ Subpackages
 
     ulakbus.views.common
     ulakbus.views.ders
+    ulakbus.views.ders_programi
     ulakbus.views.ogrenci
     ulakbus.views.personel
     ulakbus.views.reports
+    ulakbus.views.sinav_programi
 
 Submodules
 ----------
