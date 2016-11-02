@@ -1,154 +1,118 @@
-++++++++++++++++++++++++
-ULAKBUS UI--API İlişkisi
-++++++++++++++++++++++++
++++++++++++++++++++++++++
+Ulakbüs UI - API ilişkisi
++++++++++++++++++++++++++
 
-========================
-ULAKBUS UI--API İlişkisi
-========================
+=========================
+Ulakbüs UI - API ilişkisi
+=========================
 
 | Bu belge **Ulakbus UI ve API** bileşenlerinin etkileşimini göstermek için hazırlanmıştır.
 | API kullanılarak hazırlanan view, model ve jenerik fonksiyonlarda hangi tip verinin kullanıcı arayüzünde nasıl gösterildiğini bu belgede bulabilirsiniz.
 
-UI Nasıl Başlar?
-~~~~~~~~~~~~~~~~
+***********
+UI hakkında
+***********
 
 | Ulakbus kullanıcı arayüzü tek sayfalı bir tarayıcı uygulamasıdır.
-| Sayfadaki data dinamik olarak `Ulakbus API` tarafından sağlanır ve arayüzde işlenir.
+| Sayfadaki data dinamik olarak Ulakbus API tarafından sağlanır ve arayüzde işlenir.
 | Veri sunucu tarafında render edilmez, yani bir html dosyasına işlenerek gönderilmez.
+| Sunucu tarafından gönderilen tüm verilerin yapısı ``JSON``'dır.
 |
-| Bu iş için angularjs_ tercih edilmiştir.
-|
-| UI sunucudan istendiğinde bağımlı olduğu statik dosyalar edinildikten sonra ``app.js`` dosyasının yorumlanmasıyla başlar. Bu dosyada ``ulakbus`` modülü başlatılır.
-| AngularJS DI_ (dependency injection) modeline göre bağımlılıklar işlenir.
-|
-| ``app_routes.js`` dosyasında uygulamanın sayfaları ve kullanacakları controller'lar ve template'leri düzenlenmiştir.
-| Bu dosyaya göre istenen sayfa ilgili template ve controller ile yorumlanır.
-|
-| CRUD işlemleri ``crud_controller.js`` dosyasında tanımlanan CRUDListFormCtrl isimli controller ve ``form_service.js`` dosyasında tanımlanan form_service isimli servisle gerçekleştirilir.
-|
-| Kullanıcı arayüzü başlatıldığında ilk olarak API'dan menu sorgusu çekilir.
-| Bunun nedeni giriş yapan kullanıcı bilgilerinin de bu sorguda dönmesidir.
-| Eğer http-401 hata kodu dönerse kullanıcı girişi yapılmamış anlamına gelir ve UI login sayfasına yönlendirir.
+| Kullanıcı arayüzünü hazırlamak için `AngularJS <https://angularjs.org/>`_ kütüphanesi kullanılmıştır.
+| 
+| UI tamamıyla statik dosyalardan oluşmaktadır. ``index.html`` dosyası tarayıcı tarafından işlendikten sonra uygulama başlar.
+| 
+| Sayfa hazır olduktan sonra ``app.js`` dosyası çalışıp gerekli modülleri ve bağımlılıkları tanımlar.
+| Uygulamanın ana modülü ``ulakbus`` modülüdür.
+| 
+| ``app_routes.js`` dosyasında uygulamanın sayfaları ve kullanacakları ``controller``’lar ve ``template``’leri düzenlenmiştir.
+| Bu dosyaya göre istenen sayfa ilgili ``template`` ve ``controller`` ile yorumlanır.
 
-.. _angularjs: https://angularjs.org
-.. _DI: https://docs.angularjs.org/guide/di
 
-Veri - UI ilişkisi
-~~~~~~~~~~~~~~~~~~
+UI başlangıcı
+=============
 
-| Kullanıcı arayüzü veriyi API'a yaptığı rest sorgular üzerinden alır ve gönderir. Veriyle doğrudan ilişkisi yoktur.
-| Bir kullanıcı giriş yaptığında onun erişebileceği veriler Ulakbus API'da düzenlenip kullanıcı arayüzüne sunulur.
+| Uygulamanın bağlandığı kararlı api sunucusu ``http://api.ulakbus.net`` adresinde bulunur. Geliştirme ortamı için ``http://nightly.api.ulakbus.net`` adresinde bulunur. 
+| Kararlı api sunucusu varsayılan sunucudur.
+| Yerel yada başka bir adresteki sunucuyu kullanmak için başlangıç adresinde “backendurl” parametresi ile adresi girmeniz gerekmektedir. Yerel geliştirme ortamında nightly sunucusuna bağlanmak için adres satırına ``http://localhost/?backendurl=http://nightly.api.ulakbus.net`` yazmanız yeterlidir.
+| 
+| Uygulama başlatılıp tüm modül tanımlarmaları yapıldıktan sonra tarayıcı kullanıcıyı ``/dashboard`` adresine yönlendirir. Uygulamanın en başında kullanıcının login durumu kontrol eder ve kullanıcı mevcut değil ise ``/login`` ekranına yönlendirilir.
 
-Genel
-~~~~~
 
-| Ulakbus kullanıcı arayüzü yapacağı işlemlerle ilgili komutları API'dan alacak şekilde kurgulanmıştır.
-| Kullanıcı arayüzü Ulakbus API tarafından kullanılan bir araç olarak düşünülebilir.
-| API o anda kullanıcının neler yapabileceğini, sayfa öğelerini, sayfa öğelerinin konumlandırılmalarını belirleyici veriyi arayüze sağlar ve arayüz bu veriye göre yorumlanır.
-| Kullanıcı arayüzü dummy bir uygulama olarak tasarlanmıştır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.
+Login işlemi
+------------
+
+| Login işlemi için ``http://api.ulakbus.net/login`` adresine kullanıcı parametreleriyle XHR istegi gönderilir.
+| Gelen yanıt ``JSON`` nesnesinde ``cmd`` parametresini baz alarak işlemin sonucunu değerlendirilir. ``cmd``, ``upgrade`` veya ``retry`` gelebilir.
 |
+| ``upgrade`` yanıtıyla birlikte ``ws://api.ulakbus.net/ws`` adresinde websocket açılır. Kullanıcı ``/dashboard``'a yönlendirilir. Geri kalan tüm iletişim websocket üzerinden yönetilir.
+|
+| Yanlış bilgi girildiğinde ``retry`` yanıtı alınır ve kullanıcı tekrar ``/login`` sayfasına yönlendirilir. Başka aksiyon alınmaz.
+
+
+Dashboard
+---------
+
+| Kullanıcı login olduktan sonra dashboard ekranına geldiği anda ``{view: 'dashboard'}`` isteği yapılır. bu isteğin yanıtında kullacının bilgisi ve de kulanıcı menüleri gelir.
+| 
 | Ulakbus uygulaması iş akışı tabanlı bir uygulamadır. BPMN 2.0 standartlarını kullanır.
-| İş akış şemaları yani *workflow* lar bpmn formatında backend API'da oluşturulur.
+| İş akış şemaları yani ``workflow`` lar bpmn formatında backend API’da oluşturulur.
 | Bu iş akış şemaları kendilerine ait model ve view metotlarını kullanarak tanımlanan işi belirlenen adımlarla gerçekleştirirler.
-|
-| İş akışının arayüzde akışa uygun şekilde gerçekleştirilmesi için kullanılacak anahtar-değerler ( *key-value* ) API
-| tarafından ``response`` nesnesinde arayüze gönderilir ve arayüz tarafından yorumlanır.
-|
-| API'ın ``Response`` nesnesinde sayfaların yorumladığı datanın (``forms``, ``objects``, ``object``) dışında kullanıcı arayüzünü şekillendiren, işlev ekleyen bazı anahtarlar bulunmaktadır.
-| Bunlar aşağıdaki örnekte sıralanmıştır;
-
-.. code:: json
-
-    {
-        "client_cmd":["form"],
-        "reload_cmd":"add_edit_form",
-        "token":"zxcv4321",
-        "meta":{
-            "allow_search":true,
-            "allow_selection":false
-        },
-        "_debug_queries":[
-            {
-                "TIMESTAMP":1453289218.893847,
-                "BUCKET":"models_user",
-                "KEY":"7890yuhjk",
-                "TIME":0.00275
-            }
-        ],
-        "is_login":true,
-        "notify": "ornek bildirim text"
-    }
-
-client_cmd
-^^^^^^^^^^
-
-| ``client_cmd`` anahtarı arayüzün yapması istenen komutu taşır. Bu komutlar şunları kapsar; **list**, **form**, **show**, **reload**, **reset**.
-
-- **form** gönderilen datanın `forms` nesnesi taşıdığı ve kullanıcı arayüzünün bunu form olarak yorumlaması gerektiği durumlarda kullanılır.
-- **list** sayfada listelenmesi istenen bir data olduğunda kullanılır. Bu data *table* olarak listelenir.
-- **show** komutu sayfada detay bilgileriyle gösterilmek istenen bır data olduğunda kullanılır.
-- **reload** komutu sayfada gösterilen datada bir değişiklik olduğu ve datanın API'dan yeniden istenmesi gerektiği durumlarda kullanılır.
-- **reset** komutu datanın ek parametreler olmadan yeniden çekilmesi için kullanılır.
-
-| Bu komutlar oluşturulan workflow'ların ilgili adımlarında kullanılarak arayüzün istenen şekilde davranması için gereklidir.
-
-    **form**, **list** ve **show** komutları birer liste öğesi olarak bir arada gönderilebilir.
 
 
-reload_cmd
-^^^^^^^^^^
+Api response
+------------
 
-| ``reload_cmd`` anahtarı ``"client_cmd": "reload"`` olması durumunda arayüzün backend API'dan isteyeceği komutu taşır.
-| UI post datası içinde ``cmd`` anahtarında bu değeri gönderir.
+Kullanıcı kendine ait işakışlarına menüler aracılığıyla ulaşır.
+Kullanıcı bir iş akışı başlattığında api ye başlattığı iş akışının model ve workflow bilgisini gönderir. Api den gelen bilgiler ile UI tarafından yorumlanır. Yorumlama işlemi ``CRUDListFormController`` tarafından yapılmaktadır. 
 
-token
-^^^^^
+Gelen yanıt içerisinde yer alan ``client_cmd`` parametresine göre yorumlama tipi seçilir. 
+``client_cmd`` değeri ``show``, ``list``, ``form``, ``reload`` veya ``reset`` olabilir.
 
-| ``token`` anahtarında iş akış şemasının ( *workflow* ) redis'te tutulan token değeri vardır.
-| İş akışı tamamlanmadığı sürece bu token `request` nesnesinde API'a gönderilir.
++ ``form`` gönderilen datanın ``forms`` nesnesi taşıdığı ve kullanıcı arayüzünün bunu form olarak yorumlaması gerektiği durumlarda kullanılır.
++ ``list`` sayfada listelenmesi istenen bir data olduğunda kullanılır. Bu data table olarak listelenir.
++ ``show`` komutu sayfada detay bilgileriyle gösterilmek istenen bır data olduğunda kullanılır.
++ ``reload`` komutu sayfada gösterilen datada bir değişiklik olduğu ve datanın API’dan yeniden istenmesi gerektiği durumlarda kullanılır.
++ ``reset`` komutu datanın ek parametreler olmadan yeniden çekilmesi için kullanılır.
 
-meta
-^^^^
+Bu komutlar oluşturulan iş akışlarının ilgili adımlarında kullanılarak arayüzün istenen şekilde davranması için gereklidir.
 
-| ``meta`` anahtarında arayüzde istenen yapılandırmalar yer alır. Boolean değer taşırlar. Bunlar şunlardır;
+Diğer yanıt parametreleri forms, meta, objects, pagination, reload_cmd, token, callbackID, notify, is_login olabilir.
 
-- **allow_search** Listeleme ekranında arama kutusunun gösterilmesi için kullanılır.
-- **allow_selection** Listeleme ekranında tablonun solunda selectBox yer alması için kullanılır.
-- **allow_sort** Listeleme ekranındaki sıralama özelliği için kullanılır.
-- **allow_filter** Listelenen datanın filtrelemesi için kullanılır.
-- **allow_actions** ListNode tipinde listelenen data için en sağdaki işlemler kolonunun gösterilmesi için kullanılır.
-- **translate_widget** Katalod verilerin düzenleneceği ekran için oluşturulan widget'dır. Aynı zamanda çeviri işlemleri için kullanılacaktır. Boolean tipinde değer alır.
+* ``reload_cmd`` anahtarı ``"client_cmd": "reload"`` olması durumunda arayüzün backend API’dan isteyeceği komutu taşır. UI post datası içinde cmd anahtarında bu değeri gönderir.
 
-_debug_queries
-^^^^^^^^^^^^^^
+* ``token`` anahtarında iş akış şemasının (``workflow``) redis’te tutulan token değeri vardır. İş akışı tamamlanmadığı sürece bu token request nesnesinde API’a gönderilir.
 
-| ``_debug_queries`` anahtarı geliştiriciler için yardımcı bir anahtardır.
-| Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır.
-| Aktif olması için API ortamında çevre değişkeni DEBUG=1 olarak set edilmelidir.
+* ``callbackID`` UI tarafından üretilip gönderilmektedir. Yanıt içerisinde bulunuyorsa UI tarafından yapılan bir isteğin yanıtı olduğu anlamına gelmektedir. Uygulama genelinde yapılan isteklerde Javascript Promise alt yapısı kullanılarak asenkron istek yapılmaktadır. Bekleyen promise resolve edilerek iş akışının devamı sağlanmaktadır.
 
-is_login
-^^^^^^^^
+* ``meta`` anahtarında arayüzde istenen yapılandırmalar yer alır. Boolean değer taşırlar. Bunlar şunlardır;
+    - ``allow_search`` Listeleme ekranında arama kutusunun gösterilmesi için kullanılır.
+    - ``allow_selection`` Listeleme ekranında tablonun solunda selectBox yer alması için kullanılır.
+    - ``allow_sort`` Listeleme ekranındaki sıralama özelliği için kullanılır.
+    - ``allow_filter`` Listelenen datanın filtrelemesi için kullanılır.
+    - ``allow_actions`` ListNode tipinde listelenen data için en sağdaki işlemler kolonunun gösterilmesi için kullanılır.
+    - ``translate_widget`` Katalog verilerin düzenleneceği ekran için oluşturulan widget’dır. Aynı zamanda çeviri işlemleri için kullanılacaktır. Boolean tipinde değer alır.
 
-| ``is_login`` anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır.
-| Bu anahtar *false* değer taşıdığında arayüz login sayfasına yönlendirir.
+* ``_debug_queries`` anahtarı geliştiriciler için yardımcı bir anahtardır. Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır. Aktif olması için API ortamında çevre değişkeni ``DEBUG=1`` olarak atanmalıdır.
 
-notify
-^^^^^^
+* ``is_login`` anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır. Bu anahtar ``false`` değer taşıdığında arayüz login sayfasına yönlendirir.
 
-| ``notify`` anahtarı ile gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.
+* ``notify`` ayayüzde bildirim göstermek için kullanılır. Gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.
+
+* ``pagination`` anahtarı listeleme gösterimlarinde sayfalama bilgisini bulundurur.
 
 
-Ulakbüs UI Sayfa Tipleri
-------------------------
+Ulakbüs UI Öğeleri
+------------------
 
-| Ulakbüs kullanıcı arayüzünde sunulan temel içerik türleri şunlardır;
+| Ulakbüs kullanıcı arayüzünde sunulan temel öğeler şunlardır;
 
--  Form sayfası - `Ekleme ve düzenleme işlemleri`
--  Liste sayfası - `Listeleme, arama, filtreleme ve silme işlemleri`
--  Detay sayfası - `Tek nesne detay ve rapor ekranları`
+- Form öğesi - Ekleme ve düzenleme işlemleri
+- Liste öğesi - Listeleme, arama, filtre ve silme işlemleri
+- Detay öğesi - Tek nesne detay ve rapor ekranları
 
-| Bu içerik türleri API'ın iş akışlarında sunduğu temel içerik türleridir.
-| Bu içerik türlerinin kullanıcı arayüzünde doğru biçimde yorumlanması için ``response`` nesnesinde gönderilecek anahtar değerler belirlenmiştir.
+| Bu öğe türleri API’ın iş akışlarında sunduğu temel içerik türleridir.
+| Bu içerik türlerinin kullanıcı arayüzünde doğru biçimde yorumlanması için API yanıtı içerisinde gönderilecek anahtar değerler belirlenmiştir.
 | Bu anahtarlar aşağıdaki tablodaki gibidir;
 
 +---------------+---------------+
@@ -161,21 +125,25 @@ Ulakbüs UI Sayfa Tipleri
 | Detay         | ``object``    |
 +---------------+---------------+
 
-    Bu sayfa tipleri ``response`` nesnesinde aynı anda yer alırlarsa
-    yukarıdan aşağıya doğru detay > form > liste olacak şekilde aynı
-    sayfada yorumlanırlar.
 
-Her sayfaya ait alt özellikler ilgili başlık altında anlatılacaktır.
+| İçerik türleri aynı sayfa içerisinde bulunabilir. Bu koşulda
 
-Form sayfası
-~~~~~~~~~~~~
+1. detay
+2. form
+3. liste
+
+| sırasına uygun şekilde aynı sayfada listelenir
+
+
+Form Öğesi
+~~~~~~~~~~
 
 | Ulakbus UI form işlemlerini gerçekleştirmek için angular-schema-form_ extend edilmiştir.
 | Kullanılan form nesneleri angular-schema-form'un beklediği formatta olmalı ya da değilse extend edilerek `custom type` yaratılmalıdır.
 
-Örnek bir ``forms`` nesnesi aşağıdaki gibidir:
-
 .. _angular-schema-form: https://github.com/Textalk/angular-schema-form
+
+Örnek bir ``forms`` nesnesi aşağıdaki gibidir:
 
 .. code:: json
 
@@ -226,15 +194,14 @@ Form sayfası
         }
     }
 
-``forms`` anahtarı aşağıdaki öğelerden oluşmaktadır;
 
-form
-^^^^
+``forms``’un öğeler ise şunlardır:
+
+- ``form``
 
 Bu anahtar altında formda gösterilmesi istenen inputlar bir liste halinde yer alır.
 
-schema
-^^^^^^
+- ``schema``
 
 | ``schema`` anahtarının alt özellikleri vardır. Bunlardan ``required`` bir liste halinde doldurulması gerekli alanları gösterir.
 | ``properties`` anahtarında ``form`` anahtarında belirtilen alanların özelliklerinin yer aldığı anahtardır.
@@ -269,18 +236,16 @@ schema
     - ``float``
     - ``model``
     - ``Node``
-    - ``ListNode
+    - ``ListNode``
 
-model
-^^^^^
+- ``model``
 
 | Bu anahtarda form alanlarının değerleri tutulmaktadır.
 | Düzenlenecek form için bu anahtardaki değerler dolu olarak döner ve inputlara atanır.
 | Boş değer dönmesi o anahtar için daha önceden bir kayıt yapılmadığını gösterir.
 
 
-grouping
-^^^^^^^^
+- ``grouping``
 
 | Form inputlarının sayfa yerleşimlerini düzenleyebilmek için eklenmiş bir özelliktir.
 | Grid sistem baz alınarak gruplanan elemanlara alan değerleri atanır. ``layout`` değeri 12 birimlik alanda kaç birim olarak yer alacağını gösterir.
@@ -299,15 +264,15 @@ grouping
         ]
     }
 
-constraints
-^^^^^^^^^^^
+- ``constraints``
 
 Form inputlarının birbirlerine göre bağımlılıklarının denetlendiği ve düzenlendiği anahtardır. Geliştirme aşamasındadır.
 
-Liste sayfası
-~~~~~~~~~~~~~
 
-Liste sayfasında kaydedilen öğeler listelenir.
+Liste öğesi
+~~~~~~~~~~~
+
+Liste öğesinde kaydedilen nesneler listelenir.
 
 - Listelenecek öğeler ``objects`` anahtarında döner. Dönen listede ilk nesne listenin başlık değerlerini oluşturur.
 - İkinci nesneden itibaren ``fields`` anahtarında liste halinde aynı sırayla ilk nesnedeki başlıkların karşılığı değerler yer almaktadır.
@@ -384,11 +349,11 @@ Liste sayfasında kaydedilen öğeler listelenir.
         ]
     }
 
-Detay sayfası
-~~~~~~~~~~~~~
 
-Detay sayfasında gösterilmek istenen nesne anahtar değer olarak sıralanır.
-Örnekte bir kişi kaydının anahtar değerleri görülmektedir.
+Detay öğesi
+~~~~~~~~~~~
+
+Detay öğesinde gösterilmek istenen nesne anahtar değer olarak sıralanır. Örnekte bir kişi kaydının anahtar değerleri görülmektedir.
 
 .. code:: json
 
@@ -403,6 +368,7 @@ Detay sayfasında gösterilmek istenen nesne anahtar değer olarak sıralanır.
             "E-Posta":"daslan@arsoy.com"
         }
     }
+
 
 UI Menu ve Diğer Öğeler
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -480,8 +446,14 @@ UI Menu ve Diğer Öğeler
         ]
     }
 
+
+Logout İşlemi
+-------------
+
+| Logout işlemi de Ulakbüs için bir iş akışıdır. Logout için ``{wf: "logout"}`` bilgisi API'a gönderilir. Gelen yanıt ardından websoket kapatılır, oturum sonlanır.
+
+
 Geliştirmeye Başlamak
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 | Yukarıda anlatılan API-UI veri karşılıkları gözönünde bulundurularak geliştirme yapmaya başlayabilirsiniz.
-| Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız. 
