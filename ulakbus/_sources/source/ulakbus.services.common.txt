@@ -28,6 +28,14 @@ ulakbus.services.common.banka_odeme module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.services.common.e_posta_yollama module
+----------------------------------------------
+
+.. automodule:: ulakbus.services.common.e_posta_yollama
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.services.common.ip_address module
 -----------------------------------------
 

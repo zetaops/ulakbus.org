@@ -186,35 +186,26 @@
             </a></p>
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
-<li><a class="reference internal" href="#">ULAKBUS UI&#8211;API İlişkisi</a><ul>
-<li><a class="reference internal" href="#id1">ULAKBUS UI&#8211;API İlişkisi</a><ul>
-<li><a class="reference internal" href="#ui-nasil-baslar">UI Nasıl Başlar?</a></li>
-<li><a class="reference internal" href="#veri-ui-iliskisi">Veri - UI ilişkisi</a></li>
-<li><a class="reference internal" href="#genel">Genel</a><ul>
-<li><a class="reference internal" href="#client-cmd">client_cmd</a></li>
-<li><a class="reference internal" href="#reload-cmd">reload_cmd</a></li>
-<li><a class="reference internal" href="#token">token</a></li>
-<li><a class="reference internal" href="#meta">meta</a></li>
-<li><a class="reference internal" href="#debug-queries">_debug_queries</a></li>
-<li><a class="reference internal" href="#is-login">is_login</a></li>
-<li><a class="reference internal" href="#notify">notify</a><ul>
-<li><a class="reference internal" href="#ulakbus-ui-sayfa-tipleri">Ulakbüs UI Sayfa Tipleri</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#form-sayfasi">Form sayfası</a><ul>
-<li><a class="reference internal" href="#form">form</a></li>
-<li><a class="reference internal" href="#schema">schema</a></li>
-<li><a class="reference internal" href="#model">model</a></li>
-<li><a class="reference internal" href="#grouping">grouping</a></li>
-<li><a class="reference internal" href="#constraints">constraints</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#liste-sayfasi">Liste sayfası</a></li>
-<li><a class="reference internal" href="#detay-sayfasi">Detay sayfası</a></li>
+<li><a class="reference internal" href="#">Ulakbüs UI - API ilişkisi</a><ul>
+<li><a class="reference internal" href="#id1">Ulakbüs UI - API ilişkisi</a><ul>
+<li><a class="reference internal" href="#ui-hakkinda">UI hakkında</a><ul>
+<li><a class="reference internal" href="#ui-baslangici">UI başlangıcı</a><ul>
+<li><a class="reference internal" href="#login-islemi">Login işlemi</a></li>
+<li><a class="reference internal" href="#dashboard">Dashboard</a></li>
+<li><a class="reference internal" href="#api-response">Api response</a></li>
+<li><a class="reference internal" href="#ulakbus-ui-ogeleri">Ulakbüs UI Öğeleri</a><ul>
+<li><a class="reference internal" href="#form-ogesi">Form Öğesi</a></li>
+<li><a class="reference internal" href="#liste-ogesi">Liste öğesi</a></li>
+<li><a class="reference internal" href="#detay-ogesi">Detay öğesi</a></li>
 <li><a class="reference internal" href="#ui-menu-ve-diger-ogeler">UI Menu ve Diğer Öğeler</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logout-islemi">Logout İşlemi</a></li>
 <li><a class="reference internal" href="#gelistirmeye-baslamak">Geliştirmeye Başlamak</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -253,160 +244,119 @@
           <div class="body" role="main">
             
   <div class="section" id="ulakbus-ui-api-iliskisi">
-<h1>ULAKBUS UI&#8211;API İlişkisi<a class="headerlink" href="#ulakbus-ui-api-iliskisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h1>Ulakbüs UI - API ilişkisi<a class="headerlink" href="#ulakbus-ui-api-iliskisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <div class="section" id="id1">
-<h2>ULAKBUS UI&#8211;API İlişkisi<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Ulakbüs UI - API ilişkisi<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <div class="line-block">
 <div class="line">Bu belge <strong>Ulakbus UI ve API</strong> bileşenlerinin etkileşimini göstermek için hazırlanmıştır.</div>
 <div class="line">API kullanılarak hazırlanan view, model ve jenerik fonksiyonlarda hangi tip verinin kullanıcı arayüzünde nasıl gösterildiğini bu belgede bulabilirsiniz.</div>
 </div>
-<div class="section" id="ui-nasil-baslar">
-<h3>UI Nasıl Başlar?<a class="headerlink" href="#ui-nasil-baslar" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="ui-hakkinda">
+<h3>UI hakkında<a class="headerlink" href="#ui-hakkinda" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <div class="line-block">
 <div class="line">Ulakbus kullanıcı arayüzü tek sayfalı bir tarayıcı uygulamasıdır.</div>
-<div class="line">Sayfadaki data dinamik olarak <cite>Ulakbus API</cite> tarafından sağlanır ve arayüzde işlenir.</div>
+<div class="line">Sayfadaki data dinamik olarak Ulakbus API tarafından sağlanır ve arayüzde işlenir.</div>
 <div class="line">Veri sunucu tarafında render edilmez, yani bir html dosyasına işlenerek gönderilmez.</div>
+<div class="line">Sunucu tarafından gönderilen tüm verilerin yapısı <code class="docutils literal"><span class="pre">JSON</span></code>&#8216;dır.</div>
 <div class="line"><br /></div>
-<div class="line">Bu iş için <a class="reference external" href="https://angularjs.org">angularjs</a> tercih edilmiştir.</div>
+<div class="line">Kullanıcı arayüzünü hazırlamak için <a class="reference external" href="https://angularjs.org/">AngularJS</a> kütüphanesi kullanılmıştır.</div>
 <div class="line"><br /></div>
-<div class="line">UI sunucudan istendiğinde bağımlı olduğu statik dosyalar edinildikten sonra <code class="docutils literal"><span class="pre">app.js</span></code> dosyasının yorumlanmasıyla başlar. Bu dosyada <code class="docutils literal"><span class="pre">ulakbus</span></code> modülü başlatılır.</div>
-<div class="line">AngularJS <a class="reference external" href="https://docs.angularjs.org/guide/di">DI</a> (dependency injection) modeline göre bağımlılıklar işlenir.</div>
+<div class="line">UI tamamıyla statik dosyalardan oluşmaktadır. <code class="docutils literal"><span class="pre">index.html</span></code> dosyası tarayıcı tarafından işlendikten sonra uygulama başlar.</div>
 <div class="line"><br /></div>
-<div class="line"><code class="docutils literal"><span class="pre">app_routes.js</span></code> dosyasında uygulamanın sayfaları ve kullanacakları controller&#8217;lar ve template&#8217;leri düzenlenmiştir.</div>
-<div class="line">Bu dosyaya göre istenen sayfa ilgili template ve controller ile yorumlanır.</div>
+<div class="line">Sayfa hazır olduktan sonra <code class="docutils literal"><span class="pre">app.js</span></code> dosyası çalışıp gerekli modülleri ve bağımlılıkları tanımlar.</div>
+<div class="line">Uygulamanın ana modülü <code class="docutils literal"><span class="pre">ulakbus</span></code> modülüdür.</div>
 <div class="line"><br /></div>
-<div class="line">CRUD işlemleri <code class="docutils literal"><span class="pre">crud_controller.js</span></code> dosyasında tanımlanan CRUDListFormCtrl isimli controller ve <code class="docutils literal"><span class="pre">form_service.js</span></code> dosyasında tanımlanan form_service isimli servisle gerçekleştirilir.</div>
-<div class="line"><br /></div>
-<div class="line">Kullanıcı arayüzü başlatıldığında ilk olarak API&#8217;dan menu sorgusu çekilir.</div>
-<div class="line">Bunun nedeni giriş yapan kullanıcı bilgilerinin de bu sorguda dönmesidir.</div>
-<div class="line">Eğer http-401 hata kodu dönerse kullanıcı girişi yapılmamış anlamına gelir ve UI login sayfasına yönlendirir.</div>
+<div class="line"><code class="docutils literal"><span class="pre">app_routes.js</span></code> dosyasında uygulamanın sayfaları ve kullanacakları <code class="docutils literal"><span class="pre">controller</span></code>’lar ve <code class="docutils literal"><span class="pre">template</span></code>’leri düzenlenmiştir.</div>
+<div class="line">Bu dosyaya göre istenen sayfa ilgili <code class="docutils literal"><span class="pre">template</span></code> ve <code class="docutils literal"><span class="pre">controller</span></code> ile yorumlanır.</div>
 </div>
-</div>
-<div class="section" id="veri-ui-iliskisi">
-<h3>Veri - UI ilişkisi<a class="headerlink" href="#veri-ui-iliskisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="ui-baslangici">
+<h4>UI başlangıcı<a class="headerlink" href="#ui-baslangici" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <div class="line-block">
-<div class="line">Kullanıcı arayüzü veriyi API&#8217;a yaptığı rest sorgular üzerinden alır ve gönderir. Veriyle doğrudan ilişkisi yoktur.</div>
-<div class="line">Bir kullanıcı giriş yaptığında onun erişebileceği veriler Ulakbus API&#8217;da düzenlenip kullanıcı arayüzüne sunulur.</div>
+<div class="line">Uygulamanın bağlandığı kararlı api sunucusu <code class="docutils literal"><span class="pre">http://api.ulakbus.net</span></code> adresinde bulunur. Geliştirme ortamı için <code class="docutils literal"><span class="pre">http://nightly.api.ulakbus.net</span></code> adresinde bulunur.</div>
+<div class="line">Kararlı api sunucusu varsayılan sunucudur.</div>
+<div class="line">Yerel yada başka bir adresteki sunucuyu kullanmak için başlangıç adresinde “backendurl” parametresi ile adresi girmeniz gerekmektedir. Yerel geliştirme ortamında nightly sunucusuna bağlanmak için adres satırına <code class="docutils literal"><span class="pre">http://localhost/?backendurl=http://nightly.api.ulakbus.net</span></code> yazmanız yeterlidir.</div>
+<div class="line"><br /></div>
+<div class="line">Uygulama başlatılıp tüm modül tanımlarmaları yapıldıktan sonra tarayıcı kullanıcıyı <code class="docutils literal"><span class="pre">/dashboard</span></code> adresine yönlendirir. Uygulamanın en başında kullanıcının login durumu kontrol eder ve kullanıcı mevcut değil ise <code class="docutils literal"><span class="pre">/login</span></code> ekranına yönlendirilir.</div>
 </div>
-</div>
-<div class="section" id="genel">
-<h3>Genel<a class="headerlink" href="#genel" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="login-islemi">
+<h5>Login işlemi<a class="headerlink" href="#login-islemi" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
 <div class="line-block">
-<div class="line">Ulakbus kullanıcı arayüzü yapacağı işlemlerle ilgili komutları API&#8217;dan alacak şekilde kurgulanmıştır.</div>
-<div class="line">Kullanıcı arayüzü Ulakbus API tarafından kullanılan bir araç olarak düşünülebilir.</div>
-<div class="line">API o anda kullanıcının neler yapabileceğini, sayfa öğelerini, sayfa öğelerinin konumlandırılmalarını belirleyici veriyi arayüze sağlar ve arayüz bu veriye göre yorumlanır.</div>
-<div class="line">Kullanıcı arayüzü dummy bir uygulama olarak tasarlanmıştır, mevcut yazılan arayüz fonksiyonları Ulakbus API tarafından yollanan veri ile kullanılır.</div>
+<div class="line">Login işlemi için <code class="docutils literal"><span class="pre">http://api.ulakbus.net/login</span></code> adresine kullanıcı parametreleriyle XHR istegi gönderilir.</div>
+<div class="line">Gelen yanıt <code class="docutils literal"><span class="pre">JSON</span></code> nesnesinde <code class="docutils literal"><span class="pre">cmd</span></code> parametresini baz alarak işlemin sonucunu değerlendirilir. <code class="docutils literal"><span class="pre">cmd</span></code>, <code class="docutils literal"><span class="pre">upgrade</span></code> veya <code class="docutils literal"><span class="pre">retry</span></code> gelebilir.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal"><span class="pre">upgrade</span></code> yanıtıyla birlikte <code class="docutils literal"><span class="pre">ws://api.ulakbus.net/ws</span></code> adresinde websocket açılır. Kullanıcı <code class="docutils literal"><span class="pre">/dashboard</span></code>&#8216;a yönlendirilir. Geri kalan tüm iletişim websocket üzerinden yönetilir.</div>
+<div class="line"><br /></div>
+<div class="line">Yanlış bilgi girildiğinde <code class="docutils literal"><span class="pre">retry</span></code> yanıtı alınır ve kullanıcı tekrar <code class="docutils literal"><span class="pre">/login</span></code> sayfasına yönlendirilir. Başka aksiyon alınmaz.</div>
+</div>
+</div>
+<div class="section" id="dashboard">
+<h5>Dashboard<a class="headerlink" href="#dashboard" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
+<div class="line-block">
+<div class="line">Kullanıcı login olduktan sonra dashboard ekranına geldiği anda <code class="docutils literal"><span class="pre">{view:</span> <span class="pre">'dashboard'}</span></code> isteği yapılır. bu isteğin yanıtında kullacının bilgisi ve de kulanıcı menüleri gelir.</div>
 <div class="line"><br /></div>
 <div class="line">Ulakbus uygulaması iş akışı tabanlı bir uygulamadır. BPMN 2.0 standartlarını kullanır.</div>
-<div class="line">İş akış şemaları yani <em>workflow</em> lar bpmn formatında backend API&#8217;da oluşturulur.</div>
+<div class="line">İş akış şemaları yani <code class="docutils literal"><span class="pre">workflow</span></code> lar bpmn formatında backend API’da oluşturulur.</div>
 <div class="line">Bu iş akış şemaları kendilerine ait model ve view metotlarını kullanarak tanımlanan işi belirlenen adımlarla gerçekleştirirler.</div>
-<div class="line"><br /></div>
-<div class="line">İş akışının arayüzde akışa uygun şekilde gerçekleştirilmesi için kullanılacak anahtar-değerler ( <em>key-value</em> ) API</div>
-<div class="line">tarafından <code class="docutils literal"><span class="pre">response</span></code> nesnesinde arayüze gönderilir ve arayüz tarafından yorumlanır.</div>
-<div class="line"><br /></div>
-<div class="line">API&#8217;ın <code class="docutils literal"><span class="pre">Response</span></code> nesnesinde sayfaların yorumladığı datanın (<code class="docutils literal"><span class="pre">forms</span></code>, <code class="docutils literal"><span class="pre">objects</span></code>, <code class="docutils literal"><span class="pre">object</span></code>) dışında kullanıcı arayüzünü şekillendiren, işlev ekleyen bazı anahtarlar bulunmaktadır.</div>
-<div class="line">Bunlar aşağıdaki örnekte sıralanmıştır;</div>
 </div>
-<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;client_cmd&quot;</span><span class="p">:[</span><span class="s2">&quot;form&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;reload_cmd&quot;</span><span class="p">:</span><span class="s2">&quot;add_edit_form&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;zxcv4321&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;meta&quot;</span><span class="p">:{</span>
-        <span class="s2">&quot;allow_search&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-        <span class="s2">&quot;allow_selection&quot;</span><span class="p">:</span><span class="n">false</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;_debug_queries&quot;</span><span class="p">:[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;TIMESTAMP&quot;</span><span class="p">:</span><span class="mf">1453289218.893847</span><span class="p">,</span>
-            <span class="s2">&quot;BUCKET&quot;</span><span class="p">:</span><span class="s2">&quot;models_user&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;KEY&quot;</span><span class="p">:</span><span class="s2">&quot;7890yuhjk&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;TIME&quot;</span><span class="p">:</span><span class="mf">0.00275</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;is_login&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-    <span class="s2">&quot;notify&quot;</span><span class="p">:</span> <span class="s2">&quot;ornek bildirim text&quot;</span>
-<span class="p">}</span>
-</pre></div>
 </div>
-<div class="section" id="client-cmd">
-<h4>client_cmd<a class="headerlink" href="#client-cmd" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
-<div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">client_cmd</span></code> anahtarı arayüzün yapması istenen komutu taşır. Bu komutlar şunları kapsar; <strong>list</strong>, <strong>form</strong>, <strong>show</strong>, <strong>reload</strong>, <strong>reset</strong>.</div>
-</div>
+<div class="section" id="api-response">
+<h5>Api response<a class="headerlink" href="#api-response" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
+<p>Kullanıcı kendine ait işakışlarına menüler aracılığıyla ulaşır.
+Kullanıcı bir iş akışı başlattığında api ye başlattığı iş akışının model ve workflow bilgisini gönderir. Api den gelen bilgiler ile UI tarafından yorumlanır. Yorumlama işlemi <code class="docutils literal"><span class="pre">CRUDListFormController</span></code> tarafından yapılmaktadır.</p>
+<p>Gelen yanıt içerisinde yer alan <code class="docutils literal"><span class="pre">client_cmd</span></code> parametresine göre yorumlama tipi seçilir.
+<code class="docutils literal"><span class="pre">client_cmd</span></code> değeri <code class="docutils literal"><span class="pre">show</span></code>, <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">form</span></code>, <code class="docutils literal"><span class="pre">reload</span></code> veya <code class="docutils literal"><span class="pre">reset</span></code> olabilir.</p>
 <ul class="simple">
-<li><strong>form</strong> gönderilen datanın <cite>forms</cite> nesnesi taşıdığı ve kullanıcı arayüzünün bunu form olarak yorumlaması gerektiği durumlarda kullanılır.</li>
-<li><strong>list</strong> sayfada listelenmesi istenen bir data olduğunda kullanılır. Bu data <em>table</em> olarak listelenir.</li>
-<li><strong>show</strong> komutu sayfada detay bilgileriyle gösterilmek istenen bır data olduğunda kullanılır.</li>
-<li><strong>reload</strong> komutu sayfada gösterilen datada bir değişiklik olduğu ve datanın API&#8217;dan yeniden istenmesi gerektiği durumlarda kullanılır.</li>
-<li><strong>reset</strong> komutu datanın ek parametreler olmadan yeniden çekilmesi için kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">form</span></code> gönderilen datanın <code class="docutils literal"><span class="pre">forms</span></code> nesnesi taşıdığı ve kullanıcı arayüzünün bunu form olarak yorumlaması gerektiği durumlarda kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">list</span></code> sayfada listelenmesi istenen bir data olduğunda kullanılır. Bu data table olarak listelenir.</li>
+<li><code class="docutils literal"><span class="pre">show</span></code> komutu sayfada detay bilgileriyle gösterilmek istenen bır data olduğunda kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">reload</span></code> komutu sayfada gösterilen datada bir değişiklik olduğu ve datanın API’dan yeniden istenmesi gerektiği durumlarda kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">reset</span></code> komutu datanın ek parametreler olmadan yeniden çekilmesi için kullanılır.</li>
 </ul>
-<div class="line-block">
-<div class="line">Bu komutlar oluşturulan workflow&#8217;ların ilgili adımlarında kullanılarak arayüzün istenen şekilde davranması için gereklidir.</div>
-</div>
-<blockquote>
-<div><strong>form</strong>, <strong>list</strong> ve <strong>show</strong> komutları birer liste öğesi olarak bir arada gönderilebilir.</div></blockquote>
-</div>
-<div class="section" id="reload-cmd">
-<h4>reload_cmd<a class="headerlink" href="#reload-cmd" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
-<div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">reload_cmd</span></code> anahtarı <code class="docutils literal"><span class="pre">&quot;client_cmd&quot;:</span> <span class="pre">&quot;reload&quot;</span></code> olması durumunda arayüzün backend API&#8217;dan isteyeceği komutu taşır.</div>
-<div class="line">UI post datası içinde <code class="docutils literal"><span class="pre">cmd</span></code> anahtarında bu değeri gönderir.</div>
-</div>
-</div>
-<div class="section" id="token">
-<h4>token<a class="headerlink" href="#token" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
-<div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">token</span></code> anahtarında iş akış şemasının ( <em>workflow</em> ) redis&#8217;te tutulan token değeri vardır.</div>
-<div class="line">İş akışı tamamlanmadığı sürece bu token <cite>request</cite> nesnesinde API&#8217;a gönderilir.</div>
-</div>
-</div>
-<div class="section" id="meta">
-<h4>meta<a class="headerlink" href="#meta" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
-<div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">meta</span></code> anahtarında arayüzde istenen yapılandırmalar yer alır. Boolean değer taşırlar. Bunlar şunlardır;</div>
-</div>
-<ul class="simple">
-<li><strong>allow_search</strong> Listeleme ekranında arama kutusunun gösterilmesi için kullanılır.</li>
-<li><strong>allow_selection</strong> Listeleme ekranında tablonun solunda selectBox yer alması için kullanılır.</li>
-<li><strong>allow_sort</strong> Listeleme ekranındaki sıralama özelliği için kullanılır.</li>
-<li><strong>allow_filter</strong> Listelenen datanın filtrelemesi için kullanılır.</li>
-<li><strong>allow_actions</strong> ListNode tipinde listelenen data için en sağdaki işlemler kolonunun gösterilmesi için kullanılır.</li>
-<li><strong>translate_widget</strong> Katalod verilerin düzenleneceği ekran için oluşturulan widget&#8217;dır. Aynı zamanda çeviri işlemleri için kullanılacaktır. Boolean tipinde değer alır.</li>
+<p>Bu komutlar oluşturulan iş akışlarının ilgili adımlarında kullanılarak arayüzün istenen şekilde davranması için gereklidir.</p>
+<p>Diğer yanıt parametreleri forms, meta, objects, pagination, reload_cmd, token, callbackID, notify, is_login olabilir.</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">reload_cmd</span></code> anahtarı <code class="docutils literal"><span class="pre">&quot;client_cmd&quot;:</span> <span class="pre">&quot;reload&quot;</span></code> olması durumunda arayüzün backend API’dan isteyeceği komutu taşır. UI post datası içinde cmd anahtarında bu değeri gönderir.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">token</span></code> anahtarında iş akış şemasının (<code class="docutils literal"><span class="pre">workflow</span></code>) redis’te tutulan token değeri vardır. İş akışı tamamlanmadığı sürece bu token request nesnesinde API’a gönderilir.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">callbackID</span></code> UI tarafından üretilip gönderilmektedir. Yanıt içerisinde bulunuyorsa UI tarafından yapılan bir isteğin yanıtı olduğu anlamına gelmektedir. Uygulama genelinde yapılan isteklerde Javascript Promise alt yapısı kullanılarak asenkron istek yapılmaktadır. Bekleyen promise resolve edilerek iş akışının devamı sağlanmaktadır.</p>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">meta</span></code> anahtarında arayüzde istenen yapılandırmalar yer alır. Boolean değer taşırlar. Bunlar şunlardır;</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">allow_search</span></code> Listeleme ekranında arama kutusunun gösterilmesi için kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">allow_selection</span></code> Listeleme ekranında tablonun solunda selectBox yer alması için kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">allow_sort</span></code> Listeleme ekranındaki sıralama özelliği için kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">allow_filter</span></code> Listelenen datanın filtrelemesi için kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">allow_actions</span></code> ListNode tipinde listelenen data için en sağdaki işlemler kolonunun gösterilmesi için kullanılır.</li>
+<li><code class="docutils literal"><span class="pre">translate_widget</span></code> Katalog verilerin düzenleneceği ekran için oluşturulan widget’dır. Aynı zamanda çeviri işlemleri için kullanılacaktır. Boolean tipinde değer alır.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">_debug_queries</span></code> anahtarı geliştiriciler için yardımcı bir anahtardır. Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır. Aktif olması için API ortamında çevre değişkeni <code class="docutils literal"><span class="pre">DEBUG=1</span></code> olarak atanmalıdır.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">is_login</span></code> anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır. Bu anahtar <code class="docutils literal"><span class="pre">false</span></code> değer taşıdığında arayüz login sayfasına yönlendirir.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">notify</span></code> ayayüzde bildirim göstermek için kullanılır. Gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">pagination</span></code> anahtarı listeleme gösterimlarinde sayfalama bilgisini bulundurur.</p>
+</li>
 </ul>
 </div>
-<div class="section" id="debug-queries">
-<h4>_debug_queries<a class="headerlink" href="#debug-queries" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="ulakbus-ui-ogeleri">
+<h5>Ulakbüs UI Öğeleri<a class="headerlink" href="#ulakbus-ui-ogeleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">_debug_queries</span></code> anahtarı geliştiriciler için yardımcı bir anahtardır.</div>
-<div class="line">Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır.</div>
-<div class="line">Aktif olması için API ortamında çevre değişkeni DEBUG=1 olarak set edilmelidir.</div>
-</div>
-</div>
-<div class="section" id="is-login">
-<h4>is_login<a class="headerlink" href="#is-login" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
-<div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">is_login</span></code> anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır.</div>
-<div class="line">Bu anahtar <em>false</em> değer taşıdığında arayüz login sayfasına yönlendirir.</div>
-</div>
-</div>
-<div class="section" id="notify">
-<h4>notify<a class="headerlink" href="#notify" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
-<div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">notify</span></code> anahtarı ile gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.</div>
-</div>
-<div class="section" id="ulakbus-ui-sayfa-tipleri">
-<h5>Ulakbüs UI Sayfa Tipleri<a class="headerlink" href="#ulakbus-ui-sayfa-tipleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
-<div class="line-block">
-<div class="line">Ulakbüs kullanıcı arayüzünde sunulan temel içerik türleri şunlardır;</div>
+<div class="line">Ulakbüs kullanıcı arayüzünde sunulan temel öğeler şunlardır;</div>
 </div>
 <ul class="simple">
-<li>Form sayfası - <cite>Ekleme ve düzenleme işlemleri</cite></li>
-<li>Liste sayfası - <cite>Listeleme, arama, filtreleme ve silme işlemleri</cite></li>
-<li>Detay sayfası - <cite>Tek nesne detay ve rapor ekranları</cite></li>
+<li>Form öğesi - Ekleme ve düzenleme işlemleri</li>
+<li>Liste öğesi - Listeleme, arama, filtre ve silme işlemleri</li>
+<li>Detay öğesi - Tek nesne detay ve rapor ekranları</li>
 </ul>
 <div class="line-block">
-<div class="line">Bu içerik türleri API&#8217;ın iş akışlarında sunduğu temel içerik türleridir.</div>
-<div class="line">Bu içerik türlerinin kullanıcı arayüzünde doğru biçimde yorumlanması için <code class="docutils literal"><span class="pre">response</span></code> nesnesinde gönderilecek anahtar değerler belirlenmiştir.</div>
+<div class="line">Bu öğe türleri API’ın iş akışlarında sunduğu temel içerik türleridir.</div>
+<div class="line">Bu içerik türlerinin kullanıcı arayüzünde doğru biçimde yorumlanması için API yanıtı içerisinde gönderilecek anahtar değerler belirlenmiştir.</div>
 <div class="line">Bu anahtarlar aşağıdaki tablodaki gibidir;</div>
 </div>
 <table border="1" class="docutils">
@@ -431,16 +381,19 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div>Bu sayfa tipleri <code class="docutils literal"><span class="pre">response</span></code> nesnesinde aynı anda yer alırlarsa
-yukarıdan aşağıya doğru detay &gt; form &gt; liste olacak şekilde aynı
-sayfada yorumlanırlar.</div></blockquote>
-<p>Her sayfaya ait alt özellikler ilgili başlık altında anlatılacaktır.</p>
+<div class="line-block">
+<div class="line">İçerik türleri aynı sayfa içerisinde bulunabilir. Bu koşulda</div>
 </div>
+<ol class="arabic simple">
+<li>detay</li>
+<li>form</li>
+<li>liste</li>
+</ol>
+<div class="line-block">
+<div class="line">sırasına uygun şekilde aynı sayfada listelenir</div>
 </div>
-</div>
-<div class="section" id="form-sayfasi">
-<h3>Form sayfası<a class="headerlink" href="#form-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="form-ogesi">
+<h6>Form Öğesi<a class="headerlink" href="#form-ogesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h6>
 <div class="line-block">
 <div class="line">Ulakbus UI form işlemlerini gerçekleştirmek için <a class="reference external" href="https://github.com/Textalk/angular-schema-form">angular-schema-form</a> extend edilmiştir.</div>
 <div class="line">Kullanılan form nesneleri angular-schema-form&#8217;un beklediği formatta olmalı ya da değilse extend edilerek <cite>custom type</cite> yaratılmalıdır.</div>
@@ -494,13 +447,14 @@ sayfada yorumlanırlar.</div></blockquote>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">forms</span></code> anahtarı aşağıdaki öğelerden oluşmaktadır;</p>
-<div class="section" id="form">
-<h4>form<a class="headerlink" href="#form" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">forms</span></code>’un öğeler ise şunlardır:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">form</span></code></li>
+</ul>
 <p>Bu anahtar altında formda gösterilmesi istenen inputlar bir liste halinde yer alır.</p>
-</div>
-<div class="section" id="schema">
-<h4>schema<a class="headerlink" href="#schema" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">schema</span></code></li>
+</ul>
 <div class="line-block">
 <div class="line"><code class="docutils literal"><span class="pre">schema</span></code> anahtarının alt özellikleri vardır. Bunlardan <code class="docutils literal"><span class="pre">required</span></code> bir liste halinde doldurulması gerekli alanları gösterir.</div>
 <div class="line"><code class="docutils literal"><span class="pre">properties</span></code> anahtarında <code class="docutils literal"><span class="pre">form</span></code> anahtarında belirtilen alanların özelliklerinin yer aldığı anahtardır.</div>
@@ -533,20 +487,20 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 <li><code class="docutils literal"><span class="pre">float</span></code></li>
 <li><code class="docutils literal"><span class="pre">model</span></code></li>
 <li><code class="docutils literal"><span class="pre">Node</span></code></li>
-<li><a href="#id2"><span class="problematic" id="id3">``</span></a>ListNode</li>
+<li><code class="docutils literal"><span class="pre">ListNode</span></code></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="model">
-<h4>model<a class="headerlink" href="#model" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">model</span></code></li>
+</ul>
 <div class="line-block">
 <div class="line">Bu anahtarda form alanlarının değerleri tutulmaktadır.</div>
 <div class="line">Düzenlenecek form için bu anahtardaki değerler dolu olarak döner ve inputlara atanır.</div>
 <div class="line">Boş değer dönmesi o anahtar için daha önceden bir kayıt yapılmadığını gösterir.</div>
 </div>
-</div>
-<div class="section" id="grouping">
-<h4>grouping<a class="headerlink" href="#grouping" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">grouping</span></code></li>
+</ul>
 <div class="line-block">
 <div class="line">Form inputlarının sayfa yerleşimlerini düzenleyebilmek için eklenmiş bir özelliktir.</div>
 <div class="line">Grid sistem baz alınarak gruplanan elemanlara alan değerleri atanır. <code class="docutils literal"><span class="pre">layout</span></code> değeri 12 birimlik alanda kaç birim olarak yer alacağını gösterir.</div>
@@ -564,15 +518,14 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="constraints">
-<h4>constraints<a class="headerlink" href="#constraints" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">constraints</span></code></li>
+</ul>
 <p>Form inputlarının birbirlerine göre bağımlılıklarının denetlendiği ve düzenlendiği anahtardır. Geliştirme aşamasındadır.</p>
 </div>
-</div>
-<div class="section" id="liste-sayfasi">
-<h3>Liste sayfası<a class="headerlink" href="#liste-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Liste sayfasında kaydedilen öğeler listelenir.</p>
+<div class="section" id="liste-ogesi">
+<h6>Liste öğesi<a class="headerlink" href="#liste-ogesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h6>
+<p>Liste öğesinde kaydedilen nesneler listelenir.</p>
 <ul>
 <li><p class="first">Listelenecek öğeler <code class="docutils literal"><span class="pre">objects</span></code> anahtarında döner. Dönen listede ilk nesne listenin başlık değerlerini oluşturur.</p>
 </li>
@@ -655,10 +608,9 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="detay-sayfasi">
-<h3>Detay sayfası<a class="headerlink" href="#detay-sayfasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Detay sayfasında gösterilmek istenen nesne anahtar değer olarak sıralanır.
-Örnekte bir kişi kaydının anahtar değerleri görülmektedir.</p>
+<div class="section" id="detay-ogesi">
+<h6>Detay öğesi<a class="headerlink" href="#detay-ogesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h6>
+<p>Detay öğesinde gösterilmek istenen nesne anahtar değer olarak sıralanır. Örnekte bir kişi kaydının anahtar değerleri görülmektedir.</p>
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;object&quot;</span><span class="p">:{</span>
         <span class="s2">&quot;Cep Telefonu&quot;</span><span class="p">:</span><span class="s2">&quot;+90 (259) 6925396&quot;</span><span class="p">,</span>
@@ -674,7 +626,7 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 </div>
 </div>
 <div class="section" id="ui-menu-ve-diger-ogeler">
-<h3>UI Menu ve Diğer Öğeler<a class="headerlink" href="#ui-menu-ve-diger-ogeler" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<h6>UI Menu ve Diğer Öğeler<a class="headerlink" href="#ui-menu-ve-diger-ogeler" title="Bu başlığın kalıcı bağlantısı">¶</a></h6>
 <div class="line-block">
 <div class="line">Kullanıcı arayüzündeki menüler API tarafından dinamik olarak giriş yapan kullanıcının yetkileri baz alınarak oluşturulur.</div>
 <div class="line"><code class="docutils literal"><span class="pre">/menu</span></code> url&#8217;ine yapılan sorguda dönen <code class="docutils literal"><span class="pre">ogrenci</span></code>, <code class="docutils literal"><span class="pre">personel</span></code>, <code class="docutils literal"><span class="pre">other</span></code> anahtarlarındaki değerler kategorilerine göre ayıklanarak menüye eklenir.</div>
@@ -752,11 +704,19 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="logout-islemi">
+<h5>Logout İşlemi<a class="headerlink" href="#logout-islemi" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
+<div class="line-block">
+<div class="line">Logout işlemi de Ulakbüs için bir iş akışıdır. Logout için <code class="docutils literal"><span class="pre">{wf:</span> <span class="pre">&quot;logout&quot;}</span></code> bilgisi API&#8217;a gönderilir. Gelen yanıt ardından websoket kapatılır, oturum sonlanır.</div>
+</div>
+</div>
 <div class="section" id="gelistirmeye-baslamak">
-<h3>Geliştirmeye Başlamak<a class="headerlink" href="#gelistirmeye-baslamak" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<h5>Geliştirmeye Başlamak<a class="headerlink" href="#gelistirmeye-baslamak" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
 <div class="line-block">
 <div class="line">Yukarıda anlatılan API-UI veri karşılıkları gözönünde bulundurularak geliştirme yapmaya başlayabilirsiniz.</div>
-<div class="line">Geliştirme konusunda rehber olarak kullanılmak üzere TDD geliştirme dokümanını hazırlamaktayız.</div>
+</div>
+</div>
 </div>
 </div>
 </div>

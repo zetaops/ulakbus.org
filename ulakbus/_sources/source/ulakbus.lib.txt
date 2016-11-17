@@ -99,6 +99,14 @@ ulakbus.lib.view_helpers module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.lib.views module
+------------------------
+
+.. automodule:: ulakbus.lib.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
