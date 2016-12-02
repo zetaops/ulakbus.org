@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Sistem Operatörleri" href="devops.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -209,14 +211,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -385,60 +384,60 @@ işlemlerin <strong>Ulakbüs</strong> tarafında yeni döneme (güncel akademik 
 düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağı bir fonksiyon
 örneklendirilmiştir. Örnek XML şemasına aşağıdaki adreten ulaşılabilir:</p>
 <p><a class="reference external" href="https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExamples%2FdepartmentImport.xml">https://github.com/UniTime/unitime/blob/master/Documentation%2FInterfaces%2FExamples%2FdepartmentImport.xml</a></p>
-<div class="highlight-python"><div class="highlight"><pre>   class DepartmanAktar(Command):
-       CMD_NAME = &#39;departman_aktar&#39;
-       HELP = &#39;Akademik bölüm listesi için UniTime XML import dosyası oluşturur.&#39;
-       PARAMS = []
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="k">class</span> <span class="nc">DepartmanAktar</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+       <span class="n">CMD_NAME</span> <span class="o">=</span> <span class="s1">&#39;departman_aktar&#39;</span>
+       <span class="n">HELP</span> <span class="o">=</span> <span class="s1">&#39;Akademik bölüm listesi için UniTime XML import dosyası oluşturur.&#39;</span>
+       <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">[]</span>
 
-       def run(self):
-           import os
-           import datetime
-           from lxml import etree
-           from ulakbus.models import Donem, Unit, Campus
-           root_directory = os.path.dirname(os.path.abspath(__file__))
+       <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+           <span class="kn">import</span> <span class="nn">os</span>
+           <span class="kn">import</span> <span class="nn">datetime</span>
+           <span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+           <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="k">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span>
+           <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
 
-           # Güncel akademik dönemi seç
-           term = Donem.objects.filter(guncel=True)[0]
+           <span class="c1"># Güncel akademik dönemi seç</span>
+           <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-           # Unit modeli üzerinden üniversite seç
-           uni = Unit.objects.filter(parent_unit_no=0)[0].yoksis_no
+           <span class="c1"># Unit modeli üzerinden üniversite seç</span>
+           <span class="n">uni</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">parent_unit_no</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yoksis_no</span>
 
-           # Unit modeli üzerinden bölümleri seç
-           units = Unit.objects.filter(unit_type=&#39;Bölüm&#39;)
+           <span class="c1"># Unit modeli üzerinden bölümleri seç</span>
+           <span class="n">units</span> <span class="o">=</span> <span class="n">Unit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">unit_type</span><span class="o">=</span><span class="s1">&#39;Bölüm&#39;</span><span class="p">)</span>
 
-           # Campus modeli üzerinden kampüs listesini al
-           campuses = Campus.objects.filter()
+           <span class="c1"># Campus modeli üzerinden kampüs listesini al</span>
+           <span class="n">campuses</span> <span class="o">=</span> <span class="n">Campus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
 
-           doc_type = &#39;&lt;!DOCTYPE departments PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Department.dtd&quot;&gt;&#39;
+           <span class="n">doc_type</span> <span class="o">=</span> <span class="s1">&#39;&lt;!DOCTYPE departments PUBLIC &quot;-//UniTime//DTD University Course Timetabling/EN&quot; &quot;http://www.unitime.org/interface/Department.dtd&quot;&gt;&#39;</span>
 
-           # XML ağacını oluştur (create XML tree)
-           for campus in campuses:
-               if campus:
-                   root = etree.Element(&#39;departments&#39;, campus=&quot;%s&quot; % uni, term=&quot;%s&quot; % term.ad,
-                                        year=&quot;%s&quot; % term.baslangic_tarihi.year)
-               for unit in units:
-                   etree.SubElement(root, &#39;department&#39;, externalId=&quot;%s&quot; % unit.key,
-                                    abbreviation=&quot;%s&quot; % unit.yoksis_no, name=&quot;%s&quot; % unit.name,
-                                    deptCode=&quot;%s&quot; % unit.yoksis_no, allowEvents=&quot;true&quot;)
+           <span class="c1"># XML ağacını oluştur (create XML tree)</span>
+           <span class="k">for</span> <span class="n">campus</span> <span class="ow">in</span> <span class="n">campuses</span><span class="p">:</span>
+               <span class="k">if</span> <span class="n">campus</span><span class="p">:</span>
+                   <span class="n">root</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;departments&#39;</span><span class="p">,</span> <span class="n">campus</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uni</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span>
+                                        <span class="n">year</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">term</span><span class="o">.</span><span class="n">baslangic_tarihi</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+               <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+                   <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">externalId</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                                    <span class="n">abbreviation</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                    <span class="n">deptCode</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unit</span><span class="o">.</span><span class="n">yoksis_no</span><span class="p">,</span> <span class="n">allowEvents</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
 
-           # Stringi düzgünleştir (string prettify)
-           s = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding=&#39;UTF-8&#39;,
-                              doctype=&quot;%s&quot; % doc_type)
+           <span class="c1"># Stringi düzgünleştir (string prettify)</span>
+           <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span>
+                              <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">doc_type</span><span class="p">)</span>
 
-           # Güncel tarih-saat tabanlı export klasörü yarat
-           current_date = datetime.datetime.now()
-           directory_name = current_date.strftime(&#39;%d_%m_%Y_%H_%M_%S&#39;)
-           export_directory = root_directory + &#39;/bin/dphs/data_exchange/&#39; + directory_name
-           if not os.path.exists(export_directory):
-               os.makedirs(export_directory)
+           <span class="c1"># Güncel tarih-saat tabanlı export klasörü yarat</span>
+           <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+           <span class="n">directory_name</span> <span class="o">=</span> <span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">_%m_%Y_%H_%M_%S&#39;</span><span class="p">)</span>
+           <span class="n">export_directory</span> <span class="o">=</span> <span class="n">root_directory</span> <span class="o">+</span> <span class="s1">&#39;/bin/dphs/data_exchange/&#39;</span> <span class="o">+</span> <span class="n">directory_name</span>
+           <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">export_directory</span><span class="p">):</span>
+               <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_directory</span><span class="p">)</span>
 
-           # Stringi dosyaya yazdır
-           out_file = open(export_directory + &#39;/departmentImport.xml&#39;, &#39;w+&#39;)
-           out_file.write(&quot;%s&quot; % s)
-           print(&quot;Dosya %s dizini altina kayit edilmistir&quot; % export_directory)
+           <span class="c1"># Stringi dosyaya yazdır</span>
+           <span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">export_directory</span> <span class="o">+</span> <span class="s1">&#39;/departmentImport.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+           <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+           <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya </span><span class="si">%s</span><span class="s2"> dizini altina kayit edilmistir&quot;</span> <span class="o">%</span> <span class="n">export_directory</span><span class="p">)</span>
 
 
-Oluşturulan XML dosyası, UniTime üzerinde **Administration** -&gt; **Academic Sessions** -&gt; **Data Exchange** menüsü ile ulaşabileceğiniz form aracığılığı ile sisteme import edilir.
+<span class="n">Oluşturulan</span> <span class="n">XML</span> <span class="n">dosyası</span><span class="p">,</span> <span class="n">UniTime</span> <span class="n">üzerinde</span> <span class="o">**</span><span class="n">Administration</span><span class="o">**</span> <span class="o">-&gt;</span> <span class="o">**</span><span class="n">Academic</span> <span class="n">Sessions</span><span class="o">**</span> <span class="o">-&gt;</span> <span class="o">**</span><span class="n">Data</span> <span class="n">Exchange</span><span class="o">**</span> <span class="n">menüsü</span> <span class="n">ile</span> <span class="n">ulaşabileceğiniz</span> <span class="n">form</span> <span class="n">aracığılığı</span> <span class="n">ile</span> <span class="n">sisteme</span> <span class="kn">import</span> <span class="nn">edilir.</span>
 </pre></div>
 </div>
 </div>
@@ -462,8 +461,8 @@ Oluşturulan XML dosyası, UniTime üzerinde **Administration** -&gt; **Academic
         <li class="right" >
           <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

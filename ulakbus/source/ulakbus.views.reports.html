@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../index.html"/> 
 
   
@@ -111,7 +114,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -138,347 +141,23 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ulakbus.views.reports.base">
-<span id="ulakbus-views-reports-base-module"></span><h2>ulakbus.views.reports.base module<a class="headerlink" href="#module-ulakbus.views.reports.base" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="ulakbus.views.reports.base.ReportDispatcher">
-<code class="descclassname">ulakbus.views.reports.base.</code><code class="descname">ReportDispatcher</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#ReportDispatcher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.ReportDispatcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.base.Reporter">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.base.</code><code class="descname">Reporter</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.base.BaseView</span></code></p>
-<dl class="class">
-<dt id="ulakbus.views.reports.base.Reporter.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.Meta" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm">
-<em class="property">class </em><code class="descclassname">Reporter.</code><code class="descname">ReportForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.ReportForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.forms.json_form.JsonForm</span></code></p>
-<dl class="class">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.title`</code></dt>
-<dd><p><em>str</em></p>
-<p>Title text to be shown top of the form.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
-<dd><p><em>str</em></p>
-<p>Help text to be shown under the title.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
-<dd><p><em>dict</em></p>
-<p>Override field types.
-A dict that maps fields names with desired field types.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
-</pre></div>
+<div class="section" id="ulakbus-views-reports-base-module">
+<h2>ulakbus.views.reports.base module<a class="headerlink" href="#ulakbus-views-reports-base-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.include`</code></dt>
-<dd><p><em>[]</em></p>
-<p>List of field names to be included.
-If given, all other fields will be excluded.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
-<dd><p><em>[]</em></p>
-<p>List of field names to be excluded.
-If given, all other fields will be included.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
-<dd><p><em>dict</em></p>
-<p>Form constraints to be enforced by
-both client side and backend form processors.</p>
-<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
-                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
-                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-</pre></div>
+<div class="section" id="ulakbus-views-reports-ders-ucreti-hesaplama-module">
+<h2>ulakbus.views.reports.ders_ucreti_hesaplama module<a class="headerlink" href="#ulakbus-views-reports-ders-ucreti-hesaplama-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.constraints">
-<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.customize_types">
-<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.exclude">
-<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.grouping">
-<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.help_text">
-<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.include">
-<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.include" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.Meta.title">
-<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.Meta.title" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.ReportForm.printout">
-<code class="descclassname">Reporter.ReportForm.</code><code class="descname">printout</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.ReportForm.printout" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.Reporter.TITLE">
-<code class="descclassname">Reporter.</code><code class="descname">TITLE</code><em class="property"> = ''</em><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.convert_choices">
-<code class="descclassname">Reporter.</code><code class="descname">convert_choices</code><span class="sig-paren">(</span><em>choices_dict_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.convert_choices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.convert_choices" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.get_headers">
-<code class="descclassname">Reporter.</code><code class="descname">get_headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.get_headers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.get_headers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.get_objects">
-<code class="descclassname">Reporter.</code><code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="classmethod">
-<dt id="ulakbus.views.reports.base.Reporter.get_title">
-<em class="property">classmethod </em><code class="descclassname">Reporter.</code><code class="descname">get_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.get_title"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.get_title" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.printout">
-<code class="descclassname">Reporter.</code><code class="descname">printout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.printout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.printout" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.set_headers">
-<code class="descclassname">Reporter.</code><code class="descname">set_headers</code><span class="sig-paren">(</span><em>as_attachment=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.set_headers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.set_headers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.show">
-<code class="descclassname">Reporter.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.show" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.base.Reporter.tr2ascii">
-<code class="descclassname">Reporter.</code><code class="descname">tr2ascii</code><span class="sig-paren">(</span><em>inp</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#Reporter.tr2ascii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.Reporter.tr2ascii" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.base.ReporterRegistry">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.base.</code><code class="descname">ReporterRegistry</code><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#ReporterRegistry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.ReporterRegistry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">type</span></code></p>
-<dl class="staticmethod">
-<dt id="ulakbus.views.reports.base.ReporterRegistry.get_permissions">
-<em class="property">static </em><code class="descname">get_permissions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#ReporterRegistry.get_permissions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.ReporterRegistry.get_permissions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="ulakbus.views.reports.base.ReporterRegistry.get_reporter">
-<em class="property">static </em><code class="descname">get_reporter</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#ReporterRegistry.get_reporter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.ReporterRegistry.get_reporter" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="ulakbus.views.reports.base.ReporterRegistry.get_reporters">
-<em class="property">static </em><code class="descname">get_reporters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/base.html#ReporterRegistry.get_reporters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.base.ReporterRegistry.get_reporters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.reports.base.ReporterRegistry.registry">
-<code class="descname">registry</code><em class="property"> = {'OgrenciHarc': &lt;class 'ulakbus.views.reports.ogrenci.OgrenciHarc'&gt;, 'OgrenciByBrithDate': &lt;class 'ulakbus.views.reports.ogrenci.OgrenciByBrithDate'&gt;, 'Kadrolar': &lt;class 'ulakbus.views.reports.personel.Kadrolar'&gt;, 'OgrenciByBrithPlace': &lt;class 'ulakbus.views.reports.ogrenci.OgrenciByBrithPlace'&gt;, 'PersonelByAkademikIdari': &lt;class 'ulakbus.views.reports.personel.PersonelByAkademikIdari'&gt;, 'RoomCapacities': &lt;class 'ulakbus.views.reports.ogrenci.RoomCapacities'&gt;, 'PersonelByGender': &lt;class 'ulakbus.views.reports.personel.PersonelByGender'&gt;, 'OgrenciByGender': &lt;class 'ulakbus.views.reports.ogrenci.OgrenciByGender'&gt;}</em><a class="headerlink" href="#ulakbus.views.reports.base.ReporterRegistry.registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="ulakbus-views-reports-ogrenci-module">
+<h2>ulakbus.views.reports.ogrenci module<a class="headerlink" href="#ulakbus-views-reports-ogrenci-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ulakbus.views.reports.ogrenci">
-<span id="ulakbus-views-reports-ogrenci-module"></span><h2>ulakbus.views.reports.ogrenci module<a class="headerlink" href="#module-ulakbus.views.reports.ogrenci" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByBrithDate">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.ogrenci.</code><code class="descname">OgrenciByBrithDate</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciByBrithDate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByBrithDate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByBrithDate.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Do\xc4\x9fum tarihine g\xc3\xb6re \xc3\xb6\xc4\x9frenci say\xc4\xb1lar\xc4\xb1'</em><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByBrithDate.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByBrithDate.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciByBrithDate.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByBrithDate.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByBrithPlace">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.ogrenci.</code><code class="descname">OgrenciByBrithPlace</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciByBrithPlace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByBrithPlace" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByBrithPlace.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Do\xc4\x9fum yerine g\xc3\xb6re \xc3\xb6\xc4\x9frenci say\xc4\xb1lar\xc4\xb1'</em><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByBrithPlace.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByBrithPlace.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciByBrithPlace.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByBrithPlace.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByGender">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.ogrenci.</code><code class="descname">OgrenciByGender</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciByGender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByGender" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByGender.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Cinsiyete g\xc3\xb6re \xc3\xb6\xc4\x9frenci say\xc4\xb1lar\xc4\xb1'</em><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByGender.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciByGender.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciByGender.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciByGender.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciHarc">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.ogrenci.</code><code class="descname">OgrenciHarc</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciHarc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciHarc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciHarc.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Har\xc3\xa7 Bilgileri'</em><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciHarc.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.ogrenci.OgrenciHarc.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#OgrenciHarc.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.OgrenciHarc.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.ogrenci.RoomCapacities">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.ogrenci.</code><code class="descname">RoomCapacities</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#RoomCapacities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.RoomCapacities" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.ogrenci.RoomCapacities.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Kapasitesine G\xc3\xb6re Mekanlar'</em><a class="headerlink" href="#ulakbus.views.reports.ogrenci.RoomCapacities.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.ogrenci.RoomCapacities.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/ogrenci.html#RoomCapacities.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.ogrenci.RoomCapacities.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="ulakbus-views-reports-okutman-ders-ucreti-goruntuleme-module">
+<h2>ulakbus.views.reports.okutman_ders_ucreti_goruntuleme module<a class="headerlink" href="#ulakbus-views-reports-okutman-ders-ucreti-goruntuleme-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ulakbus.views.reports.personel">
-<span id="ulakbus-views-reports-personel-module"></span><h2>ulakbus.views.reports.personel module<a class="headerlink" href="#module-ulakbus.views.reports.personel" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="ulakbus.views.reports.personel.Kadrolar">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.personel.</code><code class="descname">Kadrolar</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/personel.html#Kadrolar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.personel.Kadrolar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.personel.Kadrolar.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Genel Kadro Durumlar\xc4\xb1'</em><a class="headerlink" href="#ulakbus.views.reports.personel.Kadrolar.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.personel.Kadrolar.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/personel.html#Kadrolar.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.personel.Kadrolar.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.personel.PersonelByAkademikIdari">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.personel.</code><code class="descname">PersonelByAkademikIdari</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/personel.html#PersonelByAkademikIdari"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.personel.PersonelByAkademikIdari" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.personel.PersonelByAkademikIdari.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Akademik / \xc4\xb0dari Personel Say\xc4\xb1s\xc4\xb1'</em><a class="headerlink" href="#ulakbus.views.reports.personel.PersonelByAkademikIdari.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.personel.PersonelByAkademikIdari.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/personel.html#PersonelByAkademikIdari.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.personel.PersonelByAkademikIdari.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.reports.personel.PersonelByGender">
-<em class="property">class </em><code class="descclassname">ulakbus.views.reports.personel.</code><code class="descname">PersonelByGender</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/personel.html#PersonelByGender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.personel.PersonelByGender" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../ulakbus.views.reports.base.html#ulakbus.views.reports.base.Reporter" title="ulakbus.views.reports.base.Reporter"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.reports.base.Reporter</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.reports.personel.PersonelByGender.TITLE">
-<code class="descname">TITLE</code><em class="property"> = 'Cinsiyete g\xc3\xb6re personel say\xc4\xb1lar\xc4\xb1'</em><a class="headerlink" href="#ulakbus.views.reports.personel.PersonelByGender.TITLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.reports.personel.PersonelByGender.get_objects">
-<code class="descname">get_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/reports/personel.html#PersonelByGender.get_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.reports.personel.PersonelByGender.get_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="ulakbus-views-reports-personel-module">
+<h2>ulakbus.views.reports.personel module<a class="headerlink" href="#ulakbus-views-reports-personel-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ulakbus.views.reports">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ulakbus.views.reports" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

@@ -3,7 +3,7 @@
 <!doctype html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -34,6 +34,8 @@
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="ESB ve SOA ne anlama geliyor yani?" href="zato_doc.html" />
@@ -173,8 +175,8 @@
         <li class="right" >
           <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -195,6 +197,7 @@
 <li><a class="reference internal" href="#shell">shell</a></li>
 <li><a class="reference internal" href="#runsever">runsever</a></li>
 <li><a class="reference internal" href="#create-user">create_user</a></li>
+<li><a class="reference internal" href="#generate-diagrams">generate_diagrams</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#veri-uretecleri">Veri Üreteçleri</a><ul>
@@ -222,14 +225,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Hızlı Arama</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Git" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Aranacak terimleri veya modül, sınıf ya da fonksiyon adını yazınız
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -249,7 +249,7 @@ geliştirme sunucusu çalıştırma gibi birçok operasyon kolaylıkla yapılabi
 <p>Yardım mesajını gösteririr ve çıkış yapar.</p>
 <div class="section" id="usage">
 <h3>usage<a class="headerlink" href="#usage" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py -h or $ ./manage.py -help
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py -h or $ ./manage.py -help
 </pre></div>
 </div>
 </div>
@@ -259,7 +259,7 @@ geliştirme sunucusu çalıştırma gibi birçok operasyon kolaylıkla yapılabi
 <p>Bütün modellere ait verileri standart çıktıya ya da belirtilen dosyaya yazar.</p>
 <div class="section" id="id1">
 <h3>usage<a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py dump_data [-h] [--timeit] --model [MODEL] [--path [PATH]]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py dump_data [-h] [--timeit] --model [MODEL] [--path [PATH]]
                         [--type [{csv,json,json_tree,pretty}]]
                         [--batch_size [BATCH_SIZE]]
 </pre></div>
@@ -305,7 +305,7 @@ versiyonu.</li>
 <p>Belirtilen dosyadan verileri okur ve modelleri doldurur.</p>
 <div class="section" id="id2">
 <h3>usage<a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py load_data [-h] [--timeit] --path [PATH] [--update]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py load_data [-h] [--timeit] --path [PATH] [--update]
                         [--type [{csv,json,json_tree,pretty}]]
                         [--batch_size [BATCH_SIZE]]
 </pre></div>
@@ -353,7 +353,7 @@ dosyası olabilir.</li>
 ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak doldurur.</p>
 <div class="section" id="id5">
 <h3>usage<a class="headerlink" href="#id5" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py load_fixture [-h] [--timeit] --path [PATH]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py load_fixture [-h] [--timeit] --path [PATH]
 </pre></div>
 </div>
 <div class="section" id="id6">
@@ -376,7 +376,7 @@ ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak
 <p>Verilen model ya da modeller için yeni SOLR şemaları üretir veya mevcutları günceller.</p>
 <div class="section" id="id8">
 <h3>usage<a class="headerlink" href="#id8" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py migrate [-h] [--timeit] --model [MODEL] [--threads [THREADS]]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py migrate [-h] [--timeit] --model [MODEL] [--threads [THREADS]]
                       [--force]
 </pre></div>
 </div>
@@ -402,7 +402,7 @@ ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak
 <p>Modellere ait bucket&#8217;ların içeriğini siler.</p>
 <div class="section" id="id11">
 <h3>usage<a class="headerlink" href="#id11" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py flush_model [-h] [--timeit] --model [MODEL]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py flush_model [-h] [--timeit] --model [MODEL]
 </pre></div>
 </div>
 <div class="section" id="id12">
@@ -425,7 +425,7 @@ ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak
 <p>İzinleri veritabanı ile senkronize eder.</p>
 <div class="section" id="id14">
 <h3>usage<a class="headerlink" href="#id14" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py update_permissions [-h] [--timeit] [--dry]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py update_permissions [-h] [--timeit] [--dry]
 </pre></div>
 </div>
 <div class="section" id="id15">
@@ -444,7 +444,7 @@ ulakbus_settings_fixtures isimli bucket içine, mevcut keylerin üzerine yazarak
 hale getirir. Çalışma kolaylığı sağlar.</p>
 <div class="section" id="id16">
 <h3>usage<a class="headerlink" href="#id16" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py shell [-h] [--timeit] [--no_model]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py shell [-h] [--timeit] [--no_model]
 </pre></div>
 </div>
 <div class="section" id="id17">
@@ -462,7 +462,7 @@ hale getirir. Çalışma kolaylığı sağlar.</p>
 <p>Geliştirme sunucusunu çalıştırır.</p>
 <div class="section" id="id18">
 <h3>usage<a class="headerlink" href="#id18" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py runserver [-h] [--timeit] [--addr [ADDR]] [--port [PORT]]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py runserver [-h] [--timeit] [--addr [ADDR]] [--port [PORT]]
 </pre></div>
 </div>
 <div class="section" id="id19">
@@ -481,7 +481,7 @@ hale getirir. Çalışma kolaylığı sağlar.</p>
 <p>Yeni kullanıcı yaratır.</p>
 <div class="section" id="id20">
 <h3>usage<a class="headerlink" href="#id20" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py create_user [-h] [--timeit] --username [USERNAME] --password
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py create_user [-h] [--timeit] --username [USERNAME] --password
                           [PASSWORD] [--abstract_role [ABSTRACT_ROLE]]
                           [--super] [--permission_query [PERMISSION_QUERY]]
 </pre></div>
@@ -506,6 +506,64 @@ Varsayılan: &#8220;code:crud* OR code:login* OR code:logout*&#8221;</li>
 </div>
 </div>
 </div>
+<div class="section" id="generate-diagrams">
+<h2>generate_diagrams<a class="headerlink" href="#generate-diagrams" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Modellerden PlantUML diyagramları oluşturur.</p>
+<div class="section" id="id22">
+<h3>usage<a class="headerlink" href="#id22" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./ manage.py generate_diagrams [-h] [--timeit] [--daemonize]
+                                 [--model [MODEL]] [--path [PATH]]
+                                 [--split [{no,app,model}]]
+</pre></div>
+</div>
+<div class="section" id="id23">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id23" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<ul>
+<li><p class="first"><strong>-h,&#8211;help</strong>   Yardım mesajını gösteririr ve çıkış yapar.</p>
+</li>
+<li><p class="first"><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</p>
+</li>
+<li><p class="first"><strong>model [MODEL]</strong> Diyagramı çizilecek modellerin adı buraya
+yazılarak seçilir. Tüm diyagramları seçmek için &#8216;all&#8217;
+girilebilir. Eğer bu seçenek verilmediyse tüm modeller için diyagram
+oluşturulur.</p>
+</li>
+<li><p class="first"><strong>&#8211;path [PATH]</strong> Standart çıktı yerine, belirtilen dosyaya
+yazar. Eğer &#8216;split&#8217; seçeneği &#8216;app&#8217; veya &#8216;model&#8217; seçilirse &#8216;path&#8217;
+verilmesi zorunludur.</p>
+</li>
+<li><p class="first"><strong>&#8211;split [{no,app,model}]</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><strong>no:</strong> Tüm modelleri tek bir diyagrama yerleştirir ve
+standart çıktıya ya da tek bir dosyaya yazar.</li>
+<li><strong>app:</strong> Modelleri, Metaclasslarındaki &#8216;app&#8217; alanına
+göre gruplayarak ayrı dosyalara yazar. Bu seçenek
+seçilirse &#8216;path&#8217; seçeneğiyle bir dosya adı
+verilmelidir. Dosyaları &#8216;path&#8217; seçeneğindeki isim ve
+&#8216;app&#8217; isimleri ile kaydeder, örneğin &#8216;&#8211;path
+diagrams.puml&#8217; seçildiyse dosyaları &#8216;diagrams.app.puml&#8217;
+şeklinde kaydeder.</li>
+<li><strong>model:</strong> Modellerin her birini ayrı dosyalara
+yazar. Bu seçenek seçilirse &#8216;path&#8217; seçeneğiyle bir
+dosya adı verilmelidir. Dosyaları &#8216;path&#8217; seçeneğindeki
+isim, &#8216;app&#8217; isimleri ve model ismi ile
+kaydeder. Örneğin &#8216;&#8211;path diagrams.puml&#8217; seçildiyse
+dosyaları &#8216;diagrams.app.model.puml&#8217; şeklinde kaydeder.</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+<p>Bu komut ile oluşturulan diyagramlar PlantUML&#8217;in çizim sınırlarını
+aşabilir. Oluşan diyagramların çizilirken yarım kalması durumunda
+PlantUML&#8217;e bir çevre değişkeni verilerek diyagramları çizmesi
+sağlanabilir:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ env PLANTUML_LIMIT_SIZE=8192 plantuml my-diagram.puml
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="veri-uretecleri">
 <h1>Veri Üreteçleri<a class="headerlink" href="#veri-uretecleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
@@ -514,19 +572,19 @@ eklenmiştir.</p>
 <div class="section" id="random-personel">
 <h2>random_personel<a class="headerlink" href="#random-personel" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Rastgele Personel üretir.</p>
-<div class="section" id="id22">
-<h3>usage<a class="headerlink" href="#id22" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_personel [-h] [--timeit] --length [LENGTH]
+<div class="section" id="id24">
+<h3>usage<a class="headerlink" href="#id24" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py random_personel [-h] [--timeit] --length [LENGTH]
 </pre></div>
 </div>
-<div class="section" id="id23">
-<h4>Zorunlu olan argümanlar:<a class="headerlink" href="#id23" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id25">
+<h4>Zorunlu olan argümanlar:<a class="headerlink" href="#id25" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek personel sayısıdır.</li>
 </ul>
 </div>
-<div class="section" id="id24">
-<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id24" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id26">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id26" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
 <li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
@@ -537,19 +595,19 @@ eklenmiştir.</p>
 <div class="section" id="random-harici-okutman">
 <h2>random_harici_okutman<a class="headerlink" href="#random-harici-okutman" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Rastgele Harici Okutman üretir.</p>
-<div class="section" id="id25">
-<h3>usage<a class="headerlink" href="#id25" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_harici_okutman [-h] [--timeit] --length [LENGTH]
+<div class="section" id="id27">
+<h3>usage<a class="headerlink" href="#id27" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py random_harici_okutman [-h] [--timeit] --length [LENGTH]
 </pre></div>
 </div>
-<div class="section" id="id26">
-<h4>Zorunlu olan argüman:<a class="headerlink" href="#id26" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id28">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id28" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek okutmanın sayısıdır.</li>
 </ul>
 </div>
-<div class="section" id="id27">
-<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id27" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id29">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id29" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
 <li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
@@ -560,19 +618,19 @@ eklenmiştir.</p>
 <div class="section" id="random-ogrenci">
 <h2>random_ogrenci<a class="headerlink" href="#random-ogrenci" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Rastgele Ögrenci üretir.</p>
-<div class="section" id="id28">
-<h3>usage<a class="headerlink" href="#id28" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_ogrenci [-h] [--timeit] --length [LENGTH]
+<div class="section" id="id30">
+<h3>usage<a class="headerlink" href="#id30" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py random_ogrenci [-h] [--timeit] --length [LENGTH]
 </pre></div>
 </div>
-<div class="section" id="id29">
-<h4>Zorunlu olan argüman:<a class="headerlink" href="#id29" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id31">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id31" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek öğrenci sayısıdır.</li>
 </ul>
 </div>
-<div class="section" id="id30">
-<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id30" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id32">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id32" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>-h,&#8211;help</strong>     Yardım mesajını gösterir.</li>
 <li><strong>&#8211;timeit</strong>      İşlemin süresini ölçer.</li>
@@ -583,19 +641,19 @@ eklenmiştir.</p>
 <div class="section" id="random-okutman">
 <h2>random_okutman<a class="headerlink" href="#random-okutman" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Personel veya HariciOkutman modellerinden rastgele Okutman üretir.</p>
-<div class="section" id="id31">
-<h3>usage<a class="headerlink" href="#id31" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$ ./manage.py random_okutman [-h] [--timeit] --length [LENGTH]
+<div class="section" id="id33">
+<h3>usage<a class="headerlink" href="#id33" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./manage.py random_okutman [-h] [--timeit] --length [LENGTH]
 </pre></div>
 </div>
-<div class="section" id="id32">
-<h4>Zorunlu olan argüman:<a class="headerlink" href="#id32" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id34">
+<h4>Zorunlu olan argüman:<a class="headerlink" href="#id34" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>&#8211;length [LENGTH]</strong> Rastgele üretilecek okutmanın sayıdır.</li>
 </ul>
 </div>
-<div class="section" id="id33">
-<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id33" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<div class="section" id="id35">
+<h4>Zorunlu olmayan argümanlar:<a class="headerlink" href="#id35" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <ul class="simple">
 <li><strong>-h,&#8211;help</strong>   Yardım mesajını gösterir.</li>
 <li><strong>&#8211;timeit</strong>    İşlemin süresini ölçer.</li>
@@ -623,8 +681,8 @@ eklenmiştir.</p>
         <li class="right" >
           <a href="yazilim_gelistirme_ve_test_dongusu.html" title="Yazılım Geliştirme ve Test Döngüsü"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
     </div>

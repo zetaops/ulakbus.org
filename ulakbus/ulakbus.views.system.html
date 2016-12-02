@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="index.html"/>
         <link rel="up" title="ulakbus.views package" href="ulakbus.views.html"/>
         <link rel="next" title="ulakbus.manage module" href="ulakbus.manage.html"/>
@@ -91,7 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ulakbus.views.html#subpackages">Subpackages</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="ulakbus.views.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="ulakbus.views.dashboard.html">ulakbus.views.dashboard module</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">ulakbus.views.system module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ulakbus.views.system module</a></li>
 </ul>
 </li>
 </ul>
@@ -122,7 +125,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -146,101 +149,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ulakbus.views.system">
-<span id="ulakbus-views-system-module"></span><h1>ulakbus.views.system module<a class="headerlink" href="#module-ulakbus.views.system" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="ulakbus.views.system.GetCurrentUser">
-<em class="property">class </em><code class="descclassname">ulakbus.views.system.</code><code class="descname">GetCurrentUser</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#GetCurrentUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.GetCurrentUser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.base.BaseView</span></code></p>
-<dl class="method">
-<dt id="ulakbus.views.system.GetCurrentUser.getUser">
-<code class="descname">getUser</code><span class="sig-paren">(</span><em>userObject</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#GetCurrentUser.getUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.GetCurrentUser.getUser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.system.Notification">
-<em class="property">class </em><code class="descclassname">ulakbus.views.system.</code><code class="descname">Notification</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#Notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.Notification" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.base.BaseView</span></code></p>
-<dl class="method">
-<dt id="ulakbus.views.system.Notification.mark_as_read">
-<code class="descname">mark_as_read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#Notification.mark_as_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.Notification.mark_as_read" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.system.Search">
-<em class="property">class </em><code class="descclassname">ulakbus.views.system.</code><code class="descname">Search</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#Search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.Search" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.base.BaseView</span></code></p>
-<dl class="attribute">
-<dt id="ulakbus.views.system.Search.SEARCH_ON">
-<code class="descname">SEARCH_ON</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.system.Search.SEARCH_ON" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.system.Search.do_search">
-<code class="descname">do_search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#Search.do_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.Search.do_search" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.system.SearchPerson">
-<em class="property">class </em><code class="descclassname">ulakbus.views.system.</code><code class="descname">SearchPerson</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#SearchPerson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.SearchPerson" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ulakbus.views.system.Search" title="ulakbus.views.system.Search"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.system.Search</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.system.SearchPerson.SEARCH_ON">
-<code class="descname">SEARCH_ON</code><a class="headerlink" href="#ulakbus.views.system.SearchPerson.SEARCH_ON" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Personel</span></code></p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.system.SearchStudent">
-<em class="property">class </em><code class="descclassname">ulakbus.views.system.</code><code class="descname">SearchStudent</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#SearchStudent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.SearchStudent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ulakbus.views.system.Search" title="ulakbus.views.system.Search"><code class="xref py py-class docutils literal"><span class="pre">ulakbus.views.system.Search</span></code></a></p>
-<dl class="attribute">
-<dt id="ulakbus.views.system.SearchStudent.SEARCH_ON">
-<code class="descname">SEARCH_ON</code><a class="headerlink" href="#ulakbus.views.system.SearchStudent.SEARCH_ON" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Ogrenci</span></code></p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.system.UlakbusMenu">
-<em class="property">class </em><code class="descclassname">ulakbus.views.system.</code><code class="descname">UlakbusMenu</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#UlakbusMenu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.UlakbusMenu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.menu.Menu</span></code></p>
-<dl class="method">
-<dt id="ulakbus.views.system.UlakbusMenu.add_admin_crud">
-<code class="descname">add_admin_crud</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#UlakbusMenu.add_admin_crud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.UlakbusMenu.add_admin_crud" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.system.UlakbusMenu.add_reporters">
-<code class="descname">add_reporters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#UlakbusMenu.add_reporters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.UlakbusMenu.add_reporters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.system.UlakbusMenu.add_settings">
-<code class="descname">add_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#UlakbusMenu.add_settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.UlakbusMenu.add_settings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.system.UlakbusMenu.add_user_data">
-<code class="descname">add_user_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#UlakbusMenu.add_user_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.UlakbusMenu.add_user_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="ulakbus.views.system.get_random_msg">
-<code class="descclassname">ulakbus.views.system.</code><code class="descname">get_random_msg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ulakbus/views/system.html#get_random_msg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.system.get_random_msg" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+  <div class="section" id="ulakbus-views-system-module">
+<h1>ulakbus.views.system module<a class="headerlink" href="#ulakbus-views-system-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

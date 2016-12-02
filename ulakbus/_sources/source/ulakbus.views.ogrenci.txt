@@ -12,10 +12,34 @@ ulakbus.views.ogrenci.basari_durumu module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.views.ogrenci.katilim_durumu module
+-------------------------------------------
+
+.. automodule:: ulakbus.views.ogrenci.katilim_durumu
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.ogrenci.kayit_silme module
+----------------------------------------
+
+.. automodule:: ulakbus.views.ogrenci.kayit_silme
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.views.ogrenci.ogrenci module
 ------------------------------------
 
 .. automodule:: ulakbus.views.ogrenci.ogrenci
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.ogrenci.ogrenci_isleri_not_duzenleme module
+---------------------------------------------------------
+
+.. automodule:: ulakbus.views.ogrenci.ogrenci_isleri_not_duzenleme
     :members:
     :undoc-members:
     :show-inheritance:

@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Ulakbus API Documentation 0.6.6 documentation" href="../index.html"/> 
 
   
@@ -111,7 +114,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -138,342 +141,35 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ulakbus.views.common.akademik_takvim">
-<span id="ulakbus-views-common-akademik-takvim-module"></span><h2>ulakbus.views.common.akademik_takvim module<a class="headerlink" href="#module-ulakbus.views.common.akademik_takvim" title="Permalink to this headline">¶</a></h2>
-<p>Akademik Takvim</p>
-<p>Akademik Takvim İş Akışı modülü.</p>
-<p>İş akışı tek adımdan oluşur. Bu adımda giriş yapan kullanıcının bağlı olduğu
-birime ait akademik takvim gösterilir. Eğer birime özel bir akademik takvim bulunamazsa
-üniversitenin genel takvimi görtüntülenir.</p>
-<dl class="class">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView">
-<em class="property">class </em><code class="descclassname">ulakbus.views.common.akademik_takvim.</code><code class="descname">AkademikTakvimView</code><span class="sig-paren">(</span><em>current=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/common/akademik_takvim.html#AkademikTakvimView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.CrudView</span></code></p>
-<p>CrudView üzerine geliştirilmiştir.</p>
-<p>İş akışının tek adımına karşılık gelen tek bir metoda sahiptir.</p>
-<dl class="class">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm">
-<em class="property">class </em><code class="descname">ListForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ListForm</span></code></p>
-<p>Holds list view form elements.</p>
-<p>Used by CrudMeta metaclass to create distinct
-copies for each subclass of CrudView.</p>
-<dl class="class">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.title`</code></dt>
-<dd><p><em>str</em></p>
-<p>Title text to be shown top of the form.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
-<dd><p><em>str</em></p>
-<p>Help text to be shown under the title.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
-<dd><p><em>dict</em></p>
-<p>Override field types.
-A dict that maps fields names with desired field types.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
-</pre></div>
+<div class="section" id="ulakbus-views-common-akademik-takvim-module">
+<h2>ulakbus.views.common.akademik_takvim module<a class="headerlink" href="#ulakbus-views-common-akademik-takvim-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.include`</code></dt>
-<dd><p><em>[]</em></p>
-<p>List of field names to be included.
-If given, all other fields will be excluded.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
-<dd><p><em>[]</em></p>
-<p>List of field names to be excluded.
-If given, all other fields will be included.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
-<dd><p><em>dict</em></p>
-<p>Form constraints to be enforced by
-both client side and backend form processors.</p>
-<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
-                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
-                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-</pre></div>
+<div class="section" id="ulakbus-views-common-e-posta-degistir-module">
+<h2>ulakbus.views.common.e_posta_degistir module<a class="headerlink" href="#ulakbus-views-common-e-posta-degistir-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.constraints">
-<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.customize_types">
-<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.exclude">
-<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.grouping">
-<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.help_text">
-<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.include">
-<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.include" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.title">
-<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.Meta.title" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.add">
-<code class="descclassname">AkademikTakvimView.ListForm.</code><code class="descname">add</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ListForm.add" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta">
-<em class="property">class </em><code class="descclassname">AkademikTakvimView.</code><code class="descname">Meta</code><a class="reference internal" href="../_modules/ulakbus/views/common/akademik_takvim.html#AkademikTakvimView.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.allow_filters">
-<code class="descname">allow_filters</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.allow_filters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.allow_search">
-<code class="descname">allow_search</code><em class="property"> = True</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.allow_search" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.allow_selection">
-<code class="descname">allow_selection</code><em class="property"> = False</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.allow_selection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.init_view">
-<code class="descname">init_view</code><em class="property"> = 'list'</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.init_view" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.model">
-<code class="descname">model</code><em class="property"> = 'AkademikTakvim'</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.object_actions">
-<code class="descname">object_actions</code><em class="property"> = {'add_edit_form': {'cmd': 'add_edit_form', 'name': 'D\xc3\xbczenle', 'show_as': 'button', 'mode': 'normal'}, 'show': {'fields': [0], 'cmd': 'show', 'mode': 'normal', 'show_as': 'link'}, 'delete': {'cmd': 'delete', 'name': 'Sil', 'show_as': 'button', 'mode': 'normal'}}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.object_actions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.objects_per_page">
-<code class="descname">objects_per_page</code><em class="property"> = 10</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.Meta.objects_per_page" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm">
-<em class="property">class </em><code class="descclassname">AkademikTakvimView.</code><code class="descname">ObjectForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">zengine.views.crud.ObjectForm</span></code></p>
-<p>Holds object add / edit form elements.</p>
-<p>Used by CrudMeta metaclass to create distinct
-copies for each subclass of CrudView.</p>
-<dl class="class">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>ModelForm Meta class holds config data that modifies the behaviour of form objects.</p>
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.title`</code></dt>
-<dd><p><em>str</em></p>
-<p>Title text to be shown top of the form.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.help_text`</code></dt>
-<dd><p><em>str</em></p>
-<p>Help text to be shown under the title.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.customize_types`</code></dt>
-<dd><p><em>dict</em></p>
-<p>Override field types.
-A dict that maps fields names with desired field types.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">customize_types</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}</span>
-</pre></div>
+<div class="section" id="ulakbus-views-common-guncel-donem-degistirme-module">
+<h2>ulakbus.views.common.guncel_donem_degistirme module<a class="headerlink" href="#ulakbus-views-common-guncel-donem-degistirme-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.include`</code></dt>
-<dd><p><em>[]</em></p>
-<p>List of field names to be included.
-If given, all other fields will be excluded.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.exclude`</code></dt>
-<dd><p><em>[]</em></p>
-<p>List of field names to be excluded.
-If given, all other fields will be included.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">`~ModelForm.Meta.constraints`</code></dt>
-<dd><p><em>dict</em></p>
-<p>Form constraints to be enforced by
-both client side and backend form processors.</p>
-<p>See <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbus-UI API</a> docs for possible constraints.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
-                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field2_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s1">&#39;cons&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;field2_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="s1">&#39;exists&#39;</span><span class="p">}],</span>
-                <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;change_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;field1_id&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-</pre></div>
+<div class="section" id="ulakbus-views-common-kullanici-adi-degistir-module">
+<h2>ulakbus.views.common.kullanici_adi_degistir module<a class="headerlink" href="#ulakbus-views-common-kullanici-adi-degistir-module" title="Permalink to this headline">¶</a></h2>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.constraints">
-<code class="descname">constraints</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.constraints" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.customize_types">
-<code class="descname">customize_types</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.customize_types" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.exclude">
-<code class="descname">exclude</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.grouping">
-<code class="descname">grouping</code><em class="property"> = {}</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.grouping" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.help_text">
-<code class="descname">help_text</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.help_text" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.include">
-<code class="descname">include</code><em class="property"> = []</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.include" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.title">
-<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.Meta.title" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_as_new_edit">
-<code class="descclassname">AkademikTakvimView.ObjectForm.</code><code class="descname">save_as_new_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_as_new_edit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_as_new_list">
-<code class="descclassname">AkademikTakvimView.ObjectForm.</code><code class="descname">save_as_new_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_as_new_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_edit">
-<code class="descclassname">AkademikTakvimView.ObjectForm.</code><code class="descname">save_edit</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_edit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_list">
-<code class="descclassname">AkademikTakvimView.ObjectForm.</code><code class="descname">save_list</code><em class="property"> = u&quot;&lt;class 'zengine.forms.fields.Button'&gt;&quot;</em><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.ObjectForm.save_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="method">
-<dt id="ulakbus.views.common.akademik_takvim.AkademikTakvimView.goster">
-<code class="descclassname">AkademikTakvimView.</code><code class="descname">goster</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ulakbus/views/common/akademik_takvim.html#AkademikTakvimView.goster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ulakbus.views.common.akademik_takvim.AkademikTakvimView.goster" title="Permalink to this definition">¶</a></dt>
-<dd><p>AkademikTakvim modelinden kullanıcıya gösterilecek takvime erişir ve bir tablo
-halinde çıktıya ekler.</p>
-<p>Akademik Takvim öğelerinin (takvim etkinlikleri) sırlaması önemli olduğu için
-OrderedDict kullanılmıştır. Data bu sözlüğün içinde sıralandığı haliyle
-seriyalize edilir.</p>
-<p>AKADEMIK_TAKVIM_ETKINLIKLERI önceden tanımlanmış ve sıralanmış bir etkinlikler
-toplamıdır. AkademikTakvim modeli ile birlikte models.ogrenci modülü içinde
-sıralı olarak tanımlanmıştır. Örn:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">AKADEMIK_TAKVIM_ETKINLIKLERI</span> <span class="o">=</span> <span class="p">[</span>
-<span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;Yeni Öğrenci Ön Kayıt&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;Güz Dönem Başlangıcı&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;Derslerin Acılması&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;Subelendirme ve Ders Programının Ilan Edilmesi&#39;</span><span class="p">),</span>
-
-<span class="o">...</span>
-<span class="p">(</span><span class="s1">&#39;53&#39;</span><span class="p">,</span> <span class="s1">&#39;Yarıyıl Sınavı Not Giriş&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;54&#39;</span><span class="p">,</span> <span class="s1">&#39;Yarıyıl Sınavı Notlarının Öğrenciye Yayınlanmasi&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="s1">&#39;55&#39;</span><span class="p">,</span> <span class="s1">&#39;Öğretim Elemanı Yoklama Girişi&#39;</span><span class="p">),</span>
-<span class="p">]</span>
-</pre></div>
+<div class="section" id="ulakbus-views-common-parola-degistir-module">
+<h2>ulakbus.views.common.parola_degistir module<a class="headerlink" href="#ulakbus-views-common-parola-degistir-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>Kayıtların herbiri bu öğeler için belirli bir tarih veya tarih aralığına denk gelmektedir.</p>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="ulakbus-views-common-parolami-unuttum-module">
+<h2>ulakbus.views.common.parolami_unuttum module<a class="headerlink" href="#ulakbus-views-common-parolami-unuttum-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ulakbus.views.common">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ulakbus.views.common" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ulakbus-views-common-profil-sayfasi-goruntuleme-module">
+<h2>ulakbus.views.common.profil_sayfasi_goruntuleme module<a class="headerlink" href="#ulakbus-views-common-profil-sayfasi-goruntuleme-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ulakbus-views-common-yeni-donem-olusturma-module">
+<h2>ulakbus.views.common.yeni_donem_olusturma module<a class="headerlink" href="#ulakbus-views-common-yeni-donem-olusturma-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ulakbus-views-common-yeni-parola-belirle-module">
+<h2>ulakbus.views.common.yeni_parola_belirle module<a class="headerlink" href="#ulakbus-views-common-yeni-parola-belirle-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

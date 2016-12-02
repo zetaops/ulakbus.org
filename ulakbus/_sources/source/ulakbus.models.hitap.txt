@@ -1,0 +1,30 @@
+ulakbus.models.hitap package
+============================
+
+Submodules
+----------
+
+ulakbus.models.hitap.hitap module
+---------------------------------
+
+.. automodule:: ulakbus.models.hitap.hitap
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.models.hitap.hitap_sebep module
+---------------------------------------
+
+.. automodule:: ulakbus.models.hitap.hitap_sebep
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ulakbus.models.hitap
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,22 @@
+ulakbus.views.sinav_programi package
+====================================
+
+Submodules
+----------
+
+ulakbus.views.sinav_programi.sinav_programi_goruntule module
+------------------------------------------------------------
+
+.. automodule:: ulakbus.views.sinav_programi.sinav_programi_goruntule
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ulakbus.views.sinav_programi
+    :members:
+    :undoc-members:
+    :show-inheritance:

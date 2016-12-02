@@ -12,6 +12,70 @@ ulakbus.views.common.akademik_takvim module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.views.common.e_posta_degistir module
+--------------------------------------------
+
+.. automodule:: ulakbus.views.common.e_posta_degistir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.guncel_donem_degistirme module
+---------------------------------------------------
+
+.. automodule:: ulakbus.views.common.guncel_donem_degistirme
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.kullanici_adi_degistir module
+--------------------------------------------------
+
+.. automodule:: ulakbus.views.common.kullanici_adi_degistir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.parola_degistir module
+-------------------------------------------
+
+.. automodule:: ulakbus.views.common.parola_degistir
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.parolami_unuttum module
+--------------------------------------------
+
+.. automodule:: ulakbus.views.common.parolami_unuttum
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.profil_sayfasi_goruntuleme module
+------------------------------------------------------
+
+.. automodule:: ulakbus.views.common.profil_sayfasi_goruntuleme
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.yeni_donem_olusturma module
+------------------------------------------------
+
+.. automodule:: ulakbus.views.common.yeni_donem_olusturma
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.common.yeni_parola_belirle module
+-----------------------------------------------
+
+.. automodule:: ulakbus.views.common.yeni_parola_belirle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
