@@ -20,7 +20,7 @@ Yazılım Tasarım Analizi Belgesi
 --------------------------------------
 
 
-.. image:: _static/ULAKBUS-layers-diagram.png
+.. image:: _images/ULAKBUS-layers-diagram.png
    :scale: 100 %
    :align: center
 
@@ -31,7 +31,7 @@ Yazılım Tasarım Analizi Belgesi
 İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.
 
 
-.. image:: _static/workflows.png
+.. image:: _images/workflows.png
    :scale: 100 %
    :align: center
 
