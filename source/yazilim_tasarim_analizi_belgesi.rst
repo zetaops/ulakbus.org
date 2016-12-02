@@ -7,6 +7,16 @@ Yazılım Tasarım Analizi Belgesi
 ===================
 
 --------------------------------------
+*Sistem Mimarisi Genel Görünüm*
+--------------------------------------
+
+.. image:: _static/ULAKBUS-system-diagram.png
+   :scale: 90 %
+   :align: center
+
+
+
+--------------------------------------
 *İş Akışı (Workflow) Tabanlı Uygulama*
 --------------------------------------
 
