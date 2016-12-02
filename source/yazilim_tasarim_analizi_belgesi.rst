@@ -15,6 +15,14 @@ Yazılım Tasarım Analizi Belgesi
    :align: center
 
 
+--------------------------------------
+*ULAKBÜS Katmanları Genel Görünüm*
+--------------------------------------
+
+
+.. image:: _static/ULAKBUS-layers-diagram.png
+   :scale: 100 %
+   :align: center
 
 --------------------------------------
 *İş Akışı (Workflow) Tabanlı Uygulama*
