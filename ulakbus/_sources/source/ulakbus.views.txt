@@ -13,6 +13,7 @@ Subpackages
     ulakbus.views.personel
     ulakbus.views.reports
     ulakbus.views.sinav_programi
+    ulakbus.views.workflow
 
 Submodules
 ----------

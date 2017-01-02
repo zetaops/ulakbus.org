@@ -36,6 +36,14 @@ ulakbus.views.personel.hizmet_cetveli module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.views.personel.isten_ayrilma module
+-------------------------------------------
+
+.. automodule:: ulakbus.views.personel.isten_ayrilma
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ulakbus.views.personel.izin module
 ----------------------------------
 
@@ -56,6 +64,14 @@ ulakbus.views.personel.kimlik_ve_iletisim module
 ------------------------------------------------
 
 .. automodule:: ulakbus.views.personel.kimlik_ve_iletisim
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.views.personel.personel_bilgileri module
+------------------------------------------------
+
+.. automodule:: ulakbus.views.personel.personel_bilgileri
     :members:
     :undoc-members:
     :show-inheritance:

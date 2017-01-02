@@ -1,0 +1,30 @@
+ulakbus.services.ogrenci package
+================================
+
+Submodules
+----------
+
+ulakbus.services.ogrenci.ders_programi module
+---------------------------------------------
+
+.. automodule:: ulakbus.services.ogrenci.ders_programi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.ogrenci.sinav_plani module
+-------------------------------------------
+
+.. automodule:: ulakbus.services.ogrenci.sinav_plani
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ulakbus.services.ogrenci
+    :members:
+    :undoc-members:
+    :show-inheritance:

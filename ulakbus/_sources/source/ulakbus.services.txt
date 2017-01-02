@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     ulakbus.services.common
+    ulakbus.services.ogrenci
     ulakbus.services.personel
 
 Submodules
@@ -16,6 +17,22 @@ ulakbus.services.authentication module
 --------------------------------------
 
 .. automodule:: ulakbus.services.authentication
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.deploy_ulakbus_services module
+-----------------------------------------------
+
+.. automodule:: ulakbus.services.deploy_ulakbus_services
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ulakbus.services.ulakbus_service module
+---------------------------------------
+
+.. automodule:: ulakbus.services.ulakbus_service
     :members:
     :undoc-members:
     :show-inheritance:
