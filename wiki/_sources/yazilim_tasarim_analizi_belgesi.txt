@@ -6,18 +6,18 @@ Yazılım Tasarım Analizi Belgesi
 **Sistem Mimarisi**
 ===================
 
---------------------------------------
+-------------------------------
 *Sistem Mimarisi Genel Görünüm*
---------------------------------------
+-------------------------------
 
 .. image:: _static/ULAKBUS-system-diagram.png
    :scale: 90 %
    :align: center
 
 
---------------------------------------
+----------------------------------
 *ULAKBÜS Katmanları Genel Görünüm*
---------------------------------------
+----------------------------------
 
 
 .. image:: _images/ULAKBUS-layers-diagram.png
@@ -443,15 +443,15 @@ Uygulamanın, kanun ve yönetmelik değişikliklerine bağlı olarak zamanla de�
 
 SOAP, REST, JSON, XML, CSV, PB gibi farklı protokol ve veri tipleriyle konuşan servislerin dönüşümü Zato ESB üzerinde yapılacaktır. Harici istemciler ve farklı modüller tarafından ihtiyaç duyulan işlevsellikler Zato ESB üzerinde çalışan mikro servisler olarak sunulacaktır. Uygulamanın hizmet sağlayıcı olduğu her durumda REST stili kullanılacaktır.
 
--------------------------
+------------------------
 **Tornado Web Sunucusu**
--------------------------
+------------------------
 
 Tornado, non-blocking network I/O, long polling, WebSockets yeteneklerini içeren bir web sunucusudur. Bu sayede sunucudan kullanıcıya tek yönlü veri iletimi yapan http protokolü yerine, kullanıcı ile sunucu arasında iki yönlü veri iletimi (Push, Pull) mümkün olmaktadır. 
 
-------------------------
+------------
 **RabbitMQ**
-------------------------
+------------
 
 RabbitMQ AMQP (Advanced Message Queue Protocol) protokolünü destekleyen bir mesaj yönetimi uygulamasıdır. 
 
