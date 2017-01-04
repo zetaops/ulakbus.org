@@ -90,13 +90,10 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
 
 ``relations`` parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte **advisor** laneninin kullanıcısının student lane'inin kullanıcısının **danisman** ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.
 
-``owners`` parametresi tanımlandığı lane'in olası kullanıcılarını ifade etmek için kullanılır. İş akışı bir lane'den diğerine geçtiğinde, iş akışı motoru bu tanımlamanın işaret ettiği kullanıcılara bir ileti göndererek akışa katılmalarını sağlar.
+``owners`` parametresi tanımlandığı lane'in olası kullanıcılarını sınırlandırmak için kullanılır. Eğer bu parametre tanımlanmış ise, sadece bu parametrede belirtilen kullanıcılara iş akışına katılmaları için mesaj gönderilecektir. Bu alan tanımlanmamış ise, lane'in iznine sahip olan tüm kullanıcılara mesaj gönderilecektir.
 
-Örneğimizde advisor lane'ini işletecek kişinin student lane'ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bununla birlikte, bu alana birden fazla nesne döndürebilecek geçerli bir Python ifadesi girilmesi gerektiğinden, **[student.ogrenci.danisman.personel]** şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya **User** nesnesi olmalı ya da geriye ilgili user nesnesini döndüren bir **get_user()** metoduna sahip olmalıdırlar.
+Örneğimizde, advisor lane'ini işletecek kişinin student lane'ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bu alandaki ifadelerin "iterable" olması gerekmektedir, bu nedenle ``[student.ogrenci.danisman.personel]`` şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya ``User`` nesnesi olmalı, ya da geriye ilgili user nesnesini döndüren bir ``get_user()`` metoduna sahip olmalıdırlar.
 
-
-
-``permissions`` parametresi virgülle ayrılmış şekilde yetki kodları kabul etmektedir. İlgili lane'i işletecek kullanıcının bu yetkilere sahip olması koşulu aranacaktır. Sistemde halihazırda tanımlı olmayan yetkiler burada doğrudan kullanılıp update_permissions komutu ile otomatik olarak yetki tablosuna eklenebilir. ``:: TODO ::``
 
 
 

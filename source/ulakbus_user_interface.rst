@@ -90,11 +90,11 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 **Git:**
 --------
 
-* Her zaman branchler ile çalışır.
+* Asla master branch üzerinde çalışmayın. İlgili issue üzerinden yeni branch açınız. 
 
-* **Hiçbir zaman MASTER BRANCH'e karışmayınız(müdahele etmeyiniz)!!**
+* **Hiçbir zaman MASTER BRANCH'e doğrudan commit etmeyin!**
 
-* Küçük değişiklikleri commitleyiniz.
+* Bir kerede çok fazla sayıda değişiklik commit etmeyiniz. Mümkün oldukça az sayıda değişikliği commit ediniz.
 
 --------
 **Kod:**
@@ -106,7 +106,7 @@ e2e-tests klasörü altındaki e2e-testlerini çalıştırmak için protractor k
 
 * Kodunuz düzenli ve açık olsun.
 
-* Değişken isimleri ve nesneleri açıklayıcı şekilde olmalıdır.
+* Değişken isimleri ve nesneler açıklayıcı şekilde olmalıdır.
 
 ---------
 **Test:**

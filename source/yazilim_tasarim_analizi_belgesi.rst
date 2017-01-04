@@ -7,13 +7,31 @@ Yazılım Tasarım Analizi Belgesi
 ===================
 
 --------------------------------------
+*Sistem Mimarisi Genel Görünüm*
+--------------------------------------
+
+.. image:: _static/ULAKBUS-system-diagram.png
+   :scale: 90 %
+   :align: center
+
+
+--------------------------------------
+*ULAKBÜS Katmanları Genel Görünüm*
+--------------------------------------
+
+
+.. image:: _images/ULAKBUS-layers-diagram.png
+   :scale: 100 %
+   :align: center
+
+--------------------------------------
 *İş Akışı (Workflow) Tabanlı Uygulama*
 --------------------------------------
 
 İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.
 
 
-.. image:: _static/workflows.png
+.. image:: _images/workflows.png
    :scale: 100 %
    :align: center
 
@@ -328,7 +346,7 @@ Fleet API kullanarak clusterda tanımlı servisleri başlatmak / durdurmak mümk
 * zaerp
 
     - zdispatch
-        requestleri karsilayip ilgili is akislarina yonlendiren falcon web çatısı dosyalari yer alacaktir.
+        requestleri karsilayip ilgili is akislarina yonlendiren tornado web çatısı dosyalari yer alacaktir.
 
     - bin
         çalıştırılabilir uygulamalar. örn: bpmn packager.
@@ -426,16 +444,16 @@ Uygulamanın, kanun ve yönetmelik değişikliklerine bağlı olarak zamanla de�
 SOAP, REST, JSON, XML, CSV, PB gibi farklı protokol ve veri tipleriyle konuşan servislerin dönüşümü Zato ESB üzerinde yapılacaktır. Harici istemciler ve farklı modüller tarafından ihtiyaç duyulan işlevsellikler Zato ESB üzerinde çalışan mikro servisler olarak sunulacaktır. Uygulamanın hizmet sağlayıcı olduğu her durumda REST stili kullanılacaktır.
 
 -------------------------
-**Falcon WSGI Framework**
+**Tornado Web Sunucusu**
 -------------------------
 
-Çok hafif ve hızlı bir web çatısı olan Falcon, WSGI sunucusundan gelen requestleri Zengine’e aktarmak için kullanılacaktır. Kullanıcı oturumları tarayıcı çerezleri ve Redis tabanlı olarak bu katmanda yönetilecektir.
+Tornado, non-blocking network I/O, long polling, WebSockets yeteneklerini içeren bir web sunucusudur. Bu sayede sunucudan kullanıcıya tek yönlü veri iletimi yapan http protokolü yerine, kullanıcı ile sunucu arasında iki yönlü veri iletimi (Push, Pull) mümkün olmaktadır. 
 
 ------------------------
-**Gunicorn WSGI Server**
+**RabbitMQ**
 ------------------------
 
-Gunicorn, Python tabanlı, WSGI uyumlu az sistem kaynağı tüketen hızlı bir web sunucusudur.
+RabbitMQ AMQP (Advanced Message Queue Protocol) protokolünü destekleyen bir mesaj yönetimi uygulamasıdır. 
 
 -----------------------
 **Raporlama ve Analiz**
@@ -810,18 +828,6 @@ Kullanıcılar bazı kritik işlemler için ikinci bir parola ile yetkilendirili
 
 Rol veya role ait bazı yetkiler farklı kullanıcılara devredilebilirler. Devredilen yetkiler tek tek iş akışı adımları veya bir rolün sahip olduğu tüm yetkiler şeklinde belirlenebilir. Yetki devri belirli sürelidir. Yetki devredilen kullanıcı için geçici bir rol tanımlanır. Kullanıcı bu geçici rol ile kendi rolü arasında geçiş yaparak ilgili görevleri yerine getirebilir.
 
-Notes:
-İncelenecek diğer konular aşağıdadır.
-
-http://www.simplecloud.info/
-https://github.com/concordusapps/python-scim
-https://www.openhub.net/p/gripped
-http://wiki.openid.net/w/page/12995226/Run%20your%20own%20identity%20server
-https://pypi.python.org/pypi/authentic2/2.0.1
-
-
-OAUTH 2 buna nasıl yaklaşacağız?
-SSO Federation (shibboleth) sistemimizle olan iletişimini ele alacak mıyız?
 
 ================
 **Test Döngüsü**

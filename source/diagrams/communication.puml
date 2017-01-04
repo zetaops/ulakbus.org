@@ -1,0 +1,122 @@
+@startuml
+
+skinparam classAttributeFontName Monospaced
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #D8D8D8
+skinparam packageBorderColor #BDBDBD
+skinparam classArrowColor #0B615E
+skinparam shadowing false
+
+
+title
+<size:12>Communication Subsystem Model Diagram</size>
+endtitle
+
+'legend left
+'n..*     n or more instances
+'n..m    Min n, Max m instances
+'endlegend
+
+
+' field_name            field_type     null blank
+'                                      _ = True
+'                                      * * = False
+
+package Ulakbus{
+
+    class Unit <<(M,orchid)>>{
+    }
+
+    class User <<(M,orchid)>>{
+    }
+
+
+    class Permission<<(M,orchid)>>{
+    name            String
+    code            String
+    }
+}
+
+
+class Message <<(M,orchid)>>{
+type            integer
+status          integer
+title           string
+body            string
+url             string
+attachment      file
+channel         **Channel()**
+sender          **User()**
+receiver        **User()**
+}
+
+
+class Channel <<(M,orchid)>>{
+type             integer
+status          integer
+title           string
+description     string
+url             string
+unit            **Unit()**
+--
+Members(ListNode)
+|_user          **User()**
+|_is_master     boolean
+|_is_manager    boolean
+|_is_muted      boolean
+|_inform        boolean
+|_can_exit      boolean
+}
+
+class BadWords<<(M,orchid)>>{
+word            string
+msg_type        integer
+}
+
+class Invitation<<(M,orchid)>>{
+status          integer
+title           string
+body            string
+channel         **Channel()**
+sender          **User()**
+receiver        **User()**
+}
+
+class Attachments<<(M,orchid)>>{
+type                integer
+name                string
+channel             **Channel()**
+message             **Message()**
+}
+
+
+
+class Favorite<<(M,orchid)>>{
+channel             **Channel()**
+user                **User()**
+message             **Message()**
+}
+
+
+Channel "0..1" --o "0..*" Unit
+Channel "0..*" --o "1..*" User
+
+Attachments "1..1" --o "0..*" Channel
+Attachments "1..1" --o "0..*" Message
+
+Favorite "1..1" --o "0..*" Channel
+Favorite "1..1" --o "0..*" Message
+
+Message "0..1" --o "0..*" Channel
+Message "0..1" --o "0..*" User: receiver
+Message "0..1" --o "0..*" User: sender
+
+Invitation "1" --o "0..*" Channel
+Invitation "0..1" --o "0..*" User: receiver
+Invitation "0..1" o-- "0..*" User: sender
+
+
+
+
+
+@enduml

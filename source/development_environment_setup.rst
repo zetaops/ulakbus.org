@@ -141,8 +141,6 @@ Solr şemalarını guncelle (migration)
     $ python manage.py migrate --model all
 
 
-
-
 Fixtures yükle
 
 ::

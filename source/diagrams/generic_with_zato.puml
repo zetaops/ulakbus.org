@@ -17,9 +17,10 @@ skinparam participantBorderColor #81BEF7
 
 actor "User\n(Browser)" as brw
 boundary "Ext. HA Proxy" as ehp
-participant "Gunicorn / Falcon" as fal
-participant "Zengine" as zen
-control "SpiffWorkflow" as wfe
+participant "Tornado" as tor
+control "RabbitMQ" as rmq
+participant "Zengine Worker Daemon" as zen
+'control "SpiffWorkflow" as wfe
 participant "Ulakbus Modules" as modls
 participant "Ulakbus ESB" as zato
 entity "Pyoko DAL" as pyoko
@@ -28,20 +29,25 @@ boundary "Int. HA Proxy" as ihp
 database "Riak" as riak
 
 
-brw -> ehp: POST request
-note over fal: Gunicorn and Falcon\n combined for brevity
+brw -> ehp: HTTP connection (login request)
+ehp -> tor : HTTP connection (login request)
 
-ehp -> fal : POST request
+note over tor : if login successful: \n   <b>upgrade to websocket</b>
+ehp <- tor : HTTP connection (login response)
+brw <- ehp: HTTP connection (login response)
 
-fal -> zen :dispatch_request(context)
-note over zen : <b>context</b> stores current workflow name, \nrequest and response objects
+brw -> ehp: Websocket connection
+ehp -> tor : Websocket connection
 
-zen -> wfe :start_or_resume_wf\n( context)
+tor -> rmq: enqueue request \n to "inbound" exchange
 
-wfe -> wfe :execute READY \n tasks with context
+rmq -> zen:
 
+zen -> modls :start_or_resume_wf\n( context)
+note over zen : <b>context</b> stores current \n workflow name, request \nand response objects
 
-wfe -> modls :job_specific_call(context)
+'wfe -> wfe :execute READY \n tasks with context
+'wfe -> modls :job_specific_call(context)
 
 
 modls -\\ ihp : POST:192.168.0.0/16/service_name/?json_payload
@@ -71,16 +77,21 @@ ihp //-- zato : return object
 deactivate zato
 modls //-- ihp : return object
 
-wfe <-- modls  : return object
+zen <-- modls  : return object
 
-wfe --> wfe  : mark_current_task\n(COMPLETE)
+'wfe --> wfe  : mark_current_task\n(COMPLETE)
 
 
-zen <--  wfe: return json data
+'zen <--  wfe: return json data
 zen --> zen : save(serialize(workflow))
-fal <--  zen : return json response
 
-ehp <-- fal  : return json response
+note over zen : enqueue to clients own \n"outbound" queue by using \nclients session_id as <b>routing_key</b>
+rmq <--  zen : return json response
+
+tor <--  rmq : return json response
+
+note over tor : dispatch response to clients websocket
+ehp <-- tor  : return json response
 
 brw <-- ehp : return json response
 

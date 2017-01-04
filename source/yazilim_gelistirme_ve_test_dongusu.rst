@@ -309,7 +309,21 @@ Sistemin tüm işlevlerinin üzerine inşa edileceği BPMN iş akışları, veri
 
 Ulakbus projesinin iş akışları sunucuya gönderilen istek(request), sunucudan dönen cevap(response) tabanlı test edilmektedir.
 
-Test edilecek iş akışına başlamadan önce veritabanı boşaltılır, iş akışı için gerekli olan veriler yüklenir.
+Test için gerekli veriyi toplamak için;
+
+* Ulakbus.net'e gidilir.
+* Ayarlar(Dev) tıklanır, Backend Url'ye http://127.0.0.1:9001/ yazılıp kaydedilir ya da adres satırına
+  ulakbus.net?backendurl=http://127.0.0.1:9001/ yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.
+* İlgili iş akışının çalışabilmesi için veritabanında verilerin gerekli verilerin yüklü olması gerekir.
+* Adres satırına 127.0.0.1:9001/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.
+* Tekrardan Ulakbus.net'e gidilir ve giriş yapılır.
+* Test edilecek iş akışı başlatılır,yazılan teste uygun şekilde iş akışı adımlarına tıklanır.
+* Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1:9001/session_fixture komutu yazılıp
+  enter tuşuna basılır.
+* Toplanan veriler iş akışı testinin adının test_ sonraki adıyla aynı olacak şekilde tests/fixtures dizinine
+  .csv uzanstısıyla kaydedilir.
+
+İş akışına testi  başlamadan önce  veritabanı boşaltılır, iş akışı testi için oluşturulmuş veriler yüklenir.
 
 İş akışına ait test şu şekilde işler:
 
