@@ -28,14 +28,6 @@ ulakbus.views.reports.ogrenci module
     :undoc-members:
     :show-inheritance:
 
-ulakbus.views.reports.okutman_ders_ucreti_goruntuleme module
-------------------------------------------------------------
-
-.. automodule:: ulakbus.views.reports.okutman_ders_ucreti_goruntuleme
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 ulakbus.views.reports.personel module
 -------------------------------------
 

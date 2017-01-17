@@ -59,6 +59,14 @@ ulakbus.models.personel module
     :undoc-members:
     :show-inheritance:
 
+ulakbus.models.zato module
+--------------------------
+
+.. automodule:: ulakbus.models.zato
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
