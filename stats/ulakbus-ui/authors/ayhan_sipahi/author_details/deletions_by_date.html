@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitStats - ulakbus-ui</title>
+    <meta charset='utf-8'>
+    <link href='../../../assets/bootstrap/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <link href='../../../assets/bootstrap/css/bootstrap-responsive.min.css' rel='stylesheet' type='text/css'>
+    <script src='../../../assets/jquery.min.js' type='text/javascript'></script>
+    <script src='../../../assets/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='../../../assets/highstock.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a class='brand' href='../../../index.html'>GitStats - ulakbus-ui</a>
+          <div class='nav-collapse collapse'>
+            <ul class='nav'>
+              <li class=''>
+                <a href='../../../general.html'>General</a>
+              </li>
+              <li class=''>
+                <a href='../../../activity/by_date.html'>Activity</a>
+              </li>
+              <li class='active'>
+                <a href='../../best_authors.html'>Authors</a>
+              </li>
+              <li class=''>
+                <a href='../../../files/by_date.html'>Files</a>
+              </li>
+              <li class=''>
+                <a href='../../../lines/by_date.html'>Lines</a>
+              </li>
+              <li class=''>
+                <a href='../../../comments/by_date.html'>Comments</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='tabbable tabs-left'>
+        <ul class='nav nav-tabs'>
+          <li class=''>
+            <a href='commits_by_date.html'>Commits by date</a>
+          </li>
+          <li class=''>
+            <a href='changed_lines_by_date.html'>Changed lines by date</a>
+          </li>
+          <li class=''>
+            <a href='insertions_by_date.html'>Lines added by date</a>
+          </li>
+          <li class='active'>
+            <a href='deletions_by_date.html'>Lines deleted by date</a>
+          </li>
+        </ul>
+        <div class='tab-content'>
+          <div class='tab-pane active'>
+            <div class='page-header'>
+              <h1 class='pagination-centered'>Lines deleted by date</h1>
+            </div>
+                            <script type="text/javascript">
+                    (function() {
+            
+                      var onload = window.onload;
+                      window.onload = function(){
+                        if (typeof onload == "function") onload();
+                                var options = { "title": { "text": "" },"legend": { "enabled": true,"layout": "vertical","backgroundColor": "#FFFFFF","align": "left","verticalAlign": "top","x": 100,"y": 70,"floating": true,"shadow": true },"xAxis": { "title": { "text": null } },"yAxis": { "title": { "text": "Lines" },"labels": {  } },"tooltip": { "enabled": true },"credits": { "enabled": false },"plotOptions": { "areaspline": {  } },"chart": { "defaultSeriesType": "line","renderTo": "charts.deletions_by_author_by_date" },"subtitle": {  },"series": [{ "name": "Ayhan Sipahi","type": "spline","data": [ [ 1476183579000,5 ],[ 1476255531000,17 ],[ 1476262382000,24 ],[ 1476316800000,24 ],[ 1476433375000,33 ],[ 1476434447000,35 ],[ 1476434720000,74 ],[ 1476441128000,147 ],[ 1476444594000,175 ],[ 1476446031000,488 ],[ 1476489600000,488 ],[ 1476576000000,488 ],[ 1476700422000,489 ],[ 1476706360000,495 ],[ 1476788524000,495 ],[ 1476792815000,503 ],[ 1476835200000,503 ],[ 1476921600000,503 ],[ 1477036232000,3085 ],[ 1477094400000,3085 ],[ 1477180800000,3085 ],[ 1477317005000,3386 ],[ 1477376764000,3388 ],[ 1477377073000,3393 ],[ 1477380884000,3394 ],[ 1477385934000,3395 ],[ 1477467336000,3395 ],[ 1477467548000,46627 ],[ 1477469800000,46627 ],[ 1477469860000,46628 ],[ 1477474028000,46664 ],[ 1477561329000,46729 ],[ 1477612800000,46729 ],[ 1477699200000,46729 ],[ 1477785600000,46729 ],[ 1477872000000,46729 ],[ 1477958400000,46729 ],[ 1478044800000,46729 ],[ 1478131200000,46729 ],[ 1478266018000,47349 ],[ 1478268221000,47382 ],[ 1478304000000,47382 ],[ 1478390400000,47382 ],[ 1478505143000,47411 ],[ 1478509476000,47421 ],[ 1478514593000,47422 ],[ 1478516769000,47422 ],[ 1478521081000,47423 ],[ 1478526619000,47440 ],[ 1478591876000,47441 ],[ 1478595881000,47448 ],[ 1478607617000,47450 ],[ 1478677681000,47450 ],[ 1478683054000,47451 ],[ 1478692404000,47452 ],[ 1478692437000,47452 ],[ 1478785143000,47457 ],[ 1478822400000,47457 ],[ 1478908800000,47457 ],[ 1478995200000,47457 ],[ 1479081600000,47457 ],[ 1479168000000,47457 ],[ 1479303094000,47461 ],[ 1479388340000,47462 ],[ 1479456307000,47477 ],[ 1479471380000,47501 ],[ 1479513600000,47501 ],[ 1479600000000,47501 ],[ 1479731455000,47700 ],[ 1479800755000,47711 ],[ 1479802393000,47713 ],[ 1479805795000,47713 ],[ 1479819274000,47786 ],[ 1479884842000,47805 ],[ 1479889619000,47815 ],[ 1479891642000,47815 ],[ 1479907427000,47895 ],[ 1479907914000,47908 ],[ 1479909167000,47921 ],[ 1479975131000,47939 ],[ 1479979919000,47942 ],[ 1479982684000,47944 ],[ 1480032000000,47944 ],[ 1480118400000,47944 ],[ 1480204800000,47944 ],[ 1480318410000,47946 ],[ 1480323165000,47950 ],[ 1480324062000,47958 ],[ 1480377600000,47958 ],[ 1480494600000,47984 ] ] }] };
+                    
+                    window.chart_charts.deletions_by_author_by_date = new Highcharts.StockChart(options);
+            
+                      };
+                            })()
+                    </script>
+            
+            <div id="charts.deletions_by_author_by_date"></div>
+            <small>
+              <center>5 best authors shown</center>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

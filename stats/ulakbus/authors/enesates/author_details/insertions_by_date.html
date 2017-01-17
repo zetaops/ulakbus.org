@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitStats - ulakbus</title>
+    <meta charset='utf-8'>
+    <link href='../../../assets/bootstrap/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <link href='../../../assets/bootstrap/css/bootstrap-responsive.min.css' rel='stylesheet' type='text/css'>
+    <script src='../../../assets/jquery.min.js' type='text/javascript'></script>
+    <script src='../../../assets/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='../../../assets/highstock.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a class='brand' href='../../../index.html'>GitStats - ulakbus</a>
+          <div class='nav-collapse collapse'>
+            <ul class='nav'>
+              <li class=''>
+                <a href='../../../general.html'>General</a>
+              </li>
+              <li class=''>
+                <a href='../../../activity/by_date.html'>Activity</a>
+              </li>
+              <li class='active'>
+                <a href='../../best_authors.html'>Authors</a>
+              </li>
+              <li class=''>
+                <a href='../../../files/by_date.html'>Files</a>
+              </li>
+              <li class=''>
+                <a href='../../../lines/by_date.html'>Lines</a>
+              </li>
+              <li class=''>
+                <a href='../../../comments/by_date.html'>Comments</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='tabbable tabs-left'>
+        <ul class='nav nav-tabs'>
+          <li class=''>
+            <a href='commits_by_date.html'>Commits by date</a>
+          </li>
+          <li class=''>
+            <a href='changed_lines_by_date.html'>Changed lines by date</a>
+          </li>
+          <li class='active'>
+            <a href='insertions_by_date.html'>Lines added by date</a>
+          </li>
+          <li class=''>
+            <a href='deletions_by_date.html'>Lines deleted by date</a>
+          </li>
+        </ul>
+        <div class='tab-content'>
+          <div class='tab-pane active'>
+            <div class='page-header'>
+              <h1 class='pagination-centered'>Lines added by date</h1>
+            </div>
+                            <script type="text/javascript">
+                    (function() {
+            
+                      var onload = window.onload;
+                      window.onload = function(){
+                        if (typeof onload == "function") onload();
+                                var options = { "title": { "text": "" },"legend": { "enabled": true,"layout": "vertical","backgroundColor": "#FFFFFF","align": "left","verticalAlign": "top","x": 100,"y": 70,"floating": true,"shadow": true },"xAxis": { "title": { "text": null } },"yAxis": { "title": { "text": "Lines" },"labels": {  } },"tooltip": { "enabled": true },"credits": { "enabled": false },"plotOptions": { "areaspline": {  } },"chart": { "defaultSeriesType": "line","renderTo": "charts.insertions_by_author_by_date" },"subtitle": {  },"series": [{ "name": "enesates","type": "spline","data": [ [ 1451315490000,232 ],[ 1451393143000,274 ],[ 1451478636000,282 ],[ 1451486799000,321 ],[ 1451487723000,322 ],[ 1451520000000,322 ],[ 1451606400000,322 ],[ 1451692800000,322 ],[ 1451779200000,322 ],[ 1451906008000,454 ],[ 1451952000000,454 ],[ 1452093045000,603 ],[ 1452177684000,828 ],[ 1452244555000,865 ],[ 1452265977000,1010 ],[ 1452297600000,1010 ],[ 1452384000000,1010 ],[ 1452521134000,1219 ],[ 1452582362000,1600 ],[ 1452601288000,2522 ],[ 1452608747000,2534 ],[ 1452643200000,2534 ],[ 1452729600000,2534 ],[ 1452867284000,2585 ],[ 1452902400000,2585 ],[ 1452988800000,2585 ],[ 1453121009000,2664 ],[ 1453133256000,2748 ],[ 1453195786000,2748 ],[ 1453196128000,2754 ],[ 1453196401000,2782 ],[ 1453196533000,2854 ],[ 1453208994000,2871 ],[ 1453209443000,2881 ],[ 1453216220000,2885 ],[ 1453216308000,2978 ],[ 1453216970000,2992 ],[ 1453284820000,3014 ],[ 1453303270000,3139 ],[ 1453370755000,3465 ],[ 1453379938000,3482 ],[ 1453386096000,3587 ],[ 1453389730000,3866 ],[ 1453456910000,3970 ],[ 1453469424000,4072 ],[ 1453469618000,4121 ],[ 1453471725000,4323 ],[ 1453472490000,4337 ],[ 1453472852000,4345 ],[ 1453507200000,4345 ],[ 1453593600000,4345 ],[ 1453680000000,4345 ],[ 1453810478000,4366 ],[ 1453816995000,5005 ],[ 1453818606000,5036 ],[ 1453819794000,5046 ],[ 1453888790000,5267 ],[ 1453987805000,5924 ],[ 1454054853000,5926 ],[ 1454055047000,5928 ] ] }] };
+                    
+                    window.chart_charts.insertions_by_author_by_date = new Highcharts.StockChart(options);
+            
+                      };
+                            })()
+                    </script>
+            
+            <div id="charts.insertions_by_author_by_date"></div>
+            <small>
+              <center>5 best authors shown</center>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

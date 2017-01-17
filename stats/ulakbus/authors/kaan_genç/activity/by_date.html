@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitStats - ulakbus</title>
+    <meta charset='utf-8'>
+    <link href='../../../assets/bootstrap/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <link href='../../../assets/bootstrap/css/bootstrap-responsive.min.css' rel='stylesheet' type='text/css'>
+    <script src='../../../assets/jquery.min.js' type='text/javascript'></script>
+    <script src='../../../assets/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='../../../assets/highstock.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a class='brand' href='../../../index.html'>GitStats - ulakbus</a>
+          <div class='nav-collapse collapse'>
+            <ul class='nav'>
+              <li class=''>
+                <a href='../../../general.html'>General</a>
+              </li>
+              <li class='active'>
+                <a href='../../../activity/by_date.html'>Activity</a>
+              </li>
+              <li class='active'>
+                <a href='../../best_authors.html'>Authors</a>
+              </li>
+              <li class=''>
+                <a href='../../../files/by_date.html'>Files</a>
+              </li>
+              <li class=''>
+                <a href='../../../lines/by_date.html'>Lines</a>
+              </li>
+              <li class=''>
+                <a href='../../../comments/by_date.html'>Comments</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='tabbable tabs-left'>
+        <ul class='nav nav-tabs'>
+          <li class='active'>
+            <a href='by_date.html'>Activity by date</a>
+          </li>
+          <li class=''>
+            <a href='hour_of_day.html'>Hour of day</a>
+          </li>
+          <li class=''>
+            <a href='day_of_week.html'>Day of week</a>
+          </li>
+          <li class=''>
+            <a href='hour_of_week.html'>Hour of week</a>
+          </li>
+          <li class=''>
+            <a href='month_of_year.html'>Month of year</a>
+          </li>
+          <li class=''>
+            <a href='year.html'>Year</a>
+          </li>
+          <li class=''>
+            <a href='year_month.html'>Year and month</a>
+          </li>
+        </ul>
+        <div class='tab-content'>
+          <div class='tab-pane active'>
+            <div class='page-header pagination-centered'>
+              <h1>Activity by date</h1>
+              <h3>Kaan Genç &lt;kaan@kaangenc.me&gt;</h3>
+            </div>
+          </div>
+                          <script type="text/javascript">
+                  (function() {
+          
+                    var onload = window.onload;
+                    window.onload = function(){
+                      if (typeof onload == "function") onload();
+                              var options = { "title": { "text": "" },"legend": { "enabled": false },"xAxis": { "title": { "text": null } },"yAxis": { "title": { "text": "Commits" },"labels": {  } },"tooltip": { "enabled": true },"credits": { "enabled": false },"plotOptions": { "areaspline": {  } },"chart": { "defaultSeriesType": "line","renderTo": "charts.activity_by_date" },"subtitle": {  },"series": [{ "name": "Commits by date","type": "column","data": [ [ 1466596126000,1 ],[ 1466682767000,1 ],[ 1466726400000,0 ],[ 1466812800000,0 ],[ 1466899200000,0 ],[ 1466985600000,0 ],[ 1467072000000,0 ],[ 1467201828000,1 ],[ 1467279239000,1 ],[ 1467289564000,1 ],[ 1467357310000,1 ],[ 1467358367000,1 ],[ 1467359029000,1 ],[ 1467374769000,1 ],[ 1467417600000,0 ],[ 1467504000000,0 ],[ 1467616570000,1 ],[ 1467616875000,1 ],[ 1467622221000,1 ],[ 1467634912000,1 ],[ 1467676800000,0 ],[ 1467763200000,0 ],[ 1467849600000,0 ],[ 1467960429000,1 ],[ 1467978885000,1 ],[ 1467981374000,1 ],[ 1467988006000,1 ],[ 1468022400000,0 ],[ 1468108800000,0 ],[ 1468240731000,1 ],[ 1468240902000,1 ],[ 1468281600000,0 ],[ 1468405450000,1 ],[ 1468413726000,1 ],[ 1468479529000,1 ],[ 1468498897000,1 ],[ 1468503764000,1 ],[ 1468580268000,1 ],[ 1468582923000,1 ],[ 1468587842000,1 ],[ 1468627200000,0 ],[ 1468713600000,0 ],[ 1468833767000,1 ],[ 1468843554000,1 ],[ 1468931372000,1 ],[ 1468972800000,0 ],[ 1469086767000,1 ],[ 1469087518000,1 ],[ 1469089752000,1 ],[ 1469102121000,1 ],[ 1469106570000,1 ],[ 1469182320000,1 ],[ 1469194749000,1 ],[ 1469223300000,1 ],[ 1469318400000,0 ],[ 1469430532000,1 ],[ 1469432113000,1 ],[ 1469456525000,1 ],[ 1469528133000,1 ],[ 1469559015000,1 ],[ 1469603556000,1 ],[ 1469611792000,1 ],[ 1469615476000,1 ],[ 1469700164000,1 ],[ 1469701178000,1 ],[ 1469701237000,1 ],[ 1469750400000,0 ],[ 1469836800000,0 ],[ 1469923200000,0 ],[ 1470009600000,0 ],[ 1470096000000,0 ],[ 1470182400000,0 ],[ 1470268800000,0 ],[ 1470355200000,0 ],[ 1470441600000,0 ],[ 1470528000000,0 ],[ 1470649909000,1 ],[ 1470700800000,0 ],[ 1470787200000,0 ],[ 1470873600000,0 ],[ 1470960000000,0 ],[ 1471046400000,0 ],[ 1471132800000,0 ],[ 1471270571000,1 ],[ 1471270643000,1 ],[ 1471305600000,0 ],[ 1471421216000,1 ],[ 1471478400000,0 ],[ 1471564800000,0 ],[ 1471651200000,0 ],[ 1471737600000,0 ],[ 1471824000000,0 ],[ 1471910400000,0 ],[ 1471996800000,0 ],[ 1472083200000,0 ],[ 1472169600000,0 ],[ 1472256000000,0 ],[ 1472342400000,0 ],[ 1472428800000,0 ],[ 1472515200000,0 ],[ 1472639896000,1 ],[ 1472650672000,1 ],[ 1472739923000,1 ],[ 1472806866000,1 ],[ 1472860800000,0 ],[ 1472947200000,0 ],[ 1473065820000,1 ] ],"dataGrouping": { "units": [ [ "day",[ 1 ] ],[ "week",[ 1 ] ] ],"forced": true } }] };
+                  
+                  window.chart_charts.activity_by_date = new Highcharts.StockChart(options);
+          
+                    };
+                          })()
+                  </script>
+          
+          <div id="charts.activity_by_date"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
