@@ -203,12 +203,11 @@
 <li><a class="reference internal" href="#is-akisi-workflow-testleri"><em>İş Akışı (Workflow) Testleri:</em></a></li>
 <li><a class="reference internal" href="#benchmark-testleri"><em>Benchmark Testleri:</em></a></li>
 <li><a class="reference internal" href="#servis-testleri"><em>Servis Testleri:</em></a></li>
-<li><a class="reference internal" href="#kural-motoru-rule-engine-testleri"><em>Kural Motoru (Rule Engine) Testleri:</em></a></li>
 <li><a class="reference internal" href="#kurulum-ve-yayinlama-asamasi-testleri"><strong>Kurulum ve Yayınlama Aşaması Testleri</strong></a></li>
 <li><a class="reference internal" href="#test-sunuculari-ve-gelistirme-test-dongusu"><em>Test Sunucuları ve Geliştirme Test Döngüsü:</em></a></li>
 <li><a class="reference internal" href="#yayina-alma-production"><em>Yayına Alma (Production):</em></a></li>
 <li><a class="reference internal" href="#kullanici-arayuzu-testleri"><strong>Kullanıcı Arayüzü Testleri</strong></a></li>
-<li><a class="reference internal" href="#id1"><em>Bileşen (Birim) Testleri:</em></a></li>
+<li><a class="reference internal" href="#id2"><em>Bileşen (Birim) Testleri:</em></a></li>
 <li><a class="reference internal" href="#kabul-testleri"><em>Kabul Testleri:</em></a><ul>
 <li><a class="reference internal" href="#neden-selenium">Neden Selenium?</a></li>
 <li><a class="reference internal" href="#selenium-test-ornekleri">Selenium Test Örnekleri</a></li>
@@ -266,32 +265,30 @@
 <h1>Yazılım Geliştirme ve Test Döngüsü<a class="headerlink" href="#yazilim-gelistirme-ve-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <div class="section" id="yazilim-gelistirme-modeli">
 <h2><strong>Yazılım Geliştirme Modeli</strong><a class="headerlink" href="#yazilim-gelistirme-modeli" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Yazılım geliştirme modeli döngüsel artımlı (iterative and incremental) modele bağlı <a class="reference external" href="http://www.extremeprogramming.org">XP</a> olacaktır. Şekil 1’de gösterilmektedir.</p>
+<p>Yazılım geliştirme modeli, döngüsel artımlı (iterative and incremental) modele bağlı <a class="reference external" href="http://www.extremeprogramming.org">XP</a> modelidir. Şekil 1’de gösterilmektedir.</p>
 <a class="reference internal image-reference" href="_images/xp_gelistirme_semasi.png"><img alt="_images/xp_gelistirme_semasi.png" class="align-center" src="_images/xp_gelistirme_semasi.png" style="width: 630.0px; height: 271.0px;" /></a>
 <p><em>Şekil 1 - XP geliştirme şeması</em></p>
 <div class="section" id="gelistirme-ve-test-dongusu">
 <h3><strong>Geliştirme ve Test Döngüsü</strong><a class="headerlink" href="#gelistirme-ve-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Extreme Programming modeline uygun şekilde 3 haftalık dönemlerde küçük sürüm planı yapılacak ve yazılım geliştirme ve test döngüsü bu sürüm planına bağlı olarak ilerleyecektir.</p>
+<p>Extreme Programming modeline uygun şekilde 3 haftalık dönemlerde küçük sürüm planı yapılmakta ve yazılım geliştirme ve test döngüsü bu sürüm planına bağlı olarak ilerlemektedir.</p>
 <p>Sürüm planına dahil edilen işler (issue) geliştiriciler tarafından uygun bir branchte çözülecektir. Geliştiriciler, geliştirme faaliyetleri boyunca aşağıda detayları belirtilen otomatik ve manuel testleri build aşamasından önce uygulayacaklar, ancak bu testlerden geçen kaynak kod sonraki aşamaya geçebilecektir. Kurulum ve yayınlama aşamasında ise bu aşamanın testleri yapılacak ve sonuçlar geliştiricilere bildirilecektir. Ayrıca geliştirilen özelliğe göre kabul testleri de bu aşamada yapılacaktır. Bu geliştirme döngüsü 3 hafta boyunca artımlı şekilde ilerleyecektir.</p>
 <p>Bu 3 haftanın sonunda ise sürüm adayı (release candidate) çıkartılacak ve bunun üzerinde kabul testleri ve önceden hazırlanmış test senaryoları, kullanılabilirlik, performans, güvenlik gibi testler yapılacaktır. Bu testlerin kabul sınırları içinde geçilmesi halinde sürüm ortaya çıkartılacaktır.</p>
 <p>Bunlara ek olarak her gece, gecelik derlenmiş kod (nightly builds) yayınlanacak, yazılımın tüm bileşenlerine ait tüm otomatik testler bu aşamada gerçekleşecektir.</p>
 </div>
 <div class="section" id="surum-plani">
 <h3><strong>Sürüm Planı</strong><a class="headerlink" href="#surum-plani" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Sürüm planı 3 hafta geliştirme + 1 hafta kabul test süreçleri şeklinde planlanır. 7 ay boyunca toplam 7 sürüm çıkarılacaktır. Sürüm planı ihtiyaç analizi isterleri ve YTA belgesi ışığında yeni özelliklerin planlanması, önceki sürümden kalan hataların kapatılması, topluluk geri bildirimlerinden seçilen işlerin (issues) tamamlanması hedefleriyle yapılır.</p>
+<p>Sürüm planı 3 hafta geliştirme + 1 hafta kabul test süreçleri şeklinde planlanır. Sürüm planı ihtiyaç analizi isterleri ve YTA belgesi ışığında yeni özelliklerin planlanması, önceki sürümden kalan hataların kapatılması, topluluk geri bildirimlerinden seçilen işlerin (issues) tamamlanması hedefleriyle yapılır.</p>
 </div>
 <div class="section" id="depolar">
 <h3><strong>Depolar</strong><a class="headerlink" href="#depolar" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:</p>
 <ul class="simple">
-<li>Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:</li>
-<li>SpiffWorkFlow: İş akışı kütüphanesi geliştirme deposudur. Orjinalden fork edilmiştir.</li>
-<li>Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
-<li>Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
-<li>Zaerp (Ulakbus): Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
-<li>Zaerp-UI (Ulakbus-ui): Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
-<li>ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştiriliyor.</li>
+<li>Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştirilmektedir.</li>
+<li>Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştirilmektedir.</li>
+<li>Ulakbus: Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştirilmektedir.</li>
+<li>Ulakbus-ui: Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştirilmektedir.</li>
+<li>ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştirilmektedir.</li>
 </ul>
-<p>Yardımcı kütüphaneler ile fork edilmiş kütüphaneler haricindeki depo isimleri, daha sonra Ulakbim tarafından verilecek isimlerle değiştirilecektir.</p>
 </div>
 <div class="section" id="topluluk">
 <h3><strong>Topluluk</strong><a class="headerlink" href="#topluluk" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -299,9 +296,8 @@
 <div class="section" id="roller">
 <h3><em>Roller:</em><a class="headerlink" href="#roller" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p><em>Geliştiriciler</em></p>
-<p>Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri ve Git Workflow[**]  Belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.</p>
-<p>[**] Bu belgeye referans verilecek.</p>
-<p><em>Beta Test Edicileri</em></p>
+<p>Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri[1]_ ve Git Workflow <a class="footnote-reference" href="#id4" id="id1">[2]</a>  Belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.</p>
+<p><em>Beta Test Ediciler</em></p>
 <p>Patch ve Minor sürümleri test ederek geri bildirimlerde bulunarak geliştirme faaliyetine katkıda bulunurlar.</p>
 <p><em>Analiz Uzmanları</em>
 Yüksek Öğrenim Kanunu, Akademik Birimlerin Yönetmelikleri, akademinin yerleşik teammülerini bilen, projenin kapsamına detaylarıyla hakim topluluk üyeleridir. Topluluğun talep ettiği yeni özellikler, iş akışlarının değiştirilmesi, kanun ve yönetmeliklerdeki değişikliklerin projeyi nasıl etkileyeceği gibi konularda tavsiyelerde bulunurlar.</p>
@@ -311,12 +307,13 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 <div class="section" id="gelistirici-ve-katkici-rehberleri">
 <h3><em>Geliştirici ve Katkıcı Rehberleri:</em><a class="headerlink" href="#gelistirici-ve-katkici-rehberleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <ul class="simple">
-<li>Geliştirme Ortamı Kurulum Rehberi</li>
-<li>UI Geliştirci Rehberi</li>
-<li>Zaerp Geliştirici Rehberi</li>
-<li>Workflow ve Spiff WF Rehberi</li>
-<li>Zato ve Servis Yazma Rehberi</li>
-<li>Git Workflow</li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/git_workflow.html">Ulakbus&#8217;e Katkıda bulunmak</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/development_environment_setup.html">Geliştirme Ortamı Kurulum Rehberi</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus_user_interface.html">UI Geliştirici Rehberi</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">Ulakbüs UI - API ilişkisi</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html">Ulakbus Geliştirici Rehberi</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html">Workflow Rehberi</a></li>
+<li><a class="reference external" href="http://www.ulakbus.org/wiki/zato_ipuclari.html">Zato ve Servis Yazma Rehberi</a></li>
 </ul>
 </div>
 <div class="section" id="test-dongusunun-amaclari">
@@ -360,7 +357,7 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 </div>
 <div class="section" id="bilesen-birim-testleri">
 <h3><em>Bileşen (Birim) Testleri:</em><a class="headerlink" href="#bilesen-birim-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Sistemin arkaucunu oluşturan bileşenlerin tümü py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.</p>
+<p>Sistemin arkaucunu oluşturan bileşenlerin tümü, py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="100%" />
@@ -524,11 +521,11 @@ Py.test, standard “assert” ifadesinin testin başarılı olup olmadığını
 ulakbus.net?backendurl=http://127.0.0.1:9001/ yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.</li>
 <li>İlgili iş akışının çalışabilmesi için veritabanında verilerin gerekli verilerin yüklü olması gerekir.</li>
 <li>Adres satırına 127.0.0.1:9001/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.</li>
-<li>Tekrardan Ulakbus.net&#8217;e gidilir ve giriş yapılır.</li>
+<li>Tekrar Ulakbus.net&#8217;e gidilir ve giriş yapılır.</li>
 <li>Test edilecek iş akışı başlatılır,yazılan teste uygun şekilde iş akışı adımlarına tıklanır.</li>
 <li>Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1:9001/session_fixture komutu yazılıp
 enter tuşuna basılır.</li>
-<li>Toplanan veriler iş akışı testinin adının <a href="#id2"><span class="problematic" id="id3">test_</span></a> sonraki adıyla aynı olacak şekilde tests/fixtures dizinine
+<li>Toplanan veriler iş akışı testinin adının <a href="#id5"><span class="problematic" id="id6">test_</span></a> sonraki adıyla aynı olacak şekilde tests/fixtures dizinine
 .csv uzanstısıyla kaydedilir.</li>
 </ul>
 <p>İş akışına testi  başlamadan önce  veritabanı boşaltılır, iş akışı testi için oluşturulmuş veriler yüklenir.</p>
@@ -696,28 +693,25 @@ nesnelerin sayıları karşılaştırılır.</li>
 </div>
 <div class="section" id="servis-testleri">
 <h3><em>Servis Testleri:</em><a class="headerlink" href="#servis-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Uygulamanın birçok işlevi Zato ESB üzerinde çalıştırılacak mikro servisler üzerinden sunulacaktır. Bu servislerin işlevselliği ve API uyumluluğu zato-apitest frameworkü ile yazılacak testler ile sınanacaktır.</p>
-</div>
-<div class="section" id="kural-motoru-rule-engine-testleri">
-<h3><em>Kural Motoru (Rule Engine) Testleri:</em><a class="headerlink" href="#kural-motoru-rule-engine-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Uygulamanın iş mantığının önemli bir kısmını oluşturan kural setleri, belirli girdilerle beklenen çıktıları verip vermediklerine karşı denetelenmelidir.. Bu amaçla kural setleri standart birim testleri içerisinde kural motoru ile işletilerek beklenen çıktıyla eşleştirilecektir.</p>
+<p>Uygulamanın dış servislere bağlantısı Zato ESB üzerinde çalıştırılacak mikro servisler üzerinden yapılacaktır. Uygulamanın dışarı açacağı servisler de Zato kullancaktır. Bu servislerin işlevselliği ve API uyumluluğu zato-apitest frameworkü ile yazılacak testler ile sınanacaktır.</p>
 </div>
 <div class="section" id="kurulum-ve-yayinlama-asamasi-testleri">
 <h3><strong>Kurulum ve Yayınlama Aşaması Testleri</strong><a class="headerlink" href="#kurulum-ve-yayinlama-asamasi-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Kurulum ve Yayınlama (Build Release) aşamasında Buildbot aracılığı ile</p>
+<p>Kurulum ve Yayınlama (Build Release) aşamasında Buildbot CI (continuous integration) ve CD (continuous deployment) yazılımı aracılığı ile</p>
 <ul class="simple">
-<li>kurulum ve kütüphane bağımlılık testleri</li>
+<li>Kurulum ve kütüphane bağımlılık testleri</li>
 <li>Uygulamanın tüm bileşenlerine ait birim testleri</li>
 <li>Entegrasyon testleri uygulanacaktır.</li>
 </ul>
+<p>Oluşan sonuçlar <a class="reference external" href="http://buildbot.ulakbus.net/">Ulakbus Buildbot sunucusu</a> üzerinde takip edilebilecektir.</p>
 </div>
 <div class="section" id="test-sunuculari-ve-gelistirme-test-dongusu">
 <h3><em>Test Sunucuları ve Geliştirme Test Döngüsü:</em><a class="headerlink" href="#test-sunuculari-ve-gelistirme-test-dongusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Her iş (issue) kendi geliştirme branchinde geliştirilir ve yapılan değişiklikler küçük parçalar halinde commit edilir. Git flow esas alınarak yapılan git iş akışı sonunda <cite>develop</cite> branchiyle birleştirilir ve uzak repoya gönerilir. <cite>develop</cite> branch&#8217;ine yapılan pushlar buildbot&#8217;u tetikler ve test, kurulum ve yayınlama aşamasını başlatır. <cite>develop</cite> branch&#8217;indeki son değişiklikler sürekli olarak <a class="reference external" href="http://nightly.ulakbus.net">nightly</a> kurulum adresinden erişilebilir.</p>
+<p>Her iş (issue) kendi geliştirme branch&#8217;inde geliştirilir ve yapılan değişiklikler küçük parçalar halinde commit edilir. Git flow esas alınarak yapılan git iş akışı sonunda <cite>develop</cite> branchiyle birleştirilir ve uzak repoya gönerilir. <cite>develop</cite> branch&#8217;ine yapılan push işlemleri buildbot&#8217;u tetikler ve test, kurulum ve yayınlama aşamasını başlatır. <cite>develop</cite> branch&#8217;indeki son değişiklikler sürekli olarak <a class="reference external" href="http://nightly.ulakbus.net">nightly</a> kurulum adresinden erişilebilir olmalıdır.</p>
 </div>
 <div class="section" id="yayina-alma-production">
 <h3><em>Yayına Alma (Production):</em><a class="headerlink" href="#yayina-alma-production" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Sürüm adayı haline gelen master branchte bulunan kaynak kod, aşağıda detaylı şekilde anlatılan sürüm öncesi kabul testlerinden geçer. Bu testlerin başarılı olması halinde, semantik sürümlendirme <a class="reference external" href="http://semver.org/">sistemine</a> göre etiketlenir (tagging).</p>
+<p>Sürüm adayı haline gelen master branch&#8217;te bulunan kaynak kod, aşağıda detaylı şekilde anlatılan sürüm öncesi kabul testlerinden geçer. Bu testlerin başarılı olması halinde, semantik sürümlendirme <a class="reference external" href="http://semver.org/">sistemine</a> göre etiketlenir (tagging).</p>
 <p>Semantik sürümlendirme sistemine göre kullanılacak desen MAJOR.MINOR.PATCH şeklindedir. Buna göre 3 haftalık küçük sürümler MINOR, gündelik çözülen işler PATCH, önceden belirlenmiş hedefleri kapsayan fazların sonunda ise MAJOR değerleri arttırılır.</p>
 <p>MINOR sürümler çıktıkça, buildbot taglenmiş sürümdeki depoları production ortamında yayına alır. Gerekli dosyaları kopyalar ve veritabanı şemalarını yeni sürümlere göç ettirir.</p>
 </div>
@@ -745,8 +739,8 @@ app.js (Uygulamanın tanımlandığı yapılandırıldığı dosya)</p>
 <p>karma.conf.js (testlerin çalışma zamanı yapılandırmalarını içeren dosya)</p>
 </div></blockquote>
 </div>
-<div class="section" id="id1">
-<h3><em>Bileşen (Birim) Testleri:</em><a class="headerlink" href="#id1" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="id2">
+<h3><em>Bileşen (Birim) Testleri:</em><a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Uygulamada *.test.js dosyaları modüllerin Unit testlerinin barındığı dosyalardır. Unit testler Jasmine test uygulama çatısı kullanılarak yazılır.
 Uygulamanın Giriş (Login) modülü için yazılmış bir örnek aşağıdaki gibidir:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;zaerp.login module&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -1049,7 +1043,7 @@ bir önceki eğitim kaydı oluşturarak kaydeder.</p>
 </div>
 <div class="section" id="ag-kullanimi-ve-web-sayfa-basarimi">
 <h3><em>Ağ Kullanımı ve Web Sayfa Başarımı:</em><a class="headerlink" href="#ag-kullanimi-ve-web-sayfa-basarimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Ağ Kullanımı uygulama modüllerinin gerektiğinde çağırılacak şekilde düzenlenmesi (lazy load), statik dosyaların (javascript, css, imaj ve diğer dosyalar) optimize ve minimize edilmesi gibi konuları içerir. Bu süre çevrimiçi araçlar ve tarayıcılar kullanılarak test edilir.</p>
+<p>Ağ Kullanımı uygulama modüllerinin gerektiğinde çağırılacak şekilde düzenlenmesi (lazy load), statik dosyaların (javascript, css, imaj ve diğer dosyalar) optimize ve minimize edilmesi gibi konuları içerir. Bu süreç çevrimiçi araçlar ve tarayıcılar kullanılarak test edilir.</p>
 </div>
 <div class="section" id="render-performansi">
 <h3><em>Render Performansı:</em><a class="headerlink" href="#render-performansi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
@@ -1059,7 +1053,19 @@ bir önceki eğitim kaydı oluşturarak kaydeder.</p>
 <h3><strong>Güvenlik Testleri</strong><a class="headerlink" href="#guvenlik-testleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Uygulamanın güvenlik test ve kontrolleri için Open Web Application Security Project <a class="reference external" href="https://www.owasp.org/">(OWASP)</a> topluluğunun yayınladığı test <a class="reference external" href="https://www.owasp.org/images/5/52/OWASP_Testing_Guide_v4.pdf">rehberinde</a> yer alan testlerin bazıları kullanılacaktır. 11 konu başlığı altında toplanan testlerin uygulamamız için uygun olanları seçilerek her sürüm öncesi kabul testleri aşamasında uygulanacaktır.</p>
 <p>Kontroller Sistem Hakkında Bilgi Toplama, Yapılandırma ve Yayınlama, Kimlik Yönetimi, Kimlik Doğrulama ve Yetkilendirme, Oturum Yönetimi, Girdi Geçerliliği, Hata Ayıklama, Şifreleme, İş Mantığı, İstemci Tarafı Testleri başlıkları altında yapılacaktır.</p>
-<p>Yapılacak testler ayrıca ISO 27002 bilgi güvenliği standartlarında belirlenen kriterlerin tamamlanması için kuruma destek olacaktır.</p>
+<p>Yapılacak testler ayrıca ISO 27001 ve ISO 27002 bilgi güvenliği standartlarında belirlenen kriterlerin tamamlanması için kuruma destek olacaktır.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://www.ulakbus.org/wiki/git_workflow.html">http://www.ulakbus.org/wiki/git_workflow.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td><a class="reference external" href="https://github.com/zetaops/gitwork">https://github.com/zetaops/gitwork</a></td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

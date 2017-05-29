@@ -239,10 +239,9 @@ bir iş akışı için gerekli işlevleri ekleyeceğiz.</p>
 <li>Doğrulaması için Puan Türü ve Puanı gösterilir.</li>
 <li>Öğrencinin kişisel bilgilerini girebileceği bir form gösterilir.</li>
 <li>Öğrenciye ön kayıt işleminin başarıyla tamamlandığını gösteren bilgi mesajı gösterilir.</li>
-<li>Öğrenci işleri personeli tarafından öğrencinin getirdiği belgelerin kontrol edilerek teslim</li>
+<li>Öğrenci işleri personeli tarafından öğrencinin getirdiği belgelerin kontrol edilerek teslim alındığı bilgisinin sisteme girileceği &#8220;Belge Kabul&#8221; ekranı gösterilir.</li>
+<li>Tüm belgeler tamamlanınca personelin &#8220;Onayla&#8221; düğmesine basmasıyla iş akışı tamamlanmış olur.</li>
 </ul>
-<p>alındığı bilgisinin sisteme girileceği &#8220;Belge Kabul&#8221; ekranı gösterilir.
-* Tüm belgeler tamamlanınca personelin &#8220;Onayla&#8221; düğmesine basmasıyla iş akışı tamamlanmış olur.</p>
 <div class="section" id="gelistirme-ortaminin-kurulumu">
 <h2>Geliştirme ortamının kurulumu<a class="headerlink" href="#gelistirme-ortaminin-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Geliştirmeye başlamak için öncelikle <strong>Camunda Modeller</strong>, <strong>git</strong> ve <strong>Vagrant</strong> araçlarına ihtiyacımız olacak.
@@ -291,7 +290,7 @@ iş akışı ögelerinin uygulama işlevselliği için elzem olan kısımların�
 Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kullanacağımız ögelerin başında gelmektedir.</p>
 <p>BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.</p>
 <p>Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.</p>
-<a data-lightbox="group-c0503904-fde7-41f4-8af1-259e0d379294"
+<a data-lightbox="group-c6f958d3-c96d-46d3-adfa-d4dbed345841"
                    href="_images/du_bpmn_onkayit.png"
                    class=""
                    title=""
@@ -303,7 +302,7 @@ Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kul
                     alt=""/>
                     </a><p>Öğrenci (ogrenci) lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz.
 Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
-<a data-lightbox="group-80172538-6cef-4306-b2e6-f9d26fb9fd80"
+<a data-lightbox="group-3b258743-0faf-49ef-ba0c-03bf9f681ef6"
                    href="_images/du_bpmn_lane_properties.png"
                    class=""
                    title=""

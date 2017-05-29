@@ -13,9 +13,9 @@ bir iş akışı için gerekli işlevleri ekleyeceğiz.
 * Doğrulaması için Puan Türü ve Puanı gösterilir.
 * Öğrencinin kişisel bilgilerini girebileceği bir form gösterilir.
 * Öğrenciye ön kayıt işleminin başarıyla tamamlandığını gösteren bilgi mesajı gösterilir.
-* Öğrenci işleri personeli tarafından öğrencinin getirdiği belgelerin kontrol edilerek teslim
-alındığı bilgisinin sisteme girileceği "Belge Kabul" ekranı gösterilir.
+* Öğrenci işleri personeli tarafından öğrencinin getirdiği belgelerin kontrol edilerek teslim alındığı bilgisinin sisteme girileceği "Belge Kabul" ekranı gösterilir.
 * Tüm belgeler tamamlanınca personelin "Onayla" düğmesine basmasıyla iş akışı tamamlanmış olur.
+
 
 Geliştirme ortamının kurulumu
 ***********************************************************************************
