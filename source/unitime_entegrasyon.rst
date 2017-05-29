@@ -12,7 +12,7 @@ projeler incelendiğinde, UniTime'ın daha kararlı bir proje olduğu ortaya ç�
 Aşağıdaki listede, incelenen diğer projeler ve algoritmalar listelenmektedir:
 
    - `FET (Free Timetabling Software) <http://lalescu.ro/liviu/fet/>`_
-   - `OptaPlanner <http://http://www.optaplanner.org>`_
+   - `OptaPlanner <http://www.optaplanner.org>`_
    - `Making a Class Schedule Using a Genetic Algorithm <http://www.codeproject.com/Articles/23111/Making-a-Class-Schedule-Using-a-Genetic-Algorithm>`_
    - `Greedy Algorithms <https://en.wikibooks.org/wiki/Algorithms/Greedy_Algorithms>`_
 

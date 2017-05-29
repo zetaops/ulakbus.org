@@ -180,8 +180,8 @@ Bunun için önce Vagrantfile bulunan dizine geçiniz. Bu dizinde
 Komutunu çalıştırıp mevcut box eski mi değil mi kontrol edin. Daha sonra mevcut box destroy edip
 yeniden init edebilirsiniz.
 
-.. Dikkat:: Prensip olarak box içerisinde geliştirme süreçlerine ait herhangi bir veri
-   **bulunmamalıdır**. Eğer varsa bu işlemden önce ilgili veriler host makinesine alınmalıdır.
+**Dikkat:Prensip olarak box içerisinde geliştirme süreçlerine ait herhangi bir veri bulunmamalıdır. Eğer varsa bu işlemden önce ilgili veriler host makinesine alınmalıdır.**
+
 
 ::
 

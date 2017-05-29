@@ -998,11 +998,12 @@ Hazırlık sınıfından kalanlar, bölümdeki o dildeki dersleri alamazlar. Onu
 
 Program örneği
 
-http://konya.edu.tr/dosyalar/fakulte/ahmetkelesogluegitimfakultesi/derskodlari/ALMANCA.pdf
+http://www.bologna.yildiz.edu.tr/index.php?r=institution/credit_allocation
 
 Bologna Ders Kartı
 
 http://konya.edu.tr/bologna/goster/12198
+
 
 İsteğe bağlı hazırlık sınıfı açılabilir. - **Hazırlık sınıfının isteğe bağlı olup olmamasını saklamalıyız**.  Bu hazırlık sınıfında başarılı olamayan öğrencilerin ilişikleri kesilmez ve eğitimlerine devam ederler.
 

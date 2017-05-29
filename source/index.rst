@@ -3,26 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-API Belgeleri
-=============
-
-.. toctree::
-   :maxdepth: 2
-
-   Ulakbus <http://www.ulakbus.org/ulakbus/ulakbus.html>
-   Zengine <http://zengine.readthedocs.org/en/latest/>
-   Pyoko <http://pyoko.readthedocs.org/en/latest/>
-
-Ulakbus Wiki
-============
-
-.. toctree::
-   :maxdepth: 2
-
-   developers
-   devops
-   users
-
 
 Geliştirmeye Yeni Başlayanlar
 =============================
@@ -68,6 +48,9 @@ Diğer yardımcı belgeler:
 * `Zato İpuçları <http://www.ulakbus.org/wiki/zato_ipuclari.html>`_
    Zato'nun yönetimi ile ilgili ipuçları içerir.
 
+* `Veri Erişim Seçenekleri <veri_erisim_secenekleri.html>`_
+   Veritabanı seçimin ne şekilde yaptığımızı ve alınan kararları içerir.
+  
 Bu belgelere ek olarak, geliştirme faaliyetinizi toplulukla paylaşmak ve ULAKBUS depolarına
 göndermek isterseniz GitHub ve Git iş akışımızı detaylı şekilde tarif ettiğimiz `Ulakbus
 Depolarına Katkı Yapmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ belgemize göz
@@ -80,5 +63,31 @@ sorularınıza alabileceğiniz en iyi cevap **sessizlik** olacaktır.
 
 Nasıl soru sorulacağını `akıllıca soru sorma yolları belgesinden
 <http://belgeler.org/howto/smart-questions.html>`_ öğrenebilirsiniz.
+
+Aşağıda API belgelerini geliştirme için gereken tüm belgeleri bulabilirsiniz.
+
+
+API Belgeleri
+=============
+
+.. toctree::
+   :maxdepth: 2
+
+   Ulakbus <http://www.ulakbus.org/ulakbus/ulakbus.html>
+   Zengine <http://zengine.readthedocs.org/en/latest/>
+   Pyoko <http://pyoko.readthedocs.org/en/latest/>
+
+Ulakbus Wiki
+============
+
+.. toctree::
+   :maxdepth: 2
+
+   developers
+   devops
+   users
+
+
+
 
 Kolay gelsin \o/

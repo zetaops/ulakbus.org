@@ -13,9 +13,9 @@ Geliştiriciler
    ulakbus-api-ui-iliskisi.rst
    yazilim_gelistirme_ve_test_dongusu.rst
    komut_satiri_yonetim_araci.rst
-   zato_doc.rst
-   zato_ipuclari.rst
    yazilim_tasarim_analizi_belgesi.rst
-   data_erisim_secimleri.rst
+   veri_erisim_secimleri.rst
    standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.rst
    unitime_entegrasyon.rst
+   zato_doc.rst
+   zato_ipuclari.rst

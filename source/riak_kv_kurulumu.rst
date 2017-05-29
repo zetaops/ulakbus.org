@@ -1,7 +1,7 @@
 ++++++++++++++++
 RIAK KV Kurulumu
 ++++++++++++++++
-Riak production ortamında en az 3 node, mümkünse 5 node çalışması önerilen dağıtık bir veritabanı sistemidir.
+Riak production ortamında en az 5 node, mümkünse 7 node çalışması önerilen dağıtık bir veritabanı sistemidir.
 Belli başlı özellikleri ve avantajları şu bağlantıdan okunabilir:
 
 http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html#riak
