@@ -6,7 +6,7 @@ Yazılım Geliştirme ve Test Döngüsü
 **Yazılım Geliştirme Modeli**
 =============================
 
-Yazılım geliştirme modeli döngüsel artımlı (iterative and incremental) modele bağlı `XP <http://www.extremeprogramming.org>`_ olacaktır. Şekil 1’de gösterilmektedir.
+Yazılım geliştirme modeli, döngüsel artımlı (iterative and incremental) modele bağlı `XP <http://www.extremeprogramming.org>`_ modelidir. Şekil 1’de gösterilmektedir.
 
 
 .. image:: _static/xp_gelistirme_semasi.png
@@ -19,7 +19,7 @@ Yazılım geliştirme modeli döngüsel artımlı (iterative and incremental) mo
 **Geliştirme ve Test Döngüsü**
 ------------------------------
 
-Extreme Programming modeline uygun şekilde 3 haftalık dönemlerde küçük sürüm planı yapılacak ve yazılım geliştirme ve test döngüsü bu sürüm planına bağlı olarak ilerleyecektir.
+Extreme Programming modeline uygun şekilde 3 haftalık dönemlerde küçük sürüm planı yapılmakta ve yazılım geliştirme ve test döngüsü bu sürüm planına bağlı olarak ilerlemektedir.
 
 Sürüm planına dahil edilen işler (issue) geliştiriciler tarafından uygun bir branchte çözülecektir. Geliştiriciler, geliştirme faaliyetleri boyunca aşağıda detayları belirtilen otomatik ve manuel testleri build aşamasından önce uygulayacaklar, ancak bu testlerden geçen kaynak kod sonraki aşamaya geçebilecektir. Kurulum ve yayınlama aşamasında ise bu aşamanın testleri yapılacak ve sonuçlar geliştiricilere bildirilecektir. Ayrıca geliştirilen özelliğe göre kabul testleri de bu aşamada yapılacaktır. Bu geliştirme döngüsü 3 hafta boyunca artımlı şekilde ilerleyecektir.
 
@@ -31,27 +31,20 @@ Bunlara ek olarak her gece, gecelik derlenmiş kod (nightly builds) yayınlanaca
 **Sürüm Planı**
 ---------------
 
-Sürüm planı 3 hafta geliştirme + 1 hafta kabul test süreçleri şeklinde planlanır. 7 ay boyunca toplam 7 sürüm çıkarılacaktır. Sürüm planı ihtiyaç analizi isterleri ve YTA belgesi ışığında yeni özelliklerin planlanması, önceki sürümden kalan hataların kapatılması, topluluk geri bildirimlerinden seçilen işlerin (issues) tamamlanması hedefleriyle yapılır.
+Sürüm planı 3 hafta geliştirme + 1 hafta kabul test süreçleri şeklinde planlanır. Sürüm planı ihtiyaç analizi isterleri ve YTA belgesi ışığında yeni özelliklerin planlanması, önceki sürümden kalan hataların kapatılması, topluluk geri bildirimlerinden seçilen işlerin (issues) tamamlanması hedefleriyle yapılır.
 
 -----------
 **Depolar**
 -----------
 
-* Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:
+Her bileşen kendi deposunda yaşam döngüsüne devam eder. Birbirlerini etkileyen issuelar için referans verilir. Başlıca geliştirme depolarımız:
 
-* SpiffWorkFlow: İş akışı kütüphanesi geliştirme deposudur. Orjinalden fork edilmiştir.
+* Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştirilmektedir.
+* Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştirilmektedir.
+* Ulakbus: Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştirilmektedir.
+* Ulakbus-ui: Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştirilmektedir.
+* ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştirilmektedir.
 
-* Pyoko: Pyoko Riak/Solr ORM geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* Zengine: Zengine Framework geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* Zaerp (Ulakbus): Ana uygulama backend geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* Zaerp-UI (Ulakbus-ui): Ana uygulama frontend geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-* ZCloud: Bulut araçları geliştirme deposudur. Zetaops tarafından geliştiriliyor.
-
-Yardımcı kütüphaneler ile fork edilmiş kütüphaneler haricindeki depo isimleri, daha sonra Ulakbim tarafından verilecek isimlerle değiştirilecektir.
 
 ------------
 **Topluluk**
@@ -63,11 +56,9 @@ Yardımcı kütüphaneler ile fork edilmiş kütüphaneler haricindeki depo isim
 
 *Geliştiriciler*
 
-Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri ve Git Workflow[**]  Belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.
+Depolara kod katkısında bulunacak topluluk üyeleridir. Geliştirici Rehberleri[1]_ ve Git Workflow [2]_  Belgesinde açıklanan akışa uygun şekilde geliştirme faaliyetlerine katılırlar.
 
-[**] Bu belgeye referans verilecek.
-
-*Beta Test Edicileri*
+*Beta Test Ediciler*
 
 Patch ve Minor sürümleri test ederek geri bildirimlerde bulunarak geliştirme faaliyetine katkıda bulunurlar.
 
@@ -81,18 +72,15 @@ Topluluğun tartışmalarını kolaylaştırmak, konu başlıklarını bağlant�
 *Geliştirici ve Katkıcı Rehberleri:*
 ------------------------------------
 
-* Geliştirme Ortamı Kurulum Rehberi
+* `Ulakbus'e Katkıda bulunmak <http://www.ulakbus.org/wiki/git_workflow.html>`_ 
+* `Geliştirme Ortamı Kurulum Rehberi <http://www.ulakbus.org/wiki/development_environment_setup.html>`_
+* `UI Geliştirici Rehberi <http://www.ulakbus.org/wiki/ulakbus_user_interface.html>`_
+* `Ulakbüs UI - API ilişkisi <http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html>`_
+* `Ulakbus Geliştirici Rehberi <http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html>`_
+* `Workflow Rehberi <http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html>`_
+* `Zato ve Servis Yazma Rehberi <http://www.ulakbus.org/wiki/zato_ipuclari.html>`_
 
-* UI Geliştirci Rehberi
-
-* Zaerp Geliştirici Rehberi
-
-* Workflow ve Spiff WF Rehberi
-
-* Zato ve Servis Yazma Rehberi
-
-* Git Workflow
-
+ 
 ----------------------------
 **Test Döngüsünün Amaçları**
 ----------------------------
@@ -159,7 +147,7 @@ Geliştiriciler, kodlarını çalıştıkları branchtan, master brancha merge e
 *Bileşen (Birim) Testleri:*
 ---------------------------
 
-Sistemin arkaucunu oluşturan bileşenlerin tümü py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.
+Sistemin arkaucunu oluşturan bileşenlerin tümü, py.test test frameworkü kullanılarak test edilecektir. Birim testleri, kodun en az %60’ını kapsayacaktır (code coverage). Uygulamayı oluşturan tüm bileşenlerin birim testleri, kendi ana dizinleri altında “tests” dizininde tutulur. “py.test” komutu, proje ana dizini altında çalıştırıldığında, ismi “test” ile başlayan tüm Python dosyalarını tek tek tarayıp, içlerinde yine ismi “test” ile başlayan metodları çalıştırır. Örnek bir birim test aşağıda görülebilir.
 
 +--------------------------------------------------------------+
 | from tests.data.test_data import data                        |
@@ -316,7 +304,7 @@ Test için gerekli veriyi toplamak için;
   ulakbus.net?backendurl=http://127.0.0.1:9001/ yazılıp enter tuşuna basıldığında aynı ayarlar yapılır.
 * İlgili iş akışının çalışabilmesi için veritabanında verilerin gerekli verilerin yüklü olması gerekir.
 * Adres satırına 127.0.0.1:9001/reset_cache komutu yazılıp enter tuşuna basıldığında ile cache temizlenir.
-* Tekrardan Ulakbus.net'e gidilir ve giriş yapılır.
+* Tekrar Ulakbus.net'e gidilir ve giriş yapılır.
 * Test edilecek iş akışı başlatılır,yazılan teste uygun şekilde iş akışı adımlarına tıklanır.
 * Test edilecek iş adımları bittikten sonra adres çubuğuna 127.0.0.1:9001/session_fixture komutu yazılıp
   enter tuşuna basılır.
@@ -501,37 +489,35 @@ Test için gerekli veriyi toplamak için;
 *Servis Testleri:*
 ------------------
 
-Uygulamanın birçok işlevi Zato ESB üzerinde çalıştırılacak mikro servisler üzerinden sunulacaktır. Bu servislerin işlevselliği ve API uyumluluğu zato-apitest frameworkü ile yazılacak testler ile sınanacaktır.
+Uygulamanın dış servislere bağlantısı Zato ESB üzerinde çalıştırılacak mikro servisler üzerinden yapılacaktır. Uygulamanın dışarı açacağı servisler de Zato kullancaktır. Bu servislerin işlevselliği ve API uyumluluğu zato-apitest frameworkü ile yazılacak testler ile sınanacaktır.
 
---------------------------------------
-*Kural Motoru (Rule Engine) Testleri:*
---------------------------------------
-
-Uygulamanın iş mantığının önemli bir kısmını oluşturan kural setleri, belirli girdilerle beklenen çıktıları verip vermediklerine karşı denetelenmelidir.. Bu amaçla kural setleri standart birim testleri içerisinde kural motoru ile işletilerek beklenen çıktıyla eşleştirilecektir.
 
 -----------------------------------------
 **Kurulum ve Yayınlama Aşaması Testleri**
 -----------------------------------------
 
-Kurulum ve Yayınlama (Build Release) aşamasında Buildbot aracılığı ile
+Kurulum ve Yayınlama (Build Release) aşamasında Buildbot CI (continuous integration) ve CD (continuous deployment) yazılımı aracılığı ile
 
-* kurulum ve kütüphane bağımlılık testleri
+* Kurulum ve kütüphane bağımlılık testleri
 
 * Uygulamanın tüm bileşenlerine ait birim testleri
 
 * Entegrasyon testleri uygulanacaktır.
+  
+Oluşan sonuçlar `Ulakbus Buildbot sunucusu <http://buildbot.ulakbus.net/>`_ üzerinde takip edilebilecektir.
+
 
 ---------------------------------------------
 *Test Sunucuları ve Geliştirme Test Döngüsü:*
 ---------------------------------------------
 
-Her iş (issue) kendi geliştirme branchinde geliştirilir ve yapılan değişiklikler küçük parçalar halinde commit edilir. Git flow esas alınarak yapılan git iş akışı sonunda `develop` branchiyle birleştirilir ve uzak repoya gönerilir. `develop` branch'ine yapılan pushlar buildbot'u tetikler ve test, kurulum ve yayınlama aşamasını başlatır. `develop` branch'indeki son değişiklikler sürekli olarak `nightly <http://nightly.ulakbus.net>`_ kurulum adresinden erişilebilir.
+Her iş (issue) kendi geliştirme branch'inde geliştirilir ve yapılan değişiklikler küçük parçalar halinde commit edilir. Git flow esas alınarak yapılan git iş akışı sonunda `develop` branchiyle birleştirilir ve uzak repoya gönerilir. `develop` branch'ine yapılan push işlemleri buildbot'u tetikler ve test, kurulum ve yayınlama aşamasını başlatır. `develop` branch'indeki son değişiklikler sürekli olarak `nightly <http://nightly.ulakbus.net>`_ kurulum adresinden erişilebilir olmalıdır.
 
 ---------------------------
 *Yayına Alma (Production):*
 ---------------------------
 
-Sürüm adayı haline gelen master branchte bulunan kaynak kod, aşağıda detaylı şekilde anlatılan sürüm öncesi kabul testlerinden geçer. Bu testlerin başarılı olması halinde, semantik sürümlendirme `sistemine <http://semver.org/>`_ göre etiketlenir (tagging).
+Sürüm adayı haline gelen master branch'te bulunan kaynak kod, aşağıda detaylı şekilde anlatılan sürüm öncesi kabul testlerinden geçer. Bu testlerin başarılı olması halinde, semantik sürümlendirme `sistemine <http://semver.org/>`_ göre etiketlenir (tagging).
 
 Semantik sürümlendirme sistemine göre kullanılacak desen MAJOR.MINOR.PATCH şeklindedir. Buna göre 3 haftalık küçük sürümler MINOR, gündelik çözülen işler PATCH, önceden belirlenmiş hedefleri kapsayan fazların sonunda ise MAJOR değerleri arttırılır.
 
@@ -971,7 +957,7 @@ Yük testleri, uygulamanın belirli parçalarının yoğun trafik altındaki dav
 *Ağ Kullanımı ve Web Sayfa Başarımı:*
 -------------------------------------
 
-Ağ Kullanımı uygulama modüllerinin gerektiğinde çağırılacak şekilde düzenlenmesi (lazy load), statik dosyaların (javascript, css, imaj ve diğer dosyalar) optimize ve minimize edilmesi gibi konuları içerir. Bu süre çevrimiçi araçlar ve tarayıcılar kullanılarak test edilir.
+Ağ Kullanımı uygulama modüllerinin gerektiğinde çağırılacak şekilde düzenlenmesi (lazy load), statik dosyaların (javascript, css, imaj ve diğer dosyalar) optimize ve minimize edilmesi gibi konuları içerir. Bu süreç çevrimiçi araçlar ve tarayıcılar kullanılarak test edilir.
 
 ---------------------
 *Render Performansı:*
@@ -987,4 +973,9 @@ Uygulamanın güvenlik test ve kontrolleri için Open Web Application Security P
 
 Kontroller Sistem Hakkında Bilgi Toplama, Yapılandırma ve Yayınlama, Kimlik Yönetimi, Kimlik Doğrulama ve Yetkilendirme, Oturum Yönetimi, Girdi Geçerliliği, Hata Ayıklama, Şifreleme, İş Mantığı, İstemci Tarafı Testleri başlıkları altında yapılacaktır.
 
-Yapılacak testler ayrıca ISO 27002 bilgi güvenliği standartlarında belirlenen kriterlerin tamamlanması için kuruma destek olacaktır.
+Yapılacak testler ayrıca ISO 27001 ve ISO 27002 bilgi güvenliği standartlarında belirlenen kriterlerin tamamlanması için kuruma destek olacaktır. 
+
+
+.. [1] http://www.ulakbus.org/wiki/git_workflow.html
+.. [2] https://github.com/zetaops/gitwork
+
