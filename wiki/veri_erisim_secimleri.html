@@ -1,0 +1,369 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>ULAKBUS</title>
+
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="/img/favicon.ico">
+
+    <title>Ulakbüs</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="_static/css/bootstrap.css" rel="stylesheet">
+    <link href="_static/css/style.css" rel="stylesheet">
+    <link href="_static/css/roboto/roboto.css" rel="stylesheet">
+
+    <script>
+        /**
+         * Check an href for an anchor. If exists, and in document, scroll to it.
+         * If href argument omitted, assumes context (this) is HTML Element,
+         * which will be the case when invoked by jQuery after an event
+         */
+        function scroll_if_anchor(href) {
+            href = typeof(href) == "string" ? href : $(this).attr("href");
+
+            // If href missing, ignore
+            if (!href) return;
+
+            // You could easily calculate this dynamically if you prefer
+            var fromTop = 100;
+
+            // If our Href points to a valid, non-empty anchor, and is on the same page (e.g. #foo)
+            // Legacy jQuery and IE7 may have issues: http://stackoverflow.com/q/1593174
+            var $target = $(href);
+
+            // Older browsers without pushState might flicker here, as they momentarily
+            // jump to the wrong position (IE < 10)
+            if ($target.length) {
+                $('html, body').animate({scrollTop: $target.offset().top - fromTop});
+                if (history && "pushState" in history) {
+                    history.pushState({}, document.title, window.location.pathname + href);
+                    return false;
+                }
+            }
+        }
+
+        // When our page loads, check to see if it contains and anchor
+        scroll_if_anchor(window.location.hash);
+
+        // Intercept all anchor clicks
+        $("body").on("click", "a[href^='#']", scroll_if_anchor);
+    </script>
+    </head>
+
+    <body id="page-top" data-target=".navbar-fixed-top">
+    <nav class="navbar ulakbus-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/index.html" class="logo"><img
+                            src="http://www.ulakbus.org/ulakbus.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right main-nav">
+
+
+
+                        <li>
+                            <a href="http://www.ulakbus.org/hakkinda.html">HAKKINDA</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/wiki.html">BELGELER</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/wiki/developers.html">KURULUM</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/destek.html">DESTEK</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/indir.html">İNDİR</a>
+                        </li>
+                        <li>
+                            <a href="http://www.ulakbus.org/takip.html">NE OLUYOR?</a>
+                        </li>
+                        <li>
+                            <a href="http://blog.zetaops.io" target="_blank">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fork me on github icons -->
+    <a href="https://github.com/zetaops" target="_blank"><img id="forkme"
+                                                              src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                                                              alt="Fork me on GitHub"
+                                                              data-canonical-src="_static/forkme_right_red.png"></a>
+
+
+    <div id="doccontainer">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="wiki.html">
+              <img class="logo" src="_static/ulakbus.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Veri Erişim Seçimleri</a><ul>
+<li><a class="reference internal" href="#neden-rdbms-kullanmiyoruz"><strong>Neden RDBMS Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-eventually-consistent-kullanmiyoruz"><strong>Neden Eventually Consistent Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-data-type-kullanmiyoruz"><strong>Neden Data Type Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-write-once-kullanmiyoruz"><strong>Neden Write Once Kullanmıyoruz?</strong></a></li>
+<li><a class="reference internal" href="#neden-strong-consistency"><strong>Neden Strong Consistency?</strong></a></li>
+<li><a class="reference internal" href="#neyi-nasil-kullanacagiz"><strong>Neyi Nasıl Kullanacağız?</strong></a></li>
+<li><a class="reference internal" href="#notlar"><strong>Notlar</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/veri_erisim_secimleri.rst.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hızlı Arama</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Git" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="veri-erisim-secimleri">
+<h1>Veri Erişim Seçimleri<a class="headerlink" href="#veri-erisim-secimleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="neden-rdbms-kullanmiyoruz">
+<h2><strong>Neden RDBMS Kullanmıyoruz?</strong><a class="headerlink" href="#neden-rdbms-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>İncelenen veri setlerine bakıldığında son derece kompleks ilişkilere sahip ve bütünleşik olarak tasarlanması gereken bu verinin, RDBMS (relational database management system) ile geliştirilmesinde aşağıdaki sorunların ortaya çıkacağı öngörülmüştür;</p>
+<ul class="simple">
+<li>Veritabanı normalizasyonu (database normalization) yapmak için, ilerleyen proje sürecinde daha büyük karmaşa yaratacak geçici çözümler (workaround) üretmek gerekmektedir.</li>
+<li>Yazılımda ortaya çıkan iş kuralları, veri erişimi desenleri (data access pattern) gibi geliştirme bileşenlerinin takip edilebilir bir sınıf hiyerarşisi içinde değil, uygulamanın farklı bölümlerinde parçalı olarak yer alması proje bütünlüğünü bozmaktadır. Ayrıca proje süresini, hayli uzatmaktadır. Bu bileşenler;<ul>
+<li>Veritabanında &#8220;stored procedures&#8221; kullanımı</li>
+<li>Her veritabanında, kolaylaştırıcı gibi görünen ancak süreç içinde vendor lock-in yaratan ek özelliklerin kullanımı,</li>
+<li>ORM (Object-relational mapping) kullanılsa bile veride bulunan normalizasyon sorunları yüzünden raw sql yazma ihtiyacı,</li>
+<li>DDL (Data Definition Language) yönetimi,</li>
+<li>DML (Data Manipulation Language) yönetimi,</li>
+<li>Data migration süreçlerinin yönetimi şeklinde özetlenebilir.</li>
+</ul>
+</li>
+<li>Proje isterleri detaylı olarak incelendiğinde farklı yeteneklerde personel ihtiyacı ve birbirine bağımlı çalışma zorunluluğu nedeniyle süreçler zor ve verimsiz olmaktadır. Sonu gelmeyen toplantılarda, sadece gereken uyumun sağlanabilmesi için, anlamsızca zaman heba edilmektedir. Geçmişten gelen tecrübelerimiz, bu türden uzun vadeli projelerde verimliliğin yukarıdaki sebeplerden ciddi bir şekilde düştüğünü göstermiştir.</li>
+<li>Geliştirici, veri yapılarını tıpkı RDBMS yönetir gibi yönetebilmeli ancak dağıtık uygulama ihtiyaçlarına göre eklenmiş özellikleri de (caching, full text search index vb.) kolaylıkla uygulayabilmelidir.</li>
+<li>Veri ACID  (Atomicity, Consistency, Isolation, Durability) özellikleri korunarak saklanabilmeli ancak dağıtık yapıda tutulabilmelidir.</li>
+<li>Dağıtık bulut uygulamalarında minimum five nine <a class="footnote-reference" href="#id5" id="id1">[2]</a> yüksek bulunurluk sağlanmalıdır. Birden fazla instance üzerinde ve dağıtık çalışan uygulamanın kullanacağı veritabanı da dağıtık çalışmaya uygun olmalıdır.</li>
+<li>Veri en az 10 yıl boyunca silinmemeli ve her değişikliğin versiyonları silinmiş olarak mark edilip tutulmalıdır. Silme işlemi ancak kontrollü olarak yapılabilmelidir.</li>
+<li>Geliştiricilerin modeller üzerinde yaptığı değişiklikler sistemin genel bütünlüğünü bozacak sıralı hatalar oluşturmamalıdır.</li>
+</ul>
+<p>Yukarıda sadece temel soruları bulunan incelemenin sonucu olarak, Riak veritabanı kullanımına karar verilmiştir. Riak veritabanı ile tüm geliştirme süreçlerini istenen şekilde yürütebilmek için Pyoko ORM <a class="footnote-reference" href="#id4" id="id2">[1]</a> geliştirilmiştir. Bu ORM ile istenen RDBMS davranışları ve daha fazlası sağlanabilmekte, ayrıca entegre olarak SOLR AKKY kullanılarak da full text search yetenekleri kullanılabilmektedir. Yine Pyoko ORM içinde Redis AKKY cache ile kullanım sağlanmış ve gereken alanların cache üzerinden uygulamaya sunulması sağlanmıştır. ORM uygulamalarının olgunlaşmaları için zaman gerekmektedir ve bu zaman da kullanılmıştır. Pyoko, şu anda 2,5 yıllık bir geliştirme ve test sürecinin sonucu olarak her tür veri operasyonunda güvenle kullanılmaktadır.</p>
+<p>Pyoko ORM, piyasada bulunan pek çok ORM aracından çok daha güçlü özellikler sunmaktadır. Bunlardan bazıları;</p>
+<ul class="simple">
+<li>Link(): Link any object to any object. More possibility then many to many. Unions etc. Modellerde bulunan tüm nesneler birbirlerine many to many, unions gibi bağlantı türlerinden çok daha esnek bir şekilde bağlanabilirler.</li>
+<li>Nested class based data models (schemas).</li>
+<li>Link(one_to_one): One to one connections, İki model arasında birebir bağlantı yapılabilir.</li>
+<li>List Node: One to many connections, Bire çok bağlantı kurulabilir.</li>
+<li>Link Proxy: Self referenced models, Modeller kendilerini referans olarak kullanabilir.</li>
+<li>Sorgu için, and, or, range, exact, contains, startswith, endswith, lte, gte, order by kullanılabilir.</li>
+<li>Solr magic: full text search index on ALL data, function queries, range queries.</li>
+<li>AND queries by using filter() and exclude() methods.</li>
+<li>Or, in, greater than, lower than queries.</li>
+<li>Query chaining and caching.</li>
+<li>Automatic Solr schema creation / update (one way migration).</li>
+<li>Row level access control, permission based cell filtering.</li>
+<li>Self referencing model relations.</li>
+<li>Automatic versioning on write-once buckets.</li>
+<li>Customizable activity logging to write-once buckets.</li>
+<li>Custom migrations with migration history.</li>
+</ul>
+<p>Bir sonraki bölümde Riak ile ilgili alınmış bulunan tasarım kararlarını takip edebilirsiniz.</p>
+</div>
+<div class="section" id="neden-eventually-consistent-kullanmiyoruz">
+<h2><strong>Neden Eventually Consistent Kullanmıyoruz?</strong><a class="headerlink" href="#neden-eventually-consistent-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Riak&#8217;ı Eventually Consistent modunda kullandığımızda, concurrent yazma işlemleri sonucu verinin birden fazla değişik versiyonu oluşabiliyor. (Sibling) Çünkü veri, farklı nodelardaki kopyalarının durumu gözetilmeksizin yazılıyor. Oluşan conflictler ise daha sonra çözüme kavuşturuluyor. <a class="footnote-reference" href="#id6" id="id3">[3]</a>  Bu da ayrıca yönetilmesi gereken oldukça karmaşık bir problemi beraberinde getiriyor.</p>
+<p>Oluşan conflictler birkaç yolla çözüme bağlanabiliyor.[4]_ Bu çözümlerin bir kısmı Riak tarafından otomatik olarak yapılabiliyor. Riak&#8217;ın sağladığı iki temel çözüm time-based ve last-write-wins şeklinde. Riak&#8217;ın internal çözümleri dışında uygulama katmanından bu çözümleri uygulamak da mümkün. Fakat aynı bucket üzerinde hem Riak internal hem de application taraflı çözümleri kullanamıyoruz. Bir bucketdaki conflictlerin nasıl çözüleceği bucket metadataları ile kontrol ediliyor. Riak internallar için allow_mult parametresi false olması gerekirken, uygulama taraflı çözümler için true olması gerekiyor. Yani hem Riak internal çözümlerini hem de uygulama çözümlerini tek bir bucket üzerinde birlikte kullanmak mümkün değil. Bizim durumumuzda bu tür conflictlerin uygulama katmanında çözüme bağlanması kaçınılmaz. Bu da birçok bucketta Riak&#8217;ın last-write-wins veya timestamp gibi çözümlerini kullanamayacağımız anlamına geliyor. Çünkü aynı verinin farklı kesitlerine farklı kullanıcılar erişiyor. Uygulama katmanında conflict resolution ise data layerında daha fazla complexity anlamına geliyor.</p>
+</div>
+<div class="section" id="neden-data-type-kullanmiyoruz">
+<h2><strong>Neden Data Type Kullanmıyoruz?</strong><a class="headerlink" href="#neden-data-type-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Veri tipleri sadece eventually consistent sistemlerde kullanılabiliyor.[5]_ Veri tipleri, yukarıdaki problemi her bir data type için Riak tarafından farklı tanımlanmış kurallar dahilinde çözüyorlar[6]_ ve buna uygulama katmanında müdahale etmek mümkün değil. Kararı Riak veriyor. Eventually consistent ortamda, uygulama katmanında conflict resolution mümkün olmadığı için veri tipleri kullanamıyoruz.</p>
+<p>Riak veri tipleri sayesinde sınırlı da olsa search (arama) imkanı sağlıyor. Bunu da register, flag gibi belirli tipleri solr şemasında dynamic field olarak tanımlayarak yapıyor.[7]_ Bizim register, flag şeklinde işaretlediğimiz her veri, dynamic field tanımlaması sayesinde solr da indexleniyor. Riak&#8217;ın bu veri tipleri sayesinde search için eklediği ekstra bir özelliğe dair dökümanlarda altı çizilen bilgi  yok. Bizim verimize uyacak nested biçimde register, counter ve setler içeren maplere bağlı olarak dynamic field ı bu şekilde kullanmak, sayısız ve kontrolsüz biçimde artan index ve inverted indexlere[8]_ yol açacaktır.</p>
+</div>
+<div class="section" id="neden-write-once-kullanmiyoruz">
+<h2><strong>Neden Write Once Kullanmıyoruz?</strong><a class="headerlink" href="#neden-write-once-kullanmiyoruz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Write Once kullandığımızda sistem sürekli farklı keylere yazacağı için conflict oluşmaz. Fakat uygulama katmanında verinin bütünlüğü için alacağımız önlem, yani verinin yazılmadan önce okunması, farklı nodelardan okuma ve sistemde oluşabilecek gecikmelerden dolayı yüzde yüz garanti sağlamaz. Yazma isteğinin doğrulanması için yapılacak okuma ve yazma farklı nodelardan yapılacağı için burada da verinin bir öncekini baz alan iki farklı kopyası oluşacaktır. Bunun yanı sıra arama işini daha karmaşık hale getirmekte, çok kopyalı sonuçlar arasında en son kopyaya ulaşma gibi ekstra bir zorluk eklemektedir.</p>
+</div>
+<div class="section" id="neden-strong-consistency">
+<h2><strong>Neden Strong Consistency?</strong><a class="headerlink" href="#neden-strong-consistency" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Riak Strong Consistency modunda conflictlere izin vermez. Veri tüm nodelarda eşlenene kadar yazıldı olarak kabul edilmez. Concurrent işlemlerde tıpkı RDBMS’lerdeki locklarda olduğu gibi yazma hataları döndürür. Bu da uygulama katmanında çok daha kolay yönetilebilir ve basit bir conflict resolution policy kullanılabilir anlamına gelir.</p>
+</div>
+<div class="section" id="neyi-nasil-kullanacagiz">
+<h2><strong>Neyi Nasıl Kullanacağız?</strong><a class="headerlink" href="#neyi-nasil-kullanacagiz" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<ul class="simple">
+<li>Hayati veriler için Strong Consistent bucketlar kullanacağız. Tek kopya üzerinde çalışacağız. Datayı yapabildiğimiz kadar flat hale getirip, solr indexleri için mümkün olduğunca az dynamic field içeren şemalar kullanacağız. Flat haline getirilmiş bucket arasında linkler ile relationlar kuracağız.</li>
+<li>Verinin versiyonlarını ayrı bir Write Once Bucket’ta tutacağız. Bunlara bir pk ve date fieldları ekleyip bu iki field ı solr da indexleyeceğiz.</li>
+<li>Log, temporary dataları eventually consistent olarak tutacağız.</li>
+</ul>
+</div>
+<div class="section" id="notlar">
+<h2><strong>Notlar</strong><a class="headerlink" href="#notlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Object-relational_mapping">https://en.wikipedia.org/wiki/Object-relational_mapping</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/High_availability">https://en.wikipedia.org/wiki/High_availability</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/#Client-and-Server-side-Conflict-Resolution">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/#Client-and-Server-side-Conflict-Resolution</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[5]</td><td><a class="reference external" href="http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats">http://docs.basho.com/riak/latest/ops/advanced/strong-consistency/#Important-Caveats</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[6]</td><td><a class="reference external" href="https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100">https://github.com/basho/yokozuna/blob/develop/priv/default_schema.xml#L100</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[7]</td><td><a class="reference external" href="http://docs.basho.com/riak/latest/dev/using/conflict-resolution/">http://docs.basho.com/riak/latest/dev/using/conflict-resolution/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[8]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_index">https://en.wikipedia.org/wiki/Inverted_index</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
+                        href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
+                        style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
+                        href="http://zetaops.io" target="_blank"
+                        style="text-decoration:underline; color:#fff;">Zetaops</a></p>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

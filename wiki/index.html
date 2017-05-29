@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,7 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -166,7 +166,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -176,15 +176,15 @@
             </a></p>
   <h3><a href="wiki.html">İçindekiler Tablosu</a></h3>
   <ul>
-<li><a class="reference internal" href="#">API Belgeleri</a></li>
+<li><a class="reference internal" href="#">Geliştirmeye Yeni Başlayanlar</a></li>
+<li><a class="reference internal" href="#api-belgeleri">API Belgeleri</a></li>
 <li><a class="reference internal" href="#ulakbus-wiki">Ulakbus Wiki</a></li>
-<li><a class="reference internal" href="#gelistirmeye-yeni-baslayanlar">Geliştirmeye Yeni Başlayanlar</a></li>
 </ul>
 
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.txt"
+      <li><a href="_sources/index.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -206,7 +206,67 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="api-belgeleri">
+  <div class="section" id="gelistirmeye-yeni-baslayanlar">
+<h1>Geliştirmeye Yeni Başlayanlar<a class="headerlink" href="#gelistirmeye-yeni-baslayanlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Yeni geliştiriciler, ilk olarak <a class="reference external" href="http://www.ulakbus.org/wiki/development_environment_setup.html">Geliştirme Ortamının Kurulumu</a> belgesiyle
+başlayabilirler. Bu belgede geliştirme ortamının Vagrant üzerinde kurulması
+detaylı şekilde anlatılmaktadır.</p>
+<p>Geliştirmeye başlamadan önce geliştiriciler için hazırladığımız <a class="reference external" href="http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html">Yazılım Tasarım
+Analizi Belgesi</a>
+belgesi, sistemin genel görünüşü ve tek tek bileşenleri hakkında detaylı bilgiler
+içermektedir ve geliştirme sürecinin daha hızlı anlaşılmasına yardımcı olacaktır.</p>
+<p>ULAKBUS, iş akışı temelli bir web çatısı olan ZEngine üzerine kuruludur. Bu sebeple
+<a class="reference external" href="http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a>
+başlıklı belge, iş akışı kavramları ile tanışmak ve web çatısının genel özellikleri
+hakkında temel bilgiler için oldukça faydalı olacaktır.</p>
+<p><a class="reference external" href="http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html">Ulakbüs’ü Geliştirelim</a>
+belgesi ise örnek bir uygulama içermektedir. Web çatısınının üzerine ULAKBUS
+kodunun nasıl yerleştiği, iş akışı diyagramının nasıl çizildiği, modellerin nasıl
+tanımlandığı, iş akışı adımlarına karşılık gelen view / task veya servislerin
+nasıl yazıldığı hakkında açıklamalar ve örnek kodlar içermektedir.</p>
+<p>Geliştirme yaparken ilgileneceğimiz diğer önemli bir konu ise arka ve önuç
+ilişkisinin kavranmasıdır. Bu ilişkiyi ve önucun nasıl çalıştığını tüm detayları
+ile <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">ULAKBUS UI–API İlişkisi</a>
+belgesinde bulabilirsiniz.</p>
+<p>Diğer yardımcı belgeler:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html">Komut Satırı Yönetim Aracı</a></dt>
+<dd>Komut satırı yönetim aracı, ULAKBÜS uygulamasının hem yönetimi hem de geliştirilmesi için
+basit ve etkili bir arayüzdür. Komut satırından veritabanı yönetimi, model şema göçü,
+fake data üretimi, veri aktarımı ve daha birçok işlem kolaylıkla yapılabilmektedir.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.ulakbus.org/wiki/zato_doc.html">Zato</a></dt>
+<dd>Zato, ULAKBUS projesinin temel bileşenlerinden birisidir. Bu belge hem Zato hakkında hem
+de genel olarak ESB (Kurumsal Veriyolu) / SOA (Servis Temelli Uygulama) kavramları
+hakkında bilgi içerir.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.ulakbus.org/wiki/zato_ipuclari.html">Zato İpuçları</a></dt>
+<dd>Zato&#8217;nun yönetimi ile ilgili ipuçları içerir.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="veri_erisim_secenekleri.html">Veri Erişim Seçenekleri</a></dt>
+<dd>Veritabanı seçimin ne şekilde yaptığımızı ve alınan kararları içerir.</dd>
+</dl>
+</li>
+</ul>
+<p>Bu belgelere ek olarak, geliştirme faaliyetinizi toplulukla paylaşmak ve ULAKBUS depolarına
+göndermek isterseniz GitHub ve Git iş akışımızı detaylı şekilde tarif ettiğimiz <a class="reference external" href="http://www.ulakbus.org/wiki/git_workflow.html">Ulakbus
+Depolarına Katkı Yapmak</a> belgemize göz
+atabilirsiniz.</p>
+<p>Eğer bir sorunla karşılaşırsanız, <a class="reference external" href="http://www.ulakbus.org/destek.html">destek sayfamızda</a> yer alan
+kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu
+<strong>açık ve sarih olarak</strong> bildirmeniz gerektiğini unutmayınız. &#8220;- Bu çalışmıyor&#8221; şeklindeki
+sorularınıza alabileceğiniz en iyi cevap <strong>sessizlik</strong> olacaktır.</p>
+<p>Nasıl soru sorulacağını <a class="reference external" href="http://belgeler.org/howto/smart-questions.html">akıllıca soru sorma yolları belgesinden</a> öğrenebilirsiniz.</p>
+<p>Aşağıda API belgelerini geliştirme için gereken tüm belgeleri bulabilirsiniz.</p>
+</div>
+<div class="section" id="api-belgeleri">
 <h1>API Belgeleri<a class="headerlink" href="#api-belgeleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
@@ -230,12 +290,12 @@
 <li class="toctree-l2"><a class="reference internal" href="yazilim_gelistirme_ve_test_dongusu.html">Yazılım Geliştirme ve Test Döngüsü</a></li>
 <li class="toctree-l2"><a class="reference internal" href="komut_satiri_yonetim_araci.html">Temel Yönetim Komutları</a></li>
 <li class="toctree-l2"><a class="reference internal" href="komut_satiri_yonetim_araci.html#veri-uretecleri">Veri Üreteçleri</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zato_doc.html">ESB ve SOA ne anlama geliyor yani?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zato_ipuclari.html">Zato İpuçları</a></li>
 <li class="toctree-l2"><a class="reference internal" href="yazilim_tasarim_analizi_belgesi.html">Yazılım Tasarım Analizi Belgesi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_erisim_secimleri.html">Data Erişim Seçimleri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="veri_erisim_secimleri.html">Veri Erişim Seçimleri</a></li>
 <li class="toctree-l2"><a class="reference internal" href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html">Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unitime_entegrasyon.html">UniTime Entegrasyonları</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zato_doc.html">ESB ve SOA ne anlama geliyor yani?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zato_ipuclari.html">Zato İpuçları</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="devops.html">Sistem Operatörleri</a><ul>
@@ -245,63 +305,6 @@
 <li class="toctree-l1"><a class="reference internal" href="users.html">Kullanıcılar</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="gelistirmeye-yeni-baslayanlar">
-<h1>Geliştirmeye Yeni Başlayanlar<a class="headerlink" href="#gelistirmeye-yeni-baslayanlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
-<p>Yeni geliştiriciler, ilk olarak <a class="reference external" href="http://www.ulakbus.org/wiki/development_environment_setup.html">Geliştirme Ortamının Kurulumu</a> belgesiyle
-başlayabilirler. Bu belgede geliştirme ortamının Vagrant üzerinde kurulması
-detaylı şekilde anlatılmaktadır.</p>
-<p>Geliştirmeye başlamadan önce geliştiriciler için hazırladığımız <a class="reference external" href="http://www.ulakbus.org/wiki/yazilim_tasarim_analizi_belgesi.html">Yazılım Tasarım
-Analizi Belgesi</a>
-belgesi, sistemin genel görünüşü ve tek tek bileşenleri hakkında detaylı bilgiler
-içermektedir ve geliştirme sürecinin daha hızlı anlaşılmasına yardımcı olacaktır.</p>
-<p>ULAKBUS, iş akışı temelli bir web çatısı olan ZEngine üzerine kuruludur. Bu sebeple
-<a class="reference external" href="http://www.ulakbus.org/wiki/zengine-ile-is-akisi-temelli-uygulama-gelistirme.html">ZEngine ile İş Akışı Temelli Uygulama Geliştirme</a>
-başlıklı belge, iş akışı kavramları ile tanışmak ve web çatısının genel özellikleri
-hakkında temel bilgiler için oldukça faydalı olacaktır.</p>
-<p><a class="reference external" href="http://www.ulakbus.org/wiki/ulakbusu-gelistirmek.html">Ulakbüs’ü Geliştirelim</a>
-belgesi ise örnek bir uygulama içermektedir. Web çatısınının üzerine ULAKBUS
-kodunun nasıl yerleştiği, iş akışı diyagramının nasıl çizildiği, modellerin nasıl
-tanımlandığı, iş akışı adımlarına karşılık gelen view / task veya servislerin
-nasıl yazıldığı hakkında açıklamalar ve örnek kodlar içermektedir.</p>
-<p>Geliştirme yaparken ilgileneceğimiz diğer önemli bir konu ise arka ve önuç
-ilişkisinin kavranmasıdır. Bu ilişkiyi ve önucun nasıl çalıştığını tüm detayları
-ile <a class="reference external" href="http://www.ulakbus.org/wiki/ulakbus-api-ui-iliskisi.html">ULAKBUS UI–API İlişkisi</a>
-belgesinde bulabilirsiniz.</p>
-<p>Diğer yardımcı belgeler:</p>
-<ul>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.ulakbus.org/wiki/komut_satiri_yonetim_araci.html">Komut Satırı Yönetim Aracı</a></dt>
-<dd><p class="first last">Komut satırı yönetim aracı, ULAKBÜS uygulamasının hem yönetimi hem de geliştirilmesi için
-basit ve etkili bir arayüzdür. Komut satırından veritabanı yönetimi, model şema göçü,
-fake data üretimi, veri aktarımı ve daha birçok işlem kolaylıkla yapılabilmektedir.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.ulakbus.org/wiki/zato_doc.html">Zato</a></dt>
-<dd><p class="first last">Zato, ULAKBUS projesinin temel bileşenlerinden birisidir. Bu belge hem Zato hakkında hem
-de genel olarak ESB (Kurumsal Veriyolu) / SOA (Servis Temelli Uygulama) kavramları
-hakkında bilgi içerir.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.ulakbus.org/wiki/zato_ipuclari.html">Zato İpuçları</a></dt>
-<dd><p class="first last">Zato&#8217;nun yönetimi ile ilgili ipuçları içerir.</p>
-</dd>
-</dl>
-</li>
-</ul>
-<p>Bu belgelere ek olarak, geliştirme faaliyetinizi toplulukla paylaşmak ve ULAKBUS depolarına
-göndermek isterseniz GitHub ve Git iş akışımızı detaylı şekilde tarif ettiğimiz <a class="reference external" href="http://www.ulakbus.org/wiki/git_workflow.html">Ulakbus
-Depolarına Katkı Yapmak</a> belgemize göz
-atabilirsiniz.</p>
-<p>Eğer bir sorunla karşılaşırsanız, <a class="reference external" href="http://www.ulakbus.org/destek.html">destek sayfamızda</a> yer alan
-kanallardan destek alabilirsiniz. Destek için iletişim kurmadan önce lütfen sorununuzun ne olduğunu
-<strong>açık ve sarih olarak</strong> bildirmeniz gerektiğini unutmayınız. &#8220;- Bu çalışmıyor&#8221; şeklindeki
-sorularınıza alabileceğiniz en iyi cevap <strong>sessizlik</strong> olacaktır.</p>
-<p>Nasıl soru sorulacağını <a class="reference external" href="http://belgeler.org/howto/smart-questions.html">akıllıca soru sorma yolları belgesinden</a> öğrenebilirsiniz.</p>
 <p>Kolay gelsin o/</p>
 </div>
 
@@ -317,14 +320,14 @@ sorularınıza alabileceğiniz en iyi cevap <strong>sessizlik</strong> olacaktı
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Genel Dizin"
              >dizin</a></li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li> 
       </ul>
     </div>
     </div>
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"

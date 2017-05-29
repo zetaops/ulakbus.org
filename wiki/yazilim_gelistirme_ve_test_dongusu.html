@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,8 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Temel Yönetim Komutları" href="komut_satiri_yonetim_araci.html" />
     <link rel="prev" title="Ulakbüs UI - API ilişkisi" href="ulakbus-api-ui-iliskisi.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -175,7 +174,7 @@
         <li class="right" >
           <a href="ulakbus-api-ui-iliskisi.html" title="Ulakbüs UI - API ilişkisi"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -241,7 +240,7 @@
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/yazilim_gelistirme_ve_test_dongusu.txt"
+      <li><a href="_sources/yazilim_gelistirme_ve_test_dongusu.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -632,7 +631,7 @@ nesnelerin sayıları karşılaştırılır.</li>
           <span class="n">ogrenci_ders</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="s1">&#39;S7z8bvdNCBFSd9iCvQrb7O1pQ75&#39;</span><span class="p">)</span>
           <span class="n">ogrenci_ad</span> <span class="o">=</span> <span class="n">ogrenci_ders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">ogrenci_ders</span><span class="p">[</span>
               <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span>
-          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">u&#39;Adı Soyadı&#39;</span><span class="p">]</span>
+          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="sa">u</span><span class="s1">&#39;Adı Soyadı&#39;</span><span class="p">]</span>
 
       <span class="c1"># Ders seçim ekranına geri döner</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;ders_sec&#39;</span><span class="p">,</span>
@@ -655,7 +654,7 @@ nesnelerin sayıları karşılaştırılır.</li>
           <span class="n">ogrenci_ders</span> <span class="o">=</span> <span class="n">OgrenciDersi</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ders_id</span><span class="o">=</span><span class="s1">&#39;PRGgozMfVXSrAqyO2aMnjS6aBQo&#39;</span><span class="p">)</span>
           <span class="n">ogrenci_ad</span> <span class="o">=</span> <span class="n">ogrenci_ders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">ogrenci_ders</span><span class="p">[</span>
               <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ogrenci_program</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span>
-          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">u&#39;ad_soyad&#39;</span><span class="p">]</span>
+          <span class="k">assert</span> <span class="n">ogrenci_ad</span> <span class="o">==</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="sa">u</span><span class="s1">&#39;ad_soyad&#39;</span><span class="p">]</span>
 
       <span class="c1"># Öğrencilerin sayısı.</span>
       <span class="n">num_of_ogrenci</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">][</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Ogrenciler&#39;</span><span class="p">])</span>
@@ -1083,7 +1082,7 @@ bir önceki eğitim kaydı oluşturarak kaydeder.</p>
         <li class="right" >
           <a href="ulakbus-api-ui-iliskisi.html" title="Ulakbüs UI - API ilişkisi"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -1091,7 +1090,7 @@ bir önceki eğitim kaydı oluşturarak kaydeder.</p>
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"

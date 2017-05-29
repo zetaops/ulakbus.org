@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,8 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Yazılım Geliştirme ve Test Döngüsü" href="yazilim_gelistirme_ve_test_dongusu.html" />
     <link rel="prev" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -175,7 +174,7 @@
         <li class="right" >
           <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -221,7 +220,7 @@
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/ulakbus-api-ui-iliskisi.txt"
+      <li><a href="_sources/ulakbus-api-ui-iliskisi.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -314,16 +313,13 @@ Kullanıcı bir iş akışı başlattığında api ye başlattığı iş akış�
 </ul>
 <p>Bu komutlar oluşturulan iş akışlarının ilgili adımlarında kullanılarak arayüzün istenen şekilde davranması için gereklidir.</p>
 <p>Diğer yanıt parametreleri forms, meta, objects, pagination, reload_cmd, token, callbackID, notify, is_login olabilir.</p>
-<ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">reload_cmd</span></code> anahtarı <code class="docutils literal"><span class="pre">&quot;client_cmd&quot;:</span> <span class="pre">&quot;reload&quot;</span></code> olması durumunda arayüzün backend API’dan isteyeceği komutu taşır. UI post datası içinde cmd anahtarında bu değeri gönderir.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">token</span></code> anahtarında iş akış şemasının (<code class="docutils literal"><span class="pre">workflow</span></code>) redis’te tutulan token değeri vardır. İş akışı tamamlanmadığı sürece bu token request nesnesinde API’a gönderilir.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">callbackID</span></code> UI tarafından üretilip gönderilmektedir. Yanıt içerisinde bulunuyorsa UI tarafından yapılan bir isteğin yanıtı olduğu anlamına gelmektedir. Uygulama genelinde yapılan isteklerde Javascript Promise alt yapısı kullanılarak asenkron istek yapılmaktadır. Bekleyen promise resolve edilerek iş akışının devamı sağlanmaktadır.</p>
-</li>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">reload_cmd</span></code> anahtarı <code class="docutils literal"><span class="pre">&quot;client_cmd&quot;:</span> <span class="pre">&quot;reload&quot;</span></code> olması durumunda arayüzün backend API’dan isteyeceği komutu taşır. UI post datası içinde cmd anahtarında bu değeri gönderir.</li>
+<li><code class="docutils literal"><span class="pre">token</span></code> anahtarında iş akış şemasının (<code class="docutils literal"><span class="pre">workflow</span></code>) redis’te tutulan token değeri vardır. İş akışı tamamlanmadığı sürece bu token request nesnesinde API’a gönderilir.</li>
+<li><code class="docutils literal"><span class="pre">callbackID</span></code> UI tarafından üretilip gönderilmektedir. Yanıt içerisinde bulunuyorsa UI tarafından yapılan bir isteğin yanıtı olduğu anlamına gelmektedir. Uygulama genelinde yapılan isteklerde Javascript Promise alt yapısı kullanılarak asenkron istek yapılmaktadır. Bekleyen promise resolve edilerek iş akışının devamı sağlanmaktadır.</li>
 <li><dl class="first docutils">
 <dt><code class="docutils literal"><span class="pre">meta</span></code> anahtarında arayüzde istenen yapılandırmalar yer alır. Boolean değer taşırlar. Bunlar şunlardır;</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li><code class="docutils literal"><span class="pre">allow_search</span></code> Listeleme ekranında arama kutusunun gösterilmesi için kullanılır.</li>
 <li><code class="docutils literal"><span class="pre">allow_selection</span></code> Listeleme ekranında tablonun solunda selectBox yer alması için kullanılır.</li>
 <li><code class="docutils literal"><span class="pre">allow_sort</span></code> Listeleme ekranındaki sıralama özelliği için kullanılır.</li>
@@ -334,14 +330,10 @@ Kullanıcı bir iş akışı başlattığında api ye başlattığı iş akış�
 </dd>
 </dl>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">_debug_queries</span></code> anahtarı geliştiriciler için yardımcı bir anahtardır. Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır. Aktif olması için API ortamında çevre değişkeni <code class="docutils literal"><span class="pre">DEBUG=1</span></code> olarak atanmalıdır.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">is_login</span></code> anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır. Bu anahtar <code class="docutils literal"><span class="pre">false</span></code> değer taşıdığında arayüz login sayfasına yönlendirir.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">notify</span></code> ayayüzde bildirim göstermek için kullanılır. Gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">pagination</span></code> anahtarı listeleme gösterimlarinde sayfalama bilgisini bulundurur.</p>
-</li>
+<li><code class="docutils literal"><span class="pre">_debug_queries</span></code> anahtarı geliştiriciler için yardımcı bir anahtardır. Veritabanına yapılan sorguların süresi ve kaç adet sorgu yapıldığı gibi değerler bu anahtarda yer alır. Aktif olması için API ortamında çevre değişkeni <code class="docutils literal"><span class="pre">DEBUG=1</span></code> olarak atanmalıdır.</li>
+<li><code class="docutils literal"><span class="pre">is_login</span></code> anahtarı kullanıcının giriş yapıp yapmadığını gösteren bir anahtardır. Bu anahtar <code class="docutils literal"><span class="pre">false</span></code> değer taşıdığında arayüz login sayfasına yönlendirir.</li>
+<li><code class="docutils literal"><span class="pre">notify</span></code> ayayüzde bildirim göstermek için kullanılır. Gönderilen bildirimler pencerenin sağ üstünde yer alır ve bir süre sonra kaybolur.</li>
+<li><code class="docutils literal"><span class="pre">pagination</span></code> anahtarı listeleme gösterimlarinde sayfalama bilgisini bulundurur.</li>
 </ul>
 </div>
 <div class="section" id="ulakbus-ui-ogeleri">
@@ -740,7 +732,7 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
         <li class="right" >
           <a href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -748,7 +740,7 @@ Bu değerler form sayfası oluşturulurken dikkate alınır.</p>
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"

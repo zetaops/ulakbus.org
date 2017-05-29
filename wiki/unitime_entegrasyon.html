@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,8 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Sistem Operatörleri" href="devops.html" />
     <link rel="prev" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi" href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -175,7 +174,7 @@
         <li class="right" >
           <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -204,7 +203,7 @@
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/unitime_entegrasyon.txt"
+      <li><a href="_sources/unitime_entegrasyon.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -237,7 +236,7 @@ projeler incelendiğinde, UniTime&#8217;ın daha kararlı bir proje olduğu orta
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://lalescu.ro/liviu/fet/">FET (Free Timetabling Software)</a></li>
-<li><a class="reference external" href="http://http://www.optaplanner.org">OptaPlanner</a></li>
+<li><a class="reference external" href="http://www.optaplanner.org">OptaPlanner</a></li>
 <li><a class="reference external" href="http://www.codeproject.com/Articles/23111/Making-a-Class-Schedule-Using-a-Genetic-Algorithm">Making a Class Schedule Using a Genetic Algorithm</a></li>
 <li><a class="reference external" href="https://en.wikibooks.org/wiki/Algorithms/Greedy_Algorithms">Greedy Algorithms</a></li>
 </ul>
@@ -394,7 +393,7 @@ düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağ�
            <span class="kn">import</span> <span class="nn">datetime</span>
            <span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
            <span class="kn">from</span> <span class="nn">ulakbus.models</span> <span class="k">import</span> <span class="n">Donem</span><span class="p">,</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">Campus</span>
-           <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+           <span class="n">root_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
 
            <span class="c1"># Güncel akademik dönemi seç</span>
            <span class="n">term</span> <span class="o">=</span> <span class="n">Donem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">guncel</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -461,7 +460,7 @@ düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağ�
         <li class="right" >
           <a href="standart_fakulteler_icin_yazilim_ihtiyac_analizi_belgesi.html" title="Standart Fakülteler için Yazılım İhtiyaç Analizi Belgesi"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -469,7 +468,7 @@ düşen kayıtların aktarılması için gerekli XML dosyasının yaratılacağ�
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"

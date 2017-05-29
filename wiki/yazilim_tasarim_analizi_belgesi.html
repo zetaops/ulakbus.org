@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,8 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Data Erişim Seçimleri" href="data_erisim_secimleri.html" />
     <link rel="prev" title="Zato İpuçları" href="zato_ipuclari.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -175,7 +174,7 @@
         <li class="right" >
           <a href="zato_ipuclari.html" title="Zato İpuçları"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -288,7 +287,7 @@
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/yazilim_tasarim_analizi_belgesi.txt"
+      <li><a href="_sources/yazilim_tasarim_analizi_belgesi.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -320,12 +319,12 @@
 </div>
 <div class="section" id="ulakbus-katmanlari-genel-gorunum">
 <h3><em>ULAKBÜS Katmanları Genel Görünüm</em><a class="headerlink" href="#ulakbus-katmanlari-genel-gorunum" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<a class="reference internal image-reference" href="_images/ULAKBUS-layers-diagram.png"><img alt="_images/ULAKBUS-layers-diagram.png" class="align-center" src="_images/ULAKBUS-layers-diagram.png" /></a>
+<a class="reference internal image-reference" href="_images/ULAKBUS-layers-diagram.png"><img alt="_images/ULAKBUS-layers-diagram.png" class="align-center" src="_images/ULAKBUS-layers-diagram.png" style="width: 804.0px; height: 685.0px;" /></a>
 </div>
 <div class="section" id="is-akisi-workflow-tabanli-uygulama">
 <h3><em>İş Akışı (Workflow) Tabanlı Uygulama</em><a class="headerlink" href="#is-akisi-workflow-tabanli-uygulama" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>İş Akışı (Workflow) Tabanlı Uygulamalar, iş süreçlerini yeterince küçük adımlara bölerek, iş akışlarının aktörlerini ve her bir adımda işlenecek veriyi net bir şekilde tanımlayarak kolay yönetilebilirlik ve esneklik sağlarlar. İş süreçlerinin tamamıyla olmasa bile belli oranda otomatikleştirilmesi ve yazılım tarafından işlenebilir olması değişen ihtiyaçları karşılamak için kolaylık sağlamaktadır. Sadece iş akışı şemalarında yapılacak değişikliklerle uygulamaya yön vermek mümkündür.</p>
-<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" /></a>
+<a class="reference internal image-reference" href="_images/workflows.png"><img alt="_images/workflows.png" class="align-center" src="_images/workflows.png" style="width: 1048.0px; height: 389.0px;" /></a>
 <p><em>Örnek İş Akış Şeması</em></p>
 <p>İş süreçleri yönetimi için, BPMN2 kural setine uyan Workflow Management yapısı seçilmiştir.   Python dünyasında WorkFlow Management ve BPMN desteği bulunan SpiffWorkFlow kütüphanesi geliştirilmeye açık en uygun aday olduğu için seçilmiştir.</p>
 <p>İş süreçlerinin görsel olarak oluşturulması için de Camunda Modeler seçilmiştir.</p>
@@ -643,11 +642,10 @@ CEP için loglarla nasıl bir relation kuracağız? Loglardan event trigger etme
 <li><dl class="first docutils">
 <dt>modules</dt>
 <dd><p class="first">bazıları kendi alt dizinlerine sahip olan uygulama modulleri.</p>
-<ul class="last">
+<ul class="last simple">
 <li><dl class="first docutils">
 <dt>auth</dt>
-<dd><p class="first last">örnek authentication modülü</p>
-</dd>
+<dd>örnek authentication modülü</dd>
 </dl>
 </li>
 </ul>
@@ -746,67 +744,56 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 </div>
 <div class="section" id="kullanici-arayuz-bilesenleri">
 <h3><strong>Kullanıcı Arayüz Bileşenleri</strong><a class="headerlink" href="#kullanici-arayuz-bilesenleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt><strong>Angular.js</strong></dt>
-<dd><p class="first last">AngularJS, MVC (Model View Controller) deseni sağlayan bir javascript uygulama çatısıdır. Kullanıcı arayüzü işlemlerini gerçekleştirecek tüm fonksiyonlar için kullanılır.  AngularJS standart sunucu taraflı yazılım geliştirme tekniklerini önyüze uygulayan ve önyüz geliştirmeyi hızlandıran bir uygulama çatısıdır. Karmaşık uygulamalarda DOM yönetimini başarıyla gerçekleştirir ve bu sayede uygulamanın kesintisiz ve sorunsuz çalışmasını sağlar.</p>
-</dd>
+<dd>AngularJS, MVC (Model View Controller) deseni sağlayan bir javascript uygulama çatısıdır. Kullanıcı arayüzü işlemlerini gerçekleştirecek tüm fonksiyonlar için kullanılır.  AngularJS standart sunucu taraflı yazılım geliştirme tekniklerini önyüze uygulayan ve önyüz geliştirmeyi hızlandıran bir uygulama çatısıdır. Karmaşık uygulamalarda DOM yönetimini başarıyla gerçekleştirir ve bu sayede uygulamanın kesintisiz ve sorunsuz çalışmasını sağlar.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Karma</strong></dt>
-<dd><p class="first last">Karma, Uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.</p>
-</dd>
+<dd>Karma, Uygulama fonksiyonları için yazılmış testleri uygulayan test sürücüsüdür. Uygulamamızda Jasmine test çatısı testlerinin çalıştırılmasında kullanılır. Geliştiricinin her bir test ortamı için ayrı ayrı yapılandırma dosyası oluşturmadan tek bir yapılandırma ile testleri çalıştırabilmesini sağlar.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Selenium</strong></dt>
-<dd><p class="first last">Selenium, E2E testlerin çalıştırıldığı test platformudur. Kullanıcının tarayıcıda gerçekleştireceği işlemlerin sunucudan dönecek sonuca kadar test edilmesini sağlar.</p>
-</dd>
+<dd>Selenium, E2E testlerin çalıştırıldığı test platformudur. Kullanıcının tarayıcıda gerçekleştireceği işlemlerin sunucudan dönecek sonuca kadar test edilmesini sağlar.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Protractor</strong></dt>
-<dd><p class="first last">Protractor Selenium E2E testleri için bir çözüm enteratörü uygulama çatısıdır. Angularjs için Selenium özelleştirmeleriyle daha etkin ve bekleme sürelerini optimize ederek daha kısa sürede test edilmesini sağlar.</p>
-</dd>
+<dd>Protractor Selenium E2E testleri için bir çözüm enteratörü uygulama çatısıdır. Angularjs için Selenium özelleştirmeleriyle daha etkin ve bekleme sürelerini optimize ederek daha kısa sürede test edilmesini sağlar.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Jasmine</strong></dt>
-<dd><p class="first last">Jasmine, javascript testleri için kullanılan bir uygulama çatısıdır. Uygulama fonksiyonlarının testlerinde başarılı sentaksı ile geliştirme sürecini hızlandırır.</p>
-</dd>
+<dd>Jasmine, javascript testleri için kullanılan bir uygulama çatısıdır. Uygulama fonksiyonlarının testlerinde başarılı sentaksı ile geliştirme sürecini hızlandırır.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Bower</strong></dt>
-<dd><p class="first last">Bower, uygulamada kullanılacak paketlerin yönetimi için kullandığımız paket yönetim aracıdır. Uygulamanın gerektirdiği paketlerin kurulum esnasında eksiksiz şekilde ve sürüm uyumlu olarak kurulumunu sağlar.</p>
-</dd>
+<dd>Bower, uygulamada kullanılacak paketlerin yönetimi için kullandığımız paket yönetim aracıdır. Uygulamanın gerektirdiği paketlerin kurulum esnasında eksiksiz şekilde ve sürüm uyumlu olarak kurulumunu sağlar.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Grunt</strong></dt>
-<dd><p class="first last">Grunt javascript uygulamaları için bir görev yürütücüsüdür. Küçültme, derleme, paketleme, testler gibi tekrarlanan görevleri otomasyon ile yürütmek için kullanılır.</p>
-</dd>
+<dd>Grunt javascript uygulamaları için bir görev yürütücüsüdür. Küçültme, derleme, paketleme, testler gibi tekrarlanan görevleri otomasyon ile yürütmek için kullanılır.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Nodejs</strong></dt>
-<dd><p class="first last">Nodejs javascript uygulamaları için sunucu taraflı çalışma zamanı ortamıdır (runtime environment). Uygulama geliştirilirken bower, jasmine, karma gibi araçların kullanılması için gereklidir.</p>
-</dd>
+<dd>Nodejs javascript uygulamaları için sunucu taraflı çalışma zamanı ortamıdır (runtime environment). Uygulama geliştirilirken bower, jasmine, karma gibi araçların kullanılması için gereklidir.</dd>
 </dl>
 </li>
-<li><p class="first"><strong>StackTrace.js</strong></p>
-</li>
+<li><strong>StackTrace.js</strong></li>
 <li><dl class="first docutils">
 <dt><strong>npm</strong></dt>
-<dd><p class="first last">npm nodejs için paket yönetim aracıdır. Uygulamanın geliştirme ortamı için gerekliliklerinin yönetilmesini sağlar.</p>
-</dd>
+<dd>npm nodejs için paket yönetim aracıdır. Uygulamanın geliştirme ortamı için gerekliliklerinin yönetilmesini sağlar.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Bootstrap3</strong></dt>
-<dd><p class="first last">Bootstrap3 grid sistem standardına uygun uyumlu (responsive) arayüz geliştirmek için kullanılan html, css vs javascript uygulama çatısıdır. Uygulamanın değişik ekran boyutlarında ve farklı cihazlarda sorunsuz çalışması için kullanılır.</p>
-</dd>
+<dd>Bootstrap3 grid sistem standardına uygun uyumlu (responsive) arayüz geliştirmek için kullanılan html, css vs javascript uygulama çatısıdır. Uygulamanın değişik ekran boyutlarında ve farklı cihazlarda sorunsuz çalışması için kullanılır.</dd>
 </dl>
 </li>
 </ul>
@@ -900,17 +887,15 @@ Zetaops sürümü olan kütüphane ile, uygulama iş mantığının anahatları 
 </li>
 <li><p class="first"><strong>e2e-tests/</strong></p>
 <blockquote>
-<div><ul>
+<div><ul class="simple">
 <li><dl class="first docutils">
 <dt>protractor.conf.js</dt>
-<dd><p class="first last">E2E testlerinin yapılandırıldığı dosyadır. E2E testleri için protractor kullanılmaktadır.</p>
-</dd>
+<dd>E2E testlerinin yapılandırıldığı dosyadır. E2E testleri için protractor kullanılmaktadır.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>scenarios.js</dt>
-<dd><p class="first last">E2E test senaryolarının yazılı olduğu dosyadır.</p>
-</dd>
+<dd>E2E test senaryolarının yazılı olduğu dosyadır.</dd>
 </dl>
 </li>
 </ul>
@@ -1130,7 +1115,7 @@ Student(context).all()</div></blockquote>
         <li class="right" >
           <a href="zato_ipuclari.html" title="Zato İpuçları"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -1138,7 +1123,7 @@ Student(context).all()</div></blockquote>
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"

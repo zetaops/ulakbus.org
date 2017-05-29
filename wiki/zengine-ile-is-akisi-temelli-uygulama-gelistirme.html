@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,8 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="Ulakbüs UI - API ilişkisi" href="ulakbus-api-ui-iliskisi.html" />
     <link rel="prev" title="Ulakbüs’ü Geliştirelim" href="ulakbusu-gelistirmek.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -175,7 +174,7 @@
         <li class="right" >
           <a href="ulakbusu-gelistirmek.html" title="Ulakbüs’ü Geliştirelim"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -216,7 +215,7 @@
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/zengine-ile-is-akisi-temelli-uygulama-gelistirme.txt"
+      <li><a href="_sources/zengine-ile-is-akisi-temelli-uygulama-gelistirme.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -357,6 +356,28 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
 <p class="first admonition-title">Not</p>
 <p class="last">ZEngine web çatısı User ve Permission nesnelerinden ibaret basit bir referans yetki sistemi ile gelmektedir. Bu belgede, Ulakbüs projesi kapsamında geliştirmekte olduğumuz rol ve özellik tabanlı gelişmiş yetkilendirme sisteminden bahsedilecektir.</p>
 </div>
+<p class="plantuml">
+<img src="_images/plantuml-054299ce34d98edbef80bfa6d3d463b4d751cd2b.png" alt="skinparam classBackgroundColor #ffffff
+skinparam shadowing false
+
+class LimitedPermissions {
+restrictive     Boolean(False)
+time_start      String
+time_end        String
+--
+**IPList(ListNode)**
+|_ ip           String
+}
+User &quot;1&quot; -- &quot;1&quot; Student
+User &quot;1&quot; -- &quot;1&quot; Employee
+User &quot;0..*&quot; o-- &quot;1&quot; Role
+Role &quot;1&quot; --o &quot;0..*&quot; AbstractRole
+AbstractRole &quot;0..*&quot; o-- &quot;0..*&quot; Permission
+Role &quot;0..*&quot; o-- &quot;0..*&quot; Permission
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Permission
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; Role
+LimitedPermissions &quot;0..*&quot; -- &quot;0..*&quot; AbstractRole" />
+</p>
 <p>Ulakbüs projesinde ihtiyaç duyulan kapsamlı yetkilendirme ihtiyaçlarını karşılayabilmek için yukarıda ilişkisel şekilde görselleştirilmiş yetki modelleri tanımlanmıştır.</p>
 <p>AbstractRole nesnesi &#8220;Tıp Fakültesi Öğrenci İşleri Müdürü&#8221; gibi belirli bir makamı temsil ederken, Role nesnesi ise AbstractRole&#8217;ün bir kullanıcı ile ilişkilendirilmesi sonucu bu makamı fiilen işgal eden bir kişiyi ifade etmektedir.</p>
 <p>Permission nesnesinin hem Role ile hem de AbstractRole ile ManyToMany tipinde ilişkili olması sayesinde, bir kullanıcıya sahip olduğu makamın getirdiği standart yetkilere ek yetkilerin tanıması da mümkün olabilmektedir.</p>
@@ -434,7 +455,7 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
         <li class="right" >
           <a href="ulakbusu-gelistirmek.html" title="Ulakbüs’ü Geliştirelim"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -442,7 +463,7 @@ nasıl yapılacağını belgenin devamında &#8220;özelleştirilmiş ekranları
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"

@@ -19,10 +19,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -36,8 +37,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Dizin" href="genindex.html" />
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="top" title="Ulakbus 0.0.1 belgelendirme çalışması" href="wiki.html" />
-    <link rel="up" title="Geliştiriciler" href="developers.html" />
     <link rel="next" title="ZEngine ile İş Akışı Temelli Uygulama Geliştirme" href="zengine-ile-is-akisi-temelli-uygulama-gelistirme.html" />
     <link rel="prev" title="Geliştirme Ortamı Kurulumu(Frontend)" href="ulakbus_user_interface.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -175,7 +174,7 @@
         <li class="right" >
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              accesskey="P">önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" accesskey="U">Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -208,7 +207,7 @@
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/ulakbusu-gelistirmek.txt"
+      <li><a href="_sources/ulakbusu-gelistirmek.rst.txt"
             rel="nofollow">Kaynağı Göster</a></li>
     </ul>
    </div>
@@ -253,6 +252,37 @@ Ulakbüs projesinin parçası olarak, geliştiriciler için hazırlanan vagrant 
 <div class="section" id="view-task-ve-model-dosyalarinin-konumlari">
 <h2>View, Task ve Model dosyalarının konumları<a class="headerlink" href="#view-task-ve-model-dosyalarinin-konumlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>View, task ve model modülleri, proje kök dizininde yer alan <code class="docutils literal"><span class="pre">views</span></code>, <code class="docutils literal"><span class="pre">tasks</span></code> ve <code class="docutils literal"><span class="pre">models</span></code>  dizinleri altında konumlanırlar.</p>
+<p class="plantuml">
+<img src="_images/plantuml-ccb3a0776ef20d37a9ecd166df9e472d64623ffb.png" alt="&#64;startsalt
+
+{
+{T
++manage.py
++settings.py
++**models**
+++~__init__.py
+++ogrenci.py
+++personel.py
+++auth.py
+++hitap.py
++**views**
+++~__init__.py
+++personel
++++~__init__.py
++++atama.py
++++kadro.py
+++**ogrenci**
++++~__init__.py
++++on_kayit.py
+++dashboard.py
+++system.py
++**tasks**
+++~__init__.py
+}
+}
+
+&#64;endsalt" />
+</p>
 </div>
 <div class="section" id="is-akislarinin-tasarlanmasi">
 <h2>İş akışlarının tasarlanması.<a class="headerlink" href="#is-akislarinin-tasarlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -261,29 +291,29 @@ iş akışı ögelerinin uygulama işlevselliği için elzem olan kısımların�
 Bunlardan UserTask, ServiceTask ve Exclusive (XOR) Gateway&#8217;ler en çok kullanacağımız ögelerin başında gelmektedir.</p>
 <p>BPMN standardı bu öglerin temel işlev ve ilişkilerini tanımlamış olsa da, iş akışlarının işletilmesi noktasında birçok tercihi uygulama geliştiricilere bırakmıştır.</p>
 <p>Yukarıda maddelendirdiğimiz iş akışının BPMN 2.0 uyumlu bir diagram şekline getirilmiş halini aşağıda görebilirsiniz.</p>
-<a class=""
-               data-lightbox="group-af3ac996-83f6-4ff9-addf-3a9887523f16"
-               href="_images/du_bpmn_onkayit.png"
-               title=""
-               data-title=""
-               ><img src="_images/du_bpmn_onkayit.png"
-                     class=""
-                     width="100%"
-                     height="auto"
-                     alt=""/>
-                </a><p>Öğrenci (ogrenci) lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz.
+<a data-lightbox="group-c0503904-fde7-41f4-8af1-259e0d379294"
+                   href="_images/du_bpmn_onkayit.png"
+                   class=""
+                   title=""
+                   data-title=""
+                   ><img src="_images/du_bpmn_onkayit.png"
+                    class=""
+                    width="100%"
+                    height="auto"
+                    alt=""/>
+                    </a><p>Öğrenci (ogrenci) lane&#8217;inin boş bir yerine tıklayarak bu lane&#8217;in özelliklerini görüntüleyebilirsiniz.
 Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda listelenmiştir.</p>
-<a class=""
-               data-lightbox="group-9c67c96a-55a1-4956-8119-c60d1cd3715f"
-               href="_images/du_bpmn_lane_properties.png"
-               title=""
-               data-title=""
-               ><img src="_images/du_bpmn_lane_properties.png"
-                     class=""
-                     width="100%"
-                     height="auto"
-                     alt=""/>
-                </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
+<a data-lightbox="group-80172538-6cef-4306-b2e6-f9d26fb9fd80"
+                   href="_images/du_bpmn_lane_properties.png"
+                   class=""
+                   title=""
+                   data-title=""
+                   ><img src="_images/du_bpmn_lane_properties.png"
+                    class=""
+                    width="100%"
+                    height="auto"
+                    alt=""/>
+                    </a><p><code class="docutils literal"><span class="pre">relations</span></code> parametresi iş akışında rol alan kullanıcıların birbirleri ile olan ilişkilerini kısıtlayıcı şekilde tanımlamak için kullanılır. Yukarıdaki örnekte <strong>advisor</strong> laneninin kullanıcısının student lane&#8217;inin kullanıcısının <strong>danisman</strong> ı olması gerektiği belirtilmiştir. Bu alana girilen parametrelerin geçerli Python kodu olması ve True mantıksal değerini döndürmesi gerekmektedir. Tanımlanması isteğe bağlıdır.</p>
 <p><code class="docutils literal"><span class="pre">owners</span></code> parametresi tanımlandığı lane&#8217;in olası kullanıcılarını sınırlandırmak için kullanılır. Eğer bu parametre tanımlanmış ise, sadece bu parametrede belirtilen kullanıcılara iş akışına katılmaları için mesaj gönderilecektir. Bu alan tanımlanmamış ise, lane&#8217;in iznine sahip olan tüm kullanıcılara mesaj gönderilecektir.</p>
 <p>Örneğimizde, advisor lane&#8217;ini işletecek kişinin student lane&#8217;ini işleten kişinin danışmanı olması gerektiği kesin olarak belirtilmiştir. Bu alandaki ifadelerin &#8220;iterable&#8221; olması gerekmektedir, bu nedenle <code class="docutils literal"><span class="pre">[student.ogrenci.danisman.personel]</span></code> şeklinde tek ögeli bir liste şeklinde girilmiştir. Bu listenin elemanları ya <code class="docutils literal"><span class="pre">User</span></code> nesnesi olmalı, ya da geriye ilgili user nesnesini döndüren bir <code class="docutils literal"><span class="pre">get_user()</span></code> metoduna sahip olmalıdırlar.</p>
 </div>
@@ -351,7 +381,7 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
         <span class="n">aciklama</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;Ek Açıklama&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="n">tamam</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="s2">&quot;Belge kontrol edildi&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> - </span><span class="si">%s</span><span class="s1"> / </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">ad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ogrenci</span><span class="o">.</span><span class="n">soyad</span><span class="p">,</span>
                                     <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">adi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">yil</span><span class="p">)</span>
 </pre></div>
@@ -539,7 +569,7 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
         <li class="right" >
           <a href="ulakbus_user_interface.html" title="Geliştirme Ortamı Kurulumu(Frontend)"
              >önceki</a> |</li>
-        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.1 belgelendirme çalışması</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="wiki.html">Ulakbus 0.0.6 belgelendirme çalışması</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="developers.html" >Geliştiriciler</a> &#187;</li> 
       </ul>
     </div>
@@ -547,7 +577,7 @@ Extensions bölümüne girebileceğiniz parametereler ve işlevleri aşağıda l
     <footer>
         <div class="container">
             <div class="row">
-                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2017, <a
+                <p>Tübitak, Ulakbim ULAKBÜS Bütünleşik Üniversite Sistemi, 2015-2017 belge sürümü 0.0.6, son güncelleme 30 May, 2017,  <a
                         href="http://ozgurlisanslar.org.tr/gpl/gpl-v3/" target="_blank"
                         style="text-decoration:underline; color:#fff;">GPL V3,</a> powered by <a
                         href="http://zetaops.io" target="_blank"
